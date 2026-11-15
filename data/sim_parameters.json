@@ -1,0 +1,1157 @@
+{
+ "_meta": {
+  "title": "Niagara Falls, Ontario \u2014 simulation input parameters",
+  "compiled": "2026-11-15",
+  "notes": [
+   "Census 2021 counts are tract sums (StatCan random-rounds each tract to 5, so totals can differ slightly from the official city profile).",
+   "Census income figures refer to calendar 2020 (pandemic year: CERB inflated low incomes, unemployment was abnormally high in May 2021).",
+   "Fields marked 'estimate' are derived by the compiler, not published figures; the derivation is given."
+  ]
+ },
+ "residents": {
+  "population": {
+   "census_2021": 94415,
+   "census_2016": 88071,
+   "statcan_estimate_july_2025": 113983,
+   "statcan_estimates_by_year": {
+    "2019": 96078,
+    "2020": 97304,
+    "2021": 98274,
+    "2022": 100351,
+    "2023": 104512,
+    "2024": 110804,
+    "2025": 113983
+   },
+   "note": "Annual estimates (table 17-10-0155) include census undercount adjustment, so 2021 estimate (98,274) > census count (94,415).",
+   "land_km2": 210.3,
+   "private_dwellings_2021": 39778,
+   "occupied_dwellings_2021": 37793
+  },
+  "sex_2021": {
+   "male": 45885,
+   "female": 48535,
+   "pct_female": 51.4
+  },
+  "age_pyramid_2021": {
+   "0-4": {
+    "total": 4090,
+    "male": 2120,
+    "female": 1980
+   },
+   "5-9": {
+    "total": 4750,
+    "male": 2450,
+    "female": 2290
+   },
+   "10-14": {
+    "total": 5050,
+    "male": 2555,
+    "female": 2475
+   },
+   "15-19": {
+    "total": 5120,
+    "male": 2675,
+    "female": 2445
+   },
+   "20-24": {
+    "total": 5525,
+    "male": 2905,
+    "female": 2585
+   },
+   "25-29": {
+    "total": 5755,
+    "male": 2855,
+    "female": 2890
+   },
+   "30-34": {
+    "total": 5740,
+    "male": 2890,
+    "female": 2860
+   },
+   "35-39": {
+    "total": 5600,
+    "male": 2650,
+    "female": 2940
+   },
+   "40-44": {
+    "total": 5610,
+    "male": 2720,
+    "female": 2930
+   },
+   "45-49": {
+    "total": 5930,
+    "male": 2860,
+    "female": 3070
+   },
+   "50-54": {
+    "total": 6355,
+    "male": 3100,
+    "female": 3285
+   },
+   "55-59": {
+    "total": 7135,
+    "male": 3490,
+    "female": 3645
+   },
+   "60-64": {
+    "total": 7065,
+    "male": 3280,
+    "female": 3785
+   },
+   "65-69": {
+    "total": 6350,
+    "male": 2985,
+    "female": 3370
+   },
+   "70-74": {
+    "total": 5375,
+    "male": 2525,
+    "female": 2840
+   },
+   "75-79": {
+    "total": 3625,
+    "male": 1690,
+    "female": 1915
+   },
+   "80-84": {
+    "total": 2550,
+    "male": 1095,
+    "female": 1430
+   },
+   "85+": {
+    "total": 2805,
+    "male": 1015,
+    "female": 1795
+   }
+  },
+  "age_summary_2021": {
+   "0_14": 13880,
+   "15_64": 59865,
+   "65_plus": 20655,
+   "85_plus": 2805,
+   "under_18_in_private_hh": 16880,
+   "median_age_approx": "~45.8 (mean of tract medians; tracts range 37-53)"
+  },
+  "households_2021": {
+   "total": 37785,
+   "avg_size": 2.4,
+   "by_type": {
+    "couple_with_children": 9095,
+    "couple_without_children": 9140,
+    "one_parent": 4225,
+    "one_person": 10550,
+    "multigenerational": 1435,
+    "multiple_census_family": 320,
+    "one_family_plus_additional_persons": 1430,
+    "two_plus_person_non_family_roommates": 1640
+   },
+   "by_size": {
+    "1": 10550,
+    "2": 12930,
+    "3": 6010,
+    "4": 5195,
+    "5+": 3150
+   },
+   "one_parent_families": {
+    "total": 5665,
+    "mother_led": 4400,
+    "father_led": 1230
+   },
+   "census_families": {
+    "total": 26645,
+    "married": 17315,
+    "common_law": 3700,
+    "family_size_2": 14065,
+    "family_size_3": 5925,
+    "family_size_4": 4795,
+    "family_size_5plus": 1865
+   },
+   "children_in_census_families_any_age": {
+    "total": 27425,
+    "in_two_parent": 18765,
+    "in_one_parent": 8630
+   },
+   "children_under_18": 16880,
+   "children_0_5": 4975
+  },
+  "income_2020": {
+   "median_household_total": 74500,
+   "median_household_after_tax_estimate": 67500,
+   "avg_household_total": 90200,
+   "avg_household_after_tax": 77900,
+   "avg_individual_total_recipients": 44840,
+   "avg_individual_after_tax_recipients": 38640,
+   "household_total_income_bands": [
+    {
+     "from": 0,
+     "to": 5000.0,
+     "households": 305
+    },
+    {
+     "from": 5000.0,
+     "to": 10000.0,
+     "households": 150
+    },
+    {
+     "from": 10000.0,
+     "to": 15000.0,
+     "households": 470
+    },
+    {
+     "from": 15000.0,
+     "to": 20000.0,
+     "households": 725
+    },
+    {
+     "from": 20000.0,
+     "to": 25000.0,
+     "households": 1640
+    },
+    {
+     "from": 25000.0,
+     "to": 30000.0,
+     "households": 1540
+    },
+    {
+     "from": 30000.0,
+     "to": 35000.0,
+     "households": 1435
+    },
+    {
+     "from": 35000.0,
+     "to": 40000.0,
+     "households": 1715
+    },
+    {
+     "from": 40000.0,
+     "to": 45000.0,
+     "households": 1625
+    },
+    {
+     "from": 45000.0,
+     "to": 50000.0,
+     "households": 1620
+    },
+    {
+     "from": 50000.0,
+     "to": 60000.0,
+     "households": 3200
+    },
+    {
+     "from": 60000.0,
+     "to": 70000.0,
+     "households": 3110
+    },
+    {
+     "from": 70000.0,
+     "to": 80000.0,
+     "households": 2885
+    },
+    {
+     "from": 80000.0,
+     "to": 90000.0,
+     "households": 2540
+    },
+    {
+     "from": 90000.0,
+     "to": 100000.0,
+     "households": 2255
+    },
+    {
+     "from": 100000.0,
+     "to": 125000.0,
+     "households": 4490
+    },
+    {
+     "from": 125000.0,
+     "to": 150000.0,
+     "households": 2955
+    },
+    {
+     "from": 150000.0,
+     "to": 200000.0,
+     "households": 3050
+    },
+    {
+     "from": 200000.0,
+     "to": 400000.0,
+     "households": 2050
+    }
+   ],
+   "household_after_tax_income_bands": [
+    {
+     "from": 0,
+     "to": 5000.0,
+     "households": 360
+    },
+    {
+     "from": 5000.0,
+     "to": 10000.0,
+     "households": 170
+    },
+    {
+     "from": 10000.0,
+     "to": 15000.0,
+     "households": 495
+    },
+    {
+     "from": 15000.0,
+     "to": 20000.0,
+     "households": 735
+    },
+    {
+     "from": 20000.0,
+     "to": 25000.0,
+     "households": 1760
+    },
+    {
+     "from": 25000.0,
+     "to": 30000.0,
+     "households": 1795
+    },
+    {
+     "from": 30000.0,
+     "to": 35000.0,
+     "households": 1705
+    },
+    {
+     "from": 35000.0,
+     "to": 40000.0,
+     "households": 1875
+    },
+    {
+     "from": 40000.0,
+     "to": 45000.0,
+     "households": 1805
+    },
+    {
+     "from": 45000.0,
+     "to": 50000.0,
+     "households": 1830
+    },
+    {
+     "from": 50000.0,
+     "to": 60000.0,
+     "households": 3665
+    },
+    {
+     "from": 60000.0,
+     "to": 70000.0,
+     "households": 3585
+    },
+    {
+     "from": 70000.0,
+     "to": 80000.0,
+     "households": 3175
+    },
+    {
+     "from": 80000.0,
+     "to": 90000.0,
+     "households": 2780
+    },
+    {
+     "from": 90000.0,
+     "to": 100000.0,
+     "households": 2380
+    },
+    {
+     "from": 100000.0,
+     "to": 125000.0,
+     "households": 4205
+    },
+    {
+     "from": 125000.0,
+     "to": 150000.0,
+     "households": 2355
+    },
+    {
+     "from": 150000.0,
+     "to": 250000.0,
+     "households": 3090
+    }
+   ],
+   "individual_total_income_bands_by_sex": {
+    "<10k": {
+     "male": 2325,
+     "female": 3110
+    },
+    "10-20k": {
+     "male": 4150,
+     "female": 5830
+    },
+    "20-30k": {
+     "male": 6465,
+     "female": 8445
+    },
+    "30-40k": {
+     "male": 5860,
+     "female": 7140
+    },
+    "40-50k": {
+     "male": 4355,
+     "female": 5130
+    },
+    "50-60k": {
+     "male": 3155,
+     "female": 3395
+    },
+    "60-70k": {
+     "male": 2555,
+     "female": 2065
+    },
+    "70-80k": {
+     "male": 1840,
+     "female": 1310
+    },
+    "80-90k": {
+     "male": 1365,
+     "female": 870
+    },
+    "90-100k": {
+     "male": 1125,
+     "female": 700
+    },
+    "100-150k": {
+     "male": 2300,
+     "female": 1195
+    },
+    "150k+": {
+     "male": 925,
+     "female": 305
+    }
+   },
+   "low_income_LIM_AT": {
+    "persons": 10610,
+    "rate_pct": 11.4,
+    "children_0_17": 2455,
+    "seniors_65plus": 2445
+   },
+   "income_update_2023_cma": {
+    "geo": "St. Catharines-Niagara CMA tax filers 2023",
+    "median_total_income_individual": 41540,
+    "median_male": 47440,
+    "median_female": 36730,
+    "median_employment_income": 38390
+   }
+  },
+  "housing_2021": {
+   "owner_households": 26590,
+   "renter_households": 11205,
+   "pct_owner": 70.4,
+   "condo_households": 3005,
+   "owners_with_mortgage_pct": 59.1,
+   "owners_with_mortgage_est": 15700,
+   "median_owner_shelter_cost_month": 1150,
+   "avg_owner_shelter_cost_month": 1320,
+   "median_renter_shelter_cost_month": 1110,
+   "avg_renter_shelter_cost_month": 1212,
+   "avg_dwelling_value_2021": 596000,
+   "households_30pct_plus_income_on_shelter": 8745,
+   "households_core_housing_need": 4015,
+   "dwelling_type": {
+    "single_detached": 25000,
+    "semi": 2065,
+    "row": 2820,
+    "duplex_flat": 1270,
+    "apt_under_5_storeys": 4970,
+    "apt_5plus_storeys": 1590,
+    "movable": 20
+   },
+   "bedrooms": {
+    "0": 85,
+    "1": 3320,
+    "2": 8110,
+    "3": 16465,
+    "4+": 9785
+   },
+   "period_built": {
+    "<=1960": 11690,
+    "1961-80": 11300,
+    "1981-90": 4090,
+    "1991-2000": 3310,
+    "2001-05": 1430,
+    "2006-10": 1485,
+    "2011-15": 1875,
+    "2016-21": 2590
+   },
+   "current_market": {
+    "niagara_region_mls_hpi_benchmark_oct_2026": 566100,
+    "yoy_pct": -3.8,
+    "niagara_falls_avg_sold_price_2025_monthly_range": [
+     586222,
+     644670
+    ],
+    "nf_avg_condo_2025_range": [
+     427167,
+     494493
+    ],
+    "nf_avg_freehold_2025_range": [
+     608666,
+     666142
+    ]
+   },
+   "mortgage_size_estimate": {
+    "method": "estimate: price ~$590k, 10-20% down, ~4.3% 5-yr fixed, 25-yr amortization",
+    "new_buyer_principal_range": [
+     470000,
+     530000
+    ],
+    "new_buyer_payment_month_range": [
+     2550,
+     2900
+    ],
+    "ontario_avg_mortgage_paid_per_household_2023_all_households": 10110,
+    "note": "Older owners (2/3 of owners are 55+) carry far smaller or no balances; 41% of owners have no mortgage."
+   }
+  },
+  "labour": {
+   "census_2021_labour_force": 46105,
+   "census_2021_employed": 35715,
+   "census_2021_unemployed": 10400,
+   "census_2021_participation_pct": 58.5,
+   "census_caveat": "May 2021 lockdown: census unemployment ~22.5% is not representative",
+   "current_cma_unemployment": {
+    "Jan 2026": 7.3,
+    "Mar 2026": 6.5,
+    "Apr 2026": 6.0,
+    "May 2026": 6.6,
+    "Jun 2026": 6.3,
+    "Aug 2026": 6.3,
+    "Sep 2026": 6.7
+   },
+   "industry_labour_force_2021": {
+    "11 Agriculture": {
+     "total": 515,
+     "male": 310,
+     "female": 195
+    },
+    "22 Utilities": {
+     "total": 325,
+     "male": 290,
+     "female": 45
+    },
+    "23 Construction": {
+     "total": 3310,
+     "male": 2845,
+     "female": 470
+    },
+    "31-33 Manufacturing": {
+     "total": 3355,
+     "male": 2640,
+     "female": 710
+    },
+    "41 Wholesale": {
+     "total": 1230,
+     "male": 840,
+     "female": 350
+    },
+    "44-45 Retail": {
+     "total": 5465,
+     "male": 2365,
+     "female": 3090
+    },
+    "48-49 Transport & warehousing": {
+     "total": 2090,
+     "male": 1595,
+     "female": 465
+    },
+    "51 Information & culture": {
+     "total": 510,
+     "male": 300,
+     "female": 185
+    },
+    "52 Finance & insurance": {
+     "total": 1405,
+     "male": 590,
+     "female": 785
+    },
+    "53 Real estate": {
+     "total": 740,
+     "male": 355,
+     "female": 355
+    },
+    "54 Professional/scientific": {
+     "total": 2225,
+     "male": 1175,
+     "female": 1055
+    },
+    "56 Admin support & waste": {
+     "total": 1915,
+     "male": 1090,
+     "female": 845
+    },
+    "61 Education": {
+     "total": 2670,
+     "male": 845,
+     "female": 1835
+    },
+    "62 Health care & social assistance": {
+     "total": 5585,
+     "male": 1020,
+     "female": 4575
+    },
+    "71 Arts, entertainment & recreation": {
+     "total": 2580,
+     "male": 1440,
+     "female": 1155
+    },
+    "72 Accommodation & food services": {
+     "total": 6645,
+     "male": 3045,
+     "female": 3580
+    },
+    "81 Other services": {
+     "total": 1845,
+     "male": 955,
+     "female": 915
+    },
+    "91 Public administration": {
+     "total": 2060,
+     "male": 1155,
+     "female": 895
+    }
+   },
+   "occupation_2021": {
+    "0 Management": 365,
+    "1 Business/finance/admin": 6100,
+    "2 Natural & applied sciences": 2265,
+    "3 Health": 3780,
+    "4 Education/law/social/government": 4315,
+    "5 Art/culture/recreation/sport": 1060,
+    "6 Sales & service": 16455,
+    "7 Trades/transport/equipment": 7550,
+    "8 Natural resources/agriculture": 760,
+    "9 Manufacturing & utilities": 1895
+   },
+   "place_of_work": {
+    "usual_place": 24540,
+    "work_from_home": 6145,
+    "no_fixed_address": 4745,
+    "outside_canada": 280
+   },
+   "commute_destination": {
+    "within_niagara_falls": 13560,
+    "elsewhere_in_niagara_region": 8865,
+    "outside_region_in_ontario": 2045
+   }
+  },
+  "transport": {
+   "commute_mode_2021": {
+    "car_driver": 24510,
+    "car_passenger": 2480,
+    "transit": 590,
+    "walk": 880,
+    "bike": 155,
+    "other": 630
+   },
+   "commute_duration_2021": {
+    "<15min": 11980,
+    "15-29": 11405,
+    "30-44": 3220,
+    "45-59": 1010,
+    "60+": 1665
+   },
+   "vehicle_ownership_niagara_region_TTS_2022": {
+    "vehicles_per_household": 1.75,
+    "drivers_per_household": 1.81,
+    "pct_households_by_vehicles": {
+     "0": 7,
+     "1": 39,
+     "2": 36,
+     "3": 12,
+     "4+": 6
+    },
+    "licensed_pct_men": 76,
+    "licensed_pct_women": 76
+   },
+   "vehicles_estimate_nf": "estimate: 37,790 households (2021) x 1.75 = ~66,000 vehicles; ~83,000 at 2025 population (113,983 / 2.4 persons per household x 1.75) if ratios hold"
+  },
+  "debt_and_insolvency": {
+   "ontario_avg_non_mortgage_debt_per_consumer_q2_2025": 22802,
+   "ontario_90day_delinquency_rate_q2_2025_pct": 1.75,
+   "canada_avg_non_mortgage_debt_q4_2025": 22377,
+   "equifax_age_debt_canada_q2_2025": {
+    "46-55": 34749,
+    "56-65": 29349,
+    "65+": 14934
+   },
+   "niagara_region_consumer_insolvencies_2025": 1976,
+   "niagara_region_growth_pct": 21,
+   "niagara_region_pct_proposals": 78,
+   "insolvent_debtor_profile_ontario_2025": {
+    "avg_unsecured_debt": 67496,
+    "avg_secured_non_mortgage": 12001,
+    "avg_age": 42.3,
+    "pct_male": 55,
+    "debt_to_income_pct": 193,
+    "pct_homeowners": 8
+   },
+   "niagara_falls_insolvencies_actual_osb_fsa": {
+    "source": "OSB annual insolvency statistics by FSA (L2E+L2G+L2H+L2J)",
+    "2023": {
+     "consumer": 432,
+     "consumer_bankruptcies": 95,
+     "consumer_proposals": 337,
+     "business": 6
+    },
+    "2024": {
+     "consumer": 529,
+     "consumer_bankruptcies": 132,
+     "consumer_proposals": 397,
+     "business": 8
+    },
+    "2025": {
+     "consumer": 502,
+     "consumer_bankruptcies": 127,
+     "consumer_proposals": 375,
+     "consumer_liabilities": 76700000,
+     "avg_liabilities_per_filer": 152800,
+     "business": 4,
+     "business_liabilities": 990000
+    }
+   },
+   "st_catharines_niagara_cma_2025": {
+    "consumer": 1758,
+    "consumer_bankruptcies": 416,
+    "consumer_proposals": 1342,
+    "business": 22,
+    "business_bankruptcies": 16,
+    "business_proposals": 6
+   }
+  },
+  "spending_ontario_2023_avg_household": {
+   "total_expenditure": 113576,
+   "current_consumption": 81593,
+   "shelter": 29136,
+   "food": 11716,
+   "food_restaurants": 3686,
+   "transportation": 11927,
+   "household_operations": 6353,
+   "furnishings": 3449,
+   "clothing": 3086,
+   "health": 3127,
+   "personal_care": 1714,
+   "recreation": 5153,
+   "education": 2021,
+   "alcohol_tobacco_cannabis": 1596,
+   "games_of_chance": 178,
+   "misc": 1909,
+   "income_taxes": 23947,
+   "pension_insurance": 6474,
+   "gifts_charity": 1563
+  },
+  "spending_ontario_2023_by_income_quintile": {
+   "columns": [
+    "lowest",
+    "second",
+    "third",
+    "fourth",
+    "highest"
+   ],
+   "current_consumption": [
+    41810,
+    66347,
+    76667,
+    96063,
+    126790
+   ],
+   "shelter": [
+    16052,
+    24768,
+    27105,
+    33084,
+    44578
+   ],
+   "food": [
+    7017,
+    9264,
+    10811,
+    14079,
+    17371
+   ],
+   "restaurants": [
+    1920,
+    2789,
+    3113,
+    4067,
+    6529
+   ],
+   "transportation": [
+    4935,
+    9644,
+    11326,
+    15170,
+    18515
+   ],
+   "recreation": [
+    1871,
+    3896,
+    4549,
+    6179,
+    9245
+   ],
+   "clothing": [
+    1431,
+    2523,
+    3076,
+    3613,
+    4774
+   ],
+   "alcohol_tobacco_cannabis": [
+    778,
+    1122,
+    1557,
+    1957,
+    2560
+   ],
+   "accommodation_away": [
+    158,
+    558,
+    767,
+    1320,
+    2089
+   ],
+   "package_trips": [
+    345,
+    660,
+    928,
+    1361,
+    2242
+   ],
+   "income_taxes": [
+    767,
+    4247,
+    11130,
+    20761,
+    82573
+   ]
+  },
+  "discretionary_spending_estimate": {
+   "definition": "restaurants + recreation + clothing + alcohol/tobacco/cannabis + games of chance + travel accommodation (Ontario SHS 2023 by quintile)",
+   "per_household_by_quintile": [
+    6158,
+    10983,
+    13368,
+    17362,
+    25329
+   ],
+   "note": "Ontario quintile cut-offs are not in the SHS table; map Niagara Falls households onto quintiles using residents.income_2020.household_total_income_bands (NF median $74.5k vs Ontario ~$91k, so NF skews toward the lower quintiles)."
+  },
+  "businesses_with_employees_june_2026": {
+   "total": 2725,
+   "accommodation_food": 402,
+   "food_services_drinking": 326,
+   "accommodation": 76,
+   "arts_entertainment_recreation": 65,
+   "amusement_gambling_recreation": 48,
+   "health_social": 291,
+   "construction": 284,
+   "professional": 216,
+   "retail_food_beverage": 98,
+   "truck_transport": 94
+  }
+ },
+ "tourism": {
+  "annual_visitors_niagara_region": {
+   "current_official": "13 million+ (Ontario government, 2025)",
+   "target_destination_niagara": 25000000,
+   "2017_detail": {
+    "total": 12947000,
+    "ontario": 8397000,
+    "other_canada": 292000,
+    "usa": 3166000,
+    "overseas": 1092000,
+    "overnight": 4929000,
+    "same_day": 8018000
+   },
+   "2022_domestic_only": {
+    "person_visits": 8283473,
+    "ontario": 7950026,
+    "other_canada": 333447,
+    "overnight": 2954775,
+    "same_day": 5328699,
+    "total_nights": 5609274
+   }
+  },
+  "spending": {
+   "2017_total_region": 2362164000,
+   "2017_by_origin": {
+    "ontario": 1408941000,
+    "other_canada": 125796000,
+    "usa": 645215000,
+    "overseas": 182212000
+   },
+   "2022_domestic_total": 2102995569,
+   "2023_total_destination_canada": "~$2.8B ($1.4B international, $1.4B domestic)",
+   "international_niagara_falls_wine_country_by_year": {
+    "2023": 961409000,
+    "2024": 1094394000,
+    "2025": 1231322000,
+    "usa_2025": 977548000
+   },
+   "domestic_2022_per_person": {
+    "all": 253.88,
+    "overnight_trip": 481.11,
+    "overnight_per_night": 253.43,
+    "same_day": 127.88,
+    "per_party": 404.31
+   },
+   "domestic_2022_mix_pct": {
+    "accommodation": 28.1,
+    "restaurants": 27.0,
+    "food_from_stores": 6.9,
+    "vehicle_operation": 10.4,
+    "vehicle_rental": 1.7,
+    "public_transport": 1.5,
+    "local_transport": 0.4,
+    "recreation": 4.9,
+    "culture_attractions": 9.4,
+    "clothing": 4.8,
+    "other_retail": 4.9
+   },
+   "2017_per_person_by_origin": {
+    "ontario": 167.79,
+    "usa": 203.81,
+    "overseas": 166.89
+   },
+   "2017_per_household_visit_usa": 411.02,
+   "niagara_parks_avg_transaction": {
+    "american": 55,
+    "canadian": 34
+   }
+  },
+  "seasonality_2022_domestic_visits_pct": {
+   "Q1": 14.0,
+   "Q2": 24.1,
+   "Q3": 38.6,
+   "Q4": 23.3
+  },
+  "trip_purpose_2022_domestic_pct": {
+   "pleasure": 60.4,
+   "visit_friends_relatives": 27.4,
+   "shopping": 2.9,
+   "business": 4.9,
+   "conventions": 0.8,
+   "other": 3.6
+  },
+  "length_of_stay_2022_domestic": {
+   "0_nights": 5328699,
+   "1": 1516021,
+   "2": 906486,
+   "3": 314480,
+   "4": 117540,
+   "5": 20462,
+   "6-9": 52646,
+   "10+": 27140,
+   "avg_nights_overnighters": 1.9
+  },
+  "accommodation_2022_domestic_overnight_visitors": {
+   "hotels": 1826323,
+   "motels": 99497,
+   "other_roofed_commercial": 220597,
+   "camping_rv": 68350,
+   "private_homes_friends": 627600,
+   "other": 124013
+  },
+  "hotel_market_region": {
+   "occupancy": {
+    "2017": 0.67,
+    "2018": 0.65,
+    "2019": 0.65,
+    "2020": 0.28,
+    "2021": 0.34,
+    "2022": 0.55
+   },
+   "adr": {
+    "2019": 163.55,
+    "2022": 194.48
+   },
+   "revpar_2025_forecast_cbre": 139
+  },
+  "short_term_rentals_region": {
+   "2023": {
+    "properties": 5586,
+    "occupancy": 0.42,
+    "adr": 186.07,
+    "reserved_nights": 663287
+   }
+  },
+  "party": {
+   "avg_party_size": 2.63,
+   "pct_parties_with_children": 25,
+   "avg_adult_age": 45.7,
+   "adult_age_pct": {
+    "18-24": 7.3,
+    "25-34": 20.5,
+    "35-44": 23.6,
+    "45-54": 15.9,
+    "55-64": 17.7,
+    "65+": 15.0
+   }
+  },
+  "activities_2022_domestic_pct_of_visits": {
+   "sightseeing": 42.0,
+   "restaurant_or_bar": 34.7,
+   "visit_friends_relatives": 29.9,
+   "shopping": 26.6,
+   "outdoor_sports": 14.8,
+   "casinos": 9.3,
+   "theme_parks": 9.0,
+   "nature_parks": 7.2,
+   "historic_sites": 6.8,
+   "museums_galleries": 4.3,
+   "cultural_performances": 3.8,
+   "zoos_aquariums": 3.4
+  },
+  "attractions_attendance_niagara_parks_fy2024_25": {
+   "journey_behind_the_falls": 917075,
+   "power_station": 334206,
+   "butterfly_conservatory": 303791,
+   "white_water_walk": 211930,
+   "whirlpool_aero_car": 190481,
+   "niagaras_fury": 125476,
+   "floral_showhouse": 63488,
+   "wego_bus": 1108170,
+   "falls_incline_railway": 884777,
+   "total": 4283401,
+   "revenue_origin_pct": {
+    "usa": 42,
+    "canada": 42,
+    "other": 16
+   }
+  },
+  "casinos": {
+   "visitors_per_year": "5 million+",
+   "gaming_revenue": "$500 million+ per year",
+   "operator": "Mohegan (Fallsview Casino Resort, Casino Niagara)"
+  },
+  "arrival_modes": {
+   "ontario_domestic_visits_by_car_2024_pct": 90.0,
+   "bus_or_train_pct": 4.6,
+   "air_pct": 2.6,
+   "note": "StatCan: Niagara Falls & Wine Country gets about twice the bus/train share of Ottawa region",
+   "nfbc_westbound_autos_into_canada_millions": {
+    "2018-19": 2.86,
+    "2022-23": 2.11,
+    "2023-24": 2.38
+   },
+   "rainbow_bridge_2025_drop": "-29% to -32% autos vs 2024 (spring 2025)",
+   "us_visitor_spend_by_non_air_share_2025": 0.89,
+   "go_train": "8 weekend trips each way Toronto Union - Niagara Falls since Nov 1 2025; weekday commuter trips"
+  },
+  "visitor_income": {
+   "status": "GAP \u2014 no published household-income profile for visitors to the Canadian side was found",
+   "proxies": "Ontario visitors (64% of volume) largely from GTA/Hamilton; use origin-market census incomes; Longwoods publishes a US-visitor profile for Niagara Falls USA only"
+  }
+ },
+ "who_makes_what": {
+  "cra_tax_filers_2021_tax_year": {
+   "note": "FSAs L2E, L2G, L2H, L2J approximate the city",
+   "filers": 77160,
+   "total_income": 3493387000,
+   "avg_total_income": 45275,
+   "avg_income_by_fsa": {
+    "L2E": 39099,
+    "L2G": 41854,
+    "L2H": 48914,
+    "L2J": 52407
+   },
+   "avg_income_by_sex": {
+    "male": 52029,
+    "female": 39565
+   },
+   "filers_by_income_band": {
+    "<20k": 19060,
+    "20-40k": 26050,
+    "40-60k": 14600,
+    "60-100k": 11690,
+    "100-150k": 4010,
+    "150-250k": 1300,
+    "250k+": 470
+   },
+   "income_sources": {
+    "employment": {
+     "people": 50130,
+     "total": 1917787000,
+     "avg": 38256
+    },
+    "pension": {
+     "people": 26920,
+     "total": 653664000,
+     "avg": 24282
+    },
+    "investment": {
+     "people": 20650,
+     "total": 274441000,
+     "avg": 13290
+    },
+    "self_employment": {
+     "people": 6930,
+     "total": 98876000,
+     "avg": 14268
+    },
+    "benefits": {
+     "people": 27260,
+     "total": 293782000,
+     "avg": 10777
+    },
+    "other": {
+     "people": 28270,
+     "total": 207864000,
+     "avg": 7353
+    }
+   }
+  },
+  "ontario_avg_weekly_earnings_2025": {
+   "all_industries": 1339.7,
+   "accommodation_food": 508.88,
+   "food_services": 482.46,
+   "accommodation": 696.52,
+   "amusement_gambling_recreation": 638.58,
+   "grocery_retail": 547.22,
+   "clothing_retail": 516.2,
+   "construction": 1583.46,
+   "health_social": 1186.76,
+   "public_admin": 1784.72,
+   "note": "Includes part-time workers, so low-wage tourism sectors look lower than full-time pay"
+  },
+  "revenue_to_payroll_ontario": {
+   "accommodation_721": {
+    "revenue_per_payroll_dollar": 4.74,
+    "operating_margin_pct": 19.7
+   },
+   "food_services_722": {
+    "revenue_per_payroll_dollar": 3.19,
+    "operating_margin_pct": 3.1
+   },
+   "amusement_parks_7131": {
+    "revenue_per_payroll_dollar": 3.73,
+    "operating_margin_pct": 15.3
+   },
+   "other_amusement_7139": {
+    "revenue_per_payroll_dollar": 3.08,
+    "operating_margin_pct": 11.6
+   },
+   "retail_44_45": {
+    "revenue_per_payroll_dollar": 10.48,
+    "operating_margin_pct": 5.8
+   }
+  },
+  "big_players_public": {
+   "niagara_parks_fy2024_25_revenue": 183300000,
+   "niagara_parks_own_operations_revenue": 145900000,
+   "casinos_gaming_revenue": "over $500M per year (Ontario govt)",
+   "mohegan_niagara_net_revenue_q_ended_2025_06_30_usd": 66800000,
+   "city_casino_hosting_revenue_estimate_2026": 18000000,
+   "city_2026_tax_levy_budget_revenue": 174966158,
+   "city_property_taxation_2026": 103275316
+  },
+  "files": [
+   "cra_tax_by_postal_area_2021.csv",
+   "wages_by_occupation_hamilton_niagara_2025.csv",
+   "avg_weekly_earnings_by_industry_ontario.csv",
+   "business_revenue_benchmarks.csv",
+   "insolvencies_by_postal_area_2023_2025.csv"
+  ]
+ }
+}

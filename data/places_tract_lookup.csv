@@ -1,0 +1,1129 @@
+osm_id,name,sim_category,in_tourist_core,lat,lon,census_tract,tract_match,km_to_tract_centroid
+way/293599033,,accommodation,0,43.060082,-79.053713,0201.00,inside_polygon,0.469
+way/817034291,,accommodation,0,43.096823,-79.081755,0205.00,inside_polygon,0.876
+way/817034292,,accommodation,1,43.093316,-79.078762,0205.00,inside_polygon,0.42
+way/817034343,,accommodation,1,43.093711,-79.078052,0205.00,inside_polygon,0.444
+way/178404714,7 Days Inn,accommodation,0,43.089136,-79.094359,0204.00,inside_polygon,0.763
+node/10814431698,7 Nights Stay,accommodation,1,43.095223,-79.082251,0205.00,inside_polygon,0.746
+node/12912876901,A Night to Remember B & B,accommodation,0,43.084926,-79.09025,0204.00,inside_polygon,0.835
+way/815600855,A-1 Motel,accommodation,0,43.089371,-79.12933,0209.04,inside_polygon,0.546
+node/2595328891,A-1 Star Inn,accommodation,0,43.08912,-79.142745,0210.01,inside_polygon,4.116
+node/7798893537,Accommodations Niagara,accommodation,0,43.100701,-79.063896,0206.00,inside_polygon,0.757
+way/437708256,Admiral Inn,accommodation,1,43.089295,-79.081993,0205.00,inside_polygon,0.426
+way/436982096,Advance Inn,accommodation,0,43.089775,-79.094114,0207.00,inside_polygon,0.715
+way/815600854,Advantage Inn,accommodation,0,43.089621,-79.127033,0209.04,inside_polygon,0.36
+node/4037714799,Alpine Motel,accommodation,0,43.088537,-79.126207,0209.03,inside_polygon,1.107
+node/5528025379,Americana Conference Resort Spa & Waterpark,accommodation,0,43.088416,-79.139591,0210.02,inside_polygon,1.654
+node/5540630221,Americana Resort and Conference Centre,accommodation,0,43.088118,-79.143346,0210.02,inside_polygon,1.426
+way/428752380,Americas Best Value Inn,accommodation,1,43.093898,-79.075749,0205.00,inside_polygon,0.461
+way/401330377,Avenue Inn,accommodation,0,43.088457,-79.127196,0209.03,inside_polygon,1.094
+node/12847255430,Bedham Hall,accommodation,0,43.104087,-79.062248,0206.00,inside_polygon,0.956
+way/178404716,Best Western Plus,accommodation,0,43.088748,-79.101042,0204.00,inside_polygon,0.541
+way/178560401,Blue Moon Motel,accommodation,0,43.089301,-79.139777,0210.01,inside_polygon,4.034
+way/817078040,Butterfly Manor,accommodation,0,43.102883,-79.062925,0206.00,inside_polygon,0.863
+way/401526687,Cadilac Motel,accommodation,1,43.089222,-79.082542,0205.00,inside_polygon,0.471
+way/178553601,Campark Resorts Camping,accommodation,0,43.087143,-79.152943,0210.01,inside_polygon,4.622
+way/401229534,Canada's Best Value Inn,accommodation,0,43.0887,-79.112713,0204.00,inside_polygon,1.131
+node/5924794176,Canadian Niagara Hotels,accommodation,1,43.09253,-79.071223,0205.00,inside_polygon,0.544
+way/401330378,Candlelight Inn,accommodation,0,43.088248,-79.124024,0209.03,inside_polygon,1.106
+node/13424570601,Cannery Lofts Niagara,accommodation,1,43.093196,-79.079793,0205.00,inside_polygon,0.447
+node/2595328894,Caravan Inn,accommodation,0,43.089293,-79.140702,0210.01,inside_polygon,4.053
+way/401330379,Carriage House Motor Lodge,accommodation,0,43.088415,-79.131179,0209.03,inside_polygon,1.131
+way/817078042,Chestnut Inn,accommodation,0,43.101919,-79.063514,0206.00,inside_polygon,0.795
+node/5528603429,Clifton Victoria Inn at the Falls,accommodation,1,43.093854,-79.07376,0205.00,inside_polygon,0.512
+way/387912507,Comfort Hotel,accommodation,1,43.092239,-79.084583,0205.00,inside_polygon,0.687
+way/179379812,Comfort Inn,accommodation,0,43.088524,-79.122049,0209.04,inside_polygon,0.248
+way/232182158,Comfort Inn Fallsview,accommodation,1,43.079793,-79.083411,0205.00,inside_polygon,1.237
+way/345578196,Continental Inn,accommodation,0,43.088854,-79.090097,0204.00,inside_polygon,1.004
+way/428753279,"Country Inn & Suites by Radisson, Niagara Falls, ON",accommodation,1,43.094592,-79.073095,0205.00,inside_polygon,0.61
+node/5528711141,Courtyard by Marriott Niagara Falls,accommodation,1,43.089294,-79.080152,0205.00,inside_polygon,0.278
+node/2326274319,Cozy Inn B&B,accommodation,0,43.086319,-79.088359,0204.00,inside_polygon,1.017
+way/345578505,Days Inn,accommodation,1,43.089943,-79.080512,0205.00,inside_polygon,0.302
+way/401229527,Days Inn,accommodation,0,43.088617,-79.117477,0209.04,inside_polygon,0.493
+way/178404795,Days Inn Fallsview,accommodation,1,43.08026,-79.08507,0204.00,inside_polygon,1.312
+node/6536292015,Days Inn by Wyndham Niagara Falls Centre St. By the Falls,accommodation,1,43.092905,-79.078177,0205.00,inside_polygon,0.361
+way/345576862,DoubleTree Fallsview by Hilton,accommodation,1,43.087259,-79.083959,0205.00,inside_polygon,0.647
+way/817034048,Econo Lodge By The Falls,accommodation,1,43.091744,-79.077468,0205.00,inside_polygon,0.221
+node/12847255432,Ellis House,accommodation,0,43.10348,-79.063467,0206.00,inside_polygon,0.84
+node/5540700552,Embassy Suites by Hilton,accommodation,1,43.079577,-79.082084,0205.00,inside_polygon,1.217
+way/817034325,"Fairfield Niagara Falls, Canada",accommodation,1,43.08986,-79.081005,0205.00,inside_polygon,0.341
+node/12847552313,Fairway Inn,accommodation,1,43.088644,-79.08291,0205.00,inside_polygon,0.513
+node/4037714800,Falcon Inn,accommodation,0,43.08953,-79.128529,0209.04,inside_polygon,0.479
+way/178401288,Falls Manor Motel,accommodation,0,43.088604,-79.114453,0204.00,inside_polygon,1.252
+node/7620190551,Falls Manor Resort,accommodation,0,43.08896,-79.114375,0204.00,inside_polygon,1.264
+way/387913420,Glengate Hotel,accommodation,1,43.094371,-79.08475,0205.00,inside_polygon,0.82
+node/5540874621,Great Wolf Lodge,accommodation,0,43.116363,-79.07078,0215.00,inside_polygon,0.598
+way/816940720,Greater Niagara Inn,accommodation,1,43.070822,-79.084443,0203.02,inside_polygon,1.357
+node/279291713,HI Niagara Falls,accommodation,0,43.108085,-79.060965,0215.00,inside_polygon,1.286
+way/817078082,Henri’s Motel,accommodation,0,43.1063,-79.061231,0215.00,inside_polygon,1.353
+way/808101755,Hilton Niagara Falls,accommodation,1,43.082765,-79.083239,0205.00,inside_polygon,0.943
+way/817077885,Historic Lundy’s House,accommodation,0,43.102146,-79.063508,0206.00,inside_polygon,0.799
+way/158200935,Holiday Inn,accommodation,1,43.084017,-79.082238,0205.00,inside_polygon,0.782
+node/4037900869,Howard Johnson,accommodation,1,43.090454,-79.079399,0205.00,inside_polygon,0.223
+way/815600807,Howard Johnson Express Inn,accommodation,0,43.088381,-79.133441,0209.03,inside_polygon,1.19
+way/345577793,Kings Inn,accommodation,0,43.089862,-79.085828,0207.00,inside_polygon,1.159
+node/4036022299,Kingsway Motel,accommodation,0,43.085989,-79.149287,0210.02,inside_polygon,0.972
+node/7450995213,Knights Inn,accommodation,0,43.083878,-79.086478,0204.00,inside_polygon,1.134
+node/7798888725,Lion’s Head Bed & Breakfast,accommodation,0,43.098451,-79.065974,0206.00,inside_polygon,0.649
+node/2595328897,Lundy's Motel,accommodation,0,43.088118,-79.143346,0210.02,inside_polygon,1.426
+way/401330397,Maple Haven,accommodation,0,43.088465,-79.126495,0209.03,inside_polygon,1.097
+way/158348214,Marriott Niagara Falls Fallsview Hotel,accommodation,1,43.078689,-79.081962,0203.01,inside_polygon,0.841
+way/808108217,Marriott on the Falls Hotel,accommodation,1,43.07741,-79.08282,0203.01,inside_polygon,0.714
+way/387912266,Niagara Falls Courtside Inn,accommodation,1,43.092869,-79.084688,0205.00,inside_polygon,0.725
+way/401520592,Niagara Falls KOA Holiday Campground,accommodation,0,43.091049,-79.141794,0210.01,inside_polygon,3.889
+way/817080355,Niagara Falls Motor Lodge,accommodation,0,43.061262,-79.055484,0201.00,inside_polygon,0.306
+way/374827378,Niagara Gorge B&B,accommodation,0,43.099012,-79.065749,0206.00,inside_polygon,0.643
+node/7798907783,Niagara Grandview Boutique Hotel,accommodation,0,43.096826,-79.066811,0206.00,inside_polygon,0.692
+node/12847259243,Niagara Inn Bed & Breakfast,accommodation,0,43.102453,-79.063804,0206.00,inside_polygon,0.782
+way/178419345,Niagara Inn Motel,accommodation,0,43.089578,-79.11652,0209.04,inside_polygon,0.528
+way/401330398,Niagara Lodge & Suites,accommodation,0,43.088535,-79.125524,0209.03,inside_polygon,1.113
+node/7798907778,Niagara Luxury Suites,accommodation,0,43.096309,-79.067229,0205.00,inside_polygon,1.06
+node/10814629185,Niagara Parkway Court Motel,accommodation,0,43.058987,-79.050343,0201.00,inside_polygon,0.768
+node/3580471393,Niagara's Best Inn,accommodation,1,43.089362,-79.081353,0205.00,inside_polygon,0.373
+way/66064282,Oakes Hotel Overlooking Niagara Falls,accommodation,1,43.080599,-79.082082,0205.00,inside_polygon,1.111
+way/817034344,Oasis Hotel,accommodation,1,43.093988,-79.078373,0205.00,inside_polygon,0.481
+relation/11142350,Old Stone Inn,accommodation,1,43.086949,-79.082274,0205.00,inside_polygon,0.547
+way/401229540,Overnight Inn,accommodation,0,43.088704,-79.122742,0209.04,inside_polygon,0.22
+way/817034385,Oyo Hotel,accommodation,1,43.09334,-79.076773,0205.00,inside_polygon,0.391
+node/12847255431,Park Place Bed & Breakfast,accommodation,0,43.103897,-79.062337,0206.00,inside_polygon,0.942
+way/816944685,Quality Hotel Fallsview Cascade,accommodation,1,43.084039,-79.081538,0205.00,inside_polygon,0.749
+way/955324484,Quality Inn & Suites,accommodation,1,43.089081,-79.080641,0205.00,inside_polygon,0.323
+way/826573132,"Radisson Hotel & Suites Fallsview, ON",accommodation,1,43.078409,-79.083043,0203.01,inside_polygon,0.75
+way/345577279,Rainbow Motor Inn,accommodation,1,43.083724,-79.085561,0204.00,inside_polygon,1.209
+way/345577760,Ramada,accommodation,1,43.087239,-79.085159,0204.00,inside_polygon,1.295
+way/401526744,Ramada Niagara Falls Near the Falls,accommodation,0,43.089177,-79.088999,0204.00,inside_polygon,1.099
+node/4036692163,Ramada Plaza Hotel,accommodation,0,43.089687,-79.120291,0209.04,inside_polygon,0.235
+node/7798888726,Redwood B&B,accommodation,0,43.098651,-79.065948,0206.00,inside_polygon,0.642
+node/4085303066,Regency Athletic Resort,accommodation,0,43.134676,-79.13548,0210.01,inside_polygon,1.266
+node/5218274759,River Rapids Inn,accommodation,0,43.114624,-79.063799,0215.00,inside_polygon,0.998
+node/7798907779,River Road Apartments,accommodation,0,43.096424,-79.067162,0205.00,inside_polygon,1.073
+way/817077701,River Road Manor,accommodation,0,43.101498,-79.06348,0206.00,inside_polygon,0.792
+way/816933441,Rodeway Inn Fallsview,accommodation,1,43.07869,-79.085485,0203.01,inside_polygon,0.612
+way/178557776,Scotts Tent & Trailer Park,accommodation,0,43.089688,-79.1467,0210.01,inside_polygon,4.16
+node/7798907780,Serene Niagara Inn Bed & Breakfast,accommodation,0,43.096548,-79.067067,0205.00,inside_polygon,1.088
+way/387916793,Sharp Motel,accommodation,1,43.095093,-79.083662,0205.00,inside_polygon,0.809
+node/5788790953,Sheraton Fallsview Hotel,accommodation,1,43.091004,-79.07254,0205.00,inside_polygon,0.37
+way/178332630,Skyline Hotel,accommodation,1,43.093584,-79.072585,0205.00,inside_polygon,0.541
+node/2595328900,Space Motel,accommodation,0,43.088172,-79.142327,0210.02,inside_polygon,1.483
+way/178666225,Sterling Inn,accommodation,1,43.091549,-79.079846,0205.00,inside_polygon,0.313
+node/7798888727,Stone Boutique Suites,accommodation,0,43.098737,-79.065889,0206.00,inside_polygon,0.643
+way/401401326,Sunrise Inn,accommodation,0,43.089861,-79.098714,0207.00,inside_polygon,0.648
+node/2406117704,Super 8,accommodation,0,43.115287,-79.066654,0215.00,inside_polygon,0.803
+way/657302720,Surfside Inn,accommodation,0,43.061323,-79.052241,0201.00,inside_polygon,0.569
+node/12079155878,Susan’s Villa,accommodation,0,43.096003,-79.069113,0205.00,inside_polygon,0.929
+node/4274825900,The America's Hospitality Inn,accommodation,0,43.088816,-79.113773,0204.00,inside_polygon,1.213
+node/7555092399,"The Brock Niagara Falls-Fallsview, Tapestry Collection by Hilton",accommodation,1,43.091886,-79.071437,0205.00,inside_polygon,0.492
+node/7798893538,The Craig House,accommodation,0,43.100823,-79.063739,0206.00,inside_polygon,0.769
+way/345578010,The Diplomat Inn,accommodation,1,43.088134,-79.085322,0204.00,inside_polygon,1.315
+node/7630761739,The Falls Family Lodge,accommodation,1,43.093246,-79.07571,0205.00,inside_polygon,0.391
+node/4039682391,The Falls Hotel,accommodation,1,43.093141,-79.074799,0205.00,inside_polygon,0.403
+way/428620595,The Peninsula Inn,accommodation,0,43.068852,-79.123196,0202.00,inside_polygon,1.528
+way/547263603,The Rex Motel,accommodation,0,43.071078,-79.098062,0203.01,inside_polygon,0.718
+way/421320093,The Tower Hotel,accommodation,1,43.079042,-79.082099,0203.01,inside_polygon,0.852
+way/401347834,The Universal Inn and Suites,accommodation,1,43.088237,-79.08429,0205.00,inside_polygon,0.633
+node/5414779322,The traveller's room,accommodation,0,43.094938,-79.069663,0205.00,inside_polygon,0.812
+way/178666186,Thriftlodge,accommodation,1,43.092032,-79.074345,0205.00,inside_polygon,0.317
+way/179311691,Towneplace Suites by Marriott,accommodation,0,43.110398,-79.060906,0215.00,inside_polygon,1.22
+way/815601225,Travelodge,accommodation,0,43.089599,-79.126285,0209.04,inside_polygon,0.304
+way/178665939,Travelodge Fallsview Hotel,accommodation,1,43.09354,-79.068004,0205.00,inside_polygon,0.825
+node/6522342321,Travelodge at the Falls,accommodation,1,43.091523,-79.07356,0205.00,inside_polygon,0.324
+node/4036022301,Tropicana Inn Motel,accommodation,0,43.088224,-79.143831,0210.02,inside_polygon,1.411
+node/2422933166,Two Rivers B&B,accommodation,0,43.059862,-79.055793,0201.00,inside_polygon,0.323
+way/475721293,UNF Managed Residence,accommodation,0,43.107482,-79.060291,0215.00,inside_polygon,1.362
+way/817034069,Victoria Motor Inn,accommodation,1,43.090748,-79.078899,0205.00,inside_polygon,0.199
+node/5543614222,Victorian Charm Bed and Breakfas,accommodation,0,43.085995,-79.094224,0204.00,inside_polygon,0.556
+node/12847740269,Villa Garderia B&B,accommodation,0,43.105377,-79.062276,0215.00,inside_polygon,1.337
+way/815600806,Villager Lodge,accommodation,0,43.088279,-79.132575,0209.03,inside_polygon,1.153
+node/2951387428,Vittoria Hotel & Suites,accommodation,1,43.09106,-79.078598,0205.00,inside_polygon,0.201
+node/4037715980,Westlodge Inn & Suites,accommodation,0,43.089395,-79.125453,0209.04,inside_polygon,0.255
+way/178663764,Wyndham,accommodation,1,43.081834,-79.083324,0205.00,inside_polygon,1.034
+way/178662980,Wyndham Garden,accommodation,1,43.085567,-79.084178,0205.00,inside_polygon,0.763
+way/1058416251,Wyndham Garden Tower B,accommodation,1,43.084424,-79.083874,0205.00,inside_polygon,0.831
+way/10040514,Yogi Bear’s Jellystone Park Camp and Resort,accommodation,0,43.049193,-79.120072,0202.00,inside_polygon,1.257
+node/6657822511,Alia N TanJay,apparel,0,43.087499,-79.119676,0209.04,inside_polygon,0.438
+node/10628285034,Allura Elegant Fashion,apparel,0,43.089383,-79.0915,0204.00,inside_polygon,0.948
+node/6657882608,Ardene,apparel,0,43.103305,-79.116303,0208.00,inside_polygon,0.909
+node/6657822512,Athletic Locker,apparel,0,43.08867,-79.119748,0209.04,inside_polygon,0.337
+node/6657822513,Blackwell Supply Co.,apparel,0,43.087407,-79.119669,0209.04,inside_polygon,0.446
+way/428484863,Brand Name Shoe Warehouse,apparel,0,43.0891,-79.105072,0204.00,inside_polygon,0.69
+node/6657822514,Carter's OshKosh,apparel,0,43.086505,-79.120825,0209.04,inside_polygon,0.493
+node/6658702700,Caswell's,apparel,0,43.117243,-79.121867,0209.06,inside_polygon,0.656
+node/6657822516,Coach,apparel,0,43.087385,-79.121113,0209.04,inside_polygon,0.393
+node/6657822518,Dynamite,apparel,0,43.087096,-79.119682,0209.04,inside_polygon,0.474
+node/12847357778,Europa,apparel,1,43.085299,-79.079836,0205.00,inside_polygon,0.56
+node/6659093806,Flirt! Bra & Swimwear,apparel,0,43.071612,-79.109511,0203.01,inside_polygon,1.555
+node/6657822519,Garage,apparel,0,43.087106,-79.11954,0209.04,inside_polygon,0.48
+node/6657970165,Gold'n Memories Jewellery,apparel,0,43.105256,-79.110707,0208.00,inside_polygon,0.411
+node/6657822520,Guess,apparel,0,43.087604,-79.119678,0209.04,inside_polygon,0.428
+node/13938610501,Havana,apparel,1,43.081124,-79.080369,0205.00,inside_polygon,1.009
+node/10284497050,Jeweller Designs By Tachjian,apparel,0,43.115698,-79.098312,0214.00,inside_polygon,1.195
+node/6657822521,La Vie en Rose,apparel,0,43.086553,-79.120951,0209.04,inside_polygon,0.484
+node/6657822522,Laura,apparel,0,43.087766,-79.119687,0209.04,inside_polygon,0.413
+node/6657822523,Le Château,apparel,0,43.088217,-79.121152,0209.04,inside_polygon,0.307
+node/10754713843,Lunar Ellipse upcycled jewellery,apparel,0,43.088847,-79.09236,0204.00,inside_polygon,0.856
+node/6657882612,Mark's,apparel,0,43.102916,-79.117936,0208.00,inside_polygon,1.046
+node/6657882606,Moores,apparel,0,43.103413,-79.11422,0208.00,inside_polygon,0.762
+node/10628285032,Muller's Work Wear,apparel,0,43.089618,-79.091393,0207.00,inside_polygon,0.844
+node/6658835089,National Jewellery,apparel,0,43.114744,-79.109227,0208.00,inside_polygon,0.834
+node/6657822524,Nygard Slims,apparel,0,43.08757,-79.121108,0209.04,inside_polygon,0.374
+node/6659111300,Penningtons,apparel,0,43.066323,-79.118453,0202.00,inside_polygon,1.528
+node/6657822526,Phantom,apparel,0,43.086478,-79.120464,0209.04,inside_polygon,0.506
+node/6659111301,Reitmans,apparel,0,43.066175,-79.118458,0202.00,inside_polygon,1.516
+node/6657822528,Samsonite,apparel,0,43.087637,-79.121108,0209.04,inside_polygon,0.367
+node/6657822531,Suzy Shier,apparel,0,43.086599,-79.119745,0209.04,inside_polygon,0.519
+node/6658702701,Tango,apparel,0,43.117173,-79.12191,0209.06,inside_polygon,0.657
+node/6659111294,The Children's Place,apparel,0,43.066497,-79.119548,0202.00,inside_polygon,1.48
+node/6658933304,The Jeweller,apparel,0,43.116126,-79.096779,0214.00,inside_polygon,1.112
+node/6657822534,Tootsies,apparel,0,43.08724,-79.119662,0209.04,inside_polygon,0.462
+node/6657822535,Urban Kids,apparel,0,43.087331,-79.119675,0209.04,inside_polygon,0.453
+node/6657822536,Urban Planet,apparel,0,43.087794,-79.121115,0209.04,inside_polygon,0.35
+node/3425981590,CIBC,atm,0,43.071114,-79.097371,0203.01,inside_polygon,0.671
+node/9203124871,Instacoin ATM,atm,1,43.093513,-79.074007,0205.00,inside_polygon,0.469
+node/12215828401,RBC Royal Bank,atm,0,43.069624,-79.125698,0202.00,inside_polygon,1.528
+node/3425978554,Scotiabank,atm,0,43.07042,-79.096323,0203.02,inside_polygon,0.479
+node/9103891658,atmontario.ca,atm,1,43.091031,-79.078059,0205.00,inside_polygon,0.169
+node/9699749924,,attraction,0,43.078185,-79.078899,0203.01,inside_polygon,1.042
+node/5182843222,,attraction,0,43.071104,-79.072059,0201.00,inside_polygon,1.508
+node/865849412,,attraction,0,43.122859,-79.068471,0210.01,inside_polygon,4.855
+node/3078326828,,attraction,0,43.11805,-79.068743,0215.00,inside_polygon,0.848
+node/3678284333,,attraction,0,43.143623,-79.044649,0210.01,inside_polygon,7.106
+node/3678947869,,attraction,1,43.082232,-79.079018,0205.00,inside_polygon,0.863
+node/3681565492,,attraction,0,43.085391,-79.076012,0205.00,inside_polygon,0.497
+node/9699749925,,attraction,0,43.079456,-79.07796,0205.00,inside_polygon,1.156
+node/10065625489,,attraction,0,43.088733,-79.073527,0205.00,inside_polygon,0.292
+way/199513576,,attraction,0,43.101138,-79.073525,0206.00,inside_polygon,0.034
+node/5924799580,Adventure City,attraction,1,43.092269,-79.071575,0205.00,inside_polygon,0.504
+node/5550593024,Angelo Rossi Galleria and Studio,attraction,1,43.08489,-79.079752,0205.00,inside_polygon,0.598
+node/14220661502,Balancing Rock,attraction,0,43.127731,-79.057581,0210.01,inside_polygon,5.745
+way/816924553,Battle Ground Hotel Museum,attraction,0,43.089754,-79.096617,0207.00,inside_polygon,0.66
+way/167518960,Bird Kingdom,attraction,1,43.092644,-79.068749,0205.00,inside_polygon,0.725
+node/14220680601,Birthday Boulders,attraction,0,43.128344,-79.057062,0210.01,inside_polygon,5.792
+way/158294521,Butterfly Conservatory,attraction,0,43.137106,-79.055544,0210.01,inside_polygon,6.061
+node/8144178375,Carnival Chaos Hyper Ride,attraction,1,43.091003,-79.076385,0205.00,inside_polygon,0.136
+node/5525842446,Clifton Hill,attraction,1,43.091449,-79.074897,0205.00,inside_polygon,0.238
+way/815915576,Dragon Mountain,attraction,0,43.061452,-79.078713,0201.00,inside_polygon,1.581
+node/5514538123,Floral Showhouse,attraction,0,43.072485,-79.076839,0203.01,inside_polygon,1.171
+node/8148958907,Frank'N Coaster,attraction,1,43.09192,-79.075544,0205.00,inside_polygon,0.255
+node/10648007238,Gizmos Wax Hands,attraction,1,43.091268,-79.075361,0205.00,inside_polygon,0.199
+node/5551089121,Great Wolf Lodge,attraction,0,43.116429,-79.070599,0215.00,inside_polygon,0.614
+node/291955805,Hornblower Niagara Cruises,attraction,0,43.08787,-79.072967,0205.00,inside_polygon,0.379
+node/8148958906,House of Frankenstein,attraction,1,43.091863,-79.075599,0205.00,inside_polygon,0.247
+node/14220661601,Immaculate Boulder,attraction,0,43.12795,-79.058469,0210.01,inside_polygon,5.675
+node/1961371813,Incline Railway,attraction,0,43.079518,-79.080791,0205.00,inside_polygon,1.191
+node/5514483922,Journey Behind the Falls,attraction,0,43.079516,-79.079082,0205.00,inside_polygon,1.161
+node/14220665502,Knee Bar Boulder,attraction,0,43.127429,-79.058398,0210.01,inside_polygon,5.677
+node/14220661701,Locomotive Boulders,attraction,0,43.127829,-79.057861,0210.01,inside_polygon,5.723
+node/4839284674,Louis Tussaud's Waxworks,attraction,1,43.092406,-79.075809,0205.00,inside_polygon,0.299
+node/1613500251,Movieland Wax Museum of Stars,attraction,1,43.090947,-79.07398,0205.00,inside_polygon,0.261
+node/7799183057,Mystery Maze,attraction,1,43.091926,-79.07491,0205.00,inside_polygon,0.28
+way/199513553,Niagara Falls Armoury;Niagara Falls Museum,attraction,0,43.101136,-79.073751,0206.00,inside_polygon,0.049
+node/4274833320,Niagara Falls History Museum,attraction,0,43.089344,-79.091363,0204.00,inside_polygon,0.954
+node/5743852396,Niagara Falls Jade Museum,attraction,0,43.104399,-79.071174,0206.00,inside_polygon,0.419
+node/5564856422,Niagara Parks Botanical Gardens,attraction,0,43.13635,-79.054895,0210.01,inside_polygon,6.094
+way/178404800,Niagara Parks Power Station,attraction,0,43.07451,-79.07882,0203.01,inside_polygon,0.981
+node/5661429020,Niagara Speedway,attraction,1,43.090907,-79.076767,0205.00,inside_polygon,0.121
+node/1885284046,Niagara's 200 FT Drop,attraction,1,43.091168,-79.073576,0205.00,inside_polygon,0.302
+node/5514483923,Niagara’s Fury,attraction,0,43.079336,-79.079199,0205.00,inside_polygon,1.182
+node/3580486879,Nightmares,attraction,1,43.093354,-79.07426,0205.00,inside_polygon,0.444
+node/5564862622,Oakes Garden Theatre,attraction,0,43.090407,-79.072105,0205.00,inside_polygon,0.387
+node/4839284673,Ripley's Odditorium,attraction,1,43.091607,-79.075744,0205.00,inside_polygon,0.216
+node/8075956990,Rock Legends Wax Museum,attraction,1,43.092154,-79.076706,0205.00,inside_polygon,0.26
+way/158460345,Sir Adam Beck Power Stations,attraction,0,43.147354,-79.04553,0210.01,inside_polygon,7.173
+way/241004747,Skylon Tower,attraction,1,43.08514,-79.079693,0205.00,inside_polygon,0.571
+way/232194135,Skywheel,attraction,1,43.090798,-79.075542,0205.00,inside_polygon,0.149
+node/14220678501,Super Flywall,attraction,0,43.128501,-79.057805,0210.01,inside_polygon,5.733
+node/12148204798,Sydney's Dock,attraction,0,43.055665,-79.136229,0202.00,inside_polygon,0.379
+node/2395340226,Table Rock Welcome Centre,attraction,0,43.078963,-79.078161,0203.01,inside_polygon,1.13
+node/5550591921,The Butterfly Gallery,attraction,0,43.106509,-79.066356,0215.00,inside_polygon,0.998
+node/7799210708,The Crystal Cave,attraction,1,43.091886,-79.075468,0205.00,inside_polygon,0.254
+way/440870335,The Evel Knievel Daredevil Museum,attraction,0,43.107461,-79.072984,0215.00,inside_polygon,0.586
+node/12847303040,The Haunted House,attraction,1,43.091246,-79.074204,0205.00,inside_polygon,0.264
+node/1885295340,The Niagara SkyWheel,attraction,1,43.090786,-79.075518,0205.00,inside_polygon,0.15
+node/9947621193,The Tunnel at Niagara Parks Power Station,attraction,0,43.075139,-79.079336,0203.01,inside_polygon,0.939
+node/14220661501,The V Boulder,attraction,0,43.128176,-79.059091,0210.01,inside_polygon,5.626
+node/5525509821,Thompson Point,attraction,0,43.124076,-79.068521,0210.01,inside_polygon,4.847
+node/12152315389,Turtle Pond,attraction,0,43.054958,-79.134282,0202.00,inside_polygon,0.276
+way/374827331,Upside Down House,attraction,1,43.092287,-79.074838,0205.00,inside_polygon,0.317
+way/984744835,Whirlpool Adventure Course,attraction,0,43.123612,-79.068372,0210.01,inside_polygon,4.86
+node/1016751014,Whirlpool Aero Car,attraction,0,43.118021,-79.068819,0215.00,inside_polygon,0.842
+node/5514520621,White Water Walk,attraction,0,43.11102,-79.060447,0215.00,inside_polygon,1.246
+node/5941673885,Wizard's Indoor Golf,attraction,1,43.091468,-79.075491,0205.00,inside_polygon,0.212
+node/10065625313,Zipline To The Falls,attraction,0,43.088793,-79.073546,0205.00,inside_polygon,0.288
+node/1705553459,lookout of falls,attraction,1,43.077626,-79.081972,0203.01,inside_polygon,0.787
+node/12308478240,,auto_service,0,43.056254,-79.051687,0201.00,inside_polygon,0.831
+way/428375425,Active Green + Ross,auto_service,0,43.089509,-79.11277,0207.00,inside_polygon,1.4
+way/708625406,Auto Line Toyota,auto_service,0,43.114808,-79.09574,0208.00,inside_polygon,1.205
+way/288680878,Autovalue Hyundai,auto_service,0,43.113413,-79.123716,0209.05,inside_polygon,0.962
+node/6658933336,CarQuest Auto Parts,auto_service,0,43.114994,-79.096639,0208.00,inside_polygon,1.167
+node/12718492412,Costco Tire Centre,auto_service,0,43.065812,-79.12756,0202.00,inside_polygon,1.078
+way/428376121,DeMol's Tire,auto_service,0,43.089938,-79.089267,0207.00,inside_polygon,0.934
+way/428375527,Esso,auto_service,0,43.088933,-79.097383,0204.00,inside_polygon,0.612
+way/708627517,Falls Chevrolet,auto_service,0,43.114837,-79.093361,0208.00,inside_polygon,1.355
+way/488685672,Hamburg Honda,auto_service,0,43.071313,-79.110316,0203.01,inside_polygon,1.626
+way/428375836,Harrigan's Auto Clinic,auto_service,0,43.089694,-79.103067,0207.00,inside_polygon,0.791
+node/6658933345,Jack Dow Auto Supplies,auto_service,0,43.115108,-79.097903,0208.00,inside_polygon,1.107
+way/708627518,Jiffy Lube,auto_service,0,43.115715,-79.094773,0214.00,inside_polygon,1.129
+node/4274828223,Lube King,auto_service,0,43.088916,-79.105796,0204.00,inside_polygon,0.707
+way/428375248,Midas,auto_service,0,43.088927,-79.110981,0204.00,inside_polygon,1.022
+way/428375357,PartSource,auto_service,0,43.088986,-79.108778,0204.00,inside_polygon,0.882
+way/428376345,Quick Car Wash,auto_service,0,43.089832,-79.089738,0207.00,inside_polygon,0.914
+way/577332054,Spotless Auto Services,auto_service,0,43.076749,-79.110514,0203.01,inside_polygon,1.608
+node/1709099866,Ultra,auto_service,0,43.115382,-79.111269,0212.00,inside_polygon,0.596
+node/9193194094,BMO,bank,0,43.065503,-79.123536,0202.00,inside_polygon,1.193
+node/6658649602,BMO,bank,0,43.103916,-79.109142,0208.00,inside_polygon,0.444
+node/9193194129,CIBC,bank,0,43.066274,-79.123374,0202.00,inside_polygon,1.272
+node/6659074062,CIBC,bank,0,43.121191,-79.100036,0212.00,inside_polygon,0.528
+way/428486278,CIBC,bank,0,43.089687,-79.100159,0207.00,inside_polygon,0.691
+node/6659134125,FirstOntario Credit Union,bank,0,43.070963,-79.126653,0209.03,inside_polygon,0.854
+node/6658652284,FirstOntario Credit Union,bank,0,43.114975,-79.125482,0209.06,inside_polygon,0.641
+node/11137391232,Global Currency Exchange,bank,1,43.092021,-79.076458,0205.00,inside_polygon,0.246
+node/6659139682,Meridian Credit Union,bank,0,43.070614,-79.135958,0210.02,inside_polygon,1.689
+node/12158774102,Money exchange,bank,1,43.081912,-79.082456,0205.00,inside_polygon,0.992
+node/6659093804,Pen Financial Credit Union,bank,0,43.071476,-79.109514,0203.01,inside_polygon,1.559
+node/7631057784,RBC,bank,0,43.059165,-79.051485,0201.00,inside_polygon,0.674
+way/1057389833,RBC Royal Bank,bank,0,43.069699,-79.12571,0202.00,inside_polygon,1.536
+way/1057390312,Scotiabank,bank,0,43.070484,-79.129114,0209.03,inside_polygon,0.915
+node/6658835148,Scotiabank,bank,0,43.115647,-79.099486,0212.00,inside_polygon,0.627
+node/4274824225,TD,bank,0,43.088971,-79.110105,0204.00,inside_polygon,0.966
+node/6659055411,TD,bank,0,43.119839,-79.100196,0212.00,inside_polygon,0.463
+node/7799179039,The Exchange House,bank,1,43.092749,-79.069501,0205.00,inside_polygon,0.676
+way/546619883,,bar_pub,0,43.071142,-79.096632,0203.01,inside_polygon,0.623
+node/11062428826,1904 Bar,bar_pub,1,43.086753,-79.08184,0205.00,inside_polygon,0.533
+node/4039481665,Big Texas Bar,bar_pub,0,43.089723,-79.090418,0207.00,inside_polygon,0.885
+node/13264100001,Blackburn Beer Company,bar_pub,0,43.05505,-79.130414,0202.00,inside_polygon,0.205
+node/14134178801,Doc Magilligan's Restaurant & Irish Pub,bar_pub,0,43.08865,-79.101041,0204.00,inside_polygon,0.53
+node/4036690485,Don Cherry's Sports Grill,bar_pub,0,43.089493,-79.119851,0209.04,inside_polygon,0.277
+node/6659074083,Holligans' Sports Bar,bar_pub,0,43.121976,-79.101046,0212.00,inside_polygon,0.511
+node/6659093808,Ivan's Bar,bar_pub,0,43.071254,-79.109491,0203.01,inside_polygon,1.563
+node/10628285033,Maple Leaf Tavern,bar_pub,0,43.089621,-79.091539,0207.00,inside_polygon,0.836
+way/813996228,Queen's Guard pub,bar_pub,0,43.06084,-79.056201,0201.00,inside_polygon,0.253
+node/10754713844,R Bar,bar_pub,0,43.088788,-79.09215,0204.00,inside_polygon,0.865
+node/6658649587,Red Rocks Bar & Grill,bar_pub,0,43.105133,-79.11047,0208.00,inside_polygon,0.404
+node/1613500257,Rumours Nightclub,bar_pub,1,43.091592,-79.075778,0205.00,inside_polygon,0.214
+node/2595255799,Sundowner,bar_pub,0,43.087788,-79.146597,0210.02,inside_polygon,1.249
+node/6658835139,Sunset Bar & Grill,bar_pub,0,43.114987,-79.099705,0208.00,inside_polygon,1.008
+node/5002165521,Tesla House Restaurant & Lounge,bar_pub,0,43.106768,-79.064554,0215.00,inside_polygon,1.097
+node/13300815401,The Usual Suspects Cocktails and Grill,bar_pub,0,43.075988,-79.096824,0203.01,inside_polygon,0.498
+node/11980556210,Turnpike 420 Pub & Eatery,bar_pub,0,43.098051,-79.072583,0205.00,inside_polygon,0.977
+node/11137391231,Yank's Old Niagara Bar & Grill,bar_pub,1,43.092089,-79.0766,0205.00,inside_polygon,0.253
+node/2778535690,,cafe,0,43.083337,-79.078083,0205.00,inside_polygon,0.728
+node/11137391242,Baskin-Robbins,cafe,1,43.090314,-79.079246,0205.00,inside_polygon,0.206
+node/7617193593,CCSwirls,cafe,0,43.08933,-79.127809,0209.04,inside_polygon,0.43
+node/12067408943,Chatime,cafe,1,43.091904,-79.075378,0205.00,inside_polygon,0.259
+way/817034401,Cippy’s,cafe,1,43.090769,-79.084763,0205.00,inside_polygon,0.655
+node/10648007241,CoCo Fresh Tea & Juice,cafe,1,43.091648,-79.075131,0205.00,inside_polygon,0.244
+node/7631057783,Creekside Cafe,cafe,0,43.059225,-79.051573,0201.00,inside_polygon,0.665
+node/12847310421,CrunchiCreme Waffle Cones,cafe,1,43.091082,-79.074638,0205.00,inside_polygon,0.225
+node/12847240557,Downtown Goodies,cafe,0,43.106771,-79.063643,0215.00,inside_polygon,1.158
+node/12847300428,Funnel Cakes Ice Cream,cafe,1,43.091343,-79.075944,0205.00,inside_polygon,0.183
+node/12092673348,Gong Cha,cafe,1,43.095755,-79.072524,0205.00,inside_polygon,0.746
+node/14104154065,Helvaci Ali,cafe,1,43.092253,-79.076209,0205.00,inside_polygon,0.275
+node/6659077170,Starbucks,cafe,0,43.070485,-79.12831,0209.03,inside_polygon,0.907
+node/1705683373,Starbucks,cafe,1,43.082205,-79.082361,0205.00,inside_polygon,0.96
+node/2405633956,Starbucks,cafe,1,43.079711,-79.082205,0205.00,inside_polygon,1.207
+node/3580486881,Starbucks,cafe,1,43.091774,-79.071539,0205.00,inside_polygon,0.479
+node/3580513500,Starbucks,cafe,1,43.083869,-79.079984,0205.00,inside_polygon,0.71
+node/4037900886,Starbucks,cafe,1,43.092137,-79.076259,0205.00,inside_polygon,0.261
+node/4038338121,Starbucks,cafe,0,43.089751,-79.097326,0207.00,inside_polygon,0.656
+node/6704596285,Starbucks,cafe,1,43.089827,-79.079433,0205.00,inside_polygon,0.214
+node/7799181566,Starbucks,cafe,1,43.090888,-79.072755,0205.00,inside_polygon,0.349
+node/12847346812,Starbucks,cafe,1,43.085243,-79.079512,0205.00,inside_polygon,0.555
+node/12847578718,Starbucks,cafe,1,43.08285,-79.083075,0205.00,inside_polygon,0.928
+way/267907966,Starbucks,cafe,0,43.114181,-79.123529,0209.05,inside_polygon,1.046
+way/900495193,Starbucks,cafe,0,43.08854,-79.136599,0210.02,inside_polygon,1.844
+node/5278639822,Sweet Jesus,cafe,1,43.090702,-79.073099,0205.00,inside_polygon,0.316
+node/6892961485,Third Space Cafe,cafe,0,43.106759,-79.064638,0215.00,inside_polygon,1.092
+node/6536153960,Tim Hortons,cafe,0,43.068883,-79.117901,0202.00,inside_polygon,1.769
+node/6659093810,Tim Hortons,cafe,0,43.069977,-79.110513,0203.02,inside_polygon,0.867
+way/293570085,Tim Hortons,cafe,0,43.059815,-79.053277,0201.00,inside_polygon,0.512
+way/428619858,Tim Hortons,cafe,0,43.069193,-79.12926,0202.00,inside_polygon,1.414
+node/1887016878,Tim Hortons,cafe,0,43.098218,-79.085765,0207.00,inside_polygon,1.011
+node/4038338120,Tim Hortons,cafe,0,43.089232,-79.097141,0204.00,inside_polygon,0.651
+node/5160138196,Tim Hortons,cafe,0,43.083347,-79.078077,0205.00,inside_polygon,0.727
+node/7630761686,Tim Hortons,cafe,1,43.091832,-79.085822,0207.00,inside_polygon,1.054
+node/12670579558,Tim Hortons,cafe,1,43.081692,-79.080377,0205.00,inside_polygon,0.949
+way/178662560,Tim Hortons,cafe,1,43.083716,-79.085107,0204.00,inside_polygon,1.245
+way/180904886,Tim Hortons,cafe,0,43.089237,-79.134369,0209.04,inside_polygon,0.949
+way/288680842,Tim Hortons,cafe,0,43.115795,-79.123957,0209.06,inside_polygon,0.63
+way/440870323,Tim Hortons,cafe,0,43.103964,-79.073765,0206.00,inside_polygon,0.339
+way/486995513,Tim Hortons,cafe,0,43.104479,-79.112067,0208.00,inside_polygon,0.551
+way/488780234,Tim Hortons,cafe,0,43.115678,-79.09831,0214.00,inside_polygon,1.197
+way/784099313,Tim Hortons,cafe,0,43.094929,-79.097543,0207.00,inside_polygon,0.08
+node/6659055413,Vincenzo's Cafe,cafe,0,43.120001,-79.10013,0212.00,inside_polygon,0.472
+way/455525351,Williams Fresh Cafe,cafe,0,43.113967,-79.112222,0208.00,inside_polygon,0.851
+node/11137391228,us tea,cafe,1,43.092301,-79.076865,0205.00,inside_polygon,0.276
+way/817078282,Chauffeured in Black,car_rental,0,43.101876,-79.067188,0206.00,inside_polygon,0.5
+node/1887475528,Enterprise,car_rental,1,43.093438,-79.084849,0205.00,inside_polygon,0.767
+node/3522087333,Casino Niagara,casino,1,43.092133,-79.072627,0205.00,inside_polygon,0.425
+way/808104046,Fallsview Casino Resort,casino,1,43.082312,-79.081025,0205.00,inside_polygon,0.903
+way/1425944772,Stroller Parking,childcare,0,43.087624,-79.072594,0205.00,inside_polygon,0.42
+way/815909532,Arterra Wines Canada,craft,0,43.101102,-79.112861,0208.00,inside_polygon,0.869
+node/11056911269,John The Plumber,craft,0,43.08265,-79.096806,0204.00,inside_polygon,0.326
+node/13921224111,LOCAL CANADIAN DISTILLERY,craft,0,43.107379,-79.123559,0209.05,inside_polygon,0.464
+node/6522342293,Niagara Brewing Company,craft,1,43.091027,-79.073536,0205.00,inside_polygon,0.297
+node/12042254932,Niagara Distillery,craft,1,43.090942,-79.07328,0205.00,inside_polygon,0.312
+node/5534522882,Avalon Ballroom Theatre,entertainment,1,43.081729,-79.08011,0205.00,inside_polygon,0.939
+node/9193193762,Cineplex Cinemas 10,entertainment,0,43.067958,-79.127834,0202.00,inside_polygon,1.301
+node/5514961472,Greg Frewin Theatre,entertainment,1,43.092169,-79.078813,0205.00,inside_polygon,0.308
+node/5534581626,Greg Frewin Theatre,entertainment,1,43.089787,-79.081687,0205.00,inside_polygon,0.397
+way/178332405,Niagara Centre for the Arts,entertainment,0,43.098519,-79.07066,0206.00,inside_polygon,0.34
+way/177402622,Niagara Falls Convention Centre,entertainment,1,43.076099,-79.08502,0203.01,inside_polygon,0.496
+way/808101766,Niagara Falls Entertainment Centre (opening 2020),entertainment,1,43.082824,-79.083836,0205.00,inside_polygon,0.965
+node/3580486880,Ripley's Selfie Studios,entertainment,1,43.092041,-79.075694,0205.00,inside_polygon,0.263
+node/5514910923,The Avalon Ballroom Theatre,entertainment,0,43.086491,-79.136007,0209.03,inside_polygon,1.119
+node/3580513501,The Falls 3D/4D Movie,entertainment,1,43.083964,-79.080302,0205.00,inside_polygon,0.711
+node/9879841986,,fast_food,0,43.060823,-79.078165,0201.00,inside_polygon,1.538
+node/9879841987,,fast_food,0,43.060692,-79.078521,0201.00,inside_polygon,1.567
+node/9879841988,,fast_food,0,43.060824,-79.074624,0201.00,inside_polygon,1.25
+node/9879841989,,fast_food,0,43.060561,-79.07886,0201.00,inside_polygon,1.595
+node/9879841990,,fast_food,0,43.061381,-79.073509,0201.00,inside_polygon,1.158
+node/9879841991,,fast_food,0,43.063303,-79.075029,0201.00,inside_polygon,1.301
+node/9879841992,,fast_food,0,43.064688,-79.070619,0201.00,inside_polygon,0.998
+node/2922358629,,fast_food,1,43.081637,-79.08024,0205.00,inside_polygon,0.952
+node/8711923889,,fast_food,0,43.117734,-79.068406,0215.00,inside_polygon,0.841
+node/10814658798,2-Nine Five Chippawa,fast_food,0,43.060241,-79.053995,0201.00,inside_polygon,0.443
+node/4275810652,241 Pizza,fast_food,0,43.089407,-79.08627,0204.00,inside_polygon,1.304
+way/488685674,A&W,fast_food,0,43.070155,-79.111029,0203.02,inside_polygon,0.913
+way/708604894,A&W,fast_food,0,43.11498,-79.125759,0209.06,inside_polygon,0.631
+node/9103887345,Afghan Kabob,fast_food,1,43.089452,-79.081192,0205.00,inside_polygon,0.359
+way/401401325,Arby's,fast_food,0,43.089046,-79.105473,0204.00,inside_polygon,0.703
+node/4844724086,BarBurrito,fast_food,1,43.081615,-79.080076,0205.00,inside_polygon,0.95
+node/6538086691,Baraka Shawarma,fast_food,0,43.114644,-79.110726,0208.00,inside_polygon,0.862
+node/7799181476,Beavertails,fast_food,1,43.091867,-79.075591,0205.00,inside_polygon,0.248
+node/5784529853,Big Bee Refreshment Food Truck,fast_food,0,43.10473,-79.073378,0215.00,inside_polygon,0.868
+node/4839841755,Burger Factory,fast_food,1,43.092213,-79.076133,0205.00,inside_polygon,0.272
+node/6522342343,Burger King,fast_food,1,43.091836,-79.075523,0205.00,inside_polygon,0.247
+node/9893595870,Burger King,fast_food,1,43.081685,-79.080109,0205.00,inside_polygon,0.944
+way/288680843,Burger King,fast_food,0,43.114204,-79.124084,0209.05,inside_polygon,1.031
+way/401401327,Burger King,fast_food,0,43.089767,-79.098606,0207.00,inside_polygon,0.657
+node/9104155125,Butterfly Café,fast_food,0,43.135727,-79.055241,0210.01,inside_polygon,6.052
+node/4277114922,CCSwirls,fast_food,1,43.081953,-79.082944,0205.00,inside_polygon,1.007
+node/12847527719,Charbroiled Hot Dog,fast_food,1,43.091362,-79.076059,0205.00,inside_polygon,0.182
+node/7799217290,Coca-Cola (Always Refreshing Soda Shop),fast_food,1,43.092018,-79.071213,0205.00,inside_polygon,0.515
+node/12718492410,Costco Food Court,fast_food,0,43.065982,-79.127227,0202.00,inside_polygon,1.105
+way/817045238,Country Donuts,fast_food,0,43.100752,-79.072869,0206.00,inside_polygon,0.035
+node/6659171385,D'Vinci's Pizza,fast_food,0,43.070391,-79.136176,0210.02,inside_polygon,1.686
+node/3580471412,Dairy Queen,fast_food,0,43.089394,-79.085366,0204.00,inside_polygon,1.368
+node/3580513498,Dairy Queen,fast_food,1,43.083928,-79.080096,0205.00,inside_polygon,0.708
+node/6522342342,Dairy Queen,fast_food,1,43.091615,-79.075025,0205.00,inside_polygon,0.246
+way/488786299,Dairy Queen,fast_food,0,43.122217,-79.100187,0212.00,inside_polygon,0.582
+node/9103858404,Delhi JNX,fast_food,1,43.089443,-79.081556,0205.00,inside_polygon,0.388
+node/4036094329,Domino's,fast_food,0,43.089322,-79.135739,0209.04,inside_polygon,1.057
+node/4274827325,Domino's,fast_food,0,43.089759,-79.089222,0207.00,inside_polygon,0.95
+node/6658778589,Don Wong,fast_food,0,43.114456,-79.112271,0208.00,inside_polygon,0.899
+node/10814656861,Fried Chicken Rok’s,fast_food,0,43.060926,-79.055002,0201.00,inside_polygon,0.347
+node/6659074987,Frijoles,fast_food,0,43.122562,-79.101062,0212.00,inside_polygon,0.555
+node/7799181477,Fusion Wrap,fast_food,1,43.091979,-79.075302,0205.00,inside_polygon,0.269
+node/3425978500,Gambler's Pizza,fast_food,0,43.070258,-79.096596,0203.02,inside_polygon,0.451
+node/6658835141,Garrisons Grill,fast_food,0,43.114997,-79.099402,0208.00,inside_polygon,1.023
+node/4274826611,Gino's Pizza,fast_food,0,43.089625,-79.099453,0207.00,inside_polygon,0.684
+node/6659134121,Harvey's,fast_food,0,43.071284,-79.126642,0209.03,inside_polygon,0.818
+way/288680841,Harvey's,fast_food,0,43.115222,-79.122964,0209.06,inside_polygon,0.731
+way/428375432,Harvey's,fast_food,0,43.089679,-79.107245,0207.00,inside_polygon,1.019
+node/12847362840,Hazukido,fast_food,1,43.081521,-79.080296,0205.00,inside_polygon,0.965
+way/544241163,Hornblower Concessions,fast_food,0,43.087904,-79.072742,0205.00,inside_polygon,0.392
+node/4274825613,Hot Belly Sub,fast_food,0,43.088962,-79.107621,0204.00,inside_polygon,0.81
+node/930387025,Hungry Bear Restaurant,fast_food,0,43.064658,-79.071851,0201.00,inside_polygon,1.09
+node/12847412323,Ichiban Sushi Express,fast_food,1,43.081373,-79.080305,0205.00,inside_polygon,0.981
+node/12847362841,Jimmy John’s,fast_food,1,43.081562,-79.080375,0205.00,inside_polygon,0.963
+node/6659074082,Joseph's Pizzeria,fast_food,0,43.121947,-79.100476,0212.00,inside_polygon,0.544
+node/6659093803,Jumbo's Pizza & Wings,fast_food,0,43.071675,-79.109511,0203.01,inside_polygon,1.553
+node/4037900870,KFC,fast_food,1,43.090342,-79.079198,0205.00,inside_polygon,0.203
+node/4274827726,KFC,fast_food,0,43.089634,-79.104084,0207.00,inside_polygon,0.845
+way/181024392,KFC,fast_food,0,43.105483,-79.11065,0208.00,inside_polygon,0.392
+way/488785460,KFC,fast_food,0,43.12142,-79.100107,0212.00,inside_polygon,0.536
+node/6659074077,Lee's Famous Recipe Chicken,fast_food,0,43.121846,-79.100381,0212.00,inside_polygon,0.544
+node/6658933305,Little Caesars,fast_food,0,43.115821,-79.096679,0214.00,inside_polygon,1.143
+node/6659111290,McDonald's,fast_food,0,43.067792,-79.119747,0202.00,inside_polygon,1.58
+way/178404135,McDonald's,fast_food,0,43.069896,-79.11811,0202.00,inside_polygon,1.847
+node/7846609524,McDonald's,fast_food,1,43.09514,-79.08443,0205.00,inside_polygon,0.857
+way/179320973,McDonald's,fast_food,0,43.089021,-79.100134,0204.00,inside_polygon,0.57
+way/708625403,McDonald's,fast_food,0,43.1158,-79.095798,0214.00,inside_polygon,1.131
+way/1466898945,Niko's Place,fast_food,0,43.100185,-79.073604,0206.00,inside_polygon,0.09
+node/6621699099,Orange Julius,fast_food,1,43.083967,-79.08005,0205.00,inside_polygon,0.702
+node/6522346759,Osmow's,fast_food,1,43.090246,-79.07885,0205.00,inside_polygon,0.173
+node/3580479193,Papa John's,fast_food,1,43.086012,-79.084872,0204.00,inside_polygon,1.286
+node/7799193695,Papa John's,fast_food,1,43.092077,-79.075161,0205.00,inside_polygon,0.284
+node/6659077173,Pita Pit,fast_food,0,43.070621,-79.128306,0209.03,inside_polygon,0.892
+node/6659093817,Pita on the Run,fast_food,0,43.069838,-79.111266,0203.02,inside_polygon,0.92
+node/6512325583,Pizza & Fry,fast_food,0,43.106509,-79.068852,0215.00,inside_polygon,0.854
+node/3580513499,Pizza Pizza,fast_food,1,43.083955,-79.080169,0205.00,inside_polygon,0.707
+node/5454443019,Pizza Pizza,fast_food,1,43.091476,-79.074505,0205.00,inside_polygon,0.262
+node/6659055415,Pizza Pizza,fast_food,0,43.120132,-79.100044,0212.00,inside_polygon,0.483
+node/9103871467,Pizza Pizza,fast_food,1,43.092397,-79.085348,0207.00,inside_polygon,1.067
+way/401401331,Pizza Pizza,fast_food,0,43.089707,-79.098114,0207.00,inside_polygon,0.661
+node/4274825615,Popeyes,fast_food,0,43.088956,-79.107833,0204.00,inside_polygon,0.823
+node/9103880243,Popeyes,fast_food,1,43.09027,-79.078804,0205.00,inside_polygon,0.17
+node/11137391247,Potato Jackets,fast_food,1,43.089429,-79.084358,0205.00,inside_polygon,0.615
+node/7324366151,Qualia Pizza,fast_food,0,43.089808,-79.136699,0210.01,inside_polygon,3.928
+node/6659093814,Quesada,fast_food,0,43.070189,-79.111957,0203.02,inside_polygon,0.986
+node/6659055417,Quesada,fast_food,0,43.120291,-79.100057,0212.00,inside_polygon,0.487
+node/6658652273,Quiznos,fast_food,0,43.115419,-79.125202,0209.06,inside_polygon,0.608
+node/6658835150,Sahara Shawarma Wraps,fast_food,0,43.11565,-79.099652,0212.00,inside_polygon,0.615
+node/5365043021,Smoke's Poutinerie,fast_food,1,43.090584,-79.078792,0205.00,inside_polygon,0.183
+node/6657822529,Soups & Things,fast_food,0,43.086346,-79.120252,0209.04,inside_polygon,0.526
+node/6658778595,Substantial,fast_food,0,43.114641,-79.110618,0208.00,inside_polygon,0.858
+node/6659077169,Subway,fast_food,0,43.071863,-79.128259,0209.03,inside_polygon,0.754
+node/6659111296,Subway,fast_food,0,43.066217,-79.119548,0202.00,inside_polygon,1.457
+node/10814658795,Subway,fast_food,0,43.060636,-79.054039,0201.00,inside_polygon,0.43
+node/3678947240,Subway,fast_food,1,43.081837,-79.082438,0205.00,inside_polygon,0.999
+node/4037715979,Subway,fast_food,0,43.088597,-79.129506,0209.03,inside_polygon,1.122
+node/4355037310,Subway,fast_food,0,43.089858,-79.097306,0207.00,inside_polygon,0.644
+node/6658699781,Subway,fast_food,0,43.114664,-79.112849,0208.00,inside_polygon,0.943
+node/6659055418,Subway,fast_food,0,43.120362,-79.100058,0212.00,inside_polygon,0.489
+node/8144178379,Subway,fast_food,1,43.091751,-79.076905,0205.00,inside_polygon,0.215
+node/13454384834,Subway,fast_food,0,43.09988,-79.073288,0206.00,inside_polygon,0.118
+way/387916669,Subway,fast_food,1,43.095504,-79.084947,0205.00,inside_polygon,0.915
+node/9972969077,Table Rock Market,fast_food,0,43.079092,-79.079014,0203.01,inside_polygon,1.073
+node/4274827728,Taco Bell,fast_food,0,43.089637,-79.103971,0207.00,inside_polygon,0.839
+way/288680960,Taco Bell,fast_food,0,43.117405,-79.124212,0209.06,inside_polygon,0.489
+node/9104001344,The Hungry Moose Food Court,fast_food,0,43.113118,-79.062119,0215.00,inside_polygon,1.105
+node/4462911838,The Sub Shoppe,fast_food,0,43.089337,-79.135561,0209.04,inside_polygon,1.043
+node/6538079301,Twice the deal Pizza,fast_food,0,43.114642,-79.110814,0208.00,inside_polygon,0.865
+node/6657970161,U Need A Pita,fast_food,0,43.105252,-79.112136,0208.00,inside_polygon,0.508
+node/6659055416,U Need A Pita,fast_food,0,43.120208,-79.100049,0212.00,inside_polygon,0.485
+node/9893595868,Vittorio’s,fast_food,1,43.08177,-79.080309,0205.00,inside_polygon,0.939
+node/6659093809,Wendy's,fast_food,0,43.06998,-79.110385,0203.02,inside_polygon,0.858
+node/10297359643,Wendy's,fast_food,1,43.090948,-79.074179,0205.00,inside_polygon,0.247
+way/401401341,Wendy's,fast_food,0,43.089698,-79.100969,0207.00,inside_polygon,0.712
+way/783764937,Wendy's,fast_food,0,43.115539,-79.103158,0212.00,inside_polygon,0.432
+way/784095687,Wendy's,fast_food,0,43.089283,-79.13646,0210.01,inside_polygon,3.982
+node/4274831444,Wingz N Thingz Pizza,fast_food,0,43.089021,-79.10442,0204.00,inside_polygon,0.655
+node/6658988076,Your Neighbourhood Pizza Company,fast_food,0,43.117991,-79.098549,0214.00,inside_polygon,0.967
+node/12214470957,,fuel,0,43.07479,-79.07979,0203.01,inside_polygon,0.902
+node/12214524817,,fuel,0,43.074769,-79.079774,0203.01,inside_polygon,0.903
+node/9893319094,,fuel,1,43.09244,-79.084718,0205.00,inside_polygon,0.706
+node/12092434567,,fuel,1,43.095687,-79.074281,0205.00,inside_polygon,0.684
+node/12847548366,,fuel,1,43.08676,-79.082794,0205.00,inside_polygon,0.594
+node/12847632635,,fuel,0,43.083824,-79.078025,0205.00,inside_polygon,0.674
+node/13955840698,,fuel,0,43.110651,-79.060829,0215.00,inside_polygon,1.221
+way/784100742,,fuel,0,43.103671,-79.073957,0206.00,inside_polygon,0.31
+node/3425981588,7-Eleven,fuel,0,43.070576,-79.096532,0203.02,inside_polygon,0.48
+node/5361707557,Canadian Tire,fuel,0,43.070335,-79.10873,0203.02,inside_polygon,0.749
+way/267907967,Canadian Tire,fuel,0,43.114314,-79.125238,0209.05,inside_polygon,1.012
+node/5361707567,Circle K,fuel,0,43.114493,-79.136706,0209.06,inside_polygon,0.896
+node/9193193928,Costco Gasoline,fuel,0,43.064552,-79.128005,0202.00,inside_polygon,0.934
+node/5361707558,Esso,fuel,0,43.070766,-79.109361,0203.01,inside_polygon,1.568
+node/1878609601,Esso,fuel,0,43.089198,-79.09734,0204.00,inside_polygon,0.641
+node/5361707562,Esso,fuel,0,43.088627,-79.135349,0209.03,inside_polygon,1.286
+node/7846595025,Esso,fuel,1,43.09504,-79.08481,0205.00,inside_polygon,0.872
+node/5361641502,Gales,fuel,0,43.061347,-79.057355,0201.00,inside_polygon,0.154
+node/5361707560,Gales,fuel,0,43.089115,-79.105838,0204.00,inside_polygon,0.727
+node/5361707566,Gales,fuel,0,43.114831,-79.123728,0209.06,inside_polygon,0.727
+node/6658835108,Gales,fuel,0,43.115513,-79.10146,0212.00,inside_polygon,0.516
+node/5361707563,Gulf,fuel,0,43.08909,-79.135563,0209.04,inside_polygon,1.047
+node/7630761687,Mobil,fuel,1,43.091978,-79.085444,0207.00,inside_polygon,1.076
+node/13667869901,Niagara Falls Supercharger,fuel,0,43.104441,-79.110488,0208.00,inside_polygon,0.459
+node/5361707559,Petro-Canada,fuel,0,43.069147,-79.118004,0202.00,inside_polygon,1.786
+node/5361707561,Petro-Canada,fuel,0,43.069773,-79.129351,0202.00,inside_polygon,1.477
+node/1887016894,Petro-Canada,fuel,0,43.098733,-79.085144,0206.00,inside_polygon,1.0
+node/5361707565,Petro-Canada,fuel,0,43.114816,-79.111347,0208.00,inside_polygon,0.9
+node/7617193595,Petro-Canada,fuel,0,43.089174,-79.130457,0209.04,inside_polygon,0.64
+way/335489233,Pioneer,fuel,0,43.071089,-79.097394,0203.01,inside_polygon,0.674
+node/9103871469,Pioneer,fuel,1,43.09269,-79.085457,0207.00,inside_polygon,1.048
+node/3580471413,Shell,fuel,1,43.08938,-79.084562,0205.00,inside_polygon,0.632
+node/5361707564,Shell,fuel,0,43.103852,-79.110791,0208.00,inside_polygon,0.524
+node/12079010161,Tesla Destination Charger,fuel,0,43.062955,-79.050394,0201.00,inside_polygon,0.743
+node/9952933423,Tesla Destination Charger,fuel,1,43.089751,-79.080648,0205.00,inside_polygon,0.313
+node/13667867402,Tesla Supercharger,fuel,0,43.11675,-79.124194,0209.06,inside_polygon,0.539
+node/4274831845,99¢ Depot Plus,general_merchandise,0,43.088736,-79.103243,0204.00,inside_polygon,0.584
+node/8017318122,Canada One Outlet,general_merchandise,0,43.088611,-79.120549,0209.04,inside_polygon,0.296
+node/7578527086,Canadian Tire,general_merchandise,0,43.101721,-79.116227,0208.00,inside_polygon,1.006
+node/8367723169,Costco,general_merchandise,0,43.066321,-79.12767,0202.00,inside_polygon,1.13
+node/6658933297,Dollar Tree,general_merchandise,0,43.116258,-79.097006,0214.00,inside_polygon,1.103
+node/6659055412,Dollar Values,general_merchandise,0,43.11994,-79.100664,0212.00,inside_polygon,0.429
+node/6659111299,Dollarama,general_merchandise,0,43.066477,-79.118444,0202.00,inside_polygon,1.54
+node/9193193964,Dollarama,general_merchandise,0,43.066853,-79.125207,0202.00,inside_polygon,1.257
+node/6657882609,Dollarama,general_merchandise,0,43.103629,-79.116303,0208.00,inside_polygon,0.892
+node/13454384825,Dollarama,general_merchandise,0,43.099685,-79.074338,0206.00,inside_polygon,0.167
+way/179320976,Dollarama,general_merchandise,0,43.088984,-79.098531,0204.00,inside_polygon,0.586
+way/181022981,Dollarama,general_merchandise,0,43.104731,-79.110229,0208.00,inside_polygon,0.421
+node/11234390627,Giant Tiger,general_merchandise,0,43.066847,-79.124904,0202.00,inside_polygon,1.267
+node/6658933306,Giant Tiger,general_merchandise,0,43.115876,-79.096312,0214.00,inside_polygon,1.131
+node/11774887060,Goodwill,general_merchandise,0,43.069828,-79.108498,0203.02,inside_polygon,0.709
+node/8148941754,Grand View Marketplace,general_merchandise,0,43.089022,-79.073049,0205.00,inside_polygon,0.317
+node/3580548165,Lapennaco Liquidation Super Centre,general_merchandise,1,43.094779,-79.085923,0207.00,inside_polygon,0.962
+way/272966183,Maple Leaf Place,general_merchandise,0,43.113008,-79.062037,0215.00,inside_polygon,1.111
+node/11137391235,Min e Mart Variety and Grocery,general_merchandise,1,43.09047,-79.078508,0205.00,inside_polygon,0.156
+node/4274831843,Multi Brands Outlet,general_merchandise,0,43.088738,-79.103402,0204.00,inside_polygon,0.589
+way/178404365,Walmart,general_merchandise,0,43.068117,-79.119045,0202.00,inside_polygon,1.644
+node/6629553670,Winners,general_merchandise,0,43.06501,-79.12522,0202.00,inside_polygon,1.074
+node/9103870422,,grocery_food,1,43.091927,-79.08583,0207.00,inside_polygon,1.049
+node/9103871468,,grocery_food,1,43.092396,-79.085441,0207.00,inside_polygon,1.06
+node/12847322450,,grocery_food,1,43.089009,-79.081504,0205.00,inside_polygon,0.392
+node/3425981589,7-Eleven,grocery_food,0,43.070472,-79.096374,0203.02,inside_polygon,0.48
+node/4355020668,7-Eleven,grocery_food,0,43.114669,-79.112311,0208.00,inside_polygon,0.921
+node/6659093805,Avondale Food Stores,grocery_food,0,43.071551,-79.109515,0203.01,inside_polygon,1.557
+way/813984642,Avondale Food Stores,grocery_food,0,43.058079,-79.050143,0201.00,inside_polygon,0.822
+node/6658652277,Avondale Food Stores,grocery_food,0,43.115183,-79.125182,0209.06,inside_polygon,0.632
+node/12477219701,Avondale Food Stores,grocery_food,0,43.088259,-79.135741,0209.03,inside_polygon,1.267
+way/816692685,Avondale Food Stores,grocery_food,0,43.094774,-79.102902,0207.00,inside_polygon,0.432
+node/4274823184,Big Bee,grocery_food,0,43.089766,-79.093186,0207.00,inside_polygon,0.749
+node/6657970160,Big Bee,grocery_food,0,43.104975,-79.112143,0208.00,inside_polygon,0.524
+way/462013634,Big Bee,grocery_food,0,43.104747,-79.073534,0215.00,inside_polygon,0.863
+way/815777060,Big Bee,grocery_food,0,43.100095,-79.123641,0209.05,inside_polygon,0.735
+node/6658835137,Bittersweet Symphony,grocery_food,0,43.114982,-79.099859,0208.00,inside_polygon,1.001
+node/10814621561,Bob’s Fast & Fresh Convenience,grocery_food,0,43.061247,-79.057136,0201.00,inside_polygon,0.172
+way/817045237,Bombay Store,grocery_food,0,43.100311,-79.072555,0206.00,inside_polygon,0.088
+node/6659111292,Bulk Barn,grocery_food,0,43.066263,-79.120744,0202.00,inside_polygon,1.397
+node/6658988078,Bulk Barn,grocery_food,0,43.118177,-79.09855,0214.00,inside_polygon,0.948
+node/6658835140,Busy Bee,grocery_food,0,43.114996,-79.099572,0208.00,inside_polygon,1.015
+way/817044918,Busybee Food Mart,grocery_food,0,43.099074,-79.073336,0206.00,inside_polygon,0.208
+way/488685250,Circle K,grocery_food,0,43.070927,-79.109325,0203.01,inside_polygon,1.56
+node/4274826612,Circle K,grocery_food,0,43.089172,-79.097169,0204.00,inside_polygon,0.644
+way/428376600,Circle K,grocery_food,1,43.089207,-79.084473,0205.00,inside_polygon,0.627
+node/6658833781,Commisso's Fresh Foods,grocery_food,0,43.116121,-79.097703,0214.00,inside_polygon,1.134
+node/7631067090,De Healthy Baker,grocery_food,0,43.05719,-79.052175,0201.00,inside_polygon,0.734
+node/6657882623,Della Terra,grocery_food,0,43.10473,-79.113377,0208.00,inside_polygon,0.624
+node/4274825892,Don's Convenience Store,grocery_food,0,43.088697,-79.122949,0209.04,inside_polygon,0.221
+node/10816822389,Falls Convenience,grocery_food,1,43.09352,-79.073967,0205.00,inside_polygon,0.471
+node/12847549925,Fallsview Market Place,grocery_food,1,43.086751,-79.082173,0205.00,inside_polygon,0.554
+way/488693381,Food Basics,grocery_food,0,43.069693,-79.107501,0203.02,inside_polygon,0.628
+way/288680961,Food Basics,grocery_food,0,43.116816,-79.123081,0209.06,inside_polygon,0.601
+node/5743859307,Fraser's Variety,grocery_food,0,43.10454,-79.067156,0206.00,inside_polygon,0.634
+way/784095699,FreshCo,grocery_food,0,43.08781,-79.137295,0210.02,inside_polygon,1.749
+node/7846572475,Gateway of Niagara,grocery_food,1,43.09503,-79.08437,0205.00,inside_polygon,0.845
+node/6659093819,Good Food Box,grocery_food,0,43.069836,-79.111415,0203.02,inside_polygon,0.932
+node/2972136604,IGA,grocery_food,0,43.056728,-79.052371,0201.00,inside_polygon,0.755
+node/12847632634,INS Market,grocery_food,1,43.081878,-79.080874,0205.00,inside_polygon,0.943
+node/13942975501,INS Market,grocery_food,1,43.091853,-79.076761,0205.00,inside_polygon,0.226
+node/6659111291,LCBO,grocery_food,0,43.066448,-79.120763,0202.00,inside_polygon,1.412
+node/6658988080,LCBO,grocery_food,0,43.118601,-79.098549,0214.00,inside_polygon,0.906
+way/335487028,LCBO,grocery_food,0,43.106217,-79.072938,0215.00,inside_polygon,0.718
+way/345578044,LCBO,grocery_food,1,43.089792,-79.083315,0205.00,inside_polygon,0.529
+node/6658778592,Lee Mart,grocery_food,0,43.114634,-79.111051,0208.00,inside_polygon,0.871
+node/11263538737,Leo's Grocery,grocery_food,0,43.104476,-79.125501,0209.05,inside_polygon,0.288
+node/5743495367,Lococo's,grocery_food,0,43.113402,-79.073755,0215.00,inside_polygon,0.196
+way/428486754,Lundy's Variety,grocery_food,0,43.089606,-79.109383,0207.00,inside_polygon,1.161
+node/6658835149,M&M Food Market,grocery_food,0,43.115646,-79.099753,0212.00,inside_polygon,0.609
+node/11203699737,Metro,grocery_food,0,43.072577,-79.126997,0209.03,inside_polygon,0.673
+node/4277035646,Montrose Variety,grocery_food,0,43.080078,-79.123267,0209.03,inside_polygon,0.374
+node/5739526658,Moodie's Bakery,grocery_food,0,43.106492,-79.068344,0215.00,inside_polygon,0.883
+node/6658778588,Naturally Healthly,grocery_food,0,43.114377,-79.112267,0208.00,inside_polygon,0.891
+node/3580479235,New York News Convenience Store,grocery_food,1,43.086629,-79.08345,0205.00,inside_polygon,0.646
+node/4274826260,No Frills,grocery_food,0,43.088726,-79.102337,0204.00,inside_polygon,0.558
+node/4274825614,Patel Groceries,grocery_food,0,43.088954,-79.107529,0204.00,inside_polygon,0.805
+way/488785458,People's Variety,grocery_food,0,43.121305,-79.099201,0214.00,inside_polygon,0.691
+node/4275829264,Portage Bakery,grocery_food,0,43.089726,-79.087958,0207.00,inside_polygon,1.029
+node/7798899817,Reg’s Candy Kitchen,grocery_food,1,43.091459,-79.069962,0205.00,inside_polygon,0.584
+node/6657822527,Rocky Mountain Chocolate Factory,grocery_food,0,43.087004,-79.121089,0209.04,inside_polygon,0.433
+way/488789870,Sobeys,grocery_food,0,43.119228,-79.09832,0214.00,inside_polygon,0.836
+way/708646186,Stamford Convenience,grocery_food,0,43.120894,-79.099175,0214.00,inside_polygon,0.723
+node/1887476547,Stanley Variety & Food Mart,grocery_food,1,43.091623,-79.084832,0205.00,inside_polygon,0.682
+node/12128828180,Swadesi Grocers,grocery_food,0,43.06976,-79.108853,0203.02,inside_polygon,0.733
+way/546615711,Thai Binh Asian Food,grocery_food,0,43.072317,-79.096784,0203.01,inside_polygon,0.556
+node/2972136603,The Beer Store,grocery_food,0,43.0566,-79.05257,0201.00,inside_polygon,0.753
+node/4274825603,The Beer Store,grocery_food,0,43.089774,-79.107806,0207.00,inside_polygon,1.048
+way/708643589,The Beer Store,grocery_food,0,43.119125,-79.100173,0212.00,inside_polygon,0.454
+node/6657970159,The Meat Shoppe,grocery_food,0,43.105197,-79.112139,0208.00,inside_polygon,0.511
+node/12123208027,The Store,grocery_food,0,43.054209,-79.046088,0201.00,inside_polygon,1.328
+node/6658652268,Thorowest Bakery,grocery_food,0,43.115738,-79.125187,0209.06,inside_polygon,0.578
+node/6658988070,Vita Health Foods,grocery_food,0,43.117786,-79.098981,0214.00,inside_polygon,1.003
+way/178665609,Wholesale Club,grocery_food,0,43.09083,-79.091833,0207.00,inside_polygon,0.717
+node/6658702698,Wine Place,grocery_food,0,43.118793,-79.122116,0209.06,inside_polygon,0.57
+node/7799201742,Wine Rack,grocery_food,1,43.090691,-79.073075,0205.00,inside_polygon,0.318
+node/12847319847,Wonder Mart,grocery_food,1,43.092012,-79.075246,0205.00,inside_polygon,0.274
+way/178560690,Zehrs,grocery_food,0,43.102685,-79.112949,0208.00,inside_polygon,0.738
+node/10220304565,Dental Office,health,0,43.115627,-79.122965,0209.06,inside_polygon,0.698
+node/2751837669,"Dr. Paul Coyne, Dr. Michael Lococo Jr & Dr. Andrew Davidson",health,0,43.091972,-79.093234,0207.00,inside_polygon,0.546
+node/9193194092,MedCare Clinics,health,0,43.065618,-79.123524,0202.00,inside_polygon,1.204
+node/6658649590,Michael Alexander,health,0,43.105145,-79.110041,0208.00,inside_polygon,0.377
+node/6658652274,Montrose Dental,health,0,43.115372,-79.125195,0209.06,inside_polygon,0.613
+way/708617557,Montrose Dental,health,0,43.114833,-79.105839,0208.00,inside_polygon,0.82
+node/6657970163,Morrison Medical,health,0,43.105447,-79.112143,0208.00,inside_polygon,0.499
+node/14213737637,NURSE. Aesthetic & Holistic Clinic,health,0,43.105111,-79.11583,0208.00,inside_polygon,0.789
+way/462013636,Niagara Falls Community Health Centre,health,0,43.10504,-79.072796,0215.00,inside_polygon,0.846
+node/6657970169,Niagara Falls Dental Clinic,health,0,43.105138,-79.110694,0208.00,inside_polygon,0.418
+node/6658649591,Niagara Pulmonary,health,0,43.105145,-79.110137,0208.00,inside_polygon,0.383
+node/11203699738,Niagara Region Public Health,health,0,43.07252,-79.126262,0209.03,inside_polygon,0.685
+node/6657882626,North Town Dentistry,health,0,43.104736,-79.113629,0208.00,inside_polygon,0.642
+node/12909541890,Pain Care Clinics,health,0,43.089064,-79.100515,0204.00,inside_polygon,0.574
+node/6659139683,Pinewood Dental Centre,health,0,43.070527,-79.136042,0210.02,inside_polygon,1.688
+node/6658778587,Primeau Dental Health,health,0,43.114305,-79.112264,0208.00,inside_polygon,0.884
+node/6658652262,The Smile Centre,health,0,43.114168,-79.123144,0209.05,inside_polygon,1.057
+node/6657882627,Win Health Solutions,health,0,43.10473,-79.113769,0208.00,inside_polygon,0.652
+way/1386575205,,home_electronics,0,43.101889,-79.115208,0208.00,inside_polygon,0.931
+node/6659093818,DF Computer Centre,home_electronics,0,43.069837,-79.11134,0203.02,inside_polygon,0.926
+node/4274825612,Electronic Depot,home_electronics,0,43.088983,-79.106948,0204.00,inside_polygon,0.774
+node/6657882610,Factory Direct,home_electronics,0,43.103242,-79.117886,0208.00,inside_polygon,1.025
+node/6658778585,Freedom Mobile,home_electronics,0,43.11469,-79.112549,0208.00,inside_polygon,0.933
+way/179315170,Home Hardware,home_electronics,0,43.120633,-79.100909,0212.00,inside_polygon,0.437
+node/4274832008,Home Lighting Factory Outlet,home_electronics,0,43.089528,-79.105249,0207.00,inside_polygon,0.915
+node/6629576589,JYSK,home_electronics,0,43.067164,-79.124464,0202.00,inside_polygon,1.314
+node/4274825605,Koodo,home_electronics,0,43.089674,-79.108112,0207.00,inside_polygon,1.074
+node/6657970167,Lee Valley,home_electronics,0,43.105071,-79.109424,0208.00,inside_polygon,0.349
+node/6658699784,OverClocked,home_electronics,0,43.114681,-79.112609,0208.00,inside_polygon,0.935
+node/6657882605,Oxford Mills,home_electronics,0,43.103523,-79.114232,0208.00,inside_polygon,0.755
+node/6659055408,Ray James Appliances,home_electronics,0,43.119599,-79.10125,0212.00,inside_polygon,0.374
+node/6659077171,Rogers,home_electronics,0,43.070526,-79.128309,0209.03,inside_polygon,0.903
+way/477773393,Rona,home_electronics,0,43.072245,-79.128621,0209.03,inside_polygon,0.716
+node/6658702699,Ryn's Furniture,home_electronics,0,43.11879,-79.122249,0209.06,inside_polygon,0.56
+node/4274825616,Sherwin-Williams,home_electronics,0,43.088976,-79.107256,0204.00,inside_polygon,0.791
+node/6659111298,Sleep Country,home_electronics,0,43.06604,-79.119562,0202.00,inside_polygon,1.442
+node/6657822530,Stokes,home_electronics,0,43.087889,-79.119691,0209.04,inside_polygon,0.403
+node/6629553683,The Brick,home_electronics,0,43.067253,-79.125264,0202.00,inside_polygon,1.295
+way/178560692,The Home Depot,home_electronics,0,43.102096,-79.114356,0208.00,inside_polygon,0.865
+node/6657882619,The Source,home_electronics,0,43.104745,-79.112846,0208.00,inside_polygon,0.586
+node/13646590030,Wire One Electric Inc,home_electronics,0,43.037324,-79.113715,0200.00,inside_polygon,3.68
+node/7951102945,Wirelesspoint Communication,home_electronics,0,43.089003,-79.104473,0204.00,inside_polygon,0.655
+node/6657882611,easyhome,home_electronics,0,43.103076,-79.117948,0208.00,inside_polygon,1.038
+node/12847342239,,leisure_paid,1,43.084714,-79.079932,0205.00,inside_polygon,0.622
+way/178556603,,leisure_paid,0,43.102025,-79.167647,0210.01,inside_polygon,4.065
+way/178556604,,leisure_paid,0,43.104961,-79.16892,0210.01,inside_polygon,3.958
+way/178590146,,leisure_paid,0,43.138393,-79.096204,0210.01,inside_polygon,3.019
+way/178827748,,leisure_paid,0,43.044834,-79.135005,0200.00,inside_polygon,5.395
+way/458585280,,leisure_paid,0,43.021157,-79.112607,0200.00,inside_polygon,2.266
+way/855549812,,leisure_paid,0,43.054625,-79.132819,0202.00,inside_polygon,0.237
+way/1299878222,,leisure_paid,0,43.072375,-79.121212,0209.03,inside_polygon,0.858
+node/12847303041,Big Top,leisure_paid,1,43.091273,-79.074292,0205.00,inside_polygon,0.26
+way/428616471,Captive Escape Rooms,leisure_paid,0,43.089479,-79.111153,0207.00,inside_polygon,1.289
+way/179193590,Chippawa Willoughby Memorial Arena,leisure_paid,0,43.047631,-79.057638,0200.00,inside_polygon,5.04
+node/7107670565,CrossFit,leisure_paid,0,43.107447,-79.123796,0209.05,inside_polygon,0.45
+way/232194236,Dinosaur Adventure Golf,leisure_paid,1,43.090458,-79.075969,0205.00,inside_polygon,0.098
+node/12847263315,Duck Tank,leisure_paid,1,43.091395,-79.075898,0205.00,inside_polygon,0.19
+node/4277114923,Fallsview Arcade,leisure_paid,1,43.082052,-79.082942,0205.00,inside_polygon,0.997
+way/232194311,Fallsview Indoor Waterpark,leisure_paid,1,43.092524,-79.071721,0205.00,inside_polygon,0.51
+node/6659055407,Fit4Less,leisure_paid,0,43.119461,-79.101241,0212.00,inside_polygon,0.372
+way/817046803,Gale Centre,leisure_paid,0,43.11326,-79.080342,0215.00,inside_polygon,0.391
+way/178827747,Grand Niagara Golf Course,leisure_paid,0,43.036357,-79.131584,0200.00,inside_polygon,4.532
+node/10296066191,Great Canadian Midway,leisure_paid,1,43.090944,-79.074514,0205.00,inside_polygon,0.224
+node/9006457907,Heatwave Yoga,leisure_paid,0,43.115071,-79.100991,0208.00,inside_polygon,0.962
+way/486995533,LA Fitness,leisure_paid,0,43.105292,-79.108199,0208.00,inside_polygon,0.273
+way/179197053,Legends of the Niagara,leisure_paid,0,43.048004,-79.03323,0200.00,inside_polygon,6.34
+way/605649661,"Niagara Falls Badminton, Lawn Bowling and Volleyball Club",leisure_paid,0,43.10336,-79.081524,0206.00,inside_polygon,0.727
+node/4277166264,Niagara Falls Fun Zone,leisure_paid,1,43.081436,-79.082993,0205.00,inside_polygon,1.059
+way/178553592,Niagara Falls Golf Club,leisure_paid,0,43.082798,-79.155284,0210.02,inside_polygon,0.542
+way/1299878223,Niagara Go-Karts,leisure_paid,0,43.072663,-79.121637,0209.03,inside_polygon,0.812
+way/486858145,Oaklands Golf Club,leisure_paid,0,43.044521,-79.075975,0200.00,inside_polygon,4.11
+way/906947838,Polar Splash,leisure_paid,0,43.062733,-79.074729,0201.00,inside_polygon,1.268
+way/179541090,Rolling Meadows Golf & Country Club,leisure_paid,0,42.998502,-79.126565,0200.00,inside_polygon,3.182
+node/12847273714,Skiparrr’s Pirate Parrot Pirate Putt,leisure_paid,1,43.091114,-79.07373,0205.00,inside_polygon,0.288
+node/10860808244,Strike Game Zone,leisure_paid,1,43.090855,-79.075081,0205.00,inside_polygon,0.181
+way/178402187,Thundering Waters Golf Club,leisure_paid,0,43.063631,-79.094036,0203.02,inside_polygon,0.666
+way/178402188,Thundering Waters Golf Club,leisure_paid,0,43.060978,-79.0951,0202.00,inside_polygon,3.017
+way/272966256,Whirlpool Golf Course,leisure_paid,0,43.128636,-79.068816,0210.01,inside_polygon,4.844
+node/9193194030,World Gym,leisure_paid,0,43.064641,-79.125233,0202.00,inside_polygon,1.038
+node/12847545455,Club Seven Nightclub,nightlife,1,43.089668,-79.082571,0205.00,inside_polygon,0.469
+node/9952705373,Icon Nightlife by Sparks,nightlife,1,43.092405,-79.076612,0205.00,inside_polygon,0.288
+node/6658652283,Allstate,office,0,43.114979,-79.125336,0209.06,inside_polygon,0.646
+node/6658649589,BDO,office,0,43.105132,-79.110231,0208.00,inside_polygon,0.39
+node/4277081651,CAN-ENG,office,0,43.075941,-79.121256,0209.03,inside_polygon,0.583
+node/6658649603,Canadian Mental Health Association,office,0,43.103912,-79.109356,0208.00,inside_polygon,0.453
+way/67941102,Concentrix,office,0,43.039367,-79.125105,0200.00,inside_polygon,4.407
+node/6658652263,Desjardins Insurance,office,0,43.114168,-79.12298,0209.05,inside_polygon,1.063
+node/5286538787,Digital Attractions,office,0,43.107903,-79.098177,0208.00,inside_polygon,0.691
+node/4277076110,For the Needy Not the Greedy,office,0,43.074761,-79.122324,0209.03,inside_polygon,0.596
+node/4277076111,Golden Gate,office,0,43.074511,-79.122326,0209.03,inside_polygon,0.616
+way/179360192,GraybaR Canada,office,0,43.074049,-79.121901,0209.03,inside_polygon,0.678
+node/6658652269,H&R Block,office,0,43.11566,-79.125187,0209.06,inside_polygon,0.585
+node/6659139684,H&R Block,office,0,43.070463,-79.136108,0210.02,inside_polygon,1.687
+node/4277086264,Hamblet's,office,0,43.07206,-79.122259,0209.03,inside_polygon,0.841
+node/5213386321,Hodgson Custom Rolling,office,0,43.093486,-79.135778,0209.04,inside_polygon,1.095
+node/7798891234,Hornblower Niagara Cruises,office,1,43.092202,-79.068959,0205.00,inside_polygon,0.69
+node/6658988074,MNP,office,0,43.117808,-79.098644,0214.00,inside_polygon,0.988
+node/4274824006,Manulife Securities,office,0,43.089038,-79.111919,0204.00,inside_polygon,1.093
+node/6658649586,Michael Green Insurance,office,0,43.105128,-79.110547,0208.00,inside_polygon,0.409
+node/4277101254,Modern Crane,office,0,43.077107,-79.121299,0209.03,inside_polygon,0.525
+node/4277058920,MyCity Customer Service Centre,office,0,43.071451,-79.124491,0209.03,inside_polygon,0.832
+node/6658933340,Niagara Employment Help Centre,office,0,43.114668,-79.096805,0208.00,inside_polygon,1.131
+way/428490892,Niagara Falls Christian Ministries,office,0,43.089818,-79.094962,0207.00,inside_polygon,0.685
+way/363779668,Niagara Falls Rankin Innovation Hub,office,0,43.10827,-79.062224,0215.00,inside_polygon,1.184
+way/387916958,RE/MAX Niagara Realty Ltd. Brokerage Niagara Falls,office,0,43.093003,-79.092386,0207.00,inside_polygon,0.522
+way/55553249,Rainbow Plaza Border Control Station,office,1,43.092096,-79.070245,0205.00,inside_polygon,0.589
+node/6658652270,Realty Executives,office,0,43.115555,-79.125203,0209.06,inside_polygon,0.595
+node/6657882625,Roos Taylor Financial,office,0,43.104735,-79.113523,0208.00,inside_polygon,0.635
+node/5441888134,Service Canada,office,0,43.087769,-79.091728,0204.00,inside_polygon,0.828
+node/7629935933,Service Canada,office,0,43.07013,-79.094074,0203.02,inside_polygon,0.604
+node/6658835085,Service Ontario,office,0,43.114741,-79.109116,0208.00,inside_polygon,0.831
+node/5739543413,St. Patrick Roman Catholic Church Office,office,0,43.10619,-79.073596,0215.00,inside_polygon,0.706
+node/6659077172,The Co-operators,office,0,43.07057,-79.128307,0209.03,inside_polygon,0.898
+node/6659074081,The Mortgage Centre,office,0,43.121991,-79.100062,0212.00,inside_polygon,0.574
+node/7798891235,Tourism Niagara Canada,office,1,43.091949,-79.069236,0205.00,inside_polygon,0.658
+node/4277097261,Unifor,office,1,43.086122,-79.084874,0204.00,inside_polygon,1.288
+node/6575294955,admin office of MarineLand,office,0,43.0621,-79.084853,0202.00,inside_polygon,3.859
+node/6575294954,marketing office of MarineLand,office,0,43.055526,-79.083861,0202.00,inside_polygon,3.893
+way/807912202,5676 Ontario Avenue Parking,parking,1,43.094418,-79.071529,0205.00,inside_polygon,0.667
+node/3580486878,Casino Niagara,parking,1,43.092706,-79.071891,0205.00,inside_polygon,0.512
+way/475719282,City of Niagara Falls Municipal Parking Lot #18B,parking,1,43.095899,-79.07412,0205.00,inside_polygon,0.71
+way/178332944,City of Niagara Falls Municipal Parking Lot #20,parking,1,43.094622,-79.071729,0205.00,inside_polygon,0.674
+way/178581704,City of Niagara Falls Municipal Parking Lot 5,parking,1,43.095012,-79.071741,0205.00,inside_polygon,0.709
+way/583538113,Clifton Hill Niagara Falls Parking,parking,1,43.089534,-79.077451,0205.00,inside_polygon,0.062
+way/1012782809,Easy Parking Niagara Falls – Clifton Hill,parking,1,43.092455,-79.071721,0205.00,inside_polygon,0.506
+way/177402784,Easy Parking Niagara Falls – Convention Centre,parking,1,43.077859,-79.085259,0203.01,inside_polygon,0.566
+way/1368596331,Easy Parking Niagara Falls – Fallsview Boulevard,parking,1,43.085909,-79.082446,0205.00,inside_polygon,0.632
+way/179307237,Easy Parking Niagara Falls – OLG Stage Dunn Street,parking,1,43.079786,-79.08547,0204.00,inside_polygon,1.299
+way/345577031,Easy Parking Niagara Falls – OLG Stage Stanley Avenue,parking,1,43.084764,-79.085359,0204.00,inside_polygon,1.229
+way/1424814035,Easy Parking Niagara Falls – Robinson Street,parking,1,43.088056,-79.079068,0205.00,inside_polygon,0.269
+way/475719095,Falls Clifton Hill & Casino Parking,parking,1,43.093682,-79.070698,0205.00,inside_polygon,0.656
+way/657300317,Falls Overflow Parking Lot,parking,0,43.072064,-79.07874,0203.01,inside_polygon,1.035
+relation/2672699,Falls Parking Lot,parking,0,43.07644,-79.079956,0203.01,inside_polygon,0.905
+node/13648235635,Firemans Park Lower Parking Lot,parking,0,43.143462,-79.113979,0210.01,inside_polygon,2.396
+way/157613102,Great Wolf Lodge,parking,0,43.115717,-79.07155,0215.00,inside_polygon,0.503
+way/158202137,Holiday Inn,parking,1,43.084588,-79.082373,0205.00,inside_polygon,0.737
+way/428612736,Lot B,parking,1,43.084351,-79.084145,0205.00,inside_polygon,0.852
+way/875491690,N.P.C. Permit Parking Only,parking,0,43.090629,-79.070815,0205.00,inside_polygon,0.494
+way/37538906,NPC Butterfly Parking,parking,0,43.136007,-79.053358,0210.01,inside_polygon,6.208
+way/401552174,Niagara Falls Municiapl Parking Lot #4,parking,1,43.092967,-79.076141,0205.00,inside_polygon,0.354
+way/436981844,Niagara Falls Municipal Parking Lot #12,parking,0,43.088471,-79.091373,0204.00,inside_polygon,0.895
+way/436981997,Niagara Falls Municipal Parking Lot #13,parking,0,43.090192,-79.092029,0207.00,inside_polygon,0.761
+way/462120834,Niagara Falls Municipal Parking Lot #5,parking,1,43.090532,-79.082069,0205.00,inside_polygon,0.435
+way/438896144,Oakes Hotel Parking,parking,1,43.08092,-79.082189,0205.00,inside_polygon,1.082
+way/66064283,Oakes Parking,parking,1,43.080227,-79.081489,0205.00,inside_polygon,1.133
+way/178663474,Skylon Tower Parking,parking,1,43.08586,-79.079521,0205.00,inside_polygon,0.493
+way/178331730,Stanley & Highway 420,parking,0,43.097227,-79.08495,0206.00,inside_polygon,1.039
+way/486784337,Sundowner,parking,0,43.087796,-79.146029,0210.02,inside_polygon,1.273
+way/439618102,Vittoria Hote Guests parking,parking,1,43.091092,-79.081268,0205.00,inside_polygon,0.389
+way/1087952347,White Water Walk Parking,parking,0,43.110825,-79.060986,0215.00,inside_polygon,1.206
+way/546615712,,personal_services,0,43.072144,-79.096861,0203.01,inside_polygon,0.571
+node/4274820643,Avon,personal_services,0,43.089514,-79.1239,0209.04,inside_polygon,0.155
+node/4274823168,Barbershop Family Hairstyling,personal_services,0,43.089433,-79.112088,0207.00,inside_polygon,1.356
+node/4277097260,Canada Barber & Beauty Supply,personal_services,1,43.08606,-79.084884,0204.00,inside_polygon,1.286
+node/10571457040,Classy Barbershop,personal_services,0,43.089613,-79.101719,0207.00,inside_polygon,0.745
+node/4348147660,Dawg Pound Tattoos & Piercings,personal_services,0,43.0894,-79.090858,0204.00,inside_polygon,0.99
+node/6658988071,Eyewear Studio,personal_services,0,43.11779,-79.098877,0214.00,inside_polygon,0.999
+node/10628285035,Falls Barber Shop,personal_services,0,43.089382,-79.0916,0204.00,inside_polygon,0.942
+node/4274825604,First Choice Haircutters,personal_services,0,43.089664,-79.108293,0207.00,inside_polygon,1.086
+node/6658988069,First Choice Haircutters,personal_services,0,43.117777,-79.099087,0214.00,inside_polygon,1.008
+node/9952914667,Five Lakes Spa,personal_services,1,43.087096,-79.083722,0205.00,inside_polygon,0.639
+node/6658778590,Focus Eyewear,personal_services,0,43.11452,-79.112274,0208.00,inside_polygon,0.905
+node/2972136606,Hairizona,personal_services,0,43.056985,-79.052719,0201.00,inside_polygon,0.715
+way/708617566,Hakim Optical,personal_services,0,43.114672,-79.098784,0208.00,inside_polygon,1.024
+node/7799193694,Hart & Huntington Tattoo Co.,personal_services,1,43.092147,-79.075038,0205.00,inside_polygon,0.296
+node/6658778597,Head2toe,personal_services,0,43.114653,-79.110481,0208.00,inside_polygon,0.855
+node/6657882624,Healthsource Plus,personal_services,0,43.104733,-79.113437,0208.00,inside_polygon,0.629
+node/6657882616,Hear Again,personal_services,0,43.104759,-79.112419,0208.00,inside_polygon,0.556
+node/9006907200,Infinity Salon,personal_services,0,43.109046,-79.099515,0208.00,inside_polygon,0.606
+node/6658933338,Inspire Health,personal_services,0,43.114653,-79.097024,0208.00,inside_polygon,1.118
+node/4274825687,Jenny's Nails,personal_services,0,43.089414,-79.113869,0207.00,inside_polygon,1.484
+node/6658933339,Lavish Nails & Spa,personal_services,0,43.114665,-79.096929,0208.00,inside_polygon,1.124
+node/6658778591,Listen Up!,personal_services,0,43.114575,-79.112276,0208.00,inside_polygon,0.911
+node/6659111297,Magicuts,personal_services,0,43.066125,-79.119555,0202.00,inside_polygon,1.449
+node/6658933300,Magicuts,personal_services,0,43.115888,-79.096771,0214.00,inside_polygon,1.138
+node/6658652276,Malibu Beach Tanning,personal_services,0,43.115267,-79.12519,0209.06,inside_polygon,0.623
+way/475720217,Manor Cleaners,personal_services,0,43.100311,-79.073517,0206.00,inside_polygon,0.074
+node/6659134120,Massage Addict,personal_services,0,43.07071,-79.126671,0209.03,inside_polygon,0.882
+node/6658778593,Massage Therapy Niagara,personal_services,0,43.114638,-79.110974,0208.00,inside_polygon,0.869
+node/6658933302,Milano's,personal_services,0,43.116014,-79.096773,0214.00,inside_polygon,1.124
+node/6658652272,Moda Hair Design,personal_services,0,43.115473,-79.125198,0209.06,inside_polygon,0.603
+node/6658835138,Nails Design,personal_services,0,43.114984,-79.099792,0208.00,inside_polygon,1.004
+node/6657882622,Niagara Vision,personal_services,0,43.104735,-79.113303,0208.00,inside_polygon,0.619
+node/10754713842,Original Gentleman’s Barbershop,personal_services,0,43.088698,-79.092327,0204.00,inside_polygon,0.848
+node/6658778586,Petite & Sweet Beauty BTQ,personal_services,0,43.114688,-79.112458,0208.00,inside_polygon,0.929
+node/6658649588,Petti Hair Salon,personal_services,0,43.105136,-79.110392,0208.00,inside_polygon,0.399
+node/6659074080,Phillip Anthony's Salon,personal_services,0,43.121946,-79.100061,0212.00,inside_polygon,0.571
+node/6659074084,Phoenix Nails,personal_services,0,43.122466,-79.100743,0212.00,inside_polygon,0.566
+node/6657970166,Polished Nails & Spa,personal_services,0,43.105199,-79.110704,0208.00,inside_polygon,0.414
+node/6659093816,Rose Nails,personal_services,0,43.06984,-79.111181,0203.02,inside_polygon,0.914
+node/6658652264,Subtle Images,personal_services,0,43.114172,-79.122896,0209.05,inside_polygon,1.067
+node/6657882614,Supercuts,personal_services,0,43.102834,-79.117919,0208.00,inside_polygon,1.049
+node/6657822532,The Body Shop,personal_services,0,43.087468,-79.121119,0209.04,inside_polygon,0.384
+node/7631057777,The White Birch,personal_services,0,43.059062,-79.051336,0201.00,inside_polygon,0.689
+node/6658988075,Tropical Nails,personal_services,0,43.11793,-79.09855,0214.00,inside_polygon,0.973
+node/7631057778,Wild Ink Studios,personal_services,0,43.059109,-79.051397,0201.00,inside_polygon,0.683
+node/6658652275,Yazz Cleaners,personal_services,0,43.115312,-79.125191,0209.06,inside_polygon,0.619
+way/428478837,Central Niagara Animal Hospital,pet,0,43.088989,-79.103935,0204.00,inside_polygon,0.633
+node/6659134123,Heartland Niagara Animal Hospital,pet,0,43.07115,-79.126644,0209.03,inside_polygon,0.833
+node/6659093820,McLeod Road Animal Clinic,pet,0,43.069839,-79.111507,0203.02,inside_polygon,0.939
+way/181027782,Niagara Falls Animal Medical Centre,pet,0,43.103818,-79.11016,0208.00,inside_polygon,0.496
+node/6658688816,Niagara Veterinary Services,pet,0,43.114286,-79.12582,0209.05,inside_polygon,0.997
+node/12718492411,Costco Pharmacy,pharmacy,0,43.066508,-79.127364,0202.00,inside_polygon,1.157
+node/10754713845,Goldencare Pharmacy,pharmacy,0,43.09006,-79.092508,0207.00,inside_polygon,0.751
+node/12909541891,Health Plus Pharmacy,pharmacy,0,43.089075,-79.100595,0204.00,inside_polygon,0.576
+node/2972136605,I.D.A.,pharmacy,0,43.056869,-79.052579,0201.00,inside_polygon,0.732
+node/10814579296,I.D.A.,pharmacy,0,43.059131,-79.049769,0201.00,inside_polygon,0.807
+node/6658702703,I.D.A.,pharmacy,0,43.11708,-79.122322,0209.06,inside_polygon,0.634
+node/6658933298,I.D.A.,pharmacy,0,43.116258,-79.096791,0214.00,inside_polygon,1.098
+node/10754713847,Niagara Urgent Care Pharmacy,pharmacy,0,43.089693,-79.091799,0207.00,inside_polygon,0.817
+node/6657970164,Pharmasave,pharmacy,0,43.105395,-79.112146,0208.00,inside_polygon,0.501
+node/7324366152,Pharmasave,pharmacy,0,43.089746,-79.137108,0210.01,inside_polygon,3.941
+node/6659093815,Remedy'sRx,pharmacy,0,43.06984,-79.111114,0203.02,inside_polygon,0.909
+node/4274831844,Rexall,pharmacy,0,43.08874,-79.102813,0204.00,inside_polygon,0.572
+node/6659055406,Shoppers Drug Mart,pharmacy,0,43.119236,-79.100958,0212.00,inside_polygon,0.391
+node/13454384826,Shoppers Drug Mart,pharmacy,0,43.099482,-79.074329,0206.00,inside_polygon,0.186
+way/179314009,Shoppers Drug Mart,pharmacy,0,43.099946,-79.124555,0209.05,inside_polygon,0.711
+way/401401333,Shoppers Drug Mart,pharmacy,0,43.090049,-79.104608,0207.00,inside_polygon,0.837
+node/12337663998,Walmart Pharmacy,pharmacy,0,43.067763,-79.118417,0202.00,inside_polygon,1.647
+node/1613500265,,restaurant,1,43.092461,-79.077134,0205.00,inside_polygon,0.295
+node/1613500272,,restaurant,1,43.092974,-79.078088,0205.00,inside_polygon,0.366
+node/9952659058,AG Inspired Cuisine,restaurant,1,43.09147,-79.079695,0205.00,inside_polygon,0.298
+node/4274845126,Afghan Horsemen Kabob,restaurant,0,43.089188,-79.103741,0204.00,inside_polygon,0.646
+node/3580474507,AlMac's Buffet,restaurant,1,43.089775,-79.084329,0205.00,inside_polygon,0.611
+way/428754957,All U Can Eat Breakfast Buffet,restaurant,1,43.081044,-79.083354,0205.00,inside_polygon,1.112
+node/8144178388,Antica Pizzeria & Ristorante,restaurant,1,43.091528,-79.07739,0205.00,inside_polygon,0.196
+node/7629964591,Applebee's,restaurant,1,43.080587,-79.082278,0205.00,inside_polygon,1.119
+node/10860808254,Applebee's,restaurant,1,43.091748,-79.075235,0205.00,inside_polygon,0.249
+node/7631057775,B-jays Restaurant,restaurant,0,43.059543,-79.050657,0201.00,inside_polygon,0.725
+node/12847369930,Backyard BBQ,restaurant,1,43.081103,-79.080209,0205.00,inside_polygon,1.008
+node/5743477186,Basell's Restaurant and Tavern,restaurant,0,43.103482,-79.072999,0206.00,inside_polygon,0.283
+node/10860808245,Benihana,restaurant,1,43.091686,-79.075207,0205.00,inside_polygon,0.245
+way/817083613,Betty’s Restaurant,restaurant,0,43.048568,-79.059476,0200.00,inside_polygon,5.054
+node/4795296139,Blue Falls Restaurant,restaurant,0,43.089605,-79.093797,0207.00,inside_polygon,0.742
+node/1613500243,Boston Pizza,restaurant,1,43.091088,-79.074805,0205.00,inside_polygon,0.215
+node/6657882615,Boston Pizza,restaurant,0,43.104823,-79.11214,0208.00,inside_polygon,0.533
+node/13646636235,Boston Pizza,restaurant,0,43.088417,-79.139897,0210.02,inside_polygon,1.636
+node/4204770191,Brasa,restaurant,1,43.082453,-79.083077,0205.00,inside_polygon,0.965
+node/4204774290,Brasa Brazilian Steakhouse,restaurant,1,43.083231,-79.083328,0205.00,inside_polygon,0.904
+node/4930493024,Casa Mia Ristorante,restaurant,0,43.1223,-79.099249,0214.00,inside_polygon,0.618
+node/6658702697,Casa d'Pizza,restaurant,0,43.117781,-79.12186,0209.06,inside_polygon,0.629
+node/12847276520,Casablanca Shisha,restaurant,1,43.090692,-79.078112,0205.00,inside_polygon,0.144
+way/455526513,Cat's,restaurant,0,43.114629,-79.109887,0208.00,inside_polygon,0.837
+node/10571457041,Charm's Jerk Hut,restaurant,0,43.089614,-79.101779,0207.00,inside_polygon,0.747
+node/12847322451,Cheetal Indian Cuisine,restaurant,1,43.088317,-79.08181,0205.00,inside_polygon,0.44
+node/12092673347,Chubbies Jamaican Cuisine,restaurant,1,43.09585,-79.072531,0205.00,inside_polygon,0.755
+node/5949692987,Chuck's Roadhouse,restaurant,1,43.089711,-79.081843,0205.00,inside_polygon,0.41
+node/4085302884,Club Italia,restaurant,0,43.13235,-79.137029,0210.01,inside_polygon,1.119
+node/439656008,Cocos,restaurant,1,43.083926,-79.082048,0205.00,inside_polygon,0.782
+node/11062399104,Comparu,restaurant,1,43.088022,-79.081844,0205.00,inside_polygon,0.456
+node/3580500093,Copacabana Brazilian Steak House,restaurant,1,43.079835,-79.082977,0205.00,inside_polygon,1.218
+node/3580500097,Corso,restaurant,1,43.083337,-79.083081,0205.00,inside_polygon,0.883
+node/12847276371,D Spot Dessert Cafe,restaurant,1,43.092685,-79.075366,0205.00,inside_polygon,0.339
+node/12847336613,Delhi Junction,restaurant,1,43.089357,-79.081582,0205.00,inside_polygon,0.392
+way/401354716,Denny's,restaurant,1,43.090121,-79.079783,0205.00,inside_polygon,0.245
+node/11137391234,Desi Road - Niagara Falls,restaurant,1,43.090347,-79.07866,0205.00,inside_polygon,0.162
+node/4274823890,Diner on the Lane,restaurant,0,43.088825,-79.117781,0209.04,inside_polygon,0.46
+node/6779119971,Dosa Boyz,restaurant,1,43.092517,-79.081543,0205.00,inside_polygon,0.488
+node/4277168650,East Side Mario's,restaurant,1,43.081756,-79.082947,0205.00,inside_polygon,1.026
+node/4275714688,Eastern Buffet,restaurant,0,43.089541,-79.106352,0207.00,inside_polygon,0.976
+way/428487616,Eighty Eight,restaurant,1,43.090403,-79.084689,0205.00,inside_polygon,0.644
+node/10814803995,Falls Deli,restaurant,1,43.082845,-79.079611,0205.00,inside_polygon,0.808
+way/374827328,Family Restaurant,restaurant,1,43.091612,-79.074821,0205.00,inside_polygon,0.256
+node/6658835103,Far East Restaurant,restaurant,0,43.114935,-79.105264,0208.00,inside_polygon,0.837
+way/428483843,Flying Saucer Restaurant,restaurant,0,43.08874,-79.108191,0204.00,inside_polygon,0.828
+node/9103984815,Fork You,restaurant,0,43.115004,-79.065646,0215.00,inside_polygon,0.867
+way/694614015,Four Brothers Cucina Truly Authentic Italian,restaurant,1,43.089733,-79.081434,0205.00,inside_polygon,0.376
+node/7799181567,Freshii,restaurant,1,43.090717,-79.073036,0205.00,inside_polygon,0.322
+node/14143196402,Frontier BQQ & Smokehouse,restaurant,1,43.080598,-79.084732,0204.00,inside_polygon,1.327
+node/11967138176,Gabriele's Hungarian Style Cabbage Rolls & More,restaurant,0,43.057061,-79.052098,0201.00,inside_polygon,0.748
+node/10816822388,Grand Buffet,restaurant,1,43.083113,-79.080096,0205.00,inside_polygon,0.792
+node/11092523405,Grand Central Bar & Grill,restaurant,0,43.106768,-79.06891,0215.00,inside_polygon,0.83
+node/9193194065,Halibut House Fish & Chips,restaurant,0,43.065318,-79.125046,0202.00,inside_polygon,1.111
+node/3782067966,Hard Rock Cafe,restaurant,1,43.091367,-79.072118,0205.00,inside_polygon,0.417
+way/817078030,Hi-Lite Restaurant,restaurant,0,43.106395,-79.068015,0215.00,inside_polygon,0.909
+node/3078326822,Hooters,restaurant,1,43.089466,-79.08036,0205.00,inside_polygon,0.292
+node/4036690486,IHOP,restaurant,0,43.088745,-79.122222,0209.04,inside_polygon,0.221
+node/4037851461,IHOP,restaurant,1,43.081841,-79.082937,0205.00,inside_polygon,1.018
+node/4037851463,IHOP,restaurant,1,43.087118,-79.084984,0204.00,inside_polygon,1.305
+node/6522342333,IHOP,restaurant,1,43.09179,-79.075165,0205.00,inside_polygon,0.256
+node/12847559331,IHOP,restaurant,1,43.085376,-79.083972,0205.00,inside_polygon,0.764
+node/2993024885,Inchins Indian Kitchen,restaurant,1,43.088878,-79.081436,0205.00,inside_polygon,0.391
+node/4930521821,Italian ice cream,restaurant,1,43.095683,-79.072737,0205.00,inside_polygon,0.731
+node/12847559520,Japanese Restaurant Yukiguni,restaurant,1,43.087988,-79.082983,0205.00,inside_polygon,0.542
+node/6658652267,Jasmine Chinese Cuisine,restaurant,0,43.115526,-79.122959,0209.06,inside_polygon,0.706
+node/4355020611,Joe&Laurie's Restaurant,restaurant,0,43.089346,-79.126217,0209.04,inside_polygon,0.311
+way/708617559,John's Restaurant,restaurant,0,43.115448,-79.105143,0212.00,inside_polygon,0.39
+node/4274824245,Johnny Rocco's Italian Grill,restaurant,0,43.089494,-79.11036,0207.00,inside_polygon,1.234
+node/1613500249,Kelsey's,restaurant,1,43.091727,-79.076162,0205.00,inside_polygon,0.218
+node/10814765014,Korean Garden,restaurant,1,43.07157,-79.083958,0203.01,inside_polygon,0.671
+node/12092673350,Kothu Labs,restaurant,1,43.095656,-79.072548,0205.00,inside_polygon,0.735
+node/6538473128,Koutouki,restaurant,0,43.089674,-79.090099,0207.00,inside_polygon,0.907
+node/13989071121,La Paisana Restaurante,restaurant,0,43.13045,-79.100489,0213.00,inside_polygon,0.486
+node/14073373701,La Ramona Cantina,restaurant,1,43.087922,-79.085149,0204.00,inside_polygon,1.32
+way/816695950,La Revolución Taqueria,restaurant,0,43.118824,-79.099785,0212.00,inside_polygon,0.485
+node/6658988073,Lucky Dragon,restaurant,0,43.117804,-79.098715,0214.00,inside_polygon,0.991
+node/13955812520,Lutong Pinoy,restaurant,0,43.108513,-79.060832,0215.00,inside_polygon,1.279
+way/401330396,Magnolia,restaurant,0,43.08859,-79.124715,0209.03,inside_polygon,1.13
+node/11137391233,Mama Mia's,restaurant,1,43.091166,-79.078076,0205.00,inside_polygon,0.182
+node/2926902024,Mandarin,restaurant,0,43.067291,-79.125696,0202.00,inside_polygon,1.285
+node/11167349924,Margaritaville,restaurant,1,43.08375,-79.082578,0205.00,inside_polygon,0.822
+node/4274825017,Micah,restaurant,0,43.089451,-79.108925,0207.00,inside_polygon,1.141
+node/6658933337,Michinoku,restaurant,0,43.114649,-79.097122,0208.00,inside_polygon,1.112
+node/4274844578,Mick & Angelo's eatery & bar,restaurant,0,43.08867,-79.12375,0209.03,inside_polygon,1.157
+node/6658652265,Mojito House,restaurant,0,43.11414,-79.12281,0209.05,inside_polygon,1.067
+way/345578009,Moksha Indian Bistro,restaurant,1,43.087912,-79.085174,0204.00,inside_polygon,1.318
+way/429312257,My Cousin Vinny's,restaurant,1,43.080669,-79.083752,0205.00,inside_polygon,1.164
+node/9103854669,Napoli Ristorante & Pizza,restaurant,0,43.089681,-79.085164,0207.00,inside_polygon,1.215
+node/9952740428,New York Restaurant,restaurant,1,43.092534,-79.076832,0205.00,inside_polygon,0.302
+node/9103887344,Niku Japanese BBQ,restaurant,1,43.089442,-79.081104,0205.00,inside_polygon,0.352
+node/11413623613,Noodle Bar,restaurant,1,43.082306,-79.079851,0205.00,inside_polygon,0.871
+node/12847716485,Original Clancy’s Sports Bar & Restaurant,restaurant,0,43.098551,-79.086185,0207.00,inside_polygon,0.99
+node/3580500096,Outback Steakhouse,restaurant,1,43.079103,-79.08367,0203.01,inside_polygon,0.753
+node/4037900871,Outback Steakhouse,restaurant,1,43.09015,-79.079005,0205.00,inside_polygon,0.183
+node/7152741189,Palms Shawarma and Mediterranean Cafe,restaurant,0,43.088953,-79.107473,0204.00,inside_polygon,0.801
+node/12847358185,Paramount,restaurant,1,43.08166,-79.079957,0205.00,inside_polygon,0.943
+way/817077519,Paris Crêpes Café,restaurant,0,43.106911,-79.069603,0215.00,inside_polygon,0.781
+node/3580479194,Passage to India Buffet,restaurant,1,43.086204,-79.084907,0204.00,inside_polygon,1.287
+node/6659074075,Pasta Fresca,restaurant,0,43.121073,-79.100566,0212.00,inside_polygon,0.484
+node/6658699783,Pho My Tan Ky,restaurant,0,43.114679,-79.112685,0208.00,inside_polygon,0.938
+node/6658652278,Pho Vietnam 3969 Restaurant,restaurant,0,43.115002,-79.125168,0209.06,inside_polygon,0.65
+node/6604076286,Pho Xylo,restaurant,0,43.079203,-79.095827,0204.00,inside_polygon,0.643
+node/7324366150,Pho Ying,restaurant,0,43.089801,-79.136832,0210.01,inside_polygon,3.931
+node/9103862774,Pizza Hut,restaurant,1,43.090363,-79.079167,0205.00,inside_polygon,0.201
+way/179320975,Pizza Hut,restaurant,0,43.088885,-79.099584,0204.00,inside_polygon,0.559
+node/10967766145,Potato Jackets,restaurant,1,43.090184,-79.084689,0205.00,inside_polygon,0.642
+node/7799217284,Prime Steakhouse,restaurant,1,43.091776,-79.071595,0205.00,inside_polygon,0.475
+node/12144764001,Punjabi Chaap Corner,restaurant,0,43.079178,-79.097028,0204.00,inside_polygon,0.594
+node/2778535686,Queen Victoria Place Restaurant,restaurant,0,43.083152,-79.078208,0205.00,inside_polygon,0.75
+node/13988938177,Queen's Coach Family Restaurant,restaurant,0,43.131221,-79.100438,0213.00,inside_polygon,0.505
+way/440870365,RG. Kitchen,restaurant,0,43.101091,-79.072825,0206.00,inside_polygon,0.035
+node/2395340229,Rainforest Cafe,restaurant,1,43.091131,-79.073119,0205.00,inside_polygon,0.333
+node/12068096197,Rajdhani Sweets and Restaurant,restaurant,1,43.092596,-79.075521,0205.00,inside_polygon,0.326
+way/401401332,Red Lobster,restaurant,0,43.089002,-79.098177,0204.00,inside_polygon,0.596
+node/10859358923,Reds Kitchen and Wine Bar,restaurant,1,43.081489,-79.080907,0205.00,inside_polygon,0.985
+node/4839838091,Remingtons of Niagara,restaurant,1,43.092884,-79.075022,0205.00,inside_polygon,0.37
+node/7631057776,Riverside Tavern,restaurant,0,43.059723,-79.050756,0201.00,inside_polygon,0.712
+node/10754713832,Royal Dosa Hut,restaurant,0,43.089615,-79.093608,0207.00,inside_polygon,0.748
+node/12068092688,Royal Paan,restaurant,1,43.092853,-79.077106,0205.00,inside_polygon,0.338
+node/7127082193,STK Steakhouse,restaurant,1,43.079473,-79.081716,0205.00,inside_polygon,1.218
+node/4355103601,Sandstone Grillhouse,restaurant,1,43.095427,-79.07311,0205.00,inside_polygon,0.692
+node/8144178438,Score Pizza,restaurant,1,43.092284,-79.076042,0205.00,inside_polygon,0.281
+node/12348935016,Shelby's Legendary Shwarma,restaurant,0,43.070529,-79.097246,0203.02,inside_polygon,0.439
+node/9952708934,Shiv Kirti Chef of India Authentic Indian Cuisine,restaurant,1,43.091136,-79.080361,0205.00,inside_polygon,0.324
+node/3522188621,Shoeless Joe's,restaurant,1,43.083297,-79.082415,0205.00,inside_polygon,0.857
+node/12847293255,Shooks A Taste of Jamaica,restaurant,1,43.088038,-79.081799,0205.00,inside_polygon,0.452
+node/930387023,Sky Grill,restaurant,0,43.061977,-79.075897,0201.00,inside_polygon,1.355
+node/291675597,Skylon Tower,restaurant,1,43.085138,-79.079693,0205.00,inside_polygon,0.571
+node/12638645301,Skylon Tower Revolving Dining Room,restaurant,1,43.085024,-79.079954,0205.00,inside_polygon,0.592
+node/11137391227,Spicy Olive Bar + Grille,restaurant,1,43.092353,-79.076952,0205.00,inside_polygon,0.282
+node/12128828179,Stacked Pancake & Breakfast House,restaurant,0,43.069742,-79.10929,0203.02,inside_polygon,0.765
+node/11180917644,Stacked Pancake & Breakfast House,restaurant,0,43.103671,-79.114246,0208.00,inside_polygon,0.747
+node/7617193594,Strada West,restaurant,0,43.089337,-79.128002,0209.04,inside_polygon,0.444
+node/6659134119,Sunset Grill,restaurant,0,43.07061,-79.126669,0209.03,inside_polygon,0.893
+way/401401339,Swiss Chalet,restaurant,0,43.08886,-79.106477,0204.00,inside_polygon,0.738
+node/4274824249,Syndicate Restaurant,restaurant,0,43.089471,-79.109892,0207.00,inside_polygon,1.204
+node/3580500098,TGI Fridays,restaurant,1,43.079388,-79.082166,0205.00,inside_polygon,1.239
+node/5420831621,Table Rock House Restaurant,restaurant,0,43.078841,-79.078713,0203.01,inside_polygon,1.084
+node/4930493022,Taki japanese restaurant,restaurant,1,43.094745,-79.072603,0205.00,inside_polygon,0.645
+way/475719771,Taku Sushi and Ramen,restaurant,0,43.098319,-79.073255,0206.00,inside_polygon,0.291
+node/4930493023,Taps on Queen,restaurant,0,43.106498,-79.070926,0215.00,inside_polygon,0.757
+node/4274845125,Taste of Bombay,restaurant,0,43.089372,-79.090627,0204.00,inside_polygon,1.003
+node/6887423585,The Blind Pig Niagara,restaurant,0,43.0896,-79.106722,0207.00,inside_polygon,0.993
+way/293599034,The Boathouse,restaurant,0,43.060366,-79.052953,0201.00,inside_polygon,0.522
+node/9952740429,The Dhaba on the Falls Indian Cuisine,restaurant,1,43.092636,-79.076918,0205.00,inside_polygon,0.313
+node/11137391219,The Falls Café,restaurant,1,43.093094,-79.074686,0205.00,inside_polygon,0.402
+node/11062423278,The Flour Mill,restaurant,1,43.086792,-79.081823,0205.00,inside_polygon,0.529
+node/11137391224,The Guru Fine Indian Cuisine,restaurant,1,43.092473,-79.075714,0205.00,inside_polygon,0.308
+node/3580491969,The Keg,restaurant,1,43.089518,-79.079983,0205.00,inside_polygon,0.261
+node/2994022297,The Regal Diner,restaurant,0,43.088808,-79.092357,0204.00,inside_polygon,0.854
+node/12093798172,The Secret Garden Restaurant,restaurant,1,43.091,-79.071069,0205.00,inside_polygon,0.484
+node/8144178439,The Works,restaurant,1,43.092342,-79.075953,0205.00,inside_polygon,0.289
+node/3580532626,Tony Roma's,restaurant,1,43.078354,-79.082539,0203.01,inside_polygon,0.782
+node/4274834658,VIP Korean Restaurant,restaurant,0,43.089645,-79.089096,0207.00,inside_polygon,0.966
+node/11137391221,Virsa Fine Indian Cuisine,restaurant,1,43.092798,-79.075202,0205.00,inside_polygon,0.356
+node/9893595869,Vittorio’s Italian Eatery,restaurant,1,43.081744,-79.080213,0205.00,inside_polygon,0.94
+node/11137391220,Weinkeller,restaurant,1,43.093301,-79.074329,0205.00,inside_polygon,0.436
+node/5546174721,Whirlpool Restaurant,restaurant,0,43.124928,-79.069709,0210.01,inside_polygon,4.75
+way/345576734,Young Garden Authentic Korean Cuisine,restaurant,1,43.086845,-79.085032,0204.00,inside_polygon,1.293
+node/12057718069,Zappi's Pizza & Pasta,restaurant,1,43.078693,-79.084412,0203.01,inside_polygon,0.677
+node/3580477714,bravo! grill,restaurant,1,43.089414,-79.083999,0205.00,inside_polygon,0.586
+node/4274823512,wind Japanese Thai,restaurant,0,43.089354,-79.116896,0209.04,inside_polygon,0.505
+way/1489194821,,retail_other,0,43.054806,-79.133201,0202.00,inside_polygon,0.233
+way/1143822192,,retail_other,1,43.09233,-79.074711,0205.00,inside_polygon,0.327
+node/6657822509,Adidas,retail_other,0,43.086964,-79.119679,0209.04,inside_polygon,0.487
+node/11137391223,Allways Antique Photo,retail_other,1,43.092642,-79.075432,0205.00,inside_polygon,0.333
+node/6658835087,Bazaar Istanbul Turkish Market,retail_other,0,43.114743,-79.109448,0208.00,inside_polygon,0.839
+node/6659134122,Bell,retail_other,0,43.07122,-79.12664,0209.03,inside_polygon,0.825
+node/6658988072,Bell,retail_other,0,43.117801,-79.098786,0214.00,inside_polygon,0.994
+node/4274826609,Big B Comics,retail_other,0,43.089541,-79.102486,0207.00,inside_polygon,0.781
+node/4275722382,Big B Comics,retail_other,0,43.089601,-79.106615,0207.00,inside_polygon,0.987
+node/6658778594,Bloomers,retail_other,0,43.114639,-79.110893,0208.00,inside_polygon,0.867
+node/6658835086,CAA,retail_other,0,43.114749,-79.108994,0208.00,inside_polygon,0.83
+node/12847567470,Canadian Ride,retail_other,1,43.086717,-79.083357,0205.00,inside_polygon,0.634
+node/4274825611,Cash Money,retail_other,0,43.088958,-79.107409,0204.00,inside_polygon,0.798
+node/10754713824,Cash Money,retail_other,0,43.089327,-79.092404,0204.00,inside_polygon,0.889
+node/9001134771,Clover Therapetic Wellness Centre,retail_other,0,43.058904,-79.050639,0201.00,inside_polygon,0.748
+node/6657822517,Couture Perfumes,retail_other,0,43.086824,-79.119668,0209.04,inside_polygon,0.501
+node/9103879318,Discount,retail_other,1,43.091248,-79.084729,0205.00,inside_polygon,0.663
+way/475720222,Dobbie's Florist,retail_other,0,43.099825,-79.072711,0206.00,inside_polygon,0.13
+node/6657882613,EB Games,retail_other,0,43.102746,-79.117922,0208.00,inside_polygon,1.054
+node/6659074079,Elite Travel Agency,retail_other,0,43.121898,-79.100059,0212.00,inside_polygon,0.568
+node/6658702702,Expedia CruiseShipCenters,retail_other,0,43.118603,-79.121778,0209.06,inside_polygon,0.603
+node/6657882621,Expedia Cruises,retail_other,0,43.104738,-79.113212,0208.00,inside_polygon,0.612
+node/6658933303,Fiction Addiction,retail_other,0,43.116074,-79.096774,0214.00,inside_polygon,1.118
+node/6657882617,GNC,retail_other,0,43.104756,-79.112519,0208.00,inside_polygon,0.563
+node/6659055410,Global Pet Foods,retail_other,0,43.119773,-79.101263,0212.00,inside_polygon,0.377
+node/6657970168,Goodwill,retail_other,0,43.105072,-79.109702,0208.00,inside_polygon,0.364
+node/5286538786,Kandu Pools,retail_other,0,43.107924,-79.098282,0208.00,inside_polygon,0.683
+node/10816481715,Lockers,retail_other,1,43.091092,-79.076739,0205.00,inside_polygon,0.142
+way/428484054,Love Shop,retail_other,0,43.088953,-79.104683,0204.00,inside_polygon,0.659
+node/6629576588,Michaels,retail_other,0,43.067662,-79.124315,0202.00,inside_polygon,1.369
+node/6659093812,Money Mart,retail_other,0,43.070178,-79.11178,0203.02,inside_polygon,0.972
+node/6658933299,Money Mart,retail_other,0,43.116178,-79.09678,0214.00,inside_polygon,1.107
+node/10754713826,Money Mart,retail_other,0,43.089628,-79.092588,0207.00,inside_polygon,0.787
+way/817078719,Niagara City Cruises Group Booth,retail_other,0,43.089301,-79.072125,0205.00,inside_polygon,0.384
+way/1425944761,Niagara City Cruises Ticket Kiosks,retail_other,0,43.088749,-79.073921,0205.00,inside_polygon,0.262
+node/10673727174,Niagara Coin & Collectibles,retail_other,0,43.102688,-79.072961,0206.00,inside_polygon,0.195
+way/158230900,Niagara Duty Free Hors Taxes,retail_other,1,43.091473,-79.070881,0205.00,inside_polygon,0.515
+way/345575283,Niagara Parks Welcome Centre,retail_other,0,43.083928,-79.078223,0205.00,inside_polygon,0.665
+node/9893500400,Niagara Parks Welcome Centre,retail_other,0,43.07793,-79.079631,0203.01,inside_polygon,0.976
+node/1892287106,Niagara SkyWheel,retail_other,1,43.091305,-79.075034,0205.00,inside_polygon,0.219
+node/10816481714,Niagara Speedway tickets,retail_other,1,43.091056,-79.076708,0205.00,inside_polygon,0.138
+way/1425944760,Nigara City Cruises Ticket Booth,retail_other,0,43.088758,-79.073806,0205.00,inside_polygon,0.27
+node/10754713831,PAY2DAY,retail_other,0,43.089361,-79.093673,0204.00,inside_polygon,0.819
+node/6658835136,Party Connnection,retail_other,0,43.114989,-79.09999,0208.00,inside_polygon,0.996
+node/6657882618,Paulmac's Pets,retail_other,0,43.104758,-79.112613,0208.00,inside_polygon,0.57
+node/5743519422,Pedlar Bicycle Shop,retail_other,0,43.106788,-79.068368,0215.00,inside_polygon,0.858
+node/10923511859,Perfect Pooches Dog Grooming,retail_other,0,43.130408,-79.099579,0214.00,inside_polygon,0.72
+node/6658988079,Pet Valu,retail_other,0,43.118322,-79.098562,0214.00,inside_polygon,0.934
+node/7324366153,Pet Valu,retail_other,0,43.089605,-79.137192,0210.01,inside_polygon,3.957
+node/6659111293,PetSmart,retail_other,0,43.066069,-79.120753,0202.00,inside_polygon,1.38
+node/6659111295,Sally Beauty,retail_other,0,43.066333,-79.119544,0202.00,inside_polygon,1.467
+node/9104011908,Simon’s Restaurant,retail_other,0,43.10853,-79.060324,0215.00,inside_polygon,1.318
+node/10754713827,Skooterz,retail_other,0,43.089631,-79.092484,0207.00,inside_polygon,0.792
+node/6659055409,Source For Sports,retail_other,0,43.119702,-79.101258,0212.00,inside_polygon,0.375
+node/10571468500,Stag Shop,retail_other,0,43.089582,-79.102106,0207.00,inside_polygon,0.762
+node/4715157656,Stanley Self Storage,retail_other,0,43.120978,-79.086765,0214.00,inside_polygon,0.757
+node/1885230914,Staples,retail_other,0,43.103496,-79.117774,0208.00,inside_polygon,1.004
+node/11137391244,TGI Fridays,retail_other,1,43.08994,-79.079266,0205.00,inside_polygon,0.201
+node/9103880029,Thai Express,retail_other,1,43.089439,-79.082007,0205.00,inside_polygon,0.425
+node/6659074078,The Flower House,retail_other,0,43.121843,-79.100054,0212.00,inside_polygon,0.565
+node/3580466193,Tickets & Reservations,retail_other,1,43.083854,-79.08026,0205.00,inside_polygon,0.72
+node/7084520547,U-Haul,retail_other,0,43.106496,-79.120612,0209.05,inside_polygon,0.665
+way/178404713,Value Village,retail_other,0,43.088642,-79.099069,0204.00,inside_polygon,0.539
+node/9103880028,Villa Madina,retail_other,1,43.089441,-79.081925,0205.00,inside_polygon,0.418
+node/10754713830,Vincent's,retail_other,0,43.089355,-79.093271,0204.00,inside_polygon,0.841
+node/6658988077,Worldwide Travel One,retail_other,0,43.118055,-79.098553,0214.00,inside_polygon,0.961
+node/6657882607,easyfinancial,retail_other,0,43.103174,-79.116309,0208.00,inside_polygon,0.917
+node/13454384872,Chippawa Canada Post,services,0,43.058062,-79.0502,0201.00,inside_polygon,0.818
+node/4355020610,Lundy's Lane Canada Post,services,0,43.090154,-79.104461,0207.00,inside_polygon,0.82
+node/13454384857,Montrose Road Canada Post,services,0,43.100013,-79.12438,0209.05,inside_polygon,0.711
+way/817077529,Niagara Falls Canada Post,services,0,43.10633,-79.067364,0215.00,inside_polygon,0.951
+node/6659093813,The UPS Store,services,0,43.070188,-79.111871,0203.02,inside_polygon,0.979
+node/6658699782,The UPS Store,services,0,43.114669,-79.112765,0208.00,inside_polygon,0.94
+node/13454384824,Victoria Avenue Canada Post,services,0,43.099348,-79.074502,0206.00,inside_polygon,0.206
+node/2395362371,,souvenir_gift,0,43.065154,-79.073014,0201.00,inside_polygon,1.198
+node/2778535689,,souvenir_gift,0,43.083225,-79.078156,0205.00,inside_polygon,0.742
+node/5732520721,,souvenir_gift,0,43.117938,-79.068585,0215.00,inside_polygon,0.848
+node/12847358209,,souvenir_gift,1,43.084977,-79.079435,0205.00,inside_polygon,0.579
+node/11137391226,Bargain World,souvenir_gift,1,43.092551,-79.075584,0205.00,inside_polygon,0.319
+node/7799193938,Blue Moose Trading Co.,souvenir_gift,1,43.091378,-79.074441,0205.00,inside_polygon,0.258
+node/10648007239,Canada Trading Company,souvenir_gift,1,43.091394,-79.075406,0205.00,inside_polygon,0.208
+node/7799201744,Canadian Gifts Marketplace,souvenir_gift,1,43.090669,-79.073117,0205.00,inside_polygon,0.314
+node/9952659059,Centre Gift Shop,souvenir_gift,1,43.092288,-79.076474,0205.00,inside_polygon,0.276
+node/12847310422,Fudge Factory,souvenir_gift,1,43.091019,-79.074515,0205.00,inside_polygon,0.228
+node/7799193939,Gags N Giggles,souvenir_gift,1,43.091353,-79.074385,0205.00,inside_polygon,0.26
+node/9104115117,Gift Shop,souvenir_gift,0,43.118942,-79.074906,0215.00,inside_polygon,0.736
+node/11137391237,Grand Bazaar,souvenir_gift,1,43.090743,-79.078589,0205.00,inside_polygon,0.178
+node/6657882620,Hallmark,souvenir_gift,0,43.104747,-79.112972,0208.00,inside_polygon,0.595
+node/12847231821,Henri’s Gift Shop,souvenir_gift,0,43.106313,-79.061054,0215.00,inside_polygon,1.365
+node/1885273468,Hershey's Chocolate World,souvenir_gift,1,43.092213,-79.071,0205.00,inside_polygon,0.541
+node/12847334586,La Coppa Nostra,souvenir_gift,1,43.091284,-79.077669,0205.00,inside_polygon,0.177
+node/8144178387,Match Ups,souvenir_gift,1,43.091597,-79.077174,0205.00,inside_polygon,0.2
+node/12847314709,Mirage Decor,souvenir_gift,1,43.091954,-79.07657,0205.00,inside_polygon,0.238
+node/12847285765,Niagara Falls Gifts,souvenir_gift,1,43.091192,-79.073844,0205.00,inside_polygon,0.284
+node/11137391243,Niagara Falls Souvenir Co.,souvenir_gift,1,43.090054,-79.079188,0205.00,inside_polygon,0.196
+way/1099467231,Niagara Parks Popup Shop,souvenir_gift,0,43.089459,-79.071889,0205.00,inside_polygon,0.401
+node/9972409992,Niagara Parks Power Station Gift Shop,souvenir_gift,0,43.074939,-79.078964,0203.01,inside_polygon,0.969
+node/11137391229,Niagara Souvenir Centre,souvenir_gift,1,43.092247,-79.076835,0205.00,inside_polygon,0.27
+node/9103880549,Pay Less Souvenirs,souvenir_gift,1,43.089402,-79.083111,0205.00,inside_polygon,0.515
+node/10571468499,Peoples Discount Souvenirs,souvenir_gift,0,43.089594,-79.101935,0207.00,inside_polygon,0.755
+node/11137391230,Rockworld,souvenir_gift,1,43.0922,-79.076771,0205.00,inside_polygon,0.265
+node/12093798171,Secret Garden Gifts,souvenir_gift,0,43.090943,-79.071318,0205.00,inside_polygon,0.462
+node/8144178380,Souvenir Mart,souvenir_gift,1,43.091716,-79.07697,0205.00,inside_polygon,0.211
+node/11137391236,Souvenir Outlet,souvenir_gift,1,43.09053,-79.078409,0205.00,inside_polygon,0.153
+node/4274832006,Souvenir Palace,souvenir_gift,0,43.089348,-79.087946,0204.00,inside_polygon,1.182
+node/8144178377,Super Discount Souvenirs,souvenir_gift,1,43.091918,-79.076653,0205.00,inside_polygon,0.234
+node/11137391225,Super Souvenirs,souvenir_gift,1,43.092517,-79.075645,0205.00,inside_polygon,0.314
+node/9972969076,Table Rock Shop,souvenir_gift,0,43.079248,-79.078872,0203.01,inside_polygon,1.091
+node/4530787363,The Great Niagara Falls Gift Shop,souvenir_gift,1,43.07951,-79.082978,0205.00,inside_polygon,1.251
+node/7799217291,The Mounted Police Trading Post,souvenir_gift,1,43.091943,-79.071339,0205.00,inside_polygon,0.502
+node/8144178437,Canna Cabana,tobacco_cannabis,1,43.092175,-79.076206,0205.00,inside_polygon,0.266
+node/9193194093,Choom,tobacco_cannabis,0,43.065731,-79.123508,0202.00,inside_polygon,1.215
+node/13454384833,Cigar Experience,tobacco_cannabis,0,43.099883,-79.073367,0206.00,inside_polygon,0.118
+node/5949693489,Cuban Cigar Studio,tobacco_cannabis,1,43.089685,-79.082963,0205.00,inside_polygon,0.501
+node/12092673349,High Life,tobacco_cannabis,1,43.095807,-79.072529,0205.00,inside_polygon,0.751
+node/8144178376,House of Cuban Cigars,tobacco_cannabis,1,43.091984,-79.076519,0205.00,inside_polygon,0.242
+node/4274824206,Kick Ash Vapes,tobacco_cannabis,0,43.089453,-79.110978,0207.00,inside_polygon,1.278
+node/4274826257,Offside Cannabis,tobacco_cannabis,0,43.088773,-79.102621,0204.00,inside_polygon,0.57
+node/5949678686,Pot Spot,tobacco_cannabis,1,43.089711,-79.082872,0205.00,inside_polygon,0.493
+way/428748192,Stok’d Cannabis,tobacco_cannabis,1,43.091502,-79.084594,0205.00,inside_polygon,0.66
+node/6658933301,The Hunny Pot Cannabis Co.,tobacco_cannabis,0,43.115957,-79.096774,0214.00,inside_polygon,1.131

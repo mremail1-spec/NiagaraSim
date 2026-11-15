@@ -1,0 +1,85 @@
+{
+ "_meta": {
+  "source": "Statistics Canada table 14-10-0204-01, average weekly earnings including overtime, all employees, Ontario, 2025, by NAICS sector",
+  "note": "Sector 11 (agriculture) is outside the survey; the model uses the industrial aggregate (1339.70) for it.",
+  "industrial_aggregate": 1339.7
+ },
+ "sectors": {
+  "21": {
+   "industry": "Mining, quarrying, and oil and gas extraction",
+   "avg_weekly_earnings": 2230.61
+  },
+  "23": {
+   "industry": "Construction",
+   "avg_weekly_earnings": 1583.46
+  },
+  "31-33": {
+   "industry": "Manufacturing",
+   "avg_weekly_earnings": 1383.78
+  },
+  "41": {
+   "industry": "Wholesale trade",
+   "avg_weekly_earnings": 1564.67
+  },
+  "44-45": {
+   "industry": "Retail trade",
+   "avg_weekly_earnings": 739.2
+  },
+  "48-49": {
+   "industry": "Transportation and warehousing",
+   "avg_weekly_earnings": 1315.93
+  },
+  "51": {
+   "industry": "Information and cultural industries",
+   "avg_weekly_earnings": 2049.96
+  },
+  "52": {
+   "industry": "Finance and insurance",
+   "avg_weekly_earnings": 1846.14
+  },
+  "53": {
+   "industry": "Real estate and rental and leasing",
+   "avg_weekly_earnings": 1435.44
+  },
+  "56": {
+   "industry": "Administrative and support, waste management and remediation services",
+   "avg_weekly_earnings": 1080.83
+  },
+  "62": {
+   "industry": "Health care and social assistance",
+   "avg_weekly_earnings": 1186.76
+  },
+  "71": {
+   "industry": "Arts, entertainment and recreation",
+   "avg_weekly_earnings": 745.85
+  },
+  "72": {
+   "industry": "Accommodation and food services",
+   "avg_weekly_earnings": 508.88
+  },
+  "81": {
+   "industry": "Other services (except public administration)",
+   "avg_weekly_earnings": 1146.84
+  },
+  "91": {
+   "industry": "Public administration",
+   "avg_weekly_earnings": 1784.72
+  },
+  "22": {
+   "industry": "Utilities",
+   "avg_weekly_earnings": 2217.02
+  },
+  "54": {
+   "industry": "Professional, scientific and technical services",
+   "avg_weekly_earnings": 1936.66
+  },
+  "55": {
+   "industry": "Management of companies and enterprises",
+   "avg_weekly_earnings": 1776.26
+  },
+  "61": {
+   "industry": "Educational services",
+   "avg_weekly_earnings": 1360.18
+  }
+ }
+}

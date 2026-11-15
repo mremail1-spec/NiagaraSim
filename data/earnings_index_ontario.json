@@ -1,0 +1,2 @@
+{"_meta": {"source": "Statistics Canada table 14-10-0204-01, average weekly earnings including overtime, all employees, industrial aggregate excluding unclassified businesses, Ontario, annual", "use": "Scale 2020 census incomes to the simulated year: income_year = income_2020 x weekly[year] / weekly[2020]"},
+ "avg_weekly_earnings_cad": {"2019": 1048.82, "2020": 1125.30, "2021": 1164.83, "2022": 1192.64, "2023": 1231.40, "2024": 1292.55, "2025": 1339.70}}

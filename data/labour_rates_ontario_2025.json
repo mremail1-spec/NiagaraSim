@@ -1,0 +1,4 @@
+{"_meta": {"source": "Statistics Canada table 14-10-0327-01, Labour Force Survey annual, Ontario, 2025, total gender", "use": "Probability a person of a given age is employed; city-level check against CRA filers and census labour force."},
+ "employment_rate_pct": {"15_19": 33.2, "20_24": 64.4, "25_29": 80.0, "30_34": 82.4, "35_39": 82.4, "40_44": 83.4, "45_49": 82.7, "50_54": 80.4, "55_59": 73.1, "60_64": 55.3, "65_69": 30.2, "70_plus": 8.1},
+ "participation_rate_pct": {"15_19": 42.9, "20_24": 74.0, "25_29": 87.9, "30_34": 89.0, "35_39": 87.4, "40_44": 88.1, "45_49": 87.9, "50_54": 85.3, "55_59": 77.3, "60_64": 59.0, "65_69": 31.2, "70_plus": 8.4},
+ "all_15_plus": {"employment_rate_pct": 60.0, "participation_rate_pct": 65.0, "unemployment_rate_pct": 7.7}}

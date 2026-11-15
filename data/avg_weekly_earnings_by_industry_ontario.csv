@@ -1,0 +1,166 @@
+naics,industry,avg_weekly_earnings_2025,annualized
+21,"Mining, quarrying, and oil and gas extraction",2230.61,115992
+212,Mining and quarrying (except oil and gas),2170.72,112877
+2123,Non-metallic mineral mining and quarrying,1761.48,91597
+2211,"Electric power generation, transmission and distribution",2268.35,117954
+23,Construction,1583.46,82340
+236,Construction of buildings,1571.04,81694
+2361,Residential building construction,1405.39,73080
+2362,Non-residential building construction,1795.13,93347
+237,Heavy and civil engineering construction,1902.11,98910
+2371,Utility system construction,1955.42,101682
+2373,"Highway, street and bridge construction",1823.37,94815
+2379,Other heavy and civil engineering construction,1911.13,99379
+238,Specialty trade contractors,1528.42,79478
+2382,Building equipment contractors,1611.16,83780
+2383,Building finishing contractors,1379.81,71750
+31-33,Manufacturing,1383.78,71957
+311,Food manufacturing,1100.21,57211
+3118,Bakeries and tortilla manufacturing,1039.23,54040
+312,Beverage and tobacco product manufacturing,1112.18,57833
+3121,Beverage manufacturing,1068.11,55542
+313,Textile mills,1291.3,67148
+3132,Fabric mills,1362.45,70847
+3133,Textile and fabric finishing and fabric coating,1200.56,62429
+314,Textile product mills,1082.09,56269
+3149,Other textile product mills,1087.38,56544
+315,Apparel manufacturing,979.22,50919
+316,Leather and allied product manufacturing,1049.23,54560
+322,Paper manufacturing,1575.0,81900
+3222,Converted paper product manufacturing,1514.58,78758
+325,Chemical manufacturing,1610.88,83766
+326,Plastics and rubber products manufacturing,1201.06,62455
+3261,Plastic product manufacturing,1200.33,62417
+321,Wood product manufacturing,1212.08,63028
+3219,Other wood product manufacturing,1173.4,61017
+327,Non-metallic mineral product manufacturing,1381.92,71860
+331,Primary metal manufacturing,1753.45,91179
+332,Fabricated metal product manufacturing,1384.13,71975
+3323,Architectural and structural metals manufacturing,1375.39,71520
+3327,"Machine shops, turned product, and screw, nut and bolt manufacturing",1396.42,72614
+333,Machinery manufacturing,1468.53,76364
+334,Computer and electronic product manufacturing,1615.6,84011
+335,"Electrical equipment, appliance and component manufacturing",1476.15,76760
+336,Transportation equipment manufacturing,1570.67,81675
+3361,Motor vehicle manufacturing,1916.63,99665
+3363,Motor vehicle parts manufacturing,1414.62,73560
+3364,Aerospace product and parts manufacturing,1737.49,90349
+337,Furniture and related product manufacturing,1181.93,61460
+3371,Household and institutional furniture and kitchen cabinet manufacturing,1123.36,58415
+339,Miscellaneous manufacturing,1301.99,67703
+3399,Other miscellaneous manufacturing,1303.73,67794
+41,Wholesale trade,1564.67,81363
+413,"Food, beverage and tobacco merchant wholesalers",1334.57,69398
+4131,Food merchant wholesalers,1336.95,69521
+414,Personal and household goods merchant wholesalers,1731.69,90048
+415,Motor vehicle and motor vehicle parts and accessories merchant wholesalers,1414.89,73574
+416,Building material and supplies merchant wholesalers,1326.2,68962
+4161,"Electrical, plumbing, heating and air-conditioning equipment and supplies merchant wholesalers",1391.27,72346
+4163,"Lumber, millwork, hardware and other building supplies merchant wholesalers",1277.27,66418
+417,"Machinery, equipment and supplies merchant wholesalers",1854.66,96442
+4172,"Construction, forestry, mining, and industrial machinery, equipment and supplies merchant wholesalers",1837.12,95530
+4179,"Other machinery, equipment and supplies merchant wholesalers",1771.88,92138
+418,Miscellaneous merchant wholesalers,1417.03,73686
+4189,Other miscellaneous merchant wholesalers,1261.79,65613
+44-45,Retail trade,739.2,38438
+441,Motor vehicle and parts dealers,1313.51,68303
+4411,Automobile dealers,1381.05,71815
+444,Building material and garden equipment and supplies dealers,813.52,42303
+4441,Building material and supplies dealers,802.09,41709
+445,Food and beverage retailers,570.8,29682
+4451,Grocery and convenience retailers,547.22,28455
+4452,Specialty food retailers,599.54,31176
+449,"Furniture, home furnishings, electronics and appliances retailers",1025.85,53344
+4491,"Furniture, floor covering, window treatment and other home furnishings retailers",969.0,50388
+4492,Electronics and appliances retailers,1129.39,58728
+455,General merchandise retailers,696.69,36228
+456,Health and personal care retailers,787.88,40970
+4561,Health and personal care retailers,787.88,40970
+457,Gasoline stations and fuel vendors,669.34,34806
+4571,Gasoline stations,595.87,30985
+458,"Clothing, clothing accessories, shoes, jewelry, luggage and leather goods retailers",516.2,26842
+4581,Clothing and clothing accessories retailers,511.26,26586
+459,"Sporting goods, hobby, musical instrument, book, and miscellaneous retailers",642.13,33391
+4591,"Sporting goods, hobby and musical instrument retailers",579.55,30137
+4599,Other miscellaneous store retailers,657.54,34192
+48-49,Transportation and warehousing,1315.93,68428
+484,Truck transportation,1249.52,64975
+4841,General freight trucking,1228.63,63889
+485,Transit and ground passenger transportation,1423.87,74041
+488,Support activities for transportation,1393.8,72478
+4885,Freight transportation arrangement,1352.83,70347
+492,Couriers and messengers,932.09,48469
+4921,Couriers,927.82,48247
+51,Information and cultural industries,2049.96,106598
+512,Motion picture and sound recording industries,1593.55,82865
+5121,Motion picture and video industries,1579.45,82131
+516,Broadcasting and content providers,1880.33,97777
+517,Telecommunications,1669.8,86830
+5179,Other telecommunications,1395.91,72587
+52,Finance and insurance,1846.14,95999
+522,Credit intermediation and related activities,1713.99,89127
+5221,Depository credit intermediation,1656.73,86150
+523,"Securities, commodity contracts, and other financial investment and related activities",2304.32,119825
+5239,Other financial investment activities,2291.17,119141
+524,Insurance carriers and related activities,1712.28,89039
+5241,Insurance carriers,1664.89,86574
+53,Real estate and rental and leasing,1435.44,74643
+531,Real estate,1425.35,74118
+5311,Lessors of real estate,1349.91,70195
+5312,Offices of real estate agents and brokers,1403.08,72960
+5313,Activities related to real estate,1544.6,80319
+532,Rental and leasing services,1425.82,74143
+5411,Legal services,1890.84,98324
+5412,"Accounting, tax preparation, bookkeeping and payroll services",1563.14,81283
+5413,"Architectural, engineering and related services",1823.16,94804
+5414,Specialized design services,1475.41,76721
+5415,Computer systems design and related services,2194.28,114103
+5416,"Management, scientific and technical consulting services",2096.19,109002
+5417,Scientific research and development services,2027.83,105447
+5418,"Advertising, public relations, and related services",1796.53,93420
+5419,"Other professional, scientific and technical services",1438.49,74801
+56,"Administrative and support, waste management and remediation services",1080.83,56203
+561,Administrative and support services,1052.49,54729
+5613,Employment services,1030.97,53610
+5614,Business support services,1159.84,60312
+5616,Investigation and security services,842.02,43785
+5617,Services to buildings and dwellings,891.37,46351
+5619,Other support services,1288.51,67003
+6111,Elementary and secondary schools,1458.33,75833
+6113,Universities,1355.4,70481
+62,Health care and social assistance,1186.76,61712
+621,Ambulatory health care services,1179.98,61359
+6211,Offices of physicians,1425.62,74132
+6212,Offices of dentists,1118.02,58137
+6213,Offices of other health practitioners,1040.05,54083
+6214,Out-patient care centres,1286.09,66877
+622,Hospitals,1473.19,76606
+6221,General medical and surgical hospitals,1468.91,76383
+623,Nursing and residential care facilities,918.81,47778
+6231,Nursing care facilities,966.58,50262
+624,Social assistance,1015.27,52794
+6241,Individual and family services,1088.38,56596
+6244,Child day-care services,852.22,44315
+71,"Arts, entertainment and recreation",745.85,38784
+711,"Performing arts, spectator sports and related industries",1043.51,54263
+7111,Performing arts companies,892.59,46415
+713,"Amusement, gambling and recreation industries",638.58,33206
+7139,Other amusement and recreation industries,615.92,32028
+72,Accommodation and food services,508.88,26462
+721,Accommodation services,696.52,36219
+7211,Traveller accommodation,695.51,36167
+722,Food services and drinking places,482.46,25088
+7225,Full-service restaurants and limited-service eating places,480.28,24975
+81,Other services (except public administration),1146.84,59636
+811,Repair and maintenance,1155.92,60108
+8111,Automotive repair and maintenance,1099.82,57191
+812,Personal and laundry services,775.14,40307
+8121,Personal care services,669.68,34823
+8122,Funeral services,1005.42,52282
+813,"Religious, grant-making, civic, and professional and similar organizations",1406.28,73127
+8132,Grant-making and giving services,1399.29,72763
+8139,"Business, professional, labour and other membership organizations",1695.84,88184
+91,Public administration,1784.72,92805
+911,Federal government public administration,2035.16,105828
+912,Provincial and territorial public administration,2023.17,105205
+913,"Local, municipal and regional public administration",1532.29,79679

@@ -1,0 +1,283 @@
+{
+ "_meta": {
+  "built": "2026-11-15",
+  "purpose": "Behavioural parameters for the spending model: when, how often, how and where residents and tourists spend.",
+  "sources": [
+   "Transportation Tomorrow Survey 2022 (Niagara Region residents)",
+   "StatCan 21-10-0019 food services sales, Ontario unadjusted 2023-2025",
+   "StatCan 20-10-0056 retail sales, Ontario unadjusted 2023-2025",
+   "StatCan 24-10-0053 international travellers by month, Ontario ports",
+   "Bank of Canada 2023 Methods-of-Payment Survey",
+   "StatCan retail e-commerce 2025-2026",
+   "Niagara Parks / Clifton Hill / Niagara City Cruises published 2026 prices",
+   "Head & Chandra (exchange-rate elasticity of border crossings); CTC exchange-rate study"
+  ]
+ },
+ "residents": {
+  "trips": {
+   "trips_per_day_region": 1030000,
+   "trips_per_person_5plus": 2.29,
+   "purpose_pct": {
+    "home_based_discretionary": 48,
+    "home_based_work": 25,
+    "home_based_school": 11,
+    "non_home_based": 16
+   },
+   "time_of_day_pct": {
+    "am_peak_6_9": 19.9,
+    "pm_peak_15_19": 33.8,
+    "other": 46.3
+   },
+   "mode_pct": {
+    "auto_driver": 70,
+    "auto_passenger": 17,
+    "walk_cycle": 7,
+    "transit_school_bus_other": 6
+   },
+   "median_driver_trip_km": 5.5,
+   "note": "Discretionary trips (shopping, eating out, errands, leisure) are the spending trips. 48% of 2.29 = ~1.1 discretionary trips per person per day."
+  },
+  "monthly_seasonality_index": {
+   "months": [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec"
+   ],
+   "restaurants": [
+    0.855,
+    0.84,
+    0.946,
+    0.954,
+    1.048,
+    1.066,
+    1.06,
+    1.077,
+    1.031,
+    1.042,
+    1.009,
+    1.071
+   ],
+   "retail": [
+    0.847,
+    0.825,
+    0.956,
+    0.994,
+    1.087,
+    1.043,
+    1.028,
+    1.029,
+    1.0,
+    1.034,
+    1.071,
+    1.084
+   ],
+   "basis": "Ontario unadjusted monthly sales 2023-2025, each month / annual monthly mean"
+  },
+  "payment": {
+   "cash_share_by_count": 0.2,
+   "cash_share_by_value": 0.11,
+   "contactless_share_in_person": 0.6,
+   "mobile_pay_share_2024": 0.05,
+   "online_share_by_volume": 0.14,
+   "online_share_by_value": 0.21,
+   "median_debit_txn_cad": 25,
+   "median_credit_txn_cad": 36,
+   "ecommerce_share_of_retail_2025": 0.061,
+   "ecommerce_share_of_retail_jun_2026": 0.077,
+   "leakage_note": "Online share is spending that leaves the local economy unless the seller is local."
+  },
+  "ontario_totals_2025": {
+   "food_services_sales_cad": 39400000000.0,
+   "retail_sales_cad": 319500000000.0
+  }
+ },
+ "tourists": {
+  "us_arrivals_ontario_monthly_pct_2025": {
+   "all_us_travellers": [
+    4.9,
+    4.6,
+    5.8,
+    6.5,
+    8.5,
+    11.8,
+    13.8,
+    13.4,
+    8.7,
+    8.6,
+    6.5,
+    7.1
+   ],
+   "us_overnight": [
+    4.2,
+    4.0,
+    5.3,
+    6.2,
+    8.6,
+    13.0,
+    15.1,
+    14.0,
+    8.6,
+    8.4,
+    5.7,
+    6.9
+   ],
+   "us_same_day": [
+    5.9,
+    5.3,
+    6.5,
+    6.8,
+    8.3,
+    10.2,
+    12.0,
+    12.5,
+    8.7,
+    8.8,
+    7.6,
+    7.3
+   ],
+   "us_by_car_overnight": [
+    3.8,
+    3.6,
+    4.7,
+    5.7,
+    8.5,
+    12.9,
+    16.6,
+    16.2,
+    8.2,
+    8.0,
+    5.3,
+    6.5
+   ],
+   "us_pedestrian": [
+    1.0,
+    0.7,
+    2.1,
+    4.0,
+    7.2,
+    28.8,
+    16.0,
+    15.1,
+    11.6,
+    8.6,
+    3.3,
+    1.7
+   ]
+  },
+  "us_arrivals_ontario_totals": {
+   "2019_excursionists_all": 6145730,
+   "2024_excursionists_all": 4703013,
+   "2025_excursionists_all": 4611055,
+   "2019_tourists_all": 7011142,
+   "2024_tourists_all": 6610009,
+   "2025_tourists_all": 6182956,
+   "2019_travellers_all": 13156872,
+   "2024_travellers_all": 11313022,
+   "2025_travellers_all": 10794011,
+   "2019_excursionists_air": 332123,
+   "2024_excursionists_air": 37425,
+   "2025_excursionists_air": 33580,
+   "2019_tourists_air": 2221176,
+   "2024_tourists_air": 2154060,
+   "2025_tourists_air": 2148607,
+   "2019_travellers_air": 2553299,
+   "2024_travellers_air": 2191485,
+   "2025_travellers_air": 2182187,
+   "2019_excursionists_automobile": 5268463,
+   "2024_excursionists_automobile": 4438621,
+   "2025_excursionists_automobile": 4361773,
+   "2019_tourists_automobile": 4559242,
+   "2024_tourists_automobile": 4170605,
+   "2025_tourists_automobile": 3745090,
+   "2019_travellers_automobile": 9827705,
+   "2024_travellers_automobile": 8609226,
+   "2025_travellers_automobile": 8106863,
+   "2019_excursionists_bus": 298530,
+   "2024_excursionists_bus": 145008,
+   "2025_excursionists_bus": 129280,
+   "2019_tourists_bus": 188743,
+   "2024_tourists_bus": 137662,
+   "2025_tourists_bus": 119536,
+   "2019_travellers_bus": 487273,
+   "2024_travellers_bus": 282670,
+   "2025_travellers_bus": 248816,
+   "2019_excursionists_pedestrian": 203552,
+   "2024_excursionists_pedestrian": 41943,
+   "2025_excursionists_pedestrian": 51430,
+   "2019_tourists_pedestrian": 3462,
+   "2024_tourists_pedestrian": 118578,
+   "2025_tourists_pedestrian": 144604,
+   "2019_travellers_pedestrian": 207014,
+   "2024_travellers_pedestrian": 160521,
+   "2025_travellers_pedestrian": 196034
+  },
+  "us_trend": {
+   "all_us_into_ontario": {
+    "2019": 13156872,
+    "2024": 11313022,
+    "2025": 10794011
+   },
+   "pct_change_2025_vs_2019": -18.0
+  },
+  "canadian_cross_border_substitution": {
+   "ontario_residents_car_trips_to_us": {
+    "2019": 15801568,
+    "2024": 14494566,
+    "2025": 10911534,
+    "2026_jan_aug": 7498946
+   },
+   "note": "Ontario car trips to the US fell 25% in 2025 vs 2024. Part of that becomes domestic trips, a tailwind for Niagara Falls same-day visits."
+  },
+  "exchange_rate_elasticity": {
+   "us_overnight_per_10pct_usd_gain": "+3 to 4%",
+   "canadian_to_us_overnight_per_10pct_cad_gain": "+15 to 16%",
+   "crossing_elasticity_strong_currency": 2.6,
+   "crossing_elasticity_weak_currency": 0.8
+  },
+  "visit_timing": {
+   "short_visit_hours": 4,
+   "short_visit_contents": "2 major attractions + 1 meal",
+   "full_day_hours": 6,
+   "lunch_peak": "~1pm, Clifton Hill",
+   "evening_peak": "Clifton Hill after dark; fireworks 10pm May-Oct; illumination nightly",
+   "season_open": "Niagara Parks passes valid Apr 20-Nov 1 2026; boats from May 1; most Clifton Hill indoor attractions year-round"
+  },
+  "prices_2026_cad_before_tax": {
+   "journey_behind_the_falls_adult": 30.0,
+   "journey_behind_the_falls_child": 19.5,
+   "journey_behind_the_falls_winter_adult": 25.0,
+   "niagara_takes_flight_adult": 33.0,
+   "niagara_takes_flight_child": 21.5,
+   "niagara_city_cruises_adult": 42.95,
+   "niagara_city_cruises_child": 27.95,
+   "niagara_falls_pass_classic": 89,
+   "niagara_falls_pass_plus": 109,
+   "niagara_falls_pass_premium": 129,
+   "niagara_parks_annual_pass": 199,
+   "wego_2day_adult": 17,
+   "wego_2day_child": 13,
+   "clifton_hill_fun_pass_adult": 39.95,
+   "clifton_hill_fun_pass_child": 26.95,
+   "skywheel_online_from": 15.0,
+   "fallsview_waterpark_day_from": 44.95,
+   "parking_day": {
+    "niagara_parks_core_summer": "25-35",
+    "niagara_parks_pass": 36,
+    "clifton_hill_private": "10-30",
+    "fallsview_casino": "10-25",
+    "rapidsview_park_and_ride": "5-8",
+    "off_season_npc": "5-15",
+    "city_meters_per_hour": "2-5"
+   }
+  }
+ }
+}

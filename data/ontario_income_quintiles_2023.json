@@ -1,0 +1,24 @@
+{
+ "_meta": {
+  "source": "Statistics Canada table 11-10-0192-01, upper income limit by income decile, total income, economic families and persons not in an economic family, Ontario, 2023, in 2024 constant dollars",
+  "use": "Assign each household to an Ontario income quintile so it takes the matching Survey of Household Spending budget. Household income is first brought to 2024 dollars with the earnings index.",
+  "dollar_year": 2024
+ },
+ "decile_upper_limits": [
+  24900,
+  39300,
+  54800,
+  71600,
+  90500,
+  111500,
+  138300,
+  176100,
+  238700
+ ],
+ "quintile_upper_limits": [
+  39300,
+  71600,
+  111500,
+  176100
+ ]
+}

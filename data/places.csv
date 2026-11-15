@@ -1,0 +1,1129 @@
+osm_id,name,key,value,sim_category,brand,cuisine,stars,rooms,opening_hours,street,lat,lon,neighbourhood,community,in_tourist_core
+way/293599033,,tourism,motel,accommodation,,,,,,,43.060082,-79.053713,KINGSBRIDGE,CHIPPAWA,0
+way/817034291,,tourism,motel,accommodation,,,,,,,43.096823,-79.081755,VALLEYWAY,ELGIN,0
+way/817034292,,tourism,motel,accommodation,,,,,,,43.093316,-79.078762,CLIFTON HILL,QUEEN VICTORIA,1
+way/817034343,,tourism,motel,accommodation,,,,,,,43.093711,-79.078052,CLIFTON HILL,QUEEN VICTORIA,1
+way/178404714,7 Days Inn,tourism,motel,accommodation,,,,,,6032 Lundy's Lane,43.089136,-79.094359,ORCHARD,DRUMMOND,0
+node/10814431698,7 Nights Stay,tourism,hotel,accommodation,,,,,,,43.095223,-79.082251,CLIFTON HILL,QUEEN VICTORIA,1
+node/12912876901,A Night to Remember B & B,tourism,guest_house,accommodation,,,,,,6161 Main Street,43.084926,-79.09025,ORCHARD,DRUMMOND,0
+way/815600855,A-1 Motel,tourism,motel,accommodation,,,,,,7895 Lundys Lane,43.089371,-79.12933,HODGSON,WESTLANE,0
+node/2595328891,A-1 Star Inn,tourism,motel,accommodation,,,,,,8627 Lundys Lane,43.08912,-79.142745,GARNER,WESTLANE,0
+node/7798893537,Accommodations Niagara,tourism,guest_house,accommodation,,,,,,5069 River Road,43.100701,-79.063896,RYERSON,ELGIN,0
+way/437708256,Admiral Inn,tourism,motel,accommodation,,,,,,,43.089295,-79.081993,CLIFTON HILL,QUEEN VICTORIA,1
+way/436982096,Advance Inn,tourism,motel,accommodation,,,,,,,43.089775,-79.094114,CORONATION,DRUMMOND,0
+way/815600854,Advantage Inn,tourism,motel,accommodation,,,,,,7797 Lundys Lane,43.089621,-79.127033,HODGSON,WESTLANE,0
+node/4037714799,Alpine Motel,tourism,motel,accommodation,,,,,,7742 Lundys Lane,43.088537,-79.126207,MUNRO,WESTLANE,0
+node/5528025379,Americana Conference Resort Spa & Waterpark,tourism,hotel,accommodation,,,,,,8444 Lundy’s Lane,43.088416,-79.139591,GARNER,WESTLANE,0
+node/5540630221,Americana Resort and Conference Centre,tourism,hotel,accommodation,,,,,,8 444 Lundy's Lane,43.088118,-79.143346,GARNER,WESTLANE,0
+way/428752380,Americas Best Value Inn,tourism,motel,accommodation,Americas Best Value Inn,,,,,5525 Ellen Avenue,43.093898,-79.075749,CLIFTON HILL,QUEEN VICTORIA,1
+way/401330377,Avenue Inn,tourism,motel,accommodation,,,,,,7800 Lundys Lane,43.088457,-79.127196,MUNRO,WESTLANE,0
+node/12847255430,Bedham Hall,tourism,guest_house,accommodation,,,,,,4835 River Road,43.104087,-79.062248,RYERSON,ELGIN,0
+way/178404716,Best Western Plus,tourism,hotel,accommodation,Best Western Plus,,,,,6400 Lundys Lane,43.088748,-79.101042,CORWIN,DRUMMOND,0
+way/178560401,Blue Moon Motel,tourism,motel,accommodation,,,,,,8445 Lundys Lane,43.089301,-79.139777,GARNER,WESTLANE,0
+way/817078040,Butterfly Manor,tourism,guest_house,accommodation,,,,,,4917 River Road,43.102883,-79.062925,RYERSON,ELGIN,0
+way/401526687,Cadilac Motel,tourism,motel,accommodation,,,,,,5342 Ferry Street,43.089222,-79.082542,CLIFTON HILL,QUEEN VICTORIA,1
+way/178553601,Campark Resorts Camping,tourism,camp_site,accommodation,,,,,,9387 Lundy's Lane,43.087143,-79.152943,GARNER,WESTLANE,0
+way/401229534,Canada's Best Value Inn,tourism,motel,accommodation,,,,,,,43.0887,-79.112713,BROOKFIELD,DRUMMOND,0
+node/5924794176,Canadian Niagara Hotels,tourism,hotel,accommodation,,,,,,5685 Falls Avenue,43.09253,-79.071223,CLIFTON HILL,QUEEN VICTORIA,1
+way/401330378,Candlelight Inn,tourism,motel,accommodation,,,,,,7600 Lundys Lane,43.088248,-79.124024,MUNRO,WESTLANE,0
+node/13424570601,Cannery Lofts Niagara,tourism,hotel,accommodation,,,,,,5686 Lewis Avenue,43.093196,-79.079793,CLIFTON HILL,QUEEN VICTORIA,1
+node/2595328894,Caravan Inn,tourism,motel,accommodation,,,,,,8511 Lundys Lane,43.089293,-79.140702,GARNER,WESTLANE,0
+way/401330379,Carriage House Motor Lodge,tourism,motel,accommodation,,,,,,8004 Lundys Lane,43.088415,-79.131179,MUNRO,WESTLANE,0
+way/817078042,Chestnut Inn,tourism,guest_house,accommodation,,,,,,4983 River Road,43.101919,-79.063514,RYERSON,ELGIN,0
+node/5528603429,Clifton Victoria Inn at the Falls,tourism,hotel,accommodation,,,,,,5591 Victoria Avenue,43.093854,-79.07376,CLIFTON HILL,QUEEN VICTORIA,1
+way/387912507,Comfort Hotel,tourism,hotel,accommodation,Comfort Inn,,,,,5700 Stanley Avenue,43.092239,-79.084583,CLIFTON HILL,QUEEN VICTORIA,1
+way/179379812,Comfort Inn,tourism,hotel,accommodation,Comfort Inn,,,,,7514 Lundys Lane,43.088524,-79.122049,LUNDY,WESTLANE,0
+way/232182158,Comfort Inn Fallsview,tourism,hotel,accommodation,Comfort Inn,,,,,6645 Fallsview Boulevard,43.079793,-79.083411,FALLSVIEW NORTH,QUEEN VICTORIA,1
+way/345578196,Continental Inn,tourism,motel,accommodation,,,,,,5756 Ferry Street,43.088854,-79.090097,ORCHARD,DRUMMOND,0
+way/428753279,"Country Inn & Suites by Radisson, Niagara Falls, ON",tourism,hotel,accommodation,Country Inn & Suites,,,,,5525 Victoria Avenue,43.094592,-79.073095,CLIFTON HILL,QUEEN VICTORIA,1
+node/5528711141,Courtyard by Marriott Niagara Falls,tourism,hotel,accommodation,Courtyard,,,,,5950 Victoria Avenue,43.089294,-79.080152,CLIFTON HILL,QUEEN VICTORIA,1
+node/2326274319,Cozy Inn B&B,tourism,guest_house,accommodation,,,,,,,43.086319,-79.088359,ORCHARD,DRUMMOND,0
+way/345578505,Days Inn,tourism,hotel,accommodation,Days Inn,,,,,5943 Victoria Avenue,43.089943,-79.080512,CLIFTON HILL,QUEEN VICTORIA,1
+way/401229527,Days Inn,tourism,hotel,accommodation,Days Inn,,,,,7280 Lundys Lane,43.088617,-79.117477,OAKWOOD,WESTLANE,0
+way/178404795,Days Inn Fallsview,tourism,hotel,accommodation,Days Inn,,,,,6519 Stanley Avenue,43.08026,-79.08507,FALLSVIEW NORTH,QUEEN VICTORIA,1
+node/6536292015,Days Inn by Wyndham Niagara Falls Centre St. By the Falls,tourism,hotel,accommodation,Days Inn,,,,,5068 Centre Street,43.092905,-79.078177,CLIFTON HILL,QUEEN VICTORIA,1
+way/345576862,DoubleTree Fallsview by Hilton,tourism,hotel,accommodation,DoubleTree,,,,,6039 Fallsview Boulevard,43.087259,-79.083959,FALLSVIEW NORTH,QUEEN VICTORIA,1
+way/817034048,Econo Lodge By The Falls,tourism,motel,accommodation,Econo Lodge,,,,,5781 Victoria Avenue,43.091744,-79.077468,CLIFTON HILL,QUEEN VICTORIA,1
+node/12847255432,Ellis House,tourism,guest_house,accommodation,,,,,,,43.10348,-79.063467,RYERSON,ELGIN,0
+node/5540700552,Embassy Suites by Hilton,tourism,hotel,accommodation,Embassy Suites,,,,,6700 Fallsview Boulevard,43.079577,-79.082084,FALLSVIEW NORTH,QUEEN VICTORIA,1
+way/817034325,"Fairfield Niagara Falls, Canada",tourism,hotel,accommodation,Fairfield Inn & Suites,,,,,5257 Ferry Street,43.08986,-79.081005,CLIFTON HILL,QUEEN VICTORIA,1
+node/12847552313,Fairway Inn,tourism,motel,accommodation,,,,,,,43.088644,-79.08291,FALLSVIEW NORTH,QUEEN VICTORIA,1
+node/4037714800,Falcon Inn,tourism,motel,accommodation,,,,,,7865 Lundys Lane,43.08953,-79.128529,HODGSON,WESTLANE,0
+way/178401288,Falls Manor Motel,tourism,motel,accommodation,,,,,,,43.088604,-79.114453,BROOKFIELD,DRUMMOND,0
+node/7620190551,Falls Manor Resort,tourism,motel,accommodation,,,,,,7104 Lundys Lane,43.08896,-79.114375,BROOKFIELD,DRUMMOND,0
+way/387913420,Glengate Hotel,tourism,hotel,accommodation,,,,,,5534 Stanley Avenue,43.094371,-79.08475,CLIFTON HILL,QUEEN VICTORIA,1
+node/5540874621,Great Wolf Lodge,tourism,hotel,accommodation,,,,,,3950 Victoria Ave,43.116363,-79.07078,GLENVIEW,ELGIN,0
+way/816940720,Greater Niagara Inn,tourism,motel,accommodation,,,,,,,43.070822,-79.084443,FALLSVIEW SOUTH,QUEEN VICTORIA,1
+node/279291713,HI Niagara Falls,tourism,hostel,accommodation,Hostelling International,,,,,4549 Cataract Avenue,43.108085,-79.060965,CENTRAL BUSINESS DISTRICT,ELGIN,0
+way/817078082,Henri’s Motel,tourism,motel,accommodation,,,,,,4671 River Road,43.1063,-79.061231,CENTRAL BUSINESS DISTRICT,ELGIN,0
+way/808101755,Hilton Niagara Falls,tourism,hotel,accommodation,Hilton,,,,,6361 Fallsview Boulevard,43.082765,-79.083239,FALLSVIEW NORTH,QUEEN VICTORIA,1
+way/817077885,Historic Lundy’s House,tourism,guest_house,accommodation,,,,,,4965 River Road,43.102146,-79.063508,RYERSON,ELGIN,0
+way/158200935,Holiday Inn,tourism,hotel,accommodation,Holiday Inn,,,,,5339 Murray Street,43.084017,-79.082238,FALLSVIEW NORTH,QUEEN VICTORIA,1
+node/4037900869,Howard Johnson,tourism,hotel,accommodation,Howard Johnson,,,,,5905 Victoria Avenue,43.090454,-79.079399,CLIFTON HILL,QUEEN VICTORIA,1
+way/815600807,Howard Johnson Express Inn,tourism,hotel,accommodation,Howard Johnson,,,,,8100 Lundys Lane,43.088381,-79.133441,MUNRO,WESTLANE,0
+way/345577793,Kings Inn,tourism,motel,accommodation,,,,,,5525 Ferry Street,43.089862,-79.085828,CLIFTON HILL,QUEEN VICTORIA,0
+node/4036022299,Kingsway Motel,tourism,motel,accommodation,,,,,,8988 Lundys Lane,43.085989,-79.149287,GARNER,WESTLANE,0
+node/7450995213,Knights Inn,tourism,motel,accommodation,Knights Inn,,,,,,43.083878,-79.086478,FALLSVIEW NORTH,QUEEN VICTORIA,0
+node/7798888725,Lion’s Head Bed & Breakfast,tourism,guest_house,accommodation,,,,,,5239 River Road,43.098451,-79.065974,RYERSON,ELGIN,0
+node/2595328897,Lundy's Motel,tourism,motel,accommodation,,,,,,8646 Lundys Lane,43.088118,-79.143346,GARNER,WESTLANE,0
+way/401330397,Maple Haven,tourism,motel,accommodation,,,,,,7770 Lundys Lane,43.088465,-79.126495,MUNRO,WESTLANE,0
+way/158348214,Marriott Niagara Falls Fallsview Hotel,tourism,hotel,accommodation,Marriott,,,,,6740 Fallsview Boulevard,43.078689,-79.081962,FALLSVIEW SOUTH,QUEEN VICTORIA,1
+way/808108217,Marriott on the Falls Hotel,tourism,hotel,accommodation,Marriott,,,,,6755 Fallsview Boulevard,43.07741,-79.08282,FALLSVIEW SOUTH,QUEEN VICTORIA,1
+way/387912266,Niagara Falls Courtside Inn,tourism,motel,accommodation,,,,,,5640 Stanley Avenue,43.092869,-79.084688,CLIFTON HILL,QUEEN VICTORIA,1
+way/401520592,Niagara Falls KOA Holiday Campground,tourism,caravan_site,accommodation,KOA,,,,,8625 Lundy Lane,43.091049,-79.141794,GARNER,WESTLANE,0
+way/817080355,Niagara Falls Motor Lodge,tourism,motel,accommodation,,,,,,,43.061262,-79.055484,KINGSBRIDGE,CHIPPAWA,0
+way/374827378,Niagara Gorge B&B,tourism,guest_house,accommodation,,,,,,5207 River Road,43.099012,-79.065749,RYERSON,ELGIN,0
+node/7798907783,Niagara Grandview Boutique Hotel,tourism,guest_house,accommodation,,,,,,5359 River Road,43.096826,-79.066811,RYERSON,ELGIN,0
+node/12847259243,Niagara Inn Bed & Breakfast,tourism,guest_house,accommodation,,,,,,,43.102453,-79.063804,RYERSON,ELGIN,0
+way/178419345,Niagara Inn Motel,tourism,motel,accommodation,,,,,,,43.089578,-79.11652,ROYAL MANOR,WESTLANE,0
+way/401330398,Niagara Lodge & Suites,tourism,motel,accommodation,,,,,,7720 Lundys Lane,43.088535,-79.125524,MUNRO,WESTLANE,0
+node/7798907778,Niagara Luxury Suites,tourism,guest_house,accommodation,,,,,,5395 River Road,43.096309,-79.067229,RYERSON,ELGIN,0
+node/10814629185,Niagara Parkway Court Motel,tourism,motel,accommodation,,,,,,,43.058987,-79.050343,CUMMINGS,CHIPPAWA,0
+node/3580471393,Niagara's Best Inn,tourism,hotel,accommodation,,,,,,5284 Ferry Street,43.089362,-79.081353,CLIFTON HILL,QUEEN VICTORIA,1
+way/66064282,Oakes Hotel Overlooking Niagara Falls,tourism,hotel,accommodation,,,3,,,6546 Fallsview Boulevard,43.080599,-79.082082,FALLSVIEW NORTH,QUEEN VICTORIA,1
+way/817034344,Oasis Hotel,tourism,motel,accommodation,,,,,,,43.093988,-79.078373,CLIFTON HILL,QUEEN VICTORIA,1
+relation/11142350,Old Stone Inn,tourism,hotel,accommodation,,,,,,5425 Robinson Street,43.086949,-79.082274,FALLSVIEW NORTH,QUEEN VICTORIA,1
+way/401229540,Overnight Inn,tourism,motel,accommodation,,,,,,7558 Lundys Lane,43.088704,-79.122742,LUNDY,WESTLANE,0
+way/817034385,Oyo Hotel,tourism,motel,accommodation,,,,,,,43.09334,-79.076773,CLIFTON HILL,QUEEN VICTORIA,1
+node/12847255431,Park Place Bed & Breakfast,tourism,guest_house,accommodation,,,,,,4851 River Road,43.103897,-79.062337,RYERSON,ELGIN,0
+way/816944685,Quality Hotel Fallsview Cascade,tourism,hotel,accommodation,Quality Inn,,,,,5305 Murray Street,43.084039,-79.081538,FALLSVIEW NORTH,QUEEN VICTORIA,1
+way/955324484,Quality Inn & Suites,tourism,hotel,accommodation,Quality Inn & Suites,,,,,5234 Ferry Street,43.089081,-79.080641,FALLSVIEW NORTH,QUEEN VICTORIA,1
+way/826573132,"Radisson Hotel & Suites Fallsview, ON",tourism,hotel,accommodation,Radisson,,,,,6733 Fallsview Boulevard,43.078409,-79.083043,FALLSVIEW SOUTH,QUEEN VICTORIA,1
+way/345577279,Rainbow Motor Inn,tourism,motel,accommodation,,,,,,5581 Murray Street,43.083724,-79.085561,FALLSVIEW NORTH,QUEEN VICTORIA,1
+way/345577760,Ramada,tourism,hotel,accommodation,Ramada,,,,,6045 Stanley Avenue,43.087239,-79.085159,FALLSVIEW NORTH,QUEEN VICTORIA,1
+way/401526744,Ramada Niagara Falls Near the Falls,tourism,hotel,accommodation,Ramada,,,,,5706 Ferry Street,43.089177,-79.088999,ORCHARD,DRUMMOND,0
+node/4036692163,Ramada Plaza Hotel,tourism,hotel,accommodation,Ramada,,,,,,43.089687,-79.120291,HODGSON,WESTLANE,0
+node/7798888726,Redwood B&B,tourism,guest_house,accommodation,,,,,,5227 River Road,43.098651,-79.065948,RYERSON,ELGIN,0
+node/4085303066,Regency Athletic Resort,tourism,motel,accommodation,,,,,,8068 Mountain Road,43.134676,-79.13548,HYOTT,BEAVERDAMS,0
+node/5218274759,River Rapids Inn,tourism,hotel,accommodation,,,,,,4029 River Road,43.114624,-79.063799,GLENVIEW,ELGIN,0
+node/7798907779,River Road Apartments,tourism,guest_house,accommodation,,,,,,5389 River Road,43.096424,-79.067162,RYERSON,ELGIN,0
+way/817077701,River Road Manor,tourism,guest_house,accommodation,,,,,,5007 River Road,43.101498,-79.06348,RYERSON,ELGIN,0
+way/816933441,Rodeway Inn Fallsview,tourism,motel,accommodation,Rodeway Inn,,,,,6663 Stanley Avenue,43.07869,-79.085485,FALLSVIEW SOUTH,QUEEN VICTORIA,1
+way/178557776,Scotts Tent & Trailer Park,tourism,camp_site,accommodation,,,,,,8845 Lundys Lane,43.089688,-79.1467,GARNER,WESTLANE,0
+node/7798907780,Serene Niagara Inn Bed & Breakfast,tourism,guest_house,accommodation,,,,,,5381 River Road,43.096548,-79.067067,RYERSON,ELGIN,0
+way/387916793,Sharp Motel,tourism,motel,accommodation,,,,,,,43.095093,-79.083662,CLIFTON HILL,QUEEN VICTORIA,1
+node/5788790953,Sheraton Fallsview Hotel,tourism,hotel,accommodation,Sheraton,,,,,5875 Falls Avenue,43.091004,-79.07254,CLIFTON HILL,QUEEN VICTORIA,1
+way/178332630,Skyline Hotel,tourism,motel,accommodation,,,,,,4800 Bender Street,43.093584,-79.072585,CLIFTON HILL,QUEEN VICTORIA,1
+node/2595328900,Space Motel,tourism,motel,accommodation,,,,,,8618 Lundys Lane,43.088172,-79.142327,GARNER,WESTLANE,0
+way/178666225,Sterling Inn,tourism,hotel,accommodation,,,,,,5191 Magdalen Street,43.091549,-79.079846,CLIFTON HILL,QUEEN VICTORIA,1
+node/7798888727,Stone Boutique Suites,tourism,guest_house,accommodation,,,,,,5225 River Road,43.098737,-79.065889,RYERSON,ELGIN,0
+way/401401326,Sunrise Inn,tourism,motel,accommodation,,,,,,6267 Lundys Lane,43.089861,-79.098714,LEEMING,DRUMMOND,0
+node/2406117704,Super 8,tourism,motel,accommodation,Super 8,,,,,4009 River Road,43.115287,-79.066654,GLENVIEW,ELGIN,0
+way/657302720,Surfside Inn,tourism,hotel,accommodation,,,,,,,43.061323,-79.052241,KINGSBRIDGE,CHIPPAWA,0
+node/12079155878,Susan’s Villa,tourism,guest_house,accommodation,,,,,,,43.096003,-79.069113,RYERSON,ELGIN,0
+node/4274825900,The America's Hospitality Inn,tourism,motel,accommodation,,,,,,,43.088816,-79.113773,BROOKFIELD,DRUMMOND,0
+node/7555092399,"The Brock Niagara Falls-Fallsview, Tapestry Collection by Hilton",tourism,hotel,accommodation,Hilton Worldwide,,,234,24/7,5685 Falls Avenue,43.091886,-79.071437,CLIFTON HILL,QUEEN VICTORIA,1
+node/7798893538,The Craig House,tourism,guest_house,accommodation,,,,,,5057 River Road,43.100823,-79.063739,RYERSON,ELGIN,0
+way/345578010,The Diplomat Inn,tourism,hotel,accommodation,,,,,,,43.088134,-79.085322,FALLSVIEW NORTH,QUEEN VICTORIA,1
+node/7630761739,The Falls Family Lodge,tourism,motel,accommodation,,,,,,5612 Ellen Avenue,43.093246,-79.07571,CLIFTON HILL,QUEEN VICTORIA,1
+node/4039682391,The Falls Hotel,tourism,hotel,accommodation,,,,,,,43.093141,-79.074799,CLIFTON HILL,QUEEN VICTORIA,1
+way/428620595,The Peninsula Inn,tourism,hotel,accommodation,,,,,,7373 Niagara Square Drive,43.068852,-79.123196,WESTLANE INDUSTRIAL BASIN,WESTLANE,0
+way/547263603,The Rex Motel,tourism,motel,accommodation,,,,,,,43.071078,-79.098062,CALEDONIA,DRUMMOND,0
+way/421320093,The Tower Hotel,tourism,hotel,accommodation,,,,,,6732 Fallsview Boulevard,43.079042,-79.082099,FALLSVIEW SOUTH,QUEEN VICTORIA,1
+way/401347834,The Universal Inn and Suites,tourism,motel,accommodation,,,,,,6000 Stanley Avenue,43.088237,-79.08429,FALLSVIEW NORTH,QUEEN VICTORIA,1
+node/5414779322,The traveller's room,tourism,guest_house,accommodation,,,,,,4494 John Street,43.094938,-79.069663,RYERSON,ELGIN,0
+way/178666186,Thriftlodge,tourism,motel,accommodation,,,,,,,43.092032,-79.074345,CLIFTON HILL,QUEEN VICTORIA,1
+way/179311691,Towneplace Suites by Marriott,tourism,hotel,accommodation,TownePlace Suites,,,,,4357 River Road,43.110398,-79.060906,GLENVIEW,ELGIN,0
+way/815601225,Travelodge,tourism,hotel,accommodation,Travelodge,,,118,,7737 Lundys Lane,43.089599,-79.126285,HODGSON,WESTLANE,0
+way/178665939,Travelodge Fallsview Hotel,tourism,hotel,accommodation,Travelodge,,,,,5599 River Road,43.09354,-79.068004,CLIFTON HILL,QUEEN VICTORIA,1
+node/6522342321,Travelodge at the Falls,tourism,hotel,accommodation,Travelodge,,3,,,4943 Clifton Hill,43.091523,-79.07356,CLIFTON HILL,QUEEN VICTORIA,1
+node/4036022301,Tropicana Inn Motel,tourism,motel,accommodation,,,,,,8674 Lundys Lane,43.088224,-79.143831,GARNER,WESTLANE,0
+node/2422933166,Two Rivers B&B,tourism,guest_house,accommodation,,,,,,,43.059862,-79.055793,KINGSBRIDGE,CHIPPAWA,0
+way/475721293,UNF Managed Residence,tourism,motel,accommodation,,,,,,,43.107482,-79.060291,CENTRAL BUSINESS DISTRICT,ELGIN,0
+way/817034069,Victoria Motor Inn,tourism,motel,accommodation,,,,,,,43.090748,-79.078899,CLIFTON HILL,QUEEN VICTORIA,1
+node/5543614222,Victorian Charm Bed and Breakfas,tourism,guest_house,accommodation,,,,,,6028 Culp Street,43.085995,-79.094224,ORCHARD,DRUMMOND,0
+node/12847740269,Villa Garderia B&B,tourism,guest_house,accommodation,,,,,,,43.105377,-79.062276,CENTRAL BUSINESS DISTRICT,ELGIN,0
+way/815600806,Villager Lodge,tourism,motel,accommodation,,,,,,8054 Lundys Lane,43.088279,-79.132575,MUNRO,WESTLANE,0
+node/2951387428,Vittoria Hotel & Suites,tourism,hotel,accommodation,,,,,,,43.09106,-79.078598,CLIFTON HILL,QUEEN VICTORIA,1
+node/4037715980,Westlodge Inn & Suites,tourism,motel,accommodation,,,,,,7701 Lundys Lane,43.089395,-79.125453,HODGSON,WESTLANE,0
+way/178663764,Wyndham,tourism,hotel,accommodation,Wyndham,,,,,6455 Fallsview Boulevard,43.081834,-79.083324,FALLSVIEW NORTH,QUEEN VICTORIA,1
+way/178662980,Wyndham Garden,tourism,hotel,accommodation,Wyndham Garden,,,,,6170 Stanley Avenue,43.085567,-79.084178,FALLSVIEW NORTH,QUEEN VICTORIA,1
+way/1058416251,Wyndham Garden Tower B,tourism,hotel,accommodation,Wyndham Garden,,,,,,43.084424,-79.083874,FALLSVIEW NORTH,QUEEN VICTORIA,1
+way/10040514,Yogi Bear’s Jellystone Park Camp and Resort,tourism,caravan_site,accommodation,Yogi Bear's Jellystone Park,,,,,8676 Oakwood Drive,43.049193,-79.120072,DRUMMOND INDUSTRIAL BASIN,DRUMMOND,0
+node/6657822511,Alia N TanJay,shop,clothes,apparel,Alia N TanJay,,,,,,43.087499,-79.119676,LUNDY,WESTLANE,0
+node/10628285034,Allura Elegant Fashion,shop,fashion_accessories,apparel,,,,,,,43.089383,-79.0915,ORCHARD,DRUMMOND,0
+node/6657882608,Ardene,shop,clothes,apparel,Ardene,,,,,,43.103305,-79.116303,WALLICE,STAMFORD,0
+node/6657822512,Athletic Locker,shop,shoes,apparel,,,,,,,43.08867,-79.119748,LUNDY,WESTLANE,0
+node/6657822513,Blackwell Supply Co.,shop,shoes,apparel,,,,,,,43.087407,-79.119669,LUNDY,WESTLANE,0
+way/428484863,Brand Name Shoe Warehouse,shop,shoes,apparel,,,,,,6604 Lundy's Lane,43.0891,-79.105072,CORWIN,DRUMMOND,0
+node/6657822514,Carter's OshKosh,shop,clothes,apparel,Carter's,,,,,,43.086505,-79.120825,LUNDY,WESTLANE,0
+node/6658702700,Caswell's,shop,clothes,apparel,,,,,,,43.117243,-79.121867,CARMEL,NORTHWEST,0
+node/6657822516,Coach,shop,bag,apparel,Coach,,,,,,43.087385,-79.121113,LUNDY,WESTLANE,0
+node/6657822518,Dynamite,shop,clothes,apparel,Dynamite,,,,,,43.087096,-79.119682,LUNDY,WESTLANE,0
+node/12847357778,Europa,shop,clothes,apparel,,,,,,,43.085299,-79.079836,FALLSVIEW NORTH,QUEEN VICTORIA,1
+node/6659093806,Flirt! Bra & Swimwear,shop,clothes,apparel,,,,,,,43.071612,-79.109511,CALEDONIA,DRUMMOND,0
+node/6657822519,Garage,shop,clothes,apparel,Garage,,,,,,43.087106,-79.11954,LUNDY,WESTLANE,0
+node/6657970165,Gold'n Memories Jewellery,shop,jewelry,apparel,,,,,,,43.105256,-79.110707,PETTIT,STAMFORD,0
+node/6657822520,Guess,shop,clothes,apparel,Guess,,,,,,43.087604,-79.119678,LUNDY,WESTLANE,0
+node/13938610501,Havana,shop,boutique,apparel,,,,,,,43.081124,-79.080369,QUEEN VICTORIA,QUEEN VICTORIA,1
+node/10284497050,Jeweller Designs By Tachjian,shop,jewelry,apparel,,,,,Tu-Fr 10:00-17:00; Sa 12:00-22:00; Su 12:00-17:00,6161 Thorold Stone Road,43.115698,-79.098312,KER,STAMFORD,0
+node/6657822521,La Vie en Rose,shop,clothes,apparel,La Vie en Rose,,,,,,43.086553,-79.120951,LUNDY,WESTLANE,0
+node/6657822522,Laura,shop,clothes,apparel,Laura,,,,,,43.087766,-79.119687,LUNDY,WESTLANE,0
+node/6657822523,Le Château,shop,clothes,apparel,Le Château,,,,,,43.088217,-79.121152,LUNDY,WESTLANE,0
+node/10754713843,Lunar Ellipse upcycled jewellery,shop,jewelry,apparel,,,,,,5924B Main Street,43.088847,-79.09236,ORCHARD,DRUMMOND,0
+node/6657882612,Mark's,shop,clothes,apparel,Mark's,,,,,,43.102916,-79.117936,WALLICE,STAMFORD,0
+node/6657882606,Moores,shop,clothes,apparel,Moores,,,,Mo-Fr 10:00-21:00; Su 11:00-18:00; Sa 10:00-18:00,7190 Morrison Street,43.103413,-79.11422,WALLICE,STAMFORD,0
+node/10628285032,Muller's Work Wear,shop,clothes,apparel,,,,,,5823,43.089618,-79.091393,CORONATION,DRUMMOND,0
+node/6658835089,National Jewellery,shop,jewelry,apparel,,,,,,,43.114744,-79.109227,PETTIT,STAMFORD,0
+node/6657822524,Nygard Slims,shop,clothes,apparel,,,,,,,43.08757,-79.121108,LUNDY,WESTLANE,0
+node/6659111300,Penningtons,shop,clothes,apparel,Penningtons,,,,,,43.066323,-79.118453,DRUMMOND INDUSTRIAL BASIN,DRUMMOND,0
+node/6657822526,Phantom,shop,clothes,apparel,,,,,,,43.086478,-79.120464,LUNDY,WESTLANE,0
+node/6659111301,Reitmans,shop,clothes,apparel,Reitmans,,,,,,43.066175,-79.118458,DRUMMOND INDUSTRIAL BASIN,DRUMMOND,0
+node/6657822528,Samsonite,shop,bag,apparel,Samsonite,,,,,,43.087637,-79.121108,LUNDY,WESTLANE,0
+node/6657822531,Suzy Shier,shop,clothes,apparel,Suzy Shier,,,,,,43.086599,-79.119745,LUNDY,WESTLANE,0
+node/6658702701,Tango,shop,clothes,apparel,,,,,,,43.117173,-79.12191,CARMEL,NORTHWEST,0
+node/6659111294,The Children's Place,shop,clothes,apparel,The Children's Place,,,,,,43.066497,-79.119548,DRUMMOND INDUSTRIAL BASIN,DRUMMOND,0
+node/6658933304,The Jeweller,shop,jewelry,apparel,,,,,,,43.116126,-79.096779,KER,STAMFORD,0
+node/6657822534,Tootsies,shop,shoes,apparel,,,,,,,43.08724,-79.119662,LUNDY,WESTLANE,0
+node/6657822535,Urban Kids,shop,clothes,apparel,Urban Kids,,,,,,43.087331,-79.119675,LUNDY,WESTLANE,0
+node/6657822536,Urban Planet,shop,clothes,apparel,Urban Planet,,,,,,43.087794,-79.121115,LUNDY,WESTLANE,0
+node/3425981590,CIBC,amenity,atm,atm,CIBC,,,,,,43.071114,-79.097371,CALEDONIA,DRUMMOND,0
+node/9203124871,Instacoin ATM,amenity,atm,atm,Instacoin,,,,,,43.093513,-79.074007,CLIFTON HILL,QUEEN VICTORIA,1
+node/12215828401,RBC Royal Bank,amenity,atm,atm,RBC,,,,24/7,,43.069624,-79.125698,WESTLANE INDUSTRIAL BASIN,WESTLANE,0
+node/3425978554,Scotiabank,amenity,atm,atm,Scotiabank,,,,,,43.07042,-79.096323,TRILLIUM,DRUMMOND,0
+node/9103891658,atmontario.ca,amenity,atm,atm,,,,,24/7,,43.091031,-79.078059,CLIFTON HILL,QUEEN VICTORIA,1
+node/9699749924,,tourism,viewpoint,attraction,,,,,,,43.078185,-79.078899,QUEEN VICTORIA,QUEEN VICTORIA,0
+node/5182843222,,tourism,viewpoint,attraction,,,,,,,43.071104,-79.072059,QUEEN VICTORIA,QUEEN VICTORIA,0
+node/865849412,,tourism,viewpoint,attraction,,,,,,,43.122859,-79.068471,THOMPSON,STAMFORD,0
+node/3078326828,,tourism,viewpoint,attraction,,,,,,,43.11805,-79.068743,GLENVIEW,ELGIN,0
+node/3678284333,,tourism,viewpoint,attraction,,,,,,,43.143623,-79.044649,THOMPSON,STAMFORD,0
+node/3678947869,,tourism,viewpoint,attraction,,,,,,,43.082232,-79.079018,QUEEN VICTORIA,QUEEN VICTORIA,1
+node/3681565492,,tourism,viewpoint,attraction,,,,,,,43.085391,-79.076012,QUEEN VICTORIA,QUEEN VICTORIA,0
+node/9699749925,,tourism,viewpoint,attraction,,,,,,,43.079456,-79.07796,QUEEN VICTORIA,QUEEN VICTORIA,0
+node/10065625489,,tourism,viewpoint,attraction,,,,,,,43.088733,-79.073527,QUEEN VICTORIA,QUEEN VICTORIA,0
+way/199513576,,tourism,museum,attraction,,,,,,5049 Victoria Avenue,43.101138,-79.073525,VALLEYWAY,ELGIN,0
+node/5924799580,Adventure City,tourism,attraction,attraction,,,,,,5685 Falls Avenue,43.092269,-79.071575,CLIFTON HILL,QUEEN VICTORIA,1
+node/5550593024,Angelo Rossi Galleria and Studio,tourism,gallery,attraction,,,,,,5200 Robinson St,43.08489,-79.079752,FALLSVIEW NORTH,QUEEN VICTORIA,1
+node/14220661502,Balancing Rock,tourism,viewpoint,attraction,,,,,,,43.127731,-79.057581,THOMPSON,STAMFORD,0
+way/816924553,Battle Ground Hotel Museum,tourism,museum,attraction,,,,,May 19-Aug 27 We-Su 10:00-17:00,6151 Lundys Lane,43.089754,-79.096617,CORONATION,DRUMMOND,0
+way/167518960,Bird Kingdom,tourism,attraction,attraction,,,,,Mo-Su 09:30-17:00,5651 River Road,43.092644,-79.068749,CLIFTON HILL,QUEEN VICTORIA,1
+node/14220680601,Birthday Boulders,tourism,viewpoint,attraction,,,,,,,43.128344,-79.057062,THOMPSON,STAMFORD,0
+way/158294521,Butterfly Conservatory,tourism,attraction,attraction,,,,,,2565 Niagara Parkway,43.137106,-79.055544,THOMPSON,STAMFORD,0
+node/8144178375,Carnival Chaos Hyper Ride,tourism,attraction,attraction,,,,,,,43.091003,-79.076385,CLIFTON HILL,QUEEN VICTORIA,1
+node/5525842446,Clifton Hill,tourism,attraction,attraction,,,,,,Clifton Hill,43.091449,-79.074897,CLIFTON HILL,QUEEN VICTORIA,1
+way/815915576,Dragon Mountain,tourism,attraction,attraction,,,,,,,43.061452,-79.078713,MARINELAND,QUEEN VICTORIA,0
+node/5514538123,Floral Showhouse,tourism,attraction,attraction,,,,,,,43.072485,-79.076839,QUEEN VICTORIA,QUEEN VICTORIA,0
+node/8148958907,Frank'N Coaster,tourism,attraction,attraction,,,,,,,43.09192,-79.075544,CLIFTON HILL,QUEEN VICTORIA,1
+node/10648007238,Gizmos Wax Hands,tourism,attraction,attraction,,,,,,4950 Clifton Hill,43.091268,-79.075361,CLIFTON HILL,QUEEN VICTORIA,1
+node/5551089121,Great Wolf Lodge,tourism,theme_park,attraction,,,,,,3950 Victoria Avenue,43.116429,-79.070599,GLENVIEW,ELGIN,0
+node/291955805,Hornblower Niagara Cruises,tourism,attraction,attraction,,,,,,5920 Niagara Parkway,43.08787,-79.072967,QUEEN VICTORIA,QUEEN VICTORIA,0
+node/8148958906,House of Frankenstein,tourism,attraction,attraction,,,,,,,43.091863,-79.075599,CLIFTON HILL,QUEEN VICTORIA,1
+node/14220661601,Immaculate Boulder,tourism,viewpoint,attraction,,,,,,,43.12795,-79.058469,THOMPSON,STAMFORD,0
+node/1961371813,Incline Railway,tourism,viewpoint,attraction,,,,,,Portage Road,43.079518,-79.080791,QUEEN VICTORIA,QUEEN VICTORIA,0
+node/5514483922,Journey Behind the Falls,tourism,attraction,attraction,,,,,,6650 Niagara Parkway,43.079516,-79.079082,QUEEN VICTORIA,QUEEN VICTORIA,0
+node/14220665502,Knee Bar Boulder,tourism,viewpoint,attraction,,,,,,,43.127429,-79.058398,THOMPSON,STAMFORD,0
+node/14220661701,Locomotive Boulders,tourism,viewpoint,attraction,,,,,,,43.127829,-79.057861,THOMPSON,STAMFORD,0
+node/4839284674,Louis Tussaud's Waxworks,tourism,museum,attraction,,,,,,,43.092406,-79.075809,CLIFTON HILL,QUEEN VICTORIA,1
+node/1613500251,Movieland Wax Museum of Stars,tourism,museum,attraction,,,,,,,43.090947,-79.07398,CLIFTON HILL,QUEEN VICTORIA,1
+node/7799183057,Mystery Maze,tourism,attraction,attraction,,,,,,,43.091926,-79.07491,CLIFTON HILL,QUEEN VICTORIA,1
+way/199513553,Niagara Falls Armoury;Niagara Falls Museum,tourism,museum,attraction,,,,,Th-Sa 11:00-16:00,,43.101136,-79.073751,VALLEYWAY,ELGIN,0
+node/4274833320,Niagara Falls History Museum,tourism,museum,attraction,,,,,,5810 Ferry Street,43.089344,-79.091363,ORCHARD,DRUMMOND,0
+node/5743852396,Niagara Falls Jade Museum,tourism,museum,attraction,,,,,,4694 Morrison Street,43.104399,-79.071174,RYERSON,ELGIN,0
+node/5564856422,Niagara Parks Botanical Gardens,tourism,attraction,attraction,,,,,,2565 Niagara Parkway,43.13635,-79.054895,THOMPSON,STAMFORD,0
+way/178404800,Niagara Parks Power Station,tourism,museum,attraction,,,,,Mo-Su 10:00-18:00,7005 Niagara Parkway,43.07451,-79.07882,QUEEN VICTORIA,QUEEN VICTORIA,0
+node/5661429020,Niagara Speedway,tourism,attraction,attraction,,,,,,4960 Clifton Hill,43.090907,-79.076767,CLIFTON HILL,QUEEN VICTORIA,1
+node/1885284046,Niagara's 200 FT Drop,tourism,attraction,attraction,,,,,,,43.091168,-79.073576,CLIFTON HILL,QUEEN VICTORIA,1
+node/5514483923,Niagara’s Fury,tourism,attraction,attraction,,,,,,6650 Niagara Parkway,43.079336,-79.079199,QUEEN VICTORIA,QUEEN VICTORIA,0
+node/3580486879,Nightmares,tourism,attraction,attraction,,,,,,,43.093354,-79.07426,CLIFTON HILL,QUEEN VICTORIA,1
+node/5564862622,Oakes Garden Theatre,tourism,attraction,attraction,,,,,,5825 River Road,43.090407,-79.072105,QUEEN VICTORIA,QUEEN VICTORIA,0
+node/4839284673,Ripley's Odditorium,tourism,museum,attraction,,,,,,,43.091607,-79.075744,CLIFTON HILL,QUEEN VICTORIA,1
+node/8075956990,Rock Legends Wax Museum,tourism,museum,attraction,,,,,,5020 Centre Street,43.092154,-79.076706,CLIFTON HILL,QUEEN VICTORIA,1
+way/158460345,Sir Adam Beck Power Stations,tourism,museum,attraction,,,,,,14000 Niagara Parkway,43.147354,-79.04553,THOMPSON,STAMFORD,0
+way/241004747,Skylon Tower,tourism,attraction,attraction,,,,,,5200 Robinson Street,43.08514,-79.079693,FALLSVIEW NORTH,QUEEN VICTORIA,1
+way/232194135,Skywheel,tourism,attraction,attraction,,,,,,,43.090798,-79.075542,CLIFTON HILL,QUEEN VICTORIA,1
+node/14220678501,Super Flywall,tourism,viewpoint,attraction,,,,,,,43.128501,-79.057805,THOMPSON,STAMFORD,0
+node/12148204798,Sydney's Dock,tourism,viewpoint,attraction,,,,,,,43.055665,-79.136229,WESTLANE INDUSTRIAL BASIN,WESTLANE,0
+node/2395340226,Table Rock Welcome Centre,tourism,viewpoint,attraction,,,,,,,43.078963,-79.078161,QUEEN VICTORIA,QUEEN VICTORIA,0
+node/5550591921,The Butterfly Gallery,tourism,gallery,attraction,,,,,,4438 Queen Street,43.106509,-79.066356,CENTRAL BUSINESS DISTRICT,ELGIN,0
+node/7799210708,The Crystal Cave,tourism,attraction,attraction,,,,,,,43.091886,-79.075468,CLIFTON HILL,QUEEN VICTORIA,1
+way/440870335,The Evel Knievel Daredevil Museum,tourism,museum,attraction,,,,,,4602 Victoria Avenue,43.107461,-79.072984,CENTRAL BUSINESS DISTRICT,ELGIN,0
+node/12847303040,The Haunted House,tourism,attraction,attraction,,,,,,,43.091246,-79.074204,CLIFTON HILL,QUEEN VICTORIA,1
+node/1885295340,The Niagara SkyWheel,tourism,attraction,attraction,,,,,Mo-Su 09:30-00:00,4950 Clifton Hill,43.090786,-79.075518,CLIFTON HILL,QUEEN VICTORIA,1
+node/9947621193,The Tunnel at Niagara Parks Power Station,tourism,attraction,attraction,,,,,,,43.075139,-79.079336,QUEEN VICTORIA,QUEEN VICTORIA,0
+node/14220661501,The V Boulder,tourism,viewpoint,attraction,,,,,,,43.128176,-79.059091,THOMPSON,STAMFORD,0
+node/5525509821,Thompson Point,tourism,attraction,attraction,,,,,,3500 Niagara Parkway,43.124076,-79.068521,THOMPSON,STAMFORD,0
+node/12152315389,Turtle Pond,tourism,viewpoint,attraction,,,,,,,43.054958,-79.134282,WESTLANE INDUSTRIAL BASIN,WESTLANE,0
+way/374827331,Upside Down House,tourism,attraction,attraction,,,,,,,43.092287,-79.074838,CLIFTON HILL,QUEEN VICTORIA,1
+way/984744835,Whirlpool Adventure Course,tourism,attraction,attraction,,,,,,,43.123612,-79.068372,THOMPSON,STAMFORD,0
+node/1016751014,Whirlpool Aero Car,tourism,attraction,attraction,,,,,,3850 Niagara Parkway,43.118021,-79.068819,GLENVIEW,ELGIN,0
+node/5514520621,White Water Walk,tourism,attraction,attraction,,,,,,4430 River Road,43.11102,-79.060447,GLENVIEW,ELGIN,0
+node/5941673885,Wizard's Indoor Golf,tourism,attraction,attraction,,,,,,4960 Clifton Hill,43.091468,-79.075491,CLIFTON HILL,QUEEN VICTORIA,1
+node/10065625313,Zipline To The Falls,tourism,attraction,attraction,,,,,,,43.088793,-79.073546,QUEEN VICTORIA,QUEEN VICTORIA,0
+node/1705553459,lookout of falls,tourism,viewpoint,attraction,,,,,,,43.077626,-79.081972,FALLSVIEW SOUTH,QUEEN VICTORIA,1
+node/12308478240,,amenity,car_wash,auto_service,,,,,,,43.056254,-79.051687,BRIDGEWATER,CHIPPAWA,0
+way/428375425,Active Green + Ross,shop,car_repair,auto_service,Active Green + Ross,,,,,,43.089509,-79.11277,LEEMING,DRUMMOND,0
+way/708625406,Auto Line Toyota,shop,car,auto_service,Toyota,,,,,,43.114808,-79.09574,PORTAGE,STAMFORD,0
+way/288680878,Autovalue Hyundai,shop,car,auto_service,Hyundai,,,,,,43.113413,-79.123716,KENT,NORTHWEST,0
+node/6658933336,CarQuest Auto Parts,shop,car_parts,auto_service,,,,,,,43.114994,-79.096639,PORTAGE,STAMFORD,0
+node/12718492412,Costco Tire Centre,shop,tyres,auto_service,Costco,,,,,,43.065812,-79.12756,WESTLANE INDUSTRIAL BASIN,WESTLANE,0
+way/428376121,DeMol's Tire,shop,car_repair,auto_service,,,,,,,43.089938,-79.089267,CORONATION,DRUMMOND,0
+way/428375527,Esso,amenity,car_wash,auto_service,Esso,,,,,,43.088933,-79.097383,ORCHARD,DRUMMOND,0
+way/708627517,Falls Chevrolet,shop,car,auto_service,Chevrolet,,,,,5588 Thorold Stone Road,43.114837,-79.093361,PORTAGE,STAMFORD,0
+way/488685672,Hamburg Honda,shop,car,auto_service,Honda,,,,,,43.071313,-79.110316,BROOKFIELD,DRUMMOND,0
+way/428375836,Harrigan's Auto Clinic,shop,car_repair,auto_service,,,,,,,43.089694,-79.103067,LEEMING,DRUMMOND,0
+node/6658933345,Jack Dow Auto Supplies,shop,car_parts,auto_service,,,,,,,43.115108,-79.097903,PORTAGE,STAMFORD,0
+way/708627518,Jiffy Lube,shop,car_repair,auto_service,Jiffy Lube,,,,,,43.115715,-79.094773,KER,STAMFORD,0
+node/4274828223,Lube King,shop,car_repair,auto_service,,,,,,,43.088916,-79.105796,CORWIN,DRUMMOND,0
+way/428375248,Midas,shop,car_repair,auto_service,Midas,,,,,,43.088927,-79.110981,BROOKFIELD,DRUMMOND,0
+way/428375357,PartSource,shop,car_parts,auto_service,PartSource,,,,,,43.088986,-79.108778,CORWIN,DRUMMOND,0
+way/428376345,Quick Car Wash,amenity,car_wash,auto_service,,,,,,,43.089832,-79.089738,CORONATION,DRUMMOND,0
+way/577332054,Spotless Auto Services,shop,car_repair,auto_service,,,,,,,43.076749,-79.110514,BROOKFIELD,DRUMMOND,0
+node/1709099866,Ultra,shop,car,auto_service,,,,,Sa 08:00-13:00; Mo-Fr 08:00-18:00,6875 Thorold Stone Road,43.115382,-79.111269,MITCHELSON,STAMFORD,0
+node/9193194094,BMO,amenity,bank,bank,BMO,,,,,7555 Montrose Road,43.065503,-79.123536,WESTLANE INDUSTRIAL BASIN,WESTLANE,0
+node/6658649602,BMO,amenity,bank,bank,BMO,,,,,,43.103916,-79.109142,PETTIT,STAMFORD,0
+node/9193194129,CIBC,amenity,bank,bank,CIBC,,,,,7555 Montrose Road,43.066274,-79.123374,WESTLANE INDUSTRIAL BASIN,WESTLANE,0
+node/6659074062,CIBC,amenity,bank,bank,CIBC,,,,,,43.121191,-79.100036,CULLIMORE,STAMFORD,0
+way/428486278,CIBC,amenity,bank,bank,CIBC,,,,,,43.089687,-79.100159,LEEMING,DRUMMOND,0
+node/6659134125,FirstOntario Credit Union,amenity,bank,bank,FirstOntario Credit Union,,,,,,43.070963,-79.126653,MUNRO,WESTLANE,0
+node/6658652284,FirstOntario Credit Union,amenity,bank,bank,FirstOntario Credit Union,,,,,,43.114975,-79.125482,CARMEL,NORTHWEST,0
+node/11137391232,Global Currency Exchange,amenity,bureau_de_change,bank,,,,,,,43.092021,-79.076458,CLIFTON HILL,QUEEN VICTORIA,1
+node/6659139682,Meridian Credit Union,amenity,bank,bank,Meridian Credit Union,,,,,,43.070614,-79.135958,GARNER,WESTLANE,0
+node/12158774102,Money exchange,amenity,bureau_de_change,bank,,,,,,,43.081912,-79.082456,FALLSVIEW NORTH,QUEEN VICTORIA,1
+node/6659093804,Pen Financial Credit Union,amenity,bank,bank,,,,,,,43.071476,-79.109514,CALEDONIA,DRUMMOND,0
+node/7631057784,RBC,amenity,bank,bank,RBC,,,,,,43.059165,-79.051485,BRIDGEWATER,CHIPPAWA,0
+way/1057389833,RBC Royal Bank,amenity,bank,bank,RBC,,,,Mo-We 09:30-17:00; Th 09:30-20:00; Fr 09:30-18:00; Sa 09:00-16:00,7452 Montrose Road,43.069699,-79.12571,WESTLANE INDUSTRIAL BASIN,WESTLANE,0
+way/1057390312,Scotiabank,amenity,bank,bank,Scotiabank,,,,,7957 McLeod Road,43.070484,-79.129114,MUNRO,WESTLANE,0
+node/6658835148,Scotiabank,amenity,bank,bank,Scotiabank,,,,,,43.115647,-79.099486,MITCHELSON,STAMFORD,0
+node/4274824225,TD,amenity,bank,bank,TD,,,,,,43.088971,-79.110105,CORWIN,DRUMMOND,0
+node/6659055411,TD,amenity,bank,bank,TD,,,,,,43.119839,-79.100196,MITCHELSON,STAMFORD,0
+node/7799179039,The Exchange House,amenity,bureau_de_change,bank,,,,,,,43.092749,-79.069501,CLIFTON HILL,QUEEN VICTORIA,1
+way/546619883,,amenity,bar,bar_pub,,,,,,,43.071142,-79.096632,HENNEPIN,DRUMMOND,0
+node/11062428826,1904 Bar,amenity,bar,bar_pub,,,,,,,43.086753,-79.08184,FALLSVIEW NORTH,QUEEN VICTORIA,1
+node/4039481665,Big Texas Bar,amenity,bar,bar_pub,,,,,,5769 Ferry Street,43.089723,-79.090418,CORONATION,DRUMMOND,0
+node/13264100001,Blackburn Beer Company,amenity,bar,bar_pub,,,,,Su 11:00-20:00; Mo 11:00-17:00; Tu-We 11:00-20:00; Th-Sa 11:00-22:00,8001 Blackburn Parkway,43.05505,-79.130414,WESTLANE INDUSTRIAL BASIN,WESTLANE,0
+node/14134178801,Doc Magilligan's Restaurant & Irish Pub,amenity,pub,bar_pub,,,,,Mo-Su 07:00-23:00,6400 Lundy's Lane,43.08865,-79.101041,CORWIN,DRUMMOND,0
+node/4036690485,Don Cherry's Sports Grill,amenity,pub,bar_pub,,,,,,,43.089493,-79.119851,HODGSON,WESTLANE,0
+node/6659074083,Holligans' Sports Bar,amenity,bar,bar_pub,,,,,,,43.121976,-79.101046,CULLIMORE,STAMFORD,0
+node/6659093808,Ivan's Bar,amenity,bar,bar_pub,,,,,,,43.071254,-79.109491,CALEDONIA,DRUMMOND,0
+node/10628285033,Maple Leaf Tavern,amenity,pub,bar_pub,,,,,Mo-Th 12:00-21:00; Fr-Su 12:00-02:00,5831 Ferry Street,43.089621,-79.091539,CORONATION,DRUMMOND,0
+way/813996228,Queen's Guard pub,amenity,pub,bar_pub,,,,,,,43.06084,-79.056201,KINGSBRIDGE,CHIPPAWA,0
+node/10754713844,R Bar,amenity,bar,bar_pub,,,,,Mo-Su 11:00-02:00,5926 Main Street,43.088788,-79.09215,ORCHARD,DRUMMOND,0
+node/6658649587,Red Rocks Bar & Grill,amenity,bar,bar_pub,,,,,,,43.105133,-79.11047,PETTIT,STAMFORD,0
+node/1613500257,Rumours Nightclub,amenity,bar,bar_pub,,,,,,,43.091592,-79.075778,CLIFTON HILL,QUEEN VICTORIA,1
+node/2595255799,Sundowner,amenity,bar,bar_pub,,,,,,8870 Lundys Lane,43.087788,-79.146597,GARNER,WESTLANE,0
+node/6658835139,Sunset Bar & Grill,amenity,bar,bar_pub,,,,,,,43.114987,-79.099705,PETTIT,STAMFORD,0
+node/5002165521,Tesla House Restaurant & Lounge,amenity,bar,bar_pub,,,,,,4337 Queen Street,43.106768,-79.064554,CENTRAL BUSINESS DISTRICT,ELGIN,0
+node/13300815401,The Usual Suspects Cocktails and Grill,amenity,bar,bar_pub,,american;grill,,,Mo-Th 11:30-23:00; Fr-Sa 11:00-01:00; Su 11:00-00:00,6852 Drummond Road,43.075988,-79.096824,HENNEPIN,DRUMMOND,0
+node/11980556210,Turnpike 420 Pub & Eatery,amenity,pub,bar_pub,,,,,Mo-Su 11:00-02:00,5274 Victoria Avenue,43.098051,-79.072583,RYERSON,ELGIN,0
+node/11137391231,Yank's Old Niagara Bar & Grill,amenity,bar,bar_pub,,,,,,5008 Centre Street,43.092089,-79.0766,CLIFTON HILL,QUEEN VICTORIA,1
+node/2778535690,,amenity,ice_cream,cafe,,,,,,,43.083337,-79.078083,QUEEN VICTORIA,QUEEN VICTORIA,0
+node/11137391242,Baskin-Robbins,amenity,ice_cream,cafe,Baskin-Robbins,ice_cream,,,,,43.090314,-79.079246,CLIFTON HILL,QUEEN VICTORIA,1
+node/7617193593,CCSwirls,amenity,ice_cream,cafe,,,,,,,43.08933,-79.127809,HODGSON,WESTLANE,0
+node/12067408943,Chatime,amenity,cafe,cafe,Chatime,bubble_tea,,,,,43.091904,-79.075378,CLIFTON HILL,QUEEN VICTORIA,1
+way/817034401,Cippy’s,amenity,cafe,cafe,,,,,,5784 Stanley Avenue,43.090769,-79.084763,CLIFTON HILL,QUEEN VICTORIA,1
+node/10648007241,CoCo Fresh Tea & Juice,amenity,cafe,cafe,CoCo,bubble_tea,,,,,43.091648,-79.075131,CLIFTON HILL,QUEEN VICTORIA,1
+node/7631057783,Creekside Cafe,amenity,ice_cream,cafe,,,,,,,43.059225,-79.051573,BRIDGEWATER,CHIPPAWA,0
+node/12847310421,CrunchiCreme Waffle Cones,amenity,ice_cream,cafe,,,,,,,43.091082,-79.074638,CLIFTON HILL,QUEEN VICTORIA,1
+node/12847240557,Downtown Goodies,amenity,ice_cream,cafe,,,,,,,43.106771,-79.063643,CENTRAL BUSINESS DISTRICT,ELGIN,0
+node/12847300428,Funnel Cakes Ice Cream,amenity,ice_cream,cafe,,,,,,,43.091343,-79.075944,CLIFTON HILL,QUEEN VICTORIA,1
+node/12092673348,Gong Cha,amenity,cafe,cafe,Gong Cha,bubble_tea,,,,,43.095755,-79.072524,CLIFTON HILL,QUEEN VICTORIA,1
+node/14104154065,Helvaci Ali,amenity,cafe,cafe,,turkish,,,,5725 Victoria Avenue,43.092253,-79.076209,CLIFTON HILL,QUEEN VICTORIA,1
+node/6659077170,Starbucks,amenity,cafe,cafe,Starbucks,coffee_shop,,,,,43.070485,-79.12831,MUNRO,WESTLANE,0
+node/1705683373,Starbucks,amenity,cafe,cafe,Starbucks,coffee_shop,,,,,43.082205,-79.082361,FALLSVIEW NORTH,QUEEN VICTORIA,1
+node/2405633956,Starbucks,amenity,cafe,cafe,Starbucks,coffee_shop,,,,,43.079711,-79.082205,FALLSVIEW NORTH,QUEEN VICTORIA,1
+node/3580486881,Starbucks,amenity,cafe,cafe,Starbucks,coffee_shop,,,Mo-Su 09:00-21:00,5685 Falls Avenue,43.091774,-79.071539,CLIFTON HILL,QUEEN VICTORIA,1
+node/3580513500,Starbucks,amenity,cafe,cafe,Starbucks,coffee_shop,,,,,43.083869,-79.079984,FALLSVIEW NORTH,QUEEN VICTORIA,1
+node/4037900886,Starbucks,amenity,cafe,cafe,Starbucks,coffee_shop,,,,5733 Victoria Avenue,43.092137,-79.076259,CLIFTON HILL,QUEEN VICTORIA,1
+node/4038338121,Starbucks,amenity,cafe,cafe,Starbucks,coffee_shop,,,,,43.089751,-79.097326,CORONATION,DRUMMOND,0
+node/6704596285,Starbucks,amenity,cafe,cafe,Starbucks,coffee_shop,,,,,43.089827,-79.079433,CLIFTON HILL,QUEEN VICTORIA,1
+node/7799181566,Starbucks,amenity,cafe,cafe,Starbucks,coffee_shop,,,"Mo-Fr 06:30-23:00; Sa,Su 06:30-12:00",,43.090888,-79.072755,CLIFTON HILL,QUEEN VICTORIA,1
+node/12847346812,Starbucks,amenity,cafe,cafe,Starbucks,coffee_shop,,,,,43.085243,-79.079512,FALLSVIEW NORTH,QUEEN VICTORIA,1
+node/12847578718,Starbucks,amenity,cafe,cafe,Starbucks,coffee_shop,,,,,43.08285,-79.083075,FALLSVIEW NORTH,QUEEN VICTORIA,1
+way/267907966,Starbucks,amenity,cafe,cafe,Starbucks,coffee_shop,,,,,43.114181,-79.123529,KENT,NORTHWEST,0
+way/900495193,Starbucks,amenity,cafe,cafe,Starbucks,coffee_shop,,,Mo-Su 06:00-22:00,5931 Kalar Road,43.08854,-79.136599,GARNER,WESTLANE,0
+node/5278639822,Sweet Jesus,amenity,ice_cream,cafe,Sweet Jesus,,,,Mo-Th 16:00-22:00; Fr 16:00-23:00; Sa 11:00-23:00; Su 11:00-22:00,5875 Falls Avenue,43.090702,-79.073099,CLIFTON HILL,QUEEN VICTORIA,1
+node/6892961485,Third Space Cafe,amenity,cafe,cafe,,,,,Tu-Sa 09:00-13:00; Mo 09:00-14:00,4345 Queen Street,43.106759,-79.064638,CENTRAL BUSINESS DISTRICT,ELGIN,0
+node/6536153960,Tim Hortons,amenity,cafe,cafe,Tim Hortons,coffee_shop,,,,,43.068883,-79.117901,DRUMMOND INDUSTRIAL BASIN,DRUMMOND,0
+node/6659093810,Tim Hortons,amenity,cafe,cafe,Tim Hortons,coffee_shop,,,,,43.069977,-79.110513,MILLER,DRUMMOND,0
+way/293570085,Tim Hortons,amenity,cafe,cafe,Tim Hortons,coffee_shop,,,24/7,8089 Portage Road,43.059815,-79.053277,KINGSBRIDGE,CHIPPAWA,0
+way/428619858,Tim Hortons,amenity,cafe,cafe,Tim Hortons,coffee_shop,,,,,43.069193,-79.12926,WESTLANE INDUSTRIAL BASIN,WESTLANE,0
+node/1887016878,Tim Hortons,amenity,cafe,cafe,Tim Hortons,coffee_shop,,,,,43.098218,-79.085765,OAKES,ELGIN,0
+node/4038338120,Tim Hortons,amenity,cafe,cafe,Tim Hortons,coffee_shop,,,,,43.089232,-79.097141,ORCHARD,DRUMMOND,0
+node/5160138196,Tim Hortons,amenity,cafe,cafe,Tim Hortons,coffee_shop,,,,,43.083347,-79.078077,QUEEN VICTORIA,QUEEN VICTORIA,0
+node/7630761686,Tim Hortons,amenity,cafe,cafe,Tim Hortons,coffee_shop,,,,,43.091832,-79.085822,CLIFTON HILL,QUEEN VICTORIA,1
+node/12670579558,Tim Hortons,amenity,cafe,cafe,Tim Hortons,coffee_shop,,,,,43.081692,-79.080377,FALLSVIEW NORTH,QUEEN VICTORIA,1
+way/178662560,Tim Hortons,amenity,cafe,cafe,Tim Hortons,coffee_shop,,,,5551 Murray Street,43.083716,-79.085107,FALLSVIEW NORTH,QUEEN VICTORIA,1
+way/180904886,Tim Hortons,amenity,cafe,cafe,Tim Hortons,coffee_shop,,,,,43.089237,-79.134369,HODGSON,WESTLANE,0
+way/288680842,Tim Hortons,amenity,cafe,cafe,Tim Hortons,coffee_shop,,,,,43.115795,-79.123957,CARMEL,NORTHWEST,0
+way/440870323,Tim Hortons,amenity,cafe,cafe,Tim Hortons,coffee_shop,,,,,43.103964,-79.073765,VALLEYWAY,ELGIN,0
+way/486995513,Tim Hortons,amenity,cafe,cafe,Tim Hortons,coffee_shop,,,,,43.104479,-79.112067,QUEENSWAY,STAMFORD,0
+way/488780234,Tim Hortons,amenity,cafe,cafe,Tim Hortons,coffee_shop,,,Mo-Su 05:00-23:00,6161 Thorold Stone Road,43.115678,-79.09831,KER,STAMFORD,0
+way/784099313,Tim Hortons,amenity,cafe,cafe,Tim Hortons,coffee_shop,,,,,43.094929,-79.097543,CORONATION,DRUMMOND,0
+node/6659055413,Vincenzo's Cafe,amenity,cafe,cafe,,,,,,,43.120001,-79.10013,MITCHELSON,STAMFORD,0
+way/455525351,Williams Fresh Cafe,amenity,cafe,cafe,,coffee_shop,,,Mo-Su 08:00-20:00,4025 Dorchester Road,43.113967,-79.112222,QUEENSWAY,STAMFORD,0
+node/11137391228,us tea,amenity,cafe,cafe,,bubble_tea,,,,,43.092301,-79.076865,CLIFTON HILL,QUEEN VICTORIA,1
+way/817078282,Chauffeured in Black,amenity,car_rental,car_rental,,,,,24/7,4997 St Clair Avenue,43.101876,-79.067188,RYERSON,ELGIN,0
+node/1887475528,Enterprise,amenity,car_rental,car_rental,Enterprise,,,,,5590 Stanley Avenue,43.093438,-79.084849,CLIFTON HILL,QUEEN VICTORIA,1
+node/3522087333,Casino Niagara,amenity,casino,casino,,,,,24/7,5705 Falls Avenue,43.092133,-79.072627,CLIFTON HILL,QUEEN VICTORIA,1
+way/808104046,Fallsview Casino Resort,amenity,casino,casino,,,,,,6380 Fallsview Boulevard,43.082312,-79.081025,FALLSVIEW NORTH,QUEEN VICTORIA,1
+way/1425944772,Stroller Parking,amenity,childcare,childcare,,,,,,,43.087624,-79.072594,QUEEN VICTORIA,QUEEN VICTORIA,0
+way/815909532,Arterra Wines Canada,craft,winery,craft,,,,,,4887 Dorchester Road,43.101102,-79.112861,WALLICE,STAMFORD,0
+node/11056911269,John The Plumber,craft,plumber,craft,,,,,Mo-Fr 00:00-24:00,6176 Murray Street,43.08265,-79.096806,ORCHARD,DRUMMOND,0
+node/13921224111,LOCAL CANADIAN DISTILLERY,craft,distillery,craft,,,,,,4536 Montrose Road,43.107379,-79.123559,KENT,NORTHWEST,0
+node/6522342293,Niagara Brewing Company,craft,brewery,craft,,,,,,4915 Clifton Hill,43.091027,-79.073536,CLIFTON HILL,QUEEN VICTORIA,1
+node/12042254932,Niagara Distillery,craft,distillery,craft,,,,,,4915-B Clifton Hill,43.090942,-79.07328,CLIFTON HILL,QUEEN VICTORIA,1
+node/5534522882,Avalon Ballroom Theatre,amenity,theatre,entertainment,,,,,,6380 Fallsview Boulevard,43.081729,-79.08011,FALLSVIEW NORTH,QUEEN VICTORIA,1
+node/9193193762,Cineplex Cinemas 10,amenity,cinema,entertainment,Cineplex,,,,,7555 Montrose Road,43.067958,-79.127834,WESTLANE INDUSTRIAL BASIN,WESTLANE,0
+node/5514961472,Greg Frewin Theatre,amenity,theatre,entertainment,,,,,,5781 Ellen Ave,43.092169,-79.078813,CLIFTON HILL,QUEEN VICTORIA,1
+node/5534581626,Greg Frewin Theatre,amenity,theatre,entertainment,,,,,,5781 Ellen Ave,43.089787,-79.081687,CLIFTON HILL,QUEEN VICTORIA,1
+way/178332405,Niagara Centre for the Arts,amenity,theatre,entertainment,,,,,,4700 Epworth Circle,43.098519,-79.07066,RYERSON,ELGIN,0
+way/177402622,Niagara Falls Convention Centre,amenity,conference_centre,entertainment,,,,,,6815 Stanley Avenue,43.076099,-79.08502,FALLSVIEW SOUTH,QUEEN VICTORIA,1
+way/808101766,Niagara Falls Entertainment Centre (opening 2020),amenity,theatre,entertainment,,,,,,,43.082824,-79.083836,FALLSVIEW NORTH,QUEEN VICTORIA,1
+node/3580486880,Ripley's Selfie Studios,amenity,cinema,entertainment,,,,,,,43.092041,-79.075694,CLIFTON HILL,QUEEN VICTORIA,1
+node/5514910923,The Avalon Ballroom Theatre,amenity,theatre,entertainment,,,,,,6380 Fallsview Blvd,43.086491,-79.136007,GARNER,WESTLANE,0
+node/3580513501,The Falls 3D/4D Movie,amenity,cinema,entertainment,,,,,,,43.083964,-79.080302,FALLSVIEW NORTH,QUEEN VICTORIA,1
+node/9879841986,,amenity,fast_food,fast_food,,,,,,,43.060823,-79.078165,MARINELAND,QUEEN VICTORIA,0
+node/9879841987,,amenity,fast_food,fast_food,,,,,,,43.060692,-79.078521,MARINELAND,QUEEN VICTORIA,0
+node/9879841988,,amenity,fast_food,fast_food,,,,,,,43.060824,-79.074624,MARINELAND,QUEEN VICTORIA,0
+node/9879841989,,amenity,fast_food,fast_food,,,,,,,43.060561,-79.07886,MARINELAND,QUEEN VICTORIA,0
+node/9879841990,,amenity,fast_food,fast_food,,,,,,,43.061381,-79.073509,MARINELAND,QUEEN VICTORIA,0
+node/9879841991,,amenity,fast_food,fast_food,,,,,,,43.063303,-79.075029,MARINELAND,QUEEN VICTORIA,0
+node/9879841992,,amenity,fast_food,fast_food,,,,,,,43.064688,-79.070619,MARINELAND,QUEEN VICTORIA,0
+node/2922358629,,amenity,food_court,fast_food,,,,,,,43.081637,-79.08024,FALLSVIEW NORTH,QUEEN VICTORIA,1
+node/8711923889,,amenity,fast_food,fast_food,,,,,,,43.117734,-79.068406,GLENVIEW,ELGIN,0
+node/10814658798,2-Nine Five Chippawa,amenity,fast_food,fast_food,,,,,,,43.060241,-79.053995,KINGSBRIDGE,CHIPPAWA,0
+node/4275810652,241 Pizza,amenity,fast_food,fast_food,241 Pizza,pizza,,,,,43.089407,-79.08627,CLIFTON HILL,QUEEN VICTORIA,0
+way/488685674,A&W,amenity,fast_food,fast_food,A&W,burger,,,,,43.070155,-79.111029,MILLER,DRUMMOND,0
+way/708604894,A&W,amenity,fast_food,fast_food,A&W,burger,,,,,43.11498,-79.125759,CARMEL,NORTHWEST,0
+node/9103887345,Afghan Kabob,amenity,fast_food,fast_food,,,,,,5284 Ferry Street,43.089452,-79.081192,CLIFTON HILL,QUEEN VICTORIA,1
+way/401401325,Arby's,amenity,fast_food,fast_food,Arby's,sandwich,,,Mo-Su 10:00-23:00,6624 Lundys Lane,43.089046,-79.105473,CORWIN,DRUMMOND,0
+node/4844724086,BarBurrito,amenity,fast_food,fast_food,BarBurrito,mexican,,,,6380 Fallsview Boulevard,43.081615,-79.080076,FALLSVIEW NORTH,QUEEN VICTORIA,1
+node/6538086691,Baraka Shawarma,amenity,fast_food,fast_food,,kebab,,,Su-We 12:00-23:00; Th-Sa 12:00-02:00,6850 Thorold Stone Road,43.114644,-79.110726,PETTIT,STAMFORD,0
+node/7799181476,Beavertails,amenity,fast_food,fast_food,,,,,,,43.091867,-79.075591,CLIFTON HILL,QUEEN VICTORIA,1
+node/5784529853,Big Bee Refreshment Food Truck,amenity,fast_food,fast_food,,burger,,,,4787 Victoria Avenue,43.10473,-79.073378,MAPLE,ELGIN,0
+node/4839841755,Burger Factory,amenity,fast_food,fast_food,,burger,,,Su-Th 11:30-00:00; Fr-Sa 11:30-01:00,,43.092213,-79.076133,CLIFTON HILL,QUEEN VICTORIA,1
+node/6522342343,Burger King,amenity,fast_food,fast_food,Burger King,burger,,,,,43.091836,-79.075523,CLIFTON HILL,QUEEN VICTORIA,1
+node/9893595870,Burger King,amenity,fast_food,fast_food,Burger King,burger,,,,,43.081685,-79.080109,FALLSVIEW NORTH,QUEEN VICTORIA,1
+way/288680843,Burger King,amenity,fast_food,fast_food,Burger King,burger,,,,,43.114204,-79.124084,KENT,NORTHWEST,0
+way/401401327,Burger King,amenity,fast_food,fast_food,Burger King,burger,,,24/7,,43.089767,-79.098606,LEEMING,DRUMMOND,0
+node/9104155125,Butterfly Café,amenity,fast_food,fast_food,,,,,,,43.135727,-79.055241,THOMPSON,STAMFORD,0
+node/4277114922,CCSwirls,amenity,fast_food,fast_food,,,,,,,43.081953,-79.082944,FALLSVIEW NORTH,QUEEN VICTORIA,1
+node/12847527719,Charbroiled Hot Dog,amenity,fast_food,fast_food,,,,,,,43.091362,-79.076059,CLIFTON HILL,QUEEN VICTORIA,1
+node/7799217290,Coca-Cola (Always Refreshing Soda Shop),amenity,fast_food,fast_food,,,,,,,43.092018,-79.071213,CLIFTON HILL,QUEEN VICTORIA,1
+node/12718492410,Costco Food Court,amenity,fast_food,fast_food,Costco,hot_dog;pizza;sandwich,,,,,43.065982,-79.127227,WESTLANE INDUSTRIAL BASIN,WESTLANE,0
+way/817045238,Country Donuts,amenity,fast_food,fast_food,,donut,,,,,43.100752,-79.072869,RYERSON,ELGIN,0
+node/6659171385,D'Vinci's Pizza,amenity,fast_food,fast_food,,pizza,,,,,43.070391,-79.136176,GARNER,WESTLANE,0
+node/3580471412,Dairy Queen,amenity,fast_food,fast_food,Dairy Queen,ice_cream;burger,,,,,43.089394,-79.085366,CLIFTON HILL,QUEEN VICTORIA,0
+node/3580513498,Dairy Queen,amenity,fast_food,fast_food,Dairy Queen,ice_cream;burger,,,,,43.083928,-79.080096,FALLSVIEW NORTH,QUEEN VICTORIA,1
+node/6522342342,Dairy Queen,amenity,fast_food,fast_food,Dairy Queen,ice_cream;burger;chicken,,,,,43.091615,-79.075025,CLIFTON HILL,QUEEN VICTORIA,1
+way/488786299,Dairy Queen,amenity,fast_food,fast_food,Dairy Queen,ice_cream;burger,,,Mo-Su 11:00-22:00,3509 Portage Road,43.122217,-79.100187,CULLIMORE,STAMFORD,0
+node/9103858404,Delhi JNX,amenity,fast_food,fast_food,,indian,,,,,43.089443,-79.081556,CLIFTON HILL,QUEEN VICTORIA,1
+node/4036094329,Domino's,amenity,fast_food,fast_food,Domino's,pizza,,,,,43.089322,-79.135739,HODGSON,WESTLANE,0
+node/4274827325,Domino's,amenity,fast_food,fast_food,Domino's,pizza,,,,,43.089759,-79.089222,CORONATION,DRUMMOND,0
+node/6658778589,Don Wong,amenity,fast_food,fast_food,,mexican,,,,,43.114456,-79.112271,QUEENSWAY,STAMFORD,0
+node/10814656861,Fried Chicken Rok’s,amenity,fast_food,fast_food,,,,,,,43.060926,-79.055002,KINGSBRIDGE,CHIPPAWA,0
+node/6659074987,Frijoles,amenity,fast_food,fast_food,,mexican,,,Mo-Fr 11:30-20:00; Sa 12:00-19:00; Su 12:00-18:00,3465 Portage Road,43.122562,-79.101062,CULLIMORE,STAMFORD,0
+node/7799181477,Fusion Wrap,amenity,fast_food,fast_food,,mexican,,,,4967 Clifton Hill,43.091979,-79.075302,CLIFTON HILL,QUEEN VICTORIA,1
+node/3425978500,Gambler's Pizza,amenity,fast_food,fast_food,,pizza,,,"Su 16:00-21:00, Mo-Th 16:00-23:00, Fr-Sa 16:00-00:00",7282 Drummond Road,43.070258,-79.096596,TRILLIUM,DRUMMOND,0
+node/6658835141,Garrisons Grill,amenity,fast_food,fast_food,,sandwich,,,,,43.114997,-79.099402,PETTIT,STAMFORD,0
+node/4274826611,Gino's Pizza,amenity,fast_food,fast_food,Gino's Pizza,pizza,,,,,43.089625,-79.099453,LEEMING,DRUMMOND,0
+node/6659134121,Harvey's,amenity,fast_food,fast_food,Harvey's,burger,,,,,43.071284,-79.126642,MUNRO,WESTLANE,0
+way/288680841,Harvey's,amenity,fast_food,fast_food,Harvey's,burger,,,Mo-Su 10:30-24:00,3930 Montrose Road,43.115222,-79.122964,CARMEL,NORTHWEST,0
+way/428375432,Harvey's,amenity,fast_food,fast_food,Harvey's,burger,,,,,43.089679,-79.107245,LEEMING,DRUMMOND,0
+node/12847362840,Hazukido,amenity,fast_food,fast_food,,,,,,,43.081521,-79.080296,FALLSVIEW NORTH,QUEEN VICTORIA,1
+way/544241163,Hornblower Concessions,amenity,fast_food,fast_food,,,,,,,43.087904,-79.072742,QUEEN VICTORIA,QUEEN VICTORIA,0
+node/4274825613,Hot Belly Sub,amenity,fast_food,fast_food,,sandwich,,,,,43.088962,-79.107621,CORWIN,DRUMMOND,0
+node/930387025,Hungry Bear Restaurant,amenity,fast_food,fast_food,,,,,,,43.064658,-79.071851,MARINELAND,QUEEN VICTORIA,0
+node/12847412323,Ichiban Sushi Express,amenity,fast_food,fast_food,,sushi,,,,,43.081373,-79.080305,FALLSVIEW NORTH,QUEEN VICTORIA,1
+node/12847362841,Jimmy John’s,amenity,fast_food,fast_food,,,,,,,43.081562,-79.080375,FALLSVIEW NORTH,QUEEN VICTORIA,1
+node/6659074082,Joseph's Pizzeria,amenity,fast_food,fast_food,,pizza,,,Fr-Sa 11:00-21:30; Su 12:00-19:30; Mo-Th 11:00-20:30,3521 Portage Road,43.121947,-79.100476,CULLIMORE,STAMFORD,0
+node/6659093803,Jumbo's Pizza & Wings,amenity,fast_food,fast_food,,pizza,,,,,43.071675,-79.109511,CALEDONIA,DRUMMOND,0
+node/4037900870,KFC,amenity,fast_food,fast_food,KFC,chicken,,,,,43.090342,-79.079198,CLIFTON HILL,QUEEN VICTORIA,1
+node/4274827726,KFC,amenity,fast_food,fast_food,KFC,chicken,,,,,43.089634,-79.104084,LEEMING,DRUMMOND,0
+way/181024392,KFC,amenity,fast_food,fast_food,KFC,chicken,,,,,43.105483,-79.11065,PETTIT,STAMFORD,0
+way/488785460,KFC,amenity,fast_food,fast_food,KFC,chicken,,,,,43.12142,-79.100107,CULLIMORE,STAMFORD,0
+node/6659074077,Lee's Famous Recipe Chicken,amenity,fast_food,fast_food,Lee's Famous Recipe Chicken,chicken,,,,,43.121846,-79.100381,CULLIMORE,STAMFORD,0
+node/6658933305,Little Caesars,amenity,fast_food,fast_food,Little Caesars,pizza,,,Mo-Th 11:00-23:00; Fr-Sa 11:00-00:00; Su 11:00-22:00,6161 Thorold Stone Road,43.115821,-79.096679,KER,STAMFORD,0
+node/6659111290,McDonald's,amenity,fast_food,fast_food,McDonald's,burger,,,,,43.067792,-79.119747,DRUMMOND INDUSTRIAL BASIN,DRUMMOND,0
+way/178404135,McDonald's,amenity,fast_food,fast_food,McDonald's,burger,,,Mo-Su 06:00-23:00,7275 Oakwood Drive,43.069896,-79.11811,DRUMMOND INDUSTRIAL BASIN,DRUMMOND,0
+node/7846609524,McDonald's,amenity,fast_food,fast_food,McDonald's,burger,,,24/7,5486 Stanley Avenue,43.09514,-79.08443,CLIFTON HILL,QUEEN VICTORIA,1
+way/179320973,McDonald's,amenity,fast_food,fast_food,McDonald's,burger,,,24/7,6348 Lundy's Lane,43.089021,-79.100134,CORWIN,DRUMMOND,0
+way/708625403,McDonald's,amenity,fast_food,fast_food,McDonald's,burger,,,Mo-Su 06:00-23:00,6161 Thorold Stone Road,43.1158,-79.095798,KER,STAMFORD,0
+way/1466898945,Niko's Place,amenity,fast_food,fast_food,,,,,,,43.100185,-79.073604,VALLEYWAY,ELGIN,0
+node/6621699099,Orange Julius,amenity,fast_food,fast_food,Orange Julius,juice,,,,,43.083967,-79.08005,FALLSVIEW NORTH,QUEEN VICTORIA,1
+node/6522346759,Osmow's,amenity,fast_food,fast_food,Osmow's,mediterranean;shawarma,,,"Mo-We 11:00-23:00; Th,Su 11:00-24:00; Fr-Sa 11:00-01:00",5934 Victoria Avenue,43.090246,-79.07885,CLIFTON HILL,QUEEN VICTORIA,1
+node/3580479193,Papa John's,amenity,fast_food,fast_food,Papa John's,pizza,,,,,43.086012,-79.084872,FALLSVIEW NORTH,QUEEN VICTORIA,1
+node/7799193695,Papa John's,amenity,fast_food,fast_food,Papa John's,pizza,,,,,43.092077,-79.075161,CLIFTON HILL,QUEEN VICTORIA,1
+node/6659077173,Pita Pit,amenity,fast_food,fast_food,Pita Pit,pita,,,,,43.070621,-79.128306,MUNRO,WESTLANE,0
+node/6659093817,Pita on the Run,amenity,fast_food,fast_food,,pita,,,,,43.069838,-79.111266,MILLER,DRUMMOND,0
+node/6512325583,Pizza & Fry,amenity,fast_food,fast_food,,pizza,,,,4572 Queen Street,43.106509,-79.068852,CENTRAL BUSINESS DISTRICT,ELGIN,0
+node/3580513499,Pizza Pizza,amenity,fast_food,fast_food,Pizza Pizza,pizza,,,,,43.083955,-79.080169,FALLSVIEW NORTH,QUEEN VICTORIA,1
+node/5454443019,Pizza Pizza,amenity,fast_food,fast_food,Pizza Pizza,pizza,,,,,43.091476,-79.074505,CLIFTON HILL,QUEEN VICTORIA,1
+node/6659055415,Pizza Pizza,amenity,fast_food,fast_food,Pizza Pizza,pizza,,,,,43.120132,-79.100044,MITCHELSON,STAMFORD,0
+node/9103871467,Pizza Pizza,amenity,fast_food,fast_food,Pizza Pizza,pizza,,,,,43.092397,-79.085348,CLIFTON HILL,QUEEN VICTORIA,1
+way/401401331,Pizza Pizza,amenity,fast_food,fast_food,Pizza Pizza,pizza,,,,,43.089707,-79.098114,LEEMING,DRUMMOND,0
+node/4274825615,Popeyes,amenity,fast_food,fast_food,Popeyes,chicken,,,,,43.088956,-79.107833,CORWIN,DRUMMOND,0
+node/9103880243,Popeyes,amenity,fast_food,fast_food,Popeyes,chicken,,,"Mo-Th,Su 11:00-22:00; Fr 11:00-23:00; Sa 11:00-24:00",,43.09027,-79.078804,CLIFTON HILL,QUEEN VICTORIA,1
+node/11137391247,Potato Jackets,amenity,fast_food,fast_food,,middle_eastern,,,,5444 Ferry Street,43.089429,-79.084358,CLIFTON HILL,QUEEN VICTORIA,1
+node/7324366151,Qualia Pizza,amenity,fast_food,fast_food,,pizza,,,,,43.089808,-79.136699,GARNER,WESTLANE,0
+node/6659093814,Quesada,amenity,fast_food,fast_food,Quesada,mexican,,,,,43.070189,-79.111957,MILLER,DRUMMOND,0
+node/6659055417,Quesada,amenity,fast_food,fast_food,Quesada,mexican,,,,,43.120291,-79.100057,MITCHELSON,STAMFORD,0
+node/6658652273,Quiznos,amenity,fast_food,fast_food,Quiznos,sandwich,,,,,43.115419,-79.125202,CARMEL,NORTHWEST,0
+node/6658835150,Sahara Shawarma Wraps,amenity,fast_food,fast_food,,pita,,,,,43.11565,-79.099652,MITCHELSON,STAMFORD,0
+node/5365043021,Smoke's Poutinerie,amenity,fast_food,fast_food,Smoke's Poutinerie,poutine,,,"Fr-Sa 12:00-04:00; Su,Th 12:00-20:00",5869 Victoria Avenue,43.090584,-79.078792,CLIFTON HILL,QUEEN VICTORIA,1
+node/6657822529,Soups & Things,amenity,fast_food,fast_food,,soup,,,,,43.086346,-79.120252,LUNDY,WESTLANE,0
+node/6658778595,Substantial,amenity,fast_food,fast_food,,sandwich,,,,,43.114641,-79.110618,PETTIT,STAMFORD,0
+node/6659077169,Subway,amenity,fast_food,fast_food,Subway,sandwich,,,,,43.071863,-79.128259,MUNRO,WESTLANE,0
+node/6659111296,Subway,amenity,fast_food,fast_food,Subway,sandwich,,,,,43.066217,-79.119548,DRUMMOND INDUSTRIAL BASIN,DRUMMOND,0
+node/10814658795,Subway,amenity,fast_food,fast_food,Subway,sandwich,,,,,43.060636,-79.054039,KINGSBRIDGE,CHIPPAWA,0
+node/3678947240,Subway,amenity,fast_food,fast_food,Subway,sandwich,,,,,43.081837,-79.082438,FALLSVIEW NORTH,QUEEN VICTORIA,1
+node/4037715979,Subway,amenity,fast_food,fast_food,Subway,sandwich,,,,7906 Lundys Lane,43.088597,-79.129506,MUNRO,WESTLANE,0
+node/4355037310,Subway,amenity,fast_food,fast_food,Subway,sandwich,,,,,43.089858,-79.097306,CORONATION,DRUMMOND,0
+node/6658699781,Subway,amenity,fast_food,fast_food,Subway,sandwich,,,,,43.114664,-79.112849,QUEENSWAY,STAMFORD,0
+node/6659055418,Subway,amenity,fast_food,fast_food,Subway,sandwich,,,,,43.120362,-79.100058,MITCHELSON,STAMFORD,0
+node/8144178379,Subway,amenity,fast_food,fast_food,Subway,sandwich,,,,,43.091751,-79.076905,CLIFTON HILL,QUEEN VICTORIA,1
+node/13454384834,Subway,amenity,fast_food,fast_food,Subway,sandwich,,,,,43.09988,-79.073288,VALLEYWAY,ELGIN,0
+way/387916669,Subway,amenity,fast_food,fast_food,Subway,sandwich,,,Mo-Fr 09:00-22:00; Sa-Su 09:00-00:00,,43.095504,-79.084947,CLIFTON HILL,QUEEN VICTORIA,1
+node/9972969077,Table Rock Market,amenity,food_court,fast_food,,,,,,,43.079092,-79.079014,QUEEN VICTORIA,QUEEN VICTORIA,0
+node/4274827728,Taco Bell,amenity,fast_food,fast_food,Taco Bell,tex-mex,,,,6555 Lundys Lane,43.089637,-79.103971,LEEMING,DRUMMOND,0
+way/288680960,Taco Bell,amenity,fast_food,fast_food,Taco Bell,tex-mex,,,Mo-Su 11:00-23:00,3770 Montrose Road,43.117405,-79.124212,CARMEL,NORTHWEST,0
+node/9104001344,The Hungry Moose Food Court,amenity,food_court,fast_food,,,,,,,43.113118,-79.062119,GLENVIEW,ELGIN,0
+node/4462911838,The Sub Shoppe,amenity,fast_food,fast_food,,sandwich,,,,8209 Lundys Ln,43.089337,-79.135561,HODGSON,WESTLANE,0
+node/6538079301,Twice the deal Pizza,amenity,fast_food,fast_food,,pizza,,,Su-Th 11:00-01:00; Fr-Sa 11:00-03:00,6850 Thorold Stone Road,43.114642,-79.110814,PETTIT,STAMFORD,0
+node/6657970161,U Need A Pita,amenity,fast_food,fast_food,,pita,,,,,43.105252,-79.112136,QUEENSWAY,STAMFORD,0
+node/6659055416,U Need A Pita,amenity,fast_food,fast_food,,pita,,,,,43.120208,-79.100049,MITCHELSON,STAMFORD,0
+node/9893595868,Vittorio’s,amenity,fast_food,fast_food,,,,,,,43.08177,-79.080309,FALLSVIEW NORTH,QUEEN VICTORIA,1
+node/6659093809,Wendy's,amenity,fast_food,fast_food,Wendy's,burger,,,,,43.06998,-79.110385,MILLER,DRUMMOND,0
+node/10297359643,Wendy's,amenity,fast_food,fast_food,Wendy's,burger,,,,,43.090948,-79.074179,CLIFTON HILL,QUEEN VICTORIA,1
+way/401401341,Wendy's,amenity,fast_food,fast_food,Wendy's,burger,,,,6363 Lundys Lane,43.089698,-79.100969,LEEMING,DRUMMOND,0
+way/783764937,Wendy's,amenity,fast_food,fast_food,Wendy's,burger,,,,,43.115539,-79.103158,MITCHELSON,STAMFORD,0
+way/784095687,Wendy's,amenity,fast_food,fast_food,Wendy's,burger,,,,,43.089283,-79.13646,GARNER,WESTLANE,0
+node/4274831444,Wingz N Thingz Pizza,amenity,fast_food,fast_food,,pizza,,,,,43.089021,-79.10442,CORWIN,DRUMMOND,0
+node/6658988076,Your Neighbourhood Pizza Company,amenity,fast_food,fast_food,,pizza,,,,,43.117991,-79.098549,KER,STAMFORD,0
+node/12214470957,,amenity,charging_station,fuel,,,,,,,43.07479,-79.07979,QUEEN VICTORIA,QUEEN VICTORIA,0
+node/12214524817,,amenity,charging_station,fuel,,,,,,,43.074769,-79.079774,QUEEN VICTORIA,QUEEN VICTORIA,0
+node/9893319094,,amenity,charging_station,fuel,,,,,,,43.09244,-79.084718,CLIFTON HILL,QUEEN VICTORIA,1
+node/12092434567,,amenity,charging_station,fuel,,,,,,,43.095687,-79.074281,CLIFTON HILL,QUEEN VICTORIA,1
+node/12847548366,,amenity,charging_station,fuel,,,,,,,43.08676,-79.082794,FALLSVIEW NORTH,QUEEN VICTORIA,1
+node/12847632635,,amenity,charging_station,fuel,,,,,,,43.083824,-79.078025,QUEEN VICTORIA,QUEEN VICTORIA,0
+node/13955840698,,amenity,charging_station,fuel,,,,,,,43.110651,-79.060829,GLENVIEW,ELGIN,0
+way/784100742,,amenity,fuel,fuel,,,,,,,43.103671,-79.073957,VALLEYWAY,ELGIN,0
+node/3425981588,7-Eleven,amenity,fuel,fuel,7-Eleven,,,,Mo-Fr 00:00-24:00,,43.070576,-79.096532,TRILLIUM,DRUMMOND,0
+node/5361707557,Canadian Tire,amenity,fuel,fuel,Canadian Tire,,,,,6840 McLeod Road,43.070335,-79.10873,MERRIT,DRUMMOND,0
+way/267907967,Canadian Tire,amenity,fuel,fuel,Canadian Tire,,,,,7624 Thorold Stone Road,43.114314,-79.125238,MULHERN,NORTHWEST,0
+node/5361707567,Circle K,amenity,fuel,fuel,Circle K,,,,,8267 Thorold Stone Road,43.114493,-79.136706,CARMEL,NORTHWEST,0
+node/9193193928,Costco Gasoline,amenity,fuel,fuel,Costco,,,,,7500 Pin Oak Drive,43.064552,-79.128005,WESTLANE INDUSTRIAL BASIN,WESTLANE,0
+node/5361707558,Esso,amenity,fuel,fuel,Esso,,,,,6873 McLeod Road,43.070766,-79.109361,CALEDONIA,DRUMMOND,0
+node/1878609601,Esso,amenity,fuel,fuel,Esso,,,,,6192 Lundy's Lane,43.089198,-79.09734,ORCHARD,DRUMMOND,0
+node/5361707562,Esso,amenity,fuel,fuel,Esso,,,,,8214 Lundy's Lane,43.088627,-79.135349,MUNRO,WESTLANE,0
+node/7846595025,Esso,amenity,fuel,fuel,Esso,,,,,,43.09504,-79.08481,CLIFTON HILL,QUEEN VICTORIA,1
+node/5361641502,Gales,amenity,fuel,fuel,,,,,,7801 Portage Road,43.061347,-79.057355,KINGSBRIDGE,CHIPPAWA,0
+node/5361707560,Gales,amenity,fuel,fuel,,,,,,6644 Lundy's Lane,43.089115,-79.105838,CORWIN,DRUMMOND,0
+node/5361707566,Gales,amenity,fuel,fuel,,,,,,7537 Thorold Stone Road,43.114831,-79.123728,CARMEL,NORTHWEST,0
+node/6658835108,Gales,amenity,fuel,fuel,,,,,,,43.115513,-79.10146,MITCHELSON,STAMFORD,0
+node/5361707563,Gulf,amenity,fuel,fuel,Gulf,,,,,8209 Lundy's Lane,43.08909,-79.135563,HODGSON,WESTLANE,0
+node/7630761687,Mobil,amenity,fuel,fuel,Mobil,,,,,,43.091978,-79.085444,CLIFTON HILL,QUEEN VICTORIA,1
+node/13667869901,Niagara Falls Supercharger,amenity,charging_station,fuel,Tesla Supercharger,,,,24/7,,43.104441,-79.110488,PETTIT,STAMFORD,0
+node/5361707559,Petro-Canada,amenity,fuel,fuel,Petro-Canada,,,,,7307 Oakwood Drive,43.069147,-79.118004,DRUMMOND INDUSTRIAL BASIN,DRUMMOND,0
+node/5361707561,Petro-Canada,amenity,fuel,fuel,Petro-Canada,,,,,7950 McLeod Road,43.069773,-79.129351,WESTLANE INDUSTRIAL BASIN,WESTLANE,0
+node/1887016894,Petro-Canada,amenity,fuel,fuel,Petro-Canada,,,,,5204 Stanley Avenue,43.098733,-79.085144,VALLEYWAY,ELGIN,0
+node/5361707565,Petro-Canada,amenity,fuel,fuel,Petro-Canada,,,,,6876 Thorold Stone Road,43.114816,-79.111347,PETTIT,STAMFORD,0
+node/7617193595,Petro-Canada,amenity,fuel,fuel,Petro-Canada,,,,,,43.089174,-79.130457,HODGSON,WESTLANE,0
+way/335489233,Pioneer,amenity,fuel,fuel,Pioneer,,,,,,43.071089,-79.097394,CALEDONIA,DRUMMOND,0
+node/9103871469,Pioneer,amenity,fuel,fuel,Pioneer,,,,,,43.09269,-79.085457,CLIFTON HILL,QUEEN VICTORIA,1
+node/3580471413,Shell,amenity,fuel,fuel,Shell,,,,,,43.08938,-79.084562,CLIFTON HILL,QUEEN VICTORIA,1
+node/5361707564,Shell,amenity,fuel,fuel,Shell,,,,,4790 Dorchester Road,43.103852,-79.110791,PETTIT,STAMFORD,0
+node/12079010161,Tesla Destination Charger,amenity,charging_station,fuel,Tesla,,,,,,43.062955,-79.050394,KINGSBRIDGE,CHIPPAWA,0
+node/9952933423,Tesla Destination Charger,amenity,charging_station,fuel,"Tesla, Inc.",,,,,,43.089751,-79.080648,CLIFTON HILL,QUEEN VICTORIA,1
+node/13667867402,Tesla Supercharger,amenity,charging_station,fuel,Tesla Supercharger,,,,24/7,,43.11675,-79.124194,CARMEL,NORTHWEST,0
+node/4274831845,99¢ Depot Plus,shop,variety_store,general_merchandise,,,,,,,43.088736,-79.103243,CORWIN,DRUMMOND,0
+node/8017318122,Canada One Outlet,shop,department_store,general_merchandise,,,,,,,43.088611,-79.120549,LUNDY,WESTLANE,0
+node/7578527086,Canadian Tire,shop,department_store,general_merchandise,Canadian Tire,,,,Mo-Sa 08:00-21:00; Su 08:00-18:00,7190 Morrison Street,43.101721,-79.116227,WALLICE,STAMFORD,0
+node/8367723169,Costco,shop,wholesale,general_merchandise,Costco,,,,"Mo-Fr 09:00-20:30; Sa, Su 09:00-18:00",7500 Pin Oak Drive,43.066321,-79.12767,WESTLANE INDUSTRIAL BASIN,WESTLANE,0
+node/6658933297,Dollar Tree,shop,variety_store,general_merchandise,Dollar Tree,,,,,,43.116258,-79.097006,KER,STAMFORD,0
+node/6659055412,Dollar Values,shop,variety_store,general_merchandise,,,,,,,43.11994,-79.100664,MITCHELSON,STAMFORD,0
+node/6659111299,Dollarama,shop,variety_store,general_merchandise,Dollarama,,,,,,43.066477,-79.118444,DRUMMOND INDUSTRIAL BASIN,DRUMMOND,0
+node/9193193964,Dollarama,shop,variety_store,general_merchandise,Dollarama,,,,,7555 Montrose Road,43.066853,-79.125207,WESTLANE INDUSTRIAL BASIN,WESTLANE,0
+node/6657882609,Dollarama,shop,variety_store,general_merchandise,Dollarama,,,,Mo-Sa 09:00-21:00; Su 09:00-18:00,7190 Morrison Street,43.103629,-79.116303,WALLICE,STAMFORD,0
+node/13454384825,Dollarama,shop,variety_store,general_merchandise,Dollarama,,,,,,43.099685,-79.074338,VALLEYWAY,ELGIN,0
+way/179320976,Dollarama,shop,variety_store,general_merchandise,Dollarama,,,,,,43.088984,-79.098531,CORWIN,DRUMMOND,0
+way/181022981,Dollarama,shop,variety_store,general_merchandise,Dollarama,,,,,,43.104731,-79.110229,PETTIT,STAMFORD,0
+node/11234390627,Giant Tiger,shop,department_store,general_merchandise,Giant Tiger,,,,Mo-Sa 08:00-21:00; Su 09:00-18:00,,43.066847,-79.124904,WESTLANE INDUSTRIAL BASIN,WESTLANE,0
+node/6658933306,Giant Tiger,shop,department_store,general_merchandise,Giant Tiger,,,,,,43.115876,-79.096312,KER,STAMFORD,0
+node/11774887060,Goodwill,shop,variety_store,general_merchandise,,,,,Mo-Sa 09:00-21:00; Su 09:00-17:00,6840 McLeod Road,43.069828,-79.108498,MERRIT,DRUMMOND,0
+node/8148941754,Grand View Marketplace,shop,mall,general_merchandise,,,,,,,43.089022,-79.073049,QUEEN VICTORIA,QUEEN VICTORIA,0
+node/3580548165,Lapennaco Liquidation Super Centre,shop,department_store,general_merchandise,,,,,Mo-Fr 10:00-19:00; Sa-Su 10:00-18:00,,43.094779,-79.085923,CLIFTON HILL,QUEEN VICTORIA,1
+way/272966183,Maple Leaf Place,shop,mall,general_merchandise,,,,,,,43.113008,-79.062037,GLENVIEW,ELGIN,0
+node/11137391235,Min e Mart Variety and Grocery,shop,variety_store,general_merchandise,,,,,,,43.09047,-79.078508,CLIFTON HILL,QUEEN VICTORIA,1
+node/4274831843,Multi Brands Outlet,shop,variety_store,general_merchandise,,,,,,,43.088738,-79.103402,CORWIN,DRUMMOND,0
+way/178404365,Walmart,shop,department_store,general_merchandise,Walmart,,,,Mo-Sa 07:00-23:00; Su 07:00-22:00,7481 Oakwood Drive,43.068117,-79.119045,DRUMMOND INDUSTRIAL BASIN,DRUMMOND,0
+node/6629553670,Winners,shop,department_store,general_merchandise,Winners,,,,Mo-Fr 09:00-21:30; Sa 09:00-21:00; Su 10:00-19:00,7555 Montrose Road,43.06501,-79.12522,WESTLANE INDUSTRIAL BASIN,WESTLANE,0
+node/9103870422,,shop,convenience,grocery_food,,,,,,,43.091927,-79.08583,CLIFTON HILL,QUEEN VICTORIA,1
+node/9103871468,,shop,convenience,grocery_food,,,,,,,43.092396,-79.085441,CLIFTON HILL,QUEEN VICTORIA,1
+node/12847322450,,shop,convenience,grocery_food,,,,,,,43.089009,-79.081504,FALLSVIEW NORTH,QUEEN VICTORIA,1
+node/3425981589,7-Eleven,shop,convenience,grocery_food,7-Eleven,,,,,,43.070472,-79.096374,TRILLIUM,DRUMMOND,0
+node/4355020668,7-Eleven,shop,convenience,grocery_food,7-Eleven,,,,24/7,4025 Dorchester Road,43.114669,-79.112311,QUEENSWAY,STAMFORD,0
+node/6659093805,Avondale Food Stores,shop,convenience,grocery_food,Avondale Food Stores,,,,,,43.071551,-79.109515,CALEDONIA,DRUMMOND,0
+way/813984642,Avondale Food Stores,shop,convenience,grocery_food,Avondale Food Stores,,,,,,43.058079,-79.050143,BRIDGEWATER,CHIPPAWA,0
+node/6658652277,Avondale Food Stores,shop,convenience,grocery_food,Avondale Food Stores,,,,,,43.115183,-79.125182,CARMEL,NORTHWEST,0
+node/12477219701,Avondale Food Stores,shop,convenience,grocery_food,Avondale Food Stores,,,,Mo-Sa 07:00-22:00; Su 08:00-22:00,8214 Lundys Lane,43.088259,-79.135741,MUNRO,WESTLANE,0
+way/816692685,Avondale Food Stores,shop,convenience,grocery_food,Avondale Food Stores,,,,"Mo-Sa 07:00-22:00, Su 08:00-22:00",5473 Highland Avenue,43.094774,-79.102902,LEEMING,DRUMMOND,0
+node/4274823184,Big Bee,shop,convenience,grocery_food,Big Bee,,,,Mo-Fr 09:00-19:00; Sa 10:00-19:00; Su off,5869 Main Street,43.089766,-79.093186,CORONATION,DRUMMOND,0
+node/6657970160,Big Bee,shop,convenience,grocery_food,Big Bee,,,,,,43.104975,-79.112143,QUEENSWAY,STAMFORD,0
+way/462013634,Big Bee,shop,convenience,grocery_food,Big Bee,,,,24/7,4787 Victoria Avenue,43.104747,-79.073534,MAPLE,ELGIN,0
+way/815777060,Big Bee,shop,convenience,grocery_food,Big Bee,,,,,,43.100095,-79.123641,KENT,NORTHWEST,0
+node/6658835137,Bittersweet Symphony,shop,bakery,grocery_food,,,,,Su-Tu 10:00-17:00; We-Fr 10:00-18:00; Sa 10:00-19:00,,43.114982,-79.099859,PETTIT,STAMFORD,0
+node/10814621561,Bob’s Fast & Fresh Convenience,shop,convenience,grocery_food,,,,,,,43.061247,-79.057136,KINGSBRIDGE,CHIPPAWA,0
+way/817045237,Bombay Store,shop,supermarket,grocery_food,,,,,,,43.100311,-79.072555,RYERSON,ELGIN,0
+node/6659111292,Bulk Barn,shop,supermarket,grocery_food,Bulk Barn,,,,,,43.066263,-79.120744,DRUMMOND INDUSTRIAL BASIN,DRUMMOND,0
+node/6658988078,Bulk Barn,shop,supermarket,grocery_food,Bulk Barn,,,,,,43.118177,-79.09855,KER,STAMFORD,0
+node/6658835140,Busy Bee,shop,convenience,grocery_food,,,,,,,43.114996,-79.099572,PETTIT,STAMFORD,0
+way/817044918,Busybee Food Mart,shop,convenience,grocery_food,,,,,,,43.099074,-79.073336,VALLEYWAY,ELGIN,0
+way/488685250,Circle K,shop,convenience,grocery_food,Circle K,,,,,,43.070927,-79.109325,CALEDONIA,DRUMMOND,0
+node/4274826612,Circle K,shop,convenience,grocery_food,Circle K,,,,,,43.089172,-79.097169,ORCHARD,DRUMMOND,0
+way/428376600,Circle K,shop,convenience,grocery_food,Circle K,,,,,5640 Ferry Street,43.089207,-79.084473,CLIFTON HILL,QUEEN VICTORIA,1
+node/6658833781,Commisso's Fresh Foods,shop,supermarket,grocery_food,,,,,,,43.116121,-79.097703,KER,STAMFORD,0
+node/7631067090,De Healthy Baker,shop,bakery,grocery_food,,,,,,3848B Main Street,43.05719,-79.052175,BRIDGEWATER,CHIPPAWA,0
+node/6657882623,Della Terra,shop,deli,grocery_food,,,,,,,43.10473,-79.113377,QUEENSWAY,STAMFORD,0
+node/4274825892,Don's Convenience Store,shop,convenience,grocery_food,,,,,Mo-Su,,43.088697,-79.122949,LUNDY,WESTLANE,0
+node/10816822389,Falls Convenience,shop,convenience,grocery_food,,,,,,5613 Victoria Avenue,43.09352,-79.073967,CLIFTON HILL,QUEEN VICTORIA,1
+node/12847549925,Fallsview Market Place,shop,convenience,grocery_food,,,,,,,43.086751,-79.082173,FALLSVIEW NORTH,QUEEN VICTORIA,1
+way/488693381,Food Basics,shop,supermarket,grocery_food,Food Basics,,,,,,43.069693,-79.107501,MERRIT,DRUMMOND,0
+way/288680961,Food Basics,shop,supermarket,grocery_food,Food Basics,,,,Sa-Su 08:00-20:00; Mo-Fr 08:00-21:00,3770 Montrose Road,43.116816,-79.123081,CARMEL,NORTHWEST,0
+node/5743859307,Fraser's Variety,shop,convenience,grocery_food,,,,,,4803 St Clair Avenue,43.10454,-79.067156,RYERSON,ELGIN,0
+way/784095699,FreshCo,shop,supermarket,grocery_food,FreshCo,,,,,,43.08781,-79.137295,GARNER,WESTLANE,0
+node/7846572475,Gateway of Niagara,shop,convenience,grocery_food,,,,,,,43.09503,-79.08437,CLIFTON HILL,QUEEN VICTORIA,1
+node/6659093819,Good Food Box,shop,frozen_food,grocery_food,,,,,,,43.069836,-79.111415,MILLER,DRUMMOND,0
+node/2972136604,IGA,shop,supermarket,grocery_food,IGA,,,,,,43.056728,-79.052371,BRIDGEWATER,CHIPPAWA,0
+node/12847632634,INS Market,shop,convenience,grocery_food,INS Market,,,,,,43.081878,-79.080874,FALLSVIEW NORTH,QUEEN VICTORIA,1
+node/13942975501,INS Market,shop,convenience,grocery_food,INS Market,,,,,Victoria Avenue,43.091853,-79.076761,CLIFTON HILL,QUEEN VICTORIA,1
+node/6659111291,LCBO,shop,alcohol,grocery_food,LCBO,,,,,,43.066448,-79.120763,DRUMMOND INDUSTRIAL BASIN,DRUMMOND,0
+node/6658988080,LCBO,shop,alcohol,grocery_food,LCBO,,,,,,43.118601,-79.098549,KER,STAMFORD,0
+way/335487028,LCBO,shop,alcohol,grocery_food,LCBO,,,,"Su 12:00-17:00, Mo-We 10:00-18:00, Th-Sa 10:00-20:00",4694 Victoria Avenue,43.106217,-79.072938,CENTRAL BUSINESS DISTRICT,ELGIN,0
+way/345578044,LCBO,shop,alcohol,grocery_food,LCBO,,,,Mo-Su 10:00-22:00; Su 11:00-18:00,5389 Ferry Street,43.089792,-79.083315,CLIFTON HILL,QUEEN VICTORIA,1
+node/6658778592,Lee Mart,shop,convenience,grocery_food,,,,,,,43.114634,-79.111051,PETTIT,STAMFORD,0
+node/11263538737,Leo's Grocery,shop,convenience,grocery_food,,,,,,7663 Woodbine Street,43.104476,-79.125501,MULHERN,NORTHWEST,0
+node/5743495367,Lococo's,shop,greengrocer,grocery_food,,,,,"Mo-Fr 08:00-19:30; Sa,Su 08:00-18:00",4167 Victoria Avenue,43.113402,-79.073755,HAMILTON,ELGIN,0
+way/428486754,Lundy's Variety,shop,convenience,grocery_food,,,,,24/7,,43.089606,-79.109383,LEEMING,DRUMMOND,0
+node/6658835149,M&M Food Market,shop,butcher,grocery_food,M&M Food Market,,,,,,43.115646,-79.099753,MITCHELSON,STAMFORD,0
+node/11203699737,Metro,shop,supermarket,grocery_food,Metro,,,,Mo-Fr 08:00-22:00; Sa-Su 08:00-21:00,7835 McLeod Road,43.072577,-79.126997,MUNRO,WESTLANE,0
+node/4277035646,Montrose Variety,shop,convenience,grocery_food,,,,,,,43.080078,-79.123267,MUNRO,WESTLANE,0
+node/5739526658,Moodie's Bakery,shop,bakery,grocery_food,,,,,Mo-Fr 08:30-17:00; Sa 08:30-16:00; Su off,4552 Queen Street,43.106492,-79.068344,CENTRAL BUSINESS DISTRICT,ELGIN,0
+node/6658778588,Naturally Healthly,shop,health_food,grocery_food,,,,,,,43.114377,-79.112267,QUEENSWAY,STAMFORD,0
+node/3580479235,New York News Convenience Store,shop,convenience,grocery_food,,,,,,,43.086629,-79.08345,FALLSVIEW NORTH,QUEEN VICTORIA,1
+node/4274826260,No Frills,shop,supermarket,grocery_food,No Frills,,,,Mo-Fr 08:00-21:00; Sa-Su 08:00-20:00,6460 Lundys Lane,43.088726,-79.102337,CORWIN,DRUMMOND,0
+node/4274825614,Patel Groceries,shop,supermarket,grocery_food,,,,,,,43.088954,-79.107529,CORWIN,DRUMMOND,0
+way/488785458,People's Variety,shop,convenience,grocery_food,,,,,,,43.121305,-79.099201,KER,STAMFORD,0
+node/4275829264,Portage Bakery,shop,bakery,grocery_food,,,,,,,43.089726,-79.087958,CORONATION,DRUMMOND,0
+node/7798899817,Reg’s Candy Kitchen,shop,convenience,grocery_food,,,,,,5775 River Road,43.091459,-79.069962,CLIFTON HILL,QUEEN VICTORIA,1
+node/6657822527,Rocky Mountain Chocolate Factory,shop,confectionery,grocery_food,Rocky Mountain Chocolate Factory,,,,,,43.087004,-79.121089,LUNDY,WESTLANE,0
+way/488789870,Sobeys,shop,supermarket,grocery_food,Sobeys,,,,,3714 Portage Road,43.119228,-79.09832,KER,STAMFORD,0
+way/708646186,Stamford Convenience,shop,convenience,grocery_food,,,,,,,43.120894,-79.099175,KER,STAMFORD,0
+node/1887476547,Stanley Variety & Food Mart,shop,convenience,grocery_food,,,,,,5724 Stanley Avenue,43.091623,-79.084832,CLIFTON HILL,QUEEN VICTORIA,1
+node/12128828180,Swadesi Grocers,shop,supermarket,grocery_food,,,,,"Mo-Th 09:00-21:00, Fr-Sa 09:00-22:00",6840 McLeod Road,43.06976,-79.108853,MERRIT,DRUMMOND,0
+way/546615711,Thai Binh Asian Food,shop,convenience,grocery_food,,,,,,7042 Drummond Road,43.072317,-79.096784,HENNEPIN,DRUMMOND,0
+node/2972136603,The Beer Store,shop,alcohol,grocery_food,The Beer Store,,,,,,43.0566,-79.05257,BRIDGEWATER,CHIPPAWA,0
+node/4274825603,The Beer Store,shop,alcohol,grocery_food,The Beer Store,,,,Mo-Th 10:00-21:00; Fr-Sa 10:00-23:00; Su 11:00-18:00,,43.089774,-79.107806,LEEMING,DRUMMOND,0
+way/708643589,The Beer Store,shop,alcohol,grocery_food,The Beer Store,,,,Mo-Sa 10:00-21:00; Su 12:00-17:00,,43.119125,-79.100173,MITCHELSON,STAMFORD,0
+node/6657970159,The Meat Shoppe,shop,butcher,grocery_food,,,,,,,43.105197,-79.112139,QUEENSWAY,STAMFORD,0
+node/12123208027,The Store,shop,convenience,grocery_food,,,,,,3464 Cattell Drive,43.054209,-79.046088,CUMMINGS,CHIPPAWA,0
+node/6658652268,Thorowest Bakery,shop,bakery,grocery_food,,,,,,,43.115738,-79.125187,CARMEL,NORTHWEST,0
+node/6658988070,Vita Health Foods,shop,health_food,grocery_food,,,,,,,43.117786,-79.098981,KER,STAMFORD,0
+way/178665609,Wholesale Club,shop,supermarket,grocery_food,Wholesale Club,,,,,,43.09083,-79.091833,CORONATION,DRUMMOND,0
+node/6658702698,Wine Place,shop,wine,grocery_food,,,,,,,43.118793,-79.122116,CARMEL,NORTHWEST,0
+node/7799201742,Wine Rack,shop,wine,grocery_food,Wine Rack,,,,,,43.090691,-79.073075,CLIFTON HILL,QUEEN VICTORIA,1
+node/12847319847,Wonder Mart,shop,convenience,grocery_food,,,,,,,43.092012,-79.075246,CLIFTON HILL,QUEEN VICTORIA,1
+way/178560690,Zehrs,shop,supermarket,grocery_food,Zehrs,,,,Mo-Su 08:00-21:00,6940 Morrison Street,43.102685,-79.112949,WALLICE,STAMFORD,0
+node/10220304565,Dental Office,amenity,dentist,health,,,,,"Mo 09:00-06:00; Tu 09:00-05:00; We 08:00-01:00; Th 09:00-05:00; Fr 08:00-01:00 ""by appointment""; Sa,Su off",3930 Montrose Road,43.115627,-79.122965,CARMEL,NORTHWEST,0
+node/2751837669,"Dr. Paul Coyne, Dr. Michael Lococo Jr & Dr. Andrew Davidson",amenity,dentist,health,,,,,,5709 Main Street,43.091972,-79.093234,CORONATION,DRUMMOND,0
+node/9193194092,MedCare Clinics,amenity,clinic,health,,,,,,7555 Montrose Road,43.065618,-79.123524,WESTLANE INDUSTRIAL BASIN,WESTLANE,0
+node/6658649590,Michael Alexander,amenity,doctors,health,,,,,,,43.105145,-79.110041,PETTIT,STAMFORD,0
+node/6658652274,Montrose Dental,amenity,dentist,health,,,,,,,43.115372,-79.125195,CARMEL,NORTHWEST,0
+way/708617557,Montrose Dental,amenity,dentist,health,,,,,,,43.114833,-79.105839,PETTIT,STAMFORD,0
+node/6657970163,Morrison Medical,amenity,doctors,health,,,,,,,43.105447,-79.112143,QUEENSWAY,STAMFORD,0
+node/14213737637,NURSE. Aesthetic & Holistic Clinic,amenity,clinic,health,,,,,,4725 Dorchester Rd,43.105111,-79.11583,QUEENSWAY,STAMFORD,0
+way/462013636,Niagara Falls Community Health Centre,amenity,clinic,health,,,,,"Mo 08:00-16:30; Tu 07:30-19:30; We 08:00-19:30; Th 07:30-19:30; Fr 08:00-16:30; Sa 09:00-12:00 ""walk-in clinic for registered patients""",4790 Victoria Avenue,43.10504,-79.072796,CENTRAL BUSINESS DISTRICT,ELGIN,0
+node/6657970169,Niagara Falls Dental Clinic,amenity,dentist,health,,,,,,,43.105138,-79.110694,PETTIT,STAMFORD,0
+node/6658649591,Niagara Pulmonary,amenity,doctors,health,,,,,,,43.105145,-79.110137,PETTIT,STAMFORD,0
+node/11203699738,Niagara Region Public Health,amenity,clinic,health,,,,,Mo-Fr 08:30-16:30,7835 McLeod Road,43.07252,-79.126262,MUNRO,WESTLANE,0
+node/6657882626,North Town Dentistry,amenity,dentist,health,,,,,,,43.104736,-79.113629,QUEENSWAY,STAMFORD,0
+node/12909541890,Pain Care Clinics,amenity,clinic,health,,,,,,,43.089064,-79.100515,CORWIN,DRUMMOND,0
+node/6659139683,Pinewood Dental Centre,amenity,dentist,health,,,,,,,43.070527,-79.136042,GARNER,WESTLANE,0
+node/6658778587,Primeau Dental Health,amenity,dentist,health,,,,,,,43.114305,-79.112264,QUEENSWAY,STAMFORD,0
+node/6658652262,The Smile Centre,amenity,dentist,health,,,,,,,43.114168,-79.123144,KENT,NORTHWEST,0
+node/6657882627,Win Health Solutions,amenity,doctors,health,,,,,,,43.10473,-79.113769,QUEENSWAY,STAMFORD,0
+way/1386575205,,shop,garden_centre,home_electronics,,,,,,,43.101889,-79.115208,WALLICE,STAMFORD,0
+node/6659093818,DF Computer Centre,shop,computer,home_electronics,,,,,,,43.069837,-79.11134,MILLER,DRUMMOND,0
+node/4274825612,Electronic Depot,shop,electronics,home_electronics,,,,,,,43.088983,-79.106948,CORWIN,DRUMMOND,0
+node/6657882610,Factory Direct,shop,electronics,home_electronics,,,,,,,43.103242,-79.117886,WALLICE,STAMFORD,0
+node/6658778585,Freedom Mobile,shop,mobile_phone,home_electronics,Freedom Mobile,,,,Mo-Fr 10:00-20:00; Sa 11:00-18:00; Su 11:00-17:00,4025 Dorchester Road,43.11469,-79.112549,QUEENSWAY,STAMFORD,0
+way/179315170,Home Hardware,shop,hardware,home_electronics,Home Hardware,,,,,,43.120633,-79.100909,MITCHELSON,STAMFORD,0
+node/4274832008,Home Lighting Factory Outlet,shop,lighting,home_electronics,,,,,,,43.089528,-79.105249,LEEMING,DRUMMOND,0
+node/6629576589,JYSK,shop,furniture,home_electronics,JYSK,,,,,7555 Montrose Road,43.067164,-79.124464,WESTLANE INDUSTRIAL BASIN,WESTLANE,0
+node/4274825605,Koodo,shop,mobile_phone,home_electronics,Koodo,,,,,,43.089674,-79.108112,LEEMING,DRUMMOND,0
+node/6657970167,Lee Valley,shop,hardware,home_electronics,Lee Valley,,,,,,43.105071,-79.109424,PETTIT,STAMFORD,0
+node/6658699784,OverClocked,shop,computer,home_electronics,,,,,Mo-Fr 12:00-17:00,4025 Dorchester Road,43.114681,-79.112609,QUEENSWAY,STAMFORD,0
+node/6657882605,Oxford Mills,shop,houseware,home_electronics,,,,,Mo-Th 10:00-18:00; Fr 10:00-19:00; Sa-Su 09:00-17:00,7190 Morrison Street,43.103523,-79.114232,WALLICE,STAMFORD,0
+node/6659055408,Ray James Appliances,shop,appliance,home_electronics,,,,,,,43.119599,-79.10125,MITCHELSON,STAMFORD,0
+node/6659077171,Rogers,shop,mobile_phone,home_electronics,Rogers,,,,,,43.070526,-79.128309,MUNRO,WESTLANE,0
+way/477773393,Rona,shop,doityourself,home_electronics,Rona,,,,Mo-Fr 06:00-21:00; Su 08:00-20:00; Sa 07:00-21:00,7959 McLeod Road,43.072245,-79.128621,MUNRO,WESTLANE,0
+node/6658702699,Ryn's Furniture,shop,furniture,home_electronics,,,,,,,43.11879,-79.122249,CARMEL,NORTHWEST,0
+node/4274825616,Sherwin-Williams,shop,paint,home_electronics,Sherwin-Williams,,,,,,43.088976,-79.107256,CORWIN,DRUMMOND,0
+node/6659111298,Sleep Country,shop,bed,home_electronics,Sleep Country,,,,,,43.06604,-79.119562,DRUMMOND INDUSTRIAL BASIN,DRUMMOND,0
+node/6657822530,Stokes,shop,houseware,home_electronics,Stokes,,,,,,43.087889,-79.119691,LUNDY,WESTLANE,0
+node/6629553683,The Brick,shop,furniture,home_electronics,The Brick,,,,,7555 Montrose Road,43.067253,-79.125264,WESTLANE INDUSTRIAL BASIN,WESTLANE,0
+way/178560692,The Home Depot,shop,doityourself,home_electronics,The Home Depot,,,,Mo-Fr 07:00-21:00; Su 08:00-20:00; Sa 07:00-20:00,7190 Morrison Street,43.102096,-79.114356,WALLICE,STAMFORD,0
+node/6657882619,The Source,shop,electronics,home_electronics,The Source,,,,,,43.104745,-79.112846,QUEENSWAY,STAMFORD,0
+node/13646590030,Wire One Electric Inc,shop,appliance,home_electronics,,,,,,,43.037324,-79.113715,REXINGER,GRASSYBROOK,0
+node/7951102945,Wirelesspoint Communication,shop,mobile_phone,home_electronics,,,,,,5905 Franklin Avenue,43.089003,-79.104473,CORWIN,DRUMMOND,0
+node/6657882611,easyhome,shop,furniture,home_electronics,easyhome,,,,,,43.103076,-79.117948,WALLICE,STAMFORD,0
+node/12847342239,,leisure,amusement_arcade,leisure_paid,,,,,,,43.084714,-79.079932,FALLSVIEW NORTH,QUEEN VICTORIA,1
+way/178556603,,leisure,golf_course,leisure_paid,,,,,,,43.102025,-79.167647,SHRINERS,BEAVERDAMS,0
+way/178556604,,leisure,golf_course,leisure_paid,,,,,,,43.104961,-79.16892,SHRINERS,BEAVERDAMS,0
+way/178590146,,leisure,golf_course,leisure_paid,,,,,,,43.138393,-79.096204,MOUNTAIN,STAMFORD,0
+way/178827748,,leisure,golf_course,leisure_paid,,,,,,,43.044834,-79.135005,GRASSYBROOK INDUSTRIAL BASIN,GRASSYBROOK,0
+way/458585280,,leisure,golf_course,leisure_paid,,,,,,,43.021157,-79.112607,WILLOUGHBY,WILLOUGHBY,0
+way/855549812,,leisure,miniature_golf,leisure_paid,,,,,,,43.054625,-79.132819,WESTLANE INDUSTRIAL BASIN,WESTLANE,0
+way/1299878222,,leisure,miniature_golf,leisure_paid,,,,,,,43.072375,-79.121212,LUNDY,WESTLANE,0
+node/12847303041,Big Top,leisure,amusement_arcade,leisure_paid,,,,,,,43.091273,-79.074292,CLIFTON HILL,QUEEN VICTORIA,1
+way/428616471,Captive Escape Rooms,leisure,escape_game,leisure_paid,,,,,,6933 Lundy's Lane,43.089479,-79.111153,LEEMING,DRUMMOND,0
+way/179193590,Chippawa Willoughby Memorial Arena,leisure,ice_rink,leisure_paid,,,,,,9000 Sodom Road,43.047631,-79.057638,WEINBRENNER,CHIPPAWA,0
+node/7107670565,CrossFit,leisure,fitness_centre,leisure_paid,CrossFit,,,,,4554 Montrose Road,43.107447,-79.123796,KENT,NORTHWEST,0
+way/232194236,Dinosaur Adventure Golf,leisure,miniature_golf,leisure_paid,,,,,,4960 Clifton Hill,43.090458,-79.075969,CLIFTON HILL,QUEEN VICTORIA,1
+node/12847263315,Duck Tank,leisure,amusement_arcade,leisure_paid,,,,,,,43.091395,-79.075898,CLIFTON HILL,QUEEN VICTORIA,1
+node/4277114923,Fallsview Arcade,leisure,amusement_arcade,leisure_paid,,,,,,,43.082052,-79.082942,FALLSVIEW NORTH,QUEEN VICTORIA,1
+way/232194311,Fallsview Indoor Waterpark,leisure,water_park,leisure_paid,,,,,,5685 Falls Avenue,43.092524,-79.071721,CLIFTON HILL,QUEEN VICTORIA,1
+node/6659055407,Fit4Less,leisure,fitness_centre,leisure_paid,Fit4Less,,,,24/7,3701 Portage Road,43.119461,-79.101241,MITCHELSON,STAMFORD,0
+way/817046803,Gale Centre,leisure,ice_rink,leisure_paid,,,,,,,43.11326,-79.080342,HAMILTON,ELGIN,0
+way/178827747,Grand Niagara Golf Course,leisure,golf_course,leisure_paid,,,,,,,43.036357,-79.131584,GRASSYBROOK INDUSTRIAL BASIN,GRASSYBROOK,0
+node/10296066191,Great Canadian Midway,leisure,amusement_arcade,leisure_paid,,,,,,,43.090944,-79.074514,CLIFTON HILL,QUEEN VICTORIA,1
+node/9006457907,Heatwave Yoga,leisure,fitness_centre,leisure_paid,,,,,,6314 Thorold Stone Road,43.115071,-79.100991,PETTIT,STAMFORD,0
+way/486995533,LA Fitness,leisure,fitness_centre,leisure_paid,LA Fitness,,,,,,43.105292,-79.108199,PETTIT,STAMFORD,0
+way/179197053,Legends of the Niagara,leisure,golf_course,leisure_paid,,,,,,,43.048004,-79.03323,USSHER,CHIPPAWA,0
+way/605649661,"Niagara Falls Badminton, Lawn Bowling and Volleyball Club",leisure,sports_centre,leisure_paid,,,,,,5300 Willmott Street,43.10336,-79.081524,VALLEYWAY,ELGIN,0
+node/4277166264,Niagara Falls Fun Zone,leisure,amusement_arcade,leisure_paid,,,,,,,43.081436,-79.082993,FALLSVIEW NORTH,QUEEN VICTORIA,1
+way/178553592,Niagara Falls Golf Club,leisure,golf_course,leisure_paid,,,,,,6169 Garner Road,43.082798,-79.155284,NICHOLS,BEAVERDAMS,0
+way/1299878223,Niagara Go-Karts,leisure,sports_centre,leisure_paid,,,,,,,43.072663,-79.121637,LUNDY,WESTLANE,0
+way/486858145,Oaklands Golf Club,leisure,golf_course,leisure_paid,,,,,,8970 Stanley Avenue,43.044521,-79.075975,OAKLAND,GRASSYBROOK,0
+way/906947838,Polar Splash,leisure,water_park,leisure_paid,,,,,,,43.062733,-79.074729,MARINELAND,QUEEN VICTORIA,0
+way/179541090,Rolling Meadows Golf & Country Club,leisure,golf_course,leisure_paid,,,,,,12741 Montrose Road,42.998502,-79.126565,CROWLAND,CROWLAND,0
+node/12847273714,Skiparrr’s Pirate Parrot Pirate Putt,leisure,miniature_golf,leisure_paid,,,,,,,43.091114,-79.07373,CLIFTON HILL,QUEEN VICTORIA,1
+node/10860808244,Strike Game Zone,leisure,bowling_alley,leisure_paid,,,,,,4848 Clifton Hill,43.090855,-79.075081,CLIFTON HILL,QUEEN VICTORIA,1
+way/178402187,Thundering Waters Golf Club,leisure,golf_course,leisure_paid,,,,,,,43.063631,-79.094036,DRUMMOND INDUSTRIAL BASIN,DRUMMOND,0
+way/178402188,Thundering Waters Golf Club,leisure,golf_course,leisure_paid,,,,,,6000 Marineland Parkway,43.060978,-79.0951,DRUMMOND INDUSTRIAL BASIN,DRUMMOND,0
+way/272966256,Whirlpool Golf Course,leisure,golf_course,leisure_paid,,,,,,,43.128636,-79.068816,THOMPSON,STAMFORD,0
+node/9193194030,World Gym,leisure,fitness_centre,leisure_paid,World Gym,,,,,7555 Montrose Road,43.064641,-79.125233,WESTLANE INDUSTRIAL BASIN,WESTLANE,0
+node/12847545455,Club Seven Nightclub,amenity,nightclub,nightlife,,,,,,,43.089668,-79.082571,CLIFTON HILL,QUEEN VICTORIA,1
+node/9952705373,Icon Nightlife by Sparks,amenity,nightclub,nightlife,,,,,,,43.092405,-79.076612,CLIFTON HILL,QUEEN VICTORIA,1
+node/6658652283,Allstate,office,insurance,office,Allstate,,,,,,43.114979,-79.125336,CARMEL,NORTHWEST,0
+node/6658649589,BDO,office,accountant,office,,,,,,,43.105132,-79.110231,PETTIT,STAMFORD,0
+node/4277081651,CAN-ENG,office,company,office,,,,,,6800 Kinsmen Court,43.075941,-79.121256,LUNDY,WESTLANE,0
+node/6658649603,Canadian Mental Health Association,office,association,office,,,,,,,43.103912,-79.109356,PETTIT,STAMFORD,0
+way/67941102,Concentrix,office,company,office,,,,,,9515 Montrose Road,43.039367,-79.125105,GRASSYBROOK INDUSTRIAL BASIN,GRASSYBROOK,0
+node/6658652263,Desjardins Insurance,office,insurance,office,Desjardins Insurance,,,,,,43.114168,-79.12298,KENT,NORTHWEST,0
+node/5286538787,Digital Attractions,office,yes,office,,,,,,4530 Drummond Road,43.107903,-79.098177,PORTAGE,STAMFORD,0
+node/4277076110,For the Needy Not the Greedy,office,ngo,office,,,,,,,43.074761,-79.122324,LUNDY,WESTLANE,0
+node/4277076111,Golden Gate,office,company,office,,,,,,,43.074511,-79.122326,LUNDY,WESTLANE,0
+way/179360192,GraybaR Canada,office,company,office,,,,,,7000 Kinsmen Court,43.074049,-79.121901,LUNDY,WESTLANE,0
+node/6658652269,H&R Block,office,tax_advisor,office,H&R Block,,,,,,43.11566,-79.125187,CARMEL,NORTHWEST,0
+node/6659139684,H&R Block,office,tax_advisor,office,H&R Block,,,,,,43.070463,-79.136108,GARNER,WESTLANE,0
+node/4277086264,Hamblet's,office,company,office,,,,,,,43.07206,-79.122259,LUNDY,WESTLANE,0
+node/5213386321,Hodgson Custom Rolling,office,company,office,,,,,,,43.093486,-79.135778,HODGSON,WESTLANE,0
+node/7798891234,Hornblower Niagara Cruises,office,company,office,,,,,,,43.092202,-79.068959,CLIFTON HILL,QUEEN VICTORIA,1
+node/6658988074,MNP,office,accountant,office,,,,,,,43.117808,-79.098644,KER,STAMFORD,0
+node/4274824006,Manulife Securities,office,company,office,,,,,,6974 Lundy's Lane,43.089038,-79.111919,BROOKFIELD,DRUMMOND,0
+node/6658649586,Michael Green Insurance,office,insurance,office,,,,,,,43.105128,-79.110547,PETTIT,STAMFORD,0
+node/4277101254,Modern Crane,office,company,office,,,,,,,43.077107,-79.121299,LUNDY,WESTLANE,0
+node/4277058920,MyCity Customer Service Centre,office,government,office,,,,,,,43.071451,-79.124491,MUNRO,WESTLANE,0
+node/6658933340,Niagara Employment Help Centre,office,employment_agency,office,,,,,,,43.114668,-79.096805,PORTAGE,STAMFORD,0
+way/428490892,Niagara Falls Christian Ministries,office,religion,office,,,,,,,43.089818,-79.094962,CORONATION,DRUMMOND,0
+way/363779668,Niagara Falls Rankin Innovation Hub,office,coworking,office,,,,,Mo-Fr 09:00-17:00,4551 Zimmerman Avenue,43.10827,-79.062224,CENTRAL BUSINESS DISTRICT,ELGIN,0
+way/387916958,RE/MAX Niagara Realty Ltd. Brokerage Niagara Falls,office,estate_agent,office,RE/MAX,,,,"Mo-Th 09:00-20:00, Fr 09:00-19:00, Sa 09:00-17:00, Su 10:00-15:00",5627 Main Street,43.093003,-79.092386,CORONATION,DRUMMOND,0
+way/55553249,Rainbow Plaza Border Control Station,office,government,office,,,,,,,43.092096,-79.070245,CLIFTON HILL,QUEEN VICTORIA,1
+node/6658652270,Realty Executives,office,estate_agent,office,,,,,,,43.115555,-79.125203,CARMEL,NORTHWEST,0
+node/6657882625,Roos Taylor Financial,office,accountant,office,,,,,,,43.104735,-79.113523,QUEENSWAY,STAMFORD,0
+node/5441888134,Service Canada,office,government,office,,,,,Mo-Fr 08:30-16:00,5853 Peer Street,43.087769,-79.091728,ORCHARD,DRUMMOND,0
+node/7629935933,Service Canada,office,government,office,,,,,,,43.07013,-79.094074,TRILLIUM,DRUMMOND,0
+node/6658835085,Service Ontario,office,government,office,,,,,,,43.114741,-79.109116,PETTIT,STAMFORD,0
+node/5739543413,St. Patrick Roman Catholic Church Office,office,religion,office,,,,,"Mo-Fr 08:30-12:00,12:30-15:30; Sa-Su closed; PH closed",4673 Victoria Avenue,43.10619,-79.073596,MAPLE,ELGIN,0
+node/6659077172,The Co-operators,office,insurance,office,Co-operators,,,,,,43.07057,-79.128307,MUNRO,WESTLANE,0
+node/6659074081,The Mortgage Centre,office,financial,office,,,,,,,43.121991,-79.100062,CULLIMORE,STAMFORD,0
+node/7798891235,Tourism Niagara Canada,office,company,office,,,,,,5741 River Road,43.091949,-79.069236,CLIFTON HILL,QUEEN VICTORIA,1
+node/4277097261,Unifor,office,union,office,,,,,,,43.086122,-79.084874,FALLSVIEW NORTH,QUEEN VICTORIA,1
+node/6575294955,admin office of MarineLand,office,company,office,,,,,Mo-Fr 08:00-16:30,7885 Stanley Avenue,43.0621,-79.084853,DRUMMOND INDUSTRIAL BASIN,DRUMMOND,0
+node/6575294954,marketing office of MarineLand,office,company,office,,,,,Mo-Fr 08:00-16:30,8375 Stanley Avenue,43.055526,-79.083861,DRUMMOND INDUSTRIAL BASIN,DRUMMOND,0
+way/807912202,5676 Ontario Avenue Parking,amenity,parking,parking,,,,,,,43.094418,-79.071529,CLIFTON HILL,QUEEN VICTORIA,1
+node/3580486878,Casino Niagara,amenity,parking,parking,,,,,,,43.092706,-79.071891,CLIFTON HILL,QUEEN VICTORIA,1
+way/475719282,City of Niagara Falls Municipal Parking Lot #18B,amenity,parking,parking,,,,,,,43.095899,-79.07412,CLIFTON HILL,QUEEN VICTORIA,1
+way/178332944,City of Niagara Falls Municipal Parking Lot #20,amenity,parking,parking,,,,,,,43.094622,-79.071729,CLIFTON HILL,QUEEN VICTORIA,1
+way/178581704,City of Niagara Falls Municipal Parking Lot 5,amenity,parking,parking,,,,,,,43.095012,-79.071741,CLIFTON HILL,QUEEN VICTORIA,1
+way/583538113,Clifton Hill Niagara Falls Parking,amenity,parking,parking,,,,,,,43.089534,-79.077451,CLIFTON HILL,QUEEN VICTORIA,1
+way/1012782809,Easy Parking Niagara Falls – Clifton Hill,amenity,parking,parking,,,,,24/7,5685 Falls Avenue,43.092455,-79.071721,CLIFTON HILL,QUEEN VICTORIA,1
+way/177402784,Easy Parking Niagara Falls – Convention Centre,amenity,parking,parking,,,,,24/7,6737 Stanley Avenue,43.077859,-79.085259,FALLSVIEW SOUTH,QUEEN VICTORIA,1
+way/1368596331,Easy Parking Niagara Falls – Fallsview Boulevard,amenity,parking,parking,,,,,24/7,6170 Fallsview Boulevard,43.085909,-79.082446,FALLSVIEW NORTH,QUEEN VICTORIA,1
+way/179307237,Easy Parking Niagara Falls – OLG Stage Dunn Street,amenity,parking,parking,,,,,24/7,5604 Dunn Street,43.079786,-79.08547,FALLSVIEW NORTH,QUEEN VICTORIA,1
+way/345577031,Easy Parking Niagara Falls – OLG Stage Stanley Avenue,amenity,parking,parking,,,,,24/7,6233 Stanley Avenue,43.084764,-79.085359,FALLSVIEW NORTH,QUEEN VICTORIA,1
+way/1424814035,Easy Parking Niagara Falls – Robinson Street,amenity,parking,parking,,,,,24/7,5395 Robinson Street,43.088056,-79.079068,FALLSVIEW NORTH,QUEEN VICTORIA,1
+way/475719095,Falls Clifton Hill & Casino Parking,amenity,parking,parking,,,,,,,43.093682,-79.070698,CLIFTON HILL,QUEEN VICTORIA,1
+way/657300317,Falls Overflow Parking Lot,amenity,parking,parking,,,,,,,43.072064,-79.07874,QUEEN VICTORIA,QUEEN VICTORIA,0
+relation/2672699,Falls Parking Lot,amenity,parking,parking,,,,,,,43.07644,-79.079956,QUEEN VICTORIA,QUEEN VICTORIA,0
+node/13648235635,Firemans Park Lower Parking Lot,amenity,parking,parking,,,,,,,43.143462,-79.113979,N.E.C. EAST,STAMFORD,0
+way/157613102,Great Wolf Lodge,amenity,parking,parking,,,,,,3950 victoria Avenue,43.115717,-79.07155,GLENVIEW,ELGIN,0
+way/158202137,Holiday Inn,amenity,parking,parking,,,,,,,43.084588,-79.082373,FALLSVIEW NORTH,QUEEN VICTORIA,1
+way/428612736,Lot B,amenity,parking,parking,,,,,,,43.084351,-79.084145,FALLSVIEW NORTH,QUEEN VICTORIA,1
+way/875491690,N.P.C. Permit Parking Only,amenity,parking,parking,,,,,,,43.090629,-79.070815,QUEEN VICTORIA,QUEEN VICTORIA,0
+way/37538906,NPC Butterfly Parking,amenity,parking,parking,,,,,,,43.136007,-79.053358,THOMPSON,STAMFORD,0
+way/401552174,Niagara Falls Municiapl Parking Lot #4,amenity,parking,parking,,,,,,,43.092967,-79.076141,CLIFTON HILL,QUEEN VICTORIA,1
+way/436981844,Niagara Falls Municipal Parking Lot #12,amenity,parking,parking,,,,,,,43.088471,-79.091373,ORCHARD,DRUMMOND,0
+way/436981997,Niagara Falls Municipal Parking Lot #13,amenity,parking,parking,,,,,,,43.090192,-79.092029,CORONATION,DRUMMOND,0
+way/462120834,Niagara Falls Municipal Parking Lot #5,amenity,parking,parking,,,,,,,43.090532,-79.082069,CLIFTON HILL,QUEEN VICTORIA,1
+way/438896144,Oakes Hotel Parking,amenity,parking,parking,,,,,,,43.08092,-79.082189,FALLSVIEW NORTH,QUEEN VICTORIA,1
+way/66064283,Oakes Parking,amenity,parking,parking,,,,,,,43.080227,-79.081489,QUEEN VICTORIA,QUEEN VICTORIA,1
+way/178663474,Skylon Tower Parking,amenity,parking,parking,,,,,,5200 Robinson Street,43.08586,-79.079521,FALLSVIEW NORTH,QUEEN VICTORIA,1
+way/178331730,Stanley & Highway 420,amenity,parking,parking,,,,,,,43.097227,-79.08495,VALLEYWAY,ELGIN,0
+way/486784337,Sundowner,amenity,parking,parking,,,,,,,43.087796,-79.146029,GARNER,WESTLANE,0
+way/439618102,Vittoria Hote Guests parking,amenity,parking,parking,,,,,,,43.091092,-79.081268,CLIFTON HILL,QUEEN VICTORIA,1
+way/1087952347,White Water Walk Parking,amenity,parking,parking,,,,,,,43.110825,-79.060986,GLENVIEW,ELGIN,0
+way/546615712,,shop,hairdresser,personal_services,,,,,,,43.072144,-79.096861,HENNEPIN,DRUMMOND,0
+node/4274820643,Avon,shop,cosmetics,personal_services,Avon,,,,,,43.089514,-79.1239,HODGSON,WESTLANE,0
+node/4274823168,Barbershop Family Hairstyling,shop,hairdresser,personal_services,,,,,,,43.089433,-79.112088,LEEMING,DRUMMOND,0
+node/4277097260,Canada Barber & Beauty Supply,shop,beauty,personal_services,,,,,,,43.08606,-79.084884,FALLSVIEW NORTH,QUEEN VICTORIA,1
+node/10571457040,Classy Barbershop,shop,hairdresser,personal_services,,,,,,6423 Lundys Lane,43.089613,-79.101719,LEEMING,DRUMMOND,0
+node/4348147660,Dawg Pound Tattoos & Piercings,shop,tattoo,personal_services,,,,,,,43.0894,-79.090858,ORCHARD,DRUMMOND,0
+node/6658988071,Eyewear Studio,shop,optician,personal_services,,,,,,,43.11779,-79.098877,KER,STAMFORD,0
+node/10628285035,Falls Barber Shop,shop,hairdresser,personal_services,,,,,,5832 Ferry Street,43.089382,-79.0916,ORCHARD,DRUMMOND,0
+node/4274825604,First Choice Haircutters,shop,hairdresser,personal_services,First Choice Haircutters,,,,,,43.089664,-79.108293,LEEMING,DRUMMOND,0
+node/6658988069,First Choice Haircutters,shop,hairdresser,personal_services,First Choice Haircutters,,,,,,43.117777,-79.099087,KER,STAMFORD,0
+node/9952914667,Five Lakes Spa,shop,beauty,personal_services,,,,,,6039 Fallsview Boulevard,43.087096,-79.083722,FALLSVIEW NORTH,QUEEN VICTORIA,1
+node/6658778590,Focus Eyewear,shop,optician,personal_services,,,,,,,43.11452,-79.112274,QUEENSWAY,STAMFORD,0
+node/2972136606,Hairizona,shop,hairdresser,personal_services,,,,,,,43.056985,-79.052719,BRIDGEWATER,CHIPPAWA,0
+way/708617566,Hakim Optical,shop,optician,personal_services,Hakim Optical,,,,,,43.114672,-79.098784,PORTAGE,STAMFORD,0
+node/7799193694,Hart & Huntington Tattoo Co.,shop,tattoo,personal_services,,,,,,,43.092147,-79.075038,CLIFTON HILL,QUEEN VICTORIA,1
+node/6658778597,Head2toe,shop,beauty,personal_services,,,,,,,43.114653,-79.110481,PETTIT,STAMFORD,0
+node/6657882624,Healthsource Plus,shop,medical_supply,personal_services,,,,,,,43.104733,-79.113437,QUEENSWAY,STAMFORD,0
+node/6657882616,Hear Again,shop,hearing_aids,personal_services,,,,,,,43.104759,-79.112419,QUEENSWAY,STAMFORD,0
+node/9006907200,Infinity Salon,shop,hairdresser,personal_services,,,,,,4465 Drummond Road,43.109046,-79.099515,PETTIT,STAMFORD,0
+node/6658933338,Inspire Health,shop,medical_supply,personal_services,,,,,,,43.114653,-79.097024,PORTAGE,STAMFORD,0
+node/4274825687,Jenny's Nails,shop,beauty,personal_services,,,,,,,43.089414,-79.113869,LEEMING,DRUMMOND,0
+node/6658933339,Lavish Nails & Spa,shop,beauty,personal_services,,,,,,,43.114665,-79.096929,PORTAGE,STAMFORD,0
+node/6658778591,Listen Up!,shop,hearing_aids,personal_services,,,,,,,43.114575,-79.112276,QUEENSWAY,STAMFORD,0
+node/6659111297,Magicuts,shop,hairdresser,personal_services,Magicuts,,,,,,43.066125,-79.119555,DRUMMOND INDUSTRIAL BASIN,DRUMMOND,0
+node/6658933300,Magicuts,shop,hairdresser,personal_services,Magicuts,,,,,,43.115888,-79.096771,KER,STAMFORD,0
+node/6658652276,Malibu Beach Tanning,shop,beauty,personal_services,,,,,,,43.115267,-79.12519,CARMEL,NORTHWEST,0
+way/475720217,Manor Cleaners,shop,dry_cleaning,personal_services,,,,,,,43.100311,-79.073517,VALLEYWAY,ELGIN,0
+node/6659134120,Massage Addict,shop,massage,personal_services,Massage Addict,,,,,,43.07071,-79.126671,MUNRO,WESTLANE,0
+node/6658778593,Massage Therapy Niagara,shop,massage,personal_services,,,,,,,43.114638,-79.110974,PETTIT,STAMFORD,0
+node/6658933302,Milano's,shop,hairdresser,personal_services,,,,,,,43.116014,-79.096773,KER,STAMFORD,0
+node/6658652272,Moda Hair Design,shop,hairdresser,personal_services,,,,,,,43.115473,-79.125198,CARMEL,NORTHWEST,0
+node/6658835138,Nails Design,shop,beauty,personal_services,,,,,,,43.114984,-79.099792,PETTIT,STAMFORD,0
+node/6657882622,Niagara Vision,shop,optician,personal_services,,,,,,,43.104735,-79.113303,QUEENSWAY,STAMFORD,0
+node/10754713842,Original Gentleman’s Barbershop,shop,hairdresser,personal_services,,,,,,5932 Main Street,43.088698,-79.092327,ORCHARD,DRUMMOND,0
+node/6658778586,Petite & Sweet Beauty BTQ,shop,beauty,personal_services,,,,,,,43.114688,-79.112458,QUEENSWAY,STAMFORD,0
+node/6658649588,Petti Hair Salon,shop,hairdresser,personal_services,,,,,,,43.105136,-79.110392,PETTIT,STAMFORD,0
+node/6659074080,Phillip Anthony's Salon,shop,hairdresser,personal_services,,,,,,,43.121946,-79.100061,CULLIMORE,STAMFORD,0
+node/6659074084,Phoenix Nails,shop,beauty,personal_services,,,,,,,43.122466,-79.100743,CULLIMORE,STAMFORD,0
+node/6657970166,Polished Nails & Spa,shop,beauty,personal_services,,,,,,,43.105199,-79.110704,PETTIT,STAMFORD,0
+node/6659093816,Rose Nails,shop,beauty,personal_services,,,,,,,43.06984,-79.111181,MILLER,DRUMMOND,0
+node/6658652264,Subtle Images,shop,hairdresser,personal_services,,,,,,,43.114172,-79.122896,KENT,NORTHWEST,0
+node/6657882614,Supercuts,shop,hairdresser,personal_services,Supercuts,,,,,,43.102834,-79.117919,WALLICE,STAMFORD,0
+node/6657822532,The Body Shop,shop,cosmetics,personal_services,The Body Shop,,,,,,43.087468,-79.121119,LUNDY,WESTLANE,0
+node/7631057777,The White Birch,shop,massage,personal_services,,,,,,8184 Cummington Square West,43.059062,-79.051336,BRIDGEWATER,CHIPPAWA,0
+node/6658988075,Tropical Nails,shop,beauty,personal_services,,,,,,,43.11793,-79.09855,KER,STAMFORD,0
+node/7631057778,Wild Ink Studios,shop,tattoo,personal_services,,,,,,,43.059109,-79.051397,BRIDGEWATER,CHIPPAWA,0
+node/6658652275,Yazz Cleaners,shop,dry_cleaning,personal_services,,,,,,,43.115312,-79.125191,CARMEL,NORTHWEST,0
+way/428478837,Central Niagara Animal Hospital,amenity,veterinary,pet,,,,,,,43.088989,-79.103935,CORWIN,DRUMMOND,0
+node/6659134123,Heartland Niagara Animal Hospital,amenity,veterinary,pet,,,,,,,43.07115,-79.126644,MUNRO,WESTLANE,0
+node/6659093820,McLeod Road Animal Clinic,amenity,veterinary,pet,,,,,,,43.069839,-79.111507,MILLER,DRUMMOND,0
+way/181027782,Niagara Falls Animal Medical Centre,amenity,veterinary,pet,,,,,,,43.103818,-79.11016,PETTIT,STAMFORD,0
+node/6658688816,Niagara Veterinary Services,amenity,veterinary,pet,,,,,,,43.114286,-79.12582,MULHERN,NORTHWEST,0
+node/12718492411,Costco Pharmacy,amenity,pharmacy,pharmacy,Costco,,,,,,43.066508,-79.127364,WESTLANE INDUSTRIAL BASIN,WESTLANE,0
+node/10754713845,Goldencare Pharmacy,amenity,pharmacy,pharmacy,,,,,Mo-Fr 09:00-17:00; Sa 09:00-14:00; Su off,5836 Main Street,43.09006,-79.092508,CORONATION,DRUMMOND,0
+node/12909541891,Health Plus Pharmacy,amenity,pharmacy,pharmacy,,,,,,,43.089075,-79.100595,CORWIN,DRUMMOND,0
+node/2972136605,I.D.A.,amenity,pharmacy,pharmacy,I.D.A.,,,,,,43.056869,-79.052579,BRIDGEWATER,CHIPPAWA,0
+node/10814579296,I.D.A.,amenity,pharmacy,pharmacy,I.D.A.,,,,Mo-Fr 09:00-17:00,3700 Main Street,43.059131,-79.049769,CUMMINGS,CHIPPAWA,0
+node/6658702703,I.D.A.,amenity,pharmacy,pharmacy,I.D.A.,,,,,,43.11708,-79.122322,CARMEL,NORTHWEST,0
+node/6658933298,I.D.A.,amenity,pharmacy,pharmacy,I.D.A.,,,,,,43.116258,-79.096791,KER,STAMFORD,0
+node/10754713847,Niagara Urgent Care Pharmacy,amenity,pharmacy,pharmacy,,,,,Mo-Fr 08:00-16:30; Sa-Su off,5845 Ferry Street,43.089693,-79.091799,CORONATION,DRUMMOND,0
+node/6657970164,Pharmasave,amenity,pharmacy,pharmacy,Pharmasave,,,,,,43.105395,-79.112146,QUEENSWAY,STAMFORD,0
+node/7324366152,Pharmasave,amenity,pharmacy,pharmacy,Pharmasave,,,,,,43.089746,-79.137108,GARNER,WESTLANE,0
+node/6659093815,Remedy'sRx,amenity,pharmacy,pharmacy,Remedy'sRx,,,,,,43.06984,-79.111114,MILLER,DRUMMOND,0
+node/4274831844,Rexall,amenity,pharmacy,pharmacy,Rexall,,,,,,43.08874,-79.102813,CORWIN,DRUMMOND,0
+node/6659055406,Shoppers Drug Mart,amenity,pharmacy,pharmacy,Shoppers Drug Mart,,,,,,43.119236,-79.100958,MITCHELSON,STAMFORD,0
+node/13454384826,Shoppers Drug Mart,amenity,pharmacy,pharmacy,Shoppers Drug Mart,,,,,5175 Victoria Avenue,43.099482,-79.074329,VALLEYWAY,ELGIN,0
+way/179314009,Shoppers Drug Mart,amenity,pharmacy,pharmacy,Shoppers Drug Mart,,,,Mo-Su 08:00-00:00,5125 Montrose Road,43.099946,-79.124555,MULHERN,NORTHWEST,0
+way/401401333,Shoppers Drug Mart,amenity,pharmacy,pharmacy,Shoppers Drug Mart,,,,24/7,6565 Lundys Lane,43.090049,-79.104608,LEEMING,DRUMMOND,0
+node/12337663998,Walmart Pharmacy,amenity,pharmacy,pharmacy,Walmart,,,,,7481 Oakwood Drive,43.067763,-79.118417,DRUMMOND INDUSTRIAL BASIN,DRUMMOND,0
+node/1613500265,,amenity,restaurant,restaurant,,,,,,,43.092461,-79.077134,CLIFTON HILL,QUEEN VICTORIA,1
+node/1613500272,,amenity,restaurant,restaurant,,,,,,,43.092974,-79.078088,CLIFTON HILL,QUEEN VICTORIA,1
+node/9952659058,AG Inspired Cuisine,amenity,restaurant,restaurant,,,,,,,43.09147,-79.079695,CLIFTON HILL,QUEEN VICTORIA,1
+node/4274845126,Afghan Horsemen Kabob,amenity,restaurant,restaurant,,korean,,,Mo-Su 11:30-00:00,6530 Lundy's Lane,43.089188,-79.103741,CORWIN,DRUMMOND,0
+node/3580474507,AlMac's Buffet,amenity,restaurant,restaurant,,buffet,,,"Mo-Su 07:00-14:00,15:00-23:00",5435 Ferry Street,43.089775,-79.084329,CLIFTON HILL,QUEEN VICTORIA,1
+way/428754957,All U Can Eat Breakfast Buffet,amenity,restaurant,restaurant,,breakfast,,,,,43.081044,-79.083354,FALLSVIEW NORTH,QUEEN VICTORIA,1
+node/8144178388,Antica Pizzeria & Ristorante,amenity,restaurant,restaurant,,pizza;italian,,,Su 12:00-21:30; Mo-Th 12:00-21:00; Fr 12:00-22:00; Sa 12:00-22:30,5785 Victoria Avenue,43.091528,-79.07739,CLIFTON HILL,QUEEN VICTORIA,1
+node/7629964591,Applebee's,amenity,restaurant,restaurant,Applebee's Neighborhood Grill & Bar,american,,,,,43.080587,-79.082278,FALLSVIEW NORTH,QUEEN VICTORIA,1
+node/10860808254,Applebee's,amenity,restaurant,restaurant,Applebee's Neighborhood Grill & Bar,american,,,,4955 Clifton Hill,43.091748,-79.075235,CLIFTON HILL,QUEEN VICTORIA,1
+node/7631057775,B-jays Restaurant,amenity,restaurant,restaurant,,,,,,,43.059543,-79.050657,CUMMINGS,CHIPPAWA,0
+node/12847369930,Backyard BBQ,amenity,restaurant,restaurant,,,,,,,43.081103,-79.080209,QUEEN VICTORIA,QUEEN VICTORIA,1
+node/5743477186,Basell's Restaurant and Tavern,amenity,restaurant,restaurant,,,,,06:30-20:00,4880 Victoria Avenue,43.103482,-79.072999,RYERSON,ELGIN,0
+node/10860808245,Benihana,amenity,restaurant,restaurant,Benihana,japanese;teppanyaki;steak,,,,4955 Clifton Hill,43.091686,-79.075207,CLIFTON HILL,QUEEN VICTORIA,1
+way/817083613,Betty’s Restaurant,amenity,restaurant,restaurant,,,,,,8921 Sodom Road,43.048568,-79.059476,HUNTER,CHIPPAWA,0
+node/4795296139,Blue Falls Restaurant,amenity,restaurant,restaurant,,,,,,,43.089605,-79.093797,CORONATION,DRUMMOND,0
+node/1613500243,Boston Pizza,amenity,restaurant,restaurant,Boston Pizza,pizza,,,,4950 Clifton Hill,43.091088,-79.074805,CLIFTON HILL,QUEEN VICTORIA,1
+node/6657882615,Boston Pizza,amenity,restaurant,restaurant,Boston Pizza,pizza,,,,,43.104823,-79.11214,QUEENSWAY,STAMFORD,0
+node/13646636235,Boston Pizza,amenity,restaurant,restaurant,Boston Pizza,pizza,,,,,43.088417,-79.139897,GARNER,WESTLANE,0
+node/4204770191,Brasa,amenity,restaurant,restaurant,,steak_house,,,"Mo-Su 17:00-21:00; Fr,Sa 17:00-22:00",,43.082453,-79.083077,FALLSVIEW NORTH,QUEEN VICTORIA,1
+node/4204774290,Brasa Brazilian Steakhouse,amenity,restaurant,restaurant,,steak_house,,,,,43.083231,-79.083328,FALLSVIEW NORTH,QUEEN VICTORIA,1
+node/4930493024,Casa Mia Ristorante,amenity,restaurant,restaurant,,italian,,,,3518 Portage Road,43.1223,-79.099249,KER,STAMFORD,0
+node/6658702697,Casa d'Pizza,amenity,restaurant,restaurant,,pizza,,,,,43.117781,-79.12186,CARMEL,NORTHWEST,0
+node/12847276520,Casablanca Shisha,amenity,restaurant,restaurant,,,,,,,43.090692,-79.078112,CLIFTON HILL,QUEEN VICTORIA,1
+way/455526513,Cat's,amenity,restaurant,restaurant,,,,,,,43.114629,-79.109887,PETTIT,STAMFORD,0
+node/10571457041,Charm's Jerk Hut,amenity,restaurant,restaurant,,caribbean,,,,Lundys Lane,43.089614,-79.101779,LEEMING,DRUMMOND,0
+node/12847322451,Cheetal Indian Cuisine,amenity,restaurant,restaurant,,indian,,,,,43.088317,-79.08181,FALLSVIEW NORTH,QUEEN VICTORIA,1
+node/12092673347,Chubbies Jamaican Cuisine,amenity,restaurant,restaurant,,,,,,,43.09585,-79.072531,CLIFTON HILL,QUEEN VICTORIA,1
+node/5949692987,Chuck's Roadhouse,amenity,restaurant,restaurant,Chuck's Roadhouse,burger;steak_house,,,"Su-Th 11:00-23:00, Fr-Sa 11:00-00:00",5317 Ferry Street,43.089711,-79.081843,CLIFTON HILL,QUEEN VICTORIA,1
+node/4085302884,Club Italia,amenity,restaurant,restaurant,,banquet_hall,,,,2525 Montrose Road,43.13235,-79.137029,HYOTT,BEAVERDAMS,0
+node/439656008,Cocos,amenity,restaurant,restaurant,,,,,,,43.083926,-79.082048,FALLSVIEW NORTH,QUEEN VICTORIA,1
+node/11062399104,Comparu,amenity,restaurant,restaurant,,pizza,,,,5983 Clark Avenue,43.088022,-79.081844,FALLSVIEW NORTH,QUEEN VICTORIA,1
+node/3580500093,Copacabana Brazilian Steak House,amenity,restaurant,restaurant,,brazilian,,,,,43.079835,-79.082977,FALLSVIEW NORTH,QUEEN VICTORIA,1
+node/3580500097,Corso,amenity,restaurant,restaurant,,italian,,,,,43.083337,-79.083081,FALLSVIEW NORTH,QUEEN VICTORIA,1
+node/12847276371,D Spot Dessert Cafe,amenity,restaurant,restaurant,,,,,,,43.092685,-79.075366,CLIFTON HILL,QUEEN VICTORIA,1
+node/12847336613,Delhi Junction,amenity,restaurant,restaurant,,indian,,,,,43.089357,-79.081582,CLIFTON HILL,QUEEN VICTORIA,1
+way/401354716,Denny's,amenity,restaurant,restaurant,Denny's,american,,,24/7,5905 Victoria Avenue,43.090121,-79.079783,CLIFTON HILL,QUEEN VICTORIA,1
+node/11137391234,Desi Road - Niagara Falls,amenity,restaurant,restaurant,,,,,"Mo-Th 12:00-24:00, Fr 12:00-01:00, Sa 13:00-02:00, Su 12:00-01:00",,43.090347,-79.07866,CLIFTON HILL,QUEEN VICTORIA,1
+node/4274823890,Diner on the Lane,amenity,restaurant,restaurant,,,,,,,43.088825,-79.117781,OAKWOOD,WESTLANE,0
+node/6779119971,Dosa Boyz,amenity,restaurant,restaurant,,indian,,,,5717 Lewis Avenue,43.092517,-79.081543,CLIFTON HILL,QUEEN VICTORIA,1
+node/4277168650,East Side Mario's,amenity,restaurant,restaurant,East Side Mario's,italian,,,,,43.081756,-79.082947,FALLSVIEW NORTH,QUEEN VICTORIA,1
+node/4275714688,Eastern Buffet,amenity,restaurant,restaurant,,,,,,,43.089541,-79.106352,LEEMING,DRUMMOND,0
+way/428487616,Eighty Eight,amenity,restaurant,restaurant,,pizza,,,,,43.090403,-79.084689,CLIFTON HILL,QUEEN VICTORIA,1
+node/10814803995,Falls Deli,amenity,restaurant,restaurant,,deli,,,,6380 Fallsview Boulevard,43.082845,-79.079611,FALLSVIEW NORTH,QUEEN VICTORIA,1
+way/374827328,Family Restaurant,amenity,restaurant,restaurant,,,,,,4945 Clifton Hill,43.091612,-79.074821,CLIFTON HILL,QUEEN VICTORIA,1
+node/6658835103,Far East Restaurant,amenity,restaurant,restaurant,,chinese,,,,,43.114935,-79.105264,PETTIT,STAMFORD,0
+way/428483843,Flying Saucer Restaurant,amenity,restaurant,restaurant,,diner,,,,6768 Lundys Lane,43.08874,-79.108191,CORWIN,DRUMMOND,0
+node/9103984815,Fork You,amenity,restaurant,restaurant,,peruvian,,,"Su-Tu 12:00-20:00; We,Th 12:00-21:00; Fr,Sa 12:00-22:00",,43.115004,-79.065646,GLENVIEW,ELGIN,0
+way/694614015,Four Brothers Cucina Truly Authentic Italian,amenity,restaurant,restaurant,,,,,,,43.089733,-79.081434,CLIFTON HILL,QUEEN VICTORIA,1
+node/7799181567,Freshii,amenity,restaurant,restaurant,Freshii,salad,,,,,43.090717,-79.073036,CLIFTON HILL,QUEEN VICTORIA,1
+node/14143196402,Frontier BQQ & Smokehouse,amenity,restaurant,restaurant,,,,,"Su, We-Th 16:30-21:00; Fr-Sa 16:30-22:00",6519 Stanley Avenue,43.080598,-79.084732,FALLSVIEW NORTH,QUEEN VICTORIA,1
+node/11967138176,Gabriele's Hungarian Style Cabbage Rolls & More,amenity,restaurant,restaurant,,,,,,,43.057061,-79.052098,BRIDGEWATER,CHIPPAWA,0
+node/10816822388,Grand Buffet,amenity,restaurant,restaurant,,,,,,,43.083113,-79.080096,FALLSVIEW NORTH,QUEEN VICTORIA,1
+node/11092523405,Grand Central Bar & Grill,amenity,restaurant,restaurant,,american,,,,4573 Queen Street,43.106768,-79.06891,CENTRAL BUSINESS DISTRICT,ELGIN,0
+node/9193194065,Halibut House Fish & Chips,amenity,restaurant,restaurant,Halibut House,seafood,,,,7555 Montrose Road,43.065318,-79.125046,WESTLANE INDUSTRIAL BASIN,WESTLANE,0
+node/3782067966,Hard Rock Cafe,amenity,restaurant,restaurant,Hard Rock Cafe,american,,,,5705 Falls Avenue,43.091367,-79.072118,CLIFTON HILL,QUEEN VICTORIA,1
+way/817078030,Hi-Lite Restaurant,amenity,restaurant,restaurant,,diner;american,,,,4524 Queen Street,43.106395,-79.068015,CENTRAL BUSINESS DISTRICT,ELGIN,0
+node/3078326822,Hooters,amenity,restaurant,restaurant,Hooters,burger,,,,5234 Victoria Avenue,43.089466,-79.08036,CLIFTON HILL,QUEEN VICTORIA,1
+node/4036690486,IHOP,amenity,restaurant,restaurant,IHOP,breakfast;pancake,,,"Mo-Fr 08:00-14:00; Sa,Su 08:00-15:00",7514 Lundy's Lane,43.088745,-79.122222,LUNDY,WESTLANE,0
+node/4037851461,IHOP,amenity,restaurant,restaurant,IHOP,breakfast;pancake,,,,6455 Fallsview Boulevard,43.081841,-79.082937,FALLSVIEW NORTH,QUEEN VICTORIA,1
+node/4037851463,IHOP,amenity,restaurant,restaurant,IHOP,breakfast;pancake,,,"Mo-Th 08:00-13:00; Fr,Sa 08:00-22:00; Su 08:00-14:00",6045 Stanley Avenue,43.087118,-79.084984,FALLSVIEW NORTH,QUEEN VICTORIA,1
+node/6522342333,IHOP,amenity,restaurant,restaurant,IHOP,breakfast;pancake,,,,4955 Clifton Hill,43.09179,-79.075165,CLIFTON HILL,QUEEN VICTORIA,1
+node/12847559331,IHOP,amenity,restaurant,restaurant,IHOP,breakfast;pancake,,,,6455 Fallsview Boulevard,43.085376,-79.083972,FALLSVIEW NORTH,QUEEN VICTORIA,1
+node/2993024885,Inchins Indian Kitchen,amenity,restaurant,restaurant,,indian,,,,5928 Clark Avenue,43.088878,-79.081436,FALLSVIEW NORTH,QUEEN VICTORIA,1
+node/4930521821,Italian ice cream,amenity,restaurant,restaurant,,,,,,5458 Victoria Avenue,43.095683,-79.072737,CLIFTON HILL,QUEEN VICTORIA,1
+node/12847559520,Japanese Restaurant Yukiguni,amenity,restaurant,restaurant,,japanese,,,,5980 Fallsview Boulevard,43.087988,-79.082983,FALLSVIEW NORTH,QUEEN VICTORIA,1
+node/6658652267,Jasmine Chinese Cuisine,amenity,restaurant,restaurant,,chinese,,,Mo off; Tu-Sa 11:30-20:45; Su 12:00-20:45,3930 Montrose Road,43.115526,-79.122959,CARMEL,NORTHWEST,0
+node/4355020611,Joe&Laurie's Restaurant,amenity,restaurant,restaurant,,,,,,,43.089346,-79.126217,HODGSON,WESTLANE,0
+way/708617559,John's Restaurant,amenity,restaurant,restaurant,,,,,,,43.115448,-79.105143,MITCHELSON,STAMFORD,0
+node/4274824245,Johnny Rocco's Italian Grill,amenity,restaurant,restaurant,,italian,,,,,43.089494,-79.11036,LEEMING,DRUMMOND,0
+node/1613500249,Kelsey's,amenity,restaurant,restaurant,Kelsey's,american,,,,,43.091727,-79.076162,CLIFTON HILL,QUEEN VICTORIA,1
+node/10814765014,Korean Garden,amenity,restaurant,restaurant,,korean,,,,,43.07157,-79.083958,FALLSVIEW SOUTH,QUEEN VICTORIA,1
+node/12092673350,Kothu Labs,amenity,restaurant,restaurant,,,,,,,43.095656,-79.072548,CLIFTON HILL,QUEEN VICTORIA,1
+node/6538473128,Koutouki,amenity,restaurant,restaurant,,greek,,,"Tu-Fr 11:30-21:00; Sa,Su 12:00-21:00",5745 Ferry Street,43.089674,-79.090099,CORONATION,DRUMMOND,0
+node/13989071121,La Paisana Restaurante,amenity,restaurant,restaurant,,mexican,,,,,43.13045,-79.100489,GAULD,STAMFORD,0
+node/14073373701,La Ramona Cantina,amenity,restaurant,restaurant,,mexican,,,Mo-Fr 12:00-00:00; Sa-Su 12:00-23:30,5993 Stanley Avenue,43.087922,-79.085149,FALLSVIEW NORTH,QUEEN VICTORIA,1
+way/816695950,La Revolución Taqueria,amenity,restaurant,restaurant,,mexican,,,,3747 Portage Road,43.118824,-79.099785,MITCHELSON,STAMFORD,0
+node/6658988073,Lucky Dragon,amenity,restaurant,restaurant,,chinese,,,,,43.117804,-79.098715,KER,STAMFORD,0
+node/13955812520,Lutong Pinoy,amenity,restaurant,restaurant,,,,,,,43.108513,-79.060832,CENTRAL BUSINESS DISTRICT,ELGIN,0
+way/401330396,Magnolia,amenity,restaurant,restaurant,,chinese,,,,,43.08859,-79.124715,MUNRO,WESTLANE,0
+node/11137391233,Mama Mia's,amenity,restaurant,restaurant,,italian,,,,5719 Victoria Avenue,43.091166,-79.078076,CLIFTON HILL,QUEEN VICTORIA,1
+node/2926902024,Mandarin,amenity,restaurant,restaurant,,chinese,,,,7555 Montrose Road,43.067291,-79.125696,WESTLANE INDUSTRIAL BASIN,WESTLANE,0
+node/11167349924,Margaritaville,amenity,restaurant,restaurant,,,,,,6300 Fallsview Boulevard,43.08375,-79.082578,FALLSVIEW NORTH,QUEEN VICTORIA,1
+node/4274825017,Micah,amenity,restaurant,restaurant,,thai;japanese,,,,,43.089451,-79.108925,LEEMING,DRUMMOND,0
+node/6658933337,Michinoku,amenity,restaurant,restaurant,,japanese,,,,,43.114649,-79.097122,PORTAGE,STAMFORD,0
+node/4274844578,Mick & Angelo's eatery & bar,amenity,restaurant,restaurant,,,,,,,43.08867,-79.12375,MUNRO,WESTLANE,0
+node/6658652265,Mojito House,amenity,restaurant,restaurant,,latin_american,,,,,43.11414,-79.12281,KENT,NORTHWEST,0
+way/345578009,Moksha Indian Bistro,amenity,restaurant,restaurant,,indian,,,Mo-Su 11:30-23:00,5993 Stanley Avenue,43.087912,-79.085174,FALLSVIEW NORTH,QUEEN VICTORIA,1
+way/429312257,My Cousin Vinny's,amenity,restaurant,restaurant,,italian,,,,6541 Main Street,43.080669,-79.083752,FALLSVIEW NORTH,QUEEN VICTORIA,1
+node/9103854669,Napoli Ristorante & Pizza,amenity,restaurant,restaurant,,italian,,,,5485 Stanley Avenue,43.089681,-79.085164,CLIFTON HILL,QUEEN VICTORIA,0
+node/9952740428,New York Restaurant,amenity,restaurant,restaurant,,chinese,,,,5027 Centre Street,43.092534,-79.076832,CLIFTON HILL,QUEEN VICTORIA,1
+node/9103887344,Niku Japanese BBQ,amenity,restaurant,restaurant,,japanese,,,11:30-23:00,,43.089442,-79.081104,CLIFTON HILL,QUEEN VICTORIA,1
+node/11413623613,Noodle Bar,amenity,restaurant,restaurant,,,,,,,43.082306,-79.079851,FALLSVIEW NORTH,QUEEN VICTORIA,1
+node/12847716485,Original Clancy’s Sports Bar & Restaurant,amenity,restaurant,restaurant,,,,,,,43.098551,-79.086185,OAKES,ELGIN,0
+node/3580500096,Outback Steakhouse,amenity,restaurant,restaurant,Outback Steakhouse,american;steak,,,,,43.079103,-79.08367,FALLSVIEW SOUTH,QUEEN VICTORIA,1
+node/4037900871,Outback Steakhouse,amenity,restaurant,restaurant,Outback Steakhouse,american;steak,,,,5936 Victoria Avenue,43.09015,-79.079005,CLIFTON HILL,QUEEN VICTORIA,1
+node/7152741189,Palms Shawarma and Mediterranean Cafe,amenity,restaurant,restaurant,,mediterranean;shawarma,,,,6734 Lundys Lane,43.088953,-79.107473,CORWIN,DRUMMOND,0
+node/12847358185,Paramount,amenity,restaurant,restaurant,,,,,,,43.08166,-79.079957,FALLSVIEW NORTH,QUEEN VICTORIA,1
+way/817077519,Paris Crêpes Café,amenity,restaurant,restaurant,,french,,,,4613 Queen Street,43.106911,-79.069603,CENTRAL BUSINESS DISTRICT,ELGIN,0
+node/3580479194,Passage to India Buffet,amenity,restaurant,restaurant,,indian,,,"Mo-Th 11:00-23:00; Fr 11:00-24:00; Sa,Su 10:00-24:00",5546 Robinson Street,43.086204,-79.084907,FALLSVIEW NORTH,QUEEN VICTORIA,1
+node/6659074075,Pasta Fresca,amenity,restaurant,restaurant,,italian,,,,,43.121073,-79.100566,CULLIMORE,STAMFORD,0
+node/6658699783,Pho My Tan Ky,amenity,restaurant,restaurant,,vietnamese,,,,,43.114679,-79.112685,QUEENSWAY,STAMFORD,0
+node/6658652278,Pho Vietnam 3969 Restaurant,amenity,restaurant,restaurant,,vietnamese,,,Mo-Su 10:00-23:00,3969 Montrose Road,43.115002,-79.125168,CARMEL,NORTHWEST,0
+node/6604076286,Pho Xylo,amenity,restaurant,restaurant,,vietnamese,,,Tu-Su 11:00-21:00,6175 Dunn Street,43.079203,-79.095827,ORCHARD,DRUMMOND,0
+node/7324366150,Pho Ying,amenity,restaurant,restaurant,,vietnamese,,,,,43.089801,-79.136832,GARNER,WESTLANE,0
+node/9103862774,Pizza Hut,amenity,restaurant,restaurant,Pizza Hut,pizza,,,,,43.090363,-79.079167,CLIFTON HILL,QUEEN VICTORIA,1
+way/179320975,Pizza Hut,amenity,restaurant,restaurant,Pizza Hut,pizza,,,,,43.088885,-79.099584,CORWIN,DRUMMOND,0
+node/10967766145,Potato Jackets,amenity,restaurant,restaurant,,,,,,5444 Stanley Avenue,43.090184,-79.084689,CLIFTON HILL,QUEEN VICTORIA,1
+node/7799217284,Prime Steakhouse,amenity,restaurant,restaurant,,steak_house,,,,,43.091776,-79.071595,CLIFTON HILL,QUEEN VICTORIA,1
+node/12144764001,Punjabi Chaap Corner,amenity,restaurant,restaurant,,indian,,,,6715 Dunn Street,43.079178,-79.097028,ORCHARD,DRUMMOND,0
+node/2778535686,Queen Victoria Place Restaurant,amenity,restaurant,restaurant,,,,,,6345 Niagara Parkway,43.083152,-79.078208,QUEEN VICTORIA,QUEEN VICTORIA,0
+node/13988938177,Queen's Coach Family Restaurant,amenity,restaurant,restaurant,,breakfast,,,,2845 St Paul Avenue,43.131221,-79.100438,GAULD,STAMFORD,0
+way/440870365,RG. Kitchen,amenity,restaurant,restaurant,,lebanese,,,Mo-Su 12:00-22:00,5054 Victoria Avenue,43.101091,-79.072825,RYERSON,ELGIN,0
+node/2395340229,Rainforest Cafe,amenity,restaurant,restaurant,,,,,,4915 Clifton Hill,43.091131,-79.073119,CLIFTON HILL,QUEEN VICTORIA,1
+node/12068096197,Rajdhani Sweets and Restaurant,amenity,restaurant,restaurant,,,,,,,43.092596,-79.075521,CLIFTON HILL,QUEEN VICTORIA,1
+way/401401332,Red Lobster,amenity,restaurant,restaurant,Red Lobster,seafood,,,,6220 Lundys Lane,43.089002,-79.098177,CORWIN,DRUMMOND,0
+node/10859358923,Reds Kitchen and Wine Bar,amenity,restaurant,restaurant,,,,,,,43.081489,-79.080907,FALLSVIEW NORTH,QUEEN VICTORIA,1
+node/4839838091,Remingtons of Niagara,amenity,restaurant,restaurant,,,,,,,43.092884,-79.075022,CLIFTON HILL,QUEEN VICTORIA,1
+node/7631057776,Riverside Tavern,amenity,restaurant,restaurant,,,,,,,43.059723,-79.050756,CUMMINGS,CHIPPAWA,0
+node/10754713832,Royal Dosa Hut,amenity,restaurant,restaurant,,indian,,,Mo-Su 10:00-23:00,5991 Lundy's Lane,43.089615,-79.093608,CORONATION,DRUMMOND,0
+node/12068092688,Royal Paan,amenity,restaurant,restaurant,,,,,,,43.092853,-79.077106,CLIFTON HILL,QUEEN VICTORIA,1
+node/7127082193,STK Steakhouse,amenity,restaurant,restaurant,,steak_house,,,,6700 Fallsview Blvd,43.079473,-79.081716,FALLSVIEW NORTH,QUEEN VICTORIA,1
+node/4355103601,Sandstone Grillhouse,amenity,restaurant,restaurant,,steak_house,,,,,43.095427,-79.07311,CLIFTON HILL,QUEEN VICTORIA,1
+node/8144178438,Score Pizza,amenity,restaurant,restaurant,,pizza,,,,,43.092284,-79.076042,CLIFTON HILL,QUEEN VICTORIA,1
+node/12348935016,Shelby's Legendary Shwarma,amenity,restaurant,restaurant,,international,,,,,43.070529,-79.097246,MERRIT,DRUMMOND,0
+node/9952708934,Shiv Kirti Chef of India Authentic Indian Cuisine,amenity,restaurant,restaurant,,indian,,,,5060 Magdalen Street,43.091136,-79.080361,CLIFTON HILL,QUEEN VICTORIA,1
+node/3522188621,Shoeless Joe's,amenity,restaurant,restaurant,Shoeless Joe's,grill,,,,,43.083297,-79.082415,FALLSVIEW NORTH,QUEEN VICTORIA,1
+node/12847293255,Shooks A Taste of Jamaica,amenity,restaurant,restaurant,,,,,,5983 Clark Avenue,43.088038,-79.081799,FALLSVIEW NORTH,QUEEN VICTORIA,1
+node/930387023,Sky Grill,amenity,restaurant,restaurant,,,,,,,43.061977,-79.075897,MARINELAND,QUEEN VICTORIA,0
+node/291675597,Skylon Tower,amenity,restaurant,restaurant,,,,,,5200 Robinson Street,43.085138,-79.079693,FALLSVIEW NORTH,QUEEN VICTORIA,1
+node/12638645301,Skylon Tower Revolving Dining Room,amenity,restaurant,restaurant,,american,,,Mo-Su 11:00-22:30,5200 Robinson Street,43.085024,-79.079954,FALLSVIEW NORTH,QUEEN VICTORIA,1
+node/11137391227,Spicy Olive Bar + Grille,amenity,restaurant,restaurant,,italian,,,,,43.092353,-79.076952,CLIFTON HILL,QUEEN VICTORIA,1
+node/12128828179,Stacked Pancake & Breakfast House,amenity,restaurant,restaurant,,pancake;breakfast,,,Mo-Su 07:00-15:00,6840 McLeod Road,43.069742,-79.10929,MERRIT,DRUMMOND,0
+node/11180917644,Stacked Pancake & Breakfast House,amenity,restaurant,restaurant,,breakfast,,,Mo-Su 07:00-15:00,7190 Morrison Street,43.103671,-79.114246,WALLICE,STAMFORD,0
+node/7617193594,Strada West,amenity,restaurant,restaurant,,italian,,,,,43.089337,-79.128002,HODGSON,WESTLANE,0
+node/6659134119,Sunset Grill,amenity,restaurant,restaurant,Sunset Grill,american,,,,,43.07061,-79.126669,MUNRO,WESTLANE,0
+way/401401339,Swiss Chalet,amenity,restaurant,restaurant,Swiss Chalet,chicken,,,,6666 Lundys Lane,43.08886,-79.106477,CORWIN,DRUMMOND,0
+node/4274824249,Syndicate Restaurant,amenity,restaurant,restaurant,,,,,,,43.089471,-79.109892,LEEMING,DRUMMOND,0
+node/3580500098,TGI Fridays,amenity,restaurant,restaurant,TGI Fridays,american,,,,,43.079388,-79.082166,FALLSVIEW NORTH,QUEEN VICTORIA,1
+node/5420831621,Table Rock House Restaurant,amenity,restaurant,restaurant,,,,,,6650 Niagara Parkway,43.078841,-79.078713,QUEEN VICTORIA,QUEEN VICTORIA,0
+node/4930493022,Taki japanese restaurant,amenity,restaurant,restaurant,,,,,,5500 Victoria Avenue,43.094745,-79.072603,CLIFTON HILL,QUEEN VICTORIA,1
+way/475719771,Taku Sushi and Ramen,amenity,restaurant,restaurant,,japanese;sushi;ramen,,,,,43.098319,-79.073255,VALLEYWAY,ELGIN,0
+node/4930493023,Taps on Queen,amenity,restaurant,restaurant,,,,,,4680 Queen Street,43.106498,-79.070926,CENTRAL BUSINESS DISTRICT,ELGIN,0
+node/4274845125,Taste of Bombay,amenity,restaurant,restaurant,,indian,,,,,43.089372,-79.090627,ORCHARD,DRUMMOND,0
+node/6887423585,The Blind Pig Niagara,amenity,restaurant,restaurant,,,,,,6689 Lundys Lane,43.0896,-79.106722,LEEMING,DRUMMOND,0
+way/293599034,The Boathouse,amenity,restaurant,restaurant,The Boathouse,,,,,,43.060366,-79.052953,KINGSBRIDGE,CHIPPAWA,0
+node/9952740429,The Dhaba on the Falls Indian Cuisine,amenity,restaurant,restaurant,,indian,,,,,43.092636,-79.076918,CLIFTON HILL,QUEEN VICTORIA,1
+node/11137391219,The Falls Café,amenity,restaurant,restaurant,,,,,,,43.093094,-79.074686,CLIFTON HILL,QUEEN VICTORIA,1
+node/11062423278,The Flour Mill,amenity,restaurant,restaurant,,,,,,,43.086792,-79.081823,FALLSVIEW NORTH,QUEEN VICTORIA,1
+node/11137391224,The Guru Fine Indian Cuisine,amenity,restaurant,restaurant,,indian,,,Mo-Su 12:00-00:00,5705 Victoria Avenue,43.092473,-79.075714,CLIFTON HILL,QUEEN VICTORIA,1
+node/3580491969,The Keg,amenity,restaurant,restaurant,The Keg,steak_house,,,,,43.089518,-79.079983,CLIFTON HILL,QUEEN VICTORIA,1
+node/2994022297,The Regal Diner,amenity,restaurant,restaurant,,,,,,5924 Main Street,43.088808,-79.092357,ORCHARD,DRUMMOND,0
+node/12093798172,The Secret Garden Restaurant,amenity,restaurant,restaurant,,,,,,,43.091,-79.071069,CLIFTON HILL,QUEEN VICTORIA,1
+node/8144178439,The Works,amenity,restaurant,restaurant,The Works,burger,,,,5717 Victoria Avenue,43.092342,-79.075953,CLIFTON HILL,QUEEN VICTORIA,1
+node/3580532626,Tony Roma's,amenity,restaurant,restaurant,Tony Roma's,barbecue,,,,,43.078354,-79.082539,FALLSVIEW SOUTH,QUEEN VICTORIA,1
+node/4274834658,VIP Korean Restaurant,amenity,restaurant,restaurant,,korean,,,,,43.089645,-79.089096,CORONATION,DRUMMOND,0
+node/11137391221,Virsa Fine Indian Cuisine,amenity,restaurant,restaurant,,indian,,,,5677 Victoria Avenue,43.092798,-79.075202,CLIFTON HILL,QUEEN VICTORIA,1
+node/9893595869,Vittorio’s Italian Eatery,amenity,restaurant,restaurant,,italian,,,,,43.081744,-79.080213,FALLSVIEW NORTH,QUEEN VICTORIA,1
+node/11137391220,Weinkeller,amenity,restaurant,restaurant,,,,,,5633 Victoria Avenue,43.093301,-79.074329,CLIFTON HILL,QUEEN VICTORIA,1
+node/5546174721,Whirlpool Restaurant,amenity,restaurant,restaurant,,,,,,Niagara Pkwy,43.124928,-79.069709,THOMPSON,STAMFORD,0
+way/345576734,Young Garden Authentic Korean Cuisine,amenity,restaurant,restaurant,,korean,,,,,43.086845,-79.085032,FALLSVIEW NORTH,QUEEN VICTORIA,1
+node/12057718069,Zappi's Pizza & Pasta,amenity,restaurant,restaurant,,,,,,6663 Stanley Avenue,43.078693,-79.084412,FALLSVIEW SOUTH,QUEEN VICTORIA,1
+node/3580477714,bravo! grill,amenity,restaurant,restaurant,,pizza,,,,5438 Ferry Street,43.089414,-79.083999,CLIFTON HILL,QUEEN VICTORIA,1
+node/4274823512,wind Japanese Thai,amenity,restaurant,restaurant,,japanese,,,,,43.089354,-79.116896,ROYAL MANOR,WESTLANE,0
+way/1489194821,,shop,kiosk,retail_other,,,,,,,43.054806,-79.133201,WESTLANE INDUSTRIAL BASIN,WESTLANE,0
+way/1143822192,,shop,ticket,retail_other,,,,,,,43.09233,-79.074711,CLIFTON HILL,QUEEN VICTORIA,1
+node/6657822509,Adidas,shop,sports,retail_other,Adidas,,,,,,43.086964,-79.119679,LUNDY,WESTLANE,0
+node/11137391223,Allways Antique Photo,shop,antiques,retail_other,,,,,,,43.092642,-79.075432,CLIFTON HILL,QUEEN VICTORIA,1
+node/6658835087,Bazaar Istanbul Turkish Market,shop,grocery,retail_other,,,,,Mo-Sa 09:00-19:00; Su 10:00-17:00,6788 Thorold Stone Road,43.114743,-79.109448,PETTIT,STAMFORD,0
+node/6659134122,Bell,shop,telecommunication,retail_other,Bell,,,,,,43.07122,-79.12664,MUNRO,WESTLANE,0
+node/6658988072,Bell,shop,telecommunication,retail_other,Bell,,,,,,43.117801,-79.098786,KER,STAMFORD,0
+node/4274826609,Big B Comics,shop,collector,retail_other,,,,,,6465 Lundys Lane,43.089541,-79.102486,LEEMING,DRUMMOND,0
+node/4275722382,Big B Comics,shop,comics,retail_other,,,,,,,43.089601,-79.106615,LEEMING,DRUMMOND,0
+node/6658778594,Bloomers,shop,florist,retail_other,,,,,,,43.114639,-79.110893,PETTIT,STAMFORD,0
+node/6658835086,CAA,shop,travel_agency,retail_other,CAA,,,,,,43.114749,-79.108994,PETTIT,STAMFORD,0
+node/12847567470,Canadian Ride,shop,bicycle,retail_other,,,,,,6081 Fallsview Boulevard,43.086717,-79.083357,FALLSVIEW NORTH,QUEEN VICTORIA,1
+node/4274825611,Cash Money,shop,money_lender,retail_other,Cash Money,,,,,,43.088958,-79.107409,CORWIN,DRUMMOND,0
+node/10754713824,Cash Money,shop,money_lender,retail_other,Cash Money,,,,,,43.089327,-79.092404,ORCHARD,DRUMMOND,0
+node/9001134771,Clover Therapetic Wellness Centre,shop,yes,retail_other,,,,,,3710 Main Street,43.058904,-79.050639,CUMMINGS,CHIPPAWA,0
+node/6657822517,Couture Perfumes,shop,perfumery,retail_other,,,,,,,43.086824,-79.119668,LUNDY,WESTLANE,0
+node/9103879318,Discount,shop,vacant,retail_other,,,,,,,43.091248,-79.084729,CLIFTON HILL,QUEEN VICTORIA,1
+way/475720222,Dobbie's Florist,shop,florist,retail_other,,,,,,,43.099825,-79.072711,RYERSON,ELGIN,0
+node/6657882613,EB Games,shop,video_games,retail_other,EB Games,,,,Mo-Fr 10:00-20:00; Su 11:00-17:00; Sa 10:00-18:00,7190 Morrison Street,43.102746,-79.117922,WALLICE,STAMFORD,0
+node/6659074079,Elite Travel Agency,shop,travel_agency,retail_other,,,,,,,43.121898,-79.100059,CULLIMORE,STAMFORD,0
+node/6658702702,Expedia CruiseShipCenters,shop,travel_agency,retail_other,Expedia CruiseShipCenters,,,,,,43.118603,-79.121778,CARMEL,NORTHWEST,0
+node/6657882621,Expedia Cruises,shop,travel_agency,retail_other,Expedia Cruises,,,,,,43.104738,-79.113212,QUEENSWAY,STAMFORD,0
+node/6658933303,Fiction Addiction,shop,books,retail_other,,,,,,,43.116074,-79.096774,KER,STAMFORD,0
+node/6657882617,GNC,shop,nutrition_supplements,retail_other,GNC,,,,,,43.104756,-79.112519,QUEENSWAY,STAMFORD,0
+node/6659055410,Global Pet Foods,shop,pet,retail_other,Global Pet Foods,,,,,,43.119773,-79.101263,MITCHELSON,STAMFORD,0
+node/6657970168,Goodwill,shop,charity,retail_other,Goodwill,,,,,,43.105072,-79.109702,PETTIT,STAMFORD,0
+node/5286538786,Kandu Pools,shop,swimming_pool,retail_other,,,,,,4530 Drummond Road,43.107924,-79.098282,PORTAGE,STAMFORD,0
+node/10816481715,Lockers,shop,storage_rental,retail_other,,,,,,,43.091092,-79.076739,CLIFTON HILL,QUEEN VICTORIA,1
+way/428484054,Love Shop,shop,erotic,retail_other,,,,,,6580 Lundy's Lane,43.088953,-79.104683,CORWIN,DRUMMOND,0
+node/6629576588,Michaels,shop,craft,retail_other,Michaels,,,,,7555 Montrose Road,43.067662,-79.124315,WESTLANE INDUSTRIAL BASIN,WESTLANE,0
+node/6659093812,Money Mart,shop,money_lender,retail_other,Money Mart,,,,,,43.070178,-79.11178,MILLER,DRUMMOND,0
+node/6658933299,Money Mart,shop,money_lender,retail_other,Money Mart,,,,,,43.116178,-79.09678,KER,STAMFORD,0
+node/10754713826,Money Mart,shop,money_lender,retail_other,Money Mart,,,,Mo-Su 07:00-23:00,5885 Ferry Street,43.089628,-79.092588,CORONATION,DRUMMOND,0
+way/817078719,Niagara City Cruises Group Booth,shop,ticket,retail_other,,,,,,,43.089301,-79.072125,QUEEN VICTORIA,QUEEN VICTORIA,0
+way/1425944761,Niagara City Cruises Ticket Kiosks,shop,kiosk,retail_other,,,,,,,43.088749,-79.073921,QUEEN VICTORIA,QUEEN VICTORIA,0
+node/10673727174,Niagara Coin & Collectibles,shop,pawnbroker,retail_other,,,,,Tu-Sa 10:00-17:00,4936 Victoria Avenue,43.102688,-79.072961,RYERSON,ELGIN,0
+way/158230900,Niagara Duty Free Hors Taxes,shop,duty_free,retail_other,,,,,,,43.091473,-79.070881,CLIFTON HILL,QUEEN VICTORIA,1
+way/345575283,Niagara Parks Welcome Centre,shop,ticket,retail_other,,,,,,,43.083928,-79.078223,QUEEN VICTORIA,QUEEN VICTORIA,0
+node/9893500400,Niagara Parks Welcome Centre,shop,ticket,retail_other,,,,,,7400 Portage Road,43.07793,-79.079631,QUEEN VICTORIA,QUEEN VICTORIA,0
+node/1892287106,Niagara SkyWheel,shop,ticket,retail_other,,,,,,,43.091305,-79.075034,CLIFTON HILL,QUEEN VICTORIA,1
+node/10816481714,Niagara Speedway tickets,shop,ticket,retail_other,,,,,,,43.091056,-79.076708,CLIFTON HILL,QUEEN VICTORIA,1
+way/1425944760,Nigara City Cruises Ticket Booth,shop,ticket,retail_other,,,,,,5920 River Road,43.088758,-79.073806,QUEEN VICTORIA,QUEEN VICTORIA,0
+node/10754713831,PAY2DAY,shop,money_lender,retail_other,,,,,,5992B Lundy's Lane,43.089361,-79.093673,ORCHARD,DRUMMOND,0
+node/6658835136,Party Connnection,shop,party,retail_other,,,,,,,43.114989,-79.09999,PETTIT,STAMFORD,0
+node/6657882618,Paulmac's Pets,shop,pet,retail_other,Paulmac's Pets,,,,Mo-Fr 08:00-21:00; Sa 08:00-18:00; Su 10:00-18:00,,43.104758,-79.112613,QUEENSWAY,STAMFORD,0
+node/5743519422,Pedlar Bicycle Shop,shop,bicycle,retail_other,,,,,,4547 Queen Street,43.106788,-79.068368,CENTRAL BUSINESS DISTRICT,ELGIN,0
+node/10923511859,Perfect Pooches Dog Grooming,shop,pet_grooming,retail_other,,,,,,2904 Saint Paul Avenue,43.130408,-79.099579,CHURCH,STAMFORD,0
+node/6658988079,Pet Valu,shop,pet,retail_other,Pet Valu,,,,Mo-Fr 08:00-21:00; Sa 08:00-18:00; Su 10:00-18:00,,43.118322,-79.098562,KER,STAMFORD,0
+node/7324366153,Pet Valu,shop,pet,retail_other,Pet Valu,,,,Mo-Fr 09:00-20:00; Sa 09:00-18:00; Su 10:00-18:00,,43.089605,-79.137192,GARNER,WESTLANE,0
+node/6659111293,PetSmart,shop,pet,retail_other,PetSmart,,,,,,43.066069,-79.120753,DRUMMOND INDUSTRIAL BASIN,DRUMMOND,0
+node/6659111295,Sally Beauty,shop,hairdresser_supply,retail_other,Sally Beauty,,,,,,43.066333,-79.119544,DRUMMOND INDUSTRIAL BASIN,DRUMMOND,0
+node/9104011908,Simon’s Restaurant,shop,vacant,retail_other,,,,,,,43.10853,-79.060324,CENTRAL BUSINESS DISTRICT,ELGIN,0
+node/10754713827,Skooterz,shop,bicycle,retail_other,,,,,,5879 Ferry Street,43.089631,-79.092484,CORONATION,DRUMMOND,0
+node/6659055409,Source For Sports,shop,sports,retail_other,Source For Sports,,,,,,43.119702,-79.101258,MITCHELSON,STAMFORD,0
+node/10571468500,Stag Shop,shop,erotic,retail_other,Stag Shop,,,,,,43.089582,-79.102106,LEEMING,DRUMMOND,0
+node/4715157656,Stanley Self Storage,shop,storage_rental,retail_other,,,,,,3659 Stanley Avenue,43.120978,-79.086765,KER,STAMFORD,0
+node/1885230914,Staples,shop,stationery,retail_other,Staples,,,,Mo-Fr 09:00-20:00; Su 12:00-17:00; Sa 09:00-17:00,7190 Morrison Street,43.103496,-79.117774,WALLICE,STAMFORD,0
+node/11137391244,TGI Fridays,shop,vacant,retail_other,TGI Fridays,american,,,,,43.08994,-79.079266,CLIFTON HILL,QUEEN VICTORIA,1
+node/9103880029,Thai Express,shop,vacant,retail_other,,,,,,,43.089439,-79.082007,CLIFTON HILL,QUEEN VICTORIA,1
+node/6659074078,The Flower House,shop,florist,retail_other,,,,,,,43.121843,-79.100054,CULLIMORE,STAMFORD,0
+node/3580466193,Tickets & Reservations,shop,ticket,retail_other,,,,,,,43.083854,-79.08026,FALLSVIEW NORTH,QUEEN VICTORIA,1
+node/7084520547,U-Haul,shop,rental,retail_other,U-Haul,,,,,4605 Kent Avenue,43.106496,-79.120612,KENT,NORTHWEST,0
+way/178404713,Value Village,shop,second_hand,retail_other,Value Village,,,,,,43.088642,-79.099069,CORWIN,DRUMMOND,0
+node/9103880028,Villa Madina,shop,vacant,retail_other,,,,,,,43.089441,-79.081925,CLIFTON HILL,QUEEN VICTORIA,1
+node/10754713830,Vincent's,shop,second_hand,retail_other,,,,,,,43.089355,-79.093271,ORCHARD,DRUMMOND,0
+node/6658988077,Worldwide Travel One,shop,travel_agency,retail_other,,,,,,,43.118055,-79.098553,KER,STAMFORD,0
+node/6657882607,easyfinancial,shop,money_lender,retail_other,easyfinancial,,,,,,43.103174,-79.116309,WALLICE,STAMFORD,0
+node/13454384872,Chippawa Canada Post,amenity,post_office,services,Canada Post,,,,,8251 Willoughby Drive,43.058062,-79.0502,BRIDGEWATER,CHIPPAWA,0
+node/4355020610,Lundy's Lane Canada Post,amenity,post_office,services,Canada Post,,,,,6565 Lundys Lane,43.090154,-79.104461,LEEMING,DRUMMOND,0
+node/13454384857,Montrose Road Canada Post,amenity,post_office,services,Canada Post,,,,,5125 Montrose Road,43.100013,-79.12438,MULHERN,NORTHWEST,0
+way/817077529,Niagara Falls Canada Post,amenity,post_office,services,Canada Post,,,,,4500 Queen Street,43.10633,-79.067364,CENTRAL BUSINESS DISTRICT,ELGIN,0
+node/6659093813,The UPS Store,amenity,post_office,services,The UPS Store,,,,,,43.070188,-79.111871,MILLER,DRUMMOND,0
+node/6658699782,The UPS Store,amenity,post_office,services,The UPS Store,,,,Mo-Fr 09:00-18:30; Sa 10:00-15:00,4025 Dorchester Road,43.114669,-79.112765,QUEENSWAY,STAMFORD,0
+node/13454384824,Victoria Avenue Canada Post,amenity,post_office,services,Canada Post,,,,,5175 Victoria Avenue,43.099348,-79.074502,VALLEYWAY,ELGIN,0
+node/2395362371,,shop,gift,souvenir_gift,,,,,,,43.065154,-79.073014,MARINELAND,QUEEN VICTORIA,0
+node/2778535689,,shop,gift,souvenir_gift,,,,,,,43.083225,-79.078156,QUEEN VICTORIA,QUEEN VICTORIA,0
+node/5732520721,,shop,gift,souvenir_gift,,,,,,,43.117938,-79.068585,GLENVIEW,ELGIN,0
+node/12847358209,,shop,gift,souvenir_gift,,,,,,,43.084977,-79.079435,FALLSVIEW NORTH,QUEEN VICTORIA,1
+node/11137391226,Bargain World,shop,gift,souvenir_gift,,,,,,,43.092551,-79.075584,CLIFTON HILL,QUEEN VICTORIA,1
+node/7799193938,Blue Moose Trading Co.,shop,gift,souvenir_gift,,,,,,,43.091378,-79.074441,CLIFTON HILL,QUEEN VICTORIA,1
+node/10648007239,Canada Trading Company,shop,gift,souvenir_gift,,,,,,4950 Clifton Hill,43.091394,-79.075406,CLIFTON HILL,QUEEN VICTORIA,1
+node/7799201744,Canadian Gifts Marketplace,shop,gift,souvenir_gift,,,,,,,43.090669,-79.073117,CLIFTON HILL,QUEEN VICTORIA,1
+node/9952659059,Centre Gift Shop,shop,gift,souvenir_gift,,,,,,,43.092288,-79.076474,CLIFTON HILL,QUEEN VICTORIA,1
+node/12847310422,Fudge Factory,shop,chocolate,souvenir_gift,,,,,,,43.091019,-79.074515,CLIFTON HILL,QUEEN VICTORIA,1
+node/7799193939,Gags N Giggles,shop,gift,souvenir_gift,,,,,,,43.091353,-79.074385,CLIFTON HILL,QUEEN VICTORIA,1
+node/9104115117,Gift Shop,shop,gift,souvenir_gift,,,,,,,43.118942,-79.074906,HAMILTON,ELGIN,0
+node/11137391237,Grand Bazaar,shop,gift,souvenir_gift,,,,,,,43.090743,-79.078589,CLIFTON HILL,QUEEN VICTORIA,1
+node/6657882620,Hallmark,shop,gift,souvenir_gift,Hallmark,,,,,,43.104747,-79.112972,QUEENSWAY,STAMFORD,0
+node/12847231821,Henri’s Gift Shop,shop,gift,souvenir_gift,,,,,,4671 River Road,43.106313,-79.061054,CENTRAL BUSINESS DISTRICT,ELGIN,0
+node/1885273468,Hershey's Chocolate World,shop,chocolate,souvenir_gift,,,,,,5685 Falls Avenue,43.092213,-79.071,CLIFTON HILL,QUEEN VICTORIA,1
+node/12847334586,La Coppa Nostra,shop,gift,souvenir_gift,,,,,,,43.091284,-79.077669,CLIFTON HILL,QUEEN VICTORIA,1
+node/8144178387,Match Ups,shop,gift,souvenir_gift,,,,,,,43.091597,-79.077174,CLIFTON HILL,QUEEN VICTORIA,1
+node/12847314709,Mirage Decor,shop,gift,souvenir_gift,,,,,,,43.091954,-79.07657,CLIFTON HILL,QUEEN VICTORIA,1
+node/12847285765,Niagara Falls Gifts,shop,gift,souvenir_gift,,,,,,,43.091192,-79.073844,CLIFTON HILL,QUEEN VICTORIA,1
+node/11137391243,Niagara Falls Souvenir Co.,shop,gift,souvenir_gift,,,,,,,43.090054,-79.079188,CLIFTON HILL,QUEEN VICTORIA,1
+way/1099467231,Niagara Parks Popup Shop,shop,gift,souvenir_gift,,,,,,,43.089459,-79.071889,QUEEN VICTORIA,QUEEN VICTORIA,0
+node/9972409992,Niagara Parks Power Station Gift Shop,shop,gift,souvenir_gift,,,,,"Mo-Su,PH 10:00-18:00",,43.074939,-79.078964,QUEEN VICTORIA,QUEEN VICTORIA,0
+node/11137391229,Niagara Souvenir Centre,shop,gift,souvenir_gift,,,,,,,43.092247,-79.076835,CLIFTON HILL,QUEEN VICTORIA,1
+node/9103880549,Pay Less Souvenirs,shop,gift,souvenir_gift,,,,,,,43.089402,-79.083111,CLIFTON HILL,QUEEN VICTORIA,1
+node/10571468499,Peoples Discount Souvenirs,shop,gift,souvenir_gift,,,,,,6433 Lundys Lane,43.089594,-79.101935,LEEMING,DRUMMOND,0
+node/11137391230,Rockworld,shop,gift,souvenir_gift,,,,,,,43.0922,-79.076771,CLIFTON HILL,QUEEN VICTORIA,1
+node/12093798171,Secret Garden Gifts,shop,gift,souvenir_gift,,,,,,,43.090943,-79.071318,QUEEN VICTORIA,QUEEN VICTORIA,0
+node/8144178380,Souvenir Mart,shop,gift,souvenir_gift,,,,,,,43.091716,-79.07697,CLIFTON HILL,QUEEN VICTORIA,1
+node/11137391236,Souvenir Outlet,shop,gift,souvenir_gift,,,,,,,43.09053,-79.078409,CLIFTON HILL,QUEEN VICTORIA,1
+node/4274832006,Souvenir Palace,shop,gift,souvenir_gift,,,,,,5640 Lundy's Lane,43.089348,-79.087946,ORCHARD,DRUMMOND,0
+node/8144178377,Super Discount Souvenirs,shop,gift,souvenir_gift,,,,,,,43.091918,-79.076653,CLIFTON HILL,QUEEN VICTORIA,1
+node/11137391225,Super Souvenirs,shop,gift,souvenir_gift,,,,,,,43.092517,-79.075645,CLIFTON HILL,QUEEN VICTORIA,1
+node/9972969076,Table Rock Shop,shop,gift,souvenir_gift,,,,,,,43.079248,-79.078872,QUEEN VICTORIA,QUEEN VICTORIA,0
+node/4530787363,The Great Niagara Falls Gift Shop,shop,gift,souvenir_gift,,,,,,,43.07951,-79.082978,FALLSVIEW NORTH,QUEEN VICTORIA,1
+node/7799217291,The Mounted Police Trading Post,shop,gift,souvenir_gift,,,,,,,43.091943,-79.071339,CLIFTON HILL,QUEEN VICTORIA,1
+node/8144178437,Canna Cabana,shop,cannabis,tobacco_cannabis,,,,,,,43.092175,-79.076206,CLIFTON HILL,QUEEN VICTORIA,1
+node/9193194093,Choom,shop,cannabis,tobacco_cannabis,,,,,,7555 Montrose Road,43.065731,-79.123508,WESTLANE INDUSTRIAL BASIN,WESTLANE,0
+node/13454384833,Cigar Experience,shop,tobacco,tobacco_cannabis,,,,,,,43.099883,-79.073367,VALLEYWAY,ELGIN,0
+node/5949693489,Cuban Cigar Studio,shop,tobacco,tobacco_cannabis,,,,,,Ferry Street,43.089685,-79.082963,CLIFTON HILL,QUEEN VICTORIA,1
+node/12092673349,High Life,shop,cannabis,tobacco_cannabis,,,,,,5444,43.095807,-79.072529,CLIFTON HILL,QUEEN VICTORIA,1
+node/8144178376,House of Cuban Cigars,shop,tobacco,tobacco_cannabis,,,,,,,43.091984,-79.076519,CLIFTON HILL,QUEEN VICTORIA,1
+node/4274824206,Kick Ash Vapes,shop,tobacco,tobacco_cannabis,,,,,,,43.089453,-79.110978,LEEMING,DRUMMOND,0
+node/4274826257,Offside Cannabis,shop,cannabis,tobacco_cannabis,,,,,,,43.088773,-79.102621,CORWIN,DRUMMOND,0
+node/5949678686,Pot Spot,shop,cannabis,tobacco_cannabis,,,,,,Ferry Street,43.089711,-79.082872,CLIFTON HILL,QUEEN VICTORIA,1
+way/428748192,Stok’d Cannabis,shop,cannabis,tobacco_cannabis,,,,,,5736 Stanley Avenue,43.091502,-79.084594,CLIFTON HILL,QUEEN VICTORIA,1
+node/6658933301,The Hunny Pot Cannabis Co.,shop,cannabis,tobacco_cannabis,,,,,"Mo-Sa 09:00-20:00, Su 10:00-19:00",6161 Thorold Stone Rd,43.115957,-79.096774,KER,STAMFORD,0

@@ -1,0 +1,11 @@
+{"_meta": {"decided": "2026-11-15",
+  "source": "Provided by the project owner, summarising regional and municipal benchmark figures (Niagara Tourism Profile 2025/2026; city and regional visitor estimates). Not yet independently verified.",
+  "audit": "Compare Municipal Accommodation Tax revenue across the Niagara Falls, Niagara-on-the-Lake and St. Catharines municipal budgets to check the overnight lodging share. To do in phase 5.",
+  "use": "Scales regional tourism volumes and spending down to the City of Niagara Falls."},
+ "city_share_of_regional_tourism_spending": {"low": 0.75, "central": 0.80, "high": 0.85},
+ "city_share_of_regional_visitors": 0.85,
+ "city_share_of_regional_hotel_rooms_at_least": 0.80,
+ "regional_tourism_spending_cad": 3800000000,
+ "regional_visitors_range": [13000000, 14000000],
+ "city_visitors_approx": 12000000,
+ "overnight_to_day_trip_spend_ratio_range": [3, 4]}
