@@ -121,6 +121,25 @@ def assign_budgets(pack: Pack, households: list[dict], year: int) -> np.ndarray:
     return out * idx[str(year)] / idx[str(SPENDING_DOLLAR_YEAR)]
 
 
+def _tourism_block(tour: dict, sim_cats: list[str], n_total: int) -> dict:
+    """Tourism inputs with per-business arrays aligned to the engine's business list."""
+    kind = {"hotel": 1, "rental": 2, "camping": 3}
+    cap, typ, att = [0] * n_total, [0] * n_total, [0.0] * n_total
+    for i, v in tour["capacity"].items():
+        cap[i], typ[i] = int(v), kind[tour["lodging_type"][i]]
+    for i, v in tour["attendance_target"].items():
+        att[i] = float(v)
+    c = tour["categories"]
+    return {"segments": tour["segments"], "party_size_mean": tour["party_size_mean"], "nights": tour["nights"],
+            "lodging_share": tour["lodging_share"],
+            "accommodation_spend_per_paid_person_night": tour["accommodation_spend_per_paid_person_night"],
+            "categories": {"name": c["name"], "share": c["share"], "events_per_party_day": c["events_per_party_day"],
+                           "served_by": [[float(sv.get(x, 0.0)) for x in sim_cats] for sv in c["served_by"]]},
+            "transport_fare_share": tour["transport_fare_share"], "day_of_week": tour["day_of_week"],
+            "first_weekday": tour["first_weekday"], "capacity": cap, "lodging_type": typ, "attendance_target": att,
+            "hotel_rooms_published_range": [tour["hotel_rooms"]["low"], tour["hotel_rooms"]["high"]]}
+
+
 def export_city(pack: Pack, city: dict, budgets: np.ndarray, year: int, path: Path) -> dict:
     """Write the single file the engine loads (columnar JSON)."""
     hh, biz, nodes, edges = city["households"], city["businesses"], city["road_nodes"], city["road_edges"]
@@ -165,8 +184,9 @@ def export_city(pack: Pack, city: dict, budgets: np.ndarray, year: int, path: Pa
                        "lat": [b["lat"] for b in biz] + [e["lat"] for e in ext],
                        "lon": [b["lon"] for b in biz] + [e["lon"] for e in ext],
                        "sim_category": [sim_cats.index(b["sim_category"]) for b in biz] + [len(sim_cats) - 1] * len(ext),
-                       "open": [b["open_hour"] for b in biz] + [0] * len(ext),
-                       "close": [b["close_hour"] for b in biz] + [24] * len(ext),
+                       # towns keep ordinary shop hours, so early-morning trips are not pushed out of town
+                       "open": [b["open_hour"] for b in biz] + [8] * len(ext),
+                       "close": [b["close_hour"] for b in biz] + [22] * len(ext),
                        "core": [b["in_tourist_core"] for b in biz] + [0] * len(ext),
                        "staff": [b["staff"] for b in biz] + [0] * len(ext),
                        "revenue_prior": [b["revenue_prior"] or 0 for b in biz] + [0] * len(ext),
@@ -201,6 +221,8 @@ def export_city(pack: Pack, city: dict, budgets: np.ndarray, year: int, path: Pa
             "min_minutes": 1.0,
         },
     }
+    if city.get("tourism"):
+        doc["tourism"] = _tourism_block(city["tourism"], sim_cats, n_real + len(ext))
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(doc, separators=(",", ":")))
     return doc

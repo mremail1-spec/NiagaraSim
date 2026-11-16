@@ -1,0 +1,442 @@
+<title>Niagara Falls Simulator</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap">
+<style>
+/* Layout: one screen. A full-bleed night map of the city; a slim status bar above, transport controls below,
+   and a sheet that slides up from the bottom when a business is tapped. Single dark look, on purpose. */
+:root {
+  color-scheme: dark;
+  --ground: #0e1726;        /* map background: river-at-night blue */
+  --panel: #152238;         /* bars and sheet */
+  --panel-edge: #24344f;
+  --ink: #eef3fa;
+  --ink-soft: #9db0c9;
+  --road-minor: #25344c;
+  --road-main: #3d5273;
+  --road-highway: #6f88ad;
+  --home: #4f6a92;
+  --accent: #ffc857;        /* headlights amber: play state, selection */
+  --good: #7bd389;
+  --warn: #ff8a5c;
+  --c-food: #ff8a5c; --c-grocery: #7bd389; --c-shops: #6cb8ff; --c-stay: #c9a0ff;
+  --c-fun: #ffd166; --c-services: #9fb3c8; --c-cars: #f28fb5;
+  --font-display: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
+  --font-body: "Inter", "Segoe UI", system-ui, sans-serif;
+}
+[hidden] { display: none !important; }
+html, body { height: 100%; margin: 0; }
+body { background: var(--ground); color: var(--ink); font-family: var(--font-body); overflow: hidden;
+       display: flex; flex-direction: column; }
+button { font: inherit; color: inherit; }
+button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.bar { background: var(--panel); padding-block: 8px;
+       padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+#top { border-bottom: 1px solid var(--panel-edge); display: flex; flex-direction: column; gap: 6px; }
+#top .row { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+h1 { font-family: var(--font-display); font-size: 17px; font-weight: 700; margin: 0; letter-spacing: 0.01em; }
+#clock { font-family: var(--font-display); font-size: 15px; font-weight: 500; color: var(--accent);
+         font-variant-numeric: tabular-nums; white-space: nowrap; }
+#stats { display: flex; gap: 14px; flex-wrap: wrap; font-size: 12px; color: var(--ink-soft); }
+#stats b { color: var(--ink); font-weight: 600; font-variant-numeric: tabular-nums; }
+#note { font-size: 11px; color: var(--ink-soft); }
+
+#stage { position: relative; flex: 1; min-height: 0; }
+canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; touch-action: none; cursor: grab; }
+.float { position: absolute; display: flex; flex-direction: column; gap: 8px;
+         right: max(12px, env(safe-area-inset-right, 0px)); top: 12px; }
+.round { width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--panel-edge); background: var(--panel);
+         font-size: 20px; line-height: 1; cursor: pointer; }
+#key { position: absolute; left: max(12px, env(safe-area-inset-left, 0px)); top: 12px; background: var(--panel);
+       border: 1px solid var(--panel-edge); border-radius: 10px; padding: 8px 10px; font-size: 12px;
+       display: grid; gap: 4px; }
+#key span { display: flex; align-items: center; gap: 6px; }
+#key i { width: 9px; height: 9px; border-radius: 50%; display: inline-block; }
+
+#sheet { position: absolute; left: 0; right: 0; bottom: 0; background: var(--panel); border-top: 1px solid var(--panel-edge);
+         border-radius: 14px 14px 0 0; padding-block: 12px 14px;
+         padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+         display: grid; gap: 8px; }
+#sheet h2 { font-family: var(--font-display); font-size: 16px; margin: 0; text-wrap: balance; }
+#sheet .kind { font-size: 12px; color: var(--ink-soft); display: flex; align-items: center; gap: 6px; }
+#sheet .kind i { width: 9px; height: 9px; border-radius: 50%; display: inline-block; }
+#sheet dl { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 0; }
+#sheet dt { font-size: 11px; color: var(--ink-soft); text-transform: uppercase; letter-spacing: 0.06em; }
+#sheet dd { margin: 2px 0 0; font-family: var(--font-display); font-size: 17px; font-variant-numeric: tabular-nums; }
+#sheet p { margin: 0; font-size: 12px; color: var(--ink-soft); }
+#closeSheet { position: absolute; top: 8px; right: max(12px, env(safe-area-inset-right, 0px)); background: none; border: 0;
+              font-size: 22px; width: 40px; height: 40px; cursor: pointer; color: var(--ink-soft); }
+
+#controls { border-top: 1px solid var(--panel-edge); display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+            padding-bottom: calc(8px + env(safe-area-inset-bottom, 0px)); }
+#play { min-width: 92px; height: 44px; border-radius: 22px; border: 0; background: var(--accent); color: #1b1404;
+        font-weight: 600; cursor: pointer; }
+#speeds { display: flex; border: 1px solid var(--panel-edge); border-radius: 22px; overflow: hidden; }
+#speeds button { height: 44px; padding: 0 12px; background: none; border: 0; cursor: pointer; color: var(--ink-soft); font-size: 13px; }
+#speeds button[aria-pressed="true"] { background: var(--panel-edge); color: var(--ink); font-weight: 600; }
+#restart { height: 44px; padding: 0 14px; border-radius: 22px; border: 1px solid var(--panel-edge); background: none; cursor: pointer; margin-left: auto; }
+
+#loading { position: absolute; inset: 0; display: grid; place-content: center; gap: 10px; text-align: center; background: var(--ground);
+           padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+#loading strong { font-family: var(--font-display); font-size: 20px; }
+#loading span { color: var(--ink-soft); font-size: 13px; max-width: 34ch; }
+#loading.error span { color: var(--warn); }
+</style>
+
+<header id="top" class="bar">
+  <div class="row"><h1>Niagara Falls Simulator</h1><div id="clock">loading</div></div>
+  <div id="stats">
+    <span>Spent in city <b id="sCity">$0</b></span>
+    <span>Out of town <b id="sOut">$0</b></span>
+    <span>Online <b id="sOnline">$0</b></span>
+    <span>Trips <b id="sTrips">0</b></span>
+  </div>
+  <div id="note">Residents only so far. Tourists arrive in the next version.</div>
+</header>
+
+<main id="stage">
+  <canvas id="map" aria-label="Map of Niagara Falls with businesses and moving trips"></canvas>
+  <div id="key" hidden></div>
+  <div class="float">
+    <button class="round" id="zoomIn" aria-label="Zoom in">+</button>
+    <button class="round" id="zoomOut" aria-label="Zoom out">&minus;</button>
+    <button class="round" id="keyBtn" aria-label="Show colour key" aria-expanded="false">?</button>
+  </div>
+  <section id="sheet" hidden aria-live="polite">
+    <button id="closeSheet" aria-label="Close">&times;</button>
+    <div class="kind"><i id="bDot"></i><span id="bKind"></span></div>
+    <h2 id="bName"></h2>
+    <dl>
+      <div><dt>Revenue so far</dt><dd id="bRev">$0</dd></div>
+      <div><dt>Visits</dt><dd id="bVisits">0</dd></div>
+      <div><dt>Per year, at this pace</dt><dd id="bYear">$0</dd></div>
+    </dl>
+    <p id="bNote"></p>
+  </section>
+  <div id="loading"><strong>Building the city</strong><span id="loadMsg">Loading roads, 46,000 households and 1,675 businesses.</span></div>
+</main>
+
+<footer id="controls" class="bar">
+  <button id="play" disabled>Play</button>
+  <div id="speeds" role="group" aria-label="Speed">
+    <button data-rate="1" aria-pressed="true">1 h/s</button>
+    <button data-rate="6" aria-pressed="false">6 h/s</button>
+    <button data-rate="24" aria-pressed="false">1 day/s</button>
+    <button data-rate="168" aria-pressed="false">1 wk/s</button>
+  </div>
+  <button id="restart" disabled>Restart</button>
+</footer>
+
+<script>
+(() => {
+  "use strict";
+  const $ = (id) => document.getElementById(id);
+  const css = (name) => getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+  const GROUPS = [
+    { key: "food", label: "Food and drink", color: css("--c-food"), cats: ["restaurant", "fast_food", "cafe", "bar_pub", "nightlife"] },
+    { key: "grocery", label: "Groceries", color: css("--c-grocery"), cats: ["grocery_food"] },
+    { key: "shops", label: "Shops", color: css("--c-shops"), cats: ["apparel", "general_merchandise", "home_electronics", "retail_other", "souvenir_gift", "tobacco_cannabis", "pet", "craft", "pharmacy"] },
+    { key: "stay", label: "Places to stay", color: css("--c-stay"), cats: ["accommodation"] },
+    { key: "fun", label: "Attractions and fun", color: css("--c-fun"), cats: ["attraction", "leisure_paid", "casino", "entertainment"] },
+    { key: "cars", label: "Fuel, parking, cars", color: css("--c-cars"), cats: ["fuel", "auto_service", "auto_dealer", "car_rental", "parking"] },
+    { key: "services", label: "Services and health", color: css("--c-services"), cats: [] },
+  ];
+  const MODE_COLOR = ["#ffe9b0", "#ffe9b0", css("--good"), css("--c-shops")];   // driver, passenger, walk, transit
+  const KM = 111.32;
+  const canvas = $("map"), ctx = canvas.getContext("2d");
+  let W = 0, H = 0, dpr = 1;
+  let view = { scale: 40, ox: 0, oy: 0 };          // pixels per km, and screen offset of the world origin
+  let wasm = null, cityBytes = null, city = null, roads = null;
+  let nodeX, nodeY, bizX, bizY, bizGroup, homeNodes = [], homeCount;
+  let roadPaths = [null, null, null];
+  let playing = false, rate = 1, acc = 0, lastT = 0, selected = -1;
+  let trips = [], pulses = [], tripsTotal = 0;
+  let kx = 1, lon0 = 0, lat0 = 0, startDate = new Date(Date.UTC(2025, 0, 1));
+
+  const wx = (lon) => (lon - lon0) * kx;
+  const wy = (lat) => (lat0 - lat) * KM;
+  const money = (v) => v >= 1e9 ? "$" + (v / 1e9).toFixed(2) + "B" : v >= 1e6 ? "$" + (v / 1e6).toFixed(1) + "M"
+    : v >= 1e3 ? "$" + Math.round(v / 1e3) + "k" : "$" + Math.round(v);
+
+  function fail(message) {
+    $("loading").hidden = false;
+    $("loading").classList.add("error");
+    $("loading").querySelector("strong").textContent = "The simulator could not start";
+    $("loadMsg").textContent = message;
+  }
+
+  async function load() {
+    const get = async (name) => {
+      const r = await fetch(name);
+      if (!r.ok) throw new Error("Could not load " + name + " (" + r.status + ").");
+      return r.arrayBuffer();
+    };
+    const [roadBuf, cityBuf, wasmBuf] = await Promise.all([get("roads.json"), get("city.json"), get("nfsim.wasm")]);
+    roads = JSON.parse(new TextDecoder().decode(roadBuf));
+    cityBytes = new Uint8Array(cityBuf);
+    city = JSON.parse(new TextDecoder().decode(cityBytes));
+    startDate = new Date(Date.UTC(city.meta.year, 0, 1));
+    lon0 = roads.lon0; lat0 = roads.lat0; kx = KM * Math.cos(lat0 * Math.PI / 180);
+    let mod;
+    try { mod = await WebAssembly.instantiate(wasmBuf, {}); }
+    catch (e) { throw new Error("This browser blocked or cannot run the simulation engine (WebAssembly). " + e.message); }
+    wasm = mod.instance.exports;
+    prepareStatic();
+    $("loadMsg").textContent = "Working out the fastest route from every street to every business.";
+    await new Promise((r) => setTimeout(r, 30));          // let the message paint before the heavy step
+    startEngine();
+    delete city.households.budget;                          // the engine has its own copy
+    $("loading").hidden = true;
+    $("play").disabled = false; $("restart").disabled = false;
+    resize(); fit(); updateHud(); requestAnimationFrame(frame);
+  }
+
+  function startEngine() {
+    const ptr = wasm.nf_alloc(cityBytes.length);
+    new Uint8Array(wasm.memory.buffer, ptr, cityBytes.length).set(cityBytes);
+    if (wasm.nf_init(ptr, cityBytes.length, city.meta.seed || 1, roads.beta || 0) !== 1) throw new Error("The city file could not be read.");
+    trips = []; pulses = []; tripsTotal = 0; acc = 0;
+  }
+
+  function prepareStatic() {
+    const n = city.nodes.lat.length;
+    nodeX = new Float32Array(n); nodeY = new Float32Array(n);
+    for (let i = 0; i < n; i++) { nodeX[i] = wx(city.nodes.lon[i]); nodeY[i] = wy(city.nodes.lat[i]); }
+    homeCount = new Uint16Array(n);
+    for (const node of city.households.node) homeCount[node]++;
+    for (let i = 0; i < n; i++) if (homeCount[i]) homeNodes.push(i);
+    const b = city.businesses, nb = b.lat.length;
+    bizX = new Float32Array(nb); bizY = new Float32Array(nb); bizGroup = new Uint8Array(nb);
+    const groupOf = {};
+    GROUPS.forEach((g, gi) => g.cats.forEach((c) => { groupOf[c] = gi; }));
+    for (let i = 0; i < nb; i++) {
+      bizX[i] = wx(b.lon[i]); bizY[i] = wy(b.lat[i]);
+      const g = groupOf[city.sim_categories[b.sim_category[i]]];
+      bizGroup[i] = g === undefined ? GROUPS.length - 1 : g;
+    }
+    roadPaths = [new Path2D(), new Path2D(), new Path2D()];
+    for (const line of roads.lines) {
+      const p = roadPaths[line[0]];
+      for (let i = 1; i < line.length; i += 2) {
+        const x = line[i] * 1e-5 * kx, y = line[i + 1] * 1e-5 * KM;
+        if (i === 1) p.moveTo(x, y); else p.lineTo(x, y);
+      }
+    }
+    $("key").innerHTML = GROUPS.map((g) => `<span><i style="background:${g.color}"></i>${g.label}</span>`).join("")
+      + `<span><i style="background:${MODE_COLOR[0]}"></i>Car trip</span><span><i style="background:${MODE_COLOR[2]}"></i>On foot or bike</span><span><i style="background:${MODE_COLOR[3]}"></i>Transit</span>`;
+  }
+
+  function resize() {
+    const r = canvas.getBoundingClientRect();
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    W = r.width; H = r.height;
+    canvas.width = Math.round(W * dpr); canvas.height = Math.round(H * dpr);
+  }
+
+  function fit() {                                           // open on the built-up city, not the farmland south of it
+    const x0 = wx(-79.165), x1 = wx(-79.045), y0 = wy(43.145), y1 = wy(43.04);
+    view.scale = Math.min(W / (x1 - x0), H / (y1 - y0));
+    view.ox = W / 2 - (x0 + x1) / 2 * view.scale;
+    view.oy = H / 2 - (y0 + y1) / 2 * view.scale;
+  }
+
+  function zoomAt(px, py, factor) {
+    const s = Math.min(1400, Math.max(8, view.scale * factor));
+    const f = s / view.scale;
+    view.ox = px - (px - view.ox) * f; view.oy = py - (py - view.oy) * f; view.scale = s;
+  }
+
+  // ---- simulation stepping ----
+  function stepHour(animate) {
+    wasm.nf_step_hour();
+    tripsTotal += wasm.nf_trip_count();
+    if (!animate) return;
+    const want = rate === 1 ? 320 : 70;
+    const n = wasm.nf_trips(want);
+    if (!n) return;
+    const data = Array.from(new Float32Array(wasm.memory.buffer, wasm.nf_buf_ptr(), n * 4));
+    const duration = 900 / rate, now = performance.now();
+    for (let i = 0; i < n; i++) {
+      const home = data[i * 4], biz = data[i * 4 + 1], mode = data[i * 4 + 2];
+      if (city.businesses.external[biz]) continue;           // out-of-town trips leave the map
+      const len = wasm.nf_route(home, biz);
+      const ids = new Float32Array(wasm.memory.buffer, wasm.nf_buf_ptr(), len);
+      const xs = new Float32Array(len + 1), ys = new Float32Array(len + 1), cum = new Float32Array(len + 1);
+      for (let k = 0; k < len; k++) { xs[k] = nodeX[ids[k]]; ys[k] = nodeY[ids[k]]; }
+      xs[len] = bizX[biz]; ys[len] = bizY[biz];
+      for (let k = 1; k <= len; k++) cum[k] = cum[k - 1] + Math.hypot(xs[k] - xs[k - 1], ys[k] - ys[k - 1]);
+      trips.push({ xs, ys, cum, t0: now + Math.random() * duration * 0.5, dur: duration * (0.5 + Math.random() * 0.5), mode, biz, seg: 1 });
+    }
+  }
+
+  function advance(dt) {
+    acc += dt / 1000 * rate;
+    const t0 = performance.now();
+    while (acc >= 1 && performance.now() - t0 < 14) {
+      if (rate >= 168 && wasm.nf_hour() === 0 && acc >= 24) { wasm.nf_step_day_flow(); acc -= 24; }
+      else { stepHour(rate <= 6); acc -= 1; }
+    }
+    if (acc > 48) acc = 48;                                  // a slow phone falls behind gracefully instead of freezing
+  }
+
+  // ---- drawing ----
+  function draw(now) {
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.fillStyle = css("--ground"); ctx.fillRect(0, 0, W, H);
+    const s = view.scale;
+    ctx.setTransform(s * dpr, 0, 0, s * dpr, view.ox * dpr, view.oy * dpr);
+    ctx.lineCap = "round"; ctx.lineJoin = "round";
+    if (s > 22) { ctx.strokeStyle = css("--road-minor"); ctx.lineWidth = Math.max(0.6, Math.min(3, s / 60)) / s; ctx.stroke(roadPaths[0]); }
+    ctx.strokeStyle = css("--road-main"); ctx.lineWidth = Math.max(1, Math.min(4.5, s / 40)) / s; ctx.stroke(roadPaths[1]);
+    ctx.strokeStyle = css("--road-highway"); ctx.lineWidth = Math.max(1.6, Math.min(7, s / 28)) / s; ctx.stroke(roadPaths[2]);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+    if (s > 70) {                                            // homes appear once you zoom into a neighbourhood
+      ctx.fillStyle = css("--home");
+      const size = Math.min(4, s / 60);
+      for (const i of homeNodes) {
+        const x = nodeX[i] * s + view.ox, y = nodeY[i] * s + view.oy;
+        if (x < -4 || y < -4 || x > W + 4 || y > H + 4) continue;
+        ctx.globalAlpha = Math.min(1, 0.35 + homeCount[i] / 40);
+        ctx.fillRect(x - size / 2, y - size / 2, size, size);
+      }
+      ctx.globalAlpha = 1;
+    }
+
+    const rev = new Float64Array(wasm.memory.buffer, wasm.nf_revenue_ptr(), bizX.length);
+    const days = Math.max(1 / 24, wasm.nf_day() + wasm.nf_hour() / 24);
+    const base = Math.max(1.6, Math.min(5, s / 45));
+    for (let g = 0; g < GROUPS.length; g++) {
+      ctx.fillStyle = GROUPS[g].color; ctx.beginPath();
+      for (let i = 0; i < bizX.length; i++) {
+        if (bizGroup[i] !== g || city.businesses.external[i]) continue;
+        const x = bizX[i] * s + view.ox, y = bizY[i] * s + view.oy;
+        if (x < -20 || y < -20 || x > W + 20 || y > H + 20) continue;
+        const r = base + Math.sqrt(rev[i] / days / 2500) * Math.min(1.6, s / 60);   // size follows revenue per day
+        ctx.moveTo(x + r, y); ctx.arc(x, y, r, 0, 6.2832);
+      }
+      ctx.globalAlpha = 0.88; ctx.fill(); ctx.globalAlpha = 1;
+    }
+    if (selected >= 0) {
+      const x = bizX[selected] * s + view.ox, y = bizY[selected] * s + view.oy;
+      ctx.strokeStyle = css("--accent"); ctx.lineWidth = 2; ctx.beginPath(); ctx.arc(x, y, base + 8, 0, 6.2832); ctx.stroke();
+    }
+
+    const dot = Math.max(1.6, Math.min(3.2, s / 70));
+    for (let i = trips.length - 1; i >= 0; i--) {
+      const t = trips[i], p = (now - t.t0) / t.dur;
+      if (p < 0) continue;
+      if (p >= 1) { pulses.push({ biz: t.biz, t0: now }); trips[i] = trips[trips.length - 1]; trips.pop(); continue; }
+      const total = t.cum[t.cum.length - 1], target = p * total;
+      while (t.seg < t.cum.length - 1 && t.cum[t.seg] < target) t.seg++;
+      const a = t.seg - 1, span = t.cum[t.seg] - t.cum[a] || 1, f = (target - t.cum[a]) / span;
+      const x = (t.xs[a] + (t.xs[t.seg] - t.xs[a]) * f) * s + view.ox, y = (t.ys[a] + (t.ys[t.seg] - t.ys[a]) * f) * s + view.oy;
+      if (x < 0 || y < 0 || x > W || y > H) continue;
+      ctx.fillStyle = MODE_COLOR[t.mode]; ctx.beginPath(); ctx.arc(x, y, dot, 0, 6.2832); ctx.fill();
+    }
+    ctx.lineWidth = 1.5;
+    for (let i = pulses.length - 1; i >= 0; i--) {
+      const p = (now - pulses[i].t0) / 350;
+      if (p >= 1) { pulses[i] = pulses[pulses.length - 1]; pulses.pop(); continue; }
+      const b = pulses[i].biz, x = bizX[b] * s + view.ox, y = bizY[b] * s + view.oy;
+      ctx.strokeStyle = GROUPS[bizGroup[b]].color; ctx.globalAlpha = 1 - p;
+      ctx.beginPath(); ctx.arc(x, y, base + 2 + p * 9, 0, 6.2832); ctx.stroke();
+    }
+    ctx.globalAlpha = 1;
+  }
+
+  function updateHud() {
+    const day = wasm.nf_day(), hour = wasm.nf_hour();
+    const d = new Date(startDate.getTime() + day * 864e5);
+    $("clock").textContent = d.toLocaleDateString("en-CA", { weekday: "short", day: "numeric", month: "short", year: "numeric", timeZone: "UTC" })
+      + " \u00b7 " + String(hour).padStart(2, "0") + ":00";
+    $("sCity").textContent = money(wasm.nf_city_revenue());
+    $("sOut").textContent = money(wasm.nf_out_of_town());
+    $("sOnline").textContent = money(wasm.nf_online());
+    $("sTrips").textContent = wasm.nf_outings() > 0 ? Math.round(wasm.nf_outings()).toLocaleString("en-CA") : "0";
+    if (selected >= 0) fillSheet();
+  }
+
+  function fillSheet() {
+    const b = city.businesses, i = selected;
+    const rev = new Float64Array(wasm.memory.buffer, wasm.nf_revenue_ptr(), bizX.length)[i];
+    const visits = Number(new BigUint64Array(wasm.memory.buffer, wasm.nf_visits_ptr(), bizX.length)[i]);
+    const days = wasm.nf_day() + wasm.nf_hour() / 24;
+    $("bName").textContent = b.name[i] || "Unnamed place";
+    $("bKind").textContent = city.sim_categories[b.sim_category[i]].replace(/_/g, " ") + (b.core[i] ? " \u00b7 Tourist Core" : "");
+    $("bDot").style.background = GROUPS[bizGroup[i]].color;
+    $("bRev").textContent = money(rev);
+    $("bVisits").textContent = visits.toLocaleString("en-CA");
+    $("bYear").textContent = days > 0.5 ? money(rev / days * 365) : "\u2014";
+    $("bNote").textContent = (b.name[i] || "").startsWith("Synthetic")
+      ? "A stand-in business added so the count matches the official register. Its exact site is not real."
+      : "Resident spending only. Tourist spending is not simulated yet.";
+  }
+
+  let hudT = 0;
+  function frame(now) {
+    const dt = Math.min(100, now - (lastT || now)); lastT = now;
+    try {
+      if (playing) advance(dt);
+      draw(now);
+      if (now - hudT > 250) { updateHud(); hudT = now; }
+    } catch (e) { playing = false; fail("The engine stopped: " + e.message); return; }
+    requestAnimationFrame(frame);
+  }
+
+  // ---- touch, mouse and buttons ----
+  const pointers = new Map();
+  let moved = 0, pinch = 0;
+  canvas.addEventListener("pointerdown", (e) => { canvas.setPointerCapture(e.pointerId); pointers.set(e.pointerId, { x: e.offsetX, y: e.offsetY }); moved = 0; pinch = 0; });
+  canvas.addEventListener("pointermove", (e) => {
+    const p = pointers.get(e.pointerId); if (!p) return;
+    const nx = e.offsetX, ny = e.offsetY;
+    if (pointers.size === 1) { view.ox += nx - p.x; view.oy += ny - p.y; moved += Math.abs(nx - p.x) + Math.abs(ny - p.y); }
+    p.x = nx; p.y = ny;
+    if (pointers.size === 2) {
+      const [a, b] = [...pointers.values()];
+      const d = Math.hypot(a.x - b.x, a.y - b.y);
+      if (pinch) zoomAt((a.x + b.x) / 2, (a.y + b.y) / 2, d / pinch);
+      pinch = d; moved = 99;
+    }
+  });
+  const lift = (e) => {
+    const wasTap = pointers.size === 1 && moved < 8;
+    pointers.delete(e.pointerId); pinch = 0;
+    if (wasTap && wasm) pick(e.offsetX, e.offsetY);
+  };
+  canvas.addEventListener("pointerup", lift);
+  canvas.addEventListener("pointercancel", (e) => { pointers.delete(e.pointerId); pinch = 0; });
+  canvas.addEventListener("wheel", (e) => { e.preventDefault(); zoomAt(e.offsetX, e.offsetY, Math.exp(-e.deltaY * 0.0015)); }, { passive: false });
+
+  function pick(px, py) {
+    let best = -1, bestD = 22 * 22;
+    for (let i = 0; i < bizX.length; i++) {
+      if (city.businesses.external[i]) continue;
+      const dx = bizX[i] * view.scale + view.ox - px, dy = bizY[i] * view.scale + view.oy - py, d = dx * dx + dy * dy;
+      if (d < bestD) { bestD = d; best = i; }
+    }
+    selected = best;
+    $("sheet").hidden = best < 0;
+    if (best >= 0) fillSheet();
+  }
+
+  $("zoomIn").addEventListener("click", () => zoomAt(W / 2, H / 2, 1.6));
+  $("zoomOut").addEventListener("click", () => zoomAt(W / 2, H / 2, 1 / 1.6));
+  $("keyBtn").addEventListener("click", () => { const k = $("key"); k.hidden = !k.hidden; $("keyBtn").setAttribute("aria-expanded", String(!k.hidden)); });
+  $("closeSheet").addEventListener("click", () => { selected = -1; $("sheet").hidden = true; });
+  $("play").addEventListener("click", () => { playing = !playing; lastT = 0; $("play").textContent = playing ? "Pause" : "Play"; });
+  $("speeds").addEventListener("click", (e) => {
+    const btn = e.target.closest("button"); if (!btn) return;
+    rate = Number(btn.dataset.rate); acc = 0;
+    for (const b of $("speeds").children) b.setAttribute("aria-pressed", String(b === btn));
+  });
+  $("restart").addEventListener("click", () => {
+    playing = false; $("play").textContent = "Play";
+    try { startEngine(); updateHud(); } catch (e) { fail(e.message); }
+  });
+  window.addEventListener("resize", () => { if (wasm) resize(); });
+
+  load().catch((e) => fail(e.message));
+})();
+</script>

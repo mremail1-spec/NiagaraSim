@@ -11,6 +11,59 @@ pub struct City {
     pub households: Households,
     pub categories: Categories,
     pub params: Params,
+    #[serde(default)]
+    pub tourism: Option<Tourism>,
+}
+
+#[derive(Clone, Deserialize)]
+pub struct Segment {
+    pub name: String,
+    pub origin: String,
+    pub overnight: u8,
+    pub persons_per_year: f64,
+    pub month_share: Vec<f64>,
+    pub spend_per_person_day: f64,
+}
+
+#[derive(Clone, Deserialize)]
+pub struct Nights {
+    pub n: Vec<u32>,
+    pub weight: Vec<f64>,
+}
+
+#[derive(Clone, Deserialize)]
+pub struct LodgingShare {
+    pub hotel: f64,
+    pub rental: f64,
+    pub camping: f64,
+    pub private: f64,
+}
+
+#[derive(Clone, Deserialize)]
+pub struct TouristCategories {
+    pub name: Vec<String>,
+    pub share: Vec<f64>,
+    pub events_per_party_day: Vec<f64>,
+    pub served_by: Vec<Vec<f64>>,
+}
+
+#[derive(Clone, Deserialize)]
+pub struct Tourism {
+    pub segments: Vec<Segment>,
+    pub party_size_mean: f64,
+    pub nights: Nights,
+    pub lodging_share: LodgingShare,
+    pub accommodation_spend_per_paid_person_night: f64,
+    pub categories: TouristCategories,
+    pub transport_fare_share: f64,
+    pub day_of_week: Vec<f64>,
+    pub first_weekday: u32,
+    /// Rooms (hotels), units (rentals) or sites (campgrounds) per business; 0 for everything else.
+    pub capacity: Vec<u32>,
+    /// 0 none, 1 hotel or motel, 2 rental or B&B, 3 campground.
+    pub lodging_type: Vec<u8>,
+    /// Published yearly attendance for the attractions that report it; 0 otherwise.
+    pub attendance_target: Vec<f64>,
 }
 
 #[derive(Clone, Deserialize)]

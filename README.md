@@ -7,7 +7,7 @@ Plan: https://claude.ai/artifact/CvFuGLP1nByTvzvPyyTnB4
 - `data/` — the research data pack (see `data/README.md` and `data/HANDOVER.md`).
 - `prep/` — Python, one-time data preparation. Builds the city the engine loads.
 - `engine/` — Rust simulation engine (WebAssembly + native). Residents done; tourists and money flow next.
-- `web/` — browser map and game interface. Not started.
+- `web/` — the single-page game: `index.html` plus `city.json`, `roads.json` and `nfsim.wasm` (built by `python3 -m nfprep.webexport`). Works on a phone, with pinch zoom. Residents only so far.
 - `build/` — generated output (not committed).
 
 ## Status
@@ -17,7 +17,9 @@ Plan: https://claude.ai/artifact/CvFuGLP1nByTvzvPyyTnB4
 | 2. Synthetic population | Done | 16 tests against the calibration targets |
 | 3. Businesses and roads | Done | 21 tests: employer counts match the register; road network fully drivable |
 | 4. Engine and resident spending | Done | 9 Rust tests: survey trip length and rate, seasonality, budget conservation, flow = agent, determinism, rewind, routes on real roads, one year in about 11 s |
-| 5–10 | Not started | |
+| 5. Tourists | In progress | Visitor volumes, seasons, lodging and spending are prepared (`prep/nfprep/tourism.py`); the engine does not simulate them yet |
+| 7. The game (first version) | Running | Single page on a phone: real roads, businesses sized by revenue, moving trips, tap for details, four speeds |
+| 6, 8–10 | Not started | |
 
 Tests: `python3 -m pytest` (37) and `cd engine && cargo test --release` (9). A picture of the generated city is in `docs/city_2025_map.png`.
 
@@ -64,3 +66,19 @@ Road data © OpenStreetMap contributors (ODbL).
 - Store pull uses format weights (a supermarket against a corner store) that are priors, marked SEED in `prep/nfprep/businesses.py`.
 - Spend-per-visit ratios between categories are priors; they affect how many trips go where, not revenue.
 - Tourism share decision recorded in `data/tourism_city_share.json` (75–85% of regional spending), to be audited against accommodation-tax receipts in phase 5.
+
+## Running the game locally
+```bash
+cd engine && cargo build --release --target wasm32-unknown-unknown --lib
+```
+```bash
+cd prep && python3 -m nfprep.build 2025 1 && python3 -m nfprep.webexport 2025 1.4928
+```
+```bash
+cd web && python3 -m http.server 8765
+```
+Then open http://127.0.0.1:8765/index.html. The published version is at https://claude.ai/artifact/HcMmPCXM4AyL4CzrXfvz3M.
+
+## Data checks raised so far
+- Hotel room rate implied by the travel survey's spending mix is about $371 a night, against a published average of $194 (2022). One of the inputs (spending total, share spent on accommodation, people per room, or nights) does not fit the others.
+- Hotel occupancy implied by visitor counts and 13,000 rooms is about 43%, below the published 55% to 67%.

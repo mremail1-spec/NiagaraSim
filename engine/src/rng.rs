@@ -39,7 +39,14 @@ impl Rng {
     }
 
     pub fn poisson(&mut self, lambda: f64) -> u32 {
-        // Knuth's method; lambda here is a household's outings per day (about 1 to 4).
+        if lambda <= 0.0 {
+            return 0;
+        }
+        if lambda > 30.0 {
+            // large counts (a day's arriving parties): normal approximation
+            return (lambda + lambda.sqrt() * self.normal()).round().max(0.0) as u32;
+        }
+        // Knuth's method for small rates (a household's outings, a party's purchases)
         let limit = (-lambda).exp();
         let (mut k, mut p) = (0u32, 1.0f64);
         loop {

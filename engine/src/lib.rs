@@ -5,6 +5,8 @@
 pub mod city;
 pub mod engine;
 pub mod rng;
+#[cfg(target_arch = "wasm32")]
+pub mod wasm;
 
 pub use city::City;
 pub use engine::{Engine, Mode, Snapshot, Trip};

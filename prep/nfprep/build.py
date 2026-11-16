@@ -15,6 +15,7 @@ from .businesses import build_businesses
 from .loader import DATA_DIR, load_pack
 from .population import BUILD_DIR, fingerprint, generate, summarise, write_csv
 from .roads import build_roads, snap, strongly_reachable
+from .tourism import build_tourism
 
 
 def load_full_pack():
@@ -55,7 +56,9 @@ def build_city(year: int = 2025, seed: int = 1, pack=None) -> dict:
                                                     for i, c in enumerate(CATEGORY_NAMES)}
     report["resident_spending_total_musd"] = round(float(budgets.sum()) / 1e6, 1)
     report["households_by_ontario_quintile"] = dict(sorted(Counter(h["income_quintile_ontario"] for h in households).items()))
-    return {"households": households, "persons": persons, "businesses": businesses,
+    tourism = build_tourism(pack, businesses, year)
+    report["tourism_checks"] = tourism["checks"]
+    return {"households": households, "persons": persons, "businesses": businesses, "tourism": tourism,
             "road_nodes": nodes, "road_edges": edges, "report": report, "budgets": budgets, "pack": pack}
 
 
