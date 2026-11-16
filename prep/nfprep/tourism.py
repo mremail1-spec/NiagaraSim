@@ -27,8 +27,9 @@ TOURIST_CATEGORIES = {
     "vehicle_rental": (["vehicle_rental"], {"car_rental": 1}),
     "recreation": (["recreation"], {"leisure_paid": 1, "casino": 1, "entertainment": 1}),
     "attractions": (["culture_attractions"], {"attraction": 1}),
-    "clothing": (["clothing"], {"apparel": 1, "general_merchandise": 0.5}),
-    "other_retail": (["other_retail"], {"souvenir_gift": 1, "retail_other": 0.5, "general_merchandise": 0.5,
+    # SEED: visitors rarely shop at warehouse and department stores, so those get a small weight
+    "clothing": (["clothing"], {"apparel": 1, "general_merchandise": 0.05}),
+    "other_retail": (["other_retail"], {"souvenir_gift": 1, "retail_other": 0.5, "general_merchandise": 0.05,
                                          "tobacco_cannabis": 0.5, "pharmacy": 0.3}),
 }
 VEHICLE_OPERATION_SPLIT = {"fuel": 0.7, "parking": 0.3}      # SEED: fuel vs parking within "vehicle operation"

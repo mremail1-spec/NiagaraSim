@@ -58,7 +58,8 @@ fn simulated_trips_match_the_travel_survey() {
 #[test]
 fn every_budget_dollar_is_accounted_for() {
     let (e, _) = year();
-    let spent: f64 = e.state().revenue.iter().sum::<f64>() + e.state().online_leakage;
+    // residents only: take tourist revenue out of the business totals
+    let spent: f64 = e.state().revenue.iter().sum::<f64>() - e.tourist_revenue() + e.state().online_leakage;
     let budget = e.total_budget();
     assert!((spent - budget).abs() / budget < 0.005, "spent {spent} of {budget}");
     assert!((e.city_revenue() + e.out_of_town_revenue() - e.state().revenue.iter().sum::<f64>()).abs() < 1.0);
@@ -88,7 +89,8 @@ fn flow_mode_agrees_with_agent_mode() {
     for _ in 0..365 {
         flow.step_day_flow();
     }
-    assert!((flow.city_revenue() - agent.city_revenue()).abs() / agent.city_revenue() < 0.005);
+    // tourists turned away from full hotels in agent mode spend a little less than flow mode expects
+    assert!((flow.city_revenue() - agent.city_revenue()).abs() / agent.city_revenue() < 0.025);
     assert!((flow.out_of_town_revenue() - agent.out_of_town_revenue()).abs() / agent.out_of_town_revenue() < 0.01);
     for c in 0..agent.category_count() {
         let a: f64 = (0..12).map(|m| agent.state().month_category_revenue[m][c]).sum();
@@ -96,10 +98,11 @@ fn flow_mode_agrees_with_agent_mode() {
         assert!((a - f).abs() / f < 0.01, "category {c}: agent {a} flow {f}");
     }
     // the largest businesses agree individually as well
+    let resident = |e: &Engine, b: usize| e.state().revenue[b] - e.state().tour.revenue[b];
     let mut top: Vec<usize> = (0..agent.state().revenue.len()).collect();
-    top.sort_by(|&x, &y| flow.state().revenue[y].partial_cmp(&flow.state().revenue[x]).unwrap());
+    top.sort_by(|&x, &y| resident(&flow, y).partial_cmp(&resident(&flow, x)).unwrap());
     for &b in top.iter().take(50) {
-        let (a, f) = (agent.state().revenue[b], flow.state().revenue[b]);
+        let (a, f) = (resident(agent, b), resident(&flow, b));
         assert!((a - f).abs() / f < 0.03, "business {b}: agent {a} flow {f}");
     }
 }
@@ -180,4 +183,77 @@ fn a_simulated_year_runs_well_inside_five_minutes() {
     let (_, secs) = year();
     println!("one simulated year, agent mode: {secs:.1} s");
     assert!(*secs < 300.0, "{secs} s");
+}
+
+// ---------------------------------------------------------------- phase 5: tourists
+
+#[test]
+fn visitor_numbers_match_the_inputs() {
+    let (e, _) = year();
+    let t = e.city.tourism.as_ref().unwrap();
+    let expected: f64 = t.segments.iter().map(|s| s.persons_per_year).sum();
+    let got: f64 = e.state().tour.arrivals.iter().flatten().sum();
+    assert!((got - expected).abs() / expected < 0.01, "visitors {got} vs {expected}");
+    assert!((expected - 11_050_000.0).abs() < 60_000.0, "city visitors {expected}");
+}
+
+#[test]
+fn journey_behind_the_falls_and_other_attendance_match() {
+    let (e, _) = year();
+    let t = e.city.tourism.as_ref().unwrap();
+    let mut checked = 0;
+    for b in 0..t.attendance_target.len() {
+        let target = t.attendance_target[b];
+        if target <= 0.0 {
+            continue;
+        }
+        let got = e.state().tour.persons[b];
+        let limit = if target == 917_075.0 { 0.02 } else { 0.05 };
+        assert!((got - target).abs() / target < limit, "{}: {got} vs {target}", e.city.businesses.name[b]);
+        checked += 1;
+    }
+    assert!(checked >= 6, "only {checked} attractions with published attendance");
+}
+
+#[test]
+fn us_overnight_arrivals_peak_in_july_and_august() {
+    let (e, _) = year();
+    let t = e.city.tourism.as_ref().unwrap();
+    let seg = t.segments.iter().position(|s| s.name == "us_overnight").unwrap();
+    let a = &e.state().tour.arrivals[seg];
+    let share = (a[6] + a[7]) / a.iter().sum::<f64>();
+    assert!((share - 0.328).abs() < 0.01, "July-August share {share}");
+}
+
+#[test]
+fn tourist_spending_matches_the_inputs() {
+    let (e, _) = year();
+    let t = e.city.tourism.as_ref().unwrap();
+    let nights: f64 = t.nights.n.iter().zip(&t.nights.weight).map(|(n, w)| *n as f64 * w).sum::<f64>() / t.nights.weight.iter().sum::<f64>();
+    let expected: f64 = t.segments.iter().map(|s| s.persons_per_year * s.spend_per_person_day * if s.overnight == 1 { nights } else { 1.0 }).sum();
+    let got = e.tourist_revenue() + e.state().tour.fares;
+    // parties that find every room taken stay with friends and pay no hotel bill, so a few percent is lost
+    assert!(got <= expected * 1.01 && got >= expected * 0.95, "tourist spending {got} vs {expected}");
+    // about 80% of a regional total near $3.8 billion
+    assert!(expected > 2.8e9 && expected < 3.4e9, "{expected}");
+}
+
+#[test]
+fn hotels_never_hold_more_parties_than_rooms() {
+    let mut e = Engine::new(city(), beta(), 9);
+    for _ in 0..(190 * 24) {
+        e.step_hour(); // into July
+    }
+    let t = e.city.tourism.as_ref().unwrap();
+    let mut used = vec![0u32; t.capacity.len()];
+    for p in &e.state().tour.parties {
+        if p.lodging != u32::MAX {
+            used[p.lodging as usize] += 1;
+        }
+    }
+    for b in 0..used.len() {
+        assert!(used[b] <= t.capacity[b], "{} holds {} parties in {} rooms", e.city.businesses.name[b], used[b], t.capacity[b]);
+        assert_eq!(used[b] + e.state().tour.free[b], t.capacity[b]);
+    }
+    println!("hotel occupancy to mid-July: {:.3}", e.hotel_occupancy());
 }

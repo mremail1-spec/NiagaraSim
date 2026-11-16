@@ -145,3 +145,66 @@ pub extern "C" fn nf_route(from_node: u32, business: u32) -> u32 {
 pub extern "C" fn nf_buf_ptr() -> *const f32 {
     unsafe { BUF.as_ptr() }
 }
+
+// ---- tourists ----
+
+#[no_mangle]
+pub extern "C" fn nf_tourist_revenue() -> f64 {
+    engine().tourist_revenue()
+}
+
+/// Visitors in town on the day most recently started.
+#[no_mangle]
+pub extern "C" fn nf_visitors_today() -> f64 {
+    engine().state().tour.visitors_today
+}
+
+/// Pointer to tourist revenue so far, one f64 per business (null if the city has no tourism data).
+#[no_mangle]
+pub extern "C" fn nf_tourist_revenue_ptr() -> *const f64 {
+    engine().state().tour.revenue.as_ptr()
+}
+
+/// Share of hotel rooms in use tonight.
+#[no_mangle]
+pub extern "C" fn nf_rooms_in_use_share() -> f64 {
+    let e = engine();
+    match &e.city.tourism {
+        None => 0.0,
+        Some(t) => {
+            let (mut rooms, mut free) = (0f64, 0f64);
+            for b in 0..t.capacity.len() {
+                if t.lodging_type[b] == 1 {
+                    rooms += t.capacity[b] as f64;
+                    free += e.state().tour.free[b] as f64;
+                }
+            }
+            if rooms > 0.0 { 1.0 - free / rooms } else { 0.0 }
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn nf_tourist_trip_count() -> u32 {
+    engine().last_tourist_trips.len() as u32
+}
+
+/// Copy up to `max` of the last hour's tourist purchases into the buffer as
+/// (base road node, business, persons, spend).
+#[no_mangle]
+pub extern "C" fn nf_tourist_trips(max: u32) -> u32 {
+    let e = engine();
+    let n = e.last_tourist_trips.len();
+    let take = n.min(max as usize);
+    unsafe {
+        BUF.clear();
+        for i in 0..take {
+            let t = &e.last_tourist_trips[i * n / take.max(1)];
+            BUF.push(t.base_node as f32);
+            BUF.push(t.business as f32);
+            BUF.push(t.persons as f32);
+            BUF.push(t.spend);
+        }
+    }
+    take as u32
+}

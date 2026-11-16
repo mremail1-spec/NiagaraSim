@@ -5,6 +5,7 @@
 pub mod city;
 pub mod engine;
 pub mod rng;
+pub mod tourists;
 #[cfg(target_arch = "wasm32")]
 pub mod wasm;
 

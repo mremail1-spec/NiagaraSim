@@ -45,7 +45,7 @@ struct Outing {
 pub struct Snapshot {
     pub day: u32,
     pub hour: u32,
-    rng: Rng,
+    pub(crate) rng: Rng,
     pub revenue: Vec<f64>,
     pub visits: Vec<u64>,
     /// Local revenue by month (12) and category.
@@ -55,6 +55,9 @@ pub struct Snapshot {
     pub mode_counts: [u64; 4],
     driver_km_hist: Vec<u64>,
     day_plan: Vec<Vec<Outing>>,
+    /// Tourists in town, their plans and what they have spent.
+    #[serde(default)]
+    pub tour: crate::tourists::TourState,
 }
 
 struct HeapItem(f32, u32);
@@ -78,34 +81,38 @@ impl Ord for HeapItem {
 pub struct Engine {
     pub city: City,
     pub beta: f64,
-    n_nodes: usize,
-    n_cat: usize,
+    pub(crate) n_nodes: usize,
+    pub(crate) n_cat: usize,
     /// Each business's index into the list of distinct destination road nodes.
-    dest_of_business: Vec<u32>,
-    n_dest: usize,
+    pub(crate) dest_of_business: Vec<u32>,
+    pub(crate) n_dest: usize,
     /// Travel time and distance from every road node to every destination, [dest * n_nodes + node].
-    minutes: Vec<f32>,
-    km: Vec<f32>,
+    pub(crate) minutes: Vec<f32>,
+    pub(crate) km: Vec<f32>,
     /// Next road node on the fastest route from `node` toward `dest`.
-    next_hop: Vec<u16>,
+    pub(crate) next_hop: Vec<u16>,
     /// Businesses serving each category, and their pull.
-    cat_business: Vec<Vec<u32>>,
-    cat_pull: Vec<Vec<f64>>,
+    pub(crate) cat_business: Vec<Vec<u32>>,
+    pub(crate) cat_pull: Vec<Vec<f64>>,
     /// Road nodes that have homes, and each node's position in that list (-1 if none).
-    home_nodes: Vec<u32>,
-    node_slot: Vec<i32>,
+    pub(crate) home_nodes: Vec<u32>,
+    pub(crate) node_slot: Vec<i32>,
     /// Cumulative destination probabilities, [slot * n_cat + category] over cat_business[category].
-    cdf: Vec<Vec<f32>>,
+    pub(crate) cdf: Vec<Vec<f32>>,
     /// Expected local revenue per year for each business from each category (flow mode).
-    flow: Vec<Vec<f64>>,
-    hh_rate: Vec<f64>,
-    hh_pcat: Vec<f32>,
-    hh_ticket: Vec<f32>,
-    hour_cdf: [f64; 24],
+    pub(crate) flow: Vec<Vec<f64>>,
+    pub(crate) hh_rate: Vec<f64>,
+    pub(crate) hh_pcat: Vec<f32>,
+    pub(crate) hh_ticket: Vec<f32>,
+    pub(crate) hour_cdf: [f64; 24],
     pub walk_near: f64,
-    state: Snapshot,
+    pub(crate) state: Snapshot,
     /// Trips made in the hour most recently stepped (agent mode).
     pub last_trips: Vec<Trip>,
+    /// Tourist model (absent when the city file has no tourism block).
+    pub(crate) tour: Option<crate::tourists::TourRt>,
+    /// Tourist purchases made in the hour most recently stepped (agent mode).
+    pub last_tourist_trips: Vec<crate::tourists::TouristTrip>,
 }
 
 pub fn month_of_day(day_of_year: u32) -> usize {
@@ -240,11 +247,12 @@ impl Engine {
             mode_counts: [0; 4],
             driver_km_hist: vec![0; HIST_BINS],
             day_plan: vec![Vec::new(); 24],
+            tour: crate::tourists::TourState::default(),
         };
         let mut e = Engine {
             city, beta, n_nodes, n_cat, dest_of_business, n_dest, minutes, km, next_hop, cat_business, cat_pull,
             home_nodes, node_slot, cdf: Vec::new(), flow: Vec::new(), hh_rate, hh_pcat, hh_ticket, hour_cdf,
-            walk_near: 0.0, state, last_trips: Vec::new(),
+            walk_near: 0.0, state, last_trips: Vec::new(), tour: None, last_tourist_trips: Vec::new(),
         };
         e.set_beta(beta);
         e
@@ -378,6 +386,7 @@ impl Engine {
         }
         self.cdf = cdf;
         self.flow = flow;
+        self.build_tourism();
     }
 
     pub fn state(&self) -> &Snapshot {
@@ -391,9 +400,10 @@ impl Engine {
     pub fn restore(&mut self, snapshot: Snapshot) {
         self.state = snapshot;
         self.last_trips.clear();
+        self.last_tourist_trips.clear();
     }
 
-    fn season(&self, c: usize) -> f64 {
+    pub(crate) fn season(&self, c: usize) -> f64 {
         self.city.categories.season[c][month_of_day(self.state.day)]
     }
 
@@ -470,7 +480,9 @@ impl Engine {
     pub fn step_hour(&mut self) {
         if self.state.hour == 0 {
             self.plan_day();
+            self.tour_plan_day();
         }
+        self.tour_step_hour();
         let hour = self.state.hour;
         let month = month_of_day(self.state.day);
         let outings = std::mem::take(&mut self.state.day_plan[hour as usize]);
@@ -524,6 +536,7 @@ impl Engine {
     /// Advance one day by booking expected revenue directly (flow mode). Must start at hour 0.
     pub fn step_day_flow(&mut self) {
         assert_eq!(self.state.hour, 0, "flow mode advances whole days");
+        self.tour_flow_day();
         let month = month_of_day(self.state.day);
         for c in 0..self.n_cat {
             let k = self.season(c) / 365.0;

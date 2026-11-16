@@ -7,7 +7,7 @@ Plan: https://claude.ai/artifact/CvFuGLP1nByTvzvPyyTnB4
 - `data/` — the research data pack (see `data/README.md` and `data/HANDOVER.md`).
 - `prep/` — Python, one-time data preparation. Builds the city the engine loads.
 - `engine/` — Rust simulation engine (WebAssembly + native). Residents done; tourists and money flow next.
-- `web/` — the single-page game: `index.html` plus `city.json`, `roads.json` and `nfsim.wasm` (built by `python3 -m nfprep.webexport`). Works on a phone, with pinch zoom. Residents only so far.
+- `web/` — the single-page game: `index.html` plus `city.json`, `roads.json` and `nfsim.wasm` (built by `python3 -m nfprep.webexport`). Works on a phone, with pinch zoom. Residents and tourists.
 - `build/` — generated output (not committed).
 
 ## Status
@@ -17,11 +17,11 @@ Plan: https://claude.ai/artifact/CvFuGLP1nByTvzvPyyTnB4
 | 2. Synthetic population | Done | 16 tests against the calibration targets |
 | 3. Businesses and roads | Done | 21 tests: employer counts match the register; road network fully drivable |
 | 4. Engine and resident spending | Done | 9 Rust tests: survey trip length and rate, seasonality, budget conservation, flow = agent, determinism, rewind, routes on real roads, one year in about 11 s |
-| 5. Tourists | In progress | Visitor volumes, seasons, lodging and spending are prepared (`prep/nfprep/tourism.py`); the engine does not simulate them yet |
-| 7. The game (first version) | Running | Single page on a phone: real roads, businesses sized by revenue, moving trips, tap for details, four speeds |
+| 5. Tourists | Done | 5 more Rust tests: 11.05M visitors, Journey Behind the Falls 923,057 (published 917,075), six other attractions within 3%, US overnight July-August share 33.0% (32.8%), spending matches inputs. Hotel occupancy comes out at 43%, below the published 55-67%: recorded as a data gap, not tuned away |
+| 7. The game (first version) | Running | Single page on a phone: real roads, businesses sized by revenue, resident and tourist trips moving, tap for details, four speeds |
 | 6, 8–10 | Not started | |
 
-Tests: `python3 -m pytest` (37) and `cd engine && cargo test --release` (9). A picture of the generated city is in `docs/city_2025_map.png`.
+Tests: `python3 -m pytest` (37) and `cd engine && cargo test --release` (14). A full simulated year is summarised in `docs/run_2025_full_year.json`. A picture of the generated city is in `docs/city_2025_map.png`.
 
 ## Run
 ```bash

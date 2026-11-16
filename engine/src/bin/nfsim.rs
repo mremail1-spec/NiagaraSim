@@ -60,6 +60,49 @@ fn main() {
         "name": engine.city.businesses.name[b], "revenue": s.revenue[b].round(), "visits": s.visits[b]})).collect();
     let modes: u64 = s.mode_counts.iter().sum();
     let pct = |i: usize| if modes > 0 { (s.mode_counts[i] as f64 / modes as f64 * 1000.0).round() / 10.0 } else { 0.0 };
+    let tour = &s.tour;
+    let tourism = match &engine.city.tourism {
+        None => serde_json::json!(null),
+        Some(t) => {
+            let mut by_cat = serde_json::Map::new();
+            for (c, name) in t.categories.name.iter().enumerate() {
+                let v: f64 = (0..12).map(|m| tour.month_category_revenue[m][c]).sum();
+                by_cat.insert(name.clone(), serde_json::json!((v / 1e4).round() / 100.0));
+            }
+            let mut arrivals = serde_json::Map::new();
+            let mut jul_aug = serde_json::Map::new();
+            let mut total_visitors = 0.0;
+            for (i, seg) in t.segments.iter().enumerate() {
+                let year: f64 = tour.arrivals[i].iter().sum();
+                total_visitors += year;
+                arrivals.insert(seg.name.clone(), serde_json::json!(year.round()));
+                jul_aug.insert(seg.name.clone(), serde_json::json!(((tour.arrivals[i][6] + tour.arrivals[i][7]) / year.max(1.0) * 1000.0).round() / 10.0));
+            }
+            let mut attendance = serde_json::Map::new();
+            for b in 0..t.attendance_target.len() {
+                if t.attendance_target[b] > 0.0 {
+                    attendance.insert(engine.city.businesses.name[b].clone(), serde_json::json!({
+                        "simulated": tour.persons[b].round(), "published": t.attendance_target[b]}));
+                }
+            }
+            let core: f64 = (0..tour.revenue.len()).filter(|&b| engine.city.businesses.core[b] == 1).map(|b| tour.revenue[b]).sum();
+            let occ_month: Vec<f64> = (0..12).map(|m| (tour.room_nights_by_month[m] / (engine.hotel_rooms() * nfsim::engine::DAYS_IN_MONTH[m] as f64) * 1000.0).round() / 1000.0).collect();
+            let mut top: Vec<usize> = (0..tour.revenue.len()).collect();
+            top.sort_by(|&a, &b| tour.revenue[b].partial_cmp(&tour.revenue[a]).unwrap());
+            let top10: Vec<_> = top.iter().take(10).map(|&b| serde_json::json!({"name": engine.city.businesses.name[b], "tourist_revenue": tour.revenue[b].round()})).collect();
+            serde_json::json!({
+                "visitors": total_visitors.round(), "visitors_by_segment": arrivals, "july_august_share_pct": jul_aug,
+                "tourist_spending_at_businesses_musd": (engine.tourist_revenue() / 1e4).round() / 100.0,
+                "accommodation_musd": (tour.accommodation_by_month.iter().sum::<f64>() / 1e4).round() / 100.0,
+                "transport_fares_musd": (tour.fares / 1e4).round() / 100.0,
+                "spending_by_category_musd": by_cat,
+                "share_of_tourist_spending_in_tourist_core_pct": (core / engine.tourist_revenue().max(1.0) * 1000.0).round() / 10.0,
+                "hotel_rooms": engine.hotel_rooms(), "hotel_occupancy": (engine.hotel_occupancy() * 1000.0).round() / 1000.0,
+                "hotel_occupancy_by_month": occ_month, "parties_turned_away_from_full_lodging": tour.turned_away,
+                "attendance": attendance, "top_tourist_businesses": top10,
+            })
+        }
+    };
     let report = serde_json::json!({
         "mode": mode, "days": days, "seed": seed, "beta": (engine.beta * 1e4).round() / 1e4,
         "expected_median_driver_km": median,
@@ -75,6 +118,7 @@ fn main() {
         "revenue_by_category_musd": by_cat,
         "monthly_index_by_category": season,
         "top_businesses": top10,
+        "tourism": tourism,
         "setup_seconds": (setup * 100.0).round() / 100.0,
         "run_seconds": (run * 100.0).round() / 100.0,
     });
