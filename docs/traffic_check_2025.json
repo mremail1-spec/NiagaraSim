@@ -1,0 +1,182 @@
+[
+ {
+  "highway": "405",
+  "section": 48610,
+  "counted_aadt_2019": 8050,
+  "counted_trucks_2019": 1700,
+  "simulated_per_day": 39,
+  "share_explained_pct": 0.5,
+  "nodes_matched": 4,
+  "simulated_mix_pct": {
+   "city_residents": 90,
+   "town_shoppers": 0,
+   "visitors_getting_around": 10,
+   "visitors_arriving": 0
+  }
+ },
+ {
+  "highway": "405",
+  "section": 48600,
+  "counted_aadt_2019": 10100,
+  "counted_trucks_2019": 2400,
+  "simulated_per_day": 28,
+  "share_explained_pct": 0.3,
+  "nodes_matched": 4,
+  "simulated_mix_pct": {
+   "city_residents": 84,
+   "town_shoppers": 0,
+   "visitors_getting_around": 16,
+   "visitors_arriving": 0
+  }
+ },
+ {
+  "highway": "420",
+  "section": 49806,
+  "counted_aadt_2019": 18300,
+  "counted_trucks_2019": 730,
+  "simulated_per_day": 11031,
+  "share_explained_pct": 60.3,
+  "nodes_matched": 9,
+  "simulated_mix_pct": {
+   "city_residents": 56,
+   "town_shoppers": 10,
+   "visitors_getting_around": 10,
+   "visitors_arriving": 24
+  }
+ },
+ {
+  "highway": "420",
+  "section": 49810,
+  "counted_aadt_2019": 33000,
+  "counted_trucks_2019": 990,
+  "simulated_per_day": 16962,
+  "share_explained_pct": 51.4,
+  "nodes_matched": 6,
+  "simulated_mix_pct": {
+   "city_residents": 62,
+   "town_shoppers": 28,
+   "visitors_getting_around": 9,
+   "visitors_arriving": 1
+  }
+ },
+ {
+  "highway": "420",
+  "section": 49803,
+  "counted_aadt_2019": 51100,
+  "counted_trucks_2019": 1550,
+  "simulated_per_day": 13018,
+  "share_explained_pct": 25.5,
+  "nodes_matched": 5,
+  "simulated_mix_pct": {
+   "city_residents": 74,
+   "town_shoppers": 1,
+   "visitors_getting_around": 24,
+   "visitors_arriving": 1
+  }
+ },
+ {
+  "highway": "420",
+  "section": 49800,
+  "counted_aadt_2019": 44900,
+  "counted_trucks_2019": 1300,
+  "simulated_per_day": 21275,
+  "share_explained_pct": 47.4,
+  "nodes_matched": 5,
+  "simulated_mix_pct": {
+   "city_residents": 48,
+   "town_shoppers": 3,
+   "visitors_getting_around": 28,
+   "visitors_arriving": 21
+  }
+ },
+ {
+  "highway": "QEW",
+  "section": 10043,
+  "counted_aadt_2019": 70700,
+  "counted_trucks_2019": 7800,
+  "simulated_per_day": 7725,
+  "share_explained_pct": 10.9,
+  "nodes_matched": 5,
+  "simulated_mix_pct": {
+   "city_residents": 72,
+   "town_shoppers": 17,
+   "visitors_getting_around": 7,
+   "visitors_arriving": 3
+  }
+ },
+ {
+  "highway": "QEW",
+  "section": 10040,
+  "counted_aadt_2019": 74000,
+  "counted_trucks_2019": 5900,
+  "simulated_per_day": 11371,
+  "share_explained_pct": 15.4,
+  "nodes_matched": 10,
+  "simulated_mix_pct": {
+   "city_residents": 50,
+   "town_shoppers": 22,
+   "visitors_getting_around": 7,
+   "visitors_arriving": 21
+  }
+ },
+ {
+  "highway": "QEW",
+  "section": 10032,
+  "counted_aadt_2019": 47500,
+  "counted_trucks_2019": 5100,
+  "simulated_per_day": 14442,
+  "share_explained_pct": 30.4,
+  "nodes_matched": 8,
+  "simulated_mix_pct": {
+   "city_residents": 44,
+   "town_shoppers": 36,
+   "visitors_getting_around": 11,
+   "visitors_arriving": 10
+  }
+ },
+ {
+  "highway": "QEW",
+  "section": 10030,
+  "counted_aadt_2019": 34400,
+  "counted_trucks_2019": 4450,
+  "simulated_per_day": 14336,
+  "share_explained_pct": 41.7,
+  "nodes_matched": 11,
+  "simulated_mix_pct": {
+   "city_residents": 38,
+   "town_shoppers": 43,
+   "visitors_getting_around": 5,
+   "visitors_arriving": 13
+  }
+ },
+ {
+  "highway": "QEW",
+  "section": 10025,
+  "counted_aadt_2019": 31300,
+  "counted_trucks_2019": 4400,
+  "simulated_per_day": 6624,
+  "share_explained_pct": 21.2,
+  "nodes_matched": 10,
+  "simulated_mix_pct": {
+   "city_residents": 10,
+   "town_shoppers": 54,
+   "visitors_getting_around": 5,
+   "visitors_arriving": 31
+  }
+ },
+ {
+  "highway": "QEW",
+  "section": 10022,
+  "counted_aadt_2019": 22400,
+  "counted_trucks_2019": 3800,
+  "simulated_per_day": 3264,
+  "share_explained_pct": 14.6,
+  "nodes_matched": 8,
+  "simulated_mix_pct": {
+   "city_residents": 4,
+   "town_shoppers": 95,
+   "visitors_getting_around": 0,
+   "visitors_arriving": 1
+  }
+ }
+]

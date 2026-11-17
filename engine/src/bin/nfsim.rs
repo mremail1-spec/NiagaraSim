@@ -36,6 +36,10 @@ fn main() {
         calibrate_sales(&mut engine, arg(&args, "--targets").expect("--targets FILE"), arg(&args, "--out"));
         return;
     }
+    let traffic_out = arg(&args, "--traffic");
+    if traffic_out.is_some() {
+        engine.enable_traffic();
+    }
     let days: u32 = arg(&args, "--days").map(|s| s.parse().unwrap()).unwrap_or(365);
     let mode = arg(&args, "--mode").unwrap_or_else(|| "agent".into());
     let t1 = Instant::now();
@@ -137,6 +141,11 @@ fn main() {
         }
         std::fs::write(&path, csv).expect("cannot write businesses file");
     }
+    if let (Some(path), Some(counts)) = (traffic_out, engine.traffic.as_ref()) {
+        // average vehicles per day passing each road node
+        let per_day: Vec<f64> = counts.iter().map(|c| (c / days.max(1) as f64).round()).collect();
+        std::fs::write(&path, serde_json::to_string(&per_day).unwrap()).expect("cannot write traffic file");
+    }
     let text = serde_json::to_string_pretty(&report).unwrap();
     if let Some(path) = arg(&args, "--out") {
         std::fs::write(&path, &text).expect("cannot write report");
@@ -157,7 +166,7 @@ fn calibrate_sales(engine: &mut Engine, targets_path: String, out: Option<String
     let tcats = engine.city.tourism.as_ref().map(|t| t.categories.name.clone()).unwrap_or_default();
     // each store type's main spending categories: (group, resident categories, tourist categories, led by tourists?)
     let plan: Vec<(&str, Vec<&str>, Vec<&str>, bool)> = vec![
-        ("445", vec!["groceries", "alcohol_tobacco_cannabis"], vec!["food_from_stores"], false),
+        ("445", vec!["groceries", "alcohol_tobacco_cannabis"], vec!["food_from_stores"], true),
         ("449", vec!["household_goods"], vec![], false),
         ("455", vec!["general_merchandise"], vec![], false),
         ("456", vec!["pharmacy"], vec![], false),

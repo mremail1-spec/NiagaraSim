@@ -18,6 +18,8 @@ const NO_BUSINESS: u32 = u32::MAX;
 pub struct Group {
     pub nodes: Vec<u32>,
     pub business: Vec<u32>,
+    /// A business at the base, used to route arriving cars (the lodging or the parking lot).
+    pub route_business: Vec<u32>,
     /// Cumulative share of the group's visitors based at each entry.
     pub cdf: Vec<f64>,
 }
@@ -108,7 +110,7 @@ impl Engine {
         let exp = self.city.params.attractiveness_exponent;
 
         // where each kind of visitor is based
-        let mut groups: Vec<Group> = (0..5).map(|_| Group { nodes: vec![], business: vec![], cdf: vec![] }).collect();
+        let mut groups: Vec<Group> = (0..5).map(|_| Group { nodes: vec![], business: vec![], route_business: vec![], cdf: vec![] }).collect();
         let mut weights: Vec<Vec<f64>> = vec![vec![]; 5];
         let parking = self.city.sim_categories.iter().position(|c| c == "parking");
         for b in 0..n_biz {
@@ -116,11 +118,13 @@ impl Engine {
             if kind >= 1 && kind <= 3 {
                 groups[kind - 1].nodes.push(self.city.businesses.node[b]);
                 groups[kind - 1].business.push(b as u32);
+                groups[kind - 1].route_business.push(b as u32);
                 weights[kind - 1].push(t.capacity[b] as f64);
             }
             if Some(self.city.businesses.sim_category[b] as usize) == parking {
                 groups[GROUP_DAY].nodes.push(self.city.businesses.node[b]);
                 groups[GROUP_DAY].business.push(NO_BUSINESS);
+                groups[GROUP_DAY].route_business.push(b as u32);
                 weights[GROUP_DAY].push(1.0);
             }
         }
@@ -133,6 +137,7 @@ impl Engine {
         for (slot, &node) in self.home_nodes.iter().enumerate() {
             groups[GROUP_PRIVATE].nodes.push(node);
             groups[GROUP_PRIVATE].business.push(NO_BUSINESS);
+            groups[GROUP_PRIVATE].route_business.push(NO_BUSINESS);
             weights[GROUP_PRIVATE].push(homes[slot]);
         }
         for g in 0..5 {
@@ -353,6 +358,26 @@ impl Engine {
                 if lodging != NO_BUSINESS {
                     self.state.tour.free[lodging as usize] -= 1;
                 }
+                // the party's car comes in through a gateway and leaves the same way
+                let (share, car) = match t.segments[seg].origin.as_str() {
+                    "us" => (1usize, t.car_share.us),
+                    "overseas" => (2, t.car_share.overseas),
+                    _ => (0, t.car_share.domestic),
+                };
+                let (u_car, u_gate) = (self.state.rng.f64(), self.state.rng.f64());
+                let route_to = rt.groups[g].route_business[i];
+                if u_car < car && route_to != NO_BUSINESS && !t.gateways.is_empty() {
+                    let mut acc = 0.0;
+                    let mut gate = t.gateways[0].node;
+                    for gw in &t.gateways {
+                        acc += [gw.domestic, gw.us, gw.overseas][share];
+                        if u_gate < acc {
+                            gate = gw.node;
+                            break;
+                        }
+                    }
+                    self.count_vehicles(3, gate, route_to, 2.0);
+                }
                 self.state.tour.arrivals[seg][month] += size as f64;
                 self.state.tour.parties.push(Party { segment: seg as u8, group: g as u8, size, days_left: days,
                                                      base_node: rt.groups[g].nodes[i], lodging });
@@ -445,8 +470,14 @@ impl Engine {
         let hour = self.state.hour as usize;
         let month = month_of_day(self.state.day);
         let trips = std::mem::take(&mut self.state.tour.plan[hour]);
+        let walk_max = self.city.params.walk_max_km;
         for t in &trips {
             let b = t.business as usize;
+            if self.traffic.is_some() && self.trip_km(t.base_node as usize, b) > walk_max {
+                // Short hops inside the core are walked. A party strings several stops into about two
+                // car outings a day (SEED), so each purchase counts as a fraction of a round trip.
+                self.count_vehicles(2, t.base_node, t.business, 2.0 * 2.0 / 5.63);
+            }
             self.state.revenue[b] += t.spend as f64;
             self.state.tour.revenue[b] += t.spend as f64;
             self.state.tour.persons[b] += t.persons as f64;

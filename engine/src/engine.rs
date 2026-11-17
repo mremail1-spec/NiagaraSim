@@ -121,6 +121,8 @@ pub struct Engine {
     pub(crate) first_added: usize,
     /// Tourist model (absent when the city file has no tourism block).
     pub(crate) tour: Option<crate::tourists::TourRt>,
+    /// Vehicles counted passing each road node so far (agent mode), when switched on.
+    pub traffic: Option<Vec<f64>>,
     /// Tourist purchases made in the hour most recently stepped (agent mode).
     pub last_tourist_trips: Vec<crate::tourists::TouristTrip>,
 }
@@ -265,7 +267,7 @@ impl Engine {
         let mut e = Engine {
             city, beta, n_nodes, n_cat, dest_of_business, n_dest, minutes, km, next_hop, cat_business, cat_pull,
             home_nodes, node_slot, cdf: Vec::new(), flow: Vec::new(), flow_leak: Vec::new(), flow_inbound: Vec::new(), hh_rate, hh_pcat, hh_ticket, hour_cdf,
-            walk_near: 0.0, state, last_trips: Vec::new(), tour: None, last_tourist_trips: Vec::new(), first_added: n_biz,
+            walk_near: 0.0, state, last_trips: Vec::new(), tour: None, last_tourist_trips: Vec::new(), first_added: n_biz, traffic: None,
         };
         e.set_beta(beta);
         e
@@ -550,6 +552,9 @@ impl Engine {
             }
             self.state.month_category_revenue[month][c] += local;
             self.state.online_leakage += spend * online;
+            if mode == Mode::Driver || self.is_regional(h) {
+                self.count_vehicles(self.is_regional(h) as usize, node as u32, b as u32, 2.0);        // there and back
+            }
             if self.is_regional(h) {
                 self.last_trips.push(Trip { household: o.household, business: b as u32, category: o.category, mode: Mode::Driver, km: d as f32, spend: spend as f32 });
                 continue;       // town shoppers are not part of the city's trip statistics
@@ -624,6 +629,30 @@ impl Engine {
             path.push(at);
         }
         path
+    }
+
+    /// Start counting vehicles at every road node (agent mode only).
+    pub fn enable_traffic(&mut self) {
+        self.traffic = Some(vec![0.0; self.n_nodes * 4]);
+    }
+
+    /// Add `vehicles` to every road node on the fastest route from `from_node` to a business.
+    /// `source`: 0 city residents, 1 shoppers from neighbouring towns, 2 visitors getting around, 3 visitors arriving and leaving.
+    pub(crate) fn count_vehicles(&mut self, source: usize, from_node: u32, business: u32, vehicles: f64) {
+        if self.traffic.is_none() {
+            return;
+        }
+        let base = self.dest_of_business[business as usize] as usize * self.n_nodes;
+        let dest = self.city.businesses.node[business as usize];
+        let counts = self.traffic.as_mut().unwrap();
+        let mut at = from_node;
+        let mut steps = 0;
+        counts[at as usize * 4 + source] += vehicles;
+        while at != dest && steps < self.n_nodes {
+            at = self.next_hop[base + at as usize] as u32;
+            counts[at as usize * 4 + source] += vehicles;
+            steps += 1;
+        }
     }
 
     pub fn route_km(&self, from_node: u32, business: u32) -> f64 {

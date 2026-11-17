@@ -37,6 +37,15 @@ VEHICLE_OPERATION_SPLIT = {"fuel": 0.7, "parking": 0.3}      # SEED: fuel vs par
 EVENTS_PER_PARTY_DAY = {"restaurants": 2.0, "food_from_stores": 0.3, "fuel": 0.3, "parking": 0.7,
                         "vehicle_rental": 0.03, "recreation": 0.4, "attractions": 1.0, "clothing": 0.3,
                         "other_retail": 0.6}
+# Where visitors' cars enter the city. SEED: the shares; the entry points are real.
+GATEWAYS = [
+    {"name": "QEW from Toronto and Hamilton", "lat": 43.15212, "lon": -79.150513, "domestic": 0.90, "us": 0.0, "overseas": 1.0},
+    {"name": "QEW from Fort Erie and the Peace Bridge", "lat": 42.99002, "lon": -79.057051, "domestic": 0.10, "us": 0.25, "overseas": 0.0},
+    {"name": "Rainbow Bridge", "lat": 43.0902, "lon": -79.0679, "domestic": 0.0, "us": 0.40, "overseas": 0.0},
+    {"name": "Queenston-Lewiston Bridge (Highway 405)", "lat": 43.15643, "lon": -79.052097, "domestic": 0.0, "us": 0.25, "overseas": 0.0},
+    {"name": "Whirlpool Bridge", "lat": 43.1090, "lon": -79.0592, "domestic": 0.0, "us": 0.10, "overseas": 0.0},
+]
+OVERSEAS_CAR_SHARE = 0.5                                      # SEED: the rest arrive by coach or train
 DAY_OF_WEEK = [0.80, 0.80, 0.80, 0.85, 1.10, 1.50, 1.15]     # SEED: Monday..Sunday arrivals, mean 1.0
 OVERSEAS_OVERNIGHT_SHARE = 0.6                               # SEED
 HOTEL_ROOMS = {"low": 12000, "central": 13000, "high": 14000,
@@ -156,6 +165,9 @@ def build_tourism(pack: Pack, businesses: list[dict], year: int) -> dict:
         if match:
             attendance[match[0]] = att[key]
 
+    car_share = {"domestic": t["arrival_modes"]["ontario_domestic_visits_by_car_2024_pct"] / 100,
+                 "us": (totals["2025_tourists_automobile"] + totals["2025_excursionists_automobile"]) / totals["2025_travellers_all"],
+                 "overseas": OVERSEAS_CAR_SHARE}
     first = datetime.date(year, 1, 1).weekday()
     return {
         "segments": segments,
@@ -167,6 +179,7 @@ def build_tourism(pack: Pack, businesses: list[dict], year: int) -> dict:
                        "served_by": served},
         "transport_fare_share": round(transport_share, 5),
         "day_of_week": DAY_OF_WEEK, "first_weekday": first,
+        "gateways": GATEWAYS, "car_share": car_share,
         "capacity": capacity, "lodging_type": lodging_type, "attendance_target": attendance,
         "hotel_rooms": HOTEL_ROOMS,
         "checks": {"regional_visitors": round(domestic + us + overseas), "regional_domestic": round(domestic),

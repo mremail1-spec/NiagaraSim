@@ -148,6 +148,33 @@ def assign_budgets(pack: Pack, households: list[dict], year: int) -> np.ndarray:
     return out
 
 
+def _gateways(tour: dict, nodes: list[dict], edges: list[dict], toward_node: int) -> list[dict]:
+    """Road node for each gateway: among nodes within 250 m of the gateway point, the one with the
+    fastest drive into the Tourist Core, which picks the inbound carriageway of a divided highway."""
+    import heapq
+    rev: dict[int, list] = {}
+    for e in edges:
+        rev.setdefault(e["to_node"], []).append((e["from_node"], e["minutes"]))
+    time = {toward_node: 0.0}
+    heap = [(0.0, toward_node)]
+    while heap:
+        t, u = heapq.heappop(heap)
+        if t > time.get(u, 1e18):
+            continue
+        for v, dt in rev.get(u, []):
+            if t + dt < time.get(v, 1e18):
+                time[v] = t + dt
+                heapq.heappush(heap, (t + dt, v))
+    lat, lon = np.array([n["lat"] for n in nodes]), np.array([n["lon"] for n in nodes])
+    out = []
+    for g in tour["gateways"]:
+        d = np.hypot((lat - g["lat"]) * 111.32, (lon - g["lon"]) * 111.32 * np.cos(np.radians(g["lat"])))
+        near = [int(i) for i in np.where(d < max(0.25, float(d.min()) + 0.05))[0]]
+        node = min(near, key=lambda i: time.get(i, 1e18))
+        out.append({"name": g["name"], "node": node, "domestic": g["domestic"], "us": g["us"], "overseas": g["overseas"]})
+    return out
+
+
 def _tourism_block(tour: dict, sim_cats: list[str], n_total: int) -> dict:
     """Tourism inputs with per-business arrays aligned to the engine's business list."""
     kind = {"hotel": 1, "rental": 2, "camping": 3}
@@ -217,13 +244,19 @@ def export_city(pack: Pack, city: dict, budgets: np.ndarray, year: int, path: Pa
         km = float(d.min()) * towns["detour_factor"]
         node = len(nodes) + len(town_nodes)
         town_nodes.append((t["lat"], t["lon"]))
-        town_edges.append((int(d.argmin()), node, round(km, 3), round(km / towns["highway_kmh"] * 60, 3)))
+        # town_link_time_factor: how much longer a trip to another town feels than its driving time.
+        # Fitted so that shopping trips do not exceed their plausible share of counted highway traffic.
+        town_edges.append((int(d.argmin()), node, round(km, 3),
+                           round(km / towns["highway_kmh"] * 60 * towns.get("town_link_time_factor", 1.0), 3)))
         ext.append({"name": t["name"] + " (out of town)", "node": node, "lat": t["lat"], "lon": t["lon"],
                     # shops inside a town are a typical local trip away: the survey's median driving trip
                     "extra_km": trips["median_driver_trip_km"],
                     "extra_min": round(trips["median_driver_trip_km"] / towns["in_town_kmh"] * 60, 2),
                     "pull_scale": round(t["population_2021"] / 94415, 4)})
-        town_households += [node] * int(round(t["population_2021"] * growth / hh_size / block))
+        # Only part of a town's household spending is open to being won by another town; the rest is
+        # bought at home whatever the alternatives. That share is fitted to the highway traffic counts.
+        town_households += [node] * int(round(t["population_2021"] * growth / hh_size / block
+                                              * towns.get("town_contestable_share", 1.0)))
     n_real = len(biz)
     from .calibration import GROUPS, sales_targets
     group_names = list(GROUPS)
@@ -307,6 +340,9 @@ def export_city(pack: Pack, city: dict, budgets: np.ndarray, year: int, path: Pa
     doc["calibration"] = {"sales_targets": sales_targets(pack, len(city["persons"])), "beta": cal.get("beta")}
     if city.get("tourism"):
         doc["tourism"] = _tourism_block(city["tourism"], sim_cats, n_real + len(ext))
+        falls = next(x["road_node"] for x in biz if x["name"] == "Journey Behind the Falls")
+        doc["tourism"]["gateways"] = _gateways(city["tourism"], nodes, edges, falls)
+        doc["tourism"]["car_share"] = city["tourism"]["car_share"]
         doc["tourism"]["categories"]["capture"] = [cal.get("tourist_capture", {}).get(c, 1.0)
                                                    for c in doc["tourism"]["categories"]["name"]]
     doc["build_menu"] = _build_menu(pack, sim_cats)

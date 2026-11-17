@@ -54,7 +54,28 @@ pub struct TouristCategories {
 }
 
 #[derive(Clone, Deserialize)]
+pub struct Gateway {
+    pub name: String,
+    pub node: u32,
+    pub domestic: f64,
+    pub us: f64,
+    pub overseas: f64,
+}
+
+#[derive(Clone, Deserialize, Default)]
+pub struct CarShare {
+    pub domestic: f64,
+    pub us: f64,
+    pub overseas: f64,
+}
+
+#[derive(Clone, Deserialize)]
 pub struct Tourism {
+    /// Where visitors' cars enter the city, with each origin's share.
+    #[serde(default)]
+    pub gateways: Vec<Gateway>,
+    #[serde(default)]
+    pub car_share: CarShare,
     pub segments: Vec<Segment>,
     pub party_size_mean: f64,
     pub nights: Nights,

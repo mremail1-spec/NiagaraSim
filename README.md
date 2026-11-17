@@ -99,3 +99,11 @@ Sources and method are in `data/calibration_benchmarks_ontario_2025.json`; resul
 - **Not identified by the data:** one sales figure per store type cannot separate "more leakage" from "less tourist spending in the city"; the correction is shared between them.
 - **Not calibrated:** hotels, attractions and casinos (too many 100+ employee firms for the size bands to pin down), services and health care (no sales survey).
 - Every mapped business now carries the nearest civic address from the city's address points, or its licence address.
+
+## Traffic counts (17 November 2026)
+- `data/traffic_counts_provincial_highways.json`: Ontario Ministry of Transportation counts (AADT, 2005-2019) for the QEW and Highways 420, 405, 58 and 20 around the city.
+- The engine can count simulated vehicles on every road (`nfsim run ... --traffic FILE`); `python3 -m nfprep.traffic_check` compares them with the counts. Result: `docs/traffic_check_2025.json`.
+- Visitors' cars now enter through five gateways (QEW north and south, Rainbow, Queenston-Lewiston and Whirlpool bridges).
+- **What the counts changed:** shoppers from Fort Erie and Welland were generating more traffic on the QEW south than was counted in total. Town households now put 12% of their spending in play for other towns (fitted), which cut inbound spending from $737M to $245M. Simulated shopping, dining and visitor trips now make up 11-60% of counted traffic on every section, leaving room for the commuting, trucks and through traffic the model does not simulate.
+- **Still missing:** Niagara Region's counts for Lundy's Lane, McLeod Road, Stanley Avenue and the other regional roads. Its portal blocks automated downloads; download the 2025 CSV from https://niagaraopendata.ca/dataset/regional-road-traffic-volumes and add it to `data/` to extend the check to city streets.
+- One store type still misses its target after calibration: specialty and miscellaneous retail (459) reaches $226M against $311M.

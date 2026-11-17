@@ -38,5 +38,7 @@
    "lon": -78.93
   }
  ],
- "in_town_kmh": 40
+ "in_town_kmh": 40,
+ "town_link_time_factor": 1.0,
+ "town_contestable_share": 0.12
 }
