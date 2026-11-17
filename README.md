@@ -129,7 +129,7 @@ Sources and method are in `data/calibration_benchmarks_ontario_2025.json`; resul
 - **Known traffic gaps:** almost no simulated traffic on the Queenston-Lewiston bridge approach (Highway 405, Niagara Townline Road, north Stanley Avenue), so US visitors arriving by that bridge are not reaching those roads in the model; and Mountain Road near the QEW carries more simulated visitor arrivals than its counts allow.
 
 ## Backtest, second run: through the pandemic years (17 November 2026)
-The same 485 businesses were run through a pandemic year: US and overseas visitors at 10% of normal, domestic visitors at 62%, residents at 85%. That gives hotel occupancy close to the published 28% (2020) and 34% (2021).
+The same 485 businesses were run through a pandemic year: US and overseas visitors at 10% of normal, domestic visitors at 62%, residents at 85%. That gives hotel occupancy of 39%, above the published 28% (2020) and 34% (2021): the model keeps the 22% of rooms filled by non-leisure stays unchanged, and in the pandemic those fell too. Visitor demand is therefore cut less than it really was.
 
 | Test | Result |
 |---|---|
