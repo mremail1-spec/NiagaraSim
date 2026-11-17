@@ -1,0 +1,8 @@
+{"_meta": {"purpose": "Niagara Parks paid parking lots missing from the business list. Identified on OpenStreetMap (17 November 2026) by name and position along the Niagara Parkway; OpenStreetMap does not record their operator. Rapidsview is a cluster of unnamed fee lots, entered as one point.",
+  "confidence": "Falls Parking Lot, Falls Overflow and NPC Butterfly Parking are named on the map; Rapidsview and the Dufferin Islands lot are inferred from position and should be checked."},
+ "add": [
+  {"name": "Niagara Parks Falls Parking (Lot A)", "category": "parking", "lat": 43.07644, "lon": -79.07996},
+  {"name": "Niagara Parks Falls Overflow Parking", "category": "parking", "lat": 43.07206, "lon": -79.07874},
+  {"name": "Niagara Parks Rapidsview Parking (Lot C)", "category": "parking", "lat": 43.06664, "lon": -79.06641},
+  {"name": "Niagara Parks Dufferin Islands Parking", "category": "parking", "lat": 43.06457, "lon": -79.05038},
+  {"name": "Niagara Parks Butterfly Conservatory Parking", "category": "parking", "lat": 43.13601, "lon": -79.05336}]}

@@ -251,7 +251,8 @@ def build_businesses(pack: Pack, seed: int = 1) -> list[dict]:
 
     # corrections supplied by people who know the city (data/local_corrections.json)
     by_address = {r["address"].upper(): r for r in pack.tables["address_points.csv"]}
-    for c in json.loads((DATA_DIR / "local_corrections.json").read_text())["add"]:
+    for c in (json.loads((DATA_DIR / "local_corrections.json").read_text())["add"]
+              + json.loads((DATA_DIR / "niagara_parks_places.json").read_text())["add"]):
         if "lat" in c and "lon" in c:
             la, lo = float(c["lat"]), float(c["lon"])
         elif c.get("address", "").upper() in by_address:
