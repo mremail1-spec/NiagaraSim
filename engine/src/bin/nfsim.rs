@@ -98,6 +98,14 @@ fn main() {
                         "simulated": tour.persons[b].round(), "published": t.attendance_target[b]}));
                 }
             }
+            let fs = engine.city.sim_categories.iter().position(|c| c == "free_sight").map(|x| x as u32);
+            let mut free: Vec<(String, f64)> = (0..tour.persons.len())
+                .filter(|&b| Some(engine.city.businesses.sim_category[b]) == fs)
+                .map(|b| (if engine.city.businesses.name[b].is_empty() { format!("Viewpoint #{b}") } else { engine.city.businesses.name[b].clone() }, tour.persons[b].round()))
+                .collect();
+            free.sort_by(|a, b| b.1.partial_cmp(&a.1).unwrap());
+            free.truncate(8);
+            let free_sights = serde_json::json!(free);
             let core: f64 = (0..tour.revenue.len()).filter(|&b| engine.city.businesses.core[b] == 1).map(|b| tour.revenue[b]).sum();
             let occ_month: Vec<f64> = (0..12).map(|m| (tour.room_nights_by_month[m] / (engine.hotel_rooms() * nfsim::engine::DAYS_IN_MONTH[m] as f64) * 1000.0).round() / 1000.0).collect();
             let mut top: Vec<usize> = (0..tour.revenue.len()).collect();
@@ -113,6 +121,7 @@ fn main() {
                 "hotel_rooms": engine.hotel_rooms(), "hotel_occupancy": (engine.hotel_occupancy() * 1000.0).round() / 1000.0,
                 "hotel_occupancy_by_month": occ_month, "parties_turned_away_from_full_lodging": tour.turned_away,
                 "attendance": attendance, "top_tourist_businesses": top10,
+                "free_sight_visits": free_sights,
             })
         }
     };

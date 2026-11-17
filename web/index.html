@@ -19,7 +19,7 @@
   --good: #7bd389;
   --warn: #ff8a5c;
   --c-food: #ff8a5c; --c-grocery: #7bd389; --c-shops: #6cb8ff; --c-stay: #c9a0ff;
-  --c-fun: #ffd166; --c-services: #9fb3c8; --c-cars: #f28fb5;
+  --c-fun: #ffd166; --c-free: #4fd1b5; --c-services: #9fb3c8; --c-cars: #f28fb5;
   --tourist: #7fe3ff;       /* visitors' trips */
   --font-display: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
   --font-body: "Inter", "Segoe UI", system-ui, sans-serif;
@@ -193,6 +193,7 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
     { key: "shops", label: "Shops", color: css("--c-shops"), cats: ["apparel", "general_merchandise", "home_electronics", "retail_other", "souvenir_gift", "tobacco_cannabis", "pet", "craft", "pharmacy"] },
     { key: "stay", label: "Places to stay", color: css("--c-stay"), cats: ["accommodation"] },
     { key: "fun", label: "Attractions and fun", color: css("--c-fun"), cats: ["attraction", "leisure_paid", "casino", "entertainment"] },
+    { key: "free", label: "Free parks and viewpoints", color: css("--c-free"), cats: ["free_sight"] },
     { key: "cars", label: "Fuel, parking, cars", color: css("--c-cars"), cats: ["fuel", "auto_service", "auto_dealer", "car_rental", "parking"] },
     { key: "services", label: "Services and health", color: css("--c-services"), cats: [] },
   ];
@@ -574,7 +575,7 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
     const tour = new Float64Array(wasm.memory.buffer, wasm.nf_tourist_revenue_ptr(), bizX.length)[i];
     const days = wasm.nf_day() + wasm.nf_hour() / 24;
     const isStandin = b.standin && b.standin[i];
-    $("bName").textContent = isStandin ? "Estimated " + city.sim_categories[b.sim_category[i]].replace(/_/g, " ") + " (not a real business)" : (b.name[i] || "Unnamed place");
+    $("bName").textContent = isStandin ? "Estimated " + city.sim_categories[b.sim_category[i]].replace(/_/g, " ") + " (not a real business)" : (b.name[i] || (city.sim_categories[b.sim_category[i]] === "free_sight" ? "Viewpoint" : "Unnamed place"));
     $("bKind").textContent = city.sim_categories[b.sim_category[i]].replace(/_/g, " ") + (b.core[i] ? " \u00b7 Tourist Core" : "");
     $("bDot").style.background = GROUPS[bizGroup[i]].color;
     const addr = isStandin ? "" : ((b.address && b.address[i]) || "");
@@ -584,6 +585,7 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
     $("bYear").textContent = days > 0.5 ? money(rev / days * 365) : "\u2014";
     $("bNote").textContent = isStandin
       ? "Statistics Canada counts more of these businesses in the city than any map lists, so the model adds unnamed stand-ins near similar shops. If you know a real one nearby, add it in data/local_corrections.json and it replaces a stand-in."
+      : city.sim_categories[b.sim_category[i]] === "free_sight" ? "Free to visit. It earns nothing itself, but draws visitors who then spend at businesses nearby."
       : i >= baseCount ? "A business you placed. Restart removes it."
       : "Model estimate from simulated resident and tourist spending, not the business's real sales.";
   }

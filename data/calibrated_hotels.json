@@ -7,23 +7,23 @@
   {
    "period": "1",
    "published_occupancy": 0.368,
-   "model_occupancy": 0.377,
+   "model_occupancy": 0.378,
    "published_rate": 127.64,
-   "model_rate": 131.66
+   "model_rate": 131.69
   },
   {
    "period": "3",
    "published_occupancy": 0.474,
    "model_occupancy": 0.444,
    "published_rate": 149.66,
-   "model_rate": 149.8
+   "model_rate": 149.78
   },
   {
    "period": "11",
    "published_occupancy": 0.453,
-   "model_occupancy": 0.499,
+   "model_occupancy": 0.498,
    "published_rate": 169.15,
-   "model_rate": 164.62
+   "model_rate": 164.54
   },
   {
    "period": "1+2+3",
@@ -37,14 +37,14 @@
    "published_occupancy": 0.595,
    "model_occupancy": 0.582,
    "published_rate": 206.28,
-   "model_rate": 209.0
+   "model_rate": 209.05
   },
   {
    "period": "1+2+3+4+5+6+7+8+9+10+11",
    "published_occupancy": 0.632,
    "model_occupancy": 0.621,
    "published_rate": 217.08,
-   "model_rate": 216.68
+   "model_rate": 216.71
   }
  ],
  "room_rate_line": {
@@ -52,49 +52,49 @@
   "b": 272.0
  },
  "hotel": {
-  "rooms_per_party": 1.3614,
-  "base_share": 0.1446,
+  "rooms_per_party": 1.3573,
+  "base_share": 0.1454,
   "rate_by_month": [
-   131.66,
-   135.73,
-   149.8,
-   154.25,
-   189.06,
-   254.23,
+   131.69,
+   135.75,
+   149.78,
+   154.58,
+   189.28,
+   254.26,
    292.84,
    292.84,
-   202.02,
-   202.39,
-   164.62,
-   176.84
+   202.2,
+   202.2,
+   164.54,
+   177.1
   ]
  },
  "survey_only_occupancy_by_month": [
   0.171,
   0.182,
   0.22,
-  0.232,
-  0.326,
-  0.502,
-  0.632,
+  0.233,
+  0.327,
+  0.503,
+  0.633,
   0.619,
-  0.361,
+  0.362,
   0.362,
   0.26,
-  0.293
+  0.294
  ],
  "fitted_occupancy_by_month_before_capacity_limits": [
-  0.377,
+  0.378,
   0.392,
   0.444,
-  0.46,
-  0.588,
+  0.462,
+  0.589,
   0.828,
   0.97,
   0.97,
-  0.636,
   0.637,
-  0.499,
+  0.637,
+  0.498,
   0.544
  ],
  "fitted_full_year_before_capacity_limits": 0.614

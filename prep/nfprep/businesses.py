@@ -27,7 +27,7 @@ CATEGORY_NAICS = {
     "retail_other": "459", "souvenir_gift": "459", "tobacco_cannabis": "459", "pet": "459", "craft": "459",
     "pharmacy": "456", "health": "621", "personal_services": "812", "fuel": "457",
     "auto_service": "811", "car_rental": "532", "parking": "812", "childcare": "624",
-    "bank": "", "atm": "", "services": "", "office": "",
+    "bank": "", "atm": "", "services": "", "office": "", "free_sight": "",
 }
 # Register groups topped up with synthetic businesses, and the category the synthetic ones get.
 # 449 also absorbs 444 (building material and garden), which the map files under home_electronics.
@@ -157,6 +157,14 @@ EXTRA_OSM_CATEGORY = {
     "variety_store": "general_merchandise", "hardware": "home_electronics", "doityourself": "home_electronics",
     "electronics": "home_electronics", "furniture": "home_electronics", "appliance": "home_electronics",
     "mobile_phone": "home_electronics", "garden_centre": "home_electronics", "veterinary": "pet"}
+LICENCE_NAME_FITS = {"RS": ("restaurant", "fast_food", "cafe", "bar_pub", "nightlife"),
+                     "FS": ("restaurant", "fast_food", "cafe", "bar_pub", "grocery_food"),
+                     "TE": ("accommodation",), "BE": ("accommodation",), "VR": ("accommodation",), "OS": ("accommodation",),
+                     "AM": ("attraction", "leisure_paid", "entertainment"), "PL": ("parking",),
+                     "GE": ("auto_service",), "GB": ("auto_dealer",), "ES": ("personal_services",), "HA": ("personal_services",)}
+PAID_VIEWPOINTS = {"Skylon Tower", "Incline Railway", "The Niagara SkyWheel", "Skywheel"}
+FREE_SPOTS = {"Thompson Point", "Turtle Pond", "Balancing Rock", "Birthday Boulders", "Immaculate Boulder", "Knee Bar Boulder",
+              "Locomotive Boulders", "The V Boulder", "Super Flywall", "Sydney's Dock"}
 LICENCE_TYPE_CATEGORY = {"GE": "auto_service", "ES": "personal_services", "HA": "personal_services", "GB": "auto_dealer"}
 
 
@@ -249,6 +257,19 @@ def build_businesses(pack: Pack, seed: int = 1) -> list[dict]:
             add("licence:" + l["type"][:2], nice_case(l["name"]), cat, lat_c, lon_c)
             rows[-1]["address_hint"] = nice_case(l["address"])
 
+    # free sights: viewpoints and free gardens and spots on the map, plus big free parks it lacks
+    free = json.loads((DATA_DIR / "free_sights.json").read_text())
+    for r in rows:
+        if r["sim_category"] == "attraction" and (
+                (r.get("osm_tag") == "viewpoint" and r["name"] not in PAID_VIEWPOINTS)
+                or r["name"] in free["pull_of_existing"] or r["name"] in FREE_SPOTS or not r["name"].strip()):
+            r["sim_category"], r["naics"] = "free_sight", ""
+            r["format_weight"] = float(free["pull_of_existing"].get(r["name"], 1.0))
+    for c in free["add"]:
+        if in_city(c["lat"], c["lon"]) and not _already_listed(rows, c["name"], c["lat"], c["lon"], "free_sight"):
+            add("free_sight", c["name"], "free_sight", c["lat"], c["lon"])
+            rows[-1]["format_weight"] = float(c["pull"])
+
     # corrections supplied by people who know the city (data/local_corrections.json)
     by_address = {r["address"].upper(): r for r in pack.tables["address_points.csv"]}
     for c in (json.loads((DATA_DIR / "local_corrections.json").read_text())["add"]
@@ -298,7 +319,8 @@ def build_businesses(pack: Pack, seed: int = 1) -> list[dict]:
         lic = _licence_at(licences, r["lat"], r["lon"])
         if lic:
             r["address"], r["address_source"] = nice_case(lic["address"]), "city licence parcel"
-            if not r["name"].strip():
+            # borrow the licence's name only when the licence is for this kind of business
+            if not r["name"].strip() and r["sim_category"] in LICENCE_NAME_FITS.get(lic["type"][:2], ()):
                 r["name"], r["name_source"] = nice_case(lic["name"]), "city licence parcel"
             continue
         d = _dist_m(r["lat"], r["lon"], alat, alon)

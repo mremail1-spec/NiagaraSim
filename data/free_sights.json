@@ -1,0 +1,9 @@
+{"_meta": {"purpose": "Free public sights that draw visitors but charge nothing (Niagara Parks parkland, gardens, viewpoints). Positions from OpenStreetMap (17 November 2026). 'pull' is how strongly each draws visitors relative to an ordinary viewpoint (SEED, by prominence).",
+  "rule": "Map places tagged as viewpoints, and the free gardens and spots listed in prep/nfprep/businesses.py, are free sights too; paid towers and rides are not."},
+ "add": [
+  {"name": "Queen Victoria Park", "lat": 43.07927, "lon": -79.07586, "pull": 10},
+  {"name": "Dufferin Islands", "lat": 43.06833, "lon": -79.06986, "pull": 4},
+  {"name": "Floral Clock and Lilac Grove", "lat": 43.14945, "lon": -79.04729, "pull": 4},
+  {"name": "Niagara Glen", "lat": 43.12942, "lon": -79.06047, "pull": 3},
+  {"name": "Queenston Heights Park", "lat": 43.15909, "lon": -79.054, "pull": 3}],
+ "pull_of_existing": {"Table Rock Welcome Centre": 10, "lookout of falls": 6, "Niagara Parks Botanical Gardens": 4, "Oakes Garden Theatre": 3, "Clifton Hill": 3}}
