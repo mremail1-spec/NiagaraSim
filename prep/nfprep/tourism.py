@@ -142,7 +142,8 @@ def build_tourism(pack: Pack, businesses: list[dict], year: int) -> dict:
     hotels = [x for x in businesses if x["sim_category"] == "accommodation" and x["source"] == "osm"]
     weight = {x["business_id"]: max(x["staff"], 2) for x in hotels}
     known = {x["business_id"]: int(float(x["rooms"])) for x in hotels if x["rooms"]}
-    spread = HOTEL_ROOMS["central"] - sum(known.values())
+    market = json.loads((DATA_DIR / "hotel_market_2025.json").read_text())
+    spread = market["hotel_rooms"] - sum(known.values())
     wsum = sum(w for i, w in weight.items() if i not in known)
     capacity, lodging_type = {}, {}
     for x in businesses:
@@ -181,6 +182,8 @@ def build_tourism(pack: Pack, businesses: list[dict], year: int) -> dict:
         "day_of_week": DAY_OF_WEEK, "first_weekday": first,
         "gateways": GATEWAYS, "car_share": car_share,
         "capacity": capacity, "lodging_type": lodging_type, "attendance_target": attendance,
+        "hotel": (json.loads((DATA_DIR / "calibrated_hotels.json").read_text())["hotel"]
+                  if (DATA_DIR / "calibrated_hotels.json").exists() else None),
         "hotel_rooms": HOTEL_ROOMS,
         "checks": {"regional_visitors": round(domestic + us + overseas), "regional_domestic": round(domestic),
                    "regional_us": round(us), "regional_overseas": round(overseas),

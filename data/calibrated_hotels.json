@@ -1,0 +1,54 @@
+{
+ "_meta": {
+  "fitted_to": "data/hotel_market_2025.json: March 2025 occupancy 47.4% and January-July 2025 average 59.5%; room rate $149.66 in March and $206.28 for January-July.",
+  "check": "Full-year occupancy is not fitted. Published: about 63%.",
+  "rate_rule": "Room rate rises in a straight line with occupancy through the two published points, floor $100."
+ },
+ "hotel": {
+  "rooms_per_party": 1.152,
+  "base_share": 0.2194,
+  "rate_by_month": [
+   123.25,
+   128.64,
+   149.66,
+   156.13,
+   206.8,
+   301.68,
+   371.76,
+   364.75,
+   225.67,
+   226.21,
+   171.22,
+   189.01
+  ]
+ },
+ "survey_only_occupancy_by_month": [
+  0.172,
+  0.182,
+  0.221,
+  0.233,
+  0.327,
+  0.503,
+  0.633,
+  0.62,
+  0.362,
+  0.363,
+  0.261,
+  0.294
+ ],
+ "fitted_occupancy_by_month_before_capacity_limits": [
+  0.418,
+  0.429,
+  0.474,
+  0.488,
+  0.596,
+  0.799,
+  0.949,
+  0.934,
+  0.636,
+  0.638,
+  0.52,
+  0.558
+ ],
+ "fitted_full_year_before_capacity_limits": 0.621
+}

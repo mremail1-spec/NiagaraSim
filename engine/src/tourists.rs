@@ -52,6 +52,9 @@ pub struct Party {
     pub days_left: u8,
     pub base_node: u32,
     pub lodging: u32,
+    /// Hotel rooms the party holds.
+    #[serde(default)]
+    pub rooms: u8,
 }
 
 #[derive(Clone, Copy, Debug, Serialize, Deserialize, PartialEq)]
@@ -83,6 +86,9 @@ pub struct TourState {
     /// Rooms, units or sites still free tonight, per business.
     pub free: Vec<u32>,
     pub turned_away: u64,
+    /// Room revenue from stays outside the travel survey.
+    #[serde(default)]
+    pub base_room_revenue: f64,
     pub visitors_today: f64,
 }
 
@@ -273,10 +279,19 @@ impl Engine {
                 parties: vec![], plan: vec![Vec::new(); 24], revenue: vec![0.0; n_biz], persons: vec![0.0; n_biz],
                 month_category_revenue: vec![vec![0.0; n_cat]; 12], accommodation_by_month: vec![0.0; 12],
                 room_nights_by_month: vec![0.0; 12], arrivals: vec![vec![0.0; 12]; n_seg], fares: 0.0, elsewhere: 0.0,
-                free: t.capacity.clone(), turned_away: 0, visitors_today: 0.0,
+                free: (0..n_biz).map(|b| t.capacity[b] - Self::base_rooms(&t, b)).collect(), turned_away: 0,
+                base_room_revenue: 0.0, visitors_today: 0.0,
             };
         }
         self.tour = Some(rt);
+    }
+
+    /// Rooms at a hotel held every night by stays outside the travel survey.
+    pub fn base_rooms(t: &crate::city::Tourism, b: usize) -> u32 {
+        match &t.hotel {
+            Some(h) if t.lodging_type[b] == 1 => (h.base_share * t.capacity[b] as f64).round() as u32,
+            _ => 0,
+        }
     }
 
     /// Visitors expected to arrive today in a segment (persons).
@@ -331,6 +346,11 @@ impl Engine {
                     let k = rt.nights_cdf.iter().position(|&x| un < x).unwrap_or(rt.nights_cdf.len() - 1);
                     days = t.nights.n[k].min(250) as u8;
                 }
+                let two = match &t.hotel {
+                    Some(h) if g == GROUP_HOTEL => self.state.rng.f64() < h.rooms_per_party - 1.0,
+                    _ => false,
+                };
+                let rooms: u8 = if two { 2 } else { 1 };
                 // pick a base; paid lodging must have a free room, else the party stays with friends
                 let mut base = None;
                 for _ in 0..6 {
@@ -340,7 +360,7 @@ impl Engine {
                     let u = self.state.rng.f64();
                     let i = rt.groups[g].cdf.partition_point(|&x| x <= u).min(rt.groups[g].cdf.len() - 1);
                     let b = rt.groups[g].business[i];
-                    if b == NO_BUSINESS || self.state.tour.free[b as usize] > 0 {
+                    if b == NO_BUSINESS || self.state.tour.free[b as usize] >= rooms as u32 {
                         base = Some(i);
                         break;
                     }
@@ -356,7 +376,7 @@ impl Engine {
                 let i = base.unwrap();
                 let lodging = rt.groups[g].business[i];
                 if lodging != NO_BUSINESS {
-                    self.state.tour.free[lodging as usize] -= 1;
+                    self.state.tour.free[lodging as usize] -= rooms as u32;
                 }
                 // the party's car comes in through a gateway and leaves the same way
                 let (share, car) = match t.segments[seg].origin.as_str() {
@@ -380,7 +400,19 @@ impl Engine {
                 }
                 self.state.tour.arrivals[seg][month] += size as f64;
                 self.state.tour.parties.push(Party { segment: seg as u8, group: g as u8, size, days_left: days,
-                                                     base_node: rt.groups[g].nodes[i], lodging });
+                                                     base_node: rt.groups[g].nodes[i], lodging, rooms });
+            }
+        }
+        // rooms held by stays outside the travel survey earn the hotel its room rate every night
+        if let Some(h) = &t.hotel {
+            for &b in &rt.groups[GROUP_HOTEL].business {
+                let base = Self::base_rooms(&t, b as usize) as f64;
+                let pay = base * h.rate_by_month[month];
+                self.state.revenue[b as usize] += pay;
+                self.state.tour.revenue[b as usize] += pay;
+                self.state.tour.base_room_revenue += pay;
+                self.state.tour.accommodation_by_month[month] += pay;
+                self.state.tour.room_nights_by_month[month] += base;
             }
         }
         // everyone in town: pay for the room, plan purchases
@@ -392,12 +424,16 @@ impl Engine {
             present += p.size as f64;
             let seg = p.segment as usize;
             if p.lodging != NO_BUSINESS {
-                let pay = t.accommodation_spend_per_paid_person_night * p.size as f64;
+                let hotel = p.group as usize == GROUP_HOTEL;
+                let pay = match &t.hotel {
+                    Some(h) if hotel => p.rooms as f64 * h.rate_by_month[month],
+                    _ => t.accommodation_spend_per_paid_person_night * p.size as f64,
+                };
                 self.state.revenue[p.lodging as usize] += pay;
                 self.state.tour.revenue[p.lodging as usize] += pay;
                 self.state.tour.accommodation_by_month[month] += pay;
                 if p.group as usize == GROUP_HOTEL {
-                    self.state.tour.room_nights_by_month[month] += 1.0;
+                    self.state.tour.room_nights_by_month[month] += p.rooms.max(1) as f64;
                 }
             }
             self.state.tour.fares += rt.seg_fares[seg] * p.size as f64;
@@ -452,7 +488,7 @@ impl Engine {
             p.days_left -= 1;
             if p.days_left == 0 {
                 if p.lodging != NO_BUSINESS {
-                    self.state.tour.free[p.lodging as usize] += 1;
+                    self.state.tour.free[p.lodging as usize] += p.rooms.max(1) as u32;
                 }
             } else {
                 staying.push(p);
@@ -510,7 +546,11 @@ impl Engine {
                     continue;
                 }
                 if g <= GROUP_CAMPING {
-                    let pay = pd * t.accommodation_spend_per_paid_person_night;
+                    let room_nights = pd / t.party_size_mean * t.hotel.as_ref().map(|h| h.rooms_per_party).unwrap_or(1.0);
+                    let pay = match &t.hotel {
+                        Some(h) if g == GROUP_HOTEL => room_nights * h.rate_by_month[month],
+                        _ => pd * t.accommodation_spend_per_paid_person_night,
+                    };
                     let mut prev = 0.0;
                     for (i, &b) in rt.groups[g].business.iter().enumerate() {
                         let share = rt.groups[g].cdf[i] - prev;
@@ -520,7 +560,7 @@ impl Engine {
                     }
                     self.state.tour.accommodation_by_month[month] += pay;
                     if g == GROUP_HOTEL {
-                        self.state.tour.room_nights_by_month[month] += pd / t.party_size_mean;
+                        self.state.tour.room_nights_by_month[month] += room_nights;
                     }
                 }
                 for c in 0..rt.n_cat {
@@ -538,6 +578,17 @@ impl Engine {
                     }
                     self.state.tour.month_category_revenue[month][c] += booked;
                 }
+            }
+        }
+        if let Some(h) = &t.hotel {
+            for &b in &rt.groups[GROUP_HOTEL].business {
+                let base = Self::base_rooms(&t, b as usize) as f64;
+                let pay = base * h.rate_by_month[month];
+                self.state.revenue[b as usize] += pay;
+                self.state.tour.revenue[b as usize] += pay;
+                self.state.tour.base_room_revenue += pay;
+                self.state.tour.accommodation_by_month[month] += pay;
+                self.state.tour.room_nights_by_month[month] += base;
             }
         }
         self.state.tour.visitors_today = present;

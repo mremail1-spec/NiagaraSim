@@ -69,8 +69,22 @@ pub struct CarShare {
     pub overseas: f64,
 }
 
+/// Hotel demand fitted to published occupancy and room rates.
+#[derive(Clone, Deserialize)]
+pub struct HotelParams {
+    /// Rooms a hotel party takes on average (above 1: some parties take two rooms).
+    pub rooms_per_party: f64,
+    /// Share of every hotel's rooms filled each night by stays the travel survey does not count
+    /// (business, groups, long stays).
+    pub base_share: f64,
+    /// Average room rate by month.
+    pub rate_by_month: Vec<f64>,
+}
+
 #[derive(Clone, Deserialize)]
 pub struct Tourism {
+    #[serde(default)]
+    pub hotel: Option<HotelParams>,
     /// Where visitors' cars enter the city, with each origin's share.
     #[serde(default)]
     pub gateways: Vec<Gateway>,

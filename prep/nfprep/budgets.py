@@ -190,6 +190,7 @@ def _tourism_block(tour: dict, sim_cats: list[str], n_total: int) -> dict:
             "categories": {"name": c["name"], "share": c["share"], "events_per_party_day": c["events_per_party_day"],
                            "served_by": [[float(sv.get(x, 0.0)) for x in sim_cats] for sv in c["served_by"]]},
             "transport_fare_share": tour["transport_fare_share"], "day_of_week": tour["day_of_week"],
+            "hotel": tour.get("hotel"),
             "first_weekday": tour["first_weekday"], "capacity": cap, "lodging_type": typ, "attendance_target": att,
             "hotel_rooms_published_range": [tour["hotel_rooms"]["low"], tour["hotel_rooms"]["high"]]}
 

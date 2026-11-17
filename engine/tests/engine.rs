@@ -234,11 +234,14 @@ fn tourist_spending_matches_the_inputs() {
     let t = e.city.tourism.as_ref().unwrap();
     let nights: f64 = t.nights.n.iter().zip(&t.nights.weight).map(|(n, w)| *n as f64 * w).sum::<f64>() / t.nights.weight.iter().sum::<f64>();
     let expected: f64 = t.segments.iter().map(|s| s.persons_per_year * s.spend_per_person_day * if s.overnight == 1 { nights } else { 1.0 }).sum();
-    let got = e.tourist_revenue() + e.state().tour.fares + e.state().tour.elsewhere;
+    // hotel bills follow published room rates, so compare everything except accommodation
+    let acc_avg = t.accommodation_spend_per_paid_person_night * (1.0 - t.lodging_share.private);
+    let expected: f64 = t.segments.iter().map(|s| s.persons_per_year * (s.spend_per_person_day - if s.overnight == 1 { acc_avg } else { 0.0 }) * if s.overnight == 1 { nights } else { 1.0 }).sum();
+    let got = e.tourist_revenue() + e.state().tour.fares + e.state().tour.elsewhere - e.state().tour.accommodation_by_month.iter().sum::<f64>();
     // parties that find every room taken stay with friends and pay no hotel bill, so a few percent is lost
     assert!(got <= expected * 1.01 && got >= expected * 0.95, "tourist spending {got} vs {expected}");
     // about 80% of a regional total near $3.8 billion
-    assert!(expected > 2.8e9 && expected < 3.4e9, "{expected}");
+    assert!(expected > 1.9e9 && expected < 2.6e9, "{expected}");
 }
 
 #[test]
@@ -251,12 +254,12 @@ fn hotels_never_hold_more_parties_than_rooms() {
     let mut used = vec![0u32; t.capacity.len()];
     for p in &e.state().tour.parties {
         if p.lodging != u32::MAX {
-            used[p.lodging as usize] += 1;
+            used[p.lodging as usize] += p.rooms.max(1) as u32;
         }
     }
     for b in 0..used.len() {
         assert!(used[b] <= t.capacity[b], "{} holds {} parties in {} rooms", e.city.businesses.name[b], used[b], t.capacity[b]);
-        assert_eq!(used[b] + e.state().tour.free[b], t.capacity[b]);
+        assert_eq!(used[b] + e.state().tour.free[b] + Engine::base_rooms(t, b), t.capacity[b]);
     }
     println!("hotel occupancy to mid-July: {:.3}", e.hotel_occupancy());
 }
@@ -323,4 +326,22 @@ fn location_changes_the_forecast() {
     // a bigger business draws more, but not in proportion
     let big = e.forecast(node_of(&e, "Journey Behind the Falls"), kind, 992_000.0, 1.0);
     assert!(big.resident + big.tourist > at_falls && big.resident + big.tourist < 2.0 * at_falls);
+}
+
+#[test]
+fn hotel_occupancy_matches_the_published_2025_figures() {
+    let (e, _) = year();
+    let nights = &e.state().tour.room_nights_by_month;
+    let rooms = e.hotel_rooms();
+    let days = nfsim::engine::DAYS_IN_MONTH;
+    let march = nights[2] / (rooms * 31.0);
+    let jan_jul = nights[..7].iter().sum::<f64>() / (rooms * days[..7].iter().sum::<u32>() as f64);
+    let full_year = nights.iter().sum::<f64>() / (rooms * 365.0);
+    println!("hotel occupancy: March {march:.3}, January-July {jan_jul:.3}, full year {full_year:.3}");
+    assert!((rooms - 16_000.0).abs() < 100.0, "rooms {rooms}");
+    assert!((march - 0.474).abs() < 0.02, "March {march}");            // published 47.4% (fitted)
+    assert!((jan_jul - 0.595).abs() < 0.02, "January-July {jan_jul}");  // published 59.5% (fitted)
+    assert!((full_year - 0.63).abs() < 0.03, "full year {full_year}");  // published about 63% (not fitted)
+    let july = nights[6] / (rooms * 31.0);
+    assert!(july > 0.85 && july <= 1.0, "July {july}");                 // summer runs near full
 }
