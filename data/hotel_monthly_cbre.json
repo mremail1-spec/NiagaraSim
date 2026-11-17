@@ -1,0 +1,14 @@
+{"_meta": {"source": "CBRE Hotels, National Market Report, Trends in the Canadian Hotel Industry (monthly), row 'Niagara Falls'. Public copies hosted by Destination Northern Ontario: https://destinationnorthernontario.ca/sites/default/files/<upload month>/CBRE%20Hotels%20National%20Market%20Report%20-%20<Month>%20<Year>.pdf . PDFs saved in data/sources/cbre/.",
+  "found": "Reports for January, June, July and October 2024 and January, March and November 2025 were posted. Other months were not found at that address.",
+  "fields": "occupancy as a share of rooms; adr = average daily room rate (CAD); each report also gives the same month a year earlier and the year to date."},
+ "monthly": {
+  "2023-01": {"occupancy": 0.406, "adr": 132.92}, "2023-06": {"occupancy": 0.867, "adr": 215.88}, "2023-07": {"occupancy": 0.878, "adr": 278.47}, "2023-10": {"occupancy": 0.740, "adr": 188.83},
+  "2024-01": {"occupancy": 0.369, "adr": 143.52}, "2024-03": {"occupancy": 0.533, "adr": 162.43}, "2024-06": {"occupancy": 0.838, "adr": 248.67}, "2024-07": {"occupancy": 0.855, "adr": 296.74},
+  "2024-10": {"occupancy": 0.720, "adr": 186.29}, "2024-11": {"occupancy": 0.570, "adr": 158.80},
+  "2025-01": {"occupancy": 0.368, "adr": 127.64}, "2025-03": {"occupancy": 0.474, "adr": 149.66}, "2025-11": {"occupancy": 0.453, "adr": 169.15}},
+ "year_to_date": {
+  "2024-01..06": {"occupancy": 0.569, "adr": 203.83}, "2023-01..06": {"occupancy": 0.639, "adr": 171.27},
+  "2024-01..07": {"occupancy": 0.612, "adr": 223.20}, "2023-01..07": {"occupancy": 0.672, "adr": 190.92},
+  "2024-01..10": {"occupancy": 0.669, "adr": 229.45}, "2023-01..10": {"occupancy": 0.716, "adr": 206.16},
+  "2025-01..03": {"occupancy": 0.416, "adr": 140.92}, "2024-01..03": {"occupancy": 0.429, "adr": 156.07},
+  "2025-01..11": {"occupancy": 0.632, "adr": 217.08}, "2024-01..11": {"occupancy": 0.662, "adr": 222.58}}}
