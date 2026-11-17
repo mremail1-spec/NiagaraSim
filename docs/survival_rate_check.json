@@ -1,0 +1,116 @@
+{
+ "_meta": {
+  "what": "Does the model's yearly path of cash-driven closures follow Statistics Canada's monthly\nclosings? St. Catharines-Niagara (all industries) for the timing across years; Ontario\nindustries for which industries the pandemic hit hardest. Compared as changes from 2019,\nbecause Statistics Canada's closings include temporary ones and the model counts only\npermanent closures for lack of cash.",
+  "cash_buffer_months": 3.0
+ },
+ "years": {
+  "2020": {
+   "model_cash_closure_share": 0.0098,
+   "st_catharines_niagara_closing_rate": 0.676,
+   "change_from_2019": 0.183
+  },
+  "2021": {
+   "model_cash_closure_share": 0.0321,
+   "st_catharines_niagara_closing_rate": 0.526,
+   "change_from_2019": 0.032
+  },
+  "2022": {
+   "model_cash_closure_share": 0.0274,
+   "st_catharines_niagara_closing_rate": 0.531,
+   "change_from_2019": 0.038
+  },
+  "2023": {
+   "model_cash_closure_share": 0.0127,
+   "st_catharines_niagara_closing_rate": 0.531,
+   "change_from_2019": 0.037
+  },
+  "2024": {
+   "model_cash_closure_share": 0.0026,
+   "st_catharines_niagara_closing_rate": 0.54,
+   "change_from_2019": 0.047
+  },
+  "2025": {
+   "model_cash_closure_share": 0.0105,
+   "st_catharines_niagara_closing_rate": 0.591,
+   "change_from_2019": 0.097
+  }
+ },
+ "year_correlation": -0.417,
+ "direction_right": "2 of 5",
+ "industries_2020": {
+  "Retail trade": {
+   "businesses_in_model": 137,
+   "model_2020_closure_share": 0.004,
+   "model_2020_revenue_vs_2019": 0.743,
+   "ontario_2020_closing_rate_vs_2019": 1.597
+  },
+  "Food and beverage services (tourism)": {
+   "businesses_in_model": 326,
+   "model_2020_closure_share": 0.001,
+   "model_2020_revenue_vs_2019": 0.487,
+   "ontario_2020_closing_rate_vs_2019": 2.17
+  },
+  "Accommodation (tourism)": {
+   "businesses_in_model": 76,
+   "model_2020_closure_share": 0.022,
+   "model_2020_revenue_vs_2019": 0.519,
+   "ontario_2020_closing_rate_vs_2019": 1.21
+  },
+  "Arts, entertainment and recreation": {
+   "businesses_in_model": 48,
+   "model_2020_closure_share": 0.064,
+   "model_2020_revenue_vs_2019": 0.442,
+   "ontario_2020_closing_rate_vs_2019": 1.443
+  },
+  "Other services (except public administration)": {
+   "businesses_in_model": 151,
+   "model_2020_closure_share": 0.02,
+   "model_2020_revenue_vs_2019": 0.617,
+   "ontario_2020_closing_rate_vs_2019": 2.016
+  }
+ },
+ "industry_rank_correlation": -0.8,
+ "staff_shedding": {
+  "share_of_businesses_below_revenue_share_by_year": {
+   "0.5": {
+    "2020": 0.273,
+    "2021": 0.02,
+    "2022": 0.018,
+    "2023": 0.018,
+    "2024": 0.018,
+    "2025": 0.018
+   },
+   "0.6": {
+    "2020": 0.484,
+    "2021": 0.359,
+    "2022": 0.018,
+    "2023": 0.018,
+    "2024": 0.018,
+    "2025": 0.018
+   },
+   "0.7": {
+    "2020": 0.545,
+    "2021": 0.489,
+    "2022": 0.018,
+    "2023": 0.018,
+    "2024": 0.018,
+    "2025": 0.018
+   },
+   "0.8": {
+    "2020": 0.636,
+    "2021": 0.588,
+    "2022": 0.018,
+    "2023": 0.018,
+    "2024": 0.018,
+    "2025": 0.018
+   }
+  },
+  "year_correlation_with_closings": {
+   "0.5": 0.913,
+   "0.6": 0.602,
+   "0.7": 0.514,
+   "0.8": 0.5
+  },
+  "industry_rank_correlation_revenue_drop_2020": -0.1
+ }
+}

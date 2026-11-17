@@ -105,3 +105,12 @@ def test_outlook_ranges_come_from_monthly_data():
     # out of sample, the 10-90 band should hold the next year about 8 times in 10
     rows = outlook.check(d, "us_overnight")
     assert len(rows) >= 8 and sum(r["inside"] for r in rows) / len(rows) >= 0.6
+
+
+def test_statcan_closing_rates_cover_the_survival_years():
+    import json
+    from nfprep.survival import statcan_rates, DATA_DIR, YEARS
+    sc = json.loads((DATA_DIR / "business_dynamics_statcan.json").read_text())["st_catharines_niagara_cma"]
+    r = statcan_rates({k.split(" | ")[1]: v for k, v in sc.items()})
+    assert set(YEARS) <= set(r)
+    assert r["2020"] > r["2019"] + 0.1 and 0.3 < r["2019"] < 0.7
