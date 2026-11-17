@@ -285,3 +285,13 @@ The Region's road network file (`data/sources/region/niagara_region_roads_openda
 The Region's 2025 traffic volumes (`data/sources/region/regional_road_aadt_2025.csv`, 441 sections region-wide, supplied by the user; the open-data page is behind a bot check) have no geometry, so each section takes its road line from the earlier shapefile by station ID: all 69 sections in the city matched, all counted in 2025 (`data/traffic_counts_regional_roads_2025.json`). At the same stations, 2025 traffic is a median 8.9% above the earlier counts (correlation 0.97).
 - Model against 2025 counts: regional roads correlation **0.65** (0.62 against the earlier counts); the model carries 22.7% of counted traffic (median), still too little volume (school trips, trips between stops, other towns' trips and deliveries are not simulated). Highways stay on MTO's 2019 counts: 0.75.
 - `python3 -m nfprep.traffic_layers` scores both; the scorecard includes the 2025 test.
+
+## Open data through the user's gateway (17 November 2026)
+niagaraopendata.ca blocks automated requests with a bot check; its official CKAN API (`/en/api/3/action/...`) answers through the user's own gateway (`gw.easycrazy.com/fetch?url=`). Downloaded:
+- Regional road traffic volumes for 2015, 2016, 2017, 2018/2019, 2020 and 2024 (`data/sources/region/regional_road_aadt_*.csv`; 2025 was supplied by the user). At the city's stations, counted traffic against 2025 (median): 2015 0.87, 2018 0.92, 2021 0.86 (pandemic), 2025 1.00.
+- From the City's map service (services9.arcgis.com, no bot check): the sidewalk sweeper routes and all 4,101 sidewalk segments (`data/city_open_data/`).
+- No published crime, traffic-signal or collision datasets on the portal ("crime rates" is only a data request). The City's intersection layer has names and positions, no signal or stop control.
+
+**Foot traffic against where the City sweeps sidewalks** (`python3 -m nfprep.foot_check`, `docs/foot_traffic_check.json`): the City sweeps where people walk most (8 routes, 56 km). Road nodes within 40 m of a route carry a median 107 model walkers a day, against 6 elsewhere; a node on a route outranks one off it 79% of the time; 79 of the model's 100 busiest walking spots are on a route, though only 11% of road nodes are. Independent of the model's inputs: a pass (scorecard 7 of 11).
+
+**Traffic signals**: not published by the Region or the City; OpenStreetMap's Overpass servers were down or refusing (timeouts, resets, 504/406 also through the gateway). Needed for intersection delay; to retry.

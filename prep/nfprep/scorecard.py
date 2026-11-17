@@ -39,6 +39,11 @@ def main() -> dict:
         add("Traffic", "Provincial highways, correlation with 2019 counts", a["correlation_highways"], ">= 0.6", a["correlation_highways"] >= 0.6)
         add("Traffic", "Regional roads, median share of counted traffic", f"{a['median_share_explained_regional_pct']}%", ">= 50%",
             a["median_share_explained_regional_pct"] >= 50, "school trips and trips between stops are not simulated yet")
+    f = _load("foot_traffic_check.json")
+    if f:
+        add("Foot traffic", "Model walkers higher on the City's sidewalk sweeper routes (ranking)", f["ranking_score"], ">= 0.7",
+            f["ranking_score"] >= 0.7, f"{f['top_100_walking_nodes_on_routes']} of the model's 100 busiest walking spots are on a route "
+            f"({f['share_of_nodes_on_routes']:.0%} of road nodes are)")
     u = _load("unit_sales_check.json")
     if u:
         r = u["summary"]["median_ratio_model_to_published"]

@@ -7,7 +7,7 @@
    "2022"
   ]
  },
- "passed": "6 of 10",
+ "passed": "7 of 11",
  "tests": [
   {
    "area": "Traffic",
@@ -40,6 +40,14 @@
    "pass_mark": ">= 50%",
    "result": "miss",
    "note": "school trips and trips between stops are not simulated yet"
+  },
+  {
+   "area": "Foot traffic",
+   "test": "Model walkers higher on the City's sidewalk sweeper routes (ranking)",
+   "score": 0.787,
+   "pass_mark": ">= 0.7",
+   "result": "pass",
+   "note": "79 of the model's 100 busiest walking spots are on a route (11% of road nodes are)"
   },
   {
    "area": "Sales at a site",
