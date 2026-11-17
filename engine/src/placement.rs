@@ -45,10 +45,15 @@ impl Ord for Item {
 impl Engine {
     /// Fastest travel time, distance and next step from every road node to `dest`.
     fn routes_to(&self, dest: u32) -> (Vec<f32>, Vec<f32>, Vec<u16>) {
+        self.routes_to_with(dest, &self.city.edges.minutes)
+    }
+
+    /// Like `routes_to`, with the given minutes for each edge (used to spread traffic over routes).
+    fn routes_to_with(&self, dest: u32, edge_minutes: &[f32]) -> (Vec<f32>, Vec<f32>, Vec<u16>) {
         let n = self.n_nodes;
         let mut rev: Vec<Vec<(u32, f32, f32)>> = vec![Vec::new(); n];
         for e in 0..self.city.edges.from.len() {
-            rev[self.city.edges.to[e] as usize].push((self.city.edges.from[e], self.city.edges.minutes[e], self.city.edges.km[e]));
+            rev[self.city.edges.to[e] as usize].push((self.city.edges.from[e], edge_minutes[e], self.city.edges.km[e]));
         }
         let mut minutes = vec![f32::INFINITY; n];
         let mut km = vec![0f32; n];
@@ -71,6 +76,54 @@ impl Engine {
             }
         }
         (minutes, km, next)
+    }
+
+    /// Vehicles per day on every road node from a list of trips (origin node, destination node,
+    /// vehicles per day), each sent along its fastest route. Used for traffic the spending model
+    /// does not generate itself: commuting and traffic passing through the city.
+    ///
+    /// With `draws` above 1, drivers do not all take the single fastest route: each draw multiplies
+    /// every road's travel time by a random factor (lognormal, spread `spread`), as drivers judge
+    /// times differently and know different shortcuts, and the trips are shared equally over the draws.
+    pub fn route_volumes(&self, trips: &[(u32, u32, f64)], draws: u32, spread: f64, seed: u64) -> Vec<f64> {
+        let mut vol = vec![0f64; self.n_nodes];
+        let mut by_dest: std::collections::BTreeMap<u32, Vec<(u32, f64)>> = Default::default();
+        for &(o, d, v) in trips {
+            by_dest.entry(d).or_default().push((o, v / draws.max(1) as f64));
+        }
+        let mut rng = crate::rng::Rng::new(seed);
+        let base = &self.city.edges.minutes;
+        let tables: Vec<Vec<f32>> = (0..draws.max(1))
+            .map(|k| if k == 0 && draws <= 1 { base.clone() } else {
+                base.iter().map(|&m| m * (spread * rng.normal() - spread * spread / 2.0).exp() as f32).collect()
+            })
+            .collect();
+        for (dest, list) in &by_dest {
+            for t in &tables {
+                self.add_routes(*dest, list, t, &mut vol);
+            }
+        }
+        vol
+    }
+
+    fn add_routes(&self, dest: u32, list: &[(u32, f64)], edge_minutes: &[f32], vol: &mut [f64]) {
+        let dest = dest;
+        {
+            let (minutes, _, next) = self.routes_to_with(dest, edge_minutes);
+            for &(o, v) in list {
+                if !minutes[o as usize].is_finite() {
+                    continue;
+                }
+                let mut at = o;
+                vol[at as usize] += v;
+                let mut steps = 0;
+                while at != dest && steps < self.n_nodes {
+                    at = next[at as usize] as u32;
+                    vol[at as usize] += v;
+                    steps += 1;
+                }
+            }
+        }
     }
 
     /// What a new business of kind `sim_category` and scale `size` (typical yearly revenue of a

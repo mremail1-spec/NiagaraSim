@@ -12,7 +12,7 @@ fn arg(args: &[String], name: &str) -> Option<String> {
 fn main() {
     let args: Vec<String> = std::env::args().collect();
     if args.len() < 3 {
-        eprintln!("usage: nfsim calibrate|run <city.json> [--days N] [--mode agent|flow] [--seed S] [--beta B] [--out FILE]");
+        eprintln!("usage: nfsim calibrate|calibrate-sales|route|run <city.json> [--days N] [--mode agent|flow] [--seed S] [--beta B] [--out FILE]");
         std::process::exit(2);
     }
     let text = std::fs::read_to_string(&args[2]).expect("cannot read city file");
@@ -30,6 +30,16 @@ fn main() {
         println!("expected median driving trip km {:.2} (target {:.2})", median, engine.city.params.median_driver_trip_km_target);
         println!("share of trips under {:.1} km {:.3}; share walked {:.3}", engine.city.params.walk_max_km, short, walked);
         println!("setup seconds {:.2}", setup);
+        return;
+    }
+    if args[1] == "route" {
+        // nfsim route <city.json> --trips trips.json --out volumes.json ; trips: [[from_node, to_node, vehicles_per_day], ...]
+        let trips: Vec<(u32, u32, f64)> = serde_json::from_str(&std::fs::read_to_string(arg(&args, "--trips").expect("--trips FILE")).unwrap())
+            .expect("trips: [[from, to, vehicles], ...]");
+        let draws: u32 = arg(&args, "--draws").map(|s| s.parse().unwrap()).unwrap_or(1);
+        let spread: f64 = arg(&args, "--spread").map(|s| s.parse().unwrap()).unwrap_or(0.0);
+        let vol: Vec<f64> = engine.route_volumes(&trips, draws, spread, seed).iter().map(|v| (v * 10.0).round() / 10.0).collect();
+        std::fs::write(arg(&args, "--out").expect("--out FILE"), serde_json::to_string(&vol).unwrap()).unwrap();
         return;
     }
     if args[1] == "calibrate-sales" {
@@ -154,6 +164,10 @@ fn main() {
             }
         }
         std::fs::write(&path, csv).expect("cannot write businesses file");
+    }
+    if let (Some(path), Some(w)) = (arg(&args, "--walkers"), engine.walkers.as_ref()) {
+        let per_day: Vec<f64> = w.iter().map(|c| (c / days.max(1) as f64 * 10.0).round() / 10.0).collect();
+        std::fs::write(&path, serde_json::to_string(&per_day).unwrap()).expect("cannot write walkers file");
     }
     if let (Some(path), Some(counts)) = (traffic_out, engine.traffic.as_ref()) {
         // average vehicles per day passing each road node

@@ -518,6 +518,9 @@ impl Engine {
                 // Short hops inside the core are walked. A party strings several stops into about two
                 // car outings a day (SEED), so each purchase counts as a fraction of a round trip.
                 self.count_vehicles(2, t.base_node, t.business, 2.0 * 2.0 / 5.63);
+            } else if self.walkers.is_some() {
+                // each stop on foot is one walk from the party's base (hotel, parking lot or arrival point)
+                self.count_walkers(t.base_node, t.business, t.persons as f64);
             }
             self.state.revenue[b] += t.spend as f64;
             self.state.tour.revenue[b] += t.spend as f64;

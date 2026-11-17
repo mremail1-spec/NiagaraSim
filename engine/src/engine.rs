@@ -105,6 +105,8 @@ pub struct Engine {
     /// Cumulative destination probabilities, [slot * n_cat + category] over cat_business[category].
     pub(crate) cdf: Vec<Vec<f32>>,
     /// Expected local revenue per year for each business from each category (flow mode).
+    /// People walking past each road node, when traffic counting is on.
+    pub walkers: Option<Vec<f64>>,
     pub(crate) flow: Vec<Vec<f64>>,
     /// Expected yearly leakage out of the city and inbound spending from the towns, by category.
     pub(crate) flow_leak: Vec<f64>,
@@ -273,7 +275,7 @@ impl Engine {
         let mut e = Engine {
             city, beta, n_nodes, n_cat, dest_of_business, n_dest, minutes, km, next_hop, cat_business, cat_pull,
             home_nodes, node_slot, cdf: Vec::new(), flow: Vec::new(), flow_leak: Vec::new(), flow_inbound: Vec::new(), hh_rate, hh_pcat, hh_ticket, hour_cdf,
-            walk_near: 0.0, state, last_trips: Vec::new(), tour: None, last_tourist_trips: Vec::new(), first_added: n_biz, traffic: None, scenario: [1.0; 5], scenario_base: None, fitted_attraction_pull: None,
+            walk_near: 0.0, state, last_trips: Vec::new(), tour: None, last_tourist_trips: Vec::new(), first_added: n_biz, traffic: None, walkers: None, scenario: [1.0; 5], scenario_base: None, fitted_attraction_pull: None,
         };
         e.set_beta(beta);
         e
@@ -558,6 +560,9 @@ impl Engine {
             }
             self.state.month_category_revenue[month][c] += local;
             self.state.online_leakage += spend * online;
+            if mode == Mode::Walk && !self.is_regional(h) {
+                self.count_walkers(node as u32, b as u32, 2.0);                                      // there and back
+            }
             if mode == Mode::Driver || self.is_regional(h) {
                 self.count_vehicles(self.is_regional(h) as usize, node as u32, b as u32, 2.0);        // there and back
             }
@@ -639,11 +644,32 @@ impl Engine {
 
     /// Start counting vehicles at every road node (agent mode only).
     pub fn enable_traffic(&mut self) {
+        self.walkers = Some(vec![0.0; self.n_nodes]);
         self.traffic = Some(vec![0.0; self.n_nodes * 4]);
     }
 
     /// Add `vehicles` to every road node on the fastest route from `from_node` to a business.
     /// `source`: 0 city residents, 1 shoppers from neighbouring towns, 2 visitors getting around, 3 visitors arriving and leaving.
+    /// Add `people` walking every road node on the route from `from_node` to a business (foot traffic).
+    pub(crate) fn count_walkers(&mut self, from_node: u32, business: u32, people: f64) {
+        if self.walkers.is_none() {
+            return;
+        }
+        let base = self.dest_of_business[business as usize] as usize * self.n_nodes;
+        let dest = self.city.businesses.node[business as usize];
+        let n = self.n_nodes;
+        let mut path = vec![from_node];
+        let mut at = from_node;
+        while at != dest && path.len() < n {
+            at = self.next_hop[base + at as usize] as u32;
+            path.push(at);
+        }
+        let w = self.walkers.as_mut().unwrap();
+        for p in path {
+            w[p as usize] += people;
+        }
+    }
+
     pub(crate) fn count_vehicles(&mut self, source: usize, from_node: u32, business: u32, vehicles: f64) {
         if self.traffic.is_none() {
             return;

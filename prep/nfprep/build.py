@@ -70,6 +70,9 @@ def main(year: int = 2025, seed: int = 1) -> None:
     export_city(city["pack"], city, city["budgets"], year, out / "city.json")
     from .passby import apply as add_passing_traffic          # needs the engine binary
     add_passing_traffic(out / "city.json")
+    if year == 2025:
+        from .traffic_layers import main as add_commuting_and_through_traffic
+        add_commuting_and_through_traffic()
     (out / "report.json").write_text(json.dumps(city["report"], indent=1))
     for k, v in city["report"].items():
         print(f"{k:40s} {v}")
