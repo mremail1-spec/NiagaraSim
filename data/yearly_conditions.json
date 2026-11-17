@@ -1,9 +1,48 @@
-{"_meta": {"purpose": "Year-by-year conditions for the 2020-2025 check, as multipliers on the calibrated 2025 year.",
-  "sources": {"hotel_occupancy": "Niagara Falls hotel occupancy: 2019 65%, 2020 28%, 2021 34%, 2022 55% (data/sim_parameters.json, regional hotel market); 2023 about 68% and 2024 about 66% (CBRE year-to-date, data/hotel_monthly_cbre.json); 2025 about 62% (CBRE January-November 63.2%, full year a little lower).",
-              "us_arrivals": "US travellers into Ontario: 13.16M (2019), 11.31M (2024), 10.79M (2025) (data/behaviour_parameters.json). The border was closed to US leisure travel from March 2020 to August 2021; 2022 and 2023 values are interpolated (SEED).",
-              "residents": "Residents spent less in 2020 and 2021 while dine-in and non-essential retail were closed (SEED)."},
-  "method": "visitors overall move with hotel occupancy relative to 2025; US and overseas are set from arrival data and the border closure; domestic visitors make up the rest so total visitor demand moves with occupancy."},
- "hotel_occupancy": {"2019": 0.65, "2020": 0.28, "2021": 0.34, "2022": 0.55, "2023": 0.68, "2024": 0.66, "2025": 0.62},
- "us": {"2019": 1.22, "2020": 0.15, "2021": 0.12, "2022": 0.65, "2023": 0.90, "2024": 1.05, "2025": 1.0},
- "overseas": {"2019": 1.10, "2020": 0.15, "2021": 0.10, "2022": 0.55, "2023": 0.85, "2024": 0.95, "2025": 1.0},
- "resident": {"2019": 1.0, "2020": 0.85, "2021": 0.90, "2022": 1.0, "2023": 1.0, "2024": 1.0, "2025": 1.0}}
+{
+ "_meta": {
+  "purpose": "Year-by-year conditions for the 2020-2025 check, as multipliers on the calibrated 2025 year.",
+  "sources": {
+   "hotel_occupancy": "Niagara Falls hotel occupancy: 2019 65%, 2020 28%, 2021 34%, 2022 55% (data/sim_parameters.json, regional hotel market); 2023 about 68% and 2024 about 66% (CBRE year-to-date, data/hotel_monthly_cbre.json); 2025 about 62% (CBRE January-November 63.2%, full year a little lower).",
+   "us_arrivals": "US travellers into Ontario: 13.16M (2019), 11.31M (2024), 10.79M (2025) (data/behaviour_parameters.json). The border was closed to US leisure travel from March 2020 to August 2021; 2022 and 2023 values are interpolated (SEED).",
+   "residents": "Residents spent less in 2020 and 2021 while dine-in and non-essential retail were closed (SEED).",
+   "population": "Resident spending is also scaled by Statistics Canada's population estimate for each year relative to 2025 (96,078 in 2019 to 113,983 in 2025)."
+  },
+  "method": "visitors overall move with hotel occupancy relative to 2025; US and overseas are set from arrival data and the border closure; domestic visitors make up the rest so total visitor demand moves with occupancy."
+ },
+ "hotel_occupancy": {
+  "2019": 0.65,
+  "2020": 0.28,
+  "2021": 0.34,
+  "2022": 0.55,
+  "2023": 0.68,
+  "2024": 0.66,
+  "2025": 0.62
+ },
+ "us": {
+  "2019": 1.22,
+  "2020": 0.15,
+  "2021": 0.12,
+  "2022": 0.65,
+  "2023": 0.9,
+  "2024": 1.05,
+  "2025": 1.0
+ },
+ "overseas": {
+  "2019": 1.1,
+  "2020": 0.15,
+  "2021": 0.1,
+  "2022": 0.55,
+  "2023": 0.85,
+  "2024": 0.95,
+  "2025": 1.0
+ },
+ "resident": {
+  "2019": 1.0,
+  "2020": 0.85,
+  "2021": 0.9,
+  "2022": 1.0,
+  "2023": 1.0,
+  "2024": 1.0,
+  "2025": 1.0
+ }
+}

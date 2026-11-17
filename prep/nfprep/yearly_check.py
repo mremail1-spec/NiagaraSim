@@ -49,10 +49,13 @@ def main() -> dict:
     naics = [CATEGORY_NAICS.get(cats[c], "") if not b["external"][i] else "" for i, c in enumerate(b["sim_category"])]
     beta = json.loads((DATA_DIR / "calibrated_multipliers.json").read_text())["beta"]
     years = [str(y) for y in range(2020, 2026)]
+    pop = json.loads((DATA_DIR / "sim_parameters.json").read_text())["residents"]["population"]["statcan_estimates_by_year"]
     revenue = {}
     for y in years:
         v = cond["hotel_occupancy"][y] / cond["hotel_occupancy"]["2025"]
         us, ov, res = cond["us"][y], cond["overseas"][y], cond["resident"][y]
+        # residents' spending also grows with population (Statistics Canada estimates)
+        res *= pop[y] / pop["2025"]
         dom = (v * sum(SHARE.values()) - us * SHARE["us"] - ov * SHARE["overseas"]) / SHARE["domestic"]
         out = BUILD_DIR / "city_2025" / f"revenue_{y}.csv"
         subprocess.run([str(ROOT / "engine/target/release/nfsim"), "run", str(city_path), "--mode", "flow", "--days", "365",
@@ -64,7 +67,7 @@ def main() -> dict:
             if n in by:
                 by[n] += float(r["revenue"])
         revenue[y] = by
-        print(f"{y}: domestic {dom:.2f}, US {us:.2f}, overseas {ov:.2f}, residents {res:.2f}")
+        print(f"{y}: domestic {dom:.2f}, US {us:.2f}, overseas {ov:.2f}, residents {res:.2f} (population {pop[y]:,})")
     rows = []
     for code, name in INDUSTRIES.items():
         for i in range(1, len(years)):
