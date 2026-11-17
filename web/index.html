@@ -591,6 +591,16 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
       : city.sim_categories[b.sim_category[i]] === "free_sight" ? "Free to visit. It earns nothing itself, but draws visitors who then spend at businesses nearby."
       : i >= baseCount ? "A business you placed. Restart removes it."
       : "Model estimate from simulated resident and tourist spending, not the business's real sales.";
+    const risk = closureNote(city.sim_categories[b.sim_category[i]]);
+    if (risk && !isStandin) $("bNote").textContent += " " + risk;
+  }
+
+  // chance of closing within about five years: the kind's own record on the map, 2021 to 2026
+  function closureNote(kind) {
+    const cr = city.closure_rates;
+    if (!cr || !cr.by_kind[kind]) return "";
+    const k = cr.by_kind[kind];
+    return `Chance a ${kind.replace(/_/g, " ")} closes within about five years: ${Math.round(k.rate * 100)}% (${k.closed} of ${k.businesses} on the map in January 2021 were gone by July 2026; map edits lag, so the real rate is likely higher). Nothing else the model knows about a site predicted closures better than this.`;
   }
 
   let hudT = 0;
@@ -663,7 +673,7 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
     $("fRows").innerHTML = rows;
     const rev = typical[0] + typical[1];
     $("fMix").textContent = `Typical size: ${Math.round(typical[1] / rev * 100)}% of sales from tourists, ${money(typical[2])} won back from out-of-town shopping. Busiest month ${["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"][typical.slice(3, 15).indexOf(Math.max(...typical.slice(3, 15)))]}.`;
-    $("fMix").textContent += " " + siteNotes(m.sim_category);
+    $("fMix").textContent += " " + siteNotes(m.sim_category) + " " + closureNote(city.sim_categories[m.sim_category]);
     const count = typical[15];
     let losers = "";
     for (let i = 0; i < Math.min(4, count); i++) losers += `<li>${city.businesses.name[typical[16 + i * 2]] || "Unnamed place"}: ${money(typical[17 + i * 2])} a year</li>`;

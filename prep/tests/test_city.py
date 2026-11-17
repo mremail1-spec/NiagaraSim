@@ -114,3 +114,14 @@ def test_statcan_closing_rates_cover_the_survival_years():
     r = statcan_rates({k.split(" | ")[1]: v for k, v in sc.items()})
     assert set(YEARS) <= set(r)
     assert r["2020"] > r["2019"] + 0.1 and 0.3 < r["2019"] < 0.7
+
+
+def test_closure_rates_are_shrunk_kind_rates():
+    import json
+    from nfprep.closure_risk import ROOT, SHRINK
+    d = json.loads((ROOT / "data" / "closure_rates_2021_2026.json").read_text())
+    o = d["_meta"]["overall"]
+    for k, v in d["by_kind"].items():
+        assert abs(v["rate"] - (v["closed"] + SHRINK * o) / (v["businesses"] + SHRINK)) < 1e-3, k
+    check = json.loads((ROOT / "docs" / "closure_risk_check.json").read_text())
+    assert len(check["variants_tried"]) == 16

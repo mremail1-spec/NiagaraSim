@@ -1,0 +1,73 @@
+{
+ "_meta": {
+  "what": "Share of businesses on the map in January 2021 that were gone by July 2026, by kind, shrunk toward the overall rate (0.078) as if each kind had 20 more businesses at that rate. Written by prep/nfprep/closure_risk.py.",
+  "overall": 0.0784
+ },
+ "by_kind": {
+  "apparel": {
+   "rate": 0.0467,
+   "businesses": 35,
+   "closed": 1
+  },
+  "auto_service": {
+   "rate": 0.0461,
+   "businesses": 14,
+   "closed": 0
+  },
+  "bar_pub": {
+   "rate": 0.1115,
+   "businesses": 12,
+   "closed": 2
+  },
+  "cafe": {
+   "rate": 0.0494,
+   "businesses": 32,
+   "closed": 1
+  },
+  "fast_food": {
+   "rate": 0.0515,
+   "businesses": 88,
+   "closed": 4
+  },
+  "general_merchandise": {
+   "rate": 0.0755,
+   "businesses": 14,
+   "closed": 1
+  },
+  "grocery_food": {
+   "rate": 0.0463,
+   "businesses": 57,
+   "closed": 2
+  },
+  "home_electronics": {
+   "rate": 0.0972,
+   "businesses": 27,
+   "closed": 3
+  },
+  "personal_services": {
+   "rate": 0.0585,
+   "businesses": 41,
+   "closed": 2
+  },
+  "restaurant": {
+   "rate": 0.1184,
+   "businesses": 103,
+   "closed": 13
+  },
+  "retail_other": {
+   "rate": 0.1059,
+   "businesses": 42,
+   "closed": 5
+  },
+  "souvenir_gift": {
+   "rate": 0.1505,
+   "businesses": 17,
+   "closed": 4
+  },
+  "tobacco_cannabis": {
+   "rate": 0.0681,
+   "businesses": 3,
+   "closed": 0
+  }
+ }
+}
