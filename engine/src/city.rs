@@ -12,6 +12,8 @@ pub struct City {
     pub categories: Categories,
     pub params: Params,
     #[serde(default)]
+    pub business_groups: Vec<String>,
+    #[serde(default)]
     pub tourism: Option<Tourism>,
 }
 
@@ -45,6 +47,10 @@ pub struct TouristCategories {
     pub share: Vec<f64>,
     pub events_per_party_day: Vec<f64>,
     pub served_by: Vec<Vec<f64>>,
+    /// Calibration: share of the travel survey's spending in each category that is spent at
+    /// businesses inside the city (empty = all of it).
+    #[serde(default)]
+    pub capture: Vec<f64>,
 }
 
 #[derive(Clone, Deserialize)]
@@ -100,6 +106,9 @@ pub struct Businesses {
     pub staff: Vec<u32>,
     pub revenue_prior: Vec<f64>,
     pub name: Vec<String>,
+    /// Industry group used for calibration (index into `business_groups`; empty when absent).
+    #[serde(default)]
+    pub group: Vec<u32>,
     /// How much a store of this format pulls compared with a typical one in its group
     /// (a supermarket against a corner store).
     pub format_weight: Vec<f64>,
@@ -117,6 +126,9 @@ pub struct Households {
     pub node: Vec<u32>,
     pub persons5: Vec<u32>,
     pub vehicles: Vec<u32>,
+    /// 1 for a block of households in a neighbouring town (empty = all are city households).
+    #[serde(default)]
+    pub regional: Vec<u8>,
     /// Annual budget, households x categories, row by row.
     pub budget: Vec<f32>,
 }
@@ -128,6 +140,9 @@ pub struct Categories {
     pub retail: Vec<u8>,
     pub season: Vec<Vec<f64>>,
     pub served_by: Vec<Vec<f64>>,
+    /// Calibration: multiplier on neighbouring towns' pull for each category (empty = 1 for all).
+    #[serde(default)]
+    pub external_scale: Vec<f64>,
 }
 
 #[derive(Clone, Deserialize)]

@@ -33,6 +33,8 @@ pub struct TourRt {
     /// Spending per person per day by segment and category (accommodation and fares excluded).
     pub seg_budget: Vec<Vec<f64>>,
     pub seg_fares: Vec<f64>,
+    /// Survey spending per person per day that is not spent at city businesses (calibration).
+    pub seg_elsewhere: Vec<f64>,
     pub avg_nights: f64,
     pub nights_cdf: Vec<f64>,
     /// Multiplier that turns published attendance into pull, tuned so Journey Behind the Falls matches.
@@ -73,6 +75,9 @@ pub struct TourState {
     /// Visitors arriving, [segment][month].
     pub arrivals: Vec<Vec<f64>>,
     pub fares: f64,
+    /// Survey spending that the calibration places outside the city's businesses.
+    #[serde(default)]
+    pub elsewhere: f64,
     /// Rooms, units or sites still free tonight, per business.
     pub free: Vec<u32>,
     pub turned_away: u64,
@@ -120,8 +125,10 @@ impl Engine {
             }
         }
         let mut homes = vec![0f64; self.home_nodes.len()];
-        for &node in &self.city.households.node {
-            homes[self.node_slot[node as usize] as usize] += 1.0;
+        for (h, &node) in self.city.households.node.iter().enumerate() {
+            if !self.is_regional(h) {       // visitors staying with friends stay with city households
+                homes[self.node_slot[node as usize] as usize] += 1.0;
+            }
         }
         for (slot, &node) in self.home_nodes.iter().enumerate() {
             groups[GROUP_PRIVATE].nodes.push(node);
@@ -158,13 +165,16 @@ impl Engine {
         let acc_avg = t.accommodation_spend_per_paid_person_night * paid_share;
         let mut seg_budget = Vec::new();
         let mut seg_fares = Vec::new();
+        let mut seg_elsewhere = Vec::new();
         for s in &t.segments {
             let other = (s.spend_per_person_day - if s.overnight == 1 { acc_avg } else { 0.0 }).max(0.0);
-            seg_budget.push(t.categories.share.iter().map(|sh| other * sh).collect::<Vec<f64>>());
+            let capture = |c: usize| t.categories.capture.get(c).copied().unwrap_or(1.0);
+            seg_budget.push(t.categories.share.iter().enumerate().map(|(c, sh)| other * sh * capture(c)).collect::<Vec<f64>>());
+            seg_elsewhere.push(t.categories.share.iter().enumerate().map(|(c, sh)| other * sh * (1.0 - capture(c))).sum::<f64>());
             seg_fares.push(other * t.transport_fare_share);
         }
 
-        let mut rt = TourRt { n_cat, cat_business, cat_pull, groups, dist: vec![], seg_budget, seg_fares, avg_nights,
+        let mut rt = TourRt { n_cat, cat_business, cat_pull, groups, dist: vec![], seg_budget, seg_fares, seg_elsewhere, avg_nights,
                               nights_cdf, attendance_pull: 1.0, cdf_cache: HashMap::new() };
 
         // tune the pull of attractions with published attendance so Journey Behind the Falls matches
@@ -257,7 +267,7 @@ impl Engine {
             self.state.tour = TourState {
                 parties: vec![], plan: vec![Vec::new(); 24], revenue: vec![0.0; n_biz], persons: vec![0.0; n_biz],
                 month_category_revenue: vec![vec![0.0; n_cat]; 12], accommodation_by_month: vec![0.0; 12],
-                room_nights_by_month: vec![0.0; 12], arrivals: vec![vec![0.0; 12]; n_seg], fares: 0.0,
+                room_nights_by_month: vec![0.0; 12], arrivals: vec![vec![0.0; 12]; n_seg], fares: 0.0, elsewhere: 0.0,
                 free: t.capacity.clone(), turned_away: 0, visitors_today: 0.0,
             };
         }
@@ -366,6 +376,7 @@ impl Engine {
                 }
             }
             self.state.tour.fares += rt.seg_fares[seg] * p.size as f64;
+            self.state.tour.elsewhere += rt.seg_elsewhere[seg] * p.size as f64;
             for c in 0..rt.n_cat {
                 let per_day = t.categories.events_per_party_day[c];
                 let n = self.state.rng.poisson(per_day);
@@ -460,6 +471,7 @@ impl Engine {
             let person_days = arriving * if overnight { rt.avg_nights } else { 1.0 };
             present += person_days;
             self.state.tour.fares += rt.seg_fares[seg] * person_days;
+            self.state.tour.elsewhere += rt.seg_elsewhere[seg] * person_days;
             let shares = self.group_shares(seg);
             for g in 0..5 {
                 let pd = person_days * shares[g];

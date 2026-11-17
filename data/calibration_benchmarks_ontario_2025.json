@@ -1,0 +1,50 @@
+{
+ "_meta": {
+  "purpose": "Government figures used to estimate what each kind of store in Niagara Falls actually sells, so the simulation can be calibrated to them.",
+  "method": "City sales for a store type = (Ontario sales / Ontario employees in that store type) x employees of that store type in Niagara Falls. City employees come from the business register's size bands (data/business_revenue_benchmarks.csv) at the midpoint of each band.",
+  "sources": {
+   "retail_sales": "Statistics Canada table 20-10-0056-01, retail trade sales by province and industry, Ontario, unadjusted, sum of the 12 months of 2025 ($ thousands)",
+   "food_services_sales": "Statistics Canada monthly survey of food services and drinking places, Ontario 2025 (from behaviour_parameters.json: ontario_totals_2025)",
+   "employment": "Statistics Canada table 14-10-0202-01, employment by industry, annual, Ontario 2025, all employees",
+   "population": "Statistics Canada table 17-10-0005-01, Ontario, July 1 2025",
+   "gasoline": "Statistics Canada table 23-10-0066-01, net sales of gasoline, Ontario 2025 (thousand litres)"
+  },
+  "band_midpoints_employees": {
+   "nf_1_4": 2.5,
+   "nf_5_9": 7,
+   "nf_10_19": 14.5,
+   "nf_20_49": 34.5,
+   "nf_50_99": 74.5,
+   "nf_100_plus": 150
+  },
+  "seed": "The 100+ band has no upper limit; 150 employees is an assumption. Store types with many 100+ firms (hotels, casinos) are reported but not used for calibration."
+ },
+ "ontario_population_2025": 16216961,
+ "ontario_net_gasoline_sales_thousand_litres_2025": 16730267,
+ "ontario_sales_thousands_2025": {
+  "441": 84928327,
+  "444": 16130141,
+  "445": 56709249,
+  "449": 19132387,
+  "455": 56071305,
+  "456": 25221881,
+  "457": 24196144,
+  "458": 19272412,
+  "459": 17842009,
+  "722": 39400000
+ },
+ "ontario_employees_2025": {
+  "441": 76329,
+  "444": 52453,
+  "445": 189001,
+  "449": 39479,
+  "455": 104829,
+  "456": 86170,
+  "457": 20075,
+  "458": 82257,
+  "459": 74378,
+  "722": 417610,
+  "721": 58807,
+  "713": 92908
+ }
+}

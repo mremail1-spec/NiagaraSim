@@ -1,10 +1,42 @@
-{"_meta": {"source": "Statistics Canada, 2021 Census, table 98-10-0002-01 (population by census subdivision). Centre points are approximate locations of each municipality's main shopping area, placed by hand.",
-  "use": "Out-of-town shopping destinations for Niagara Falls residents. Each town pulls in proportion to its population relative to Niagara Falls (94,415).",
-  "seeds": "detour_factor and highway_kmh convert straight-line distance beyond the city's edge into road distance and time."},
- "detour_factor": 1.3, "highway_kmh": 70,
+{
+ "_meta": {
+  "source": "Statistics Canada, 2021 Census, table 98-10-0002-01 (population by census subdivision). Centre points are approximate locations of each municipality's main shopping area, placed by hand.",
+  "use": "Out-of-town shopping destinations for Niagara Falls residents, and the homes of shoppers who drive into Niagara Falls. Each town pulls in proportion to its population relative to Niagara Falls (94,415).",
+  "seeds": "detour_factor and highway_kmh convert straight-line distance beyond the city's edge into road distance and time. in_town_kmh is the speed of a local trip inside a town. Town residents are assumed to spend like the average Niagara Falls household and to have grown in step with the city."
+ },
+ "detour_factor": 1.3,
+ "highway_kmh": 70,
  "towns": [
-  {"name": "St. Catharines", "population_2021": 136803, "lat": 43.136, "lon": -79.224},
-  {"name": "Welland", "population_2021": 55750, "lat": 42.992, "lon": -79.248},
-  {"name": "Thorold", "population_2021": 23816, "lat": 43.123, "lon": -79.199},
-  {"name": "Niagara-on-the-Lake", "population_2021": 19088, "lat": 43.158, "lon": -79.166},
-  {"name": "Fort Erie", "population_2021": 32901, "lat": 42.905, "lon": -78.930}]}
+  {
+   "name": "St. Catharines",
+   "population_2021": 136803,
+   "lat": 43.136,
+   "lon": -79.224
+  },
+  {
+   "name": "Welland",
+   "population_2021": 55750,
+   "lat": 42.992,
+   "lon": -79.248
+  },
+  {
+   "name": "Thorold",
+   "population_2021": 23816,
+   "lat": 43.123,
+   "lon": -79.199
+  },
+  {
+   "name": "Niagara-on-the-Lake",
+   "population_2021": 19088,
+   "lat": 43.158,
+   "lon": -79.166
+  },
+  {
+   "name": "Fort Erie",
+   "population_2021": 32901,
+   "lat": 42.905,
+   "lon": -78.93
+  }
+ ],
+ "in_town_kmh": 40
+}

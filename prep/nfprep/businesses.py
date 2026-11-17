@@ -48,7 +48,18 @@ DEFAULT_HOURS = {"restaurant": (11, 22), "fast_food": (7, 23), "cafe": (7, 19), 
 FALLBACK_HOURS = (9, 18)
 # SEED: pull of a store format relative to a typical outlet in its category, keyed by the
 # OpenStreetMap tag. A supermarket draws far more grocery spending than a corner store.
-FORMAT_WEIGHT = {"supermarket": 10, "wholesale": 10, "department_store": 6, "mall": 3, "convenience": 0.5,
+def nice_case(text: str) -> str:
+    """'5619 STANLEY AV' -> '5619 Stanley Av'; keeps "Lundy's" and "McLeod" right."""
+    out = []
+    for w in text.split(" "):
+        w = w.capitalize()
+        if w.startswith("Mc") and len(w) > 2:
+            w = "Mc" + w[2:].capitalize()
+        out.append(w)
+    return " ".join(out)
+
+
+FORMAT_WEIGHT = {"charging_station": 0.02, "supermarket": 10, "wholesale": 10, "department_store": 6, "mall": 3, "convenience": 0.5,
                  "alcohol": 1.5, "wine": 0.8, "bakery": 0.4, "butcher": 0.4, "deli": 0.4, "greengrocer": 0.4,
                  "confectionery": 0.3, "health_food": 0.4, "frozen_food": 0.4, "variety_store": 1.0,
                  "doityourself": 5, "hardware": 3, "furniture": 3, "appliance": 2, "electronics": 3,
@@ -149,6 +160,24 @@ def build_businesses(pack: Pack, seed: int = 1) -> list[dict]:
             add("synthetic", f"Synthetic {category} {k + 1}", category,
                 a["lat"] + dist * math.sin(ang) / 111_320,
                 a["lon"] + dist * math.cos(ang) / (111_320 * math.cos(math.radians(a["lat"]))))
+
+    # civic address: the licence's own address, else the nearest city address point within 80 m
+    pts = pack.tables["address_points.csv"]
+    alat = np.array([float(r["lat"]) for r in pts])
+    alon = np.array([float(r["lon"]) for r in pts])
+    licence_address = {(l["business"], l["lat"]): l["address"] for l in pack.tables["licensed_tourism_businesses.csv"]}
+    for r in rows:
+        r["address"], r["address_source"] = "", ""
+        if r["source"] == "synthetic":
+            continue
+        d = _dist_m(r["lat"], r["lon"], alat, alon)
+        i = int(d.argmin())
+        if d[i] <= 80:
+            r["address"], r["address_source"] = nice_case(pts[i]["address"]), "nearest civic address (%d m)" % round(d[i])
+    for l in pack.tables["licensed_tourism_businesses.csv"]:
+        for r in rows:
+            if r["source"].startswith("licence") and r["name"] == l["business"] and l["lat"] and abs(r["lat"] - float(l["lat"])) < 1e-6:
+                r["address"], r["address_source"] = nice_case(l["address"]), "city licence"
 
     # tract and Tourist Core flags for everything added after the map places
     lat = np.array([r["lat"] for r in rows])

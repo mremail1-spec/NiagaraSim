@@ -180,7 +180,7 @@ impl Engine {
     }
 
     /// Rebuild the lists of who serves each resident category after the business list changed.
-    fn rebuild_categories(&mut self) {
+    pub(crate) fn rebuild_categories(&mut self) {
         let n_biz = self.city.businesses.node.len();
         let exp = self.city.params.attractiveness_exponent;
         for c in 0..self.n_cat {
@@ -202,7 +202,8 @@ impl Engine {
                 let w = self.city.categories.served_by[c][self.city.businesses.sim_category[b] as usize];
                 if w > 0.0 && self.city.businesses.external[b] == 1 && original_pull > 0.0 {
                     list.push(b as u32);
-                    pull.push(w * original_pull * self.city.businesses.pull_scale[b]);
+                    let cal = self.city.categories.external_scale.get(c).copied().unwrap_or(1.0);
+                    pull.push(w * original_pull * self.city.businesses.pull_scale[b] * cal);
                 }
             }
             self.cat_business[c] = list;
@@ -259,6 +260,39 @@ impl Engine {
         let beta = self.beta;
         self.set_beta(beta);
         (self.city.businesses.node.len() - 1) as u32
+    }
+
+    /// Set the calibration multipliers and rebuild every table that depends on them.
+    pub fn set_multipliers(&mut self, external_scale: Vec<f64>, capture: Vec<f64>) {
+        self.city.categories.external_scale = external_scale;
+        if let Some(t) = self.city.tourism.as_mut() {
+            t.categories.capture = capture;
+        }
+        self.rebuild_categories();
+        self.recalibrate_beta();
+    }
+
+    /// Tune beta again so the median driving trip matches the travel survey.
+    pub fn recalibrate_beta(&mut self) {
+        let target = self.city.params.median_driver_trip_km_target;
+        let (mut lo, mut hi) = (0.0f64, 6.0f64);
+        for _ in 0..30 {
+            let mid = (lo + hi) / 2.0;
+            if self.expected_trip_stats(mid).0 > target { lo = mid } else { hi = mid }
+        }
+        self.set_beta((lo + hi) / 2.0);
+    }
+
+    /// Yearly revenue each business can expect from residents alone.
+    pub fn expected_yearly_resident_revenue(&self) -> Vec<f64> {
+        let n_biz = self.city.businesses.node.len();
+        let mut out = vec![0f64; n_biz];
+        for c in 0..self.n_cat {
+            for b in 0..n_biz {
+                out[b] += self.flow[c][b];
+            }
+        }
+        out
     }
 
     /// Yearly revenue each business can expect at the current settings (flow mode, no randomness).

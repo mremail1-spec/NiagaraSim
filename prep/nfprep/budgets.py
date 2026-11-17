@@ -36,32 +36,43 @@ CATEGORIES = {
     "vehicle_service": (["Maintenance and repairs of vehicles"], [], "flat", False),
     "pets": (["Pet expenses"], [], "retail", True),
     "games_of_chance": (["Games of chance"], [], "flat", False),
+    # Department, warehouse and dollar stores. No survey line of its own: its budget is set from
+    # Ontario's per-capita general-merchandise sales (see RETAIL_STORE_TYPES).
+    "general_merchandise": ([], [], "retail", True),
 }
+# Household retail budgets are scaled so the city's total for each store type equals Ontario's
+# retail sales per resident for that store type (Statistics Canada table 20-10-0056) times the
+# population. The household survey alone covers only about two thirds of retail sales: it leaves
+# out purchases by businesses and under-reports several categories.
+RETAIL_STORE_TYPES = {"445": ["groceries", "alcohol_tobacco_cannabis"], "449": ["household_goods"], "456": ["pharmacy"],
+                      "457": ["fuel"], "458": ["clothing"], "459": ["recreation_goods", "pets"]}
+RETAIL_SCALES: dict = {}
 CATEGORY_NAMES = list(CATEGORIES)
 
 # Which kinds of business serve each spending category, and how strongly.
 # 1.0 = the category's main outlet. SEED: the fractional weights (general merchandise
 # stores selling groceries, pharmacies selling personal care, and so on) are priors.
 SERVED_BY = {
-    "groceries": {"grocery_food": 1.0, "general_merchandise": 0.5},
+    "groceries": {"grocery_food": 1.0},
     "restaurants": {"restaurant": 1.0, "fast_food": 1.0, "cafe": 1.0, "bar_pub": 1.0, "nightlife": 1.0},
-    "clothing": {"apparel": 1.0, "general_merchandise": 0.5},
-    "household_goods": {"home_electronics": 1.0, "general_merchandise": 0.5},
+    "clothing": {"apparel": 1.0},
+    "household_goods": {"home_electronics": 1.0},
+    "general_merchandise": {"general_merchandise": 1.0},
     "personal_care": {"personal_services": 1.0, "pharmacy": 0.5},
     "pharmacy": {"pharmacy": 1.0},
     "health_services": {"health": 1.0},
-    "recreation_goods": {"retail_other": 1.0, "general_merchandise": 0.3, "craft": 0.5},
+    "recreation_goods": {"retail_other": 1.0, "craft": 0.5},
     "recreation_services": {"leisure_paid": 1.0, "entertainment": 1.0, "attraction": 1.0},
     "alcohol_tobacco_cannabis": {"tobacco_cannabis": 1.0, "grocery_food": 0.3},
     "fuel": {"fuel": 1.0},
     "vehicle_service": {"auto_service": 1.0},
-    "pets": {"pet": 1.0, "grocery_food": 0.2, "general_merchandise": 0.3},
+    "pets": {"pet": 1.0, "grocery_food": 0.2},
     "games_of_chance": {"casino": 1.0},
 }
 # SEED: typical spend per visit. Only the ratios matter: they split a household's outings
 # between categories. The engine rescales them so total outings equal the travel survey's
 # trip rate, and revenue is fixed by the budgets whatever these values are.
-TYPICAL_VISIT_SPEND = {"groceries": 70, "restaurants": 40, "clothing": 90, "household_goods": 130,
+TYPICAL_VISIT_SPEND = {"general_merchandise": 80, "groceries": 70, "restaurants": 40, "clothing": 90, "household_goods": 130,
                        "personal_care": 50, "pharmacy": 35, "health_services": 150, "recreation_goods": 70,
                        "recreation_services": 45, "alcohol_tobacco_cannabis": 40, "fuel": 60,
                        "vehicle_service": 250, "pets": 55, "games_of_chance": 100}
@@ -104,6 +115,8 @@ def assign_budgets(pack: Pack, households: list[dict], year: int) -> np.ndarray:
     out = np.zeros((len(households), len(CATEGORY_NAMES)))
     for c, name in enumerate(CATEGORY_NAMES):
         plus, minus, _, _ = CATEGORIES[name]
+        if not plus:
+            continue
         target = np.array([sum(line(on, l, q) or 0 for l in plus) - sum(line(on, l, q) or 0 for l in minus)
                            for q in q_names])
         raw = np.zeros(len(households))
@@ -118,7 +131,21 @@ def assign_budgets(pack: Pack, households: list[dict], year: int) -> np.ndarray:
         out[:, c] = np.maximum(raw, 0)
     for i, h in enumerate(households):
         h["income_quintile_ontario"] = int(quint[i]) + 1
-    return out * idx[str(year)] / idx[str(SPENDING_DOLLAR_YEAR)]
+    out *= idx[str(year)] / idx[str(SPENDING_DOLLAR_YEAR)]
+    # scale retail categories to Ontario's per-capita retail sales by store type
+    from .calibration import sales_targets
+    population = sum(h["size"] for h in households)
+    targets = sales_targets(pack, population)
+    to_year = idx[str(year)] / idx["2025"]
+    col = {n: i for i, n in enumerate(CATEGORY_NAMES)}
+    basket = out[:, col["groceries"]] + out[:, col["clothing"]] + out[:, col["household_goods"]]
+    for group, names in RETAIL_STORE_TYPES.items():
+        cols = [col[n] for n in names]
+        k = targets[group]["per_capita_sales"] * to_year / out[:, cols].sum()
+        out[:, cols] *= k
+        RETAIL_SCALES[group] = round(float(k), 3)
+    out[:, col["general_merchandise"]] = targets["455"]["per_capita_sales"] * to_year * basket / basket.sum()
+    return out
 
 
 def _tourism_block(tour: dict, sim_cats: list[str], n_total: int) -> dict:
@@ -178,13 +205,31 @@ def export_city(pack: Pack, city: dict, budgets: np.ndarray, year: int, path: Pa
     towns = json.loads((DATA_DIR / "neighbouring_municipalities.json").read_text())
     nlat, nlon = np.array([n["lat"] for n in nodes]), np.array([n["lon"] for n in nodes])
     ext = []
+    # Each town becomes a road node of its own, joined to the nearest city road node by a highway
+    # link. Its shops are one stand-in business there, and its residents are grouped into
+    # "blocks" of 100 households who can shop at home or drive into Niagara Falls.
+    town_nodes, town_edges, town_households = [], [], []
+    growth = len(city["persons"]) / 94415                      # SEED: towns grew in step with Niagara Falls
+    hh_size = len(city["persons"]) / len(hh)
+    block = 100
     for t in towns["towns"]:
         d = np.hypot((nlat - t["lat"]) * 111.32, (nlon - t["lon"]) * 111.32 * np.cos(np.radians(t["lat"])))
         km = float(d.min()) * towns["detour_factor"]
-        ext.append({"name": t["name"] + " (out of town)", "node": int(d.argmin()), "lat": t["lat"], "lon": t["lon"],
-                    "extra_km": round(km, 2), "extra_min": round(km / towns["highway_kmh"] * 60, 2),
+        node = len(nodes) + len(town_nodes)
+        town_nodes.append((t["lat"], t["lon"]))
+        town_edges.append((int(d.argmin()), node, round(km, 3), round(km / towns["highway_kmh"] * 60, 3)))
+        ext.append({"name": t["name"] + " (out of town)", "node": node, "lat": t["lat"], "lon": t["lon"],
+                    # shops inside a town are a typical local trip away: the survey's median driving trip
+                    "extra_km": trips["median_driver_trip_km"],
+                    "extra_min": round(trips["median_driver_trip_km"] / towns["in_town_kmh"] * 60, 2),
                     "pull_scale": round(t["population_2021"] / 94415, 4)})
+        town_households += [node] * int(round(t["population_2021"] * growth / hh_size / block))
     n_real = len(biz)
+    from .calibration import GROUPS, sales_targets
+    group_names = list(GROUPS)
+    group_of = {n: i for i, g in enumerate(group_names) for n in GROUPS[g]}
+    cal_path = DATA_DIR / "calibrated_multipliers.json"
+    cal = json.loads(cal_path.read_text()) if cal_path.exists() else {}
     persons5 = np.zeros(len(hh), int)
     for p in city["persons"]:
         if p["age"] >= 5:
@@ -203,9 +248,12 @@ def export_city(pack: Pack, city: dict, budgets: np.ndarray, year: int, path: Pa
     doc = {
         "meta": {"year": year, "seed": city["report"]["seed"], "population": len(city["persons"]),
                  "fingerprint": city["report"]["fingerprint"]},
-        "nodes": {"lat": [n["lat"] for n in nodes], "lon": [n["lon"] for n in nodes]},
-        "edges": {"from": [e["from_node"] for e in edges], "to": [e["to_node"] for e in edges],
-                  "km": [round(e["length_m"] / 1000, 4) for e in edges], "minutes": [e["minutes"] for e in edges]},
+        "nodes": {"lat": [n["lat"] for n in nodes] + [t[0] for t in town_nodes],
+                  "lon": [n["lon"] for n in nodes] + [t[1] for t in town_nodes]},
+        "edges": {"from": [e["from_node"] for e in edges] + [a for a, b, _, _ in town_edges] + [b for a, b, _, _ in town_edges],
+                  "to": [e["to_node"] for e in edges] + [b for a, b, _, _ in town_edges] + [a for a, b, _, _ in town_edges],
+                  "km": [round(e["length_m"] / 1000, 4) for e in edges] + [k for _, _, k, _ in town_edges] * 2,
+                  "minutes": [e["minutes"] for e in edges] + [m for _, _, _, m in town_edges] * 2},
         "sim_categories": sim_cats,
         "businesses": {"node": [b["road_node"] for b in biz] + [e["node"] for e in ext],
                        "lat": [b["lat"] for b in biz] + [e["lat"] for e in ext],
@@ -219,13 +267,19 @@ def export_city(pack: Pack, city: dict, budgets: np.ndarray, year: int, path: Pa
                        "revenue_prior": [b["revenue_prior"] or 0 for b in biz] + [0] * len(ext),
                        "name": [b["name"] for b in biz] + [e["name"] for e in ext],
                        "format_weight": [b["format_weight"] for b in biz] + [1.0] * len(ext),
+                       "group": [group_of.get(b["naics"], len(group_names)) for b in biz] + [len(group_names)] * len(ext),
+                       "address": [b.get("address", "") for b in biz] + [""] * len(ext),
                        "external": [0] * n_real + [1] * len(ext),
                        "extra_km": [0.0] * n_real + [e["extra_km"] for e in ext],
                        "extra_min": [0.0] * n_real + [e["extra_min"] for e in ext],
                        "pull_scale": [0.0] * n_real + [e["pull_scale"] for e in ext]},
-        "households": {"node": [h["road_node"] for h in hh], "persons5": persons5.tolist(),
-                       "vehicles": [h["vehicles"] for h in hh],
-                       "budget": [round(float(x), 1) for x in budgets.ravel()]},
+        "households": {"node": [h["road_node"] for h in hh] + town_households,
+                       "persons5": persons5.tolist() + [int(round(block * persons5.mean()))] * len(town_households),
+                       "vehicles": [h["vehicles"] for h in hh] + [2] * len(town_households),
+                       # a block of town households spends like 100 average Niagara Falls households (SEED)
+                       "budget": [round(float(x), 1) for x in budgets.ravel()]
+                                 + [round(float(x), 1) for x in (budgets.mean(axis=0) * block)] * len(town_households),
+                       "regional": [0] * len(hh) + [1] * len(town_households)},
         "categories": {
             "name": CATEGORY_NAMES,
             "typical_visit_spend": [TYPICAL_VISIT_SPEND[c] for c in CATEGORY_NAMES],
@@ -234,6 +288,7 @@ def export_city(pack: Pack, city: dict, budgets: np.ndarray, year: int, path: Pa
             # every category can also be bought out of town, except casino gaming (both casinos are in the city)
             "served_by": [[(0.0 if c == "games_of_chance" else 1.0) if s == "external" else SERVED_BY[c].get(s, 0.0)
                            for s in sim_cats] for c in CATEGORY_NAMES],
+            "external_scale": [cal.get("external_scale", {}).get(c, 1.0) for c in CATEGORY_NAMES],
         },
         "params": {
             # one outing = a trip out and a trip home, so outings = discretionary trips / 2
@@ -248,8 +303,12 @@ def export_city(pack: Pack, city: dict, budgets: np.ndarray, year: int, path: Pa
             "min_minutes": 1.0,
         },
     }
+    doc["business_groups"] = group_names
+    doc["calibration"] = {"sales_targets": sales_targets(pack, len(city["persons"])), "beta": cal.get("beta")}
     if city.get("tourism"):
         doc["tourism"] = _tourism_block(city["tourism"], sim_cats, n_real + len(ext))
+        doc["tourism"]["categories"]["capture"] = [cal.get("tourist_capture", {}).get(c, 1.0)
+                                                   for c in doc["tourism"]["categories"]["name"]]
     doc["build_menu"] = _build_menu(pack, sim_cats)
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(doc, separators=(",", ":")))

@@ -51,6 +51,11 @@ pub struct Snapshot {
     /// Local revenue by month (12) and category.
     pub month_category_revenue: Vec<Vec<f64>>,
     pub online_leakage: f64,
+    /// City residents' spending in neighbouring towns, and town residents' spending in the city.
+    #[serde(default)]
+    pub leakage: f64,
+    #[serde(default)]
+    pub inbound: f64,
     pub outings: u64,
     pub mode_counts: [u64; 4],
     driver_km_hist: Vec<u64>,
@@ -101,6 +106,9 @@ pub struct Engine {
     pub(crate) cdf: Vec<Vec<f32>>,
     /// Expected local revenue per year for each business from each category (flow mode).
     pub(crate) flow: Vec<Vec<f64>>,
+    /// Expected yearly leakage out of the city and inbound spending from the towns, by category.
+    pub(crate) flow_leak: Vec<f64>,
+    pub(crate) flow_inbound: Vec<f64>,
     pub(crate) hh_rate: Vec<f64>,
     pub(crate) hh_pcat: Vec<f32>,
     pub(crate) hh_ticket: Vec<f32>,
@@ -197,7 +205,8 @@ impl Engine {
                 let w = city.categories.served_by[c][city.businesses.sim_category[b] as usize];
                 if w > 0.0 && city.businesses.external[b] == 1 && city_pull > 0.0 {
                     cat_business[c].push(b as u32);
-                    cat_pull[c].push(w * city_pull * city.businesses.pull_scale[b]);
+                    let cal = city.categories.external_scale.get(c).copied().unwrap_or(1.0);
+                    cat_pull[c].push(w * city_pull * city.businesses.pull_scale[b] * cal);
                 }
             }
         }
@@ -245,6 +254,8 @@ impl Engine {
             visits: vec![0; n_biz],
             month_category_revenue: vec![vec![0.0; n_cat]; 12],
             online_leakage: 0.0,
+            leakage: 0.0,
+            inbound: 0.0,
             outings: 0,
             mode_counts: [0; 4],
             driver_km_hist: vec![0; HIST_BINS],
@@ -253,7 +264,7 @@ impl Engine {
         };
         let mut e = Engine {
             city, beta, n_nodes, n_cat, dest_of_business, n_dest, minutes, km, next_hop, cat_business, cat_pull,
-            home_nodes, node_slot, cdf: Vec::new(), flow: Vec::new(), hh_rate, hh_pcat, hh_ticket, hour_cdf,
+            home_nodes, node_slot, cdf: Vec::new(), flow: Vec::new(), flow_leak: Vec::new(), flow_inbound: Vec::new(), hh_rate, hh_pcat, hh_ticket, hour_cdf,
             walk_near: 0.0, state, last_trips: Vec::new(), tour: None, last_tourist_trips: Vec::new(), first_added: n_biz,
         };
         e.set_beta(beta);
@@ -305,6 +316,9 @@ impl Engine {
         let mut o = vec![0f64; self.home_nodes.len() * self.n_cat];
         for h in 0..self.hh_rate.len() {
             let slot = self.node_slot[self.city.households.node[h] as usize] as usize;
+            if self.is_regional(h) {
+                continue;       // the travel survey target describes city residents' trips
+            }
             for c in 0..self.n_cat {
                 o[slot * self.n_cat + c] += self.hh_rate[h] * self.hh_pcat[h * self.n_cat + c] as f64;
             }
@@ -368,6 +382,13 @@ impl Engine {
                 budget_at[slot * self.n_cat + c] += self.city.households.budget[h * self.n_cat + c] as f64;
             }
         }
+        let mut slot_regional = vec![false; n_slots];
+        for h in 0..self.hh_rate.len() {
+            if self.is_regional(h) {
+                slot_regional[self.node_slot[self.city.households.node[h] as usize] as usize] = true;
+            }
+        }
+        let (mut flow_leak, mut flow_inbound) = (vec![0f64; self.n_cat], vec![0f64; self.n_cat]);
         let mut cdf = Vec::with_capacity(n_slots * self.n_cat);
         let mut flow = vec![vec![0f64; n_biz]; self.n_cat];
         let mut w = Vec::new();
@@ -381,13 +402,22 @@ impl Engine {
                     let p = if total > 0.0 { w[i] / total } else { 0.0 };
                     acc += p;
                     row.push(acc as f32);
-                    flow[c][b as usize] += budget_at[slot * self.n_cat + c] * p * local;
+                    let amount = budget_at[slot * self.n_cat + c] * p * local;
+                    flow[c][b as usize] += amount;
+                    let external = self.city.businesses.external[b as usize] == 1;
+                    if slot_regional[slot] && !external {
+                        flow_inbound[c] += amount;
+                    } else if !slot_regional[slot] && external {
+                        flow_leak[c] += amount;
+                    }
                 }
                 cdf.push(row);
             }
         }
         self.cdf = cdf;
         self.flow = flow;
+        self.flow_leak = flow_leak;
+        self.flow_inbound = flow_inbound;
         self.build_tourism();
     }
 
@@ -512,8 +542,18 @@ impl Engine {
             let local = spend * (1.0 - online);
             self.state.revenue[b] += local;
             self.state.visits[b] += 1;
+            let external = self.city.businesses.external[b] == 1;
+            if self.is_regional(h) && !external {
+                self.state.inbound += local;
+            } else if !self.is_regional(h) && external {
+                self.state.leakage += local;
+            }
             self.state.month_category_revenue[month][c] += local;
             self.state.online_leakage += spend * online;
+            if self.is_regional(h) {
+                self.last_trips.push(Trip { household: o.household, business: b as u32, category: o.category, mode: Mode::Driver, km: d as f32, spend: spend as f32 });
+                continue;       // town shoppers are not part of the city's trip statistics
+            }
             self.state.outings += 1;
             self.state.mode_counts[mode as usize] += 1;
             if mode == Mode::Driver {
@@ -550,6 +590,8 @@ impl Engine {
                 }
             }
             self.state.month_category_revenue[month][c] += cat_total;
+            self.state.leakage += self.flow_leak[c] * k;
+            self.state.inbound += self.flow_inbound[c] * k;
             if self.city.categories.retail[c] == 1 {
                 let share = self.city.params.online_share_of_retail;
                 self.state.online_leakage += cat_total * share / (1.0 - share);
@@ -588,9 +630,18 @@ impl Engine {
         self.trip_km(from_node as usize, business as usize)
     }
 
-    /// Revenue so far that went to neighbouring towns instead of city businesses.
+    /// City residents' spending so far that went to neighbouring towns.
     pub fn out_of_town_revenue(&self) -> f64 {
-        (0..self.state.revenue.len()).filter(|&b| self.city.businesses.external[b] == 1).map(|b| self.state.revenue[b]).sum()
+        self.state.leakage
+    }
+
+    /// Spending so far by residents of neighbouring towns at city businesses.
+    pub fn inbound_revenue(&self) -> f64 {
+        self.state.inbound
+    }
+
+    pub fn is_regional(&self, household: usize) -> bool {
+        self.city.households.regional.get(household).copied().unwrap_or(0) == 1
     }
 
     /// Revenue so far earned by businesses inside the city.

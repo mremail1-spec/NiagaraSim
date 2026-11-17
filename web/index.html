@@ -60,6 +60,7 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
          padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
          display: grid; gap: 8px; }
 #sheet h2 { font-family: var(--font-display); font-size: 16px; margin: 0; text-wrap: balance; }
+#bAddr { font-size: 13px; color: var(--ink); }
 #sheet .kind { font-size: 12px; color: var(--ink-soft); display: flex; align-items: center; gap: 6px; }
 #sheet .kind i { width: 9px; height: 9px; border-radius: 50%; display: inline-block; }
 #sheet dl { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 0; }
@@ -109,7 +110,8 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
   <div id="stats">
     <span>Residents, in city <b id="sCity">$0</b></span>
     <span>Tourists <b id="sTour">$0</b></span>
-    <span>Out of town <b id="sOut">$0</b></span>
+    <span>Leaves for nearby towns <b id="sOut">$0</b></span>
+    <span>Comes in from them <b id="sIn">$0</b></span>
     <span>Online <b id="sOnline">$0</b></span>
   </div>
   <div id="stats2"><span>Visitors in town <b id="sVisitors">0</b></span><span>Hotel rooms in use <b id="sRooms">0%</b></span></div>
@@ -127,6 +129,7 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
     <button id="closeSheet" aria-label="Close">&times;</button>
     <div class="kind"><i id="bDot"></i><span id="bKind"></span></div>
     <h2 id="bName"></h2>
+    <div id="bAddr"></div>
     <dl>
       <div><dt>Revenue so far</dt><dd id="bRev">$0</dd></div>
       <div><dt>From tourists</dt><dd id="bTour">0%</dd></div>
@@ -193,7 +196,7 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
   let roadPaths = [null, null, null];
   let playing = false, rate = 1, acc = 0, lastT = 0, selected = -1;
   let trips = [], pulses = [], tripsTotal = 0;
-  let buildMode = false, site = null, baseCount = 0, groupOf = {};
+  let buildMode = false, site = null, baseCount = 0, groupOf = {}, townNode = new Set();
   let kx = 1, lon0 = 0, lat0 = 0, startDate = new Date(Date.UTC(2025, 0, 1));
 
   const wx = (lon) => (lon - lon0) * kx;
@@ -248,10 +251,14 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
     for (let i = 0; i < n; i++) { nodeX[i] = wx(city.nodes.lon[i]); nodeY[i] = wy(city.nodes.lat[i]); }
     homeCount = new Uint16Array(n);
     for (const node of city.households.node) homeCount[node]++;
+    const regional = city.households.regional || [];
+    homeCount.fill(0);
+    city.households.node.forEach((node, h) => { if (!regional[h]) homeCount[node]++; });
     for (let i = 0; i < n; i++) if (homeCount[i]) homeNodes.push(i);
     const b = city.businesses, nb = b.lat.length;
     bizX = new Float32Array(nb); bizY = new Float32Array(nb); bizGroup = new Uint8Array(nb);
     baseCount = nb;
+    for (let i = 0; i < nb; i++) if (b.external[i]) townNode.add(b.node[i]);
     GROUPS.forEach((g, gi) => g.cats.forEach((c) => { groupOf[c] = gi; }));
     for (let i = 0; i < nb; i++) {
       bizX[i] = wx(b.lon[i]); bizY[i] = wy(b.lat[i]);
@@ -413,7 +420,9 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
     $("clock").textContent = d.toLocaleDateString("en-CA", { weekday: "short", day: "numeric", month: "short", year: "numeric", timeZone: "UTC" })
       + " \u00b7 " + String(hour).padStart(2, "0") + ":00";
     const tour = wasm.nf_tourist_revenue();
-    $("sCity").textContent = money(wasm.nf_city_revenue() - tour);
+    const inbound = wasm.nf_inbound();
+    $("sIn").textContent = money(inbound);
+    $("sCity").textContent = money(wasm.nf_city_revenue() - tour - inbound);
     $("sTour").textContent = money(tour);
     $("sOut").textContent = money(wasm.nf_out_of_town());
     $("sOnline").textContent = money(wasm.nf_online());
@@ -430,6 +439,8 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
     $("bName").textContent = b.name[i] || "Unnamed place";
     $("bKind").textContent = city.sim_categories[b.sim_category[i]].replace(/_/g, " ") + (b.core[i] ? " \u00b7 Tourist Core" : "");
     $("bDot").style.background = GROUPS[bizGroup[i]].color;
+    const addr = (b.address && b.address[i]) || "";
+    $("bAddr").textContent = addr ? addr + ", Niagara Falls, ON" : (i >= baseCount ? "Placed at " + b.lat[i].toFixed(5) + ", " + b.lon[i].toFixed(5) : "No civic address on record for this place");
     $("bRev").textContent = money(rev);
     $("bTour").textContent = rev > 0 ? Math.round(tour / rev * 100) + "%" : "\u2014";
     $("bYear").textContent = days > 0.5 ? money(rev / days * 365) : "\u2014";
@@ -480,6 +491,7 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
     const x = (px - view.ox) / view.scale, y = (py - view.oy) / view.scale;
     let best = 0, bestD = Infinity;
     for (let i = 0; i < nodeX.length; i++) {
+      if (townNode.has(i)) continue;                           // neighbouring towns are off the map
       const d = (nodeX[i] - x) ** 2 + (nodeY[i] - y) ** 2;
       if (d < bestD) { bestD = d; best = i; }
     }
@@ -522,7 +534,7 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
     bizX = grow(bizX, site.x); bizY = grow(bizY, site.y);
     const g = groupOf[city.sim_categories[m.sim_category]];
     bizGroup = grow(bizGroup, g === undefined ? GROUPS.length - 1 : g);
-    b.name.push("Your " + m.label.toLowerCase()); b.sim_category.push(m.sim_category); b.core.push(core); b.external.push(0); b.lat.push(site.lat); b.lon.push(site.lon);
+    b.name.push("Your " + m.label.toLowerCase()); b.sim_category.push(m.sim_category); b.core.push(core); b.external.push(0); b.lat.push(site.lat); b.lon.push(site.lon); b.address.push("");
     closeBuild();
     selected = id; $("sheet").hidden = false; fillSheet();
   }
@@ -558,7 +570,7 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
     playing = false; $("play").textContent = "Play";
     try {
       const b = city.businesses;
-      for (const k of ["name", "sim_category", "core", "external", "lat", "lon"]) b[k].length = baseCount;
+      for (const k of ["name", "sim_category", "core", "external", "lat", "lon", "address"]) b[k].length = baseCount;
       bizX = bizX.slice(0, baseCount); bizY = bizY.slice(0, baseCount); bizGroup = bizGroup.slice(0, baseCount);
       selected = -1; $("sheet").hidden = true; closeBuild();
       startEngine(); updateHud();

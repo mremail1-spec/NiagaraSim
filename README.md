@@ -89,3 +89,13 @@ Then open http://127.0.0.1:8765/index.html. The published version is at https://
 - "Small / typical / large" are the industry's lower-quartile average, median and upper-quartile average revenue; they set how strongly the business pulls customers.
 - Profit uses the industry's average cost shares: goods and labour rise with sales, other overheads are sized for the scale chosen.
 - Not in this version: survival odds, a city-wide heat map, side-by-side comparison, accommodation and casinos. A remote site still forecasts a sizeable revenue (about $200k for a restaurant at the rural south edge), which suggests the distance effect is too gentle far from town; to be checked in the backtest.
+
+## Calibration against government figures (17 November 2026)
+Sources and method are in `data/calibration_benchmarks_ontario_2025.json`; results in `data/calibrated_multipliers.json`.
+- **What each store type sells in the city** is estimated as Ontario sales per employee (Statistics Canada retail and food-service surveys, employment survey) times that store type's employees in Niagara Falls (business register size bands).
+- **Household retail demand** is scaled to Ontario retail sales per resident by store type. The household spending survey alone covers about two thirds of retail sales.
+- **Neighbouring towns** (St. Catharines, Welland, Thorold, Niagara-on-the-Lake, Fort Erie) both take spending from city residents and send shoppers in.
+- **Fitted:** how strongly the towns pull, per category, and what share of tourists' surveyed spending on restaurants (61%), fuel (32%) and clothing (23%) lands at city businesses. All eight store types then match their targets within 1%.
+- **Not identified by the data:** one sales figure per store type cannot separate "more leakage" from "less tourist spending in the city"; the correction is shared between them.
+- **Not calibrated:** hotels, attractions and casinos (too many 100+ employee firms for the size bands to pin down), services and health care (no sales survey).
+- Every mapped business now carries the nearest civic address from the city's address points, or its licence address.

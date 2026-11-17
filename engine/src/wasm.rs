@@ -237,3 +237,9 @@ pub extern "C" fn nf_forecast(node: u32, sim_category: u32, size: f64) -> u32 {
 pub extern "C" fn nf_add_business(node: u32, lat: f64, lon: f64, sim_category: u32, size: f64, open: u32, close: u32, in_core: u32) -> u32 {
     engine().add_business(node, lat, lon, sim_category, size, 1.0, open, close, in_core == 1, "New business")
 }
+
+/// Spending so far by residents of neighbouring towns at city businesses.
+#[no_mangle]
+pub extern "C" fn nf_inbound() -> f64 {
+    engine().inbound_revenue()
+}
