@@ -66,6 +66,7 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
 #sheet dl { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 0; }
 #sheet dt { font-size: 11px; color: var(--ink-soft); text-transform: uppercase; letter-spacing: 0.06em; }
 #sheet dd { margin: 2px 0 0; font-family: var(--font-display); font-size: 17px; font-variant-numeric: tabular-nums; }
+#sheet.street dl { display: none; }
 #sheet p { margin: 0; font-size: 12px; color: var(--ink-soft); }
 #build { position: absolute; left: 0; right: 0; bottom: 0; background: var(--panel); border-top: 1px solid var(--panel-edge);
          border-radius: 14px 14px 0 0; padding-block: 12px 14px; max-height: 62%; overflow-y: auto;
@@ -207,6 +208,7 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
   let playing = false, rate = 1, acc = 0, lastT = 0, selected = -1;
   let trips = [], pulses = [], tripsTotal = 0;
   let outlookKey = "expected";
+  let streets = [], runs = [], labelOrder = [], streetSel = -1;
   let buildMode = false, site = null, baseCount = 0, groupOf = {}, townNode = new Set();
   let kx = 1, lon0 = 0, lat0 = 0, startDate = new Date(Date.UTC(2025, 0, 1));
 
@@ -277,13 +279,46 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
       bizGroup[i] = g === undefined ? GROUPS.length - 1 : g;
     }
     roadPaths = [new Path2D(), new Path2D(), new Path2D()];
+    streets = [];
     for (const line of roads.lines) {
       const p = roadPaths[line[0]];
-      for (let i = 1; i < line.length; i += 2) {
+      const xs = [], ys = [];
+      for (let i = 2; i < line.length; i += 2) {
         const x = line[i] * 1e-5 * kx, y = line[i + 1] * 1e-5 * KM;
-        if (i === 1) p.moveTo(x, y); else p.lineTo(x, y);
+        if (i === 2) p.moveTo(x, y); else p.lineTo(x, y);
+        xs.push(x); ys.push(y);
       }
+      let len = 0;
+      for (let k = 1; k < xs.length; k++) len += Math.hypot(xs[k] - xs[k - 1], ys[k] - ys[k - 1]);
+      streets.push({ cls: line[0], name: roads.names[line[1]] || "", xs, ys, len });
     }
+    // Join connected pieces of the same street into longer runs for labelling (roads are stored
+    // piece by piece between intersections, too short to carry a name).
+    runs = [];
+    const byName = new Map();
+    streets.forEach((st) => { if (st.name) (byName.get(st.name) || byName.set(st.name, []).get(st.name)).push(st); });
+    const key = (x, y) => Math.round(x * 1e4) + "," + Math.round(y * 1e4);
+    for (const [name, pieces] of byName) {
+      const used = new Set(), starts = new Map();
+      pieces.forEach((p, i) => { const k = key(p.xs[0], p.ys[0]); (starts.get(k) || starts.set(k, []).get(k)).push(i); });
+      pieces.forEach((p, i) => {
+        if (used.has(i)) return;
+        used.add(i);
+        const xs = [...p.xs], ys = [...p.ys];
+        let cls = p.cls, grown = true;
+        while (grown && xs.length < 4000) {
+          grown = false;
+          for (const j of starts.get(key(xs[xs.length - 1], ys[ys.length - 1])) || []) {
+            if (used.has(j)) continue;
+            used.add(j); xs.push(...pieces[j].xs.slice(1)); ys.push(...pieces[j].ys.slice(1)); cls = Math.max(cls, pieces[j].cls); grown = true; break;
+          }
+        }
+        let len = 0;
+        for (let k = 1; k < xs.length; k++) len += Math.hypot(xs[k] - xs[k - 1], ys[k] - ys[k - 1]);
+        runs.push({ cls, name, xs, ys, len });
+      });
+    }
+    labelOrder = runs.map((_, i) => i).sort((a, b) => runs[b].cls - runs[a].cls || runs[b].len - runs[a].len);
     $("key").innerHTML = GROUPS.map((g) => `<span><i style="background:${g.color}"></i>${g.label}</span>`).join("")
       + `<span><i style="border:1.5px solid var(--ink-soft);background:none"></i>Ring: estimated, not a real business</span><span><i style="background:${MODE_COLOR[0]}"></i>Car trip</span><span><i style="background:${MODE_COLOR[2]}"></i>On foot or bike</span><span><i style="background:${MODE_COLOR[3]}"></i>Transit</span><span><i style="background:${TOURIST}"></i>Tourists</span>`;
   }
@@ -365,6 +400,16 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
     ctx.strokeStyle = css("--road-main"); ctx.lineWidth = Math.max(1, Math.min(4.5, s / 40)) / s; ctx.stroke(roadPaths[1]);
     ctx.strokeStyle = css("--road-highway"); ctx.lineWidth = Math.max(1.6, Math.min(7, s / 28)) / s; ctx.stroke(roadPaths[2]);
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    if (streetSel >= 0) {                                    // highlight the tapped street
+      ctx.strokeStyle = css("--accent"); ctx.lineWidth = 4; ctx.globalAlpha = 0.85;
+      for (const st of streets) {
+        if (st.name !== streets[streetSel].name || (!st.name && st !== streets[streetSel])) continue;
+        ctx.beginPath();
+        st.xs.forEach((x, k) => { const px = x * s + view.ox, py = st.ys[k] * s + view.oy; if (k) ctx.lineTo(px, py); else ctx.moveTo(px, py); });
+        ctx.stroke();
+      }
+      ctx.globalAlpha = 1;
+    }
 
     if (s > 70) {                                            // homes appear once you zoom into a neighbourhood
       ctx.fillStyle = css("--home");
@@ -404,6 +449,7 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
       ctx.strokeStyle = css("--accent"); ctx.lineWidth = 2; ctx.beginPath(); ctx.arc(x, y, base + 8, 0, 6.2832); ctx.stroke();
     }
 
+    drawStreetNames(s);                                      // above the business dots, below moving trips
     if (site) {
       const x = site.x * s + view.ox, y = site.y * s + view.oy;
       ctx.strokeStyle = css("--accent"); ctx.lineWidth = 2;
@@ -430,6 +476,79 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
       ctx.beginPath(); ctx.arc(x, y, base + 2 + p * 9, 0, 6.2832); ctx.stroke();
     }
     ctx.globalAlpha = 1;
+  }
+
+  // Street names along the roads: main roads first, side streets once zoomed in; each name once per
+  // screen region, never overlapping another label.
+  function drawStreetNames(s) {
+    if (s < 28) return;
+    const minCls = s > 140 ? 0 : 1;
+    const taken = [], placed = new Map();
+    ctx.font = "500 11px " + css("--font-body");
+    ctx.textAlign = "center"; ctx.textBaseline = "middle";
+    ctx.lineWidth = 3; ctx.strokeStyle = css("--ground"); ctx.fillStyle = css("--ink-soft");
+    for (const i of labelOrder) {
+      const st = runs[i];
+      if (st.cls < minCls || st.len * s < 70) continue;
+      // middle of the run's visible part
+      let vis0 = -1, vis1 = -1, acc0 = 0, run = 0;
+      for (let k = 0; k < st.xs.length; k++) {
+        if (k) run += Math.hypot(st.xs[k] - st.xs[k - 1], st.ys[k] - st.ys[k - 1]);
+        const px = st.xs[k] * s + view.ox, py = st.ys[k] * s + view.oy;
+        if (px > 0 && py > 0 && px < W && py < H) { if (vis0 < 0) vis0 = run; vis1 = run; }
+      }
+      if (vis0 < 0) continue;
+      let half = (vis0 + vis1) / 2, k = 1, acc = 0;
+      for (; k < st.xs.length; k++) { const d = Math.hypot(st.xs[k] - st.xs[k - 1], st.ys[k] - st.ys[k - 1]); if (acc + d >= half) break; acc += d; }
+      if (k >= st.xs.length) k = st.xs.length - 1;
+      const x0 = st.xs[k - 1] * s + view.ox, y0 = st.ys[k - 1] * s + view.oy, x1 = st.xs[k] * s + view.ox, y1 = st.ys[k] * s + view.oy;
+      const f = Math.min(1, (half - acc) / (Math.hypot(st.xs[k] - st.xs[k - 1], st.ys[k] - st.ys[k - 1]) || 1));
+      const cx = x0 + (x1 - x0) * f, cy = y0 + (y1 - y0) * f;
+      if (cx < 20 || cy < 12 || cx > W - 20 || cy > H - 12) continue;
+      const w = ctx.measureText(st.name).width + 8;
+      // short pieces between intersections: allow the label to run past the piece on a fairly straight road
+      if (w > (vis1 - vis0) * s * 0.9) continue;           // label longer than the visible stretch
+      const prev = placed.get(st.name);
+      if (prev && prev.some(([px, py]) => Math.hypot(px - cx, py - cy) < 260)) continue;
+      let ang = Math.atan2(y1 - y0, x1 - x0);
+      if (ang > Math.PI / 2) ang -= Math.PI; else if (ang < -Math.PI / 2) ang += Math.PI;
+      const r = Math.max(w, 14) / 2 + 2;
+      if (taken.some(([tx, ty, tr]) => Math.hypot(tx - cx, ty - cy) < tr + r)) continue;
+      taken.push([cx, cy, r]);
+      placed.set(st.name, [...(prev || []), [cx, cy]]);
+      ctx.save(); ctx.translate(cx, cy); ctx.rotate(ang);
+      ctx.strokeText(st.name, 0, 0); ctx.fillText(st.name, 0, 0);
+      ctx.restore();
+      if (taken.length > 70) break;
+    }
+  }
+
+  function pickStreet(px, py) {
+    let best = -1, bestD = 14;
+    const x = (px - view.ox) / view.scale, y = (py - view.oy) / view.scale;
+    streets.forEach((st, i) => {
+      for (let k = 1; k < st.xs.length; k++) {
+        const ax = st.xs[k - 1], ay = st.ys[k - 1], bx = st.xs[k], by = st.ys[k];
+        const dx = bx - ax, dy = by - ay, L = dx * dx + dy * dy || 1e-12;
+        const t = Math.max(0, Math.min(1, ((x - ax) * dx + (y - ay) * dy) / L));
+        const d = Math.hypot(ax + t * dx - x, ay + t * dy - y) * view.scale;
+        if (d < bestD) { bestD = d; best = i; }
+      }
+    });
+    return best;
+  }
+
+  function showStreet(i) {
+    const st = streets[i];
+    const kind = ["Street", "Main road", "Highway"][st.cls];
+    let km = 0;
+    for (const o of streets) if (st.name && o.name === st.name) km += o.len;
+    $("bName").textContent = st.name || "Unnamed road";
+    $("bKind").textContent = kind;
+    $("bDot").style.background = css("--road-highway");
+    $("bAddr").textContent = st.name ? `${(km / (st.cls === 2 ? 2 : 1)).toFixed(1)} km of road in the city` : "This piece of road has no name on the map";
+    $("sheet").classList.add("street");
+    $("bNote").textContent = "Tap a business dot for its details.";
   }
 
   function updateHud() {
@@ -572,8 +691,13 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
       if (d < bestD) { bestD = d; best = i; }
     }
     selected = best;
-    $("sheet").hidden = best < 0;
-    if (best >= 0) fillSheet();
+    streetSel = -1;
+    $("sheet").classList.remove("street");
+    if (best >= 0) { $("sheet").hidden = false; fillSheet(); return; }
+    const st = pickStreet(px, py);
+    streetSel = st;
+    $("sheet").hidden = st < 0;
+    if (st >= 0) showStreet(st);
   }
 
   $("zoomIn").addEventListener("click", () => zoomAt(W / 2, H / 2, 1.6));
@@ -589,7 +713,7 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
     try { wasm.nf_set_scenario(s.us, s.domestic, s.overseas, s.base_stays, s.resident); runForecast(); }
     catch (e) { fail("Could not change the outlook: " + e.message); }
   });
-  $("closeSheet").addEventListener("click", () => { selected = -1; $("sheet").hidden = true; });
+  $("closeSheet").addEventListener("click", () => { selected = -1; streetSel = -1; $("sheet").hidden = true; });
   $("play").addEventListener("click", () => { playing = !playing; lastT = 0; $("play").textContent = playing ? "Pause" : "Play"; });
   $("speeds").addEventListener("click", (e) => {
     const btn = e.target.closest("button"); if (!btn) return;

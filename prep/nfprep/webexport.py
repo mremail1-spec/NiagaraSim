@@ -23,19 +23,24 @@ CLASS = {"motorway": 2, "motorway_link": 2, "trunk": 2, "trunk_link": 2,
 def main(year: int = 2025, beta: float = 0.0) -> None:
     src = BUILD_DIR / f"city_{year}"
     WEB.mkdir(exist_ok=True)
-    seen, lines = set(), []
+    seen, lines, names, name_index = set(), [], [""], {"": 0}
     with open(src / "road_edges.csv", encoding="utf-8") as f:
         for e in csv.DictReader(f):
             key = (min(e["from_node"], e["to_node"]), max(e["from_node"], e["to_node"]), e["length_m"])
             if key in seen:                      # two-way streets are stored once each way
                 continue
             seen.add(key)
-            flat = [CLASS.get(e["road_class"], 0)]
+            nm = e["name"] or ""
+            if nm not in name_index:
+                name_index[nm] = len(names)
+                names.append(nm)
+            # [class, street name index, x0, y0, x1, y1, ...]
+            flat = [CLASS.get(e["road_class"], 0), name_index[nm]]
             for p in e["polyline"].split(";"):
                 la, lo = p.split(",")
                 flat += [round((float(lo) - LON0) * 1e5), round((LAT0 - float(la)) * 1e5)]
             lines.append(flat)
-    (WEB / "roads.json").write_text(json.dumps({"lon0": LON0, "lat0": LAT0, "year": year, "beta": beta, "lines": lines},
+    (WEB / "roads.json").write_text(json.dumps({"lon0": LON0, "lat0": LAT0, "year": year, "beta": beta, "names": names, "lines": lines},
                                                separators=(",", ":")))
     shutil.copy(src / "city.json", WEB / "city.json")
     if WASM.exists():
