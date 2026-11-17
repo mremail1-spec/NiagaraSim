@@ -86,8 +86,8 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
 #build .actions { display: flex; gap: 10px; flex-wrap: wrap; }
 #build .actions button { height: 44px; padding: 0 16px; border-radius: 22px; cursor: pointer; border: 1px solid var(--panel-edge); background: none; }
 #build .actions button.primary { background: var(--accent); color: #1b1404; border: 0; font-weight: 600; }
-#outlookWrap { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--ink-soft); }
-#outlook { font: inherit; font-size: 13px; height: 44px; border-radius: 22px; border: 1px solid var(--panel-edge);
+#outlookWrap, #layerWrap { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--ink-soft); }
+#outlook, #layer { font: inherit; font-size: 13px; height: 44px; border-radius: 22px; border: 1px solid var(--panel-edge);
            background: var(--ground); color: var(--ink); padding: 0 10px; }
 #buildBtn { height: 44px; padding: 0 14px; border-radius: 22px; border: 1px solid var(--accent); color: var(--accent); background: none; cursor: pointer; }
 #closeSheet { position: absolute; top: 8px; right: max(12px, env(safe-area-inset-right, 0px)); background: none; border: 0;
@@ -171,6 +171,13 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
     <button data-rate="24" aria-pressed="false">1 day/s</button>
     <button data-rate="168" aria-pressed="false">1 wk/s</button>
   </div>
+  <label id="layerWrap" class="ctl" for="layer">Show
+    <select id="layer" disabled>
+      <option value="biz">Businesses</option>
+      <option value="cars">Cars a day</option>
+      <option value="feet">People on foot a day</option>
+    </select>
+  </label>
   <label id="outlookWrap" for="outlook">Outlook
     <select id="outlook" disabled>
       <option value="calibrated">2025, calibrated</option>
@@ -209,7 +216,7 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
   let roadPaths = [null, null, null];
   let playing = false, rate = 1, acc = 0, lastT = 0, selected = -1;
   let trips = [], pulses = [], tripsTotal = 0;
-  let outlookKey = "calibrated";
+  let outlookKey = "calibrated", layer = "biz", bizKeyHtml = "";
   let streets = [], runs = [], labelOrder = [], streetSel = -1;
   let buildMode = false, site = null, baseCount = 0, groupOf = {}, townNode = new Set();
   let kx = 1, lon0 = 0, lat0 = 0, startDate = new Date(Date.UTC(2025, 0, 1));
@@ -248,7 +255,7 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
     startEngine();
     delete city.households.budget;                          // the engine has its own copy
     $("loading").hidden = true;
-    $("play").disabled = false; $("restart").disabled = false; $("buildBtn").disabled = false; $("outlook").disabled = false;
+    $("play").disabled = false; $("restart").disabled = false; $("buildBtn").disabled = false; $("outlook").disabled = false; $("layer").disabled = false;
     const labels = (city.scenarios._meta || {}).labels || {};
     for (const o of $("outlook").options) { if (labels[o.value]) o.textContent = labels[o.value]; if (!city.scenarios[o.value]) o.remove(); }
     $("kind").innerHTML = city.build_menu.map((m, i) => `<option value="${i}">${m.label}</option>`).join("");
@@ -296,6 +303,20 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
       for (let k = 1; k < xs.length; k++) len += Math.hypot(xs[k] - xs[k - 1], ys[k] - ys[k - 1]);
       streets.push({ cls: line[0], name: roads.names[line[1]] || "", xs, ys, len });
     }
+    // the road node nearest the middle of each street piece, for its car and foot counts
+    {
+      const cell = 0.15, grid = new Map(), gk = (x, y) => Math.floor(x / cell) + "," + Math.floor(y / cell);
+      for (let i = 0; i < nodeX.length; i++) { const k = gk(nodeX[i], nodeY[i]); (grid.get(k) || grid.set(k, []).get(k)).push(i); }
+      for (const st of streets) {
+        const m = Math.floor(st.xs.length / 2), x = (st.xs[m] + st.xs[Math.max(0, m - 1)]) / 2, y = (st.ys[m] + st.ys[Math.max(0, m - 1)]) / 2;
+        let best = -1, bd = Infinity;
+        const cx = Math.floor(x / cell), cy = Math.floor(y / cell);
+        for (let dx = -1; dx <= 1; dx++) for (let dy = -1; dy <= 1; dy++) for (const i of grid.get((cx + dx) + "," + (cy + dy)) || []) {
+          const d = (nodeX[i] - x) ** 2 + (nodeY[i] - y) ** 2; if (d < bd) { bd = d; best = i; }
+        }
+        st.node = best;
+      }
+    }
     // Join connected pieces of the same street into longer runs for labelling (roads are stored
     // piece by piece between intersections, too short to carry a name).
     runs = [];
@@ -323,7 +344,7 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
       });
     }
     labelOrder = runs.map((_, i) => i).sort((a, b) => runs[b].cls - runs[a].cls || runs[b].len - runs[a].len);
-    $("key").innerHTML = GROUPS.map((g) => `<span><i style="background:${g.color}"></i>${g.label}</span>`).join("")
+    bizKeyHtml = $("key").innerHTML = GROUPS.map((g) => `<span><i style="background:${g.color}"></i>${g.label}</span>`).join("")
       + `<span><i style="border:1.5px solid var(--ink-soft);background:none"></i>Ring: estimated, not a real business</span><span><i style="background:${MODE_COLOR[0]}"></i>Car trip</span><span><i style="background:${MODE_COLOR[2]}"></i>On foot or bike</span><span><i style="background:${MODE_COLOR[3]}"></i>Transit</span><span><i style="background:${TOURIST}"></i>Tourists</span>`;
   }
 
@@ -403,6 +424,7 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
     if (s > 22) { ctx.strokeStyle = css("--road-minor"); ctx.lineWidth = Math.max(0.6, Math.min(3, s / 60)) / s; ctx.stroke(roadPaths[0]); }
     ctx.strokeStyle = css("--road-main"); ctx.lineWidth = Math.max(1, Math.min(4.5, s / 40)) / s; ctx.stroke(roadPaths[1]);
     ctx.strokeStyle = css("--road-highway"); ctx.lineWidth = Math.max(1.6, Math.min(7, s / 28)) / s; ctx.stroke(roadPaths[2]);
+    if (layer !== "biz") drawFlows(s);
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     if (streetSel >= 0) {                                    // highlight the tapped street
       ctx.strokeStyle = css("--accent"); ctx.lineWidth = 4; ctx.globalAlpha = 0.85;
@@ -542,6 +564,31 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
     return best;
   }
 
+  // car or foot traffic on every street piece: colour and width by volume per day
+  const FLOW_BINS = { cars: [500, 2000, 5000, 12000, 25000], feet: [50, 300, 1500, 5000, 15000] };
+  function flowOf(st, kind) {
+    const a = kind === "cars" ? city.nodes.passing : city.nodes.walkers;
+    return a && st.node >= 0 ? a[st.node] || 0 : 0;
+  }
+  function drawFlows(s) {
+    const bins = FLOW_BINS[layer], cols = ["#c9d6e3", "#8fb3d9", "#f2c14e", "#f08a3c", "#d6453d", "#8e1b3a"];
+    const paths = cols.map(() => new Path2D());
+    for (const st of streets) {
+      const v = flowOf(st, layer);
+      if (v <= 0 || (layer === "feet" && v < 5)) continue;
+      let k = 0; while (k < bins.length && v >= bins[k]) k++;
+      const p = paths[k];
+      st.xs.forEach((x, j) => (j ? p.lineTo(x, st.ys[j]) : p.moveTo(x, st.ys[j])));
+    }
+    paths.forEach((p, k) => { ctx.strokeStyle = cols[k]; ctx.lineWidth = (1.2 + k * 1.1) / s * Math.max(1, Math.min(2.5, s / 60)); ctx.stroke(p); });
+  }
+  function flowKey() {
+    const bins = FLOW_BINS[layer], cols = ["#c9d6e3", "#8fb3d9", "#f2c14e", "#f08a3c", "#d6453d", "#8e1b3a"];
+    const lab = (k) => k === 0 ? `under ${bins[0].toLocaleString()}` : k === bins.length ? `${bins[k - 1].toLocaleString()}+` : `${bins[k - 1].toLocaleString()}\u2013${bins[k].toLocaleString()}`;
+    return `<p>${layer === "cars" ? "Vehicles a day (2025 average): shopping, visitors, commuters, trucks, through traffic." : "People on foot a day (2025 average): residents walking and visitors on foot."}</p>`
+      + cols.map((c, k) => `<div><span style="display:inline-block;width:18px;height:6px;background:${c};margin-right:6px;vertical-align:middle"></span>${lab(k)}</div>`).join("");
+  }
+
   function showStreet(i) {
     const st = streets[i];
     const kind = ["Street", "Main road", "Highway"][st.cls];
@@ -552,7 +599,11 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
     $("bDot").style.background = css("--road-highway");
     $("bAddr").textContent = st.name ? `${(km / (st.cls === 2 ? 2 : 1)).toFixed(1)} km of road in the city` : "This piece of road has no name on the map";
     $("sheet").classList.add("street");
-    $("bNote").textContent = "Tap a business dot for its details.";
+    const cars = flowOf(st, "cars"), feet = flowOf(st, "feet");
+    const thr = city.nodes.through_traffic && st.node >= 0 ? city.nodes.through_traffic[st.node] || 0 : 0;
+    $("bNote").textContent = (city.nodes.passing ? `About ${Math.round(cars).toLocaleString()} vehicles a day on this stretch in the model`
+      + (cars > 0 ? ` (${Math.round(Math.min(thr, cars) / cars * 100)}% commuters, trucks and through traffic, the rest shopping and visitor trips)` : "")
+      + `, and about ${Math.round(feet).toLocaleString()} people on foot. ` : "") + "Tap a business dot for its details.";
   }
 
   function updateHud() {
@@ -694,6 +745,7 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
       if (p > 0 && mean > 0) t += ` (${(here / mean).toFixed(2)} times the average for this kind; ${Math.round(p * 100)}% of its trips are drivers already passing, counted up to twice the average)`;
       notes.push(t + ".");
     }
+    if (city.nodes.walkers) notes.push(`About ${Math.round(city.nodes.walkers[site.node] || 0).toLocaleString()} people walk past this spot on an average day.`);
     const kx = Math.cos(site.lat * Math.PI / 180) * 111.3;
     let same = 0;
     for (let i = 0; i < b.sim_category.length; i++) {
@@ -745,6 +797,12 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
   $("buildCancel").addEventListener("click", closeBuild);
   $("buildGo").addEventListener("click", () => { try { buildHere(); } catch (e) { fail("Could not build: " + e.message); } });
   $("kind").addEventListener("change", runForecast);
+  $("layer").addEventListener("change", () => {
+    layer = $("layer").value;
+    const k = $("key");
+    if (layer !== "biz") { k.dataset.flow = "1"; k.innerHTML = flowKey(); k.hidden = false; }
+    else if (k.dataset.flow) { delete k.dataset.flow; k.hidden = true; k.innerHTML = bizKeyHtml; }
+  });
   $("outlook").addEventListener("change", () => {
     outlookKey = $("outlook").value;
     const s = city.scenarios[outlookKey];

@@ -522,6 +522,11 @@ impl Engine {
                 // each stop on foot is one walk from the party's base (hotel, parking lot or arrival point)
                 self.count_walkers(t.base_node, t.business, t.persons as f64);
             }
+            if self.walkers.is_some() && self.trip_km(t.base_node as usize, b) > walk_max {
+                // a party that drove still walks from the car park to the door: count them at the destination
+                let node = self.city.businesses.node[b] as usize;
+                self.walkers.as_mut().unwrap()[node] += t.persons as f64;
+            }
             self.state.revenue[b] += t.spend as f64;
             self.state.tour.revenue[b] += t.spend as f64;
             self.state.tour.persons[b] += t.persons as f64;
