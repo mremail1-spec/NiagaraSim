@@ -127,3 +127,15 @@ Sources and method are in `data/calibration_benchmarks_ontario_2025.json`; resul
 - **Outlooks** (`data/scenario_ranges.json`): forward runs use low, expected and high multipliers on the calibrated 2025 year for US, domestic and overseas visitors, hotel stays outside leisure travel, and resident spending. US demand has the widest band (-20% to +10%) because it is the most exposed to political decisions. `nfsim run ... --scenario us,domestic,overseas,base_stays,resident`.
 - **Regional road counts** (`data/traffic_counts_regional_roads.json`, Niagara Region 2018, supplied by the project owner): 67 counted sections in the city. Simulated shopping, dining and visitor traffic is a median 20% of counted traffic (middle half 11-32%), and follows the pattern of counted volumes with correlation 0.56. The comparison found that St. Catharines shoppers were routed down Taylor Road at four times the counted traffic; towns now enter the city at their real entry points.
 - **Known traffic gaps:** almost no simulated traffic on the Queenston-Lewiston bridge approach (Highway 405, Niagara Townline Road, north Stanley Avenue), so US visitors arriving by that bridge are not reaching those roads in the model; and Mountain Road near the QEW carries more simulated visitor arrivals than its counts allow.
+
+## Backtest, second run: through the pandemic years (17 November 2026)
+The same 485 businesses were run through a pandemic year: US and overseas visitors at 10% of normal, domestic visitors at 62%, residents at 85%. That gives hotel occupancy close to the published 28% (2020) and 34% (2021).
+
+| Test | Result |
+|---|---|
+| Closed businesses kept less of their revenue in the pandemic run than survivors did (ranking score) | 61% (pass mark 70%) |
+| Closure rate where the model says a business keeps under 60% of normal revenue | 11.5% (22 of 192) |
+| Closure rate where it keeps 60-80% | 5.0% (9 of 179) |
+| Closure rate where it keeps 80% or more | 6.1% (7 of 114) |
+
+Businesses the model marks as most exposed to a collapse in visitors closed at about twice the rate of the rest. That is a real signal, but too weak to rank individual businesses: the test still fails its 70% pass mark. The same weaknesses apply (38 closures, closures read from the map, random sizes).

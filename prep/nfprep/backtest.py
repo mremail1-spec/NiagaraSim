@@ -127,6 +127,15 @@ def main() -> dict:
     beta = json.loads((DATA_DIR / "calibrated_multipliers.json").read_text())["beta"]
     subprocess.run([str(ROOT / "engine/target/release/nfsim"), "run", str(out / "city.json"), "--mode", "flow", "--days", "365",
                     "--beta", str(beta), "--businesses", str(out / "revenue.csv")], check=True, stdout=subprocess.DEVNULL)
+    # Pandemic years. Published hotel occupancy averaged 31% in 2020-2021 against 65% in 2019 (48% of
+    # normal). The border was closed to US leisure travel from March 2020 to August 2021, and overseas
+    # travel nearly stopped. Domestic visitors are set so total visitor room demand lands near 48%;
+    # residents spent less while dine-in and non-essential retail were closed. SEED: the split.
+    pandemic = {"us": 0.10, "domestic": 0.62, "overseas": 0.10, "base_stays": 1.0, "resident": 0.85}
+    subprocess.run([str(ROOT / "engine/target/release/nfsim"), "run", str(out / "city.json"), "--mode", "flow", "--days", "365",
+                    "--beta", str(beta), "--scenario", ",".join(str(pandemic[k]) for k in ("us", "domestic", "overseas", "base_stays", "resident")),
+                    "--businesses", str(out / "revenue_pandemic.csv")], check=True, stdout=subprocess.DEVNULL)
+    stressed = {int(r["business"]): float(r["revenue"]) for r in csv.DictReader(open(out / "revenue_pandemic.csv"))}
     table = list(csv.DictReader(open(out / "revenue.csv")))
     revenue = {int(r["business"]): float(r["revenue"]) for r in table}
     tourist = {int(r["business"]): float(r["tourist_revenue"]) for r in table}
@@ -150,6 +159,9 @@ def main() -> dict:
                      # demand the site offers per unit of pull: strips out the size the model assigned at random
                      "site_demand": round(rev / (max(b["format_weight"], 0.01) * max(float(b["revenue_prior"] or 0), 30_000) ** 0.5), 1),
                      "tourist_share": round(tourist.get(i, 0.0) / rev, 3) if rev > 0 else 0.0,
+                     "pandemic_revenue": round(stressed.get(i, 0.0)),
+                     "pandemic_revenue_vs_size": round(stressed.get(i, 0.0) / max(float(b["revenue_prior"] or 0), 30_000), 3),
+                     "share_kept_in_pandemic": round(stressed.get(i, 0.0) / rev, 3) if rev > 0 else 1.0,
                      "closed": labels[b["osm_id"]]["closed"], "what_happened": labels[b["osm_id"]]["how"]})
     closed = [r for r in rows if r["closed"]]
     alive = [r for r in rows if not r["closed"]]
@@ -169,6 +181,13 @@ def main() -> dict:
             "under_25pct": _rate([r for r in rows if r["tourist_share"] < 0.25]),
             "25_to_60pct": _rate([r for r in rows if 0.25 <= r["tourist_share"] < 0.60]),
             "over_60pct": _rate([r for r in rows if r["tourist_share"] >= 0.60])},
+        "pandemic_scenario": pandemic,
+        "auc_pandemic_revenue_vs_size": round(auc([r["pandemic_revenue_vs_size"] for r in closed], [r["pandemic_revenue_vs_size"] for r in alive]), 3),
+        "auc_share_kept_in_pandemic": round(auc([r["share_kept_in_pandemic"] for r in closed], [r["share_kept_in_pandemic"] for r in alive]), 3),
+        "closure_rate_by_share_kept": {
+            "kept_under_60pct": _rate([r for r in rows if r["share_kept_in_pandemic"] < 0.60]),
+            "kept_60_to_80pct": _rate([r for r in rows if 0.60 <= r["share_kept_in_pandemic"] < 0.80]),
+            "kept_80pct_or_more": _rate([r for r in rows if r["share_kept_in_pandemic"] >= 0.80])},
         "closure_rate_in_weakest_tenth": round(sum(r["closed"] for r in tenth) / len(tenth), 3),
         "closure_rate_in_weakest_fifth": round(sum(r["closed"] for r in fifth) / len(fifth), 3),
         "closure_rate_in_strongest_half": round(sum(r["closed"] for r in ranked[len(ranked) // 2:]) / (len(ranked) - len(ranked) // 2), 3),
