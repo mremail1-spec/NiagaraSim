@@ -11,6 +11,7 @@ the prior is used for calibration and for the break-even cost base.
 from __future__ import annotations
 
 import json
+import re
 import math
 
 import numpy as np
@@ -162,6 +163,10 @@ LICENCE_NAME_FITS = {"RS": ("restaurant", "fast_food", "cafe", "bar_pub", "night
                      "TE": ("accommodation",), "BE": ("accommodation",), "VR": ("accommodation",), "OS": ("accommodation",),
                      "AM": ("attraction", "leisure_paid", "entertainment"), "PL": ("parking",),
                      "GE": ("auto_service",), "GB": ("auto_dealer",), "ES": ("personal_services",), "HA": ("personal_services",)}
+DESCRIBE = {"accommodation": "Lodging", "free_sight": "Viewpoint", "fuel": "Gas station", "leisure_paid": "Paid activity",
+            "fast_food": "Food stand", "souvenir_gift": "Gift shop", "grocery_food": "Food shop", "restaurant": "Restaurant",
+            "retail_other": "Shop", "auto_service": "Auto repair", "bar_pub": "Bar", "home_electronics": "Electronics shop",
+            "personal_services": "Personal services", "cafe": "Café", "attraction": "Attraction", "parking": "Parking"}
 PAID_VIEWPOINTS = {"Skylon Tower", "Incline Railway", "The Niagara SkyWheel", "Skywheel"}
 FREE_SPOTS = {"Thompson Point", "Turtle Pond", "Balancing Rock", "Birthday Boulders", "Immaculate Boulder", "Knee Bar Boulder",
               "Locomotive Boulders", "The V Boulder", "Super Flywall", "Sydney's Dock"}
@@ -331,6 +336,14 @@ def build_businesses(pack: Pack, seed: int = 1) -> list[dict]:
         for r in rows:
             if r["source"].startswith("licence") and r["name"] == l["business"] and l["lat"] and abs(r["lat"] - float(l["lat"])) < 1e-6:
                 r["address"], r["address_source"] = nice_case(l["address"]), "city licence"
+
+    # places the map lists without a name: a plain description, so the page never shows a blank
+    for r in rows:
+        if r["source"] != "synthetic" and not r["name"].strip():
+            what = DESCRIBE.get(r["sim_category"], r["sim_category"].replace("_", " ").capitalize())
+            street = re.sub(r"^[\d\-]+\s*", "", r.get("address") or "").strip()
+            r["name"] = f"{what} on {street}" if street else what
+            r["name_source"] = "description (no name on the map)"
 
     # tract and Tourist Core flags for everything added after the map places
     lat = np.array([r["lat"] for r in rows])
