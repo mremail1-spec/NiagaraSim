@@ -1,11 +1,11 @@
 {
-  "all_in_person_spending_musd": 5303.54,
+  "all_in_person_spending_musd": 5187.91,
   "annual_budget_musd": 2853.51,
   "beta": 1.3522,
-  "city_business_revenue_musd": 4383.79,
+  "city_business_revenue_musd": 4267.95,
   "days": 365,
   "expected_median_driver_km": 5.45,
-  "inbound_from_neighbouring_towns_musd": 261.26,
+  "inbound_from_neighbouring_towns_musd": 261.85,
   "mode": "agent",
   "mode_pct": {
     "driver": 67.7,
@@ -15,414 +15,414 @@
   },
   "monthly_index_by_category": {
     "alcohol_tobacco_cannabis": [
-      0.847,
-      0.825,
+      0.845,
+      0.819,
       0.958,
-      0.99,
-      1.088,
-      1.037,
-      1.03,
-      1.029,
-      1.0,
-      1.033,
-      1.071,
-      1.078
+      0.985,
+      1.092,
+      1.044,
+      1.031,
+      1.031,
+      1.006,
+      1.028,
+      1.07,
+      1.077
     ],
     "clothing": [
-      0.846,
-      0.828,
-      0.955,
+      0.847,
+      0.821,
+      0.958,
       0.993,
-      1.085,
-      1.044,
+      1.082,
+      1.038,
       1.026,
-      1.031,
-      1.001,
       1.03,
-      1.067,
-      1.081
+      1.002,
+      1.037,
+      1.073,
+      1.08
     ],
     "fuel": [
       0.844,
-      0.824,
-      0.952,
-      0.995,
-      1.088,
-      1.044,
-      1.025,
-      1.028,
-      0.998,
+      0.827,
+      0.953,
+      0.996,
+      1.09,
+      1.04,
+      1.027,
+      1.024,
+      0.999,
       1.032,
-      1.074,
+      1.072,
       1.083
     ],
     "games_of_chance": [
-      0.981,
-      0.975,
-      0.967,
-      1.027,
-      1.018,
-      0.998,
-      0.998,
+      0.98,
       1.0,
-      0.997,
-      1.004,
-      1.005,
-      1.027
+      0.99,
+      0.983,
+      1.007,
+      0.993,
+      0.992,
+      0.983,
+      1.042,
+      0.998,
+      1.008,
+      1.024
     ],
     "general_merchandise": [
       0.848,
-      0.823,
-      0.958,
-      0.996,
-      1.084,
+      0.821,
+      0.956,
+      0.993,
+      1.086,
       1.041,
-      1.025,
-      1.028,
-      0.999,
+      1.026,
+      1.032,
+      0.997,
       1.033,
-      1.069,
-      1.083
+      1.072,
+      1.082
     ],
     "groceries": [
-      0.844,
-      0.826,
-      0.956,
-      0.989,
-      1.088,
-      1.046,
-      1.03,
-      1.025,
-      0.997,
-      1.035,
-      1.069,
-      1.081
+      0.845,
+      0.823,
+      0.955,
+      0.994,
+      1.086,
+      1.043,
+      1.027,
+      1.029,
+      0.998,
+      1.033,
+      1.071,
+      1.083
     ],
     "health_services": [
       0.985,
-      0.993,
-      1.0,
-      1.006,
-      1.003,
-      1.013,
-      0.995,
-      1.003,
-      1.005,
+      1.004,
+      1.002,
+      1.009,
       1.007,
-      0.986,
-      1.003
+      1.005,
+      0.994,
+      1.005,
+      0.999,
+      0.999,
+      0.995,
+      0.998
     ],
     "household_goods": [
-      0.845,
-      0.82,
-      0.952,
-      0.995,
-      1.086,
-      1.042,
-      1.026,
-      1.03,
-      1.002,
-      1.038,
-      1.068,
-      1.082
+      0.843,
+      0.821,
+      0.953,
+      0.992,
+      1.084,
+      1.043,
+      1.027,
+      1.033,
+      1.004,
+      1.036,
+      1.069,
+      1.081
     ],
     "personal_care": [
-      0.997,
-      0.991,
+      0.998,
       1.0,
-      1.008,
-      0.999,
-      1.001,
+      0.998,
       1.002,
-      0.996,
-      1.005,
-      1.009,
+      0.997,
+      1.006,
+      1.001,
+      1.003,
+      0.997,
       0.999,
-      0.994
+      1.002,
+      0.997
     ],
     "pets": [
-      0.844,
-      0.828,
-      0.951,
-      0.995,
-      1.09,
-      1.051,
+      0.842,
+      0.825,
+      0.959,
+      0.998,
+      1.084,
+      1.045,
+      1.019,
       1.021,
-      1.025,
-      0.999,
-      1.034,
-      1.066,
-      1.084
+      0.99,
+      1.043,
+      1.07,
+      1.089
     ],
     "pharmacy": [
-      0.848,
-      0.824,
-      0.956,
-      0.994,
-      1.086,
-      1.04,
-      1.026,
+      0.847,
+      0.822,
+      0.955,
+      0.997,
+      1.085,
+      1.043,
+      1.028,
       1.027,
       0.998,
-      1.031,
-      1.072,
-      1.084
+      1.035,
+      1.07,
+      1.079
     ],
     "recreation_goods": [
-      0.848,
-      0.821,
-      0.951,
-      1.0,
-      1.085,
-      1.037,
-      1.029,
-      1.029,
-      1.001,
-      1.033,
-      1.066,
+      0.846,
+      0.829,
+      0.952,
+      0.991,
+      1.089,
+      1.042,
+      1.031,
+      1.034,
+      0.999,
+      1.031,
+      1.059,
       1.085
     ],
     "recreation_services": [
-      1.003,
-      0.997,
-      0.995,
       1.006,
-      1.001,
+      0.998,
+      0.996,
+      1.002,
+      1.004,
       1.0,
-      1.003,
+      1.007,
+      1.0,
+      0.993,
+      0.994,
       0.999,
-      1.001,
-      0.998,
-      0.998,
-      0.999
+      1.001
     ],
     "restaurants": [
-      0.853,
-      0.836,
-      0.946,
-      0.954,
-      1.047,
-      1.066,
-      1.06,
-      1.076,
-      1.031,
+      0.851,
+      0.841,
+      0.945,
+      0.955,
+      1.045,
+      1.064,
+      1.057,
+      1.078,
+      1.033,
       1.039,
-      1.007,
-      1.069
+      1.009,
+      1.07
     ],
     "vehicle_service": [
-      1.003,
-      0.983,
-      1.011,
-      0.994,
-      1.003,
-      0.979,
       1.008,
-      1.0,
       1.001,
-      1.009,
+      1.004,
+      0.994,
+      0.989,
+      1.01,
+      0.986,
+      0.996,
       1.0,
-      1.007
+      1.005,
+      1.014,
+      0.995
     ]
   },
-  "online_leakage_musd": 135.19,
-  "out_of_town_leakage_musd": 490.59,
-  "outings": 21901157,
-  "outings_per_person5_per_day": 0.5498673044455679,
+  "online_leakage_musd": 135.21,
+  "out_of_town_leakage_musd": 490.27,
+  "outings": 21907894,
+  "outings_per_person5_per_day": 0.5500364487528777,
   "revenue_by_category_musd": {
-    "alcohol_tobacco_cannabis": 58.71,
-    "clothing": 170.89,
-    "fuel": 214.66,
-    "games_of_chance": 11.14,
-    "general_merchandise": 497.75,
-    "groceries": 444.43,
-    "health_services": 84.98,
-    "household_goods": 312.85,
-    "personal_care": 112.68,
-    "pets": 54.88,
-    "pharmacy": 223.72,
-    "recreation_goods": 103.09,
-    "recreation_services": 98.06,
-    "restaurants": 263.31,
-    "vehicle_service": 68.53
+    "alcohol_tobacco_cannabis": 58.81,
+    "clothing": 170.82,
+    "fuel": 214.96,
+    "games_of_chance": 11.15,
+    "general_merchandise": 497.68,
+    "groceries": 443.97,
+    "health_services": 85.12,
+    "household_goods": 312.99,
+    "personal_care": 112.7,
+    "pets": 55.01,
+    "pharmacy": 223.85,
+    "recreation_goods": 103.28,
+    "recreation_services": 97.95,
+    "restaurants": 263.92,
+    "vehicle_service": 68.07
   },
-  "run_seconds": 32.86,
+  "run_seconds": 22.8,
   "seed": 1,
-  "setup_seconds": 0.63,
+  "setup_seconds": 1.14,
   "simulated_median_driver_km": 5.550000000000001,
   "top_businesses": [
     {
       "name": "Canadian Tire",
-      "revenue": 120743228.0,
-      "visits": 1002021
+      "revenue": 120460404.0,
+      "visits": 999633
     },
     {
       "name": "Walmart",
-      "revenue": 100169243.0,
-      "visits": 838523
+      "revenue": 100199310.0,
+      "visits": 839047
     },
     {
       "name": "The Home Depot",
-      "revenue": 87310106.0,
-      "visits": 464606
+      "revenue": 87383044.0,
+      "visits": 465416
     },
     {
       "name": "Rona",
-      "revenue": 86623827.0,
-      "visits": 463181
+      "revenue": 86644933.0,
+      "visits": 462689
     },
     {
       "name": "Costco",
-      "revenue": 74408026.0,
-      "visits": 623909
+      "revenue": 74670551.0,
+      "visits": 625250
     },
     {
       "name": "Giant Tiger",
-      "revenue": 73978193.0,
-      "visits": 618611
+      "revenue": 73895078.0,
+      "visits": 618029
     },
     {
       "name": "Zehrs",
-      "revenue": 68349637.0,
-      "visits": 507056
+      "revenue": 68259605.0,
+      "visits": 506652
     },
     {
       "name": "Sobeys",
-      "revenue": 58525068.0,
-      "visits": 459747
+      "revenue": 58357758.0,
+      "visits": 457468
     },
     {
       "name": "Food Basics",
-      "revenue": 57922395.0,
-      "visits": 448744
+      "revenue": 57821272.0,
+      "visits": 447433
     },
     {
-      "name": "Embassy Suites by Hilton",
-      "revenue": 53739493.0,
-      "visits": 0
+      "name": "Food Basics",
+      "revenue": 53699727.0,
+      "visits": 439760
     }
   ],
   "tourism": {
-    "accommodation_musd": 912.82,
+    "accommodation_musd": 798.37,
     "attendance": {
       "Butterfly Conservatory": {
         "published": 303791.0,
-        "simulated": 312409.0
+        "simulated": 314892.0
       },
       "Floral Showhouse": {
         "published": 63488.0,
-        "simulated": 64427.0
+        "simulated": 63341.0
       },
       "Journey Behind the Falls": {
         "published": 917075.0,
-        "simulated": 929888.0
+        "simulated": 927856.0
       },
       "Niagara Parks Power Station": {
         "published": 334206.0,
-        "simulated": 336906.0
+        "simulated": 334682.0
       },
       "Niagara’s Fury": {
         "published": 125476.0,
-        "simulated": 128026.0
+        "simulated": 126555.0
       },
       "Whirlpool Aero Car": {
         "published": 190481.0,
-        "simulated": 194397.0
+        "simulated": 193484.0
       },
       "White Water Walk": {
         "published": 211930.0,
-        "simulated": 210554.0
+        "simulated": 212041.0
       }
     },
-    "hotel_occupancy": 0.615,
+    "hotel_occupancy": 0.603,
     "hotel_occupancy_by_month": [
-      0.413,
-      0.429,
-      0.473,
-      0.488,
-      0.591,
-      0.796,
-      0.899,
-      0.894,
-      0.652,
-      0.637,
-      0.525,
-      0.561
+      0.37,
+      0.393,
+      0.44,
+      0.458,
+      0.576,
+      0.815,
+      0.92,
+      0.913,
+      0.648,
+      0.632,
+      0.503,
+      0.544
     ],
     "hotel_rooms": 16022.0,
     "july_august_share_pct": {
       "domestic_overnight": 29.9,
-      "domestic_same_day": 28.7,
+      "domestic_same_day": 28.6,
       "overseas_overnight": 29.2,
-      "overseas_same_day": 29.2,
+      "overseas_same_day": 29.5,
       "us_overnight": 32.9,
-      "us_same_day": 24.6
+      "us_same_day": 24.7
     },
-    "parties_turned_away_from_full_lodging": 111780,
-    "share_of_tourist_spending_in_tourist_core_pct": 68.0,
+    "parties_turned_away_from_full_lodging": 121931,
+    "share_of_tourist_spending_in_tourist_core_pct": 67.4,
     "spending_by_category_musd": {
-      "attractions": 290.53,
+      "attractions": 290.18,
       "clothing": 55.9,
-      "food_from_stores": 177.07,
-      "fuel": 105.24,
-      "other_retail": 151.29,
-      "parking": 96.44,
-      "recreation": 151.35,
-      "restaurants": 590.36,
-      "vehicle_rental": 52.84
+      "food_from_stores": 176.99,
+      "fuel": 105.12,
+      "other_retail": 151.13,
+      "parking": 96.41,
+      "recreation": 151.19,
+      "restaurants": 589.7,
+      "vehicle_rental": 52.63
     },
     "top_tourist_businesses": [
       {
         "name": "Embassy Suites by Hilton",
-        "tourist_revenue": 53739493.0
+        "tourist_revenue": 46904323.0
       },
       {
         "name": "Marriott Niagara Falls Fallsview Hotel",
-        "tourist_revenue": 52993122.0
+        "tourist_revenue": 46356058.0
       },
       {
         "name": "Ramada",
-        "tourist_revenue": 51705113.0
-      },
-      {
-        "name": "Travelodge Fallsview Hotel",
-        "tourist_revenue": 39457165.0
-      },
-      {
-        "name": "Great Wolf Lodge",
-        "tourist_revenue": 38849067.0
-      },
-      {
-        "name": "Radisson Hotel & Suites Fallsview, ON",
-        "tourist_revenue": 38162203.0
-      },
-      {
-        "name": "Country Inn & Suites by Radisson, Niagara Falls, ON",
-        "tourist_revenue": 37396316.0
-      },
-      {
-        "name": "Days Inn",
-        "tourist_revenue": 36200721.0
-      },
-      {
-        "name": "Wyndham",
-        "tourist_revenue": 35684686.0
+        "tourist_revenue": 45149142.0
       },
       {
         "name": "Skylon Tower",
-        "tourist_revenue": 35507477.0
+        "tourist_revenue": 35439895.0
+      },
+      {
+        "name": "Angelo Rossi Galleria and Studio",
+        "tourist_revenue": 34382973.0
+      },
+      {
+        "name": "Movieland Wax Museum of Stars",
+        "tourist_revenue": 34321417.0
+      },
+      {
+        "name": "Travelodge Fallsview Hotel",
+        "tourist_revenue": 34278900.0
+      },
+      {
+        "name": "Great Wolf Lodge",
+        "tourist_revenue": 33636739.0
+      },
+      {
+        "name": "Radisson Hotel & Suites Fallsview, ON",
+        "tourist_revenue": 33191487.0
+      },
+      {
+        "name": "Country Inn & Suites by Radisson, Niagara Falls, ON",
+        "tourist_revenue": 32511840.0
       }
     ],
-    "tourist_spending_at_businesses_musd": 2583.87,
-    "transport_fares_musd": 58.71,
-    "visitors": 11046722.0,
+    "tourist_spending_at_businesses_musd": 2467.62,
+    "transport_fares_musd": 58.66,
+    "visitors": 11038978.0,
     "visitors_by_segment": {
-      "domestic_overnight": 2829955.0,
-      "domestic_same_day": 5078993.0,
-      "overseas_overnight": 556722.0,
-      "overseas_same_day": 372164.0,
-      "us_overnight": 1020378.0,
-      "us_same_day": 1188510.0
+      "domestic_overnight": 2826297.0,
+      "domestic_same_day": 5082435.0,
+      "overseas_overnight": 555253.0,
+      "overseas_same_day": 370861.0,
+      "us_overnight": 1018122.0,
+      "us_same_day": 1186010.0
     }
   }
 }

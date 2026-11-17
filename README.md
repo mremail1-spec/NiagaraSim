@@ -144,3 +144,19 @@ Businesses the model marks as most exposed to a collapse in visitors closed at a
 The project owner supplied the city's open data catalogue (362 datasets). Downloaded from it: building footprints, capital projects 2022-2026, tourism districts and municipal parking lots (`data/city_open_data/`). Most of the rest are maps of city assets (hydrants, sewers, trees, election results) with no bearing on spending.
 - **Real floor areas:** 1,127 of 1,283 real businesses now sit in a city building footprint; floor area (shared among tenants, times storeys) replaces part of the random element in each business's size. The backtest barely moved (ranking 49%, pandemic exposure 62%), so business size was not what limited it.
 - **Actions over words** (`python3 -m nfprep.capital_check`, `docs/capital_spending_check.json`): the city's $210.5M of road and works projects 2022-2026, by census tract, compared with the model. Rank correlation with simulated traffic 0.43, simulated visitor traffic 0.38, new homes built 2021-2023 0.33, population -0.17. Spending lines up best with where the model puts traffic, but with only 21 tracts every one of these is moderate at best.
+
+## CBRE monthly hotel figures (17 November 2026)
+CBRE Hotels' monthly National Market Reports carry a Niagara Falls row and are posted publicly by Destination Northern Ontario. Seven were found (January, June, July, October 2024; January, March, November 2025); they are in `data/sources/cbre/` and summarised in `data/hotel_monthly_cbre.json`. The hotel model is now fitted by least squares to six 2025 figures:
+
+| Period | Published | Model |
+|---|---|---|
+| January | 36.8% | 37.0% |
+| March | 47.4% | 44.0% |
+| November | 45.3% | 50.3% |
+| January-March | 41.6% | 40.1% |
+| January-July | 59.5% | 56.9% |
+| January-November | 63.2% | 60.8% |
+
+Room rates fit within about $5 of the published averages. November is the weakest month (model 5 points high): November 2025 fell 11.7 points from November 2024, a drop the model's monthly visitor pattern does not contain.
+
+Still not found anywhere public: business licence lists by year (only the current year is published) and Niagara Falls Municipal Accommodation Tax receipts by year.

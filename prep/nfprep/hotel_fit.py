@@ -30,19 +30,47 @@ def main() -> dict:
     run = subprocess.run([str(ROOT / "engine/target/release/nfsim"), "run", str(BUILD_DIR / "city_2025/city.json"),
                           "--mode", "flow", "--days", "365", "--beta", str(beta)], check=True, capture_output=True, text=True)
     shape = json.loads(run.stdout)["tourism"]["hotel_occupancy_by_month"]
-    jan_jul = sum(shape[m] * DAYS[m] for m in range(7)) / sum(DAYS[:7])
+    import numpy as np
+    cbre = json.loads((DATA_DIR / "hotel_monthly_cbre.json").read_text())
     occ = market["occupancy"]
-    k = (occ["january_to_july_2025"] - occ["march_2025"]) / (jan_jul - shape[2])
-    base = occ["march_2025"] - k * shape[2]
-    fitted = [base + k * s for s in shape]
-    rate = market["average_daily_rate_cad"]
-    slope = (rate["january_to_july_2025"] - rate["march_2025"]) / (occ["january_to_july_2025"] - occ["march_2025"])
-    rates = [round(max(100.0, rate["march_2025"] + slope * (o - occ["march_2025"])), 2) for o in fitted]
+    # 2025 targets: (months covered, published occupancy, published room rate or None)
+    targets = [([0], cbre["monthly"]["2025-01"]["occupancy"], cbre["monthly"]["2025-01"]["adr"]),
+               ([2], cbre["monthly"]["2025-03"]["occupancy"], cbre["monthly"]["2025-03"]["adr"]),
+               ([10], cbre["monthly"]["2025-11"]["occupancy"], cbre["monthly"]["2025-11"]["adr"]),
+               ([0, 1, 2], cbre["year_to_date"]["2025-01..03"]["occupancy"], cbre["year_to_date"]["2025-01..03"]["adr"]),
+               (list(range(7)), occ["january_to_july_2025"], market["average_daily_rate_cad"]["january_to_july_2025"]),
+               (list(range(11)), cbre["year_to_date"]["2025-01..11"]["occupancy"], cbre["year_to_date"]["2025-01..11"]["adr"])]
+    # occupancy_m = base + k x shape_m, least squares over the six figures (averages weighted by days)
+    A, y = [], []
+    for months, o, _ in targets:
+        d = sum(DAYS[m] for m in months)
+        A.append([1.0, sum(shape[m] * DAYS[m] for m in months) / d])
+        y.append(o)
+    (base, k), *_ = np.linalg.lstsq(np.array(A), np.array(y), rcond=None)
+    base, k = float(base), float(k)
+    fitted = [min(0.97, base + k * s) for s in shape]
+    # room rate_m = a + b x occupancy_m; a period's rate is weighted by the room nights sold in it
+    def period_rate(a, b, months):
+        nights = [fitted[m] * DAYS[m] for m in months]
+        return sum(n * (a + b * fitted[m]) for n, m in zip(nights, months)) / sum(nights)
+    best = None
+    for a in np.arange(-100, 200, 1.0):
+        for b in np.arange(50, 600, 2.0):
+            err = sum((period_rate(a, b, ms) - r) ** 2 for ms, _, r in targets)
+            if best is None or err < best[0]:
+                best = (err, a, b)
+    _, ra, rb = best
+    rates = [round(max(90.0, ra + rb * o), 2) for o in fitted]
+    check = [{"period": "+".join(str(m + 1) for m in ms), "published_occupancy": o,
+              "model_occupancy": round(sum(fitted[m] * DAYS[m] for m in ms) / sum(DAYS[m] for m in ms), 3),
+              "published_rate": r, "model_rate": round(period_rate(ra, rb, ms), 2)} for ms, o, r in targets]
+    jan_jul = None
     result = {
-        "_meta": {"fitted_to": "data/hotel_market_2025.json: March 2025 occupancy 47.4% and January-July 2025 average 59.5%; "
-                               "room rate $149.66 in March and $206.28 for January-July.",
-                  "check": "Full-year occupancy is not fitted. Published: about 63%.",
-                  "rate_rule": "Room rate rises in a straight line with occupancy through the two published points, floor $100."},
+        "_meta": {"fitted_to": "Six published 2025 figures: CBRE January, March and November months, January-March and "
+                               "January-November year to date (data/hotel_monthly_cbre.json), and January-July (data/hotel_market_2025.json). "
+                               "Least squares for occupancy; room rate fitted to the same six periods.",
+                  "rate_rule": "Room rate = a + b x occupancy, floor $90."},
+        "fit_check": check, "room_rate_line": {"a": ra, "b": rb},
         "hotel": {"rooms_per_party": round(k, 4), "base_share": round(base, 4), "rate_by_month": rates},
         "survey_only_occupancy_by_month": shape,
         "fitted_occupancy_by_month_before_capacity_limits": [round(x, 3) for x in fitted],

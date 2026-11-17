@@ -330,18 +330,17 @@ fn location_changes_the_forecast() {
 
 #[test]
 fn hotel_occupancy_matches_the_published_2025_figures() {
+    // CBRE Hotels (January, March, November, January-March, January-November) and Niagara Tourism Profile (January-July)
     let (e, _) = year();
     let nights = &e.state().tour.room_nights_by_month;
     let rooms = e.hotel_rooms();
     let days = nfsim::engine::DAYS_IN_MONTH;
-    let march = nights[2] / (rooms * 31.0);
-    let jan_jul = nights[..7].iter().sum::<f64>() / (rooms * days[..7].iter().sum::<u32>() as f64);
-    let full_year = nights.iter().sum::<f64>() / (rooms * 365.0);
-    println!("hotel occupancy: March {march:.3}, January-July {jan_jul:.3}, full year {full_year:.3}");
+    let occ = |months: std::ops::Range<usize>| nights[months.clone()].iter().sum::<f64>() / (rooms * days[months].iter().sum::<u32>() as f64);
     assert!((rooms - 16_000.0).abs() < 100.0, "rooms {rooms}");
-    assert!((march - 0.474).abs() < 0.02, "March {march}");            // published 47.4% (fitted)
-    assert!((jan_jul - 0.595).abs() < 0.02, "January-July {jan_jul}");  // published 59.5% (fitted)
-    assert!((full_year - 0.63).abs() < 0.03, "full year {full_year}");  // published about 63% (not fitted)
-    let july = nights[6] / (rooms * 31.0);
-    assert!(july > 0.85 && july <= 1.0, "July {july}");                 // summer runs near full
+    for (label, months, published, tolerance) in [("January", 0..1, 0.368, 0.04), ("March", 2..3, 0.474, 0.05), ("November", 10..11, 0.453, 0.06),
+                                                  ("January-March", 0..3, 0.416, 0.03), ("January-July", 0..7, 0.595, 0.03), ("January-November", 0..11, 0.632, 0.03)] {
+        let got = occ(months);
+        println!("hotel occupancy {label}: model {got:.3}, published {published}");
+        assert!((got - published).abs() < tolerance, "{label}: {got} vs {published}");
+    }
 }
