@@ -2,7 +2,8 @@
  "_meta": {
   "source": "Statistics Canada, 2021 Census, table 98-10-0002-01 (population by census subdivision). Centre points are approximate locations of each municipality's main shopping area, placed by hand.",
   "use": "Out-of-town shopping destinations for Niagara Falls residents, and the homes of shoppers who drive into Niagara Falls. Each town pulls in proportion to its population relative to Niagara Falls (94,415).",
-  "seeds": "detour_factor and highway_kmh convert straight-line distance beyond the city's edge into road distance and time. in_town_kmh is the speed of a local trip inside a town. Town residents are assumed to spend like the average Niagara Falls household and to have grown in step with the city."
+  "seeds": "detour_factor and highway_kmh convert straight-line distance beyond the city's edge into road distance and time. in_town_kmh is the speed of a local trip inside a town. Town residents are assumed to spend like the average Niagara Falls household and to have grown in step with the city.",
+  "join": "join_lat/join_lon: where a town's shoppers enter the city road network (the nearest main-road node to that point). St. Catharines was first joined at its nearest city street, which sent its shoppers down Taylor Road at four times the counted traffic; it now joins at the QEW."
  },
  "detour_factor": 1.3,
  "highway_kmh": 70,
@@ -11,31 +12,46 @@
    "name": "St. Catharines",
    "population_2021": 136803,
    "lat": 43.136,
-   "lon": -79.224
+   "lon": -79.224,
+   "join_lat": 43.15212,
+   "join_lon": -79.150513,
+   "join_via": "QEW from the north"
   },
   {
    "name": "Welland",
    "population_2021": 55750,
    "lat": 42.992,
-   "lon": -79.248
+   "lon": -79.248,
+   "join_lat": 43.0322,
+   "join_lon": -79.1171,
+   "join_via": "Highway 140 / QEW area"
   },
   {
    "name": "Thorold",
    "population_2021": 23816,
    "lat": 43.123,
-   "lon": -79.199
+   "lon": -79.199,
+   "join_lat": 43.1138,
+   "join_lon": -79.1757,
+   "join_via": "Thorold Stone Road at the city limit"
   },
   {
    "name": "Niagara-on-the-Lake",
    "population_2021": 19088,
    "lat": 43.158,
-   "lon": -79.166
+   "lon": -79.166,
+   "join_lat": 43.1358,
+   "join_lon": -79.1343,
+   "join_via": "Highway 405 / Stanley Avenue"
   },
   {
    "name": "Fort Erie",
    "population_2021": 32901,
    "lat": 42.905,
-   "lon": -78.93
+   "lon": -78.93,
+   "join_lat": 42.9675,
+   "join_lon": -79.0307,
+   "join_via": "QEW from the south"
   }
  ],
  "in_town_kmh": 40,

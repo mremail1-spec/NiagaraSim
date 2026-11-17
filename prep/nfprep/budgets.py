@@ -240,9 +240,15 @@ def export_city(pack: Pack, city: dict, budgets: np.ndarray, year: int, path: Pa
     growth = len(city["persons"]) / 94415                      # SEED: towns grew in step with Niagara Falls
     hh_size = len(city["persons"]) / len(hh)
     block = 100
+    # Towns join the city where people actually drive in: a highway or main road node, not the
+    # nearest side street (which sent every Thorold shopper down Taylor Road).
+    main_nodes = sorted({e["from_node"] for e in edges if e["road_class"] in ("motorway", "trunk", "primary", "motorway_link", "trunk_link")})
+    mask = np.full(len(nodes), np.inf)
+    mask[main_nodes] = 0.0
     for t in towns["towns"]:
-        d = np.hypot((nlat - t["lat"]) * 111.32, (nlon - t["lon"]) * 111.32 * np.cos(np.radians(t["lat"])))
-        km = float(d.min()) * towns["detour_factor"]
+        jl, jo = t.get("join_lat", t["lat"]), t.get("join_lon", t["lon"])
+        d = np.hypot((nlat - jl) * 111.32, (nlon - jo) * 111.32 * np.cos(np.radians(jl))) + mask
+        km = float(np.hypot((t["lat"] - jl) * 111.32, (t["lon"] - jo) * 111.32 * np.cos(np.radians(jl)))) * towns["detour_factor"]
         node = len(nodes) + len(town_nodes)
         town_nodes.append((t["lat"], t["lon"]))
         # town_link_time_factor: how much longer a trip to another town feels than its driving time.
