@@ -1,0 +1,11 @@
+{"_meta": {"purpose": "Revenue of the large public operators in Niagara Falls, used as calibration targets.",
+  "sources": {"niagara_parks": "Niagara Parks Commission Annual Report 2024/2025 (April 2024 - March 2025), https://www.niagaraparks.com/media/2026/02/FINAL-ENG-Niagara-Parks-Commission-Annual-Report-2024-25.pdf (copy in data/sources/operators/)",
+              "olg": "OLG Annual Report 2024-25, https://about.olg.ca/wp-content/uploads/2025/08/OLG-Annual-Report-2024-2025.pdf : land-based casino gross gaming revenue $3.82B province-wide; no figures by site.",
+              "casino_estimate": "Niagara casinos' gaming revenue estimated from the city's casino hosting fee (about $18M, data/sim_parameters.json) through Ontario's hosting-fee formula (slots: 5.25% of the first $65M, 3% of the next $135M, 2.5% of the next $300M, 0.5% above $500M; table games 4%) with an assumed 75/25 slot/table split, giving about $550M. Consistent with the Ontario government's 'over $500 million a year'. The formula rates are quoted from memory of OLG's published schedule and should be checked."}},
+ "niagara_parks": {"revenue_producing_operations_cad": 145848000, "previous_year_cad": 130246000, "total_with_tenant_partners_cad": 183300000,
+   "operations": "attractions, retail stores, parking sites, WEGO bus, Falls Incline Railway, culinary outlets, golf",
+   "tenant_revenue_to_npc_cad": {"boat_tour_lease": 19200000, "zipline_and_adventure_course": 3000000, "land_rent": 8800000},
+   "cost_of_goods_share": 0.16, "operating_expenditure_share": 0.35,
+   "attendance": {"paid_attractions": 2146447, "golf_rounds": 123260, "wego_riders": 1108170, "falls_incline_railway": 884777}},
+ "casinos": {"gaming_revenue_estimate_cad": 550000000, "range_cad": [500000000, 600000000], "visits_per_year": 5000000,
+             "operator": "Mohegan (MGE Niagara) for OLG, contract to March 31, 2040"}}
