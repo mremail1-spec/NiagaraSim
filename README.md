@@ -20,7 +20,8 @@ Plan: https://claude.ai/artifact/CvFuGLP1nByTvzvPyyTnB4
 | 5. Tourists | Done | 5 more Rust tests: 11.05M visitors, Journey Behind the Falls 923,057 (published 917,075), six other attractions within 3%, US overnight July-August share 33.0% (32.8%), spending matches inputs. Hotel occupancy comes out at 43%, below the published 55-67%: recorded as a data gap, not tuned away |
 | 7. The game (first version) | Running | Single page on a phone: real roads, businesses sized by revenue, resident and tourist trips moving, tap for details, four speeds |
 | 8. Place a business (first version) | Running | Tap Build, pick a kind, tap the map: yearly revenue and profit at three sizes, tourist share, and the businesses that lose trade. Build it and it trades. 3 Rust tests: the forecast takes trade and creates none; it matches what happens once built (within 1%); location changes it |
-| 6, 9, 10 | Not started | |
+| 9. Backtest (first run) | Run; the model did not pass | See "Backtest 2021 to 2026" below |
+| 6, 10 | Not started | |
 
 Tests: `python3 -m pytest` (37) and `cd engine && cargo test --release` (17). A full simulated year is summarised in `docs/run_2025_full_year.json`. A picture of the generated city is in `docs/city_2025_map.png`.
 
@@ -107,3 +108,16 @@ Sources and method are in `data/calibration_benchmarks_ontario_2025.json`; resul
 - **What the counts changed:** shoppers from Fort Erie and Welland were generating more traffic on the QEW south than was counted in total. Town households now put 12% of their spending in play for other towns (fitted), which cut inbound spending from $737M to $245M. Simulated shopping, dining and visitor trips now make up 11-60% of counted traffic on every section, leaving room for the commuting, trucks and through traffic the model does not simulate.
 - **Still missing:** Niagara Region's counts for Lundy's Lane, McLeod Road, Stanley Avenue and the other regional roads. Its portal blocks automated downloads; download the 2025 CSV from https://niagaraopendata.ca/dataset/regional-road-traffic-volumes and add it to `data/` to extend the check to city streets.
 - One store type still misses its target after calibration: specialty and miscellaneous retail (459) reaches $226M against $311M.
+
+## Backtest 2021 to 2026 (first run, 17 November 2026)
+`python3 -m nfprep.backtest` rebuilds the city with the 485 named restaurants and shops that were on OpenStreetMap in central Niagara Falls on 1 January 2021, scores each with the model, and checks which had gone or been replaced by July 2026 (38 had, 7.8%). Full results: `docs/backtest_2021_2026.json`.
+
+| Test | Pass mark | Result |
+|---|---|---|
+| Closed business scored below a surviving one (expected revenue, ranked within its kind) | 70% | 49%: no better than a coin flip |
+| Closure rate in the model's weakest tenth | 15.7% (double the average) | 10.4% |
+
+- **The model did not predict which businesses closed.** Its score describes how well a site fits the city's normal spending. The closures of 2021-2026 were not about that: 18 of the 38 were inside the Tourist Core, the strongest sites in normal times.
+- **Reliance on tourists did carry a signal.** Businesses the model says get over 60% of sales from tourists closed at 10.4%, against 6.1% for those under 25% (ranking score 61%). That fits the border closure of 2020-2021, which this run did not feed in.
+- **Why the test is weak:** only 38 closures; OpenStreetMap misses many closures and some "gone" entries are rebrands or map clean-up; each business's size is assigned by the model at random within its industry, not observed; demand is 2025, not year by year.
+- **What would make it a fair test:** run the years 2020-2022 with the real collapse in visitors; business licence lists by year from the city for reliable openings and closures; real sizes (seats, floor area) where available.
