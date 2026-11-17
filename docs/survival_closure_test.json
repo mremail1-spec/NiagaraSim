@@ -1,0 +1,26 @@
+[
+ {
+  "buffer_months": 1.0,
+  "followed": 485,
+  "closed": 38,
+  "ranking_score": 0.617,
+  "mean_chance_closed": 0.213,
+  "mean_chance_survivors": 0.152
+ },
+ {
+  "buffer_months": 3.0,
+  "followed": 485,
+  "closed": 38,
+  "ranking_score": 0.633,
+  "mean_chance_closed": 0.063,
+  "mean_chance_survivors": 0.04
+ },
+ {
+  "buffer_months": 6.0,
+  "followed": 485,
+  "closed": 38,
+  "ranking_score": 0.612,
+  "mean_chance_closed": 0.018,
+  "mean_chance_survivors": 0.011
+ }
+]
