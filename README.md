@@ -160,3 +160,10 @@ CBRE Hotels' monthly National Market Reports carry a Niagara Falls row and are p
 Room rates fit within about $5 of the published averages. November is the weakest month (model 5 points high): November 2025 fell 11.7 points from November 2024, a drop the model's monthly visitor pattern does not contain.
 
 Still not found anywhere public: business licence lists by year (only the current year is published) and Niagara Falls Municipal Accommodation Tax receipts by year.
+
+## Filling in missing names and addresses (17 November 2026)
+- **Real businesses added:** 111 from the city's current licences (repair shops, estheticians, hairdressers, car dealers) and 2 clinics from a wider OpenStreetMap pull. Each replaces one stand-in, so stand-ins fell from 392 to 338. The wider pull reached into Niagara Falls, New York; anything outside the city's census tracts is now dropped.
+- **Names and addresses:** the address comes from the source record, then OpenStreetMap, then the city licence whose parcel the place sits in, then the nearest civic address within 150 m. A missing name is taken from the licence on the same parcel. Real places with no address: 155 -> 28; with no name: 55 -> 27.
+- **Stand-ins are marked:** they are drawn as rings, not dots, and their panel says "Estimated ... (not a real business)". Most remaining stand-ins are health offices (200) and pharmacies (40): the register counts far more than any public list shows.
+- **Corrections:** `data/local_corrections.json` takes businesses people know about (name, kind, and an address from the city's address list, or coordinates). Each one becomes a real business and replaces a stand-in.
+- Statistics Canada's Open Database of Businesses would fill much of the gap, but its download page was unavailable on 17 November 2026.

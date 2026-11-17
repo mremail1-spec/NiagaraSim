@@ -1,0 +1,4 @@
+{"_meta": {"purpose": "Businesses people know about that the map is missing or gets wrong. Each entry is added as a real business and replaces one stand-in of the same kind. Give an address the city knows (it is looked up in the city's address points) or lat/lon.",
+  "categories": "pharmacy, health, personal_services, grocery_food, restaurant, fast_food, cafe, bar_pub, apparel, general_merchandise, home_electronics, retail_other, souvenir_gift, fuel, auto_service, auto_dealer, car_rental, attraction, leisure_paid, entertainment, accommodation",
+  "example": {"name": "Shoppers Drug Mart", "category": "pharmacy", "address": "1234 Example St", "since": 2022, "reported_by": "project owner"}},
+ "add": []}

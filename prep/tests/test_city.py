@@ -34,7 +34,20 @@ def test_size_bands_match_register_for_food_service(city):
 
 
 def test_all_mapped_places_are_kept(city):
-    assert sum(1 for b in city["businesses"] if b["source"] == "osm") == 1128
+    ids = {b["osm_id"] for b in city["businesses"]}
+    original = [r["osm_id"] for r in city["pack"].tables["places.csv"]]
+    assert len(original) == 1128 and all(i in ids for i in original)
+
+
+def test_places_outside_the_city_are_not_added(city):
+    # the wider map download reaches into Niagara Falls, New York (Pine Avenue)
+    assert not any("Pine Av" in b["address"] for b in city["businesses"])
+
+
+def test_most_real_businesses_have_a_name_and_address(city):
+    real = [b for b in city["businesses"] if b["source"] != "synthetic"]
+    assert sum(1 for b in real if not b["address"]) / len(real) < 0.03
+    assert sum(1 for b in real if not b["name"].strip()) / len(real) < 0.03
 
 
 def test_businesses_are_complete(city):

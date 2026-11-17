@@ -285,7 +285,7 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
       }
     }
     $("key").innerHTML = GROUPS.map((g) => `<span><i style="background:${g.color}"></i>${g.label}</span>`).join("")
-      + `<span><i style="background:${MODE_COLOR[0]}"></i>Car trip</span><span><i style="background:${MODE_COLOR[2]}"></i>On foot or bike</span><span><i style="background:${MODE_COLOR[3]}"></i>Transit</span><span><i style="background:${TOURIST}"></i>Tourists</span>`;
+      + `<span><i style="border:1.5px solid var(--ink-soft);background:none"></i>Ring: estimated, not a real business</span><span><i style="background:${MODE_COLOR[0]}"></i>Car trip</span><span><i style="background:${MODE_COLOR[2]}"></i>On foot or bike</span><span><i style="background:${MODE_COLOR[3]}"></i>Transit</span><span><i style="background:${TOURIST}"></i>Tourists</span>`;
   }
 
   function resize() {
@@ -381,6 +381,7 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
     const rev = new Float64Array(wasm.memory.buffer, wasm.nf_revenue_ptr(), bizX.length);
     const days = Math.max(1 / 24, wasm.nf_day() + wasm.nf_hour() / 24);
     const base = Math.max(1.6, Math.min(5, s / 45));
+    const standin = city.businesses.standin || [], hollow = [];
     for (let g = 0; g < GROUPS.length; g++) {
       ctx.fillStyle = GROUPS[g].color; ctx.beginPath();
       for (let i = 0; i < bizX.length; i++) {
@@ -388,9 +389,15 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
         const x = bizX[i] * s + view.ox, y = bizY[i] * s + view.oy;
         if (x < -20 || y < -20 || x > W + 20 || y > H + 20) continue;
         const r = base + Math.sqrt(rev[i] / days / 2500) * Math.min(1.6, s / 60);   // size follows revenue per day
+        if (standin[i]) { hollow.push(x, y, r); continue; }                          // stand-ins are drawn as rings
         ctx.moveTo(x + r, y); ctx.arc(x, y, r, 0, 6.2832);
       }
       ctx.globalAlpha = 0.88; ctx.fill(); ctx.globalAlpha = 1;
+      if (hollow.length) {
+        ctx.strokeStyle = GROUPS[g].color; ctx.lineWidth = 1.2; ctx.beginPath();
+        for (let k = 0; k < hollow.length; k += 3) { ctx.moveTo(hollow[k] + hollow[k + 2], hollow[k + 1]); ctx.arc(hollow[k], hollow[k + 1], hollow[k + 2], 0, 6.2832); }
+        ctx.stroke(); hollow.length = 0;
+      }
     }
     if (selected >= 0) {
       const x = bizX[selected] * s + view.ox, y = bizY[selected] * s + view.oy;
@@ -447,16 +454,17 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
     const rev = new Float64Array(wasm.memory.buffer, wasm.nf_revenue_ptr(), bizX.length)[i];
     const tour = new Float64Array(wasm.memory.buffer, wasm.nf_tourist_revenue_ptr(), bizX.length)[i];
     const days = wasm.nf_day() + wasm.nf_hour() / 24;
-    $("bName").textContent = b.name[i] || "Unnamed place";
+    const isStandin = b.standin && b.standin[i];
+    $("bName").textContent = isStandin ? "Estimated " + city.sim_categories[b.sim_category[i]].replace(/_/g, " ") + " (not a real business)" : (b.name[i] || "Unnamed place");
     $("bKind").textContent = city.sim_categories[b.sim_category[i]].replace(/_/g, " ") + (b.core[i] ? " \u00b7 Tourist Core" : "");
     $("bDot").style.background = GROUPS[bizGroup[i]].color;
-    const addr = (b.address && b.address[i]) || "";
-    $("bAddr").textContent = addr ? addr + ", Niagara Falls, ON" : (i >= baseCount ? "Placed at " + b.lat[i].toFixed(5) + ", " + b.lon[i].toFixed(5) : "No civic address on record for this place");
+    const addr = isStandin ? "" : ((b.address && b.address[i]) || "");
+    $("bAddr").textContent = addr ? addr + ", Niagara Falls, ON" : (i >= baseCount ? "Placed at " + b.lat[i].toFixed(5) + ", " + b.lon[i].toFixed(5) : isStandin ? "Location approximate" : "No civic address on record for this place");
     $("bRev").textContent = money(rev);
     $("bTour").textContent = rev > 0 ? Math.round(tour / rev * 100) + "%" : "\u2014";
     $("bYear").textContent = days > 0.5 ? money(rev / days * 365) : "\u2014";
-    $("bNote").textContent = (b.name[i] || "").startsWith("Synthetic")
-      ? "A stand-in business added so the count matches the official register. Its exact site is not real."
+    $("bNote").textContent = isStandin
+      ? "Statistics Canada counts more of these businesses in the city than any map lists, so the model adds unnamed stand-ins near similar shops. If you know a real one nearby, add it in data/local_corrections.json and it replaces a stand-in."
       : i >= baseCount ? "A business you placed. Restart removes it."
       : "Model estimate from simulated resident and tourist spending, not the business's real sales.";
   }
@@ -550,7 +558,7 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
     bizX = grow(bizX, site.x); bizY = grow(bizY, site.y);
     const g = groupOf[city.sim_categories[m.sim_category]];
     bizGroup = grow(bizGroup, g === undefined ? GROUPS.length - 1 : g);
-    b.name.push("Your " + m.label.toLowerCase()); b.sim_category.push(m.sim_category); b.core.push(core); b.external.push(0); b.lat.push(site.lat); b.lon.push(site.lon); b.address.push("");
+    b.name.push("Your " + m.label.toLowerCase()); b.sim_category.push(m.sim_category); b.core.push(core); b.external.push(0); b.lat.push(site.lat); b.lon.push(site.lon); b.address.push(""); if (b.standin) b.standin.push(0);
     closeBuild();
     selected = id; $("sheet").hidden = false; fillSheet();
   }
@@ -592,7 +600,7 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
     playing = false; $("play").textContent = "Play";
     try {
       const b = city.businesses;
-      for (const k of ["name", "sim_category", "core", "external", "lat", "lon", "address"]) b[k].length = baseCount;
+      for (const k of ["name", "sim_category", "core", "external", "lat", "lon", "address", "standin"]) if (b[k]) b[k].length = baseCount;
       bizX = bizX.slice(0, baseCount); bizY = bizY.slice(0, baseCount); bizGroup = bizGroup.slice(0, baseCount);
       selected = -1; $("sheet").hidden = true; closeBuild();
       startEngine(); $("outlook").value = "expected"; outlookKey = "expected"; updateHud();

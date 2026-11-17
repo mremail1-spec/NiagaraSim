@@ -15,7 +15,7 @@ import math
 
 import numpy as np
 
-from .loader import Pack
+from .loader import DATA_DIR, Pack
 from .population import points_in_ring
 
 # sim_category -> NAICS group used for register counts and cost structure
@@ -144,6 +144,44 @@ def assign_floor_area(rows: list[dict]) -> None:
             r["floor_area_m2"] = round(b["a"] * storeys / tenants[h], 1)
 
 
+EXTRA_OSM_CATEGORY = {
+    "pharmacy": "pharmacy", "chemist": "pharmacy", "cosmetics": "pharmacy", "medical_supply": "pharmacy",
+    "doctors": "health", "dentist": "health", "clinic": "health", "optician": "health", "optometrist": "health",
+    "hearing_aids": "health", "physiotherapist": "health", "alternative": "health", "laboratory": "health",
+    "hairdresser": "personal_services", "beauty": "personal_services", "massage": "personal_services",
+    "tattoo": "personal_services", "nails": "personal_services",
+    "car_repair": "auto_service", "tyres": "auto_service", "car_parts": "auto_service", "car_wash": "auto_service",
+    "car": "auto_dealer", "motorcycle": "auto_dealer", "car_rental": "car_rental", "fuel": "fuel",
+    "supermarket": "grocery_food", "convenience": "grocery_food", "greengrocer": "grocery_food", "butcher": "grocery_food",
+    "bakery": "grocery_food", "deli": "grocery_food", "department_store": "general_merchandise",
+    "variety_store": "general_merchandise", "hardware": "home_electronics", "doityourself": "home_electronics",
+    "electronics": "home_electronics", "furniture": "home_electronics", "appliance": "home_electronics",
+    "mobile_phone": "home_electronics", "garden_centre": "home_electronics", "veterinary": "pet"}
+LICENCE_TYPE_CATEGORY = {"GE": "auto_service", "ES": "personal_services", "HA": "personal_services", "GB": "auto_dealer"}
+
+
+def _already_listed(rows: list[dict], name: str, lat: float, lon: float, cat: str) -> bool:
+    """Same kind of business within 40 m, or the same name within 150 m."""
+    from .backtest import same_business
+    for r in rows:
+        d = _dist_m(lat, lon, np.array([r["lat"]]), np.array([r["lon"]]))[0]
+        if d < 40 and r["sim_category"] == cat:
+            return True
+        if d < 150 and name and r["name"] and same_business(name, r["name"]):
+            return True
+    return False
+
+
+def _licence_at(licences: list[dict], lat: float, lon: float):
+    for l in licences:
+        ring = l["ring"]
+        if abs(ring[0][1] - lat) > 0.01 or abs(ring[0][0] - lon) > 0.01:
+            continue
+        if points_in_ring(np.array([lon]), np.array([lat]), ring)[0]:
+            return l
+    return None
+
+
 def build_businesses(pack: Pack, seed: int = 1) -> list[dict]:
     rng = np.random.default_rng(seed + 7_000)
     bench = {r["naics"]: r for r in pack.tables["business_revenue_benchmarks.csv"]}
@@ -184,6 +222,47 @@ def build_businesses(pack: Pack, seed: int = 1) -> list[dict]:
             continue
         add("licence:" + lic["category"], lic["business"], cat, lic["lat"], lic["lon"])
 
+    # Real businesses the main map extract missed: a wider OpenStreetMap pull, and the city's current
+    # licences for repair shops, estheticians, hairdressers and car dealers. Each real one found here
+    # replaces a stand-in below, because stand-ins only fill the gap up to the register count.
+    licences = json.loads((DATA_DIR / "city_open_data" / "business_licences_current.json").read_text())["licences"]
+    city_rings = [f["geometry"]["coordinates"][0] for f in pack.geo["census_tracts_boundaries.geojson"]["features"]]
+
+    def in_city(lat_: float, lon_: float) -> bool:
+        return any(points_in_ring(np.array([lon_]), np.array([lat_]), ring)[0] for ring in city_rings)
+
+    for p in json.loads((DATA_DIR / "osm_extra_places_2026.json").read_text())["places"]:
+        tag = p["amenity"] or p["shop"] or p["healthcare"] or p["craft"]
+        cat = EXTRA_OSM_CATEGORY.get(tag)
+        if not in_city(p["lat"], p["lon"]):
+            continue                                    # the download box reaches into Niagara Falls, New York
+        if cat and not _already_listed(rows, p["name"], p["lat"], p["lon"], cat):
+            add("osm", p["name"], cat, p["lat"], p["lon"], osm_id=p["osm_id"], brand=p["brand"], hours=p["opening_hours"], tag=tag)
+            rows[-1]["address_hint"] = p["address"]
+    for l in licences:
+        cat = LICENCE_TYPE_CATEGORY.get(l["type"][:2])
+        if not cat:
+            continue
+        lat_c = sum(q[1] for q in l["ring"]) / len(l["ring"])
+        lon_c = sum(q[0] for q in l["ring"]) / len(l["ring"])
+        if in_city(lat_c, lon_c) and not _already_listed(rows, l["name"], lat_c, lon_c, cat):
+            add("licence:" + l["type"][:2], nice_case(l["name"]), cat, lat_c, lon_c)
+            rows[-1]["address_hint"] = nice_case(l["address"])
+
+    # corrections supplied by people who know the city (data/local_corrections.json)
+    by_address = {r["address"].upper(): r for r in pack.tables["address_points.csv"]}
+    for c in json.loads((DATA_DIR / "local_corrections.json").read_text())["add"]:
+        if "lat" in c and "lon" in c:
+            la, lo = float(c["lat"]), float(c["lon"])
+        elif c.get("address", "").upper() in by_address:
+            a_ = by_address[c["address"].upper()]
+            la, lo = float(a_["lat"]), float(a_["lon"])
+        else:
+            print(f"correction skipped, address not found in the city's address points: {c.get('address')}")
+            continue
+        add("correction", c["name"], c["category"], la, lo)
+        rows[-1]["address_hint"] = nice_case(c.get("address", ""))
+
     # synthetic businesses up to the register count, placed beside existing shops outside the Tourist Core
     anchors = [r for r in rows if r["source"] == "osm" and r["in_tourist_core"] == 0
                and r["naics"] in ("445", "455", "449", "456", "459", "812", "811", "722", "457")]
@@ -202,13 +281,28 @@ def build_businesses(pack: Pack, seed: int = 1) -> list[dict]:
     alat = np.array([float(r["lat"]) for r in pts])
     alon = np.array([float(r["lon"]) for r in pts])
     licence_address = {(l["business"], l["lat"]): l["address"] for l in pack.tables["licensed_tourism_businesses.csv"]}
+    osm_street = {r["osm_id"]: r["street"] for r in pack.tables["places.csv"] if r.get("street")}
     for r in rows:
-        r["address"], r["address_source"] = "", ""
+        r["address"], r["address_source"], r["name_source"] = "", "", ""
+        r.setdefault("address_hint", "")
         if r["source"] == "synthetic":
+            continue
+        if r.get("address_hint"):
+            r["address"], r["address_source"] = r["address_hint"], "source record"
+            continue
+        if osm_street.get(r["osm_id"], "")[:1].isdigit():
+            r["address"], r["address_source"] = osm_street[r["osm_id"]], "OpenStreetMap"
+            continue
+        # the city licence whose parcel the place sits in
+        lic = _licence_at(licences, r["lat"], r["lon"])
+        if lic:
+            r["address"], r["address_source"] = nice_case(lic["address"]), "city licence parcel"
+            if not r["name"].strip():
+                r["name"], r["name_source"] = nice_case(lic["name"]), "city licence parcel"
             continue
         d = _dist_m(r["lat"], r["lon"], alat, alon)
         i = int(d.argmin())
-        if d[i] <= 80:
+        if d[i] <= 150:
             r["address"], r["address_source"] = nice_case(pts[i]["address"]), "nearest civic address (%d m)" % round(d[i])
     for l in pack.tables["licensed_tourism_businesses.csv"]:
         for r in rows:

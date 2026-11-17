@@ -309,6 +309,7 @@ def export_city(pack: Pack, city: dict, budgets: np.ndarray, year: int, path: Pa
                        "format_weight": [b["format_weight"] for b in biz] + [1.0] * len(ext),
                        "group": [group_of.get(b["naics"], len(group_names)) for b in biz] + [len(group_names)] * len(ext),
                        "address": [b.get("address", "") for b in biz] + [""] * len(ext),
+                       "standin": [int(b["source"] == "synthetic") for b in biz] + [0] * len(ext),
                        "external": [0] * n_real + [1] * len(ext),
                        "extra_km": [0.0] * n_real + [e["extra_km"] for e in ext],
                        "extra_min": [0.0] * n_real + [e["extra_min"] for e in ext],
