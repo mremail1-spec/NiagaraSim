@@ -5,13 +5,13 @@
   "counted_aadt_2019": 8050,
   "counted_trucks_2019": 1700,
   "where": "",
-  "simulated_per_day": 40,
+  "simulated_per_day": 39,
   "share_explained_pct": 0.5,
   "nodes_matched": 4,
   "simulated_mix_pct": {
-   "city_residents": 88,
+   "city_residents": 90,
    "town_shoppers": 0,
-   "visitors_getting_around": 12,
+   "visitors_getting_around": 10,
    "visitors_arriving": 0
   }
  },
@@ -21,13 +21,13 @@
   "counted_aadt_2019": 10100,
   "counted_trucks_2019": 2400,
   "where": "",
-  "simulated_per_day": 30,
+  "simulated_per_day": 28,
   "share_explained_pct": 0.3,
   "nodes_matched": 4,
   "simulated_mix_pct": {
-   "city_residents": 80,
+   "city_residents": 84,
    "town_shoppers": 0,
-   "visitors_getting_around": 20,
+   "visitors_getting_around": 16,
    "visitors_arriving": 0
   }
  },
@@ -37,11 +37,11 @@
   "counted_aadt_2019": 18300,
   "counted_trucks_2019": 730,
   "where": "",
-  "simulated_per_day": 11947,
-  "share_explained_pct": 65.3,
+  "simulated_per_day": 11876,
+  "share_explained_pct": 64.9,
   "nodes_matched": 9,
   "simulated_mix_pct": {
-   "city_residents": 50,
+   "city_residents": 51,
    "town_shoppers": 18,
    "visitors_getting_around": 9,
    "visitors_arriving": 22
@@ -53,14 +53,14 @@
   "counted_aadt_2019": 33000,
   "counted_trucks_2019": 990,
   "where": "",
-  "simulated_per_day": 12483,
-  "share_explained_pct": 37.8,
+  "simulated_per_day": 12802,
+  "share_explained_pct": 38.8,
   "nodes_matched": 6,
   "simulated_mix_pct": {
    "city_residents": 63,
-   "town_shoppers": 23,
+   "town_shoppers": 24,
    "visitors_getting_around": 12,
-   "visitors_arriving": 1
+   "visitors_arriving": 2
   }
  },
  {
@@ -69,13 +69,13 @@
   "counted_aadt_2019": 51100,
   "counted_trucks_2019": 1550,
   "where": "",
-  "simulated_per_day": 12322,
-  "share_explained_pct": 24.1,
+  "simulated_per_day": 12213,
+  "share_explained_pct": 23.9,
   "nodes_matched": 5,
   "simulated_mix_pct": {
-   "city_residents": 73,
+   "city_residents": 76,
    "town_shoppers": 2,
-   "visitors_getting_around": 25,
+   "visitors_getting_around": 22,
    "visitors_arriving": 1
   }
  },
@@ -85,13 +85,13 @@
   "counted_aadt_2019": 44900,
   "counted_trucks_2019": 1300,
   "where": "",
-  "simulated_per_day": 21020,
-  "share_explained_pct": 46.8,
+  "simulated_per_day": 20481,
+  "share_explained_pct": 45.6,
   "nodes_matched": 5,
   "simulated_mix_pct": {
-   "city_residents": 47,
+   "city_residents": 50,
    "town_shoppers": 4,
-   "visitors_getting_around": 27,
+   "visitors_getting_around": 26,
    "visitors_arriving": 21
   }
  },
@@ -101,13 +101,13 @@
   "counted_aadt_2019": 70700,
   "counted_trucks_2019": 7800,
   "where": "",
-  "simulated_per_day": 22624,
-  "share_explained_pct": 32.0,
+  "simulated_per_day": 22766,
+  "share_explained_pct": 32.2,
   "nodes_matched": 5,
   "simulated_mix_pct": {
    "city_residents": 79,
-   "town_shoppers": 18,
-   "visitors_getting_around": 2,
+   "town_shoppers": 17,
+   "visitors_getting_around": 3,
    "visitors_arriving": 1
   }
  },
@@ -117,14 +117,14 @@
   "counted_aadt_2019": 74000,
   "counted_trucks_2019": 5900,
   "where": "",
-  "simulated_per_day": 22888,
-  "share_explained_pct": 30.9,
+  "simulated_per_day": 23247,
+  "share_explained_pct": 31.4,
   "nodes_matched": 10,
   "simulated_mix_pct": {
    "city_residents": 59,
-   "town_shoppers": 28,
+   "town_shoppers": 27,
    "visitors_getting_around": 3,
-   "visitors_arriving": 11
+   "visitors_arriving": 10
   }
  },
  {
@@ -133,11 +133,11 @@
   "counted_aadt_2019": 47500,
   "counted_trucks_2019": 5100,
   "where": "",
-  "simulated_per_day": 16026,
-  "share_explained_pct": 33.7,
+  "simulated_per_day": 16394,
+  "share_explained_pct": 34.5,
   "nodes_matched": 8,
   "simulated_mix_pct": {
-   "city_residents": 49,
+   "city_residents": 50,
    "town_shoppers": 33,
    "visitors_getting_around": 9,
    "visitors_arriving": 9
@@ -149,14 +149,14 @@
   "counted_aadt_2019": 34400,
   "counted_trucks_2019": 4450,
   "where": "",
-  "simulated_per_day": 15194,
-  "share_explained_pct": 44.2,
+  "simulated_per_day": 15432,
+  "share_explained_pct": 44.9,
   "nodes_matched": 11,
   "simulated_mix_pct": {
    "city_residents": 38,
    "town_shoppers": 45,
-   "visitors_getting_around": 5,
-   "visitors_arriving": 13
+   "visitors_getting_around": 4,
+   "visitors_arriving": 12
   }
  },
  {
@@ -165,8 +165,8 @@
   "counted_aadt_2019": 31300,
   "counted_trucks_2019": 4400,
   "where": "",
-  "simulated_per_day": 6614,
-  "share_explained_pct": 21.1,
+  "simulated_per_day": 6576,
+  "share_explained_pct": 21.0,
   "nodes_matched": 10,
   "simulated_mix_pct": {
    "city_residents": 10,
@@ -181,8 +181,8 @@
   "counted_aadt_2019": 22400,
   "counted_trucks_2019": 3800,
   "where": "",
-  "simulated_per_day": 3246,
-  "share_explained_pct": 14.5,
+  "simulated_per_day": 3213,
+  "share_explained_pct": 14.3,
   "nodes_matched": 8,
   "simulated_mix_pct": {
    "city_residents": 4,
@@ -217,9 +217,9 @@
   "share_explained_pct": 0.5,
   "nodes_matched": 3,
   "simulated_mix_pct": {
-   "city_residents": 88,
+   "city_residents": 90,
    "town_shoppers": 0,
-   "visitors_getting_around": 12,
+   "visitors_getting_around": 10,
    "visitors_arriving": 0
   }
  },
@@ -229,7 +229,7 @@
   "counted_aadt_2019": 5900,
   "counted_trucks_2019": null,
   "where": "REG. RD. 70 (Taylor Rd.) to REG. RD. 98 (Kalar Rd.)",
-  "simulated_per_day": 9931,
+  "simulated_per_day": 9932,
   "share_explained_pct": 168.3,
   "nodes_matched": 6,
   "simulated_mix_pct": {
@@ -245,12 +245,12 @@
   "counted_aadt_2019": 29400,
   "counted_trucks_2019": null,
   "where": "REG. RD. 98 (Montrose Rd.) to Q.E.W.",
-  "simulated_per_day": 6276,
-  "share_explained_pct": 21.3,
+  "simulated_per_day": 6405,
+  "share_explained_pct": 21.8,
   "nodes_matched": 5,
   "simulated_mix_pct": {
-   "city_residents": 65,
-   "town_shoppers": 25,
+   "city_residents": 66,
+   "town_shoppers": 24,
    "visitors_getting_around": 10,
    "visitors_arriving": 0
   }
@@ -261,11 +261,11 @@
   "counted_aadt_2019": 19700,
   "counted_trucks_2019": null,
   "where": "REG. RD. 70 (Thorold Townline Rd.) to Kalar Road",
-  "simulated_per_day": 2605,
+  "simulated_per_day": 2604,
   "share_explained_pct": 13.2,
   "nodes_matched": 8,
   "simulated_mix_pct": {
-   "city_residents": 41,
+   "city_residents": 42,
    "town_shoppers": 57,
    "visitors_getting_around": 0,
    "visitors_arriving": 1
@@ -277,14 +277,14 @@
   "counted_aadt_2019": 12400,
   "counted_trucks_2019": null,
   "where": "King's Hwy 420 to REG. RD. 20 (Lundy's Lane)",
-  "simulated_per_day": 5822,
-  "share_explained_pct": 46.9,
+  "simulated_per_day": 6121,
+  "share_explained_pct": 49.4,
   "nodes_matched": 10,
   "simulated_mix_pct": {
-   "city_residents": 75,
-   "town_shoppers": 7,
-   "visitors_getting_around": 16,
-   "visitors_arriving": 2
+   "city_residents": 73,
+   "town_shoppers": 8,
+   "visitors_getting_around": 17,
+   "visitors_arriving": 3
   }
  },
  {
@@ -293,8 +293,8 @@
   "counted_aadt_2019": 4400,
   "counted_trucks_2019": null,
   "where": "REG. RD. 57 (Thorold Stone Rd.) to Beaverdams Road",
-  "simulated_per_day": 4247,
-  "share_explained_pct": 96.5,
+  "simulated_per_day": 4237,
+  "share_explained_pct": 96.3,
   "nodes_matched": 5,
   "simulated_mix_pct": {
    "city_residents": 46,
@@ -309,13 +309,13 @@
   "counted_aadt_2019": 14600,
   "counted_trucks_2019": null,
   "where": "REG. RD. 70 (Thorold Townline Rd.) to Kalar Road",
-  "simulated_per_day": 917,
-  "share_explained_pct": 6.3,
+  "simulated_per_day": 904,
+  "share_explained_pct": 6.2,
   "nodes_matched": 18,
   "simulated_mix_pct": {
-   "city_residents": 63,
+   "city_residents": 64,
    "town_shoppers": 2,
-   "visitors_getting_around": 29,
+   "visitors_getting_around": 28,
    "visitors_arriving": 5
   }
  },
@@ -325,14 +325,14 @@
   "counted_aadt_2019": 9200,
   "counted_trucks_2019": null,
   "where": "REG. RD. 20 (Lundy's Lane) to McLeod Road",
-  "simulated_per_day": 3973,
-  "share_explained_pct": 43.2,
+  "simulated_per_day": 3492,
+  "share_explained_pct": 38.0,
   "nodes_matched": 16,
   "simulated_mix_pct": {
-   "city_residents": 77,
-   "town_shoppers": 10,
-   "visitors_getting_around": 13,
-   "visitors_arriving": 0
+   "city_residents": 76,
+   "town_shoppers": 9,
+   "visitors_getting_around": 14,
+   "visitors_arriving": 1
   }
  },
  {
@@ -341,13 +341,13 @@
   "counted_aadt_2019": 22600,
   "counted_trucks_2019": null,
   "where": "REG. RD. 98 (Montrose Rd.) to Oakwood Drive",
-  "simulated_per_day": 6814,
-  "share_explained_pct": 30.2,
+  "simulated_per_day": 7557,
+  "share_explained_pct": 33.4,
   "nodes_matched": 16,
   "simulated_mix_pct": {
    "city_residents": 73,
-   "town_shoppers": 14,
-   "visitors_getting_around": 12,
+   "town_shoppers": 15,
+   "visitors_getting_around": 10,
    "visitors_arriving": 2
   }
  },
@@ -357,13 +357,13 @@
   "counted_aadt_2019": 2300,
   "counted_trucks_2019": null,
   "where": "REG. RD. 70 (Thorold Townline Rd.) to REG. RD. 98 (Montrose Rd.)",
-  "simulated_per_day": 101,
-  "share_explained_pct": 4.4,
+  "simulated_per_day": 82,
+  "share_explained_pct": 3.6,
   "nodes_matched": 10,
   "simulated_mix_pct": {
-   "city_residents": 46,
-   "town_shoppers": 51,
-   "visitors_getting_around": 3,
+   "city_residents": 52,
+   "town_shoppers": 45,
+   "visitors_getting_around": 4,
    "visitors_arriving": 0
   }
  },
@@ -373,13 +373,13 @@
   "counted_aadt_2019": 6400,
   "counted_trucks_2019": null,
   "where": "REG. RD. 63 (Chippawa Creek Rd.) to REG. RD. 47 (Lyons Creek Rd.)",
-  "simulated_per_day": 993,
-  "share_explained_pct": 15.5,
+  "simulated_per_day": 852,
+  "share_explained_pct": 13.3,
   "nodes_matched": 10,
   "simulated_mix_pct": {
-   "city_residents": 47,
-   "town_shoppers": 50,
-   "visitors_getting_around": 3,
+   "city_residents": 53,
+   "town_shoppers": 43,
+   "visitors_getting_around": 4,
    "visitors_arriving": 0
   }
  },
@@ -389,12 +389,12 @@
   "counted_aadt_2019": 9000,
   "counted_trucks_2019": null,
   "where": "REG. RD. 98 (Montrose Rd.) to REG. RD. 102 (Stanley Ave.)",
-  "simulated_per_day": 2514,
+  "simulated_per_day": 2508,
   "share_explained_pct": 27.9,
   "nodes_matched": 17,
   "simulated_mix_pct": {
-   "city_residents": 56,
-   "town_shoppers": 41,
+   "city_residents": 57,
+   "town_shoppers": 40,
    "visitors_getting_around": 2,
    "visitors_arriving": 0
   }
@@ -405,13 +405,13 @@
   "counted_aadt_2019": 4800,
   "counted_trucks_2019": null,
   "where": "REG. RD. 47 (Lyons Creek Rd.) to Weinbrenner Road",
-  "simulated_per_day": 882,
-  "share_explained_pct": 18.4,
+  "simulated_per_day": 852,
+  "share_explained_pct": 17.8,
   "nodes_matched": 4,
   "simulated_mix_pct": {
    "city_residents": 78,
-   "town_shoppers": 7,
-   "visitors_getting_around": 15,
+   "town_shoppers": 6,
+   "visitors_getting_around": 16,
    "visitors_arriving": 0
   }
  },
@@ -437,8 +437,8 @@
   "counted_aadt_2019": 4100,
   "counted_trucks_2019": null,
   "where": "REG. RD. 27 (Schisler Rd.) to REG. RD. 25 (Netherby Rd.)",
-  "simulated_per_day": 212,
-  "share_explained_pct": 5.2,
+  "simulated_per_day": 209,
+  "share_explained_pct": 5.1,
   "nodes_matched": 14,
   "simulated_mix_pct": {
    "city_residents": 89,
@@ -469,13 +469,13 @@
   "counted_aadt_2019": 6900,
   "counted_trucks_2019": null,
   "where": "REG. RD. 525 (Townline Tunnel Rd.) to REG. RD. 98 (Montrose Rd.)",
-  "simulated_per_day": 19,
+  "simulated_per_day": 18,
   "share_explained_pct": 0.3,
   "nodes_matched": 13,
   "simulated_mix_pct": {
-   "city_residents": 91,
+   "city_residents": 90,
    "town_shoppers": 0,
-   "visitors_getting_around": 9,
+   "visitors_getting_around": 10,
    "visitors_arriving": 0
   }
  },
@@ -485,14 +485,14 @@
   "counted_aadt_2019": 12700,
   "counted_trucks_2019": null,
   "where": "Q.E.W. (int. # 101QEN) to Dorchester Road",
-  "simulated_per_day": 3111,
-  "share_explained_pct": 24.5,
+  "simulated_per_day": 3201,
+  "share_explained_pct": 25.2,
   "nodes_matched": 21,
   "simulated_mix_pct": {
-   "city_residents": 79,
+   "city_residents": 77,
    "town_shoppers": 4,
    "visitors_getting_around": 7,
-   "visitors_arriving": 10
+   "visitors_arriving": 12
   }
  },
  {
@@ -501,7 +501,7 @@
   "counted_aadt_2019": 10300,
   "counted_trucks_2019": null,
   "where": "Dorchester Road to REG. RD. 100 (St. Paul Ave.)",
-  "simulated_per_day": 885,
+  "simulated_per_day": 890,
   "share_explained_pct": 8.6,
   "nodes_matched": 10,
   "simulated_mix_pct": {
@@ -517,13 +517,13 @@
   "counted_aadt_2019": 10800,
   "counted_trucks_2019": null,
   "where": "REG. RD. 61 (Niagara Townline Rd.) to REG. RD. 101 (Mountain Rd.)",
-  "simulated_per_day": 245,
+  "simulated_per_day": 244,
   "share_explained_pct": 2.3,
   "nodes_matched": 17,
   "simulated_mix_pct": {
    "city_residents": 86,
    "town_shoppers": 0,
-   "visitors_getting_around": 13,
+   "visitors_getting_around": 14,
    "visitors_arriving": 0
   }
  },
@@ -533,13 +533,13 @@
   "counted_aadt_2019": 2700,
   "counted_trucks_2019": null,
   "where": "REG. RD. 100 (St. Paul Ave.) to REG. RD. 101 (Portage Rd.)",
-  "simulated_per_day": 708,
-  "share_explained_pct": 26.2,
+  "simulated_per_day": 717,
+  "share_explained_pct": 26.6,
   "nodes_matched": 3,
   "simulated_mix_pct": {
-   "city_residents": 82,
+   "city_residents": 81,
    "town_shoppers": 0,
-   "visitors_getting_around": 17,
+   "visitors_getting_around": 19,
    "visitors_arriving": 0
   }
  },
@@ -549,13 +549,13 @@
   "counted_aadt_2019": 3400,
   "counted_trucks_2019": null,
   "where": "REG. RD. 101 (Mountain Rd.) to REG. RD. 102 (Stanley Ave.)",
-  "simulated_per_day": 518,
-  "share_explained_pct": 15.2,
+  "simulated_per_day": 533,
+  "share_explained_pct": 15.7,
   "nodes_matched": 6,
   "simulated_mix_pct": {
-   "city_residents": 84,
+   "city_residents": 82,
    "town_shoppers": 0,
-   "visitors_getting_around": 16,
+   "visitors_getting_around": 18,
    "visitors_arriving": 0
   }
  },
@@ -569,9 +569,9 @@
   "share_explained_pct": 1.1,
   "nodes_matched": 11,
   "simulated_mix_pct": {
-   "city_residents": 88,
+   "city_residents": 89,
    "town_shoppers": 0,
-   "visitors_getting_around": 12,
+   "visitors_getting_around": 11,
    "visitors_arriving": 0
   }
  },
@@ -581,14 +581,14 @@
   "counted_aadt_2019": 5600,
   "counted_trucks_2019": null,
   "where": "Church's Lane to REG. RD. 57 (Thorold Stone Rd.)",
-  "simulated_per_day": 845,
-  "share_explained_pct": 15.1,
+  "simulated_per_day": 879,
+  "share_explained_pct": 15.7,
   "nodes_matched": 8,
   "simulated_mix_pct": {
-   "city_residents": 62,
-   "town_shoppers": 2,
-   "visitors_getting_around": 31,
-   "visitors_arriving": 6
+   "city_residents": 58,
+   "town_shoppers": 1,
+   "visitors_getting_around": 33,
+   "visitors_arriving": 8
   }
  },
  {
@@ -597,12 +597,12 @@
   "counted_aadt_2019": 31300,
   "counted_trucks_2019": null,
   "where": "Q.E.W. to Dorchester Road",
-  "simulated_per_day": 7628,
-  "share_explained_pct": 24.4,
+  "simulated_per_day": 7557,
+  "share_explained_pct": 24.1,
   "nodes_matched": 11,
   "simulated_mix_pct": {
-   "city_residents": 65,
-   "town_shoppers": 27,
+   "city_residents": 66,
+   "town_shoppers": 26,
    "visitors_getting_around": 8,
    "visitors_arriving": 0
   }
@@ -613,12 +613,12 @@
   "counted_aadt_2019": 20400,
   "counted_trucks_2019": null,
   "where": "Dorchester Road to Drummond Road",
-  "simulated_per_day": 4878,
-  "share_explained_pct": 23.9,
+  "simulated_per_day": 4575,
+  "share_explained_pct": 22.4,
   "nodes_matched": 9,
   "simulated_mix_pct": {
-   "city_residents": 64,
-   "town_shoppers": 28,
+   "city_residents": 66,
+   "town_shoppers": 27,
    "visitors_getting_around": 7,
    "visitors_arriving": 0
   }
@@ -629,12 +629,12 @@
   "counted_aadt_2019": 17500,
   "counted_trucks_2019": null,
   "where": "Drummond Road to REG. RD. 102 (Stanley Ave.)",
-  "simulated_per_day": 2044,
-  "share_explained_pct": 11.7,
+  "simulated_per_day": 2103,
+  "share_explained_pct": 12.0,
   "nodes_matched": 12,
   "simulated_mix_pct": {
-   "city_residents": 73,
-   "town_shoppers": 4,
+   "city_residents": 72,
+   "town_shoppers": 5,
    "visitors_getting_around": 23,
    "visitors_arriving": 0
   }
@@ -645,13 +645,13 @@
   "counted_aadt_2019": 13700,
   "counted_trucks_2019": null,
   "where": "REG. RD. 57 (Thorold Stone Rd.) to REG. RD. 43 (Bridge St.)",
-  "simulated_per_day": 2059,
-  "share_explained_pct": 15.0,
+  "simulated_per_day": 2129,
+  "share_explained_pct": 15.5,
   "nodes_matched": 11,
   "simulated_mix_pct": {
-   "city_residents": 69,
-   "town_shoppers": 0,
-   "visitors_getting_around": 31,
+   "city_residents": 67,
+   "town_shoppers": 1,
+   "visitors_getting_around": 32,
    "visitors_arriving": 0
   }
  },
@@ -661,14 +661,14 @@
   "counted_aadt_2019": 8800,
   "counted_trucks_2019": null,
   "where": "REG. RD. 102 (Stanley Ave.) to Victoria Avenue",
-  "simulated_per_day": 507,
-  "share_explained_pct": 5.8,
+  "simulated_per_day": 575,
+  "share_explained_pct": 6.5,
   "nodes_matched": 11,
   "simulated_mix_pct": {
-   "city_residents": 63,
+   "city_residents": 57,
    "town_shoppers": 1,
-   "visitors_getting_around": 34,
-   "visitors_arriving": 1
+   "visitors_getting_around": 40,
+   "visitors_arriving": 2
   }
  },
  {
@@ -677,14 +677,14 @@
   "counted_aadt_2019": 2300,
   "counted_trucks_2019": null,
   "where": "Victoria Avenue to River Road",
-  "simulated_per_day": 370,
-  "share_explained_pct": 16.1,
+  "simulated_per_day": 355,
+  "share_explained_pct": 15.4,
   "nodes_matched": 8,
   "simulated_mix_pct": {
    "city_residents": 20,
    "town_shoppers": 3,
-   "visitors_getting_around": 65,
-   "visitors_arriving": 12
+   "visitors_getting_around": 66,
+   "visitors_arriving": 11
   }
  },
  {
@@ -693,13 +693,13 @@
   "counted_aadt_2019": 16300,
   "counted_trucks_2019": null,
   "where": "Morrison Street to REG. RD. 420 (Falls Ave.)",
-  "simulated_per_day": 4850,
-  "share_explained_pct": 29.8,
+  "simulated_per_day": 4913,
+  "share_explained_pct": 30.1,
   "nodes_matched": 14,
   "simulated_mix_pct": {
-   "city_residents": 60,
+   "city_residents": 59,
    "town_shoppers": 2,
-   "visitors_getting_around": 33,
+   "visitors_getting_around": 34,
    "visitors_arriving": 5
   }
  },
@@ -709,13 +709,13 @@
   "counted_aadt_2019": 10900,
   "counted_trucks_2019": null,
   "where": "REG. RD. 43 (Bridge St.) to Morrison Street",
-  "simulated_per_day": 1476,
-  "share_explained_pct": 13.5,
+  "simulated_per_day": 1444,
+  "share_explained_pct": 13.2,
   "nodes_matched": 6,
   "simulated_mix_pct": {
-   "city_residents": 60,
+   "city_residents": 58,
    "town_shoppers": 0,
-   "visitors_getting_around": 40,
+   "visitors_getting_around": 42,
    "visitors_arriving": 0
   }
  },
@@ -725,14 +725,14 @@
   "counted_aadt_2019": 23000,
   "counted_trucks_2019": null,
   "where": "REG. RD. 98 (Montrose Rd.) to Dorchester Road",
-  "simulated_per_day": 4512,
-  "share_explained_pct": 19.6,
+  "simulated_per_day": 4381,
+  "share_explained_pct": 19.0,
   "nodes_matched": 23,
   "simulated_mix_pct": {
-   "city_residents": 63,
-   "town_shoppers": 3,
-   "visitors_getting_around": 34,
-   "visitors_arriving": 0
+   "city_residents": 60,
+   "town_shoppers": 2,
+   "visitors_getting_around": 37,
+   "visitors_arriving": 1
   }
  },
  {
@@ -741,13 +741,13 @@
   "counted_aadt_2019": 22300,
   "counted_trucks_2019": null,
   "where": "Dorchester Road to Drummond Road",
-  "simulated_per_day": 6103,
-  "share_explained_pct": 27.4,
+  "simulated_per_day": 5482,
+  "share_explained_pct": 24.6,
   "nodes_matched": 12,
   "simulated_mix_pct": {
-   "city_residents": 55,
-   "town_shoppers": 3,
-   "visitors_getting_around": 42,
+   "city_residents": 53,
+   "town_shoppers": 2,
+   "visitors_getting_around": 44,
    "visitors_arriving": 0
   }
  },
@@ -757,13 +757,13 @@
   "counted_aadt_2019": 18000,
   "counted_trucks_2019": null,
   "where": "Drummond Road to Main Street",
-  "simulated_per_day": 6148,
-  "share_explained_pct": 34.2,
+  "simulated_per_day": 5784,
+  "share_explained_pct": 32.1,
   "nodes_matched": 6,
   "simulated_mix_pct": {
    "city_residents": 43,
-   "town_shoppers": 1,
-   "visitors_getting_around": 49,
+   "town_shoppers": 2,
+   "visitors_getting_around": 48,
    "visitors_arriving": 7
   }
  },
@@ -773,14 +773,14 @@
   "counted_aadt_2019": 12700,
   "counted_trucks_2019": null,
   "where": "Main Street to REG. RD. 102 (Stanley Ave.)",
-  "simulated_per_day": 4886,
-  "share_explained_pct": 38.5,
+  "simulated_per_day": 4592,
+  "share_explained_pct": 36.2,
   "nodes_matched": 7,
   "simulated_mix_pct": {
-   "city_residents": 35,
+   "city_residents": 34,
    "town_shoppers": 2,
-   "visitors_getting_around": 51,
-   "visitors_arriving": 12
+   "visitors_getting_around": 49,
+   "visitors_arriving": 15
   }
  },
  {
@@ -789,14 +789,14 @@
   "counted_aadt_2019": 20500,
   "counted_trucks_2019": null,
   "where": "REG. RD. 420 (Falls Ave.) to REG. RD. 20 (Ferry St.)",
-  "simulated_per_day": 12210,
-  "share_explained_pct": 59.6,
+  "simulated_per_day": 11863,
+  "share_explained_pct": 57.9,
   "nodes_matched": 12,
   "simulated_mix_pct": {
    "city_residents": 31,
-   "town_shoppers": 6,
+   "town_shoppers": 5,
    "visitors_getting_around": 25,
-   "visitors_arriving": 39
+   "visitors_arriving": 38
   }
  },
  {
@@ -805,14 +805,14 @@
   "counted_aadt_2019": 18900,
   "counted_trucks_2019": null,
   "where": "REG. RD. 20 (Ferry St.) to Robinson Street",
-  "simulated_per_day": 6956,
-  "share_explained_pct": 36.8,
+  "simulated_per_day": 6712,
+  "share_explained_pct": 35.5,
   "nodes_matched": 4,
   "simulated_mix_pct": {
-   "city_residents": 42,
-   "town_shoppers": 2,
+   "city_residents": 41,
+   "town_shoppers": 1,
    "visitors_getting_around": 35,
-   "visitors_arriving": 21
+   "visitors_arriving": 23
   }
  },
  {
@@ -821,13 +821,13 @@
   "counted_aadt_2019": 11400,
   "counted_trucks_2019": null,
   "where": "Murray Street to Dunn Street",
-  "simulated_per_day": 5090,
-  "share_explained_pct": 44.6,
+  "simulated_per_day": 4885,
+  "share_explained_pct": 42.8,
   "nodes_matched": 7,
   "simulated_mix_pct": {
-   "city_residents": 37,
+   "city_residents": 38,
    "town_shoppers": 3,
-   "visitors_getting_around": 38,
+   "visitors_getting_around": 37,
    "visitors_arriving": 22
   }
  },
@@ -837,13 +837,13 @@
   "counted_aadt_2019": 26800,
   "counted_trucks_2019": null,
   "where": "Oakwood Drive to Dorchester Road",
-  "simulated_per_day": 6371,
-  "share_explained_pct": 23.8,
+  "simulated_per_day": 6503,
+  "share_explained_pct": 24.3,
   "nodes_matched": 9,
   "simulated_mix_pct": {
    "city_residents": 79,
-   "town_shoppers": 5,
-   "visitors_getting_around": 11,
+   "town_shoppers": 6,
+   "visitors_getting_around": 10,
    "visitors_arriving": 4
   }
  },
@@ -853,8 +853,8 @@
   "counted_aadt_2019": 18600,
   "counted_trucks_2019": null,
   "where": "Dorchester Road to Drummond Road",
-  "simulated_per_day": 4524,
-  "share_explained_pct": 24.3,
+  "simulated_per_day": 4658,
+  "share_explained_pct": 25.0,
   "nodes_matched": 9,
   "simulated_mix_pct": {
    "city_residents": 87,
@@ -869,13 +869,13 @@
   "counted_aadt_2019": 13900,
   "counted_trucks_2019": null,
   "where": "Drummond Road to REG. RD. 102 (Stanley Ave.)",
-  "simulated_per_day": 2135,
+  "simulated_per_day": 2137,
   "share_explained_pct": 15.4,
   "nodes_matched": 11,
   "simulated_mix_pct": {
-   "city_residents": 83,
-   "town_shoppers": 1,
-   "visitors_getting_around": 15,
+   "city_residents": 84,
+   "town_shoppers": 0,
+   "visitors_getting_around": 14,
    "visitors_arriving": 2
   }
  },
@@ -885,14 +885,14 @@
   "counted_aadt_2019": 8500,
   "counted_trucks_2019": null,
   "where": "Dunn Street to REG. RD. 49 (Marineland Pkwy.)",
-  "simulated_per_day": 1825,
-  "share_explained_pct": 21.5,
+  "simulated_per_day": 1814,
+  "share_explained_pct": 21.3,
   "nodes_matched": 14,
   "simulated_mix_pct": {
-   "city_residents": 45,
-   "town_shoppers": 1,
+   "city_residents": 46,
+   "town_shoppers": 2,
    "visitors_getting_around": 43,
-   "visitors_arriving": 11
+   "visitors_arriving": 10
   }
  },
  {
@@ -901,13 +901,13 @@
   "counted_aadt_2019": 4300,
   "counted_trucks_2019": null,
   "where": "REG. RD. 49 (Marineland Pkwy.) to Chippawa Parkway",
-  "simulated_per_day": 666,
+  "simulated_per_day": 665,
   "share_explained_pct": 15.5,
   "nodes_matched": 12,
   "simulated_mix_pct": {
-   "city_residents": 76,
+   "city_residents": 75,
    "town_shoppers": 2,
-   "visitors_getting_around": 22,
+   "visitors_getting_around": 23,
    "visitors_arriving": 0
   }
  },
@@ -917,12 +917,12 @@
   "counted_aadt_2019": 12100,
   "counted_trucks_2019": null,
   "where": "REG. RD. 98 (Kalar Rd.) to Q.E.W. (int. # 101QEN)",
-  "simulated_per_day": 16694,
-  "share_explained_pct": 138.0,
+  "simulated_per_day": 16790,
+  "share_explained_pct": 138.8,
   "nodes_matched": 6,
   "simulated_mix_pct": {
    "city_residents": 49,
-   "town_shoppers": 11,
+   "town_shoppers": 10,
    "visitors_getting_around": 1,
    "visitors_arriving": 39
   }
@@ -933,12 +933,12 @@
   "counted_aadt_2019": 3300,
   "counted_trucks_2019": null,
   "where": "Cardinal Drive to REG. RD. 57 (Thorold Stone Rd.)",
-  "simulated_per_day": 2451,
-  "share_explained_pct": 74.3,
+  "simulated_per_day": 2698,
+  "share_explained_pct": 81.8,
   "nodes_matched": 10,
   "simulated_mix_pct": {
-   "city_residents": 73,
-   "town_shoppers": 14,
+   "city_residents": 72,
+   "town_shoppers": 15,
    "visitors_getting_around": 13,
    "visitors_arriving": 0
   }
@@ -949,8 +949,8 @@
   "counted_aadt_2019": 9900,
   "counted_trucks_2019": null,
   "where": "REG. RD. 47 (Lyons Creek Rd.) to REG. RD. 27 (Schisler Rd.)",
-  "simulated_per_day": 998,
-  "share_explained_pct": 10.1,
+  "simulated_per_day": 990,
+  "share_explained_pct": 10.0,
   "nodes_matched": 6,
   "simulated_mix_pct": {
    "city_residents": 90,
@@ -965,14 +965,14 @@
   "counted_aadt_2019": 8300,
   "counted_trucks_2019": null,
   "where": "REG. RD. 101 (Portage Rd.) to Church's Lane",
-  "simulated_per_day": 473,
-  "share_explained_pct": 5.7,
+  "simulated_per_day": 517,
+  "share_explained_pct": 6.2,
   "nodes_matched": 5,
   "simulated_mix_pct": {
-   "city_residents": 56,
-   "town_shoppers": 2,
-   "visitors_getting_around": 25,
-   "visitors_arriving": 17
+   "city_residents": 51,
+   "town_shoppers": 1,
+   "visitors_getting_around": 27,
+   "visitors_arriving": 20
   }
  },
  {
@@ -981,13 +981,13 @@
   "counted_aadt_2019": 15400,
   "counted_trucks_2019": null,
   "where": "REG. RD. 57 (Thorold Stone Rd.) to Morrison Street (int. # 098MRR)",
-  "simulated_per_day": 2109,
+  "simulated_per_day": 2117,
   "share_explained_pct": 13.7,
   "nodes_matched": 9,
   "simulated_mix_pct": {
    "city_residents": 83,
    "town_shoppers": 6,
-   "visitors_getting_around": 11,
+   "visitors_getting_around": 10,
    "visitors_arriving": 0
   }
  },
@@ -997,13 +997,13 @@
   "counted_aadt_2019": 6700,
   "counted_trucks_2019": null,
   "where": "Canadian Drive to REG. RD. 63 (Chippawa Creek Rd.)",
-  "simulated_per_day": 1836,
-  "share_explained_pct": 27.4,
+  "simulated_per_day": 1414,
+  "share_explained_pct": 21.1,
   "nodes_matched": 6,
   "simulated_mix_pct": {
-   "city_residents": 56,
-   "town_shoppers": 37,
-   "visitors_getting_around": 7,
+   "city_residents": 58,
+   "town_shoppers": 33,
+   "visitors_getting_around": 9,
    "visitors_arriving": 0
   }
  },
@@ -1013,12 +1013,12 @@
   "counted_aadt_2019": 5100,
   "counted_trucks_2019": null,
   "where": "Chippawa Parkway to REG. RD. 47 (Lyons Creek Rd.)",
-  "simulated_per_day": 639,
+  "simulated_per_day": 640,
   "share_explained_pct": 12.5,
   "nodes_matched": 4,
   "simulated_mix_pct": {
-   "city_residents": 86,
-   "town_shoppers": 5,
+   "city_residents": 87,
+   "town_shoppers": 4,
    "visitors_getting_around": 9,
    "visitors_arriving": 0
   }
@@ -1029,13 +1029,13 @@
   "counted_aadt_2019": 5100,
   "counted_trucks_2019": null,
   "where": "General Brock Parkway Ramp to REG. RD. 102 (Stanley Ave.)",
-  "simulated_per_day": 15,
+  "simulated_per_day": 14,
   "share_explained_pct": 0.3,
   "nodes_matched": 6,
   "simulated_mix_pct": {
-   "city_residents": 80,
+   "city_residents": 85,
    "town_shoppers": 0,
-   "visitors_getting_around": 20,
+   "visitors_getting_around": 15,
    "visitors_arriving": 0
   }
  },
@@ -1045,11 +1045,11 @@
   "counted_aadt_2019": 22700,
   "counted_trucks_2019": null,
   "where": "Kalar Road to REG. RD. 98 (Montrose Rd.)",
-  "simulated_per_day": 2944,
-  "share_explained_pct": 13.0,
+  "simulated_per_day": 2917,
+  "share_explained_pct": 12.9,
   "nodes_matched": 7,
   "simulated_mix_pct": {
-   "city_residents": 59,
+   "city_residents": 58,
    "town_shoppers": 34,
    "visitors_getting_around": 8,
    "visitors_arriving": 0
@@ -1061,13 +1061,13 @@
   "counted_aadt_2019": 23400,
   "counted_trucks_2019": null,
   "where": "Kalar Road to REG. RD. 98 (Montrose Rd.)",
-  "simulated_per_day": 7499,
-  "share_explained_pct": 32.0,
+  "simulated_per_day": 7635,
+  "share_explained_pct": 32.6,
   "nodes_matched": 3,
   "simulated_mix_pct": {
-   "city_residents": 70,
+   "city_residents": 68,
    "town_shoppers": 5,
-   "visitors_getting_around": 25,
+   "visitors_getting_around": 26,
    "visitors_arriving": 1
   }
  },
@@ -1077,12 +1077,12 @@
   "counted_aadt_2019": 5800,
   "counted_trucks_2019": null,
   "where": "REG. RD. 102 (Stanley Ave.) to REG. RD. 116 (Sodom Rd.)",
-  "simulated_per_day": 1315,
-  "share_explained_pct": 22.7,
+  "simulated_per_day": 1312,
+  "share_explained_pct": 22.6,
   "nodes_matched": 8,
   "simulated_mix_pct": {
-   "city_residents": 88,
-   "town_shoppers": 6,
+   "city_residents": 90,
+   "town_shoppers": 4,
    "visitors_getting_around": 6,
    "visitors_arriving": 0
   }
@@ -1093,14 +1093,14 @@
   "counted_aadt_2019": 2900,
   "counted_trucks_2019": null,
   "where": "Weinbrenner Road to Q.E.W. (int. # 116QEW)",
-  "simulated_per_day": 522,
-  "share_explained_pct": 18.0,
+  "simulated_per_day": 515,
+  "share_explained_pct": 17.8,
   "nodes_matched": 23,
   "simulated_mix_pct": {
-   "city_residents": 64,
-   "town_shoppers": 5,
-   "visitors_getting_around": 10,
-   "visitors_arriving": 21
+   "city_residents": 65,
+   "town_shoppers": 4,
+   "visitors_getting_around": 9,
+   "visitors_arriving": 22
   }
  },
  {
@@ -1109,13 +1109,13 @@
   "counted_aadt_2019": 15000,
   "counted_trucks_2019": null,
   "where": "Robinson Street to Murray Street",
-  "simulated_per_day": 5958,
-  "share_explained_pct": 39.7,
+  "simulated_per_day": 5617,
+  "share_explained_pct": 37.4,
   "nodes_matched": 3,
   "simulated_mix_pct": {
-   "city_residents": 43,
+   "city_residents": 44,
    "town_shoppers": 0,
-   "visitors_getting_around": 44,
+   "visitors_getting_around": 43,
    "visitors_arriving": 13
   }
  },
@@ -1125,8 +1125,8 @@
   "counted_aadt_2019": 11600,
   "counted_trucks_2019": null,
   "where": "REG. RD. 102 (Stanley Ave. N.) to REG. RD. 102 (Stanley Ave. S.)",
-  "simulated_per_day": 1295,
-  "share_explained_pct": 11.2,
+  "simulated_per_day": 1278,
+  "share_explained_pct": 11.0,
   "nodes_matched": 6,
   "simulated_mix_pct": {
    "city_residents": 81,
@@ -1141,13 +1141,13 @@
   "counted_aadt_2019": 4800,
   "counted_trucks_2019": null,
   "where": "McLeod Road to REG. RD. 98 (Niagara Sq. Dr.)",
-  "simulated_per_day": 2977,
-  "share_explained_pct": 62.0,
+  "simulated_per_day": 3074,
+  "share_explained_pct": 64.0,
   "nodes_matched": 10,
   "simulated_mix_pct": {
-   "city_residents": 81,
+   "city_residents": 80,
    "town_shoppers": 10,
-   "visitors_getting_around": 8,
+   "visitors_getting_around": 9,
    "visitors_arriving": 0
   }
  },
@@ -1157,13 +1157,13 @@
   "counted_aadt_2019": 5400,
   "counted_trucks_2019": null,
   "where": "REG. RD. 98 (Niagara Square Dr.) to Canadian Drive",
-  "simulated_per_day": 4471,
-  "share_explained_pct": 82.8,
+  "simulated_per_day": 3328,
+  "share_explained_pct": 61.6,
   "nodes_matched": 9,
   "simulated_mix_pct": {
-   "city_residents": 67,
-   "town_shoppers": 24,
-   "visitors_getting_around": 9,
+   "city_residents": 66,
+   "town_shoppers": 23,
+   "visitors_getting_around": 11,
    "visitors_arriving": 0
   }
  },
@@ -1173,7 +1173,7 @@
   "counted_aadt_2019": 8100,
   "counted_trucks_2019": null,
   "where": "Thorold Townline Road to REG. RD. 57 (Thorold Stone Rd.)",
-  "simulated_per_day": 2571,
+  "simulated_per_day": 2570,
   "share_explained_pct": 31.7,
   "nodes_matched": 4,
   "simulated_mix_pct": {
@@ -1189,11 +1189,11 @@
   "counted_aadt_2019": 13200,
   "counted_trucks_2019": null,
   "where": "Morrison Street (int. # 098MRR) to King's Hwy 420",
-  "simulated_per_day": 4459,
-  "share_explained_pct": 33.8,
+  "simulated_per_day": 4496,
+  "share_explained_pct": 34.1,
   "nodes_matched": 6,
   "simulated_mix_pct": {
-   "city_residents": 79,
+   "city_residents": 78,
    "town_shoppers": 8,
    "visitors_getting_around": 13,
    "visitors_arriving": 1
@@ -1205,11 +1205,11 @@
   "counted_aadt_2019": 5400,
   "counted_trucks_2019": null,
   "where": "REG. RD. 98 (Kalar Rd.) to Cardinal Drive",
-  "simulated_per_day": 407,
-  "share_explained_pct": 7.5,
+  "simulated_per_day": 409,
+  "share_explained_pct": 7.6,
   "nodes_matched": 11,
   "simulated_mix_pct": {
-   "city_residents": 93,
+   "city_residents": 92,
    "town_shoppers": 0,
    "visitors_getting_around": 7,
    "visitors_arriving": 0
@@ -1221,8 +1221,8 @@
   "counted_aadt_2019": 8100,
   "counted_trucks_2019": null,
   "where": "REG. RD. 101 (Mountain Rd.) to Beechwood Road",
-  "simulated_per_day": 1226,
-  "share_explained_pct": 15.1,
+  "simulated_per_day": 1228,
+  "share_explained_pct": 15.2,
   "nodes_matched": 3,
   "simulated_mix_pct": {
    "city_residents": 16,
@@ -1237,14 +1237,14 @@
   "counted_aadt_2019": 4600,
   "counted_trucks_2019": null,
   "where": "Victoria Avenue to Casino Niagara (IPS)",
-  "simulated_per_day": 1297,
-  "share_explained_pct": 28.2,
+  "simulated_per_day": 1511,
+  "share_explained_pct": 32.9,
   "nodes_matched": 30,
   "simulated_mix_pct": {
-   "city_residents": 23,
-   "town_shoppers": 4,
-   "visitors_getting_around": 43,
-   "visitors_arriving": 30
+   "city_residents": 21,
+   "town_shoppers": 3,
+   "visitors_getting_around": 49,
+   "visitors_arriving": 26
   }
  },
  {
@@ -1253,14 +1253,14 @@
   "counted_aadt_2019": 8500,
   "counted_trucks_2019": null,
   "where": "REG. RD 102 (Stanley Ave.) to Victoria Ave. (Ramps)",
-  "simulated_per_day": 5473,
-  "share_explained_pct": 64.4,
+  "simulated_per_day": 5306,
+  "share_explained_pct": 62.4,
   "nodes_matched": 11,
   "simulated_mix_pct": {
    "city_residents": 39,
    "town_shoppers": 4,
-   "visitors_getting_around": 35,
-   "visitors_arriving": 22
+   "visitors_getting_around": 34,
+   "visitors_arriving": 23
   }
  }
 ]

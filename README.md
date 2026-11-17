@@ -139,3 +139,8 @@ The same 485 businesses were run through a pandemic year: US and overseas visito
 | Closure rate where it keeps 80% or more | 6.1% (7 of 114) |
 
 Businesses the model marks as most exposed to a collapse in visitors closed at about twice the rate of the rest. That is a real signal, but too weak to rank individual businesses: the test still fails its 70% pass mark. The same weaknesses apply (38 closures, closures read from the map, random sizes).
+
+## City open data added (17 November 2026)
+The project owner supplied the city's open data catalogue (362 datasets). Downloaded from it: building footprints, capital projects 2022-2026, tourism districts and municipal parking lots (`data/city_open_data/`). Most of the rest are maps of city assets (hydrants, sewers, trees, election results) with no bearing on spending.
+- **Real floor areas:** 1,127 of 1,283 real businesses now sit in a city building footprint; floor area (shared among tenants, times storeys) replaces part of the random element in each business's size. The backtest barely moved (ranking 49%, pandemic exposure 62%), so business size was not what limited it.
+- **Actions over words** (`python3 -m nfprep.capital_check`, `docs/capital_spending_check.json`): the city's $210.5M of road and works projects 2022-2026, by census tract, compared with the model. Rank correlation with new homes built 2021-2023 0.33; with simulated traffic 0.43; with simulated visitor traffic 0.38; with population -0.17. The city spends ahead of growth more than behind tourism.

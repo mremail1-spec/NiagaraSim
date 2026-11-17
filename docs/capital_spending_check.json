@@ -1,0 +1,181 @@
+{
+ "road_and_works_spending_2022_2026_musd": 210.5,
+ "rank_correlation_with_spending": {
+  "simulated_traffic_all": 0.43,
+  "simulated_visitor_traffic": 0.38,
+  "simulated_tourist_spending": 0.25,
+  "population_2021": -0.17,
+  "new_homes_2021_2023": 0.33
+ },
+ "by_tract": [
+  {
+   "tract": "0200.00",
+   "spending_musd": 39.91,
+   "simulated_vehicle_visits": 350256,
+   "visitor_share_of_traffic": 0.151,
+   "tourist_spending_musd": 15.0,
+   "population_2021": 4143
+  },
+  {
+   "tract": "0202.00",
+   "spending_musd": 26.88,
+   "simulated_vehicle_visits": 427375,
+   "visitor_share_of_traffic": 0.115,
+   "tourist_spending_musd": 61.6,
+   "population_2021": 3867
+  },
+  {
+   "tract": "0201.00",
+   "spending_musd": 26.51,
+   "simulated_vehicle_visits": 204213,
+   "visitor_share_of_traffic": 0.196,
+   "tourist_spending_musd": 23.9,
+   "population_2021": 4811
+  },
+  {
+   "tract": "0215.00",
+   "spending_musd": 26.31,
+   "simulated_vehicle_visits": 213435,
+   "visitor_share_of_traffic": 0.625,
+   "tourist_spending_musd": 96.9,
+   "population_2021": 4328
+  },
+  {
+   "tract": "0210.01",
+   "spending_musd": 12.73,
+   "simulated_vehicle_visits": 453067,
+   "visitor_share_of_traffic": 0.475,
+   "tourist_spending_musd": 37.3,
+   "population_2021": 3312
+  },
+  {
+   "tract": "0208.00",
+   "spending_musd": 10.61,
+   "simulated_vehicle_visits": 542004,
+   "visitor_share_of_traffic": 0.126,
+   "tourist_spending_musd": 67.1,
+   "population_2021": 6071
+  },
+  {
+   "tract": "0206.00",
+   "spending_musd": 9.51,
+   "simulated_vehicle_visits": 144163,
+   "visitor_share_of_traffic": 0.483,
+   "tourist_spending_musd": 62.8,
+   "population_2021": 4878
+  },
+  {
+   "tract": "0207.00",
+   "spending_musd": 8.82,
+   "simulated_vehicle_visits": 671974,
+   "visitor_share_of_traffic": 0.454,
+   "tourist_spending_musd": 82.1,
+   "population_2021": 6152
+  },
+  {
+   "tract": "0203.02",
+   "spending_musd": 8.3,
+   "simulated_vehicle_visits": 160793,
+   "visitor_share_of_traffic": 0.132,
+   "tourist_spending_musd": 37.1,
+   "population_2021": 5287
+  },
+  {
+   "tract": "0203.01",
+   "spending_musd": 8.21,
+   "simulated_vehicle_visits": 247036,
+   "visitor_share_of_traffic": 0.504,
+   "tourist_spending_musd": 183.5,
+   "population_2021": 5376
+  },
+  {
+   "tract": "0205.00",
+   "spending_musd": 6.97,
+   "simulated_vehicle_visits": 711933,
+   "visitor_share_of_traffic": 0.702,
+   "tourist_spending_musd": 1523.3,
+   "population_2021": 1422
+  },
+  {
+   "tract": "0212.00",
+   "spending_musd": 4.68,
+   "simulated_vehicle_visits": 59629,
+   "visitor_share_of_traffic": 0.103,
+   "tourist_spending_musd": 21.5,
+   "population_2021": 1913
+  },
+  {
+   "tract": "0209.04",
+   "spending_musd": 4.6,
+   "simulated_vehicle_visits": 488809,
+   "visitor_share_of_traffic": 0.268,
+   "tourist_spending_musd": 56.1,
+   "population_2021": 3464
+  },
+  {
+   "tract": "0214.00",
+   "spending_musd": 3.52,
+   "simulated_vehicle_visits": 102622,
+   "visitor_share_of_traffic": 0.223,
+   "tourist_spending_musd": 38.9,
+   "population_2021": 4441
+  },
+  {
+   "tract": "0209.06",
+   "spending_musd": 3.26,
+   "simulated_vehicle_visits": 79490,
+   "visitor_share_of_traffic": 0.357,
+   "tourist_spending_musd": 19.1,
+   "population_2021": 2908
+  },
+  {
+   "tract": "0209.05",
+   "spending_musd": 2.81,
+   "simulated_vehicle_visits": 265208,
+   "visitor_share_of_traffic": 0.255,
+   "tourist_spending_musd": 6.2,
+   "population_2021": 6505
+  },
+  {
+   "tract": "0211.00",
+   "spending_musd": 2.13,
+   "simulated_vehicle_visits": 176037,
+   "visitor_share_of_traffic": 0.12,
+   "tourist_spending_musd": 0.0,
+   "population_2021": 4212
+  },
+  {
+   "tract": "0209.03",
+   "spending_musd": 1.7,
+   "simulated_vehicle_visits": 191373,
+   "visitor_share_of_traffic": 0.14,
+   "tourist_spending_musd": 28.3,
+   "population_2021": 5242
+  },
+  {
+   "tract": "0213.00",
+   "spending_musd": 1.09,
+   "simulated_vehicle_visits": 47106,
+   "visitor_share_of_traffic": 0.198,
+   "tourist_spending_musd": 1.0,
+   "population_2021": 3036
+  },
+  {
+   "tract": "0204.00",
+   "spending_musd": 0.95,
+   "simulated_vehicle_visits": 378438,
+   "visitor_share_of_traffic": 0.423,
+   "tourist_spending_musd": 198.2,
+   "population_2021": 6920
+  },
+  {
+   "tract": "0210.02",
+   "spending_musd": 0.93,
+   "simulated_vehicle_visits": 59771,
+   "visitor_share_of_traffic": 0.15,
+   "tourist_spending_musd": 24.0,
+   "population_2021": 6127
+  }
+ ],
+ "_reading": "City road and works spending 2022-2026 follows where new homes were built (rank correlation 0.33) more than where the model puts traffic (0.43) or visitors (0.38), and not population (-0.17). The city is investing ahead of growth, not behind tourism."
+}

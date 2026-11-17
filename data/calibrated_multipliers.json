@@ -1,73 +1,73 @@
 {
-  "beta": 1.3377146115526557,
+  "beta": 1.352152188308537,
   "external_scale": {
-    "alcohol_tobacco_cannabis": 1.2789209354434867,
-    "clothing": 3.810743304027959,
-    "fuel": 2.8793405527953944,
+    "alcohol_tobacco_cannabis": 1.296228916042823,
+    "clothing": 3.9143312351296613,
+    "fuel": 2.9013013060876496,
     "games_of_chance": 1.0,
-    "general_merchandise": 0.25061055715345415,
-    "groceries": 1.2789209354434867,
+    "general_merchandise": 0.2539953124254524,
+    "groceries": 1.296228916042823,
     "health_services": 1.0,
-    "household_goods": 0.21951562688495124,
+    "household_goods": 0.2211962776551616,
     "personal_care": 1.0,
     "pets": 0.02,
-    "pharmacy": 1.8804628102317147,
+    "pharmacy": 2.098459692263632,
     "recreation_goods": 0.02,
     "recreation_services": 1.0,
-    "restaurants": 1.6227793264252426,
+    "restaurants": 1.6212170987212122,
     "vehicle_service": 1.0
   },
   "sales_by_group": {
     "445": {
-      "after": 531883636.0,
-      "before": 533395048.0,
+      "after": 531905813.0,
+      "before": 533304489.0,
       "target": 531833926.0
     },
     "449": {
-      "after": 268637628.0,
-      "before": 270086430.0,
+      "after": 268654531.0,
+      "before": 268651586.0,
       "target": 269459230.0
     },
     "455": {
-      "after": 437776934.0,
-      "before": 439751324.0,
+      "after": 437790950.0,
+      "before": 438410801.0,
       "target": 438871932.0
     },
     "456": {
-      "after": 175602888.0,
-      "before": 176073133.0,
+      "after": 175614402.0,
+      "before": 179594585.0,
       "target": 175619457.0
     },
     "457": {
-      "after": 201265311.0,
-      "before": 201436380.0,
+      "after": 201270767.0,
+      "before": 201321967.0,
       "target": 201282991.0
     },
     "458": {
-      "after": 107762343.0,
-      "before": 107878089.0,
+      "after": 107765856.0,
+      "before": 108862048.0,
       "target": 107775746.0
     },
     "459": {
-      "after": 226868098.0,
-      "before": 226837557.0,
+      "after": 226161966.0,
+      "before": 226053407.0,
       "target": 310888215.0
     },
     "722": {
-      "after": 730224654.0,
-      "before": 730805521.0,
+      "after": 730229221.0,
+      "before": 729311217.0,
       "target": 730241134.0
     }
   },
   "tourist_capture": {
     "attractions": 1.0,
-    "clothing": 0.38458564950312313,
-    "food_from_stores": 0.838847614473238,
-    "fuel": 0.4698222140970056,
+    "clothing": 0.3772881473424774,
+    "food_from_stores": 0.830831717398793,
+    "fuel": 0.46727930521125605,
     "other_retail": 1.0,
     "parking": 1.0,
     "recreation": 1.0,
-    "restaurants": 0.7076437363654957,
+    "restaurants": 0.7076797134122434,
     "vehicle_rental": 1.0
   }
 }

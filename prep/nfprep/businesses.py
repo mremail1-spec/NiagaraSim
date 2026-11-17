@@ -10,6 +10,7 @@ the prior is used for calibration and for the break-even cost base.
 """
 from __future__ import annotations
 
+import json
 import math
 
 import numpy as np
@@ -108,6 +109,41 @@ def _dist_m(lat1: float, lon1: float, lat2: np.ndarray, lon2: np.ndarray) -> np.
     return np.hypot((lat2 - lat1) * k, (lon2 - lon1) * k * math.cos(math.radians(lat1)))
 
 
+def assign_floor_area(rows: list[dict]) -> None:
+    import gzip
+    from .loader import DATA_DIR
+    data = json.loads(gzip.open(DATA_DIR / "city_open_data" / "building_footprints_2018.json.gz").read())["buildings"]
+    blat = np.array([b["lat"] for b in data])
+    blon = np.array([b["lon"] for b in data])
+    home = []
+    for r in rows:
+        r["floor_area_m2"] = 0.0
+        if r["source"] == "synthetic":
+            home.append(-1)
+            continue
+        d = _dist_m(r["lat"], r["lon"], blat, blon)
+        near = np.argsort(d)[:12]
+        found = -1
+        for i in near:
+            if d[i] > 400:
+                break
+            if points_in_ring(np.array([r["lon"]]), np.array([r["lat"]]), data[i]["ring"])[0]:
+                found = int(i)
+                break
+        if found < 0 and d[near[0]] < 25:
+            found = int(near[0])
+        home.append(found)
+    tenants = {}
+    for h in home:
+        if h >= 0:
+            tenants[h] = tenants.get(h, 0) + 1
+    for r, h in zip(rows, home):
+        if h >= 0:
+            b = data[h]
+            storeys = max(1, round(b["h"] / 3.5)) if b["h"] else 1
+            r["floor_area_m2"] = round(b["a"] * storeys / tenants[h], 1)
+
+
 def build_businesses(pack: Pack, seed: int = 1) -> list[dict]:
     rng = np.random.default_rng(seed + 7_000)
     bench = {r["naics"]: r for r in pack.tables["business_revenue_benchmarks.csv"]}
@@ -194,6 +230,10 @@ def build_businesses(pack: Pack, seed: int = 1) -> list[dict]:
         if r["in_tourist_core"] is None:
             r["in_tourist_core"] = int(core[i])
 
+    # floor area from the city's 2018 building footprints: the building a business sits in (or the
+    # nearest within 25 m), shared equally among the businesses in it, times its storeys (3.5 m each)
+    assign_floor_area(rows)
+
     # size bands: the register's employer counts go to the most prominent businesses in each group
     for naics in sorted({r["naics"] for r in rows if r["naics"]}):
         group = [r for r in rows if r["naics"] == naics]
@@ -204,6 +244,8 @@ def build_businesses(pack: Pack, seed: int = 1) -> list[dict]:
                                + min(_f(r["rooms"]) / 100, 3) + (1.0 if r["sim_category"] == "casino" else 0)
                                + 1.5 * math.log10(max(r["format_weight"], 0.01))
                                - (1.5 if r["source"].startswith("licence") else 0)
+                               # bigger premises, bigger business: weight 1.5 per tenfold floor area
+                               + (1.5 * math.log10(r["floor_area_m2"] / 300) if r["floor_area_m2"] else 0)
                                for r in group]) + rng.normal(0, 0.7, len(group))      # SEED: ranking weights
         for rank, gi in enumerate(np.argsort(-prominence)):
             group[gi]["size_band"] = bands[rank] if rank < len(bands) else "non_employer"
