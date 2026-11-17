@@ -177,5 +177,5 @@
    "population_2021": 6127
   }
  ],
- "_reading": "City road and works spending 2022-2026 follows where new homes were built (rank correlation 0.33) more than where the model puts traffic (0.43) or visitors (0.38), and not population (-0.17). The city is investing ahead of growth, not behind tourism."
+ "_reading": "City road and works spending 2022-2026 by census tract follows the model's simulated traffic most closely (rank correlation 0.43), then visitor traffic (0.38) and new homes (0.33), and not population (-0.17). All are moderate at best: with 21 tracts, none is strong evidence on its own."
 }
