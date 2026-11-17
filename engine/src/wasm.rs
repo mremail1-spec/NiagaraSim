@@ -243,3 +243,24 @@ pub extern "C" fn nf_add_business(node: u32, lat: f64, lon: f64, sim_category: u
 pub extern "C" fn nf_inbound() -> f64 {
     engine().inbound_revenue()
 }
+
+// ---- outlooks ----
+
+/// Apply an outlook (multipliers on the calibrated year). Call before stepping, or after a restart.
+#[no_mangle]
+pub extern "C" fn nf_set_scenario(us: f64, domestic: f64, overseas: f64, base_stays: f64, resident: f64) {
+    engine().set_scenario(us, domestic, overseas, base_stays, resident);
+}
+
+/// Like nf_forecast, but the buffer holds: resident revenue, then tourist revenue from domestic,
+/// US and overseas visitors. Lets the page work out a range without rebuilding the city.
+#[no_mangle]
+pub extern "C" fn nf_forecast_by_origin(node: u32, sim_category: u32, size: f64) -> u32 {
+    let f = engine().forecast(node, sim_category, size, 1.0);
+    unsafe {
+        BUF.clear();
+        BUF.push(f.resident as f32);
+        BUF.extend(f.tourist_by_origin.iter().map(|&x| x as f32));
+        BUF.len() as u32
+    }
+}

@@ -121,6 +121,11 @@ pub struct Engine {
     pub(crate) first_added: usize,
     /// Tourist model (absent when the city file has no tourism block).
     pub(crate) tour: Option<crate::tourists::TourRt>,
+    /// Outlook multipliers on the calibrated year: [US, domestic, overseas, hotel base stays, resident spending].
+    pub scenario: [f64; 5],
+    pub(crate) scenario_base: Option<(Vec<f64>, Vec<f32>)>,
+    /// Attraction pulls fitted to published attendance, kept so an outlook does not refit them.
+    pub(crate) fitted_attraction_pull: Option<Vec<f64>>,
     /// Vehicles counted passing each road node so far (agent mode), when switched on.
     pub traffic: Option<Vec<f64>>,
     /// Tourist purchases made in the hour most recently stepped (agent mode).
@@ -267,7 +272,7 @@ impl Engine {
         let mut e = Engine {
             city, beta, n_nodes, n_cat, dest_of_business, n_dest, minutes, km, next_hop, cat_business, cat_pull,
             home_nodes, node_slot, cdf: Vec::new(), flow: Vec::new(), flow_leak: Vec::new(), flow_inbound: Vec::new(), hh_rate, hh_pcat, hh_ticket, hour_cdf,
-            walk_near: 0.0, state, last_trips: Vec::new(), tour: None, last_tourist_trips: Vec::new(), first_added: n_biz, traffic: None,
+            walk_near: 0.0, state, last_trips: Vec::new(), tour: None, last_tourist_trips: Vec::new(), first_added: n_biz, traffic: None, scenario: [1.0; 5], scenario_base: None, fitted_attraction_pull: None,
         };
         e.set_beta(beta);
         e
@@ -539,7 +544,7 @@ impl Engine {
             } else {
                 Mode::Passenger
             };
-            let spend = self.hh_ticket[h * self.n_cat + c] as f64 * self.state.rng.lognormal_mean1(self.city.params.spend_sigma);
+            let spend = self.hh_ticket[h * self.n_cat + c] as f64 * self.scenario[4] * self.state.rng.lognormal_mean1(self.city.params.spend_sigma);
             let online = if self.city.categories.retail[c] == 1 { self.city.params.online_share_of_retail } else { 0.0 };
             let local = spend * (1.0 - online);
             self.state.revenue[b] += local;

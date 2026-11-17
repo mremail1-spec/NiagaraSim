@@ -36,6 +36,11 @@ fn main() {
         calibrate_sales(&mut engine, arg(&args, "--targets").expect("--targets FILE"), arg(&args, "--out"));
         return;
     }
+    if let Some(sc) = arg(&args, "--scenario") {
+        // "us,domestic,overseas,base_stays,resident"
+        let v: Vec<f64> = sc.split(',').map(|x| x.parse().expect("scenario numbers")).collect();
+        engine.set_scenario(v[0], v[1], v[2], v[3], v[4]);
+    }
     let traffic_out = arg(&args, "--traffic");
     if traffic_out.is_some() {
         engine.enable_traffic();

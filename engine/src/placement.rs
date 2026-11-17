@@ -13,6 +13,8 @@ pub struct Forecast {
     /// Expected yearly revenue from residents and from tourists.
     pub resident: f64,
     pub tourist: f64,
+    /// Tourist revenue split by where the visitors come from: domestic, US, overseas.
+    pub tourist_by_origin: [f64; 3],
     /// Part of the revenue that residents would otherwise have spent in neighbouring towns.
     pub from_out_of_town: f64,
     pub monthly: [f64; 12],
@@ -78,7 +80,7 @@ impl Engine {
         let n_biz = self.city.businesses.node.len();
         let scale = format_weight * size.max(30_000.0).powf(self.city.params.attractiveness_exponent);
         let floor = self.city.params.min_minutes;
-        let mut out = Forecast { resident: 0.0, tourist: 0.0, from_out_of_town: 0.0, monthly: [0.0; 12], losses: vec![], total_taken: 0.0 };
+        let mut out = Forecast { resident: 0.0, tourist: 0.0, tourist_by_origin: [0.0; 3], from_out_of_town: 0.0, monthly: [0.0; 12], losses: vec![], total_taken: 0.0 };
         let mut loss = vec![0f64; n_biz];
         let mut w = Vec::new();
 
@@ -123,7 +125,9 @@ impl Engine {
                 }
                 // yearly spending in this category by group, and its split over the months
                 let mut amount = [[0f64; 12]; 5];
+                let mut origin_amount = [[0f64; 3]; 5];
                 for (si, seg) in t.segments.iter().enumerate() {
+                    let origin = match seg.origin.as_str() { "us" => 1, "overseas" => 2, _ => 0 };
                     let days = if seg.overnight == 1 { rt.avg_nights } else { 1.0 };
                     let shares = if seg.overnight == 1 {
                         [(GROUP_HOTEL, t.lodging_share.hotel), (GROUP_RENTAL, t.lodging_share.rental),
@@ -133,7 +137,9 @@ impl Engine {
                     };
                     for (g, sh) in shares {
                         for m in 0..12 {
-                            amount[g][m] += seg.persons_per_year * seg.month_share[m] * days * sh * rt.seg_budget[si][c];
+                            let a = seg.persons_per_year * seg.month_share[m] * days * sh * rt.seg_budget[si][c];
+                            amount[g][m] += a;
+                            origin_amount[g][origin] += a;
                         }
                     }
                 }
@@ -153,6 +159,9 @@ impl Engine {
                         let mine = served * scale / (minutes[base as usize] as f64).max(floor).powf(self.beta);
                         let share = base_share * mine / (total + mine);
                         out.tourist += year * share;
+                        for o in 0..3 {
+                            out.tourist_by_origin[o] += origin_amount[g][o] * share;
+                        }
                         for m in 0..12 {
                             out.monthly[m] += amount[g][m] * share;
                         }
@@ -260,6 +269,28 @@ impl Engine {
         let beta = self.beta;
         self.set_beta(beta);
         (self.city.businesses.node.len() - 1) as u32
+    }
+
+    /// Apply an outlook: multipliers on the calibrated year for US, domestic and overseas visitors,
+    /// hotel stays outside leisure travel, and resident spending. All 1.0 restores the calibrated year.
+    pub fn set_scenario(&mut self, us: f64, domestic: f64, overseas: f64, base_stays: f64, resident: f64) {
+        if self.scenario_base.is_none() {
+            let persons = self.city.tourism.as_ref().map(|t| t.segments.iter().map(|s| s.persons_per_year).collect()).unwrap_or_default();
+            self.scenario_base = Some((persons, self.city.households.budget.clone()));
+        }
+        let (persons, budget) = self.scenario_base.clone().unwrap();
+        if let Some(t) = self.city.tourism.as_mut() {
+            for (i, s) in t.segments.iter_mut().enumerate() {
+                s.persons_per_year = persons[i] * match s.origin.as_str() { "us" => us, "overseas" => overseas, _ => domestic };
+            }
+        }
+        // placed businesses add no households, so the stored budgets still line up
+        for (i, b) in self.city.households.budget.iter_mut().enumerate() {
+            *b = budget[i] * resident as f32;
+        }
+        self.scenario = [us, domestic, overseas, base_stays, resident];
+        let beta = self.beta;
+        self.set_beta(beta);
     }
 
     /// Set the calibration multipliers and rebuild every table that depends on them.

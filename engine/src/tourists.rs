@@ -246,6 +246,11 @@ impl Engine {
                         }
                     }
                 }
+                // an outlook must move attendance, so pulls fitted on the calibrated year are kept
+                match &self.fitted_attraction_pull {
+                    Some(kept) if kept.len() == pull.len() && self.scenario != [1.0; 5] => pull = kept.clone(),
+                    _ => self.fitted_attraction_pull = Some(pull.clone()),
+                }
                 rt.attendance_pull = pull[lead_i] / lead;
                 rt.cat_pull[ac] = pull;
             }
@@ -406,7 +411,7 @@ impl Engine {
         // rooms held by stays outside the travel survey earn the hotel its room rate every night
         if let Some(h) = &t.hotel {
             for &b in &rt.groups[GROUP_HOTEL].business {
-                let base = Self::base_rooms(&t, b as usize) as f64;
+                let base = Self::base_rooms(&t, b as usize) as f64 * self.scenario[3];
                 let pay = base * h.rate_by_month[month];
                 self.state.revenue[b as usize] += pay;
                 self.state.tour.revenue[b as usize] += pay;
@@ -582,7 +587,7 @@ impl Engine {
         }
         if let Some(h) = &t.hotel {
             for &b in &rt.groups[GROUP_HOTEL].business {
-                let base = Self::base_rooms(&t, b as usize) as f64;
+                let base = Self::base_rooms(&t, b as usize) as f64 * self.scenario[3];
                 let pay = base * h.rate_by_month[month];
                 self.state.revenue[b as usize] += pay;
                 self.state.tour.revenue[b as usize] += pay;
