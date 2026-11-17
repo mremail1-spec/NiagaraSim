@@ -66,6 +66,25 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
 #sheet dt { font-size: 11px; color: var(--ink-soft); text-transform: uppercase; letter-spacing: 0.06em; }
 #sheet dd { margin: 2px 0 0; font-family: var(--font-display); font-size: 17px; font-variant-numeric: tabular-nums; }
 #sheet p { margin: 0; font-size: 12px; color: var(--ink-soft); }
+#build { position: absolute; left: 0; right: 0; bottom: 0; background: var(--panel); border-top: 1px solid var(--panel-edge);
+         border-radius: 14px 14px 0 0; padding-block: 12px 14px; max-height: 62%; overflow-y: auto;
+         padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+         display: grid; gap: 10px; }
+#build h2 { font-family: var(--font-display); font-size: 16px; margin: 0; }
+#build label { font-size: 12px; color: var(--ink-soft); display: grid; gap: 4px; }
+#build select { font: inherit; font-size: 15px; height: 44px; border-radius: 10px; border: 1px solid var(--panel-edge);
+                background: var(--ground); color: var(--ink); padding: 0 10px; max-width: 100%; }
+#build p { margin: 0; font-size: 13px; color: var(--ink-soft); }
+#build table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; font-size: 13px; }
+#build th { text-align: right; font-weight: 500; color: var(--ink-soft); font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; padding: 4px 0; }
+#build th:first-child, #build td:first-child { text-align: left; }
+#build td { text-align: right; padding: 5px 0; border-top: 1px solid var(--panel-edge); }
+#build td.good { color: var(--good); } #build td.bad { color: var(--warn); }
+#build ul { margin: 0; padding-left: 18px; font-size: 13px; display: grid; gap: 2px; }
+#build .actions { display: flex; gap: 10px; flex-wrap: wrap; }
+#build .actions button { height: 44px; padding: 0 16px; border-radius: 22px; cursor: pointer; border: 1px solid var(--panel-edge); background: none; }
+#build .actions button.primary { background: var(--accent); color: #1b1404; border: 0; font-weight: 600; }
+#buildBtn { height: 44px; padding: 0 14px; border-radius: 22px; border: 1px solid var(--accent); color: var(--accent); background: none; cursor: pointer; }
 #closeSheet { position: absolute; top: 8px; right: max(12px, env(safe-area-inset-right, 0px)); background: none; border: 0;
               font-size: 22px; width: 40px; height: 40px; cursor: pointer; color: var(--ink-soft); }
 
@@ -76,7 +95,7 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
 #speeds { display: flex; border: 1px solid var(--panel-edge); border-radius: 22px; overflow: hidden; }
 #speeds button { height: 44px; padding: 0 12px; background: none; border: 0; cursor: pointer; color: var(--ink-soft); font-size: 13px; }
 #speeds button[aria-pressed="true"] { background: var(--panel-edge); color: var(--ink); font-weight: 600; }
-#restart { height: 44px; padding: 0 14px; border-radius: 22px; border: 1px solid var(--panel-edge); background: none; cursor: pointer; margin-left: auto; }
+#restart { height: 44px; padding: 0 14px; border-radius: 22px; border: 1px solid var(--panel-edge); background: none; cursor: pointer; }
 
 #loading { position: absolute; inset: 0; display: grid; place-content: center; gap: 10px; text-align: center; background: var(--ground);
            padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
@@ -115,6 +134,25 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
     </dl>
     <p id="bNote"></p>
   </section>
+  <section id="build" hidden>
+    <h2>Place a business</h2>
+    <label for="kind">What kind?<select id="kind"></select></label>
+    <p id="buildHint">Tap the map where you want it.</p>
+    <div id="forecast" hidden>
+      <table>
+        <thead><tr><th>If it performs like a</th><th>Revenue / yr</th><th>Profit / yr</th></tr></thead>
+        <tbody id="fRows"></tbody>
+      </table>
+      <p id="fMix"></p>
+      <p>Profit uses the industry's average cost shares. Its sales come out of other businesses' tills, not new spending.</p>
+      <p>Takes the most from:</p>
+      <ul id="fLosers"></ul>
+    </div>
+    <div class="actions">
+      <button class="primary" id="buildGo" disabled>Build it here</button>
+      <button id="buildCancel">Close</button>
+    </div>
+  </section>
   <div id="loading"><strong>Building the city</strong><span id="loadMsg">Loading roads, 46,000 households, 1,675 businesses and a year of visitors.</span></div>
 </main>
 
@@ -126,6 +164,7 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
     <button data-rate="24" aria-pressed="false">1 day/s</button>
     <button data-rate="168" aria-pressed="false">1 wk/s</button>
   </div>
+  <button id="buildBtn" disabled>Build</button>
   <button id="restart" disabled>Restart</button>
 </footer>
 
@@ -154,6 +193,7 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
   let roadPaths = [null, null, null];
   let playing = false, rate = 1, acc = 0, lastT = 0, selected = -1;
   let trips = [], pulses = [], tripsTotal = 0;
+  let buildMode = false, site = null, baseCount = 0, groupOf = {};
   let kx = 1, lon0 = 0, lat0 = 0, startDate = new Date(Date.UTC(2025, 0, 1));
 
   const wx = (lon) => (lon - lon0) * kx;
@@ -190,7 +230,8 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
     startEngine();
     delete city.households.budget;                          // the engine has its own copy
     $("loading").hidden = true;
-    $("play").disabled = false; $("restart").disabled = false;
+    $("play").disabled = false; $("restart").disabled = false; $("buildBtn").disabled = false;
+    $("kind").innerHTML = city.build_menu.map((m, i) => `<option value="${i}">${m.label}</option>`).join("");
     resize(); fit(); updateHud(); requestAnimationFrame(frame);
   }
 
@@ -210,7 +251,7 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
     for (let i = 0; i < n; i++) if (homeCount[i]) homeNodes.push(i);
     const b = city.businesses, nb = b.lat.length;
     bizX = new Float32Array(nb); bizY = new Float32Array(nb); bizGroup = new Uint8Array(nb);
-    const groupOf = {};
+    baseCount = nb;
     GROUPS.forEach((g, gi) => g.cats.forEach((c) => { groupOf[c] = gi; }));
     for (let i = 0; i < nb; i++) {
       bizX[i] = wx(b.lon[i]); bizY[i] = wy(b.lat[i]);
@@ -338,6 +379,11 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
       ctx.strokeStyle = css("--accent"); ctx.lineWidth = 2; ctx.beginPath(); ctx.arc(x, y, base + 8, 0, 6.2832); ctx.stroke();
     }
 
+    if (site) {
+      const x = site.x * s + view.ox, y = site.y * s + view.oy;
+      ctx.strokeStyle = css("--accent"); ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.arc(x, y, 9, 0, 6.2832); ctx.moveTo(x - 14, y); ctx.lineTo(x + 14, y); ctx.moveTo(x, y - 14); ctx.lineTo(x, y + 14); ctx.stroke();
+    }
     const dot = Math.max(1.6, Math.min(3.2, s / 70));
     for (let i = trips.length - 1; i >= 0; i--) {
       const t = trips[i], p = (now - t.t0) / t.dur;
@@ -389,6 +435,7 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
     $("bYear").textContent = days > 0.5 ? money(rev / days * 365) : "\u2014";
     $("bNote").textContent = (b.name[i] || "").startsWith("Synthetic")
       ? "A stand-in business added so the count matches the official register. Its exact site is not real."
+      : i >= baseCount ? "A business you placed. Restart removes it."
       : "Model estimate from simulated resident and tourist spending, not the business's real sales.";
   }
 
@@ -428,7 +475,60 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
   canvas.addEventListener("pointercancel", (e) => { pointers.delete(e.pointerId); pinch = 0; });
   canvas.addEventListener("wheel", (e) => { e.preventDefault(); zoomAt(e.offsetX, e.offsetY, Math.exp(-e.deltaY * 0.0015)); }, { passive: false });
 
+  // ---- place a business ----
+  function nearestNode(px, py) {
+    const x = (px - view.ox) / view.scale, y = (py - view.oy) / view.scale;
+    let best = 0, bestD = Infinity;
+    for (let i = 0; i < nodeX.length; i++) {
+      const d = (nodeX[i] - x) ** 2 + (nodeY[i] - y) ** 2;
+      if (d < bestD) { bestD = d; best = i; }
+    }
+    return { node: best, x, y, lon: lon0 + x / kx, lat: lat0 - y / KM };
+  }
+
+  function runForecast() {
+    if (!site) return;
+    const m = city.build_menu[Number($("kind").value)];
+    // goods and labour rise with sales; rent, utilities and other overheads are sized for the scale you build
+    const fixedShare = (100 - m.cost_of_sales_pct - m.wages_pct - m.net_profit_pct) / 100, margin = 1 - (m.cost_of_sales_pct + m.wages_pct) / 100;
+    let rows = "", typical = null;
+    for (const [label, key] of [["small one", "small"], ["typical one", "typical"], ["large one", "large"]]) {
+      const size = m.sizes[key];
+      const n = wasm.nf_forecast(site.node, m.sim_category, size);
+      const f = Array.from(new Float32Array(wasm.memory.buffer, wasm.nf_buf_ptr(), n));
+      const revenue = f[0] + f[1], profit = revenue * margin - fixedShare * size;   // costs sized for a business of that scale
+      if (key === "typical") typical = f;
+      rows += `<tr><td>${label}</td><td>${money(revenue)}</td><td class="${profit >= 0 ? "good" : "bad"}">${profit < 0 ? "\u2212" : ""}${money(Math.abs(profit))}</td></tr>`;
+    }
+    $("fRows").innerHTML = rows;
+    const rev = typical[0] + typical[1];
+    $("fMix").textContent = `Typical size: ${Math.round(typical[1] / rev * 100)}% of sales from tourists, ${money(typical[2])} won back from out-of-town shopping. Busiest month ${["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"][typical.slice(3, 15).indexOf(Math.max(...typical.slice(3, 15)))]}.`;
+    const count = typical[15];
+    let losers = "";
+    for (let i = 0; i < Math.min(4, count); i++) losers += `<li>${city.businesses.name[typical[16 + i * 2]] || "Unnamed place"}: ${money(typical[17 + i * 2])} a year</li>`;
+    $("fLosers").innerHTML = losers || "<li>No single business loses much.</li>";
+    $("forecast").hidden = false; $("buildGo").disabled = false;
+    $("buildHint").textContent = "Forecast for the marked spot. Tap elsewhere to compare.";
+  }
+
+  function closeBuild() { buildMode = false; site = null; $("build").hidden = true; $("forecast").hidden = true; $("buildGo").disabled = true; $("buildHint").textContent = "Tap the map where you want it."; }
+
+  function buildHere() {
+    const m = city.build_menu[Number($("kind").value)], b = city.businesses;
+    let core = 0, near = Infinity;
+    for (let i = 0; i < bizX.length; i++) { const d = Math.hypot(bizX[i] - site.x, bizY[i] - site.y); if (d < near) { near = d; core = d < 0.15 ? b.core[i] : 0; } }
+    const id = wasm.nf_add_business(site.node, site.lat, site.lon, m.sim_category, m.sizes.typical, m.open, m.close, core);
+    const grow = (a, v) => { const out = new a.constructor(a.length + 1); out.set(a); out[a.length] = v; return out; };
+    bizX = grow(bizX, site.x); bizY = grow(bizY, site.y);
+    const g = groupOf[city.sim_categories[m.sim_category]];
+    bizGroup = grow(bizGroup, g === undefined ? GROUPS.length - 1 : g);
+    b.name.push("Your " + m.label.toLowerCase()); b.sim_category.push(m.sim_category); b.core.push(core); b.external.push(0); b.lat.push(site.lat); b.lon.push(site.lon);
+    closeBuild();
+    selected = id; $("sheet").hidden = false; fillSheet();
+  }
+
   function pick(px, py) {
+    if (buildMode) { site = nearestNode(px, py); runForecast(); return; }
     let best = -1, bestD = 22 * 22;
     for (let i = 0; i < bizX.length; i++) {
       if (city.businesses.external[i]) continue;
@@ -443,6 +543,10 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
   $("zoomIn").addEventListener("click", () => zoomAt(W / 2, H / 2, 1.6));
   $("zoomOut").addEventListener("click", () => zoomAt(W / 2, H / 2, 1 / 1.6));
   $("keyBtn").addEventListener("click", () => { const k = $("key"); k.hidden = !k.hidden; $("keyBtn").setAttribute("aria-expanded", String(!k.hidden)); });
+  $("buildBtn").addEventListener("click", () => { buildMode = true; selected = -1; $("sheet").hidden = true; $("build").hidden = false; });
+  $("buildCancel").addEventListener("click", closeBuild);
+  $("buildGo").addEventListener("click", () => { try { buildHere(); } catch (e) { fail("Could not build: " + e.message); } });
+  $("kind").addEventListener("change", runForecast);
   $("closeSheet").addEventListener("click", () => { selected = -1; $("sheet").hidden = true; });
   $("play").addEventListener("click", () => { playing = !playing; lastT = 0; $("play").textContent = playing ? "Pause" : "Play"; });
   $("speeds").addEventListener("click", (e) => {
@@ -452,7 +556,13 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
   });
   $("restart").addEventListener("click", () => {
     playing = false; $("play").textContent = "Play";
-    try { startEngine(); updateHud(); } catch (e) { fail(e.message); }
+    try {
+      const b = city.businesses;
+      for (const k of ["name", "sim_category", "core", "external", "lat", "lon"]) b[k].length = baseCount;
+      bizX = bizX.slice(0, baseCount); bizY = bizY.slice(0, baseCount); bizGroup = bizGroup.slice(0, baseCount);
+      selected = -1; $("sheet").hidden = true; closeBuild();
+      startEngine(); updateHud();
+    } catch (e) { fail(e.message); }
   });
   window.addEventListener("resize", () => { if (wasm) resize(); });
 

@@ -140,6 +140,33 @@ def _tourism_block(tour: dict, sim_cats: list[str], n_total: int) -> dict:
             "hotel_rooms_published_range": [tour["hotel_rooms"]["low"], tour["hotel_rooms"]["high"]]}
 
 
+BUILDABLE = [("restaurant", "Restaurant"), ("fast_food", "Fast food"), ("cafe", "Cafe"), ("bar_pub", "Bar or pub"),
+             ("grocery_food", "Grocery or convenience store"), ("apparel", "Clothing store"),
+             ("general_merchandise", "General merchandise store"), ("home_electronics", "Home, hardware or electronics store"),
+             ("retail_other", "Specialty shop"), ("souvenir_gift", "Souvenir and gift shop"),
+             ("tobacco_cannabis", "Cannabis or tobacco shop"), ("pet", "Pet store"), ("pharmacy", "Pharmacy"),
+             ("health", "Clinic or dental office"), ("personal_services", "Salon or personal services"),
+             ("fuel", "Gas station"), ("auto_service", "Auto repair"), ("attraction", "Attraction"),
+             ("leisure_paid", "Recreation venue"), ("entertainment", "Entertainment venue")]
+
+
+def _build_menu(pack: Pack, sim_cats: list[str]) -> list[dict]:
+    """Kinds of business a player can place, with the industry's typical sizes and cost shares."""
+    from .businesses import CATEGORY_NAICS, DEFAULT_HOURS, FALLBACK_HOURS
+    bench = {r["naics"]: r for r in pack.tables["business_revenue_benchmarks.csv"]}
+    menu = []
+    for cat, label in BUILDABLE:
+        b = bench[CATEGORY_NAICS[cat]]
+        f = lambda k: float(b[k] or 0)
+        o, c = DEFAULT_HOURS.get(cat, FALLBACK_HOURS)
+        menu.append({"sim_category": sim_cats.index(cat), "label": label, "naics": b["naics"], "industry": b["industry"],
+                     "sizes": {"small": f("q1_avg_revenue"), "typical": f("median_cutoff"), "large": f("q3_avg_revenue")},
+                     "cost_of_sales_pct": f("cost_of_sales_pct"), "net_profit_pct": f("net_profit_pct"),
+                     "wages_pct": f("wages_benefits_pct") + f("labour_commissions_pct"),
+                     "open": o, "close": c})
+    return menu
+
+
 def export_city(pack: Pack, city: dict, budgets: np.ndarray, year: int, path: Path) -> dict:
     """Write the single file the engine loads (columnar JSON)."""
     hh, biz, nodes, edges = city["households"], city["businesses"], city["road_nodes"], city["road_edges"]
@@ -223,6 +250,7 @@ def export_city(pack: Pack, city: dict, budgets: np.ndarray, year: int, path: Pa
     }
     if city.get("tourism"):
         doc["tourism"] = _tourism_block(city["tourism"], sim_cats, n_real + len(ext))
+    doc["build_menu"] = _build_menu(pack, sim_cats)
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(doc, separators=(",", ":")))
     return doc

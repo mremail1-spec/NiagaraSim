@@ -19,9 +19,10 @@ Plan: https://claude.ai/artifact/CvFuGLP1nByTvzvPyyTnB4
 | 4. Engine and resident spending | Done | 9 Rust tests: survey trip length and rate, seasonality, budget conservation, flow = agent, determinism, rewind, routes on real roads, one year in about 11 s |
 | 5. Tourists | Done | 5 more Rust tests: 11.05M visitors, Journey Behind the Falls 923,057 (published 917,075), six other attractions within 3%, US overnight July-August share 33.0% (32.8%), spending matches inputs. Hotel occupancy comes out at 43%, below the published 55-67%: recorded as a data gap, not tuned away |
 | 7. The game (first version) | Running | Single page on a phone: real roads, businesses sized by revenue, resident and tourist trips moving, tap for details, four speeds |
-| 6, 8–10 | Not started | |
+| 8. Place a business (first version) | Running | Tap Build, pick a kind, tap the map: yearly revenue and profit at three sizes, tourist share, and the businesses that lose trade. Build it and it trades. 3 Rust tests: the forecast takes trade and creates none; it matches what happens once built (within 1%); location changes it |
+| 6, 9, 10 | Not started | |
 
-Tests: `python3 -m pytest` (37) and `cd engine && cargo test --release` (14). A full simulated year is summarised in `docs/run_2025_full_year.json`. A picture of the generated city is in `docs/city_2025_map.png`.
+Tests: `python3 -m pytest` (37) and `cd engine && cargo test --release` (17). A full simulated year is summarised in `docs/run_2025_full_year.json`. A picture of the generated city is in `docs/city_2025_map.png`.
 
 ## Run
 ```bash
@@ -82,3 +83,9 @@ Then open http://127.0.0.1:8765/index.html. The published version is at https://
 ## Data checks raised so far
 - Hotel room rate implied by the travel survey's spending mix is about $371 a night, against a published average of $194 (2022). One of the inputs (spending total, share spent on accommodation, people per room, or nights) does not fit the others.
 - Hotel occupancy implied by visitor counts and 13,000 rooms is about 43%, below the published 55% to 67%.
+
+## Place a business: what the forecast is and is not
+- Revenue is the newcomer's share of existing resident and tourist spending at that spot. Total spending in the city does not rise.
+- "Small / typical / large" are the industry's lower-quartile average, median and upper-quartile average revenue; they set how strongly the business pulls customers.
+- Profit uses the industry's average cost shares: goods and labour rise with sales, other overheads are sized for the scale chosen.
+- Not in this version: survival odds, a city-wide heat map, side-by-side comparison, accommodation and casinos. A remote site still forecasts a sizeable revenue (about $200k for a restaurant at the rural south edge), which suggests the distance effect is too gentle far from town; to be checked in the backtest.

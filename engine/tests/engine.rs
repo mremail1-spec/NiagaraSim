@@ -257,3 +257,63 @@ fn hotels_never_hold_more_parties_than_rooms() {
     }
     println!("hotel occupancy to mid-July: {:.3}", e.hotel_occupancy());
 }
+
+// ---------------------------------------------------------------- phase 8: place a business
+
+fn sim_category(e: &Engine, name: &str) -> u32 {
+    e.city.sim_categories.iter().position(|c| c == name).unwrap() as u32
+}
+
+fn node_of(e: &Engine, business_name: &str) -> u32 {
+    let b = e.city.businesses.name.iter().position(|n| n == business_name).unwrap();
+    e.city.businesses.node[b]
+}
+
+#[test]
+fn a_new_business_takes_trade_it_does_not_create_it() {
+    let e = Engine::new(city(), beta(), 1);
+    let f = e.forecast(node_of(&e, "Costco"), sim_category(&e, "restaurant"), 483_000.0, 1.0);
+    let earned = f.resident + f.tourist;
+    assert!(earned > 50_000.0, "forecast {earned}");
+    assert!((earned - f.total_taken).abs() / earned < 1e-9, "earned {earned} but took {}", f.total_taken);
+    assert!((f.monthly.iter().sum::<f64>() - earned).abs() / earned < 0.01);
+    assert!(f.from_out_of_town > 0.0 && f.from_out_of_town < f.resident);
+    assert!(!f.losses.is_empty() && f.losses[0].1 >= f.losses.last().unwrap().1);
+}
+
+#[test]
+fn the_forecast_matches_what_happens_when_the_business_is_built() {
+    let mut e = Engine::new(city(), beta(), 1);
+    let (node, kind) = (node_of(&e, "Costco"), sim_category(&e, "restaurant"));
+    let f = e.forecast(node, kind, 483_000.0, 1.0);
+    let before: f64 = e.expected_yearly_revenue().iter().sum();
+    let hurt = f.losses[0];
+    let hurt_before = e.expected_yearly_revenue()[hurt.0 as usize];
+    let b = e.add_business(node, e.city.nodes.lat[node as usize], e.city.nodes.lon[node as usize], kind, 483_000.0, 1.0, 11, 22, false, "Test Diner") as usize;
+    let after = e.expected_yearly_revenue();
+    let built = after[b];
+    assert!((built - (f.resident + f.tourist)).abs() / built < 0.01, "built {built} vs forecast {}", f.resident + f.tourist);
+    assert!((after.iter().sum::<f64>() - before).abs() / before < 1e-6, "total spending changed");
+    assert!(((hurt_before - after[hurt.0 as usize]) - hurt.1).abs() / hurt.1 < 0.02, "competitor loss off");
+    for _ in 0..48 {
+        e.step_hour(); // and it trades once the clock runs
+    }
+    assert!(e.state().revenue[b] > 0.0);
+    assert!(e.route(e.city.households.node[0], b as u32).len() > 1);
+}
+
+#[test]
+fn location_changes_the_forecast() {
+    let e = Engine::new(city(), beta(), 1);
+    let kind = sim_category(&e, "restaurant");
+    let falls = e.forecast(node_of(&e, "Journey Behind the Falls"), kind, 483_000.0, 1.0);
+    let south = (0..e.city.nodes.lat.len()).min_by(|&a, &b| e.city.nodes.lat[a].partial_cmp(&e.city.nodes.lat[b]).unwrap()).unwrap();
+    let farm = e.forecast(south as u32, kind, 483_000.0, 1.0);
+    let (at_falls, at_farm) = (falls.resident + falls.tourist, farm.resident + farm.tourist);
+    println!("restaurant at the falls: ${at_falls:.0} ({:.0}% tourists); at the rural south edge: ${at_farm:.0}", falls.tourist / at_falls * 100.0);
+    assert!(at_falls > 2.0 * at_farm, "falls {at_falls} vs farm {at_farm}");
+    assert!(falls.tourist / at_falls > 0.6, "tourist share at the falls {}", falls.tourist / at_falls);
+    // a bigger business draws more, but not in proportion
+    let big = e.forecast(node_of(&e, "Journey Behind the Falls"), kind, 992_000.0, 1.0);
+    assert!(big.resident + big.tourist > at_falls && big.resident + big.tourist < 2.0 * at_falls);
+}

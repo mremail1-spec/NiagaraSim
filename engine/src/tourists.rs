@@ -80,7 +80,7 @@ pub struct TourState {
 }
 
 impl Engine {
-    fn tour_weights(&self, rt: &TourRt, node: usize, c: usize, out: &mut Vec<f64>) -> f64 {
+    pub(crate) fn tour_weights(&self, rt: &TourRt, node: usize, c: usize, out: &mut Vec<f64>) -> f64 {
         out.clear();
         let mut total = 0.0;
         for (i, &b) in rt.cat_business[c].iter().enumerate() {

@@ -208,3 +208,32 @@ pub extern "C" fn nf_tourist_trips(max: u32) -> u32 {
     }
     take as u32
 }
+
+// ---- place a business ----
+
+/// Forecast a new business at a road node. Fills the buffer with:
+/// resident revenue, tourist revenue, amount won back from out of town, 12 monthly revenues,
+/// number of competitors listed, then (business index, yearly loss) pairs. Returns the buffer length.
+#[no_mangle]
+pub extern "C" fn nf_forecast(node: u32, sim_category: u32, size: f64) -> u32 {
+    let f = engine().forecast(node, sim_category, size, 1.0);
+    unsafe {
+        BUF.clear();
+        BUF.push(f.resident as f32);
+        BUF.push(f.tourist as f32);
+        BUF.push(f.from_out_of_town as f32);
+        BUF.extend(f.monthly.iter().map(|&m| m as f32));
+        BUF.push(f.losses.len() as f32);
+        for (b, loss) in &f.losses {
+            BUF.push(*b as f32);
+            BUF.push(*loss as f32);
+        }
+        BUF.len() as u32
+    }
+}
+
+/// Add a business to the running city; returns its index.
+#[no_mangle]
+pub extern "C" fn nf_add_business(node: u32, lat: f64, lon: f64, sim_category: u32, size: f64, open: u32, close: u32, in_core: u32) -> u32 {
+    engine().add_business(node, lat, lon, sim_category, size, 1.0, open, close, in_core == 1, "New business")
+}

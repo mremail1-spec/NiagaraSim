@@ -109,6 +109,8 @@ pub struct Engine {
     pub(crate) state: Snapshot,
     /// Trips made in the hour most recently stepped (agent mode).
     pub last_trips: Vec<Trip>,
+    /// Index of the first business added after the city was loaded (equals the count when none were).
+    pub(crate) first_added: usize,
     /// Tourist model (absent when the city file has no tourism block).
     pub(crate) tour: Option<crate::tourists::TourRt>,
     /// Tourist purchases made in the hour most recently stepped (agent mode).
@@ -252,7 +254,7 @@ impl Engine {
         let mut e = Engine {
             city, beta, n_nodes, n_cat, dest_of_business, n_dest, minutes, km, next_hop, cat_business, cat_pull,
             home_nodes, node_slot, cdf: Vec::new(), flow: Vec::new(), hh_rate, hh_pcat, hh_ticket, hour_cdf,
-            walk_near: 0.0, state, last_trips: Vec::new(), tour: None, last_tourist_trips: Vec::new(),
+            walk_near: 0.0, state, last_trips: Vec::new(), tour: None, last_tourist_trips: Vec::new(), first_added: n_biz,
         };
         e.set_beta(beta);
         e
@@ -286,7 +288,7 @@ impl Engine {
         (self.km[self.dest_of_business[b] as usize * self.n_nodes + node] + self.city.businesses.extra_km[b]) as f64
     }
 
-    fn weights(&self, node: usize, c: usize, beta: f64, out: &mut Vec<f64>) -> f64 {
+    pub(crate) fn weights(&self, node: usize, c: usize, beta: f64, out: &mut Vec<f64>) -> f64 {
         out.clear();
         let mut total = 0.0;
         for (i, &b) in self.cat_business[c].iter().enumerate() {
