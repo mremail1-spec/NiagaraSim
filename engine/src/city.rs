@@ -260,6 +260,16 @@ pub struct Params {
     pub spend_sigma: f64,
     pub attractiveness_exponent: f64,
     pub min_minutes: f64,
+    /// Visitors on foot in a walkable core treat every place within this many minutes as equally
+    /// near (0 = use min_minutes).
+    #[serde(default)]
+    pub tourist_min_minutes: f64,
+}
+
+impl Params {
+    pub fn tourist_floor(&self) -> f64 {
+        if self.tourist_min_minutes > 0.0 { self.tourist_min_minutes } else { self.min_minutes }
+    }
 }
 
 impl City {

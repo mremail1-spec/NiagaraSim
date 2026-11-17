@@ -209,7 +209,7 @@ impl Engine {
                             continue;
                         }
                         let total = self.tour_weights(rt, base as usize, c, &mut w);
-                        let mine = served * scale / (minutes[base as usize] as f64).max(floor).powf(self.beta);
+                        let mine = served * scale / (minutes[base as usize] as f64).max(self.city.params.tourist_floor()).powf(self.beta);
                         let share = base_share * mine / (total + mine);
                         out.tourist += year * share;
                         for o in 0..3 {

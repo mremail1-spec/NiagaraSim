@@ -98,7 +98,7 @@ impl Engine {
         let mut total = 0.0;
         for (i, &b) in rt.cat_business[c].iter().enumerate() {
             let t = self.trip_minutes(node, b as usize);
-            let w = rt.cat_pull[c][i] / t.max(self.city.params.min_minutes).powf(self.beta);
+            let w = rt.cat_pull[c][i] / t.max(self.city.params.tourist_floor()).powf(self.beta);
             out.push(w);
             total += w;
         }
@@ -217,7 +217,7 @@ impl Engine {
                         let share = rt.groups[g].cdf[i] - prev;
                         prev = rt.groups[g].cdf[i];
                         let f: Vec<f64> = rt.cat_business[ac].iter()
-                            .map(|&b| 1.0 / self.trip_minutes(node as usize, b as usize).max(self.city.params.min_minutes).powf(self.beta)).collect();
+                            .map(|&b| 1.0 / self.trip_minutes(node as usize, b as usize).max(self.city.params.tourist_floor()).powf(self.beta)).collect();
                         decay.push((g, share, f));
                     }
                 }
