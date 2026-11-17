@@ -1,11 +1,89 @@
-{"_meta": {"purpose": "Revenue of the large public operators in Niagara Falls, used as calibration targets.",
-  "sources": {"niagara_parks": "Niagara Parks Commission Annual Report 2024/2025 (April 2024 - March 2025), https://www.niagaraparks.com/media/2026/02/FINAL-ENG-Niagara-Parks-Commission-Annual-Report-2024-25.pdf (copy in data/sources/operators/)",
-              "olg": "OLG Annual Report 2024-25, https://about.olg.ca/wp-content/uploads/2025/08/OLG-Annual-Report-2024-2025.pdf : land-based casino gross gaming revenue $3.82B province-wide; no figures by site.",
-              "casino_estimate": "Niagara casinos' gaming revenue estimated from the city's casino hosting fee (about $18M, data/sim_parameters.json) through Ontario's hosting-fee formula (slots: 5.25% of the first $65M, 3% of the next $135M, 2.5% of the next $300M, 0.5% above $500M; table games 4%) with an assumed 75/25 slot/table split, giving about $550M. Consistent with the Ontario government's 'over $500 million a year'. The formula rates are quoted from memory of OLG's published schedule and should be checked."}},
- "niagara_parks": {"revenue_producing_operations_cad": 145848000, "previous_year_cad": 130246000, "total_with_tenant_partners_cad": 183300000,
-   "operations": "attractions, retail stores, parking sites, WEGO bus, Falls Incline Railway, culinary outlets, golf",
-   "tenant_revenue_to_npc_cad": {"boat_tour_lease": 19200000, "zipline_and_adventure_course": 3000000, "land_rent": 8800000},
-   "cost_of_goods_share": 0.16, "operating_expenditure_share": 0.35,
-   "attendance": {"paid_attractions": 2146447, "golf_rounds": 123260, "wego_riders": 1108170, "falls_incline_railway": 884777}},
- "casinos": {"gaming_revenue_estimate_cad": 550000000, "range_cad": [500000000, 600000000], "visits_per_year": 5000000,
-             "operator": "Mohegan (MGE Niagara) for OLG, contract to March 31, 2040"}}
+{
+ "_meta": {
+  "purpose": "Revenue of the large public operators in Niagara Falls, used as calibration targets.",
+  "sources": {
+   "niagara_parks": "Niagara Parks Commission Annual Report 2024/2025 (April 2024 - March 2025), https://www.niagaraparks.com/media/2026/02/FINAL-ENG-Niagara-Parks-Commission-Annual-Report-2024-25.pdf (copy in data/sources/operators/)",
+   "olg": "OLG Annual Report 2024-25, https://about.olg.ca/wp-content/uploads/2025/08/OLG-Annual-Report-2024-2025.pdf : land-based casino gross gaming revenue $3.82B province-wide; no figures by site.",
+   "casino_estimate": "Niagara casinos' gaming revenue estimated from the city's casino hosting fee (about $18M, data/sim_parameters.json) through Ontario's hosting-fee formula (slots: 5.25% of the first $65M, 3% of the next $135M, 2.5% of the next $300M, 0.5% above $500M; table games 4%) with an assumed 75/25 slot/table split, giving about $550M. Consistent with the Ontario government's 'over $500 million a year'. The formula rates are quoted from memory of OLG's published schedule and should be checked."
+  }
+ },
+ "niagara_parks": {
+  "revenue_producing_operations_cad": 145848000,
+  "previous_year_cad": 130246000,
+  "total_with_tenant_partners_cad": 183300000,
+  "operations": "attractions, retail stores, parking sites, WEGO bus, Falls Incline Railway, culinary outlets, golf",
+  "tenant_revenue_to_npc_cad": {
+   "boat_tour_lease": 19200000,
+   "zipline_and_adventure_course": 3000000,
+   "land_rent": 8800000
+  },
+  "cost_of_goods_share": 0.16,
+  "operating_expenditure_share": 0.35,
+  "attendance": {
+   "paid_attractions": 2146447,
+   "golf_rounds": 123260,
+   "wego_riders": 1108170,
+   "falls_incline_railway": 884777
+  },
+  "status": "Self-financing agency of the Government of Ontario (Niagara Parks Act, 1885); manages a 56 km public corridor along the Niagara River; no routine tax funding for operations.",
+  "expenses_2024_25_cad": 131800000,
+  "surplus_before_interest_and_depreciation_cad": 51500000,
+  "financial_statements_2023_24": {
+   "revenue_producing_operations": 130200000,
+   "land_rent": 8600000,
+   "commissions_rentals_fees": 23500000,
+   "interest": 2900000
+  },
+  "where_dollars_came_from_2024_25": {
+   "gift_shops_restaurants_attractions": 71500000,
+   "boat_tour_lease": 19200000,
+   "zipline_adventure": 3000000,
+   "land_rent": 8800000,
+   "other_income": 6400000,
+   "note": "The $71.5M is 66% of this chart's own total (about $109M), not of the $145.9M revenue-producing figure (49%). The chart and the revenue line measure different things; the model is fitted to the $145.9M."
+  },
+  "free_public_amenities": [
+   "Queen Victoria Park",
+   "Oakes Garden Theatre",
+   "Botanical Gardens",
+   "Floral Clock",
+   "Centennial Lilac Gardens",
+   "Dufferin Islands",
+   "Falls illumination and fireworks viewing",
+   "56 km parkway, 53 km recreation trail",
+   "more than 60 free parking areas at the north and south ends of the parkway; Whirlpool Aero Car lot free"
+  ],
+  "paid_parking": [
+   "Falls Parking (Lot A)",
+   "Rapidsview (Lot C)",
+   "other gated or metered lots near the Falls"
+  ],
+  "golf": [
+   "Legends on the Niagara",
+   "Whirlpool Golf Course",
+   "Oak Hall"
+  ],
+  "planned": [
+   {
+    "project": "Toronto Power Generating Station",
+    "what": "private lease and roughly $300M restoration and redevelopment (Toronto Power Hotel Inc.); Niagara Parks receives fixed and variable rent",
+    "opening": "not stated"
+   },
+   {
+    "project": "Niagara Parks Marina (Miller's Creek)",
+    "what": "up to $19M redevelopment, kept in Niagara Parks ownership",
+    "opening": "not stated"
+   }
+  ],
+  "source_note": "Facts from the project owner's research summary (17 November 2026), citing the Niagara Parks Act, niagaraparks.com, the 2024/25 annual report and the 2023/24 financial statements."
+ },
+ "casinos": {
+  "gaming_revenue_estimate_cad": 550000000,
+  "range_cad": [
+   500000000,
+   600000000
+  ],
+  "visits_per_year": 5000000,
+  "operator": "Mohegan (MGE Niagara) for OLG, contract to March 31, 2040"
+ }
+}
