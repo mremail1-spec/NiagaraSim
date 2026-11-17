@@ -1,0 +1,51 @@
+{
+ "_meta": {
+  "source": "Statistics Canada Canadian Business Counts with employees, Niagara Falls (data/business_counts_niagara_falls_2020_2026.json); model: backtest pandemic run (docs/backtest_2021_2026.json).",
+  "question": "Does the model's pandemic run predict which industries lost the most employer businesses between June 2020 and June 2021?"
+ },
+ "rows": [
+  {
+   "naics": "445",
+   "model_revenue_kept_in_pandemic": 0.719,
+   "employer_count_change_jun2020_to_jun2021": -0.056,
+   "count_jun2020": 90.0,
+   "count_jun2021": 85.0
+  },
+  {
+   "naics": "621",
+   "model_revenue_kept_in_pandemic": 0.85,
+   "employer_count_change_jun2020_to_jun2021": -0.041,
+   "count_jun2020": 195.0,
+   "count_jun2021": 187.0
+  },
+  {
+   "naics": "713",
+   "model_revenue_kept_in_pandemic": 0.488,
+   "employer_count_change_jun2020_to_jun2021": -0.118,
+   "count_jun2020": 51.0,
+   "count_jun2021": 45.0
+  },
+  {
+   "naics": "721",
+   "model_revenue_kept_in_pandemic": 0.537,
+   "employer_count_change_jun2020_to_jun2021": -0.102,
+   "count_jun2020": 88.0,
+   "count_jun2021": 79.0
+  },
+  {
+   "naics": "722",
+   "model_revenue_kept_in_pandemic": 0.535,
+   "employer_count_change_jun2020_to_jun2021": -0.115,
+   "count_jun2020": 304.0,
+   "count_jun2021": 269.0
+  },
+  {
+   "naics": "812",
+   "model_revenue_kept_in_pandemic": 0.574,
+   "employer_count_change_jun2020_to_jun2021": 0.076,
+   "count_jun2020": 66.0,
+   "count_jun2021": 71.0
+  }
+ ],
+ "rank_correlation": 0.83
+}
