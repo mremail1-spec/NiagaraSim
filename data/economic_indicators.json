@@ -1,0 +1,11 @@
+{"_meta": {"purpose": "Cost-side conditions for each business's cash balance (prep/nfprep/survival.py).",
+  "sources": {
+   "policy_rate": "Bank of Canada, target for the overnight rate (series V39079), yearly average of business days. https://www.bankofcanada.ca/valet/observations/V39079/json",
+   "prime_rate": "Bank of Canada, prime business rate (series V80691311), yearly average. https://www.bankofcanada.ca/valet/observations/V80691311/json",
+   "minimum_wage": "Ontario general minimum wage, in force for most of each year (changes take effect October 1, and January 1, 2022). $14.00 from 2018, $14.25 Oct 2020, $14.35 Oct 2021, $15.00 Jan 2022, $15.50 Oct 2022, $16.55 Oct 2023, $17.20 Oct 2024, $17.60 Oct 2025. Quoted from memory of the Ontario Employment Standards schedule; check before relying on it.",
+   "support": "Federal pandemic programs: Canada Emergency Wage Subsidy (up to 75% of wages for businesses with large revenue drops, March 2020 to October 2021, tapering in 2021); Canada Emergency Rent Subsidy (September 2020 to October 2021); Canada Emergency Business Account interest-free loans of up to $60,000 (2020), with up to $20,000 forgiven if $40,000 was repaid by January 18, 2024. Rules summarised from memory; the shares used in the model are simplifications."}},
+ "policy_rate_pct": {"2019": 1.75, "2020": 0.56, "2021": 0.25, "2022": 1.93, "2023": 4.74, "2024": 4.55, "2025": 2.71, "2026": 2.25},
+ "prime_rate_pct": {"2019": 3.95, "2020": 2.77, "2021": 2.45, "2022": 4.11, "2023": 6.94, "2024": 6.77, "2025": 4.91, "2026": 4.45},
+ "minimum_wage_cad_year_weighted": {"2019": 14.00, "2020": 14.06, "2021": 14.27, "2022": 15.13, "2023": 15.76, "2024": 16.71, "2025": 17.30, "2026": 17.60},
+ "support": {"wage_and_rent_subsidy_share_of_fixed_costs": {"2020": 0.55, "2021": 0.40}, "applies_if_revenue_below_normal_by": 0.30,
+             "ceba_loan_cad": {"2020": 60000}, "ceba_repayment_cad": {"2023": 40000}}}
