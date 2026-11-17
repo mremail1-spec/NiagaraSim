@@ -1,0 +1,301 @@
+{
+ "_meta": {
+  "question": "When the model says an industry's revenue fell (rose) in a year, did the number of businesses with employees in that industry fall (rise) by the next June?",
+  "conditions": "data/yearly_conditions.json"
+ },
+ "rank_correlation": 0.4,
+ "pearson_correlation": 0.21,
+ "direction_agrees": "25 of 30",
+ "rows": [
+  {
+   "industry": "Restaurants and food service",
+   "year": "2021",
+   "model_revenue_change": 0.166,
+   "employer_count_change_next_june": 0.071,
+   "count_june_of_year": 269.0,
+   "count_next_june": 288.0
+  },
+  {
+   "industry": "Restaurants and food service",
+   "year": "2022",
+   "model_revenue_change": 0.498,
+   "employer_count_change_next_june": 0.021,
+   "count_june_of_year": 288.0,
+   "count_next_june": 294.0
+  },
+  {
+   "industry": "Restaurants and food service",
+   "year": "2023",
+   "model_revenue_change": 0.188,
+   "employer_count_change_next_june": 0.095,
+   "count_june_of_year": 294.0,
+   "count_next_june": 322.0
+  },
+  {
+   "industry": "Restaurants and food service",
+   "year": "2024",
+   "model_revenue_change": -0.019,
+   "employer_count_change_next_june": 0.031,
+   "count_june_of_year": 322.0,
+   "count_next_june": 332.0
+  },
+  {
+   "industry": "Restaurants and food service",
+   "year": "2025",
+   "model_revenue_change": -0.053,
+   "employer_count_change_next_june": -0.018,
+   "count_june_of_year": 332.0,
+   "count_next_june": 326.0
+  },
+  {
+   "industry": "Hotels and motels",
+   "year": "2021",
+   "model_revenue_change": 0.126,
+   "employer_count_change_next_june": -0.063,
+   "count_june_of_year": 79.0,
+   "count_next_june": 74.0
+  },
+  {
+   "industry": "Hotels and motels",
+   "year": "2022",
+   "model_revenue_change": 0.486,
+   "employer_count_change_next_june": 0.081,
+   "count_june_of_year": 74.0,
+   "count_next_june": 80.0
+  },
+  {
+   "industry": "Hotels and motels",
+   "year": "2023",
+   "model_revenue_change": 0.199,
+   "employer_count_change_next_june": 0.025,
+   "count_june_of_year": 80.0,
+   "count_next_june": 82.0
+  },
+  {
+   "industry": "Hotels and motels",
+   "year": "2024",
+   "model_revenue_change": -0.012,
+   "employer_count_change_next_june": -0.024,
+   "count_june_of_year": 82.0,
+   "count_next_june": 80.0
+  },
+  {
+   "industry": "Hotels and motels",
+   "year": "2025",
+   "model_revenue_change": -0.045,
+   "employer_count_change_next_june": -0.05,
+   "count_june_of_year": 80.0,
+   "count_next_june": 76.0
+  },
+  {
+   "industry": "Amusement and gambling",
+   "year": "2021",
+   "model_revenue_change": 0.194,
+   "employer_count_change_next_june": 0.111,
+   "count_june_of_year": 45.0,
+   "count_next_june": 50.0
+  },
+  {
+   "industry": "Amusement and gambling",
+   "year": "2022",
+   "model_revenue_change": 0.587,
+   "employer_count_change_next_june": -0.06,
+   "count_june_of_year": 50.0,
+   "count_next_june": 47.0
+  },
+  {
+   "industry": "Amusement and gambling",
+   "year": "2023",
+   "model_revenue_change": 0.218,
+   "employer_count_change_next_june": 0.106,
+   "count_june_of_year": 47.0,
+   "count_next_june": 52.0
+  },
+  {
+   "industry": "Amusement and gambling",
+   "year": "2024",
+   "model_revenue_change": -0.022,
+   "employer_count_change_next_june": -0.038,
+   "count_june_of_year": 52.0,
+   "count_next_june": 50.0
+  },
+  {
+   "industry": "Amusement and gambling",
+   "year": "2025",
+   "model_revenue_change": -0.06,
+   "employer_count_change_next_june": -0.04,
+   "count_june_of_year": 50.0,
+   "count_next_june": 48.0
+  },
+  {
+   "industry": "Food stores",
+   "year": "2021",
+   "model_revenue_change": 0.091,
+   "employer_count_change_next_june": 0.094,
+   "count_june_of_year": 85.0,
+   "count_next_june": 93.0
+  },
+  {
+   "industry": "Food stores",
+   "year": "2022",
+   "model_revenue_change": 0.236,
+   "employer_count_change_next_june": 0.043,
+   "count_june_of_year": 93.0,
+   "count_next_june": 97.0
+  },
+  {
+   "industry": "Food stores",
+   "year": "2023",
+   "model_revenue_change": 0.073,
+   "employer_count_change_next_june": -0.041,
+   "count_june_of_year": 97.0,
+   "count_next_june": 93.0
+  },
+  {
+   "industry": "Food stores",
+   "year": "2024",
+   "model_revenue_change": -0.008,
+   "employer_count_change_next_june": -0.011,
+   "count_june_of_year": 93.0,
+   "count_next_june": 92.0
+  },
+  {
+   "industry": "Food stores",
+   "year": "2025",
+   "model_revenue_change": -0.023,
+   "employer_count_change_next_june": 0.065,
+   "count_june_of_year": 92.0,
+   "count_next_june": 98.0
+  },
+  {
+   "industry": "Personal services",
+   "year": "2021",
+   "model_revenue_change": 0.146,
+   "employer_count_change_next_june": 0.042,
+   "count_june_of_year": 71.0,
+   "count_next_june": 74.0
+  },
+  {
+   "industry": "Personal services",
+   "year": "2022",
+   "model_revenue_change": 0.431,
+   "employer_count_change_next_june": 0.027,
+   "count_june_of_year": 74.0,
+   "count_next_june": 76.0
+  },
+  {
+   "industry": "Personal services",
+   "year": "2023",
+   "model_revenue_change": 0.162,
+   "employer_count_change_next_june": 0.026,
+   "count_june_of_year": 76.0,
+   "count_next_june": 78.0
+  },
+  {
+   "industry": "Personal services",
+   "year": "2024",
+   "model_revenue_change": -0.017,
+   "employer_count_change_next_june": -0.013,
+   "count_june_of_year": 78.0,
+   "count_next_june": 77.0
+  },
+  {
+   "industry": "Personal services",
+   "year": "2025",
+   "model_revenue_change": -0.046,
+   "employer_count_change_next_june": -0.039,
+   "count_june_of_year": 77.0,
+   "count_next_june": 74.0
+  },
+  {
+   "industry": "Health offices",
+   "year": "2021",
+   "model_revenue_change": 0.059,
+   "employer_count_change_next_june": 0.021,
+   "count_june_of_year": 187.0,
+   "count_next_june": 191.0
+  },
+  {
+   "industry": "Health offices",
+   "year": "2022",
+   "model_revenue_change": 0.111,
+   "employer_count_change_next_june": 0.0,
+   "count_june_of_year": 191.0,
+   "count_next_june": 191.0
+  },
+  {
+   "industry": "Health offices",
+   "year": "2023",
+   "model_revenue_change": 0.0,
+   "employer_count_change_next_june": 0.016,
+   "count_june_of_year": 191.0,
+   "count_next_june": 194.0
+  },
+  {
+   "industry": "Health offices",
+   "year": "2024",
+   "model_revenue_change": 0.0,
+   "employer_count_change_next_june": 0.088,
+   "count_june_of_year": 194.0,
+   "count_next_june": 211.0
+  },
+  {
+   "industry": "Health offices",
+   "year": "2025",
+   "model_revenue_change": 0.0,
+   "employer_count_change_next_june": 0.047,
+   "count_june_of_year": 211.0,
+   "count_next_june": 221.0
+  }
+ ],
+ "model_revenue_by_year_musd": {
+  "2020": {
+   "Restaurants and food service": 378.8,
+   "Hotels and motels": 467.3,
+   "Amusement and gambling": 473.3,
+   "Food stores": 379.1,
+   "Personal services": 75.5,
+   "Health offices": 46.2
+  },
+  "2021": {
+   "Restaurants and food service": 441.6,
+   "Hotels and motels": 526.4,
+   "Amusement and gambling": 565.0,
+   "Food stores": 413.7,
+   "Personal services": 86.6,
+   "Health offices": 48.9
+  },
+  "2022": {
+   "Restaurants and food service": 661.6,
+   "Hotels and motels": 782.4,
+   "Amusement and gambling": 896.8,
+   "Food stores": 511.4,
+   "Personal services": 123.9,
+   "Health offices": 54.3
+  },
+  "2023": {
+   "Restaurants and food service": 785.8,
+   "Hotels and motels": 938.4,
+   "Amusement and gambling": 1092.3,
+   "Food stores": 548.9,
+   "Personal services": 144.0,
+   "Health offices": 54.3
+  },
+  "2024": {
+   "Restaurants and food service": 770.6,
+   "Hotels and motels": 927.5,
+   "Amusement and gambling": 1068.5,
+   "Food stores": 544.4,
+   "Personal services": 141.5,
+   "Health offices": 54.3
+  },
+  "2025": {
+   "Restaurants and food service": 730.1,
+   "Hotels and motels": 885.9,
+   "Amusement and gambling": 1004.7,
+   "Food stores": 532.1,
+   "Personal services": 135.0,
+   "Health offices": 54.3
+  }
+ }
+}
