@@ -1,0 +1,4 @@
+{"_meta": {"what": "Share of a store's car trips made by drivers already passing on the road (pass-by trips), by sim category.",
+  "source": "Institute of Transportation Engineers, Trip Generation Handbook (weekday PM peak averages), as summarised by Wisconsin DOT (3rd edition: convenience store/gas station LUC 945 average 56% from 9 studies; fast food with drive-through LUC 934 average 50% from 18 studies; https://www.wisconsindot.gov/dtsdManuals/traffic-ops/manuals-and-standards/pass-by-trips.pdf) and Palm Beach County's ITE 12th edition table (supermarket LUC 850 36%; pharmacy with drive-through LUC 881 50%; https://discover.pbcgov.org/engineering/traffic/PDF/Traffic%20Documents/Trip-Generation-Rates-ITE-12th-Edition.pdf).",
+  "caveat": "Peak-hour shares, US suburban sites; whole-day shares are likely lower. Categories with no published figure get no pass-by effect."},
+ "fuel": 0.56, "fast_food": 0.50, "pharmacy": 0.50, "grocery_food": 0.36}

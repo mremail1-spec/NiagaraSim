@@ -18,6 +18,55 @@ pub struct City {
     pub operator_targets: std::collections::HashMap<String, f64>,
     #[serde(default)]
     pub tourism: Option<Tourism>,
+    /// Share of each sim category's trips made by drivers already passing (pass-by trips); empty when absent.
+    #[serde(default)]
+    pub pass_by: Vec<f64>,
+    /// Mean vehicles per day passing the businesses of each sim category; filled by `prepare_sites`.
+    #[serde(default)]
+    pub passing_mean: Vec<f64>,
+}
+
+pub const PASSING_CAP: f64 = 2.0;
+
+impl City {
+    /// Site factor of a business of `cat` at road `node`: (1 - p) + p * passing / mean passing for the
+    /// category, where p is the category's pass-by share. Averages 1 over the category's businesses.
+    pub fn site_factor_at(&self, node: u32, cat: u32) -> f64 {
+        let p = self.pass_by.get(cat as usize).copied().unwrap_or(0.0);
+        let mean = self.passing_mean.get(cat as usize).copied().unwrap_or(0.0);
+        if p <= 0.0 || mean <= 0.0 || self.nodes.passing.is_empty() {
+            return 1.0;
+        }
+        // SEED: a site's traffic counts up to twice the category average; pumps, drive-through
+        // lanes and parking cap how many passing drivers a single business can serve.
+        (1.0 - p) + p * (self.nodes.passing[node as usize] as f64 / mean).min(PASSING_CAP)
+    }
+
+    /// Work out every business's site factor (call once after loading).
+    pub fn prepare_sites(&mut self) {
+        let n_cat = self.sim_categories.len();
+        let b = &self.businesses;
+        let (mut sum, mut cnt) = (vec![0f64; n_cat], vec![0f64; n_cat]);
+        if !self.nodes.passing.is_empty() {
+            for i in 0..b.node.len() {
+                if b.external[i] == 0 {
+                    let c = b.sim_category[i] as usize;
+                    sum[c] += self.nodes.passing[b.node[i] as usize] as f64;
+                    cnt[c] += 1.0;
+                }
+            }
+        }
+        self.passing_mean = (0..n_cat).map(|c| if cnt[c] > 0.0 { sum[c] / cnt[c] } else { 0.0 }).collect();
+        let site: Vec<f64> = (0..b.node.len())
+            .map(|i| if b.external[i] == 1 { 1.0 } else { self.site_factor_at(b.node[i], b.sim_category[i]) })
+            .collect();
+        self.businesses.site = site;
+    }
+
+    /// A business's pull before size: its format weight times its site factor.
+    pub fn pull_weight(&self, b: usize) -> f64 {
+        self.businesses.format_weight[b] * self.businesses.site.get(b).copied().unwrap_or(1.0)
+    }
 }
 
 #[derive(Clone, Deserialize)]
@@ -122,6 +171,9 @@ pub struct Meta {
 pub struct Nodes {
     pub lat: Vec<f64>,
     pub lon: Vec<f64>,
+    /// Vehicles passing each road node per day in the calibrated year (empty when absent).
+    #[serde(default)]
+    pub passing: Vec<f32>,
 }
 
 #[derive(Clone, Deserialize)]
@@ -160,6 +212,9 @@ pub struct Businesses {
     pub extra_min: Vec<f32>,
     /// A town's pull as a multiple of the whole city's pull in the same category.
     pub pull_scale: Vec<f64>,
+    /// Pull from the site itself (passing traffic), 1 when absent; filled by `City::prepare_sites`.
+    #[serde(default)]
+    pub site: Vec<f64>,
 }
 
 #[derive(Clone, Deserialize)]

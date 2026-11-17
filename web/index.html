@@ -663,12 +663,35 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
     $("fRows").innerHTML = rows;
     const rev = typical[0] + typical[1];
     $("fMix").textContent = `Typical size: ${Math.round(typical[1] / rev * 100)}% of sales from tourists, ${money(typical[2])} won back from out-of-town shopping. Busiest month ${["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"][typical.slice(3, 15).indexOf(Math.max(...typical.slice(3, 15)))]}.`;
+    $("fMix").textContent += " " + siteNotes(m.sim_category);
     const count = typical[15];
     let losers = "";
     for (let i = 0; i < Math.min(4, count); i++) losers += `<li>${city.businesses.name[typical[16 + i * 2]] || "Unnamed place"}: ${money(typical[17 + i * 2])} a year</li>`;
     $("fLosers").innerHTML = losers || "<li>No single business loses much.</li>";
     $("forecast").hidden = false; $("buildGo").disabled = false;
     $("buildHint").textContent = "Forecast for the marked spot. Tap elsewhere to compare.";
+  }
+
+  // passing traffic and same-kind neighbours at the marked spot
+  function siteNotes(cat) {
+    const b = city.businesses, notes = [];
+    const pass = city.nodes.passing, p = (city.pass_by || [])[cat] || 0;
+    if (pass && pass.length) {
+      let sum = 0, n = 0;
+      for (let i = 0; i < b.sim_category.length; i++) if (b.sim_category[i] === cat && !b.external[i]) { sum += pass[b.node ? b.node[i] : 0] || 0; n++; }
+      const here = pass[site.node] || 0, mean = n ? sum / n : 0;
+      let t = `About ${Math.round(here).toLocaleString()} shopping and visitor vehicles a day pass this spot in the model`;
+      if (p > 0 && mean > 0) t += ` (${(here / mean).toFixed(2)} times the average for this kind; ${Math.round(p * 100)}% of its trips are drivers already passing, counted up to twice the average)`;
+      notes.push(t + ".");
+    }
+    const kx = Math.cos(site.lat * Math.PI / 180) * 111.3;
+    let same = 0;
+    for (let i = 0; i < b.sim_category.length; i++) {
+      if (b.sim_category[i] !== cat || b.external[i]) continue;
+      if (Math.hypot((b.lat[i] - site.lat) * 111.3, (b.lon[i] - site.lon) * kx) < 0.25) same++;
+    }
+    notes.push(`${same} of the same kind within 250 m. From 2021 to 2026, places with more of their own kind nearby closed slightly less often, but with 38 closures that is not a firm pattern.`);
+    return notes.join(" ");
   }
 
   function closeBuild() { buildMode = false; site = null; $("build").hidden = true; $("forecast").hidden = true; $("buildGo").disabled = true; $("buildHint").textContent = "Tap the map where you want it."; }

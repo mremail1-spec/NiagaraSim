@@ -68,6 +68,8 @@ def main(year: int = 2025, seed: int = 1) -> None:
     for name in ("households", "persons", "businesses", "road_nodes", "road_edges"):
         write_csv(out / f"{name}.csv", city[name])
     export_city(city["pack"], city, city["budgets"], year, out / "city.json")
+    from .passby import apply as add_passing_traffic          # needs the engine binary
+    add_passing_traffic(out / "city.json")
     (out / "report.json").write_text(json.dumps(city["report"], indent=1))
     for k, v in city["report"].items():
         print(f"{k:40s} {v}")

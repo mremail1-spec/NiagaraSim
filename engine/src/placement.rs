@@ -78,7 +78,7 @@ impl Engine {
     pub fn forecast(&self, node: u32, sim_category: u32, size: f64, format_weight: f64) -> Forecast {
         let (minutes, _, _) = self.routes_to(node);
         let n_biz = self.city.businesses.node.len();
-        let scale = format_weight * size.max(30_000.0).powf(self.city.params.attractiveness_exponent);
+        let scale = format_weight * self.city.site_factor_at(node, sim_category) * size.max(30_000.0).powf(self.city.params.attractiveness_exponent);
         let floor = self.city.params.min_minutes;
         let mut out = Forecast { resident: 0.0, tourist: 0.0, tourist_by_origin: [0.0; 3], from_out_of_town: 0.0, monthly: [0.0; 12], losses: vec![], total_taken: 0.0 };
         let mut loss = vec![0f64; n_biz];
@@ -198,7 +198,7 @@ impl Engine {
             for b in 0..n_biz {
                 let w = self.city.categories.served_by[c][self.city.businesses.sim_category[b] as usize];
                 if w > 0.0 && self.city.businesses.external[b] == 0 {
-                    let p = w * self.city.businesses.format_weight[b] * self.city.businesses.revenue_prior[b].max(30_000.0).powf(exp);
+                    let p = w * self.city.pull_weight(b) * self.city.businesses.revenue_prior[b].max(30_000.0).powf(exp);
                     list.push(b as u32);
                     pull.push(p);
                     if b < self.first_added {
@@ -236,7 +236,9 @@ impl Engine {
                 (self.n_dest - 1) as u32
             }
         };
+        let site = self.city.site_factor_at(node, sim_category);
         let b = &mut self.city.businesses;
+        b.site.push(site);
         b.node.push(node);
         b.lat.push(lat);
         b.lon.push(lon);

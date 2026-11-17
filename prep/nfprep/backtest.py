@@ -124,6 +124,8 @@ def main() -> dict:
     city = build_city(2025, 1, pack)
     out = BUILD_DIR / "backtest_2021"
     export_city(pack, city, city["budgets"], 2025, out / "city.json")
+    from .passby import apply as add_passing_traffic
+    add_passing_traffic(out / "city.json")
     beta = json.loads((DATA_DIR / "calibrated_multipliers.json").read_text())["beta"]
     subprocess.run([str(ROOT / "engine/target/release/nfsim"), "run", str(out / "city.json"), "--mode", "flow", "--days", "365",
                     "--beta", str(beta), "--businesses", str(out / "revenue.csv")], check=True, stdout=subprocess.DEVNULL)

@@ -360,3 +360,32 @@ fn public_operators_match_their_published_revenue() {
     assert!((npc - 129_848_000.0).abs() / 129_848_000.0 < 0.05, "Niagara Parks {npc}");
     assert!(casinos > 500e6 && casinos < 600e6, "casinos {casinos}");
 }
+
+#[test]
+fn passing_traffic_lifts_pass_by_kinds_only_and_averages_one() {
+    let path = std::path::Path::new(env!("CARGO_MANIFEST_DIR")).join("../build/city_2025/city.json");
+    let Ok(text) = std::fs::read_to_string(&path) else { return };
+    let mut city: nfsim::city::City = serde_json::from_str(&text).unwrap();
+    if city.nodes.passing.is_empty() {
+        return;
+    }
+    city.prepare_sites();
+    let b = &city.businesses;
+    for c in 0..city.sim_categories.len() {
+        let idx: Vec<usize> = (0..b.node.len()).filter(|&i| b.external[i] == 0 && b.sim_category[i] as usize == c).collect();
+        if idx.is_empty() {
+            continue;
+        }
+        let p = city.pass_by[c];
+        for &i in &idx {
+            let f = b.site[i];
+            if p == 0.0 {
+                assert_eq!(f, 1.0);
+            } else {
+                assert!(f >= 1.0 - p - 1e-9 && f <= 1.0 + p * (nfsim::city::PASSING_CAP - 1.0) + 1e-9, "{} {}", city.sim_categories[c], f);
+            }
+        }
+        let mean: f64 = idx.iter().map(|&i| b.site[i]).sum::<f64>() / idx.len() as f64;
+        assert!(mean <= 1.0 + 1e-9 && mean > 0.8, "{} mean site factor {}", city.sim_categories[c], mean);
+    }
+}

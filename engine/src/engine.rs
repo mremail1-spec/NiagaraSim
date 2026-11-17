@@ -145,7 +145,8 @@ pub fn month_of_day(day_of_year: u32) -> usize {
 
 impl Engine {
     /// Build the engine with a fixed distance-decay `beta`.
-    pub fn new(city: City, beta: f64, seed: u64) -> Engine {
+    pub fn new(mut city: City, beta: f64, seed: u64) -> Engine {
+        city.prepare_sites();
         let n_nodes = city.nodes.lat.len();
         let n_cat = city.categories.name.len();
         let n_biz = city.businesses.node.len();
@@ -203,7 +204,7 @@ impl Engine {
                 if w > 0.0 && city.businesses.external[b] == 0 {
                     let size = city.businesses.revenue_prior[b].max(30_000.0);
                     cat_business[c].push(b as u32);
-                    cat_pull[c].push(w * city.businesses.format_weight[b] * size.powf(city.params.attractiveness_exponent));
+                    cat_pull[c].push(w * city.pull_weight(b) * size.powf(city.params.attractiveness_exponent));
                 }
             }
             // a neighbouring town pulls like the whole city's offer in this category, scaled by its size
