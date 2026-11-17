@@ -353,6 +353,7 @@ def export_city(pack: Pack, city: dict, budgets: np.ndarray, year: int, path: Pa
         doc["tourism"]["categories"]["capture"] = [cal.get("tourist_capture", {}).get(c, 1.0)
                                                    for c in doc["tourism"]["categories"]["name"]]
     doc["build_menu"] = _build_menu(pack, sim_cats)
+    doc["scenarios"] = json.loads((DATA_DIR / "scenario_ranges.json").read_text())
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(doc, separators=(",", ":")))
     return doc

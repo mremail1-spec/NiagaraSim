@@ -85,6 +85,9 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
 #build .actions { display: flex; gap: 10px; flex-wrap: wrap; }
 #build .actions button { height: 44px; padding: 0 16px; border-radius: 22px; cursor: pointer; border: 1px solid var(--panel-edge); background: none; }
 #build .actions button.primary { background: var(--accent); color: #1b1404; border: 0; font-weight: 600; }
+#outlookWrap { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--ink-soft); }
+#outlook { font: inherit; font-size: 13px; height: 44px; border-radius: 22px; border: 1px solid var(--panel-edge);
+           background: var(--ground); color: var(--ink); padding: 0 10px; }
 #buildBtn { height: 44px; padding: 0 14px; border-radius: 22px; border: 1px solid var(--accent); color: var(--accent); background: none; cursor: pointer; }
 #closeSheet { position: absolute; top: 8px; right: max(12px, env(safe-area-inset-right, 0px)); background: none; border: 0;
               font-size: 22px; width: 40px; height: 40px; cursor: pointer; color: var(--ink-soft); }
@@ -143,11 +146,11 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
     <p id="buildHint">Tap the map where you want it.</p>
     <div id="forecast" hidden>
       <table>
-        <thead><tr><th>If it performs like a</th><th>Revenue / yr</th><th>Profit / yr</th></tr></thead>
+        <thead><tr><th>If it performs like a</th><th>Revenue / yr</th><th>Range</th><th>Profit / yr</th></tr></thead>
         <tbody id="fRows"></tbody>
       </table>
       <p id="fMix"></p>
-      <p>Profit uses the industry's average cost shares. Its sales come out of other businesses' tills, not new spending.</p>
+      <p>Range: the low and high outlooks, which vary US, domestic and overseas visitors and resident spending because political decisions cannot be predicted. Profit is for the 2025 calibrated year and uses the industry's average cost shares. Its sales come out of other businesses' tills, not new spending.</p>
       <p>Takes the most from:</p>
       <ul id="fLosers"></ul>
     </div>
@@ -167,6 +170,13 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
     <button data-rate="24" aria-pressed="false">1 day/s</button>
     <button data-rate="168" aria-pressed="false">1 wk/s</button>
   </div>
+  <label id="outlookWrap" for="outlook">Outlook
+    <select id="outlook" disabled>
+      <option value="expected">2025, calibrated</option>
+      <option value="low">Low</option>
+      <option value="high">High</option>
+    </select>
+  </label>
   <button id="buildBtn" disabled>Build</button>
   <button id="restart" disabled>Restart</button>
 </footer>
@@ -196,6 +206,7 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
   let roadPaths = [null, null, null];
   let playing = false, rate = 1, acc = 0, lastT = 0, selected = -1;
   let trips = [], pulses = [], tripsTotal = 0;
+  let outlookKey = "expected";
   let buildMode = false, site = null, baseCount = 0, groupOf = {}, townNode = new Set();
   let kx = 1, lon0 = 0, lat0 = 0, startDate = new Date(Date.UTC(2025, 0, 1));
 
@@ -233,7 +244,7 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
     startEngine();
     delete city.households.budget;                          // the engine has its own copy
     $("loading").hidden = true;
-    $("play").disabled = false; $("restart").disabled = false; $("buildBtn").disabled = false;
+    $("play").disabled = false; $("restart").disabled = false; $("buildBtn").disabled = false; $("outlook").disabled = false;
     $("kind").innerHTML = city.build_menu.map((m, i) => `<option value="${i}">${m.label}</option>`).join("");
     resize(); fit(); updateHud(); requestAnimationFrame(frame);
   }
@@ -508,9 +519,14 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
       const size = m.sizes[key];
       const n = wasm.nf_forecast(site.node, m.sim_category, size);
       const f = Array.from(new Float32Array(wasm.memory.buffer, wasm.nf_buf_ptr(), n));
+      const k = wasm.nf_forecast_by_origin(site.node, m.sim_category, size);
+      const o = Array.from(new Float32Array(wasm.memory.buffer, wasm.nf_buf_ptr(), k));
+      const sc = city.scenarios, cur = sc[outlookKey];
+      const under = (s) => o[0] * s.resident / cur.resident + o[1] * s.domestic / cur.domestic + o[2] * s.us / cur.us + o[3] * s.overseas / cur.overseas;
+      const lo = under(sc.low), hi = under(sc.high);
       const revenue = f[0] + f[1], profit = revenue * margin - fixedShare * size;   // costs sized for a business of that scale
       if (key === "typical") typical = f;
-      rows += `<tr><td>${label}</td><td>${money(revenue)}</td><td class="${profit >= 0 ? "good" : "bad"}">${profit < 0 ? "\u2212" : ""}${money(Math.abs(profit))}</td></tr>`;
+      rows += `<tr><td>${label}</td><td>${money(revenue)}</td><td>${money(lo)}\u2013${money(hi)}</td><td class="${profit >= 0 ? "good" : "bad"}">${profit < 0 ? "\u2212" : ""}${money(Math.abs(profit))}</td></tr>`;
     }
     $("fRows").innerHTML = rows;
     const rev = typical[0] + typical[1];
@@ -559,6 +575,12 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
   $("buildCancel").addEventListener("click", closeBuild);
   $("buildGo").addEventListener("click", () => { try { buildHere(); } catch (e) { fail("Could not build: " + e.message); } });
   $("kind").addEventListener("change", runForecast);
+  $("outlook").addEventListener("change", () => {
+    outlookKey = $("outlook").value;
+    const s = city.scenarios[outlookKey];
+    try { wasm.nf_set_scenario(s.us, s.domestic, s.overseas, s.base_stays, s.resident); runForecast(); }
+    catch (e) { fail("Could not change the outlook: " + e.message); }
+  });
   $("closeSheet").addEventListener("click", () => { selected = -1; $("sheet").hidden = true; });
   $("play").addEventListener("click", () => { playing = !playing; lastT = 0; $("play").textContent = playing ? "Pause" : "Play"; });
   $("speeds").addEventListener("click", (e) => {
@@ -573,7 +595,7 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
       for (const k of ["name", "sim_category", "core", "external", "lat", "lon", "address"]) b[k].length = baseCount;
       bizX = bizX.slice(0, baseCount); bizY = bizY.slice(0, baseCount); bizGroup = bizGroup.slice(0, baseCount);
       selected = -1; $("sheet").hidden = true; closeBuild();
-      startEngine(); updateHud();
+      startEngine(); $("outlook").value = "expected"; outlookKey = "expected"; updateHud();
     } catch (e) { fail(e.message); }
   });
   window.addEventListener("resize", () => { if (wasm) resize(); });
