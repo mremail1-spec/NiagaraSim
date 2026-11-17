@@ -75,7 +75,9 @@
     "opening": "not stated"
    }
   ],
-  "source_note": "Facts from the project owner's research summary (17 November 2026), citing the Niagara Parks Act, niagaraparks.com, the 2024/25 annual report and the 2023/24 financial statements."
+  "source_note": "Facts from the project owner's research summary (17 November 2026), citing the Niagara Parks Act, niagaraparks.com, the 2024/25 annual report and the 2023/24 financial statements.",
+  "admissions_estimate_cad": 55807622,
+  "admissions_estimate_note": "2,146,447 paid attraction visits (annual report 2024/25) x about $26 realized per visit. SEED: $26 assumes adult prices around $30 (Journey Behind the Falls $30, Niagara's Fury and others similar), about 20% child tickets ($19.50) and pass discounts of about 10%."
  },
  "casinos": {
   "gaming_revenue_estimate_cad": 550000000,

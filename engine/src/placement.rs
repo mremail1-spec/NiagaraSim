@@ -314,6 +314,41 @@ impl Engine {
         self.recalibrate_beta();
     }
 
+    /// Multiply the pull of one operator's places of one kind (`attraction` true) or of all its other kinds.
+    pub fn scale_operator_pull_kind(&mut self, operator: u8, attraction: bool, factor: f64) {
+        let ac = self.city.sim_categories.iter().position(|c| c == "attraction").map(|x| x as u32);
+        for b in 0..self.city.businesses.operator.len() {
+            if self.city.businesses.operator[b] == operator && (Some(self.city.businesses.sim_category[b]) == ac) == attraction {
+                self.city.businesses.format_weight[b] *= factor;
+            }
+        }
+        self.rebuild_categories();
+        self.recalibrate_beta();
+    }
+
+    /// Expected yearly revenue of one operator's attractions (`attraction` true) or of its other places.
+    pub fn operator_revenue_kind(&self, operator: u8, attraction: bool) -> f64 {
+        let r = self.expected_yearly_revenue();
+        let ac = self.city.sim_categories.iter().position(|c| c == "attraction").map(|x| x as u32);
+        (0..self.city.businesses.operator.len())
+            .filter(|&b| self.city.businesses.operator[b] == operator && (Some(self.city.businesses.sim_category[b]) == ac) == attraction)
+            .map(|b| r[b]).sum()
+    }
+
+    /// Paid attraction visits per visiting party per day (tourist category "attractions").
+    pub fn attraction_visits_per_party_day(&self) -> f64 {
+        let t = self.city.tourism.as_ref().unwrap();
+        t.categories.events_per_party_day[t.categories.name.iter().position(|n| n == "attractions").unwrap()]
+    }
+
+    pub fn set_attraction_visits_per_party_day(&mut self, v: f64) {
+        let t = self.city.tourism.as_mut().unwrap();
+        let i = t.categories.name.iter().position(|n| n == "attractions").unwrap();
+        t.categories.events_per_party_day[i] = v;
+        let beta = self.beta;
+        self.set_beta(beta);
+    }
+
     /// Expected yearly revenue of all places run by one operator.
     pub fn operator_revenue(&self, operator: u8) -> f64 {
         let r = self.expected_yearly_revenue();

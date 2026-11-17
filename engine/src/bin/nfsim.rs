@@ -223,17 +223,25 @@ fn calibrate_sales(engine: &mut Engine, targets_path: String, out: Option<String
             }
         }
         engine.set_multipliers(ext.clone(), cap.clone());
-        // Niagara Parks: scale the pull of the places it runs toward its published revenue
-        if let Some(&target) = engine.city.operator_targets.get("niagara_parks") {
-            let got = engine.operator_revenue(1);
-            if got > 0.0 {
-                let f = (target / got).powf(0.8).clamp(0.2, 5.0);
+        // Niagara Parks. Admissions: fit paid attraction visits per party (attendance stays fitted, so more
+        // visits per party means less spent per admission). Everything else it runs: scale its pull.
+        if let (Some(&total), Some(&adm)) = (engine.city.operator_targets.get("niagara_parks"), engine.city.operator_targets.get("niagara_parks_admissions")) {
+            let got_adm = engine.operator_revenue_kind(1, true);
+            if got_adm > 0.0 {
+                let v = (engine.attraction_visits_per_party_day() * (got_adm / adm).powf(0.9)).clamp(0.2, 6.0);
+                engine.set_attraction_visits_per_party_day(v);
+            }
+            let got_rest = engine.operator_revenue_kind(1, false);
+            if got_rest > 0.0 {
+                let f = ((total - adm) / got_rest).powf(0.8).clamp(0.2, 5.0);
                 npc_pull *= f;
-                engine.scale_operator_pull(1, f);
+                engine.scale_operator_pull_kind(1, false, f);
             }
         }
         eprintln!("round {round}: beta {:.3}, Niagara Parks {:.1}M, casinos {:.1}M", engine.beta,
                   engine.operator_revenue(1) / 1e6, engine.operator_revenue(2) / 1e6);
+        eprintln!("          Niagara Parks admissions {:.1}M, other {:.1}M, attraction visits per party-day {:.2}",
+                  engine.operator_revenue_kind(1, true) / 1e6, engine.operator_revenue_kind(1, false) / 1e6, engine.attraction_visits_per_party_day());
     }
     let (after, resident) = by_group(engine);
     let mut table = serde_json::Map::new();
@@ -250,6 +258,7 @@ fn calibrate_sales(engine: &mut Engine, targets_path: String, out: Option<String
         "tourist_capture": tcats.iter().cloned().zip(cap.iter().map(|&v| serde_json::json!(v))).collect::<serde_json::Map<String, serde_json::Value>>(),
         "sales_by_group": table,
         "operator_pull": {"niagara_parks": npc_pull},
+        "attraction_visits_per_party_day": engine.attraction_visits_per_party_day(),
         "operator_revenue": {"niagara_parks": engine.operator_revenue(1).round(), "casino": engine.operator_revenue(2).round(),
                              "targets": &engine.city.operator_targets},
     });

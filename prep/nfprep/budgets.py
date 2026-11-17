@@ -365,17 +365,21 @@ def export_city(pack: Pack, city: dict, budgets: np.ndarray, year: int, path: Pa
     doc["business_groups"] = group_names
     ops = json.loads((DATA_DIR / "public_operators_2025.json").read_text())
     doc["operator_targets"] = {"niagara_parks": ops["niagara_parks"]["revenue_producing_operations_cad"] - NPC_TRANSIT_ESTIMATE,
+                               "niagara_parks_admissions": ops["niagara_parks"]["admissions_estimate_cad"],
                                "casino": ops["casinos"]["gaming_revenue_estimate_cad"]}
     pull = cal.get("operator_pull", {})
     for i, b in enumerate(biz):
         name = OPERATORS[operator_of(b)]
-        if name in pull:
+        if name in pull and not (name == "niagara_parks" and b["sim_category"] == "attraction"):
             doc["businesses"]["format_weight"][i] = round(doc["businesses"]["format_weight"][i] * pull[name], 4)
     doc["calibration"] = {"sales_targets": sales_targets(pack, len(city["persons"])), "beta": cal.get("beta")}
     if city.get("tourism"):
         doc["tourism"] = _tourism_block(city["tourism"], sim_cats, n_real + len(ext))
         falls = next(x["road_node"] for x in biz if x["name"] == "Journey Behind the Falls")
         doc["tourism"]["gateways"] = _gateways(city["tourism"], nodes, edges, falls)
+        tc = doc["tourism"]["categories"]
+        if "attraction_visits_per_party_day" in cal and "attractions" in tc["name"]:
+            tc["events_per_party_day"][tc["name"].index("attractions")] = cal["attraction_visits_per_party_day"]
         doc["tourism"]["car_share"] = city["tourism"]["car_share"]
         doc["tourism"]["categories"]["capture"] = [cal.get("tourist_capture", {}).get(c, 1.0)
                                                    for c in doc["tourism"]["categories"]["name"]]
