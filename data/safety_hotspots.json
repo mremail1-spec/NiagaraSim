@@ -1,0 +1,20 @@
+{"_meta": {"what": "Places where police or the City have documented open-air drug use, repeated calls for service or encampments, so residents and visitors may avoid nearby businesses and routes.",
+  "evidence_rule": "Only places named in police or City releases or in reporting that quotes police; positions are the named intersection or street on the road map. Not a crime map: the Niagara Regional Police crime map (CityProtect, generalised to the 100 block) would replace this list; it could not be downloaded automatically.",
+  "effect": "A business's pull falls by visitor_penalty (visitors) or resident_penalty (residents) at the centre, fading as exp(-distance / scale_m). SEEDs: no study measured these for Niagara Falls. Health and recovery services are not affected (they serve the people there).",
+  "local_check": "Businesses on the map in 2021 within 600 m of Main and Ferry: 1 of 26 closed by July 2026 (city 7.8%); within 1 km: 11 of 67 (16%, p = 0.015 against the city rate). Mixed; the problems were documented in 2024-2026, after most of that period.",
+  "city_level": "Crime Severity Index, St. Catharines-Niagara: 54.7 in 2023 (Niagara Region Community Dashboard, https://niagararegion.ca/community_dashboard/indicator.aspx?q=26); reported 53.8 in 2025 (unverified secondary source); Canada 75.0 in 2025 (https://www150.statcan.gc.ca/n1/daily-quotidien/260722/t003a-eng.htm). The city overall is lower-crime than Canada; the effect is local."},
+ "scenarios": {"low": 1.5, "expected": 1.0, "high": 0.5, "note": "Multiplier on the penalties in the outlooks: low = the problem spreads or worsens, high = enforcement and the City's Unhoused Action Plan work."},
+ "exempt_categories": ["health"],
+ "hotspots": [
+  {"name": "Main Street and Ferry Street", "lat": 43.0895, "lon": -79.09273, "scale_m": 250, "visitor_penalty": 0.30, "resident_penalty": 0.10,
+   "sources": ["Niagara Regional Police, Open Air Drug Initiative in Niagara Falls Results in Multiple Arrests (July 2026): https://www.niagarapolice.ca/news/posts/open-air-drug-initiative-in-niagara-falls-results-in-multiple-arrests/",
+               "Niagara Regional Police, drug trafficking charge near a Niagara Falls shelter (May 2026): https://www.niagarapolice.ca/news/posts/30-year-old-st-catharines-man-charged-with-drug-trafficking-near-a-niagara-falls-shelter/",
+               "Community complaints lead to drug arrest, Main and Ferry area: https://www.morefm.ca/news/local-news/community-complaints-lead-to-drug-arrest"]},
+  {"name": "Summer Street shelter (Main Street and Lowell Avenue area)", "lat": 43.09143, "lon": -79.09295, "scale_m": 200, "visitor_penalty": 0.20, "resident_penalty": 0.10,
+   "sources": ["Niagara Falls Review (April 2024): 74 police calls for service to the Summer Street shelter since 18 December; residents report drug use in the neighbourhood: https://www.pressreader.com/canada/the-niagara-falls-review/20240422/281479281470469"]},
+  {"name": "Buchanan Avenue (transitional housing)", "lat": 43.0940, "lon": -79.0840, "scale_m": 200, "visitor_penalty": 0.15, "resident_penalty": 0.05,
+   "sources": ["Niagara Falls council told better solution is needed to deal with rising crime on Buchanan Avenue: https://470-5b06c9910209c.radiocms.com/news/local-news/fence-near-transitional-housing-stopped"],
+   "position_note": "Middle of Buchanan Avenue's run on the map; the reports do not give a block."},
+  {"name": "Thundering Waters Boulevard (encampment concerns)", "lat": 43.0672, "lon": -79.0872, "scale_m": 250, "visitor_penalty": 0.10, "resident_penalty": 0.05,
+   "sources": ["City addresses encampment concerns near Thundering Waters Blvd: https://www.101morefm.ca/news/local-news/city-addresses-encampment-concerns"]}
+ ]}

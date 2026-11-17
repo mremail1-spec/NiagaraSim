@@ -176,6 +176,7 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
       <option value="biz">Businesses</option>
       <option value="cars">Cars a day</option>
       <option value="feet">People on foot a day</option>
+      <option value="safety">Safety concerns</option>
     </select>
   </label>
   <label id="outlookWrap" for="outlook">Outlook
@@ -223,6 +224,7 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
 
   const wx = (lon) => (lon - lon0) * kx;
   const wy = (lat) => (lat0 - lat) * KM;
+  if (location.search.includes("debug")) window.nfDebug = { get view() { return view; }, wx, wy };   // for automated page tests
   const money = (v) => v >= 1e9 ? "$" + (v / 1e9).toFixed(2) + "B" : v >= 1e6 ? "$" + (v / 1e6).toFixed(1) + "M"
     : v >= 1e3 ? "$" + Math.round(v / 1e3) + "k" : "$" + Math.round(v);
 
@@ -424,7 +426,8 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
     if (s > 22) { ctx.strokeStyle = css("--road-minor"); ctx.lineWidth = Math.max(0.6, Math.min(3, s / 60)) / s; ctx.stroke(roadPaths[0]); }
     ctx.strokeStyle = css("--road-main"); ctx.lineWidth = Math.max(1, Math.min(4.5, s / 40)) / s; ctx.stroke(roadPaths[1]);
     ctx.strokeStyle = css("--road-highway"); ctx.lineWidth = Math.max(1.6, Math.min(7, s / 28)) / s; ctx.stroke(roadPaths[2]);
-    if (layer !== "biz") drawFlows(s);
+    if (layer === "cars" || layer === "feet") drawFlows(s);
+    if (layer === "safety") drawSafety(s);
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     if (streetSel >= 0) {                                    // highlight the tapped street
       ctx.strokeStyle = css("--accent"); ctx.lineWidth = 4; ctx.globalAlpha = 0.85;
@@ -582,6 +585,32 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
     }
     paths.forEach((p, k) => { ctx.strokeStyle = cols[k]; ctx.lineWidth = (1.2 + k * 1.1) / s * Math.max(1, Math.min(2.5, s / 60)); ctx.stroke(p); });
   }
+  // documented trouble spots: shaded by how much they cut visitors' pull, fading with distance
+  function drawSafety(s) {
+    const sf = city.safety; if (!sf) return;
+    for (const h of sf.hotspots) {
+      const x = wx(h.lon), y = wy(h.lat);
+      for (const [mult, a] of [[3, 0.12], [2, 0.18], [1, 0.3]]) {
+        ctx.beginPath(); ctx.arc(x, y, h.scale_m / 1000 * mult, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(214,69,61,${(a * h.visitor_penalty / 0.3).toFixed(3)})`; ctx.fill();
+      }
+      ctx.beginPath(); ctx.arc(x, y, Math.max(0.02, 6 / s), 0, Math.PI * 2); ctx.fillStyle = "#d6453d"; ctx.fill();
+    }
+  }
+  function safetyNote(lat, lon, cat) {
+    const sf = city.safety; if (!sf) return "";
+    if (sf.exempt.includes(cat)) return "";
+    const kx2 = Math.cos(lat * Math.PI / 180) * 111320;
+    let keepV = 1, keepR = 1, near = null, nd = Infinity;
+    for (const h of sf.hotspots) {
+      const d = Math.hypot((lat - h.lat) * 111320, (lon - h.lon) * kx2), f = Math.exp(-d / h.scale_m);
+      keepV *= 1 - Math.min(0.95, h.visitor_penalty * sf.scale * f); keepR *= 1 - Math.min(0.95, h.resident_penalty * sf.scale * f);
+      if (d < nd) { nd = d; near = h; }
+    }
+    if (1 - keepV < 0.02) return "";
+    return `${Math.round(nd)} m from ${near.name}, where police or the City have documented open-air drug use, repeated calls or encampments: visitors' pull here is cut by ${Math.round((1 - keepV) * 100)}% and residents' by ${Math.round((1 - keepR) * 100)}% (an assumption, not measured). Health and recovery services are not affected.`;
+  }
+
   function flowKey() {
     const bins = FLOW_BINS[layer], cols = ["#c9d6e3", "#8fb3d9", "#f2c14e", "#f08a3c", "#d6453d", "#8e1b3a"];
     const lab = (k) => k === 0 ? `under ${bins[0].toLocaleString()}` : k === bins.length ? `${bins[k - 1].toLocaleString()}+` : `${bins[k - 1].toLocaleString()}\u2013${bins[k].toLocaleString()}`;
@@ -642,6 +671,8 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
       : city.sim_categories[b.sim_category[i]] === "free_sight" ? "Free to visit. It earns nothing itself, but draws visitors who then spend at businesses nearby."
       : i >= baseCount ? "A business you placed. Restart removes it."
       : "Model estimate from simulated resident and tourist spending, not the business's real sales.";
+    const sn = safetyNote(b.lat[i], b.lon[i], b.sim_category[i]);
+    if (sn && !isStandin) $("bNote").textContent += " " + sn;
     const risk = closureNote(city.sim_categories[b.sim_category[i]]);
     if (risk && !isStandin) $("bNote").textContent += " " + risk;
   }
@@ -727,7 +758,7 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
     $("fRows").innerHTML = rows;
     const rev = typical[0] + typical[1];
     $("fMix").textContent = `Typical size: ${Math.round(typical[1] / rev * 100)}% of sales from tourists, ${money(typical[2])} won back from out-of-town shopping. Busiest month ${["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"][typical.slice(3, 15).indexOf(Math.max(...typical.slice(3, 15)))]}.`;
-    $("fMix").textContent += " " + siteNotes(m.sim_category) + " " + closureNote(city.sim_categories[m.sim_category]);
+    $("fMix").textContent += " " + safetyNote(site.lat, site.lon, m.sim_category) + " " + siteNotes(m.sim_category) + " " + closureNote(city.sim_categories[m.sim_category]);
     const count = typical[15];
     let losers = "";
     for (let i = 0; i < Math.min(4, count); i++) losers += `<li>${city.businesses.name[typical[16 + i * 2]] || "Unnamed place"}: ${money(typical[17 + i * 2])} a year</li>`;
@@ -803,13 +834,18 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
   $("layer").addEventListener("change", () => {
     layer = $("layer").value;
     const k = $("key");
-    if (layer !== "biz") { k.dataset.flow = "1"; k.innerHTML = flowKey(); k.hidden = false; }
+    if (layer === "safety") { k.dataset.flow = "1"; k.innerHTML = "<p>Places where police or the City have documented open-air drug use, repeated calls for service or encampments (sources in data/safety_hotspots.json). Darker: visitors avoid it more. The low outlook assumes it gets worse, the high one that enforcement works.</p>"; k.hidden = false; }
+    else if (layer !== "biz") { k.dataset.flow = "1"; k.innerHTML = flowKey(); k.hidden = false; }
     else if (k.dataset.flow) { delete k.dataset.flow; k.hidden = true; k.innerHTML = bizKeyHtml; }
   });
   $("outlook").addEventListener("change", () => {
     outlookKey = $("outlook").value;
     const s = city.scenarios[outlookKey];
-    try { wasm.nf_set_scenario(s.us, s.domestic, s.overseas, s.base_stays, s.resident); runForecast(); }
+    try {
+      wasm.nf_set_scenario(s.us, s.domestic, s.overseas, s.base_stays, s.resident);
+      if (city.safety && wasm.nf_set_safety) { const sc = city.safety.scenarios[outlookKey] ?? 1; city.safety.scale = sc; wasm.nf_set_safety(sc); }
+      runForecast();
+    }
     catch (e) { fail("Could not change the outlook: " + e.message); }
   });
   $("closeSheet").addEventListener("click", () => { selected = -1; streetSel = -1; $("sheet").hidden = true; });

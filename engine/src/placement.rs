@@ -131,7 +131,10 @@ impl Engine {
     pub fn forecast(&self, node: u32, sim_category: u32, size: f64, format_weight: f64) -> Forecast {
         let (minutes, _, _) = self.routes_to(node);
         let n_biz = self.city.businesses.node.len();
-        let scale = format_weight * self.city.site_factor_at(node, sim_category) * size.max(30_000.0).powf(self.city.params.attractiveness_exponent);
+        let (nlat, nlon) = (self.city.nodes.lat[node as usize], self.city.nodes.lon[node as usize]);
+        let safe_res = self.city.safety_factor_at(nlat, nlon, sim_category, false);
+        let safe_vis = self.city.safety_factor_at(nlat, nlon, sim_category, true);
+        let scale = format_weight * self.city.site_factor_at(node, sim_category) * safe_res * size.max(30_000.0).powf(self.city.params.attractiveness_exponent);
         let floor = self.city.params.min_minutes;
         let mut out = Forecast { resident: 0.0, tourist: 0.0, tourist_by_origin: [0.0; 3], from_out_of_town: 0.0, monthly: [0.0; 12], losses: vec![], total_taken: 0.0 };
         let mut loss = vec![0f64; n_biz];
@@ -209,7 +212,7 @@ impl Engine {
                             continue;
                         }
                         let total = self.tour_weights(rt, base as usize, c, &mut w);
-                        let mine = served * scale / (minutes[base as usize] as f64).max(self.city.params.tourist_floor()).powf(self.beta);
+                        let mine = served * scale * safe_vis / safe_res.max(1e-9) / (minutes[base as usize] as f64).max(self.city.params.tourist_floor()).powf(self.beta);
                         let share = base_share * mine / (total + mine);
                         out.tourist += year * share;
                         for o in 0..3 {
@@ -328,6 +331,16 @@ impl Engine {
 
     /// Apply an outlook: multipliers on the calibrated year for US, domestic and overseas visitors,
     /// hotel stays outside leisure travel, and resident spending. All 1.0 restores the calibrated year.
+    /// Scale every safety penalty (1 = as documented now) and rebuild the tables that use it.
+    pub fn set_safety_scale(&mut self, scale: f64) {
+        if let Some(s) = self.city.safety.as_mut() {
+            s.scale = scale;
+            self.rebuild_categories();
+            let beta = self.beta;
+            self.set_beta(beta);
+        }
+    }
+
     pub fn set_scenario(&mut self, us: f64, domestic: f64, overseas: f64, base_stays: f64, resident: f64) {
         if self.scenario_base.is_none() {
             let persons = self.city.tourism.as_ref().map(|t| t.segments.iter().map(|s| s.persons_per_year).collect()).unwrap_or_default();

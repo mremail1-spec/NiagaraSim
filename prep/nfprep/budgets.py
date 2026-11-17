@@ -239,6 +239,15 @@ def operator_of(b: dict) -> int:
     return 1 if NIAGARA_PARKS.search(b["name"] or "") else 0
 
 
+def safety_block(sim_categories: list[str]) -> dict:
+    """Documented trouble spots (data/safety_hotspots.json) in the form the engine reads."""
+    sd = json.loads((DATA_DIR / "safety_hotspots.json").read_text())
+    keys = ("lat", "lon", "scale_m", "visitor_penalty", "resident_penalty")
+    return {"hotspots": [{**{k: h[k] for k in keys}, "name": h["name"]} for h in sd["hotspots"]],
+            "exempt": [sim_categories.index(c) for c in sd["exempt_categories"] if c in sim_categories],
+            "scale": 1.0, "scenarios": sd["scenarios"]}
+
+
 def export_city(pack: Pack, city: dict, budgets: np.ndarray, year: int, path: Path) -> dict:
     """Write the single file the engine loads (columnar JSON)."""
     hh, biz, nodes, edges = city["households"], city["businesses"], city["road_nodes"], city["road_edges"]
@@ -387,6 +396,8 @@ def export_city(pack: Pack, city: dict, budgets: np.ndarray, year: int, path: Pa
                                                    for c in doc["tourism"]["categories"]["name"]]
     doc["build_menu"] = _build_menu(pack, sim_cats)
     doc["scenarios"] = json.loads((DATA_DIR / "scenario_ranges.json").read_text())
+    if (DATA_DIR / "safety_hotspots.json").exists():
+        doc["safety"] = safety_block(doc["sim_categories"])
     if (DATA_DIR / "forecast_error.json").exists():
         doc["forecast_error"] = json.loads((DATA_DIR / "forecast_error.json").read_text())
     if (DATA_DIR / "closure_rates_2021_2026.json").exists():

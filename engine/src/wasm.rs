@@ -248,6 +248,11 @@ pub extern "C" fn nf_inbound() -> f64 {
 
 /// Apply an outlook (multipliers on the calibrated year). Call before stepping, or after a restart.
 #[no_mangle]
+pub extern "C" fn nf_set_safety(scale: f64) {
+    engine().set_safety_scale(scale);
+}
+
+#[no_mangle]
 pub extern "C" fn nf_set_scenario(us: f64, domestic: f64, overseas: f64, base_stays: f64, resident: f64) {
     engine().set_scenario(us, domestic, overseas, base_stays, resident);
 }

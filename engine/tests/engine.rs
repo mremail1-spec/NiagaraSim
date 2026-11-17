@@ -389,3 +389,19 @@ fn passing_traffic_lifts_pass_by_kinds_only_and_averages_one() {
         assert!(mean <= 1.0 + 1e-9 && mean > 0.8, "{} mean site factor {}", city.sim_categories[c], mean);
     }
 }
+
+#[test]
+fn safety_hotspots_cut_pull_nearby_but_not_for_health() {
+    let path = std::path::Path::new(env!("CARGO_MANIFEST_DIR")).join("../build/city_2025/city.json");
+    let Ok(text) = std::fs::read_to_string(&path) else { return };
+    let city: nfsim::city::City = serde_json::from_str(&text).unwrap();
+    let Some(s) = city.safety.as_ref() else { return };
+    let h = &s.hotspots[0];
+    let rest = city.sim_categories.iter().position(|c| c == "restaurant").unwrap() as u32;
+    let health = city.sim_categories.iter().position(|c| c == "health").unwrap() as u32;
+    let at = city.safety_factor_at(h.lat, h.lon, rest, true);
+    assert!(at < 1.0 - h.visitor_penalty * 0.9, "visitor factor at the spot {at}");
+    assert!(city.safety_factor_at(h.lat, h.lon, rest, false) > at, "residents avoid it less than visitors");
+    assert_eq!(city.safety_factor_at(h.lat, h.lon, health, true), 1.0);
+    assert!(city.safety_factor_at(h.lat + 0.03, h.lon, rest, true) > 0.99, "3 km away is unaffected");
+}

@@ -162,7 +162,7 @@ impl Engine {
                 if w > 0.0 && self.city.businesses.external[b] == 0 {
                     let size = self.city.businesses.revenue_prior[b].max(30_000.0);
                     cat_business[c].push(b as u32);
-                    cat_pull[c].push(w * self.city.pull_weight(b) * size.powf(exp));
+                    cat_pull[c].push(w * self.city.pull_weight_visitor(b) * size.powf(exp));
                 }
             }
         }

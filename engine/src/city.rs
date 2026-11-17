@@ -21,12 +21,39 @@ pub struct City {
     /// Share of each sim category's trips made by drivers already passing (pass-by trips); empty when absent.
     #[serde(default)]
     pub pass_by: Vec<f64>,
+    /// Places people avoid (documented open-air drug use, encampments); empty when absent.
+    #[serde(default)]
+    pub safety: Option<Safety>,
     /// Mean vehicles per day passing the businesses of each sim category; filled by `prepare_sites`.
     #[serde(default)]
     pub passing_mean: Vec<f64>,
 }
 
 pub const PASSING_CAP: f64 = 2.0;
+
+#[derive(Clone, Deserialize, Default)]
+pub struct Hotspot {
+    pub lat: f64,
+    pub lon: f64,
+    pub scale_m: f64,
+    pub visitor_penalty: f64,
+    pub resident_penalty: f64,
+}
+
+#[derive(Clone, Deserialize, Default)]
+pub struct Safety {
+    pub hotspots: Vec<Hotspot>,
+    /// Sim category indices not affected (health and recovery services).
+    #[serde(default)]
+    pub exempt: Vec<u32>,
+    /// Multiplier on every penalty (outlooks: worse or better than now).
+    #[serde(default = "one")]
+    pub scale: f64,
+}
+
+fn one() -> f64 {
+    1.0
+}
 
 impl City {
     /// Site factor of a business of `cat` at road `node`: (1 - p) + p * passing / mean passing for the
@@ -40,6 +67,31 @@ impl City {
         // SEED: a site's traffic counts up to twice the category average; pumps, drive-through
         // lanes and parking cap how many passing drivers a single business can serve.
         (1.0 - p) + p * (self.nodes.passing[node as usize] as f64 / mean).min(PASSING_CAP)
+    }
+
+    /// Share of pull kept at a point because people avoid nearby trouble spots (visitor or resident).
+    pub fn safety_factor_at(&self, lat: f64, lon: f64, cat: u32, visitor: bool) -> f64 {
+        let Some(s) = &self.safety else { return 1.0 };
+        if s.exempt.contains(&cat) {
+            return 1.0;
+        }
+        let mut keep = 1.0;
+        for h in &s.hotspots {
+            let d = ((lat - h.lat) * 111_320.0).hypot((lon - h.lon) * 111_320.0 * h.lat.to_radians().cos());
+            let p = if visitor { h.visitor_penalty } else { h.resident_penalty } * s.scale;
+            keep *= 1.0 - (p * (-d / h.scale_m.max(1.0)).exp()).min(0.95);
+        }
+        keep
+    }
+
+    /// Visitor pull before size: format weight, site factor and visitors' safety factor.
+    pub fn pull_weight_visitor(&self, b: usize) -> f64 {
+        let bz = &self.businesses;
+        if bz.external[b] == 1 {
+            return self.pull_weight(b);
+        }
+        bz.format_weight[b] * bz.site.get(b).copied().unwrap_or(1.0)
+            * self.safety_factor_at(bz.lat[b], bz.lon[b], bz.sim_category[b], true)
     }
 
     /// Work out every business's site factor (call once after loading).
@@ -65,7 +117,9 @@ impl City {
 
     /// A business's pull before size: its format weight times its site factor.
     pub fn pull_weight(&self, b: usize) -> f64 {
-        self.businesses.format_weight[b] * self.businesses.site.get(b).copied().unwrap_or(1.0)
+        let bz = &self.businesses;
+        let safe = if bz.external[b] == 1 { 1.0 } else { self.safety_factor_at(bz.lat[b], bz.lon[b], bz.sim_category[b], false) };
+        bz.format_weight[b] * bz.site.get(b).copied().unwrap_or(1.0) * safe
     }
 }
 
