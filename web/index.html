@@ -151,7 +151,7 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
         <tbody id="fRows"></tbody>
       </table>
       <p id="fMix"></p>
-      <p>Range: the low and high outlooks, which vary US, domestic and overseas visitors and resident spending because political decisions cannot be predicted. Profit is for the 2025 calibrated year and uses the industry's average cost shares. Its sales come out of other businesses' tills, not new spending.</p>
+      <p>Range: the low and high outlooks for the next 12 months. The US band comes from monthly border crossings at the Niagara ports (latest months against a year earlier, plus the usual yearly swing, and never less than a repeat of 2025's drop); the others are judgement calls, because political decisions cannot be predicted. Profit is for the 2025 calibrated year and uses the industry's average cost shares. Its sales come out of other businesses' tills, not new spending.</p>
       <p>Takes the most from:</p>
       <ul id="fLosers"></ul>
     </div>
@@ -173,9 +173,10 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
   </div>
   <label id="outlookWrap" for="outlook">Outlook
     <select id="outlook" disabled>
-      <option value="expected">2025, calibrated</option>
-      <option value="low">Low</option>
-      <option value="high">High</option>
+      <option value="calibrated">2025, calibrated</option>
+      <option value="expected">Next 12 months</option>
+      <option value="low">Next 12 months, low</option>
+      <option value="high">Next 12 months, high</option>
     </select>
   </label>
   <button id="buildBtn" disabled>Build</button>
@@ -208,7 +209,7 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
   let roadPaths = [null, null, null];
   let playing = false, rate = 1, acc = 0, lastT = 0, selected = -1;
   let trips = [], pulses = [], tripsTotal = 0;
-  let outlookKey = "expected";
+  let outlookKey = "calibrated";
   let streets = [], runs = [], labelOrder = [], streetSel = -1;
   let buildMode = false, site = null, baseCount = 0, groupOf = {}, townNode = new Set();
   let kx = 1, lon0 = 0, lat0 = 0, startDate = new Date(Date.UTC(2025, 0, 1));
@@ -248,6 +249,8 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
     delete city.households.budget;                          // the engine has its own copy
     $("loading").hidden = true;
     $("play").disabled = false; $("restart").disabled = false; $("buildBtn").disabled = false; $("outlook").disabled = false;
+    const labels = (city.scenarios._meta || {}).labels || {};
+    for (const o of $("outlook").options) { if (labels[o.value]) o.textContent = labels[o.value]; if (!city.scenarios[o.value]) o.remove(); }
     $("kind").innerHTML = city.build_menu.map((m, i) => `<option value="${i}">${m.label}</option>`).join("");
     resize(); fit(); updateHud(); requestAnimationFrame(frame);
   }
@@ -729,7 +732,7 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
       for (const k of ["name", "sim_category", "core", "external", "lat", "lon", "address", "standin"]) if (b[k]) b[k].length = baseCount;
       bizX = bizX.slice(0, baseCount); bizY = bizY.slice(0, baseCount); bizGroup = bizGroup.slice(0, baseCount);
       selected = -1; $("sheet").hidden = true; closeBuild();
-      startEngine(); $("outlook").value = "expected"; outlookKey = "expected"; updateHud();
+      startEngine(); $("outlook").value = "calibrated"; outlookKey = "calibrated"; updateHud();
     } catch (e) { fail(e.message); }
   });
   window.addEventListener("resize", () => { if (wasm) resize(); });

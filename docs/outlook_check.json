@@ -1,0 +1,235 @@
+{
+ "latest_month": "2026-08",
+ "outlooks": {
+  "calibrated": {
+   "us": 1.0,
+   "domestic": 1.0,
+   "overseas": 1.0,
+   "base_stays": 1.0,
+   "resident": 1.0
+  },
+  "expected": {
+   "us": 1.039,
+   "domestic": 1.0,
+   "overseas": 1.0,
+   "base_stays": 1.0,
+   "resident": 1.0
+  },
+  "low": {
+   "us": 0.907,
+   "domestic": 0.93,
+   "overseas": 0.85,
+   "base_stays": 0.85,
+   "resident": 0.97
+  },
+  "high": {
+   "us": 1.134,
+   "domestic": 1.07,
+   "overseas": 1.1,
+   "base_stays": 1.05,
+   "resident": 1.03
+  }
+ },
+ "checks": {
+  "us_overnight": [
+   {
+    "base_window_ends": "2012-08",
+    "low": 0.964,
+    "high": 1.031,
+    "actual": 0.986,
+    "inside": true
+   },
+   {
+    "base_window_ends": "2013-08",
+    "low": 0.967,
+    "high": 1.068,
+    "actual": 0.968,
+    "inside": true
+   },
+   {
+    "base_window_ends": "2014-08",
+    "low": 0.967,
+    "high": 1.067,
+    "actual": 1.047,
+    "inside": true
+   },
+   {
+    "base_window_ends": "2015-08",
+    "low": 0.966,
+    "high": 1.064,
+    "actual": 1.099,
+    "inside": false
+   },
+   {
+    "base_window_ends": "2016-08",
+    "low": 0.968,
+    "high": 1.112,
+    "actual": 1.035,
+    "inside": true
+   },
+   {
+    "base_window_ends": "2017-08",
+    "low": 0.968,
+    "high": 1.103,
+    "actual": 1.05,
+    "inside": true
+   },
+   {
+    "base_window_ends": "2018-08",
+    "low": 0.971,
+    "high": 1.099,
+    "actual": 0.982,
+    "inside": true
+   },
+   {
+    "base_window_ends": "2024-08",
+    "low": 0.972,
+    "high": 1.082,
+    "actual": 0.943,
+    "inside": false
+   },
+   {
+    "base_window_ends": "2025-08",
+    "low": 0.972,
+    "high": 1.1,
+    "actual": 0.979,
+    "inside": true
+   }
+  ],
+  "us_sameday": [
+   {
+    "base_window_ends": "2012-08",
+    "low": 0.992,
+    "high": 1.029,
+    "actual": 0.89,
+    "inside": false
+   },
+   {
+    "base_window_ends": "2013-08",
+    "low": 0.906,
+    "high": 1.021,
+    "actual": 0.978,
+    "inside": true
+   },
+   {
+    "base_window_ends": "2014-08",
+    "low": 0.895,
+    "high": 1.016,
+    "actual": 1.035,
+    "inside": false
+   },
+   {
+    "base_window_ends": "2015-08",
+    "low": 0.898,
+    "high": 1.019,
+    "actual": 1.133,
+    "inside": false
+   },
+   {
+    "base_window_ends": "2016-08",
+    "low": 0.901,
+    "high": 1.114,
+    "actual": 1.001,
+    "inside": true
+   },
+   {
+    "base_window_ends": "2017-08",
+    "low": 0.905,
+    "high": 1.117,
+    "actual": 1.017,
+    "inside": true
+   },
+   {
+    "base_window_ends": "2018-08",
+    "low": 0.909,
+    "high": 1.11,
+    "actual": 1.052,
+    "inside": true
+   },
+   {
+    "base_window_ends": "2024-08",
+    "low": 0.917,
+    "high": 1.1,
+    "actual": 1.03,
+    "inside": true
+   },
+   {
+    "base_window_ends": "2025-08",
+    "low": 0.921,
+    "high": 1.112,
+    "actual": 1.062,
+    "inside": true
+   }
+  ],
+  "canadians_back_from_us": [
+   {
+    "base_window_ends": "2012-08",
+    "low": 1.066,
+    "high": 1.12,
+    "actual": 0.996,
+    "inside": false
+   },
+   {
+    "base_window_ends": "2013-08",
+    "low": 1.018,
+    "high": 1.117,
+    "actual": 0.912,
+    "inside": false
+   },
+   {
+    "base_window_ends": "2014-08",
+    "low": 0.92,
+    "high": 1.114,
+    "actual": 0.841,
+    "inside": false
+   },
+   {
+    "base_window_ends": "2015-08",
+    "low": 0.891,
+    "high": 1.103,
+    "actual": 0.845,
+    "inside": false
+   },
+   {
+    "base_window_ends": "2016-08",
+    "low": 0.816,
+    "high": 1.084,
+    "actual": 0.999,
+    "inside": true
+   },
+   {
+    "base_window_ends": "2017-08",
+    "low": 0.82,
+    "high": 1.069,
+    "actual": 1.083,
+    "inside": false
+   },
+   {
+    "base_window_ends": "2018-08",
+    "low": 0.825,
+    "high": 1.083,
+    "actual": 0.951,
+    "inside": true
+   },
+   {
+    "base_window_ends": "2024-08",
+    "low": 0.835,
+    "high": 1.078,
+    "actual": 0.819,
+    "inside": false
+   },
+   {
+    "base_window_ends": "2025-08",
+    "low": 0.834,
+    "high": 1.08,
+    "actual": 0.87,
+    "inside": true
+   }
+  ]
+ },
+ "inside_band": {
+  "us_overnight": "7 of 9",
+  "us_sameday": "6 of 9",
+  "canadians_back_from_us": "3 of 9"
+ }
+}

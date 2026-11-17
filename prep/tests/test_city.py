@@ -88,3 +88,20 @@ def test_road_speeds_and_lengths_are_sane(city):
     for e in city["road_edges"]:
         assert e["length_m"] > 0 and 10 <= e["speed_kmh"] <= 110   # lowest posted limit on the map is 15 km/h
         assert e["from_node"] != e["to_node"]
+
+
+def test_outlook_ranges_come_from_monthly_data():
+    import json
+    from nfprep import outlook
+    sc = json.loads((outlook.DATA / "scenario_ranges.json").read_text())
+    for k in ["us", "domestic", "overseas", "base_stays", "resident"]:
+        assert sc["low"][k] <= sc["expected"][k] <= sc["high"][k], k
+        assert sc["calibrated"][k] == 1.0
+    d = outlook.load()
+    last = sc["_meta"]["latest_month"]
+    assert abs(sc["expected"]["us"] - outlook.same_months(d, "us_overnight", int(last[:4]), last)) < 0.001
+    # the US low end allows a repeat of 2025's political drop
+    assert sc["low"]["us"] <= sc["expected"]["us"] * outlook.year_change(d, "us_overnight", 2025) + 1e-3
+    # out of sample, the 10-90 band should hold the next year about 8 times in 10
+    rows = outlook.check(d, "us_overnight")
+    assert len(rows) >= 8 and sum(r["inside"] for r in rows) / len(rows) >= 0.6

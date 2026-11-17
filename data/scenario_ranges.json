@@ -1,10 +1,53 @@
-{"_meta": {"purpose": "Forward simulations give a range, because political events and decisions cannot be predicted. Each outlook multiplies the latest calibrated year (2025).",
-  "basis": {"us": "US arrivals into Ontario fell 18% between 2019 and 2025, and US visitor spending in Niagara fell 10% in 2025 alone (trade tensions). Cross-border demand is the most political input, so it gets the widest band.",
-            "domestic": "Total visitor spending rose 16.5% in 2025 as Canadians travelled at home; that could continue or unwind.",
-            "overseas": "Overseas arrivals rose in 2025; long-haul travel swings with the economy and air capacity.",
-            "base_stays": "Hotel room nights outside leisure travel. Federal contracts housing asylum seekers ended in 2024-2025, removing winter room nights; a government decision could add or remove such stays again.",
-            "resident": "Household spending moves a few percent with jobs and prices."},
-  "seed": "The size of each band is a judgement informed by the swings above, not a statistical estimate. Widen or narrow them here."},
- "low":      {"us": 0.80, "domestic": 0.93, "overseas": 0.85, "base_stays": 0.85, "resident": 0.97},
- "expected": {"us": 1.00, "domestic": 1.00, "overseas": 1.00, "base_stays": 1.00, "resident": 1.00},
- "high":     {"us": 1.10, "domestic": 1.07, "overseas": 1.10, "base_stays": 1.05, "resident": 1.03}}
+{
+ "_meta": {
+  "purpose": "Forward simulations give a range, because political events and decisions cannot be predicted. Each outlook multiplies the calibrated year (2025). Written by prep/nfprep/outlook.py from data/monthly_indicators.json.",
+  "latest_month": "2026-08",
+  "labels": {
+   "calibrated": "2025, calibrated",
+   "expected": "Next 12 months, from January-August 2026",
+   "low": "Next 12 months, low",
+   "high": "Next 12 months, high"
+  },
+  "basis": {
+   "us": "US overnight visitors through the Niagara ports, January-August 2026 against the same months a year earlier: 1.039. Band: 10th-90th percentile of the twelve-month change in 119 ordinary months (0.958-1.092), with the low end set no higher than 2025's political drop (0.873).",
+   "domestic": "Canadians returning from the US through Niagara, January-August 2026: 1.012 of a year earlier (2025 was 0.689 of 2024). While those trips stay down, the domestic outlook stays at 2025; the low end is some of them returning to US trips.",
+   "overseas": "The Niagara land ports see few overseas visitors (most land at Toronto Pearson), so the overseas band stays a judgement call.",
+   "base_stays": "Hotel room nights outside leisure travel. Federal contracts housing asylum seekers ended in 2024-2025; a government decision could add or remove such stays again.",
+   "resident": "Household spending moves a few percent with jobs and prices."
+  },
+  "seed": "Domestic, overseas, base-stay and resident bands are judgement calls: no monthly series measures them for Niagara Falls. Widen or narrow them in prep/nfprep/outlook.py (SEED).",
+  "out_of_sample": {
+   "us_overnight": "7 of 9",
+   "us_sameday": "6 of 9",
+   "canadians_back_from_us": "3 of 9"
+  }
+ },
+ "calibrated": {
+  "us": 1.0,
+  "domestic": 1.0,
+  "overseas": 1.0,
+  "base_stays": 1.0,
+  "resident": 1.0
+ },
+ "expected": {
+  "us": 1.039,
+  "domestic": 1.0,
+  "overseas": 1.0,
+  "base_stays": 1.0,
+  "resident": 1.0
+ },
+ "low": {
+  "us": 0.907,
+  "domestic": 0.93,
+  "overseas": 0.85,
+  "base_stays": 0.85,
+  "resident": 0.97
+ },
+ "high": {
+  "us": 1.134,
+  "domestic": 1.07,
+  "overseas": 1.1,
+  "base_stays": 1.05,
+  "resident": 1.03
+ }
+}
