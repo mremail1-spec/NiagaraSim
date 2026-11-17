@@ -295,3 +295,16 @@ niagaraopendata.ca blocks automated requests with a bot check; its official CKAN
 **Foot traffic against where the City sweeps sidewalks** (`python3 -m nfprep.foot_check`, `docs/foot_traffic_check.json`): the City sweeps where people walk most (8 routes, 56 km). Road nodes within 40 m of a route carry a median 107 model walkers a day, against 6 elsewhere; a node on a route outranks one off it 79% of the time; 79 of the model's 100 busiest walking spots are on a route, though only 11% of road nodes are. Independent of the model's inputs: a pass (scorecard 7 of 11).
 
 **Traffic signals**: not published by the Region or the City; OpenStreetMap's Overpass servers were down or refusing (timeouts, resets, 504/406 also through the gateway). Needed for intersection delay; to retry.
+
+## Traffic signals, stop signs and street speeds (17 November 2026)
+`data/sources/osm_traffic_controls.json`: 246 traffic signals and 621 stop signs from OpenStreetMap (run by the user on Overpass Turbo; the Overpass servers refuse requests from cloud machines). `prep/nfprep/intersections.py` ties them to real intersections (152 signalled, 55 all-way stops, 342 other stops) and adds delay to the approaches.
+Tested against the 2019 and 2025 regional counts (correlation, regional roads 2019 / 2025, highways; share of counted regional traffic carried):
+| Variant | Regional 2019 | Regional 2025 | Highways | Share |
+|---|---|---|---|---|
+| Before | 0.62 | 0.65 | 0.75 | 22% |
+| Residential and service streets at 35 km/h | **0.65** | **0.66** | **0.76** | 25% |
+| + signals 8 s, stops 10 s | 0.59 | 0.61 | 0.76 | 29% |
+| + signals 15 s | 0.53 | 0.56 | 0.75 | 23% |
+| + signals 25 s | 0.42 | 0.45 | 0.73 | 20% |
+| Posted limits from the Region's file, residential 35 | 0.64 | 0.64 | 0.71 | 27% |
+Kept: residential, service and unclassified streets with no posted limit at an effective 35 km/h (`LOCAL_KMH` in `roads.py`; the page and the 2025 city updated). Intersection delays and posted limits stay off: without road capacity and coordinated signals, delay on main roads pushes trips onto side streets. Foot traffic against the sweeper routes after the change: 0.79 (unchanged).

@@ -22,6 +22,11 @@ ROADS_FILE = DATA_DIR / "sources" / "osm_roads_overpass.json"
 # 100 on the QEW/420 motorways, 60 on ramps (SEED for ramps).
 DEFAULT_KMH = {"motorway": 100, "trunk": 80, "motorway_link": 60, "trunk_link": 60}
 FALLBACK_KMH = 50
+# SEED: effective free-flow speed on residential and service streets with no posted limit (parked cars,
+# turns, calming). With 35 instead of 50, regional roads' correlation with counts rose 0.62 -> 0.65
+# (2019 counts) and 0.65 -> 0.66 (2025), highways 0.75 -> 0.76.
+LOCAL_KMH = 35
+LOCAL_CLASSES = {"residential", "living_street", "service", "unclassified"}
 CITY_BUFFER_M = 150      # keep roads that run along the city boundary
 
 
@@ -50,7 +55,11 @@ def _speed(tags: dict) -> float:
         return float(raw.split(" ")[0]) * (1.609 if "mph" in raw else 1.0)
     except ValueError:
         region = _region_speed(tags.get("name", "")) if USE_REGION_SPEEDS else None
-        return region if region else DEFAULT_KMH.get(tags.get("highway", ""), FALLBACK_KMH)
+        if region:
+            return region
+        if tags.get("highway") in LOCAL_CLASSES:
+            return LOCAL_KMH
+        return DEFAULT_KMH.get(tags.get("highway", ""), FALLBACK_KMH)
 
 
 def _len_m(a: tuple, b: tuple) -> float:
