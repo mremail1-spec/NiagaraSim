@@ -1,0 +1,169 @@
+{
+ "_meta": {
+  "source": "Niagara Region Open Data, Roads (OpenData_Roads CSV, supplied by the user 17 November 2026), segments in or bordering Niagara Falls. data/sources/region/niagara_region_roads_opendata.csv",
+  "use": "prep/nfprep/roads.py sets a street's speed from here when one posted limit covers at least 80% of its length in the file and the map has no posted limit of its own; streets whose limit changes along their length (e.g. Stanley Avenue 50 in the core, 60 outside) keep the map's value.",
+  "coverage": "Speed limits are filled for regional and provincial roads (about 17% of segments); local streets carry 0 (unknown) and keep Ontario's 50 km/h."
+ },
+ "streets": {
+  "Ascot Circle": {
+   "speed_kmh": 50,
+   "share_of_length": 1.0,
+   "segments": 2
+  },
+  "Bridge Street": {
+   "speed_kmh": 50,
+   "share_of_length": 1.0,
+   "segments": 24
+  },
+  "Chippawa Creek Road": {
+   "speed_kmh": 80,
+   "share_of_length": 1.0,
+   "segments": 5
+  },
+  "Falls Avenue": {
+   "speed_kmh": 40,
+   "share_of_length": 0.51,
+   "segments": 17
+  },
+  "Ferry Street": {
+   "speed_kmh": 50,
+   "share_of_length": 1.0,
+   "segments": 7
+  },
+  "Four Mile Creek Road": {
+   "speed_kmh": 50,
+   "share_of_length": 1.0,
+   "segments": 1
+  },
+  "General Brock Parkway": {
+   "speed_kmh": 100,
+   "share_of_length": 1.0,
+   "segments": 4
+  },
+  "Highway 420": {
+   "speed_kmh": 80,
+   "share_of_length": 0.85,
+   "segments": 23
+  },
+  "Kalar Road": {
+   "speed_kmh": 70,
+   "share_of_length": 1.0,
+   "segments": 1
+  },
+  "Lundy's Lane": {
+   "speed_kmh": 50,
+   "share_of_length": 0.7,
+   "segments": 67
+  },
+  "Lyons Creek Road": {
+   "speed_kmh": 60,
+   "share_of_length": 0.51,
+   "segments": 28
+  },
+  "Marineland Parkway": {
+   "speed_kmh": 50,
+   "share_of_length": 1.0,
+   "segments": 7
+  },
+  "McLeod Road": {
+   "speed_kmh": 50,
+   "share_of_length": 0.93,
+   "segments": 27
+  },
+  "Mewburn Road": {
+   "speed_kmh": 60,
+   "share_of_length": 1.0,
+   "segments": 2
+  },
+  "Montrose Road": {
+   "speed_kmh": 50,
+   "share_of_length": 0.43,
+   "segments": 103
+  },
+  "Mountain Road": {
+   "speed_kmh": 60,
+   "share_of_length": 0.48,
+   "segments": 29
+  },
+  "Netherby Road": {
+   "speed_kmh": 80,
+   "share_of_length": 0.81,
+   "segments": 25
+  },
+  "Niagara Square Drive": {
+   "speed_kmh": 50,
+   "share_of_length": 1.0,
+   "segments": 1
+  },
+  "Niagara Townline Road": {
+   "speed_kmh": 60,
+   "share_of_length": 1.0,
+   "segments": 4
+  },
+  "Portage Road": {
+   "speed_kmh": 50,
+   "share_of_length": 1.0,
+   "segments": 5
+  },
+  "Queen Elizabeth Way": {
+   "speed_kmh": 100,
+   "share_of_length": 1.0,
+   "segments": 39
+  },
+  "Ramp": {
+   "speed_kmh": 100,
+   "share_of_length": 0.72,
+   "segments": 106
+  },
+  "Sabine Drive": {
+   "speed_kmh": 50,
+   "share_of_length": 1.0,
+   "segments": 1
+  },
+  "Schihl Road": {
+   "speed_kmh": 60,
+   "share_of_length": 1.0,
+   "segments": 3
+  },
+  "Schisler Road": {
+   "speed_kmh": 80,
+   "share_of_length": 0.9,
+   "segments": 12
+  },
+  "Secretariat Court": {
+   "speed_kmh": 50,
+   "share_of_length": 1.0,
+   "segments": 2
+  },
+  "Sodom Road": {
+   "speed_kmh": 80,
+   "share_of_length": 0.87,
+   "segments": 28
+  },
+  "St Paul Avenue": {
+   "speed_kmh": 60,
+   "share_of_length": 1.0,
+   "segments": 7
+  },
+  "Stanley Avenue": {
+   "speed_kmh": 60,
+   "share_of_length": 0.52,
+   "segments": 95
+  },
+  "Taylor Road": {
+   "speed_kmh": 70,
+   "share_of_length": 0.67,
+   "segments": 15
+  },
+  "Thorold Stone Road": {
+   "speed_kmh": 50,
+   "share_of_length": 0.66,
+   "segments": 52
+  },
+  "Thorold Townline Road": {
+   "speed_kmh": 80,
+   "share_of_length": 0.93,
+   "segments": 8
+  }
+ }
+}

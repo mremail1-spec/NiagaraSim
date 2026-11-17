@@ -25,12 +25,32 @@ FALLBACK_KMH = 50
 CITY_BUFFER_M = 150      # keep roads that run along the city boundary
 
 
+_REGION = None
+# Off: with posted limits from the Region's file (442 edges, mostly rural and arterial roads faster),
+# the fit to counted traffic got worse (regional roads correlation 0.62 -> 0.61, highways 0.75 -> 0.70;
+# with the QEW at a 110 km/h operating speed as well, 0.57 and 0.70). The model has no signal delay or
+# congestion, so higher posted speeds pull trips onto roads that are slower in practice. Turn on with
+# congestion in place.
+USE_REGION_SPEEDS = False
+
+
+def _region_speed(name: str) -> float | None:
+    """Posted limit from Niagara Region's road file, when one value covers most of the street."""
+    global _REGION
+    if _REGION is None:
+        p = DATA_DIR / "region_road_speeds.json"
+        _REGION = {k.lower(): v for k, v in json.loads(p.read_text())["streets"].items()} if p.exists() else {}
+    v = _REGION.get(name.lower().strip())
+    return float(v["speed_kmh"]) if v and v["share_of_length"] >= 0.8 else None
+
+
 def _speed(tags: dict) -> float:
     raw = str(tags.get("maxspeed", "")).strip()
     try:
         return float(raw.split(" ")[0]) * (1.609 if "mph" in raw else 1.0)
     except ValueError:
-        return DEFAULT_KMH.get(tags.get("highway", ""), FALLBACK_KMH)
+        region = _region_speed(tags.get("name", "")) if USE_REGION_SPEEDS else None
+        return region if region else DEFAULT_KMH.get(tags.get("highway", ""), FALLBACK_KMH)
 
 
 def _len_m(a: tuple, b: tuple) -> float:
