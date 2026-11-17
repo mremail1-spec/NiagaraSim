@@ -1,0 +1,152 @@
+{
+ "_meta": {
+  "what": "Model revenue of chain branches in Niagara Falls against the chains' published sales per location."
+ },
+ "summary": {
+  "median_ratio_model_to_published": 1.27,
+  "branches_above_brand_best": 3,
+  "site_error_log_sd": 0.321,
+  "site_range_p10_p90": [
+   0.66,
+   1.51
+  ]
+ },
+ "brands": {
+  "Pizza Pizza": {
+   "branches": [
+    {
+     "address": "5200 Robinson St",
+     "model_revenue": 1845458
+    },
+    {
+     "address": "4945 Clifton Hl",
+     "model_revenue": 2226837
+    },
+    {
+     "address": "3643-3739 Portage Rd",
+     "model_revenue": 1114635
+    },
+    {
+     "address": "5619 Stanley Av",
+     "model_revenue": 1306630
+    },
+    {
+     "address": "6225 Lundy's Ln",
+     "model_revenue": 1279321
+    }
+   ],
+   "model_median": 1306630,
+   "published_average": 789000,
+   "ratio": 1.66,
+   "above_brand_best_unit": 0,
+   "source_quality": "company filing"
+  },
+  "The Keg": {
+   "branches": [
+    {
+     "address": "5950 Victoria Av",
+     "model_revenue": 6732813
+    }
+   ],
+   "model_median": 6732813,
+   "published_average": 7176000,
+   "ratio": 0.94,
+   "above_brand_best_unit": 0,
+   "source_quality": "company filing"
+  },
+  "Boston Pizza": {
+   "branches": [
+    {
+     "address": "4950 Clifton Hill",
+     "model_revenue": 6151874
+    },
+    {
+     "address": "6962 Optimist Ln",
+     "model_revenue": 842836
+    },
+    {
+     "address": "8444 Lundy's Ln",
+     "model_revenue": 3678109
+    }
+   ],
+   "model_median": 3678109,
+   "published_average": 2505000,
+   "ratio": 1.47,
+   "above_brand_best_unit": 0,
+   "source_quality": "filing sales / analyst count"
+  },
+  "Tim Hortons": {
+   "branches": [
+    {
+     "address": "7307 Oakwood Dr",
+     "model_revenue": 960865
+    },
+    {
+     "address": "6948 McLeod Rd",
+     "model_revenue": 1294206
+    },
+    {
+     "address": "8089 Portage Road",
+     "model_revenue": 937491
+    },
+    {
+     "address": "7311 Pin Oak Dr",
+     "model_revenue": 502704
+    },
+    {
+     "address": "5233 Stanley Av",
+     "model_revenue": 1294777
+    },
+    {
+     "address": "6192 Lundy's Ln",
+     "model_revenue": 1223634
+    },
+    {
+     "address": "6345 Niagara River Py",
+     "model_revenue": 4521234
+    },
+    {
+     "address": "5687 Stanley Av",
+     "model_revenue": 1857551
+    },
+    {
+     "address": "6380 Fallsview Bv",
+     "model_revenue": 6291575
+    },
+    {
+     "address": "5551 Murray Street",
+     "model_revenue": 6390223
+    },
+    {
+     "address": "8159 Lundy's Ln",
+     "model_revenue": 910435
+    },
+    {
+     "address": "3930 Montrose Rd",
+     "model_revenue": 980304
+    },
+    {
+     "address": "4835 Victoria Av",
+     "model_revenue": 1689352
+    },
+    {
+     "address": "6907 Morrison St",
+     "model_revenue": 623660
+    },
+    {
+     "address": "6161 Thorold Stone Road",
+     "model_revenue": 567905
+    },
+    {
+     "address": "5470 Drummond Rd",
+     "model_revenue": 1172978
+    }
+   ],
+   "model_median": 1198306,
+   "published_average": 1117000,
+   "ratio": 1.07,
+   "above_brand_best_unit": 3,
+   "source_quality": "franchise disclosure, second-hand, median not mean"
+  }
+ }
+}

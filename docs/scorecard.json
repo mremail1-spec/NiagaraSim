@@ -1,0 +1,93 @@
+{
+ "_meta": {
+  "what": "One scorecard for the simulation: every test against real data the model was not tuned to,\nwith its pass mark. The pandemic years (2020-2022) are left out: they were not predictable.",
+  "pandemic_years_left_out": [
+   "2020",
+   "2021",
+   "2022"
+  ]
+ },
+ "passed": "5 of 9",
+ "tests": [
+  {
+   "area": "Traffic",
+   "test": "Regional roads, correlation with 2019 counts",
+   "score": 0.622,
+   "pass_mark": ">= 0.6",
+   "result": "pass",
+   "note": "77 sections; edge counts used as inputs are not scored"
+  },
+  {
+   "area": "Traffic",
+   "test": "Provincial highways, correlation with 2019 counts",
+   "score": 0.751,
+   "pass_mark": ">= 0.6",
+   "result": "pass",
+   "note": ""
+  },
+  {
+   "area": "Traffic",
+   "test": "Regional roads, median share of counted traffic",
+   "score": "24.5%",
+   "pass_mark": ">= 50%",
+   "result": "miss",
+   "note": "school trips and trips between stops are not simulated yet"
+  },
+  {
+   "area": "Sales at a site",
+   "test": "Chain branches, model median against published sales per location",
+   "score": 1.27,
+   "pass_mark": "0.67-1.5",
+   "result": "pass",
+   "note": "4 chains; a tourist city can sit above national averages"
+  },
+  {
+   "area": "Sales at a site",
+   "test": "Branches above the brand's best unit in Canada",
+   "score": 3,
+   "pass_mark": "0",
+   "result": "miss",
+   "note": "Tim Hortons in the Tourist Core"
+  },
+  {
+   "area": "Outlooks",
+   "test": "US visitors next 12 months, inside the 10-90 band (pandemic left out)",
+   "score": "7 of 9",
+   "pass_mark": ">= 70%",
+   "result": "pass",
+   "note": ""
+  },
+  {
+   "area": "Business counts",
+   "test": "Industry revenue direction against next June's employer count, 2023-2025",
+   "score": "14 of 18",
+   "pass_mark": ">= 70%",
+   "result": "pass",
+   "note": "correlation 0.63"
+  },
+  {
+   "area": "Business counts",
+   "test": "St. Catharines-Niagara closings 2023-2025, rise the model sees",
+   "score": "not seen",
+   "pass_mark": "direction right",
+   "result": "miss",
+   "note": "closings rose in 2025 (0.54 to 0.59); the model's revenue did not fall"
+  },
+  {
+   "area": "Closures",
+   "test": "Five-year closure chance, skill over each kind's average (2021-2026, includes pandemic recovery)",
+   "score": -0.054,
+   "pass_mark": "> 0.05",
+   "result": "miss",
+   "note": "reported, not a pandemic-free test"
+  }
+ ],
+ "calibrated_not_tests": [
+  "store sales by type (7 of 8 within 1%)",
+  "hotel occupancy by month 2025",
+  "Niagara Parks revenue split",
+  "casino revenue",
+  "median driving trip 5.5 km",
+  "attraction attendance"
+ ]
+}

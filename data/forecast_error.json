@@ -1,0 +1,9 @@
+{
+ "_meta": {
+  "what": "Spread of model revenue for a single site against published chain sales per location (docs/unit_sales_check.json). From 4 chains only, so a rough measure; written by prep/nfprep/unit_sales_check.py."
+ },
+ "log_sd": 0.321,
+ "p10_factor": 0.66,
+ "p90_factor": 1.51,
+ "chains": 4
+}

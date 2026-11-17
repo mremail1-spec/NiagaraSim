@@ -387,6 +387,8 @@ def export_city(pack: Pack, city: dict, budgets: np.ndarray, year: int, path: Pa
                                                    for c in doc["tourism"]["categories"]["name"]]
     doc["build_menu"] = _build_menu(pack, sim_cats)
     doc["scenarios"] = json.loads((DATA_DIR / "scenario_ranges.json").read_text())
+    if (DATA_DIR / "forecast_error.json").exists():
+        doc["forecast_error"] = json.loads((DATA_DIR / "forecast_error.json").read_text())
     if (DATA_DIR / "closure_rates_2021_2026.json").exists():
         doc["closure_rates"] = json.loads((DATA_DIR / "closure_rates_2021_2026.json").read_text())
     path.parent.mkdir(parents=True, exist_ok=True)

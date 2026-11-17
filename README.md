@@ -226,3 +226,40 @@ Still not found anywhere public: business licence lists by year (only the curren
 - **All 16 variants** (4 penalties x 4 feature sets) are listed in the check file. The best, kind rate plus Tourist Core plus same-kind neighbours with a strong penalty, reached skill +1.3%, picked from 16 so optimistic. Its ranking score is 0.56.
 - **Conclusion**: with 38 closures, nothing the model knows about a site predicts closure beyond the kind's own rate. The page shows that rate (`data/closure_rates_2021_2026.json`, added to city.json by the export) on every business sheet and forecast: souvenir shops 15%, restaurants 12%, bars 11%, other shops 11%, electronics 10%, grocery, apparel, cafés and auto repair about 5%. These are closures seen on the map; edits lag, so real rates are likely higher.
 - **What would change this**: more labelled outcomes (City business-licence renewals by year, or a second map period), and Statistics Canada exits by industry for the metropolitan area if they are ever published.
+
+## Traffic, foot traffic, site sales and the scorecard (17 November 2026)
+The pandemic years 2020-2022 are left out of the scoring: they were not predictable.
+
+**Traffic layers** (`python3 -m nfprep.traffic_layers`, `docs/traffic_layers_check.json`). Every layer is sized from the census or from counts at the city's edges; the count stations inside the city are the test.
+- Commuting (2021 census): 7,473 resident round trips a day inside the city, 4,885 to other Niagara towns, 1,127 beyond the region, 8,239 workers driving in to fill business jobs (SEED: residents fill 60% of the model's business jobs).
+- Trucks from the QEW edge counts (4,400 north-south; 2,400 to the Queenston-Lewiston Bridge, matching the Bridge Commission's 391,500 a year).
+- Bridge cars: the Bridge Commission's 2.38 million a year west-bound (2023-24), both directions, less the US visitors the model already sends (`data/bridge_crossings_nfbc.json`).
+- QEW through cars: 24,872 a day, what the south-edge count leaves.
+- Routes spread over 12 draws of road times (lognormal spread 0.3), as drivers do not all take one fastest route.
+- Result on 77 sections: regional roads correlation 0.62 (0.61 with shopping trips only, 0.59 without spreading), highways 0.75, highways carry 48% of counted traffic (29% before). Regional roads still carry only 24.5% of their counted traffic: school trips, trips between stops, trips by other towns' residents and deliveries are not simulated.
+- Fixed on the way: north-bound traffic was first tied to the nearest road node to the QEW join point, which is on Taylor Road, and sent 35,000 vehicles a day down Taylor Road (5,900 counted). It now uses St. Catharines' town node on the QEW.
+- Passing traffic at every business (pass-by) now includes commuters and through traffic.
+- The Region's 2025 road counts are behind a bot check on niagaraopendata.ca; a manual download would add a newer test.
+
+**Foot traffic** (`python3 -m nfprep.foot_traffic`): a full-year run counts residents' walked trips, visitors' stops reached on foot, and visitors who drove counted at the door they walked to. Busiest: Clifton Hill about 33,900 people a day, Table Rock 29,300 (10.7 million a year), the boat dock 19,000. No public pedestrian counts exist for Niagara Falls; the City provides counts on paid request, which would be the test.
+
+**Map**: "Show" switches between businesses, cars a day and people on foot a day. Tapping a street gives both, and the share from commuters and through traffic. Forecasts give the people walking past the spot.
+
+**Sales at a site** (`python3 -m nfprep.unit_sales_check`, `data/public_unit_sales_2025.json`): branches in Niagara Falls against published sales per location. Pizza Pizza 1.66 times the national average, The Keg 0.94, Boston Pizza 1.47, Tim Hortons 1.07 (median of 16). Median 1.27, plausible for a tourist city. Three Tim Hortons in the Tourist Core ($4.5-6.4M) are above the brand's best unit ($4.0M): the model over-concentrates visitor spending on fast food in the core (the Fallsview food court's Subway at $10.3M). McDonald's, Subway, A&W and Dollarama publish no Canadian per-location sales.
+
+**Ranges**: forecast ranges now combine the outlook range with the site error measured above (x0.66 to x1.51, P10-P90 from the 4 chains, `data/forecast_error.json`), and profit has a range too.
+
+**Scorecard** (`python3 -m nfprep.scorecard`, `docs/scorecard.json`), 5 of 9 pass:
+| Test | Score | Mark |
+|---|---|---|
+| Regional roads, correlation | 0.62 | 0.6 pass |
+| Highways, correlation | 0.75 | 0.6 pass |
+| Regional roads, share of counted traffic | 24.5% | 50% miss |
+| Chain branches against published sales | 1.27 | 0.67-1.5 pass |
+| Branches above the brand's best unit | 3 | 0 miss |
+| US visitor band, out of sample | 7 of 9 | 70% pass |
+| Industry direction 2023-2025 | 14 of 18 | 70% pass |
+| 2025 rise in closings | not seen | miss |
+| Closure chance skill | -0.054 | 0.05 miss |
+
+**Frozen forecasts** (`python3 -m nfprep.frozen make|score`, `forecasts/2026-11-17.json`): US overnight visitors through Niagara, 12 months to August 2027: 1.026 times the year before (0.873-1.092); same-day 1.017 (0.927-1.110); Canadians returning from the US 0.953 (0.812-1.078); active businesses in St. Catharines-Niagara, July 2027: 1.0066 (0.989-1.028). Never edited; scored when Statistics Canada publishes.

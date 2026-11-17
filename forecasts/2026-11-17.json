@@ -1,0 +1,56 @@
+{
+ "_meta": {
+  "written": "2026-11-17",
+  "rule": "Do not edit after writing; score with python3 -m nfprep.frozen score."
+ },
+ "forecasts": [
+  {
+   "id": "us_overnight_12m_to_2027-08",
+   "what": "US residents entering Canada overnight, Niagara ports: 12 months to 2027-08 against 12 months to 2026-08",
+   "series": "us_overnight",
+   "file": "data/monthly_indicators.json",
+   "base_end": "2026-08",
+   "target_end": "2027-08",
+   "base_total": 2121206,
+   "expected_ratio": 1.026,
+   "low": 0.873,
+   "high": 1.092
+  },
+  {
+   "id": "us_sameday_12m_to_2027-08",
+   "what": "US residents entering Canada same day, Niagara ports: 12 months to 2027-08 against 12 months to 2026-08",
+   "series": "us_sameday",
+   "file": "data/monthly_indicators.json",
+   "base_end": "2026-08",
+   "target_end": "2027-08",
+   "base_total": 2336942,
+   "expected_ratio": 1.017,
+   "low": 0.927,
+   "high": 1.11
+  },
+  {
+   "id": "canadians_back_from_us_12m_to_2027-08",
+   "what": "Canadians returning from the US, Niagara ports: 12 months to 2027-08 against 12 months to 2026-08",
+   "series": "canadians_back_from_us",
+   "file": "data/monthly_indicators.json",
+   "base_end": "2026-08",
+   "target_end": "2027-08",
+   "base_total": 3706593,
+   "expected_ratio": 0.953,
+   "low": 0.812,
+   "high": 1.078
+  },
+  {
+   "id": "active_businesses_2027-07",
+   "what": "Active businesses, St. Catharines-Niagara, 2027-07 against 2026-07",
+   "series": "Business sector industries | Active businesses",
+   "file": "data/business_dynamics_statcan.json",
+   "base_end": "2026-07",
+   "target_end": "2027-07",
+   "base_total": 8994.0,
+   "expected_ratio": 1.0066,
+   "low": 0.989,
+   "high": 1.0278
+  }
+ ]
+}
