@@ -1,0 +1,12 @@
+{"_meta": {"provided": "2026-11-17",
+  "source": "Supplied by the project owner as a summary of public 2025 industry reports: CBRE Hotels, Niagara Economic Development (Niagara Tourism Profile), Hotelier Magazine, Horwath HTL, HVS Canada, CoStar, Hotel News Resource, AirROI. Not independently verified. Month-by-month figures are behind paywalls; only the values below are public.",
+  "use": "Calibration targets for hotel occupancy and room rates in 2025, and the basis for the range used in forward simulations.",
+  "conflict": "This summary gives a 16,000-room hotel inventory. Niagara Falls Tourism's own page says 'over 12,000 guestrooms' and a Cvent listing says 14,000. The simulation uses 16,000 as instructed."},
+ "hotel_rooms": 16000,
+ "occupancy": {"march_2025": 0.474, "march_2024": 0.533, "january_to_july_2025": 0.595, "january_to_july_2024": 0.612,
+               "full_year_2025": 0.63, "full_year_2025_note": "low 60% range; about 3.4 points below 2019",
+               "summer_weekends_and_holidays": [0.85, 0.95], "canada_july_2025": 0.776, "canada_full_year_2025": 0.66},
+ "average_daily_rate_cad": {"march_2025": 149.66, "january_to_july_2025": 206.28, "january_to_july_change_vs_2024_pct": -7.6},
+ "short_term_rentals_occupancy": {"january": 0.28, "august": 0.59, "august_top_properties": 0.75},
+ "demand_changes_2025": {"us_visitor_spending_change_pct": -10, "total_visitor_spending_cad": 3800000000, "total_visitor_spending_change_pct": 16.5,
+                         "government_room_contracts": "Federal contracts housing asylum seekers in Niagara Falls hotels wound down in late 2024 and 2025, removing guaranteed winter room nights."}}
