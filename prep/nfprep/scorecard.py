@@ -32,6 +32,10 @@ def main() -> dict:
         a = t["with_commuting_and_through_traffic"]
         add("Traffic", "Regional roads, correlation with 2019 counts", a["correlation_regional_roads"], ">= 0.6", a["correlation_regional_roads"] >= 0.6,
             f"{a['sections_tested']} sections; edge counts used as inputs are not scored")
+        b25 = t.get("against_2025_regional_counts")
+        if b25:
+            add("Traffic", "Regional roads, correlation with 2025 counts", b25["correlation_regional_roads"], ">= 0.6",
+                b25["correlation_regional_roads"] >= 0.6, "Region's 2025 counts, 69 sections in the city")
         add("Traffic", "Provincial highways, correlation with 2019 counts", a["correlation_highways"], ">= 0.6", a["correlation_highways"] >= 0.6)
         add("Traffic", "Regional roads, median share of counted traffic", f"{a['median_share_explained_regional_pct']}%", ">= 50%",
             a["median_share_explained_regional_pct"] >= 50, "school trips and trips between stops are not simulated yet")

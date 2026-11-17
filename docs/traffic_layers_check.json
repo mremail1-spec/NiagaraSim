@@ -53,6 +53,15 @@
   "median_share_explained_highways_pct": 48.0,
   "typical_error_factor": 8.65
  },
+ "against_2025_regional_counts": {
+  "sections_tested": 77,
+  "correlation_all": 0.849,
+  "correlation_regional_roads": 0.653,
+  "median_share_explained_regional_pct": 22.7,
+  "correlation_highways": 0.752,
+  "median_share_explained_highways_pct": 48.0,
+  "typical_error_factor": 9.26
+ },
  "sections": [
   {
    "highway": "405",

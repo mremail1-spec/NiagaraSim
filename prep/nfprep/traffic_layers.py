@@ -201,9 +201,15 @@ def main() -> dict:
     bg = route(trips)
     before, _ = score(city, spend, "spend")
     after, rows = score(city, spend + bg, "all")
+    # the same layers against the Region's 2025 counts (provincial highways stay at MTO's 2019 counts)
+    from . import traffic_check
+    traffic_check.REGIONAL_FILE = "traffic_counts_regional_roads_2025.json"
+    after_2025, _ = score(city, spend + bg, "all25")
+    traffic_check.REGIONAL_FILE = "traffic_counts_regional_roads.json"
     result = {"_meta": {"what": __doc__.strip().split("\n\n")[0], "inputs_not_scored": sorted(f"{h} {s}" for h, s in INPUT_SECTIONS),
                         "counts": "MTO 2019 provincial highway AADT and Niagara Region 2019 regional road AADT (pre-pandemic)."},
               "layers": sizes, "spending_trips_only": before, "with_commuting_and_through_traffic": after,
+              "against_2025_regional_counts": after_2025,
               "sections": [{k: r[k] for k in ("highway", "section", "where", "counted_aadt_2019", "simulated_per_day", "share_explained_pct")}
                            for r in rows]}
     (CITY / "background_volumes.json").write_text(json.dumps([round(float(v), 1) for v in bg]))

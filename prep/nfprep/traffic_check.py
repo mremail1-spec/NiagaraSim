@@ -14,13 +14,16 @@ import numpy as np
 from .loader import DATA_DIR
 
 
+REGIONAL_FILE = "traffic_counts_regional_roads.json"   # or traffic_counts_regional_roads_2025.json
+
+
 def main(city_path: str, volumes_path: str) -> list[dict]:
     city = json.loads(open(city_path).read())
     by_source = np.array(json.loads(open(volumes_path).read())).reshape(-1, 4)
     vol = by_source.sum(axis=1)
     lat, lon = np.array(city["nodes"]["lat"]), np.array(city["nodes"]["lon"])
     counts = json.loads((DATA_DIR / "traffic_counts_provincial_highways.json").read_text())
-    regional = json.loads((DATA_DIR / "traffic_counts_regional_roads.json").read_text())
+    regional = json.loads((DATA_DIR / REGIONAL_FILE).read_text())
     for s in regional["sections"]:
         counts["sections"].append({"highway": "RR" + s["regional_road"].lstrip("0"), "section_id": int(s["station"]),
                                    "aadt_2019": s["aadt"], "truck_aadt_2019": None, "polyline": s["polyline"],
