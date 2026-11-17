@@ -237,7 +237,12 @@ fn tourist_spending_matches_the_inputs() {
     // hotel bills follow published room rates, so compare everything except accommodation
     let acc_avg = t.accommodation_spend_per_paid_person_night * (1.0 - t.lodging_share.private);
     let expected: f64 = t.segments.iter().map(|s| s.persons_per_year * (s.spend_per_person_day - if s.overnight == 1 { acc_avg } else { 0.0 }) * if s.overnight == 1 { nights } else { 1.0 }).sum();
-    let got = e.tourist_revenue() + e.state().tour.fares + e.state().tour.elsewhere - e.state().tour.accommodation_by_month.iter().sum::<f64>();
+    // casino gaming is added on top of the survey (it is calibrated to the casinos' revenue instead)
+    let gaming = match t.categories.name.iter().position(|n| n == "gaming") {
+        Some(g) => (0..12).map(|m| e.state().tour.month_category_revenue[m][g]).sum::<f64>(),
+        None => 0.0,
+    };
+    let got = e.tourist_revenue() + e.state().tour.fares + e.state().tour.elsewhere - e.state().tour.accommodation_by_month.iter().sum::<f64>() - gaming;
     // parties that find every room taken stay with friends and pay no hotel bill, so a few percent is lost
     assert!(got <= expected * 1.01 && got >= expected * 0.95, "tourist spending {got} vs {expected}");
     // about 80% of a regional total near $3.8 billion
@@ -343,4 +348,15 @@ fn hotel_occupancy_matches_the_published_2025_figures() {
         println!("hotel occupancy {label}: model {got:.3}, published {published}");
         assert!((got - published).abs() < tolerance, "{label}: {got} vs {published}");
     }
+}
+
+#[test]
+fn public_operators_match_their_published_revenue() {
+    // Niagara Parks 2024/25 own operations less transit; casinos' gaming revenue estimated from the hosting fee
+    let e = Engine::new(city(), beta(), 1);
+    let npc = e.operator_revenue(1);
+    let casinos = e.operator_revenue(2);
+    println!("Niagara Parks places ${:.1}M, casinos ${:.1}M", npc / 1e6, casinos / 1e6);
+    assert!((npc - 129_848_000.0).abs() / 129_848_000.0 < 0.05, "Niagara Parks {npc}");
+    assert!(casinos > 500e6 && casinos < 600e6, "casinos {casinos}");
 }

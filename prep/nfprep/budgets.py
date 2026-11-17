@@ -9,6 +9,7 @@ households inside a quintile without changing the quintile's total.
 from __future__ import annotations
 
 import json
+import re
 from pathlib import Path
 
 import numpy as np
@@ -222,6 +223,22 @@ def _build_menu(pack: Pack, sim_cats: list[str]) -> list[dict]:
     return menu
 
 
+NIAGARA_PARKS = re.compile(r"niagara parks|journey behind|butterfly conservatory|white water walk|whirlpool aero|niagara.s fury|"
+                           r"floral showhouse|table rock|queen victoria place|whirlpool golf|legends on the niagara|falls incline|"
+                           r"botanical gardens|elements on the falls|queenston heights|the tunnel at", re.I)
+OPERATORS = ["", "niagara_parks", "casino"]
+# SEED: Niagara Parks' WEGO buses (1.1M riders) and Falls Incline Railway (0.9M) are not shops on the map;
+# about $16M of its $145.8M is set aside for them.
+NPC_TRANSIT_ESTIMATE = 16_000_000
+
+
+def operator_of(b: dict) -> int:
+    """1 = run by the Niagara Parks Commission, 2 = an OLG casino, 0 = anyone else."""
+    if b["sim_category"] == "casino":
+        return 2
+    return 1 if NIAGARA_PARKS.search(b["name"] or "") else 0
+
+
 def export_city(pack: Pack, city: dict, budgets: np.ndarray, year: int, path: Path) -> dict:
     """Write the single file the engine loads (columnar JSON)."""
     hh, biz, nodes, edges = city["households"], city["businesses"], city["road_nodes"], city["road_edges"]
@@ -310,6 +327,7 @@ def export_city(pack: Pack, city: dict, budgets: np.ndarray, year: int, path: Pa
                        "group": [group_of.get(b["naics"], len(group_names)) for b in biz] + [len(group_names)] * len(ext),
                        "address": [b.get("address", "") for b in biz] + [""] * len(ext),
                        "standin": [int(b["source"] == "synthetic") for b in biz] + [0] * len(ext),
+                       "operator": [operator_of(b) for b in biz] + [0] * len(ext),
                        "external": [0] * n_real + [1] * len(ext),
                        "extra_km": [0.0] * n_real + [e["extra_km"] for e in ext],
                        "extra_min": [0.0] * n_real + [e["extra_min"] for e in ext],
@@ -345,6 +363,14 @@ def export_city(pack: Pack, city: dict, budgets: np.ndarray, year: int, path: Pa
         },
     }
     doc["business_groups"] = group_names
+    ops = json.loads((DATA_DIR / "public_operators_2025.json").read_text())
+    doc["operator_targets"] = {"niagara_parks": ops["niagara_parks"]["revenue_producing_operations_cad"] - NPC_TRANSIT_ESTIMATE,
+                               "casino": ops["casinos"]["gaming_revenue_estimate_cad"]}
+    pull = cal.get("operator_pull", {})
+    for i, b in enumerate(biz):
+        name = OPERATORS[operator_of(b)]
+        if name in pull:
+            doc["businesses"]["format_weight"][i] = round(doc["businesses"]["format_weight"][i] * pull[name], 4)
     doc["calibration"] = {"sales_targets": sales_targets(pack, len(city["persons"])), "beta": cal.get("beta")}
     if city.get("tourism"):
         doc["tourism"] = _tourism_block(city["tourism"], sim_cats, n_real + len(ext))

@@ -13,6 +13,9 @@ pub struct City {
     pub params: Params,
     #[serde(default)]
     pub business_groups: Vec<String>,
+    /// Calibration targets for public operators: yearly revenue of the places each one runs.
+    #[serde(default)]
+    pub operator_targets: std::collections::HashMap<String, f64>,
     #[serde(default)]
     pub tourism: Option<Tourism>,
 }
@@ -144,6 +147,9 @@ pub struct Businesses {
     /// Industry group used for calibration (index into `business_groups`; empty when absent).
     #[serde(default)]
     pub group: Vec<u32>,
+    /// 1 = Niagara Parks, 2 = OLG casino, 0 = other (empty when absent).
+    #[serde(default)]
+    pub operator: Vec<u8>,
     /// How much a store of this format pulls compared with a typical one in its group
     /// (a supermarket against a corner store).
     pub format_weight: Vec<f64>,

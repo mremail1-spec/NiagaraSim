@@ -303,6 +303,23 @@ impl Engine {
         self.recalibrate_beta();
     }
 
+    /// Multiply the pull of every place run by one operator (1 = Niagara Parks, 2 = casinos).
+    pub fn scale_operator_pull(&mut self, operator: u8, factor: f64) {
+        for b in 0..self.city.businesses.operator.len() {
+            if self.city.businesses.operator[b] == operator {
+                self.city.businesses.format_weight[b] *= factor;
+            }
+        }
+        self.rebuild_categories();
+        self.recalibrate_beta();
+    }
+
+    /// Expected yearly revenue of all places run by one operator.
+    pub fn operator_revenue(&self, operator: u8) -> f64 {
+        let r = self.expected_yearly_revenue();
+        (0..self.city.businesses.operator.len()).filter(|&b| self.city.businesses.operator[b] == operator).map(|b| r[b]).sum()
+    }
+
     /// Tune beta again so the median driving trip matches the travel survey.
     pub fn recalibrate_beta(&mut self) {
         let target = self.city.params.median_driver_trip_km_target;

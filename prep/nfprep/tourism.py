@@ -29,12 +29,15 @@ TOURIST_CATEGORIES = {
     "attractions": (["culture_attractions"], {"attraction": 1}),
     # SEED: visitors rarely shop at warehouse and department stores, so those get a small weight
     "clothing": (["clothing"], {"apparel": 1, "general_merchandise": 0.05}),
+    # Casino gaming: barely captured by the travel survey, so its budget is set from the casinos'
+    # estimated gaming revenue (data/public_operators_2025.json), on top of the survey's spending.
+    "gaming": ([], {"casino": 1}),
     "other_retail": (["other_retail"], {"souvenir_gift": 1, "retail_other": 0.5, "general_merchandise": 0.05,
                                          "tobacco_cannabis": 0.5, "pharmacy": 0.3}),
 }
 VEHICLE_OPERATION_SPLIT = {"fuel": 0.7, "parking": 0.3}      # SEED: fuel vs parking within "vehicle operation"
 # SEED: purchases per party per day in each category (sets how many stops a party makes, not what it spends)
-EVENTS_PER_PARTY_DAY = {"restaurants": 2.0, "food_from_stores": 0.3, "fuel": 0.3, "parking": 0.7,
+EVENTS_PER_PARTY_DAY = {"gaming": 0.15, "restaurants": 2.0, "food_from_stores": 0.3, "fuel": 0.3, "parking": 0.7,
                         "vehicle_rental": 0.03, "recreation": 0.4, "attractions": 1.0, "clothing": 0.3,
                         "other_retail": 0.6}
 # Where visitors' cars enter the city. SEED: the shares; the entry points are real.
@@ -46,6 +49,7 @@ GATEWAYS = [
     {"name": "Whirlpool Bridge", "lat": 43.1090, "lon": -79.0592, "domestic": 0.0, "us": 0.10, "overseas": 0.0},
 ]
 OVERSEAS_CAR_SHARE = 0.5                                      # SEED: the rest arrive by coach or train
+GAMING_FROM_VISITORS = 0.9      # SEED: share of casino gaming revenue from visitors; the rest from residents of the region
 DAY_OF_WEEK = [0.80, 0.80, 0.80, 0.85, 1.10, 1.50, 1.15]     # SEED: Monday..Sunday arrivals, mean 1.0
 OVERSEAS_OVERNIGHT_SHARE = 0.6                               # SEED
 HOTEL_ROOMS = {"low": 12000, "central": 13000, "high": 14000,
@@ -131,11 +135,16 @@ def build_tourism(pack: Pack, businesses: list[dict], year: int) -> dict:
     rest = {k: v for k, v in mix.items() if k != "accommodation"}
     cats, served, shares, events = [], [], [], []
     for name, (keys, serves) in TOURIST_CATEGORIES.items():
-        s = sum(rest[k] for k in keys) * VEHICLE_OPERATION_SPLIT.get(name, 1.0)
         cats.append(name)
         served.append(serves)
-        shares.append(s / sum(rest.values()))
         events.append(EVENTS_PER_PARTY_DAY[name])
+        if name == "gaming":
+            ops = json.loads((DATA_DIR / "public_operators_2025.json").read_text())
+            non_acc = total_spend * (1 - mix["accommodation"] / 100)
+            shares.append(ops["casinos"]["gaming_revenue_estimate_cad"] * GAMING_FROM_VISITORS / non_acc)
+            continue
+        s = sum(rest[k] for k in keys) * VEHICLE_OPERATION_SPLIT.get(name, 1.0)
+        shares.append(s / sum(rest.values()))
     transport_share = (rest["public_transport"] + rest["local_transport"]) / sum(rest.values())
 
     # --- rooms: the city total spread over mapped hotels and motels by staff, known counts kept ---

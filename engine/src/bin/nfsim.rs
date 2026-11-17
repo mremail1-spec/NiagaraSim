@@ -195,6 +195,7 @@ fn calibrate_sales(engine: &mut Engine, targets_path: String, out: Option<String
         (total, resident)
     };
     let (before, _) = by_group(engine);
+    let mut npc_pull = 1.0f64;
     for round in 0..24 {
         let (total, resident) = by_group(engine);
         for (g, rc, tc, tourist_led) in &plan {
@@ -222,7 +223,17 @@ fn calibrate_sales(engine: &mut Engine, targets_path: String, out: Option<String
             }
         }
         engine.set_multipliers(ext.clone(), cap.clone());
-        eprintln!("round {round}: beta {:.3}", engine.beta);
+        // Niagara Parks: scale the pull of the places it runs toward its published revenue
+        if let Some(&target) = engine.city.operator_targets.get("niagara_parks") {
+            let got = engine.operator_revenue(1);
+            if got > 0.0 {
+                let f = (target / got).powf(0.8).clamp(0.2, 5.0);
+                npc_pull *= f;
+                engine.scale_operator_pull(1, f);
+            }
+        }
+        eprintln!("round {round}: beta {:.3}, Niagara Parks {:.1}M, casinos {:.1}M", engine.beta,
+                  engine.operator_revenue(1) / 1e6, engine.operator_revenue(2) / 1e6);
     }
     let (after, resident) = by_group(engine);
     let mut table = serde_json::Map::new();
@@ -238,6 +249,9 @@ fn calibrate_sales(engine: &mut Engine, targets_path: String, out: Option<String
         "external_scale": cats.iter().cloned().zip(ext.iter().map(|&v| serde_json::json!(v))).collect::<serde_json::Map<String, serde_json::Value>>(),
         "tourist_capture": tcats.iter().cloned().zip(cap.iter().map(|&v| serde_json::json!(v))).collect::<serde_json::Map<String, serde_json::Value>>(),
         "sales_by_group": table,
+        "operator_pull": {"niagara_parks": npc_pull},
+        "operator_revenue": {"niagara_parks": engine.operator_revenue(1).round(), "casino": engine.operator_revenue(2).round(),
+                             "targets": &engine.city.operator_targets},
     });
     if let Some(path) = out {
         std::fs::write(path, serde_json::to_string_pretty(&result).unwrap()).expect("cannot write");
