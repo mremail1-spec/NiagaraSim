@@ -321,24 +321,40 @@ impl Engine {
             let t = self.trip_minutes(node, b as usize);
             out.push(self.cat_pull[c][i] / t.max(self.city.params.min_minutes).powf(beta));
         }
-        self.nearest_branch_only(node, &self.cat_business[c], out)
+        self.nearest_branch_only(node, &self.cat_business[c], &self.cat_pull[c], out)
     }
 
     /// Keep only the nearest branch of each chain among `list` (weights in `out`), and return the total.
-    pub(crate) fn nearest_branch_only(&self, node: usize, list: &[u32], out: &mut [f64]) -> f64 {
+    /// People choose the chain (its whole draw: every branch's pull together), then go to its nearest
+    /// branch: the nearest branch gets the chain's combined pull at its own distance, the others none.
+    pub(crate) fn nearest_branch_only(&self, node: usize, list: &[u32], pull: &[f64], out: &mut [f64]) -> f64 {
         let chain = &self.city.businesses.chain;
         if !chain.is_empty() {
-            let mut best: std::collections::HashMap<i32, (usize, f64)> = std::collections::HashMap::new();
+            // chain -> (nearest index, its minutes, combined pull)
+            let mut best: std::collections::HashMap<i32, (usize, f64, f64)> = std::collections::HashMap::new();
             for (i, &b) in list.iter().enumerate() {
                 let k = chain.get(b as usize).copied().unwrap_or(-1);
                 if k < 0 {
                     continue;
                 }
                 let t = self.trip_minutes(node, b as usize);
-                match best.get(&k) {
-                    Some(&(j, tj)) if tj <= t => { out[i] = 0.0; let _ = j; }
-                    Some(&(j, _)) => { out[j] = 0.0; best.insert(k, (i, t)); }
-                    None => { best.insert(k, (i, t)); }
+                let e = best.entry(k).or_insert((i, t, 0.0));
+                e.2 += pull[i];
+                if t < e.1 {
+                    e.0 = i;
+                    e.1 = t;
+                }
+            }
+            for (i, &b) in list.iter().enumerate() {
+                let k = chain.get(b as usize).copied().unwrap_or(-1);
+                if k < 0 {
+                    continue;
+                }
+                let (j, _, total) = best[&k];
+                if i == j {
+                    out[i] *= total / pull[i].max(1e-12);
+                } else {
+                    out[i] = 0.0;
                 }
             }
         }

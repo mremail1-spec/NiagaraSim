@@ -42,6 +42,18 @@ TOURIST_CATEGORIES = {
     "other_retail": (["other_retail"], {"souvenir_gift": 1, "retail_other": 0.5, "general_merchandise": 0.05,
                                          "tobacco_cannabis": 0.2, "tobacconist": 0.3, "pharmacy": 0.3}),
 }
+def night_price_factor() -> list[float]:
+    """Room price by the night's weekday (Monday night first): Friday and Saturday nights cost the measured
+    Saturday/Tuesday premium more than weeknights (Google Hotels, median over five months), averaging 1 a week."""
+    f = DATA_DIR / "hotels_google_prices_2027.json"
+    if not f.exists():
+        return [1.0] * 7
+    sat_tue = sorted(json.loads(f.read_text())["_meta"]["findings"]["saturday_over_tuesday"].values())
+    w = sat_tue[len(sat_tue) // 2]
+    d = 7 / (5 + 2 * w)
+    return [round(d, 4)] * 4 + [round(d * w, 4)] * 2 + [round(d, 4)]
+
+
 # guest rating's pull on hotel choice: weight x exp(QUALITY_PULL x (rating - mean)); SEED, about 2x per point.
 # Ratings from few reviews are pulled toward the mean as if QUALITY_PRIOR_REVIEWS average reviews were added.
 QUALITY_PULL = 0.7
@@ -220,11 +232,26 @@ def build_tourism(pack: Pack, businesses: list[dict], year: int) -> dict:
         med = prices[len(prices) // 2] if prices else 1
         ratings = [g["rating"] for g in got.values() if g["rating"]]
         mean_r = sum(ratings) / len(ratings) if ratings else 3.8
+        # each hotel's price relative to the other hotels, averaged (geometric) over every date with a price
+        # (data/hotels_google_prices_2027.json: Tuesdays and Saturdays in five months, plus a November night)
+        rel = {}
+        pfile = DATA_DIR / "hotels_google_prices_2027.json"
+        if pfile.exists():
+            by_date = json.loads(pfile.read_text())["by_date"]
+            for d, hs in by_date.items():
+                ps = sorted(v["price"] for v in hs.values() if v["price"])
+                if not ps:
+                    continue
+                dmed = ps[len(ps) // 2]
+                for name, v in hs.items():
+                    if v["price"]:
+                        rel.setdefault(name, []).append(math.log(v["price"] / dmed))
+        names_g = [y["name"] for y in listings]
         for i, g in got.items():
-            if g["price"]:
-                r = g["price"] / med
+            r = math.exp(sum(rel[g["name"]]) / len(rel[g["name"]])) if g["name"] in rel else (g["price"] / med if g["price"] else None)
+            if r:
                 tier[i] = 0 if r < 0.65 else 1 if r < 0.9 else 2 if r < 1.25 else 3 if r < 1.7 else 4
-                hotel_price[i] = float(g["price"])
+                hotel_price[i] = float(med * r)
             elif g["stars"]:
                 tier[i] = {1: 0, 2: 0, 3: 2, 4: 3, 5: 4}[g["stars"]]
             if g["rating"]:
@@ -268,6 +295,7 @@ def build_tourism(pack: Pack, businesses: list[dict], year: int) -> dict:
         "day_of_week": DAY_OF_WEEK, "first_weekday": first,
         "gateways": GATEWAYS, "car_share": car_share,
         "capacity": capacity, "lodging_type": lodging_type, "attendance_target": attendance,
+        "night_price_factor": night_price_factor(),
         "hotel_tier": tier, "tier_price_raw": classes["price_vs_midscale"],
         "hotel_price_raw": hotel_price, "hotel_quality": hotel_quality,
         "tier_pref": [classes["preference"][seg["origin"]] for seg in segments],

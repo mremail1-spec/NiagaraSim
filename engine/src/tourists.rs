@@ -162,7 +162,7 @@ impl Engine {
             total += w;
         }
         let _ = total;
-        self.nearest_branch_only(node, &rt.cat_business[c], out)
+        self.nearest_branch_only(node, &rt.cat_business[c], &rt.cat_pull[c], out)
     }
 
     /// Build the tourist tables. Called whenever the distance parameter is set.
@@ -378,6 +378,15 @@ impl Engine {
         }
     }
 
+    /// Tonight's room price factor by weekday (Friday and Saturday nights cost more).
+    fn night_factor(&self, t: &crate::city::Tourism) -> f64 {
+        if t.night_price_factor.len() == 7 {
+            t.night_price_factor[((t.first_weekday + self.state.day) % 7) as usize]
+        } else {
+            1.0
+        }
+    }
+
     /// Visitors expected to arrive today in a segment (persons).
     fn tour_arrivals_today(&self, seg: usize) -> f64 {
         let t = self.city.tourism.as_ref().unwrap();
@@ -530,7 +539,7 @@ impl Engine {
         if let Some(h) = &t.hotel {
             for &b in &rt.groups[GROUP_HOTEL].business {
                 let base = Self::base_rooms(&t, b as usize) as f64 * self.scenario[3];
-                let pay = base * h.rate_by_month[month] * rt.price[b as usize];
+                let pay = base * h.rate_by_month[month] * rt.price[b as usize] * self.night_factor(&t);
                 self.state.revenue[b as usize] += pay;
                 self.state.tour.revenue[b as usize] += pay;
                 self.state.tour.base_room_revenue += pay;
@@ -549,7 +558,7 @@ impl Engine {
             if p.lodging != NO_BUSINESS {
                 let hotel = p.group as usize == GROUP_HOTEL;
                 let pay = match &t.hotel {
-                    Some(h) if hotel => p.rooms as f64 * h.rate_by_month[month] * rt.price[p.lodging as usize],
+                    Some(h) if hotel => p.rooms as f64 * h.rate_by_month[month] * rt.price[p.lodging as usize] * self.night_factor(&t),
                     _ => t.accommodation_spend_per_paid_person_night * p.size as f64,
                 };
                 self.state.revenue[p.lodging as usize] += pay;
@@ -681,7 +690,7 @@ impl Engine {
                 if g <= GROUP_CAMPING {
                     let room_nights = pd / t.party_size_mean * t.hotel.as_ref().map(|h| h.rooms_per_party).unwrap_or(1.0);
                     let pay = match &t.hotel {
-                        Some(h) if g == GROUP_HOTEL => room_nights * h.rate_by_month[month],
+                        Some(h) if g == GROUP_HOTEL => room_nights * h.rate_by_month[month] * self.night_factor(&t),
                         _ => pd * t.accommodation_spend_per_paid_person_night,
                     };
                     let cdf = if g == GROUP_HOTEL && !rt.hotel_cdf.is_empty() { &rt.hotel_cdf[seg] } else { &rt.groups[g].cdf };
@@ -721,7 +730,7 @@ impl Engine {
         if let Some(h) = &t.hotel {
             for &b in &rt.groups[GROUP_HOTEL].business {
                 let base = Self::base_rooms(&t, b as usize) as f64 * self.scenario[3];
-                let pay = base * h.rate_by_month[month] * rt.price[b as usize];
+                let pay = base * h.rate_by_month[month] * rt.price[b as usize] * self.night_factor(&t);
                 self.state.revenue[b as usize] += pay;
                 self.state.tour.revenue[b as usize] += pay;
                 self.state.tour.base_room_revenue += pay;

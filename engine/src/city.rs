@@ -295,6 +295,9 @@ pub struct Tourism {
     pub transport_fare_share: f64,
     pub day_of_week: Vec<f64>,
     pub first_weekday: u32,
+    /// Room price factor by the night's weekday (0 = Monday night ... 6 = Sunday night), averaging 1 over a week.
+    #[serde(default)]
+    pub night_price_factor: Vec<f64>,
     /// Rooms (hotels), units (rentals) or sites (campgrounds) per business; 0 for everything else.
     pub capacity: Vec<u32>,
     /// 0 none, 1 hotel or motel, 2 rental or B&B, 3 campground.

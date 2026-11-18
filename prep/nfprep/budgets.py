@@ -243,6 +243,7 @@ def _tourism_block(tour: dict, sim_cats: list[str], n_total: int) -> dict:
             "transport_fare_share": tour["transport_fare_share"], "day_of_week": tour["day_of_week"],
             "hotel": tour.get("hotel"),
             "first_weekday": tour["first_weekday"], "capacity": cap, "lodging_type": typ, "attendance_target": att,
+            "night_price_factor": tour.get("night_price_factor", [1.0] * 7),
             **_hotel_classes(tour, cap, n_total),
             "hotel_rooms_published_range": [tour["hotel_rooms"]["low"], tour["hotel_rooms"]["high"]]}
 
