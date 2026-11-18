@@ -42,6 +42,25 @@ fn main() {
         std::fs::write(arg(&args, "--out").expect("--out FILE"), serde_json::to_string(&vol).unwrap()).unwrap();
         return;
     }
+    if args[1] == "forecast" {
+        // nfsim forecast <city.json> --sites sites.json --out out.json
+        // sites: [[lat, lon, sim_category, size], ...] -> [[resident, tourist], ...] yearly revenue
+        let sites: Vec<(f64, f64, u32, f64)> = serde_json::from_str(&std::fs::read_to_string(arg(&args, "--sites").expect("--sites FILE")).unwrap())
+            .expect("sites: [[lat, lon, category, size], ...]");
+        let (nl, no) = (&engine.city.nodes.lat, &engine.city.nodes.lon);
+        let out: Vec<[f64; 2]> = sites.iter().map(|&(la, lo, c, size)| {
+            let k = la.to_radians().cos();
+            let node = (0..nl.len()).min_by(|&a, &b| {
+                let da = (nl[a] - la).powi(2) + ((no[a] - lo) * k).powi(2);
+                let db = (nl[b] - la).powi(2) + ((no[b] - lo) * k).powi(2);
+                da.partial_cmp(&db).unwrap()
+            }).unwrap() as u32;
+            let f = engine.forecast(node, c, size, 1.0);
+            [f.resident.round(), f.tourist.round()]
+        }).collect();
+        std::fs::write(arg(&args, "--out").expect("--out FILE"), serde_json::to_string(&out).unwrap()).unwrap();
+        return;
+    }
     if args[1] == "calibrate-sales" {
         calibrate_sales(&mut engine, arg(&args, "--targets").expect("--targets FILE"), arg(&args, "--out"));
         return;

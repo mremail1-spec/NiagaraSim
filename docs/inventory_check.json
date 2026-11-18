@@ -1,0 +1,323 @@
+{
+ "_meta": {
+  "what": "Tests against Niagara Region's Employment Inventory for Niagara Falls (2016-2025, surveyed yearly\nexcept 2020-2021; data/sources/region/employment_inventory_niagara_falls_2016_2025.csv)."
+ },
+ "sizes": {
+  "matched_businesses": 394,
+  "by_kind": {
+   "grocery_food": {
+    "matched": 33,
+    "rank_correlation": 0.349
+   },
+   "accommodation": {
+    "matched": 68,
+    "rank_correlation": 0.38
+   },
+   "fast_food": {
+    "matched": 50,
+    "rank_correlation": 0.168
+   },
+   "restaurant": {
+    "matched": 67,
+    "rank_correlation": 0.099
+   },
+   "cafe": {
+    "matched": 20,
+    "rank_correlation": 0.162
+   },
+   "personal_services": {
+    "matched": 31,
+    "rank_correlation": 0.135
+   },
+   "auto_service": {
+    "matched": 31,
+    "rank_correlation": 0.431
+   },
+   "retail_other": {
+    "matched": 12,
+    "rank_correlation": 0.175
+   }
+  },
+  "weighted_rank_correlation": 0.241
+ },
+ "closures_2023_2025": {
+  "window": "open in 2023, closed by 2025",
+  "businesses": 1298,
+  "closed": 155,
+  "closure_rate": 0.1194,
+  "scores": {
+   "kind_rate": {
+    "brier": 0.1058,
+    "skill_vs_overall": -0.006,
+    "skill_vs_kind_rate": 0.0,
+    "ranking": 0.534
+   },
+   "model_location": {
+    "brier": 0.107,
+    "skill_vs_overall": -0.018,
+    "skill_vs_kind_rate": -0.012,
+    "ranking": 0.535
+   },
+   "facts": {
+    "brier": 0.1027,
+    "skill_vs_overall": 0.023,
+    "skill_vs_kind_rate": 0.029,
+    "ranking": 0.664
+   },
+   "facts_and_model": {
+    "brier": 0.1027,
+    "skill_vs_overall": 0.024,
+    "skill_vs_kind_rate": 0.029,
+    "ranking": 0.667
+   }
+  },
+  "single_feature_ranking_higher_means_more_closures": {
+   "model forecast rank within kind": 0.508,
+   "model visitor share": 0.503,
+   "log age": 0.41,
+   "age unknown": 0.491,
+   "employee band": 0.354,
+   "log floor area": 0.463
+  },
+  "by_kind": {
+   "health": {
+    "open": 162,
+    "closed": 14
+   },
+   "restaurant": {
+    "open": 158,
+    "closed": 21
+   },
+   "fast_food": {
+    "open": 151,
+    "closed": 18
+   },
+   "personal_services": {
+    "open": 124,
+    "closed": 24
+   },
+   "accommodation": {
+    "open": 111,
+    "closed": 13
+   },
+   "grocery_food": {
+    "open": 87,
+    "closed": 5
+   },
+   "auto_service": {
+    "open": 87,
+    "closed": 8
+   },
+   "retail_other": {
+    "open": 84,
+    "closed": 11
+   },
+   "pharmacy": {
+    "open": 56,
+    "closed": 2
+   },
+   "home_electronics": {
+    "open": 42,
+    "closed": 6
+   },
+   "leisure_paid": {
+    "open": 42,
+    "closed": 3
+   },
+   "apparel": {
+    "open": 37,
+    "closed": 8
+   },
+   "auto_dealer": {
+    "open": 28,
+    "closed": 6
+   },
+   "attraction": {
+    "open": 25,
+    "closed": 5
+   },
+   "souvenir_gift": {
+    "open": 25,
+    "closed": 6
+   },
+   "fuel": {
+    "open": 24,
+    "closed": 0
+   },
+   "general_merchandise": {
+    "open": 17,
+    "closed": 1
+   },
+   "car_rental": {
+    "open": 14,
+    "closed": 0
+   },
+   "bar_pub": {
+    "open": 10,
+    "closed": 2
+   },
+   "childcare": {
+    "open": 8,
+    "closed": 1
+   },
+   "entertainment": {
+    "open": 5,
+    "closed": 1
+   },
+   "casino": {
+    "open": 1,
+    "closed": 0
+   }
+  },
+  "coefficients_standardised": {
+   "intercept": -2.202,
+   "kind (none here)": 0.0,
+   "model forecast rank within kind": -0.031,
+   "model visitor share": 0.182,
+   "log age": -0.308,
+   "age unknown": -0.056,
+   "employee band": -0.644,
+   "log floor area": -0.204
+  }
+ },
+ "closures_2016_2019": {
+  "window": "open in 2016, closed by 2019",
+  "businesses": 849,
+  "closed": 107,
+  "closure_rate": 0.126,
+  "scores": {
+   "kind_rate": {
+    "brier": 0.1082,
+    "skill_vs_overall": 0.018,
+    "skill_vs_kind_rate": 0.0,
+    "ranking": 0.591
+   },
+   "model_location": {
+    "brier": 0.108,
+    "skill_vs_overall": 0.02,
+    "skill_vs_kind_rate": 0.002,
+    "ranking": 0.593
+   },
+   "facts": {
+    "brier": 0.1084,
+    "skill_vs_overall": 0.016,
+    "skill_vs_kind_rate": -0.002,
+    "ranking": 0.665
+   },
+   "facts_and_model": {
+    "brier": 0.1067,
+    "skill_vs_overall": 0.032,
+    "skill_vs_kind_rate": 0.014,
+    "ranking": 0.669
+   }
+  },
+  "single_feature_ranking_higher_means_more_closures": {
+   "model forecast rank within kind": 0.475,
+   "model visitor share": 0.53,
+   "log age": 0.439,
+   "age unknown": 0.485,
+   "employee band": 0.407,
+   "log floor area": 0.497
+  },
+  "by_kind": {
+   "health": {
+    "open": 105,
+    "closed": 9
+   },
+   "restaurant": {
+    "open": 98,
+    "closed": 12
+   },
+   "personal_services": {
+    "open": 81,
+    "closed": 15
+   },
+   "auto_service": {
+    "open": 77,
+    "closed": 6
+   },
+   "accommodation": {
+    "open": 66,
+    "closed": 4
+   },
+   "fast_food": {
+    "open": 59,
+    "closed": 6
+   },
+   "grocery_food": {
+    "open": 57,
+    "closed": 5
+   },
+   "apparel": {
+    "open": 53,
+    "closed": 18
+   },
+   "retail_other": {
+    "open": 43,
+    "closed": 8
+   },
+   "home_electronics": {
+    "open": 41,
+    "closed": 6
+   },
+   "pharmacy": {
+    "open": 40,
+    "closed": 5
+   },
+   "auto_dealer": {
+    "open": 24,
+    "closed": 2
+   },
+   "general_merchandise": {
+    "open": 20,
+    "closed": 4
+   },
+   "fuel": {
+    "open": 18,
+    "closed": 0
+   },
+   "leisure_paid": {
+    "open": 17,
+    "closed": 0
+   },
+   "souvenir_gift": {
+    "open": 17,
+    "closed": 5
+   },
+   "car_rental": {
+    "open": 12,
+    "closed": 1
+   },
+   "attraction": {
+    "open": 7,
+    "closed": 0
+   },
+   "entertainment": {
+    "open": 6,
+    "closed": 0
+   },
+   "bar_pub": {
+    "open": 4,
+    "closed": 1
+   },
+   "childcare": {
+    "open": 3,
+    "closed": 0
+   },
+   "cafe": {
+    "open": 1,
+    "closed": 0
+   }
+  },
+  "coefficients_standardised": {
+   "intercept": -2.051,
+   "kind (none here)": 0.0,
+   "model forecast rank within kind": -0.178,
+   "model visitor share": 0.205,
+   "log age": -0.182,
+   "age unknown": -0.046,
+   "employee band": -0.463,
+   "log floor area": 0.269
+  }
+ }
+}

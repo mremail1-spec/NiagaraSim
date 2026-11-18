@@ -1,0 +1,126 @@
+{
+ "_meta": {
+  "what": "Chance that a new business (open 2 years or less) closes within the next two years, Niagara Falls, from Niagara Region's Employment Inventory (businesses marked 'Permanently Closed or Vacant'). Each group's rate is shrunk toward all new businesses as if it had 20 more at that rate. Written for the page by hand from prep/nfprep/inventory_check.py's data; see README.",
+  "windows": {
+   "recent": "open in 2023, status in 2025",
+   "before_pandemic": "open in 2016 or 2017, status two years later"
+  },
+  "size": {
+   "micro_1_4_staff": 0.333,
+   "five_plus_staff": 0.18,
+   "counts": {
+    "small_plus": [
+     11,
+     61
+    ],
+    "micro": [
+     18,
+     54
+    ]
+   }
+  }
+ },
+ "groups": {
+  "services": {
+   "recent": 0.219,
+   "before_pandemic": 0.112,
+   "recent_counts": [
+    7,
+    35
+   ],
+   "before_counts": [
+    7,
+    64
+   ]
+  },
+  "food": {
+   "recent": 0.306,
+   "before_pandemic": 0.135,
+   "recent_counts": [
+    13,
+    39
+   ],
+   "before_counts": [
+    8,
+    57
+   ]
+  },
+  "retail": {
+   "recent": 0.219,
+   "before_pandemic": 0.154,
+   "recent_counts": [
+    7,
+    35
+   ],
+   "before_counts": [
+    14,
+    87
+   ]
+  },
+  "leisure": {
+   "recent": 0.275,
+   "before_pandemic": 0.084,
+   "recent_counts": [
+    1,
+    2
+   ],
+   "before_counts": [
+    0,
+    9
+   ]
+  },
+  "lodging": {
+   "recent": 0.252,
+   "before_pandemic": 0.058,
+   "recent_counts": [
+    1,
+    4
+   ],
+   "before_counts": [
+    0,
+    22
+   ]
+  }
+ },
+ "all": {
+  "recent": 0.252,
+  "before_pandemic": 0.121,
+  "recent_counts": [
+   29,
+   115
+  ],
+  "before_counts": [
+   29,
+   239
+  ]
+ },
+ "kind_group": {
+  "restaurant": "food",
+  "fast_food": "food",
+  "cafe": "food",
+  "bar_pub": "food",
+  "nightlife": "food",
+  "accommodation": "lodging",
+  "grocery_food": "retail",
+  "apparel": "retail",
+  "general_merchandise": "retail",
+  "home_electronics": "retail",
+  "pharmacy": "retail",
+  "fuel": "retail",
+  "retail_other": "retail",
+  "souvenir_gift": "retail",
+  "auto_dealer": "retail",
+  "tobacco_cannabis": "retail",
+  "pet": "retail",
+  "craft": "retail",
+  "personal_services": "services",
+  "auto_service": "services",
+  "health": "services",
+  "childcare": "services",
+  "car_rental": "services",
+  "attraction": "leisure",
+  "leisure_paid": "leisure",
+  "entertainment": "leisure",
+  "casino": "leisure"
+ }
+}

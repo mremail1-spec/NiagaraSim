@@ -51,6 +51,16 @@ def main() -> dict:
             "4 chains; a tourist city can sit above national averages")
         n = u["summary"]["branches_above_brand_best"]
         add("Sales at a site", "Branches above the brand's best unit in Canada", n, "0", n == 0, "Tim Hortons in the Tourist Core")
+    inv = _load("inventory_check.json")
+    if inv:
+        sz = inv["sizes"]
+        add("Sales at a site", "Model revenue against surveyed employee band (Employment Inventory 2025)", sz["weighted_rank_correlation"],
+            ">= 0.3", sz["weighted_rank_correlation"] >= 0.3, f"{sz['matched_businesses']} businesses matched")
+        cl = inv["closures_2023_2025"]["scores"]
+        add("Closures", "2023-2025 closures: model location forecast, skill over each kind's rate", cl["model_location"]["skill_vs_kind_rate"],
+            "> 0.02", cl["model_location"]["skill_vs_kind_rate"] > 0.02,
+            f"age, size and floor area reach {cl['facts']['skill_vs_kind_rate']} (ranking {cl['facts']['ranking']}); "
+            f"{inv['closures_2023_2025']['closed']} closures of {inv['closures_2023_2025']['businesses']}")
     o = _load("outlook_check.json")
     if o:
         inside = o["inside_band"]["us_overnight"]

@@ -7,7 +7,7 @@
    "2022"
   ]
  },
- "passed": "7 of 11",
+ "passed": "7 of 13",
  "tests": [
   {
    "area": "Traffic",
@@ -64,6 +64,22 @@
    "pass_mark": "0",
    "result": "miss",
    "note": "Tim Hortons in the Tourist Core"
+  },
+  {
+   "area": "Sales at a site",
+   "test": "Model revenue against surveyed employee band (Employment Inventory 2025)",
+   "score": 0.241,
+   "pass_mark": ">= 0.3",
+   "result": "miss",
+   "note": "394 businesses matched"
+  },
+  {
+   "area": "Closures",
+   "test": "2023-2025 closures: model location forecast, skill over each kind's rate",
+   "score": -0.012,
+   "pass_mark": "> 0.02",
+   "result": "miss",
+   "note": "age, size and floor area reach 0.029 (ranking 0.664); 155 closures of 1298"
   },
   {
    "area": "Outlooks",

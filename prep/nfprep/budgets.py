@@ -398,6 +398,8 @@ def export_city(pack: Pack, city: dict, budgets: np.ndarray, year: int, path: Pa
     doc["scenarios"] = json.loads((DATA_DIR / "scenario_ranges.json").read_text())
     if (DATA_DIR / "safety_hotspots.json").exists():
         doc["safety"] = safety_block(doc["sim_categories"])
+    if (DATA_DIR / "new_business_closure_rates.json").exists():
+        doc["new_business_closure"] = json.loads((DATA_DIR / "new_business_closure_rates.json").read_text())
     if (DATA_DIR / "forecast_error.json").exists():
         doc["forecast_error"] = json.loads((DATA_DIR / "forecast_error.json").read_text())
     if (DATA_DIR / "closure_rates_2021_2026.json").exists():

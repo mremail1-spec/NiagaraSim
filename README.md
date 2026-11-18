@@ -308,3 +308,13 @@ Tested against the 2019 and 2025 regional counts (correlation, regional roads 20
 | + signals 25 s | 0.42 | 0.45 | 0.73 | 20% |
 | Posted limits from the Region's file, residential 35 | 0.64 | 0.64 | 0.71 | 27% |
 Kept: residential, service and unclassified streets with no posted limit at an effective 35 km/h (`LOCAL_KMH` in `roads.py`; the page and the 2025 city updated). Intersection delays and posted limits stay off: without road capacity and coordinated signals, delay on main roads pushes trips onto side streets. Foot traffic against the sweeper routes after the change: 0.79 (unchanged).
+
+## Niagara Region Employment Inventory and City licences (18 November 2026)
+Supplied by the user: the Region's Employment Inventory for Niagara Falls (`data/sources/region/employment_inventory_niagara_falls_2016_2025.csv`, 22,448 rows, 3,744 businesses, surveyed 2016-2019 and 2022-2025 with employee band, floor area, year opened, NAICS and position) and the City's 2026 business licences (saved as `data/city_open_data/business_licences_2026_no_personal.csv`: owners' and contacts' names, phones and emails removed before saving).
+`python3 -m nfprep.inventory_check` (`docs/inventory_check.json`), with a new engine command `nfsim forecast` (yearly forecast for a list of sites):
+- **Sales at a site**: 394 inventory businesses matched to the model's (within 40 m, similar name). Model revenue against surveyed employee band, rank correlation within each kind, weighted: **0.24** (auto repair 0.43, hotels 0.38, grocery 0.35, fast food 0.17, restaurants 0.10). Positive but weak: a miss against 0.3.
+- **Closures after the pandemic** (open 2023, closed by 2025: 155 of 1,298 in mapped kinds; four times the earlier labels). Ten-fold cross-validation:
+  - the model's location forecast (rank within kind, visitor share): ranking 0.535, skill -1.2% against each kind's rate. **Location demand does not predict who closes.**
+  - the inventory's own facts (age, employee band, floor area): ranking 0.66, skill +2.9%; with the model's location as well, 0.667.
+  - same pattern 2016-2019 (pre-pandemic): facts and model together 0.669, skill +1.4%.
+- **New businesses** (`data/new_business_closure_rates.json`): open two years or less, the chance of closing within two years was 25% in 2023-2025 (29 of 115) and 12% in 2016-2019; food 31% (14% before), retail 22% (15%), services 22% (11%); 1-4 staff 33% against 18% for 5+. Businesses over 10 years old: 10% (2023-2025). The page's forecast now gives this range for the kind placed.

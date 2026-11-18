@@ -677,6 +677,15 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
     if (risk && !isStandin) $("bNote").textContent += " " + risk;
   }
 
+  // a new business: measured two-year closure chance for new businesses of its group (Employment Inventory)
+  function newBusinessNote(kind) {
+    const nb = city.new_business_closure;
+    if (!nb) return closureNote(kind);
+    const g = nb.kind_group[kind], r = (g && nb.groups[g]) || nb.all, label = g || "business";
+    const pct = (x) => Math.round(x * 100) + "%";
+    return `A new ${label} business here: ${pct(r.before_pandemic)} to ${pct(r.recent)} chance of closing within two years (new Niagara Falls businesses of this kind, 2016-2019 and 2023-2025; Niagara Region Employment Inventory). Ones with 1-4 staff closed about ${(nb._meta.size.micro_1_4_staff / nb._meta.size.five_plus_staff).toFixed(1)} times as often as bigger ones. Businesses over 10 years old close far less. The model's location forecast did not predict which businesses closed; age and size did.`;
+  }
+
   // chance of closing within about five years: the kind's own record on the map, 2021 to 2026
   function closureNote(kind) {
     const cr = city.closure_rates;
@@ -758,7 +767,7 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
     $("fRows").innerHTML = rows;
     const rev = typical[0] + typical[1];
     $("fMix").textContent = `Typical size: ${Math.round(typical[1] / rev * 100)}% of sales from tourists, ${money(typical[2])} won back from out-of-town shopping. Busiest month ${["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"][typical.slice(3, 15).indexOf(Math.max(...typical.slice(3, 15)))]}.`;
-    $("fMix").textContent += " " + safetyNote(site.lat, site.lon, m.sim_category) + " " + siteNotes(m.sim_category) + " " + closureNote(city.sim_categories[m.sim_category]);
+    $("fMix").textContent += " " + safetyNote(site.lat, site.lon, m.sim_category) + " " + siteNotes(m.sim_category) + " " + newBusinessNote(city.sim_categories[m.sim_category]);
     const count = typical[15];
     let losers = "";
     for (let i = 0; i < Math.min(4, count); i++) losers += `<li>${city.businesses.name[typical[16 + i * 2]] || "Unnamed place"}: ${money(typical[17 + i * 2])} a year</li>`;
