@@ -4,9 +4,9 @@
  },
  "nodes_on_routes": 449,
  "nodes_elsewhere": 3766,
- "median_walkers_on_routes": 108.0,
- "median_walkers_elsewhere": 5.0,
- "ranking_score": 0.791,
- "top_100_walking_nodes_on_routes": 79,
+ "median_walkers_on_routes": 111.0,
+ "median_walkers_elsewhere": 6.0,
+ "ranking_score": 0.792,
+ "top_100_walking_nodes_on_routes": 81,
  "share_of_nodes_on_routes": 0.107
 }

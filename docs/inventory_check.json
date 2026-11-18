@@ -3,42 +3,46 @@
   "what": "Tests against Niagara Region's Employment Inventory for Niagara Falls (2016-2025, surveyed yearly\nexcept 2020-2021; data/sources/region/employment_inventory_niagara_falls_2016_2025.csv)."
  },
  "sizes": {
-  "matched_businesses": 394,
+  "matched_businesses": 408,
   "by_kind": {
    "grocery_food": {
     "matched": 28,
-    "rank_correlation": 0.421
+    "rank_correlation": 0.436
    },
    "accommodation": {
     "matched": 68,
-    "rank_correlation": 0.38
+    "rank_correlation": 0.426
    },
    "fast_food": {
     "matched": 50,
-    "rank_correlation": 0.162
+    "rank_correlation": 0.083
    },
    "restaurant": {
     "matched": 67,
-    "rank_correlation": 0.104
+    "rank_correlation": 0.137
    },
    "cafe": {
     "matched": 20,
-    "rank_correlation": 0.144
+    "rank_correlation": 0.209
    },
    "personal_services": {
     "matched": 31,
-    "rank_correlation": 0.136
+    "rank_correlation": 0.389
    },
    "auto_service": {
     "matched": 31,
-    "rank_correlation": 0.431
+    "rank_correlation": 0.097
+   },
+   "tobacco_cannabis": {
+    "matched": 21,
+    "rank_correlation": -0.135
    },
    "retail_other": {
     "matched": 12,
-    "rank_correlation": 0.175
+    "rank_correlation": -0.07
    }
   },
-  "weighted_rank_correlation": 0.245
+  "weighted_rank_correlation": 0.214
  },
  "closures_2023_2025": {
   "window": "open in 2023, closed by 2025",
@@ -56,7 +60,7 @@
     "brier": 0.107,
     "skill_vs_overall": -0.018,
     "skill_vs_kind_rate": -0.012,
-    "ranking": 0.536
+    "ranking": 0.535
    },
    "facts": {
     "brier": 0.1027,
@@ -65,14 +69,14 @@
     "ranking": 0.664
    },
    "facts_and_model": {
-    "brier": 0.1027,
-    "skill_vs_overall": 0.023,
-    "skill_vs_kind_rate": 0.029,
+    "brier": 0.1026,
+    "skill_vs_overall": 0.024,
+    "skill_vs_kind_rate": 0.03,
     "ranking": 0.667
    }
   },
   "single_feature_ranking_higher_means_more_closures": {
-   "model forecast rank within kind": 0.512,
+   "model forecast rank within kind": 0.509,
    "model visitor share": 0.503,
    "log age": 0.41,
    "age unknown": 0.491,
@@ -170,13 +174,13 @@
    }
   },
   "coefficients_standardised": {
-   "intercept": -2.203,
+   "intercept": -2.202,
    "kind (none here)": 0.0,
-   "model forecast rank within kind": -0.02,
-   "model visitor share": 0.181,
-   "log age": -0.307,
-   "age unknown": -0.057,
-   "employee band": -0.644,
+   "model forecast rank within kind": -0.029,
+   "model visitor share": 0.178,
+   "log age": -0.308,
+   "age unknown": -0.056,
+   "employee band": -0.643,
    "log floor area": -0.204
   }
  },
@@ -193,10 +197,10 @@
     "ranking": 0.591
    },
    "model_location": {
-    "brier": 0.1079,
-    "skill_vs_overall": 0.02,
-    "skill_vs_kind_rate": 0.002,
-    "ranking": 0.592
+    "brier": 0.1078,
+    "skill_vs_overall": 0.021,
+    "skill_vs_kind_rate": 0.003,
+    "ranking": 0.594
    },
    "facts": {
     "brier": 0.1084,
@@ -205,15 +209,15 @@
     "ranking": 0.665
    },
    "facts_and_model": {
-    "brier": 0.1066,
+    "brier": 0.1065,
     "skill_vs_overall": 0.033,
-    "skill_vs_kind_rate": 0.015,
-    "ranking": 0.668
+    "skill_vs_kind_rate": 0.016,
+    "ranking": 0.67
    }
   },
   "single_feature_ranking_higher_means_more_closures": {
-   "model forecast rank within kind": 0.47,
-   "model visitor share": 0.53,
+   "model forecast rank within kind": 0.468,
+   "model visitor share": 0.529,
    "log age": 0.439,
    "age unknown": 0.485,
    "employee band": 0.407,
@@ -310,12 +314,12 @@
    }
   },
   "coefficients_standardised": {
-   "intercept": -2.051,
+   "intercept": -2.052,
    "kind (none here)": 0.0,
-   "model forecast rank within kind": -0.179,
+   "model forecast rank within kind": -0.19,
    "model visitor share": 0.205,
-   "log age": -0.182,
-   "age unknown": -0.047,
+   "log age": -0.183,
+   "age unknown": -0.05,
    "employee band": -0.462,
    "log floor area": 0.268
   }

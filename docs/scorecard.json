@@ -12,7 +12,7 @@
   {
    "area": "Traffic",
    "test": "Regional roads, correlation with 2019 counts",
-   "score": 0.685,
+   "score": 0.688,
    "pass_mark": ">= 0.6",
    "result": "pass",
    "note": "77 sections; edge counts used as inputs are not scored"
@@ -20,7 +20,7 @@
   {
    "area": "Traffic",
    "test": "Regional roads, correlation with 2025 counts",
-   "score": 0.697,
+   "score": 0.701,
    "pass_mark": ">= 0.6",
    "result": "pass",
    "note": "Region's 2025 counts, 69 sections in the city"
@@ -36,7 +36,7 @@
   {
    "area": "Traffic",
    "test": "Regional roads, median share of counted traffic",
-   "score": "30.6%",
+   "score": "30.8%",
    "pass_mark": ">= 50%",
    "result": "miss",
    "note": "school trips and trips between stops are not simulated yet"
@@ -44,15 +44,15 @@
   {
    "area": "Foot traffic",
    "test": "Model walkers higher on the City's sidewalk sweeper routes (ranking)",
-   "score": 0.791,
+   "score": 0.792,
    "pass_mark": ">= 0.7",
    "result": "pass",
-   "note": "79 of the model's 100 busiest walking spots are on a route (11% of road nodes are)"
+   "note": "81 of the model's 100 busiest walking spots are on a route (11% of road nodes are)"
   },
   {
    "area": "Sales at a site",
    "test": "Chain branches, model median against published sales per location",
-   "score": 1.0,
+   "score": 1.09,
    "pass_mark": "0.67-1.5",
    "result": "pass",
    "note": "4 chains; a tourist city can sit above national averages"
@@ -60,7 +60,7 @@
   {
    "area": "Sales at a site",
    "test": "Branches above the brand's best unit in Canada",
-   "score": 3,
+   "score": 1,
    "pass_mark": "0",
    "result": "miss",
    "note": "Tim Hortons in the Tourist Core"
@@ -68,10 +68,10 @@
   {
    "area": "Sales at a site",
    "test": "Model revenue against surveyed employee band (Employment Inventory 2025)",
-   "score": 0.245,
+   "score": 0.214,
    "pass_mark": ">= 0.3",
    "result": "miss",
-   "note": "394 businesses matched"
+   "note": "408 businesses matched"
   },
   {
    "area": "Closures",
