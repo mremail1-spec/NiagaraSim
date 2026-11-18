@@ -1,6 +1,6 @@
 """Pass-by trips: drivers who stop at a gas station or drive-through on the way somewhere else.
 
-Counts the vehicles passing every road node in a four-week run of the model (shopping, dining and
+Counts the vehicles passing every road node over a full year of the model (a four-week run from 1 January caught only winter traffic) (shopping, dining and
 visitor trips; commuting and through traffic are not simulated), stores them in city.json
 (nodes.passing, vehicles per day) with each category's pass-by share (data/pass_by_shares.json).
 The engine then gives each business a site factor (1 - p) + p * passing / category mean.
@@ -24,7 +24,7 @@ def shares(sim_categories: list[str]) -> list[float]:
     return [float(s.get(c, 0.0)) for c in sim_categories]
 
 
-def apply(city_path: Path, days: int = 28) -> dict:
+def apply(city_path: Path, days: int = 365) -> dict:
     city = json.loads(Path(city_path).read_text())
     city["nodes"].pop("passing", None)
     city["pass_by"] = []
