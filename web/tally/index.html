@@ -1,0 +1,396 @@
+<title>Niagara Street Counts</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+/* Layout: one column, a field counter. Spot, then two big tally keys, then the record of counts below. */
+:root {
+  --bg: #f3f4f1;
+  --panel: #ffffff;
+  --ink: #1d2321;
+  --muted: #5f6a66;
+  --line: #d9ddd8;
+  --walk: #c9771a;      /* people on foot: amber of a pedestrian signal */
+  --walk-soft: #f6e6cf;
+  --car: #22636b;       /* cars: teal */
+  --car-soft: #d5e8e9;
+  --bad: #b23b2e;
+  --display: "Barlow Condensed", "Arial Narrow", system-ui, sans-serif;
+  --body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #151918; --panel: #1f2523; --ink: #e8ecea; --muted: #9aa5a1; --line: #323a37;
+  --walk: #f0a24a; --walk-soft: #3a2c1a; --car: #5fb3bc; --car-soft: #17363a; --bad: #e47a6d; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #151918; --panel: #1f2523; --ink: #e8ecea; --muted: #9aa5a1; --line: #323a37;
+  --walk: #f0a24a; --walk-soft: #3a2c1a; --car: #5fb3bc; --car-soft: #17363a; --bad: #e47a6d; color-scheme: dark }
+
+* { box-sizing: border-box }
+body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 15px; line-height: 1.45 }
+.wrap { max-width: 560px; margin: 0 auto; padding-block: 18px 48px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  display: flex; flex-direction: column; gap: 18px }
+h1 { font-family: var(--display); font-weight: 700; font-size: 30px; letter-spacing: .01em; margin: 0; text-wrap: balance }
+h2 { font-family: var(--display); font-weight: 600; font-size: 20px; margin: 0; letter-spacing: .02em }
+.sub { color: var(--muted); margin: 4px 0 0; max-width: 60ch }
+.label { font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); font-weight: 600 }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 14px; display: flex; flex-direction: column; gap: 12px }
+select, input[type=text] { width: 100%; font: inherit; color: var(--ink); background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px }
+.hint { color: var(--muted); font-size: 13px; margin: 0 }
+.chips { display: flex; flex-wrap: wrap; gap: 8px }
+.chip { font: inherit; font-size: 14px; border: 1px solid var(--line); background: var(--bg); color: var(--ink); border-radius: 999px; padding: 7px 14px; cursor: pointer }
+.chip[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink) }
+button:focus-visible, select:focus-visible, input:focus-visible { outline: 3px solid var(--walk); outline-offset: 2px }
+
+.clock { display: flex; align-items: baseline; justify-content: space-between; gap: 12px }
+.clock .t { font-family: var(--mono); font-size: 34px; font-weight: 600; font-variant-numeric: tabular-nums }
+.bar { height: 6px; background: var(--line); border-radius: 3px; overflow: hidden }
+.bar i { display: block; height: 100%; width: 0; background: var(--ink); transition: width .5s linear }
+
+.keys { display: grid; grid-template-columns: 1fr 1fr; gap: 10px }
+.keys.one { grid-template-columns: 1fr }
+.key { border: 0; border-radius: 12px; min-height: 168px; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px;
+  font-family: var(--display); color: var(--ink); touch-action: manipulation; user-select: none; -webkit-user-select: none; transition: transform .06s }
+.key:active { transform: scale(.98) }
+.key:disabled { opacity: .45; cursor: default; transform: none }
+.key .n { font-family: var(--mono); font-size: 56px; font-weight: 600; line-height: 1; font-variant-numeric: tabular-nums }
+.key .w { font-size: 20px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase }
+.key.walk { background: var(--walk-soft); box-shadow: inset 0 -5px 0 var(--walk) }
+.key.car { background: var(--car-soft); box-shadow: inset 0 -5px 0 var(--car) }
+.undo { display: flex; gap: 10px }
+.undo button { flex: 1 }
+.btn { font: inherit; font-weight: 600; border-radius: 8px; padding: 12px 14px; cursor: pointer; border: 1px solid var(--line); background: var(--panel); color: var(--ink) }
+.btn.go { background: var(--ink); color: var(--bg); border-color: var(--ink); font-size: 16px }
+.btn.quiet { background: transparent }
+.btn.danger { color: var(--bad); border-color: var(--bad); background: transparent }
+.row { display: flex; gap: 10px; flex-wrap: wrap }
+.row > * { flex: 1 1 140px }
+
+.status { font-size: 13px; color: var(--muted); min-height: 1.2em; margin: 0 }
+.status.err { color: var(--bad) }
+
+.log { display: flex; flex-direction: column; gap: 0 }
+.entry { display: grid; grid-template-columns: 1fr auto; gap: 2px 12px; padding: 12px 0; border-top: 1px solid var(--line) }
+.entry:first-child { border-top: 0 }
+.entry .s { font-weight: 600; min-width: 0 }
+.entry .m { color: var(--muted); font-size: 13px; grid-column: 1 }
+.entry .v { font-family: var(--mono); font-variant-numeric: tabular-nums; text-align: right; grid-row: 1 / span 2; grid-column: 2; font-size: 14px; line-height: 1.5 }
+.entry .v b { font-weight: 600 }
+.entry .v .walk { color: var(--walk) }
+.entry .v .car { color: var(--car) }
+.entry .x { grid-column: 1 / -1; display: flex; gap: 8px; align-items: center; font-size: 13px }
+.linkish { font: inherit; font-size: 13px; background: none; border: 0; padding: 0; color: var(--muted); text-decoration: underline; cursor: pointer }
+.empty { color: var(--muted); margin: 0 }
+.tips { margin: 0; padding-left: 18px; color: var(--muted); font-size: 14px; display: flex; flex-direction: column; gap: 4px }
+@media (prefers-reduced-motion: reduce) { .key, .bar i { transition: none } }
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>Niagara Street Counts</h1>
+    <p class="sub">Count people on foot and cars passing one spot for 15 minutes. Each count is checked against the simulation's numbers for that spot, day and hour.</p>
+  </header>
+
+  <section class="panel" id="setup" aria-label="Where and what">
+    <div>
+      <label class="label" for="spot">Spot</label>
+      <select id="spot"></select>
+    </div>
+    <p class="hint" id="spotHint"></p>
+    <input type="text" id="otherName" placeholder="Name the spot, e.g. Ferry St at Stanley Ave, north side" hidden>
+    <div>
+      <div class="label" id="whatLabel">Counting</div>
+      <div class="chips" role="group" aria-labelledby="whatLabel" id="what">
+        <button class="chip" data-v="people" type="button">People on foot</button>
+        <button class="chip" data-v="cars" type="button">Cars</button>
+        <button class="chip" data-v="both" type="button">Both</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel" aria-label="Counter">
+    <div class="clock">
+      <span class="t" id="clock">15:00</span>
+      <span class="label" id="clockNote">15-minute count</span>
+    </div>
+    <div class="bar" aria-hidden="true"><i id="bar"></i></div>
+    <div class="keys" id="keys">
+      <button class="key walk" id="kPeople" type="button" disabled><span class="n" id="nPeople">0</span><span class="w">People</span></button>
+      <button class="key car" id="kCars" type="button" disabled><span class="n" id="nCars">0</span><span class="w">Cars</span></button>
+    </div>
+    <div class="undo">
+      <button class="btn quiet" id="uPeople" type="button" disabled>&minus;1 person</button>
+      <button class="btn quiet" id="uCars" type="button" disabled>&minus;1 car</button>
+    </div>
+    <div class="row">
+      <button class="btn go" id="start" type="button">Start 15 minutes</button>
+      <button class="btn" id="finish" type="button" hidden>Finish now</button>
+    </div>
+  </section>
+
+  <section class="panel" id="review" aria-label="Save this count" hidden>
+    <h2>Save this count</h2>
+    <p class="hint" id="reviewLine"></p>
+    <div>
+      <div class="label" id="wxLabel">Weather</div>
+      <div class="chips" role="group" aria-labelledby="wxLabel" id="wx">
+        <button class="chip" data-v="sun" type="button">Sunny</button>
+        <button class="chip" data-v="cloud" type="button">Cloudy</button>
+        <button class="chip" data-v="rain" type="button">Rain</button>
+        <button class="chip" data-v="snow" type="button">Snow</button>
+        <button class="chip" data-v="cold" type="button">Very cold</button>
+      </div>
+    </div>
+    <div>
+      <label class="label" for="note">Note</label>
+      <input type="text" id="note" placeholder="e.g. tour bus unloading, event at the arena, road work">
+    </div>
+    <div class="row">
+      <button class="btn go" id="save" type="button">Save count</button>
+      <button class="btn danger" id="discard" type="button">Discard</button>
+    </div>
+    <div class="row" id="discardAsk" hidden>
+      <span class="hint" style="flex-basis:100%">Throw away this count?</span>
+      <button class="btn danger" id="discardYes" type="button">Yes, discard</button>
+      <button class="btn" id="discardNo" type="button">Keep it</button>
+    </div>
+  </section>
+  <p class="status" id="status" role="status"></p>
+
+  <section class="panel" aria-label="Saved counts">
+    <div class="clock"><h2>Saved counts</h2><span class="label" id="logCount"></span></div>
+    <div class="log" id="log"><p class="empty">Counts you save show up here, with the hourly rate.</p></div>
+  </section>
+
+  <section class="panel" aria-label="How to count">
+    <h2>How to count</h2>
+    <ul class="tips">
+      <li>Stand still and pick a line across the sidewalk or road. Count everyone who crosses it, both directions.</li>
+      <li>People: walkers, people on wheelchairs and scooters. Not cyclists on the road.</li>
+      <li>Cars: cars, vans and pickups in all lanes. At the Falls lot, count cars turning in.</li>
+      <li>Best spread: a weekday and a weekend, around noon and around 6&nbsp;pm, in summer and again in winter.</li>
+    </ul>
+  </section>
+</div>
+
+<script>
+(() => {
+  // Each spot sits on a node of the model's road network, so the count can be set against the model there.
+  const SPOTS = [
+    { id: "lot-a", name: "Falls Parking (Lot A) entrance, Niagara Parkway", node: null, lat: 43.07644, lon: -79.07996, what: "cars", hint: "Count cars turning into the lot." },
+    { id: "clifton-falls", name: "Clifton Hill at Falls Ave (bottom)", node: 2113, lat: 43.090479, lon: -79.073188, what: "people", hint: "Both sidewalks of Clifton Hill, just up from Falls Ave." },
+    { id: "clifton-victoria", name: "Clifton Hill at Victoria Ave (top)", node: 2188, lat: 43.091992, lon: -79.07622, what: "people", hint: "Both sidewalks of Clifton Hill, just down from Victoria Ave." },
+    { id: "parkway-murray", name: "Niagara Parkway at Murray St (Table Rock path)", node: 1878, lat: 43.08497, lon: -79.077055, what: "people", hint: "The riverside walk, people going either way." },
+    { id: "victoria-ferry", name: "Victoria Ave at Ferry St", node: 2077, lat: 43.089608, lon: -79.080319, what: "both", hint: "Pick one corner and count the sidewalk and road beside it." },
+    { id: "main-ferry", name: "Main St at Ferry St / Lundy's Lane", node: 2057, lat: 43.0895, lon: -79.092734, what: "people", hint: "Main Street sidewalks next to the intersection." },
+    { id: "queen-erie", name: "Queen St at Erie Ave (downtown)", node: 3054, lat: 43.106638, lon: -79.063449, what: "people", hint: "Both sidewalks of Queen Street." },
+    { id: "lundys-drummond", name: "Lundy's Lane at Drummond Rd", node: 2054, lat: 43.089462, lon: -79.097778, what: "cars", hint: "Cars on Lundy's Lane, both directions, just west of Drummond." },
+    { id: "other", name: "Somewhere else", node: null, lat: null, lon: null, what: "people", hint: "Name the street, cross street and side." }
+  ];
+  const DURATION = 15 * 60;   // seconds
+  const DRAFT_KEY = "nf-tally-draft";
+  const $ = id => document.getElementById(id);
+
+  let spot = SPOTS[0], what = spot.what, weather = null;
+  let counts = { people: 0, cars: 0 };
+  let startedAt = null, endedAt = null, timer = null, wakeLock = null;
+  let db = null, records = [];
+
+  // ---------- setup ----------
+  for (const s of SPOTS) {
+    const o = document.createElement("option"); o.value = s.id; o.textContent = s.name; $("spot").appendChild(o);
+  }
+  function setSpot(id) {
+    spot = SPOTS.find(s => s.id === id) || SPOTS[0];
+    $("spot").value = spot.id;
+    $("spotHint").textContent = spot.hint;
+    $("otherName").hidden = spot.id !== "other";
+    setWhat(spot.what);
+  }
+  function setWhat(v) {
+    what = v;
+    for (const b of $("what").children) b.setAttribute("aria-pressed", String(b.dataset.v === v));
+    $("kPeople").hidden = $("uPeople").hidden = v === "cars";
+    $("kCars").hidden = $("uCars").hidden = v === "people";
+    $("keys").classList.toggle("one", v !== "both");
+  }
+  $("spot").addEventListener("change", e => { if (!startedAt) setSpot(e.target.value); });
+  $("what").addEventListener("click", e => { const b = e.target.closest(".chip"); if (b && !startedAt) setWhat(b.dataset.v); });
+  $("wx").addEventListener("click", e => {
+    const b = e.target.closest(".chip"); if (!b) return;
+    weather = weather === b.dataset.v ? null : b.dataset.v;
+    for (const c of $("wx").children) c.setAttribute("aria-pressed", String(c.dataset.v === weather));
+  });
+
+  // ---------- counting ----------
+  function render() {
+    $("nPeople").textContent = counts.people;
+    $("nCars").textContent = counts.cars;
+    const running = startedAt && !endedAt;
+    for (const id of ["kPeople", "kCars", "uPeople", "uCars"]) $(id).disabled = !running;
+    $("spot").disabled = !!startedAt; $("otherName").disabled = !!startedAt;
+    for (const b of $("what").children) b.disabled = !!startedAt;
+    $("start").hidden = !!startedAt; $("finish").hidden = !running;
+    $("review").hidden = !endedAt;
+    const secs = startedAt ? Math.min(DURATION, ((endedAt || Date.now()) - startedAt) / 1000) : 0;
+    const left = Math.max(0, DURATION - secs);
+    $("clock").textContent = running ? fmtClock(left) : endedAt ? fmtClock(secs) : fmtClock(DURATION);
+    $("clockNote").textContent = running ? "left" : endedAt ? "counted" : "15-minute count";
+    $("bar").style.width = (secs / DURATION * 100) + "%";
+  }
+  const fmtClock = s => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, "0")}`;
+
+  function tap(kind, d) {
+    if (!startedAt || endedAt) return;
+    counts[kind] = Math.max(0, counts[kind] + d);
+    if (d > 0) { try { navigator.vibrate && navigator.vibrate(12); } catch (e) {} }
+    saveDraft(); render();
+  }
+  // pointerdown keeps fast tapping responsive; click covers keyboard
+  for (const [id, kind, d] of [["kPeople", "people", 1], ["kCars", "cars", 1]]) {
+    const el = $(id);
+    el.addEventListener("pointerdown", e => { e.preventDefault(); tap(kind, d); });
+    el.addEventListener("click", e => { if (e.detail === 0) tap(kind, d); });
+  }
+  $("uPeople").addEventListener("click", () => tap("people", -1));
+  $("uCars").addEventListener("click", () => tap("cars", -1));
+
+  async function keepAwake() {
+    try { wakeLock = await navigator.wakeLock.request("screen"); } catch (e) { wakeLock = null; }
+  }
+  function startTimer() {
+    clearInterval(timer);
+    timer = setInterval(() => {
+      if (startedAt && !endedAt && Date.now() - startedAt >= DURATION * 1000) finish(startedAt + DURATION * 1000);
+      render();
+    }, 500);
+  }
+  $("start").addEventListener("click", () => {
+    if (spot.id === "other" && !$("otherName").value.trim()) { status("Name the spot first.", true); $("otherName").focus(); return; }
+    counts = { people: 0, cars: 0 }; startedAt = Date.now(); endedAt = null;
+    status(""); keepAwake(); startTimer(); saveDraft(); render();
+  });
+  function finish(at) {
+    endedAt = at || Date.now(); clearInterval(timer);
+    try { wakeLock && wakeLock.release(); } catch (e) {}
+    try { navigator.vibrate && navigator.vibrate([80, 60, 80]); } catch (e) {}
+    const mins = (endedAt - startedAt) / 60000;
+    $("reviewLine").textContent = `${spotName()}, ${fmtWhen(startedAt)}, ${mins.toFixed(1)} min: ${countText({ counts, what })}.`;
+    saveDraft(); render();
+  }
+  $("finish").addEventListener("click", () => finish());
+
+  function reset() {
+    startedAt = endedAt = null; counts = { people: 0, cars: 0 }; weather = null; $("note").value = "";
+    for (const c of $("wx").children) c.setAttribute("aria-pressed", "false");
+    $("discardAsk").hidden = true; clearDraft(); render();
+  }
+  $("discard").addEventListener("click", () => { $("discardAsk").hidden = false; });
+  $("discardNo").addEventListener("click", () => { $("discardAsk").hidden = true; });
+  $("discardYes").addEventListener("click", () => { reset(); status("Count discarded."); });
+
+  const spotName = () => spot.id === "other" ? ($("otherName").value.trim() || "Somewhere else") : spot.name;
+
+  // ---------- saving ----------
+  function record() {
+    const start = new Date(startedAt);
+    return {
+      spot_id: spot.id, spot: spotName(), node: spot.node, lat: spot.lat, lon: spot.lon,
+      counting: what, people: what === "cars" ? null : counts.people, cars: what === "people" ? null : counts.cars,
+      start: start.toISOString(), minutes: Math.round((endedAt - startedAt) / 6000) / 10,
+      local_day: start.toLocaleDateString("en-CA", { weekday: "long" }), local_hour: start.getHours(),
+      weather: weather, note: $("note").value.trim().slice(0, 300), saved_at: new Date().toISOString()
+    };
+  }
+  $("save").addEventListener("click", async () => {
+    const r = record();
+    if (r.minutes < 3) { status("Counts under 3 minutes are too short to compare. Count longer or discard.", true); return; }
+    if (!db) { status("Saving isn't available in this view, so the count is kept on this phone until it is.", true); return; }
+    $("save").disabled = true;
+    try {
+      await db.collection("counts").add(r);
+      reset(); status("Saved.");
+    } catch (e) {
+      status(e && e.code === "not_granted" ? "This view can't save. Open the page signed in to your account." : "Couldn't save just now. Your count is kept on this phone; try Save again.", true);
+    } finally { $("save").disabled = false; }
+  });
+
+  function status(msg, err) { $("status").textContent = msg; $("status").classList.toggle("err", !!err); }
+
+  // ---------- draft survives a reload or a locked phone ----------
+  function saveDraft() {
+    try { localStorage.setItem(DRAFT_KEY, JSON.stringify({ spot: spot.id, other: $("otherName").value, what, counts, startedAt, endedAt })); } catch (e) {}
+  }
+  function clearDraft() { try { localStorage.removeItem(DRAFT_KEY); } catch (e) {} }
+  function loadDraft() {
+    let d = null;
+    try { d = JSON.parse(localStorage.getItem(DRAFT_KEY) || "null"); } catch (e) {}
+    if (!d || !d.startedAt) return;
+    setSpot(d.spot); $("otherName").value = d.other || ""; setWhat(d.what);
+    counts = d.counts || counts; startedAt = d.startedAt; endedAt = d.endedAt;
+    if (!endedAt && Date.now() - startedAt >= DURATION * 1000) finish(startedAt + DURATION * 1000);
+    else if (endedAt) finish(endedAt);
+    else { startTimer(); keepAwake(); }
+  }
+  document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible" && startedAt && !endedAt) keepAwake(); });
+
+  // ---------- saved counts ----------
+  const fmtWhen = t => new Date(t).toLocaleString("en-CA", { weekday: "short", month: "short", day: "numeric", hour: "numeric", minute: "2-digit" });
+  function countText(r) {
+    const c = r.counts || r, parts = [];
+    if (r.what !== "cars" && r.counting !== "cars") parts.push(`${c.people} people`);
+    if (r.what !== "people" && r.counting !== "people") parts.push(`${c.cars} cars`);
+    return parts.join(", ");
+  }
+  function renderLog() {
+    const log = $("log"); log.textContent = "";
+    $("logCount").textContent = records.length ? `${records.length} saved` : "";
+    if (!records.length) {
+      const p = document.createElement("p"); p.className = "empty";
+      p.textContent = db ? "No counts yet. Pick a spot above and tap Start." : "Saved counts appear here once the page can reach its storage.";
+      log.appendChild(p); return;
+    }
+    for (const { id, d } of records) {
+      const e = document.createElement("div"); e.className = "entry";
+      const s = document.createElement("div"); s.className = "s"; s.textContent = d.spot;
+      const m = document.createElement("div"); m.className = "m";
+      m.textContent = `${fmtWhen(d.start)} · ${d.minutes} min` + (d.weather ? ` · ${d.weather}` : "") + (d.note ? ` · ${d.note}` : "");
+      const v = document.createElement("div"); v.className = "v";
+      const per = x => Math.round(x * 60 / Math.max(d.minutes, 0.1));
+      if (d.people != null) { const l = document.createElement("div"); l.innerHTML = `<b class="walk"></b> people · <span></span>/h`; l.querySelector("b").textContent = d.people; l.querySelector("span").textContent = per(d.people); v.appendChild(l); }
+      if (d.cars != null) { const l = document.createElement("div"); l.innerHTML = `<b class="car"></b> cars · <span></span>/h`; l.querySelector("b").textContent = d.cars; l.querySelector("span").textContent = per(d.cars); v.appendChild(l); }
+      const x = document.createElement("div"); x.className = "x";
+      const del = document.createElement("button"); del.className = "linkish"; del.type = "button"; del.textContent = "Delete";
+      del.addEventListener("click", () => {
+        x.textContent = "";
+        const q = document.createElement("span"); q.textContent = "Delete this count?";
+        const yes = document.createElement("button"); yes.className = "linkish"; yes.style.color = "var(--bad)"; yes.textContent = "Delete";
+        const no = document.createElement("button"); no.className = "linkish"; no.textContent = "Keep";
+        yes.addEventListener("click", async () => { try { await db.collection("counts").doc(id).delete(); } catch (err) { status("Couldn't delete just now.", true); } });
+        no.addEventListener("click", renderLog);
+        x.append(q, yes, no);
+      });
+      x.appendChild(del);
+      e.append(s, v, m, x); log.appendChild(e);
+    }
+  }
+
+  setSpot(SPOTS[0].id); loadDraft(); render(); renderLog();
+
+  // ---------- storage ----------
+  (async () => {
+    const loadTimer = setTimeout(() => { if (!db) status("Storage isn't answering. You can still count; Save will work once it connects.", true); }, 10000);
+    try { db = window.claude && await window.claude.use("db"); } catch (e) { db = null; }
+    clearTimeout(loadTimer);
+    if (!db) { renderLog(); return; }
+    if ($("status").classList.contains("err")) status("");
+    const lt = setTimeout(() => status("Saved counts are slow to load.", true), 10000);
+    db.collection("counts").orderBy("start", "desc").limit(200).onSnapshot(snap => {
+      clearTimeout(lt);
+      records = snap.docs.map(doc => ({ id: doc.id, d: doc.data() }));
+      renderLog();
+    }, () => { clearTimeout(lt); status("Couldn't load saved counts.", true); });
+  })();
+})();
+</script>
