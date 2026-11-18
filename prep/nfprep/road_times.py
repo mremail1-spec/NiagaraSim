@@ -50,10 +50,9 @@ def _network(city: dict, edges_csv: Path):
     assert all(int(r["from_node"]) == f and int(r["to_node"]) == t for r, f, t in zip(rows, a, b))
     cls = [r["road_class"] for r in rows] + ["connector"] * (len(a) - len(rows))
     base = np.array([float(r["minutes"]) for r in rows] + list(ed["minutes"][len(rows):]))
-    # measured: TomTom free-flow speed on the street, where TomTom covers it (not local streets)
+    # measured: TomTom free-flow speed on the street, wherever TomTom covers it
     from .street_speeds import speeds_for
-    kmh = speeds_for([{"pts": [tuple(map(float, p.split(","))) for p in r["polyline"].split(";")]} if group(r["road_class"]) != "local"
-                      else {"pts": []} for r in rows]) if rows else []
+    kmh = speeds_for([{"pts": [tuple(map(float, p.split(","))) for p in r["polyline"].split(";")]} for r in rows]) if rows else []
     measured = np.zeros(len(a), bool)
     for i, (r, v) in enumerate(zip(rows, kmh)):
         if v and v > 5:
