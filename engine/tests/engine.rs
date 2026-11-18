@@ -98,10 +98,7 @@ fn flow_mode_agrees_with_agent_mode() {
     for c in 0..agent.category_count() {
         let a: f64 = (0..12).map(|m| agent.state().month_category_revenue[m][c]).sum();
         let f: f64 = (0..12).map(|m| flow.state().month_category_revenue[m][c]).sum();
-        // categories mostly fed by tourists (casino, attractions) carry the full-hotel effect above
-        let tour: f64 = (0..12).map(|m| agent.state().tour.month_category_revenue.get(m).map_or(0.0, |r| r[c])).sum();
-        let tol = if a > 0.0 && tour / a > 0.5 { 0.015 } else { 0.01 };
-        assert!((a - f).abs() / f < tol, "category {c}: agent {a} flow {f}");
+        assert!((a - f).abs() / f < 0.01, "category {c}: agent {a} flow {f}");
     }
     // the largest businesses agree individually as well
     let resident = |e: &Engine, b: usize| e.state().revenue[b] - e.state().tour.revenue[b];
