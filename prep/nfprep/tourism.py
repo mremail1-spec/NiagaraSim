@@ -32,15 +32,18 @@ TOURIST_CATEGORIES = {
     # Casino gaming: barely captured by the travel survey, so its budget is set from the casinos'
     # estimated gaming revenue (data/public_operators_2025.json), on top of the survey's spending.
     "gaming": ([], {"casino": 1}),
+    # Cannabis: not in the travel survey; sized from the city's surplus of cannabis stores
+    # (data/cannabis_market.json).
+    "cannabis": ([], {"tobacco_cannabis": 1}),
     # Free sights: visits with no spending (42% of domestic visits include sightseeing). They place
     # visitors around the parks and viewpoints, and on the roads and paths that lead there.
     "sightseeing": ([], {"free_sight": 1}),
     "other_retail": (["other_retail"], {"souvenir_gift": 1, "retail_other": 0.5, "general_merchandise": 0.05,
-                                         "tobacco_cannabis": 0.5, "pharmacy": 0.3}),
+                                         "tobacco_cannabis": 0.2, "pharmacy": 0.3}),
 }
 VEHICLE_OPERATION_SPLIT = {"fuel": 0.7, "parking": 0.3}      # SEED: fuel vs parking within "vehicle operation"
 # SEED: purchases per party per day in each category (sets how many stops a party makes, not what it spends)
-EVENTS_PER_PARTY_DAY = {"sightseeing": 1.5, "gaming": 0.15, "restaurants": 2.0, "food_from_stores": 0.3, "fuel": 0.3, "parking": 0.7,
+EVENTS_PER_PARTY_DAY = {"sightseeing": 1.5, "gaming": 0.15, "cannabis": 0.1, "restaurants": 2.0, "food_from_stores": 0.3, "fuel": 0.3, "parking": 0.7,
                         "vehicle_rental": 0.03, "recreation": 0.4, "attractions": 1.0, "clothing": 0.3,
                         "other_retail": 0.6}
 # Where visitors' cars enter the city. SEED: the shares; the entry points are real.
@@ -148,6 +151,10 @@ def build_tourism(pack: Pack, businesses: list[dict], year: int) -> dict:
             ops = json.loads((DATA_DIR / "public_operators_2025.json").read_text())
             non_acc = total_spend * (1 - mix["accommodation"] / 100)
             shares.append(ops["casinos"]["gaming_revenue_estimate_cad"] * GAMING_FROM_VISITORS / non_acc)
+            continue
+        if name == "cannabis":
+            cm = json.loads((DATA_DIR / "cannabis_market.json").read_text())
+            shares.append(cm["visitor_spending"] / (total_spend * (1 - mix["accommodation"] / 100)))
             continue
         s = sum(rest[k] for k in keys) * VEHICLE_OPERATION_SPLIT.get(name, 1.0)
         shares.append(s / sum(rest.values()))

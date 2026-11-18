@@ -1,0 +1,8 @@
+{"_meta": {"what": "Cannabis spending for Niagara Falls residents and visitors.",
+  "sources": {"ontario_sales": "Ontario Cannabis Store: nearly 409 million grams sold in 2024, more than $2.15B in sales (StratCann, https://stratcann.com/?p=39880; Ground News summary https://ground.news/article/ontario-sold-more-than-215-billion-worth-of-cannabis-in-2024).",
+   "niagara_falls_stores": "Niagara Region Employment Inventory 2025: 21 open businesses with NAICS 459993 (cannabis retailers) in Niagara Falls, plus one listed by name; 5 in 2019, 18 in 2022, 24 in 2023.",
+   "ontario_stores": "SEED: about 1,750 authorized stores (no verified 2025 count found; AGCO publishes a live list). Sets the average store at about $1.2M."},
+  "method": "Residents spend Ontario's legal sales per person. Visitors' spending is what would bring Niagara Falls' 22 stores to the Ontario average store: the city has about twice the stores per resident of the province, which visitors fill. Cannabis has been legal in New York State since 2021, so US visitors' motive is weaker than before."},
+ "ontario_sales_2024": 2150000000, "ontario_population_2024": 15900000, "resident_per_person": 135,
+ "niagara_falls_stores_2025": 22, "ontario_average_store_sales": 1230000,
+ "visitor_spending": 13500000}

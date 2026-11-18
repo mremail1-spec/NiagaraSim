@@ -219,7 +219,7 @@ fn calibrate_sales(engine: &mut Engine, targets_path: String, out: Option<String
         ("456", vec!["pharmacy"], vec![], false),
         ("457", vec!["fuel"], vec!["fuel"], true),
         ("458", vec!["clothing"], vec!["clothing"], true),
-        ("459", vec!["recreation_goods", "pets", "tobacco_cannabis"], vec!["other_retail"], true),
+        ("459", vec!["recreation_goods", "pets"], vec!["other_retail"], true),
         ("722", vec!["restaurants"], vec!["restaurants"], true),
     ];
     let mut ext = vec![1.0f64; cats.len()];

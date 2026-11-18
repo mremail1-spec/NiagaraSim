@@ -338,6 +338,21 @@ def build_businesses(pack: Pack, seed: int = 1) -> list[dict]:
             if r["source"].startswith("licence") and r["name"] == l["business"] and l["lat"] and abs(r["lat"] - float(l["lat"])) < 1e-6:
                 r["address"], r["address_source"] = nice_case(l["address"]), "city licence"
 
+    # cannabis stores the map misses: Niagara Region's Employment Inventory 2025 (NAICS 459993)
+    import csv as _csv
+    inv = DATA_DIR / "sources" / "region" / "employment_inventory_niagara_falls_2016_2025.csv"
+    if inv.exists():
+        for x in _csv.DictReader(open(inv, encoding="utf-8-sig")):
+            if x["Year"] != "2025" or x["sizerangeemployees"].startswith("Permanently") or not x["lat"]:
+                continue
+            if not (x["primarynaics"].startswith("459993") or re.search(r"cannabis", x["businessname"], re.I)):
+                continue
+            la, lo = float(x["lat"]), float(x["lon"])
+            if in_city(la, lo) and not _already_listed(rows, x["businessname"].strip(), la, lo, "tobacco_cannabis"):
+                add("inventory", x["businessname"].strip(), "tobacco_cannabis", la, lo)
+                rows[-1]["address"] = f'{x["businessstreetnumber"]} {x["businessstreetname"].strip()}'.strip()
+                rows[-1]["address_source"] = "Niagara Region Employment Inventory 2025"
+
     # liquor stores (LCBO, The Beer Store, Wine Rack, wine shops): their own kind, serving alcohol
     # bought from stores, which in Ontario is mostly sold there (not by grocery or cannabis shops)
     for r in rows:

@@ -32,7 +32,8 @@ CATEGORIES = {
     "recreation_goods": (["Recreational equipment and related services"], [], "retail", True),
     "recreation_services": (["Recreational services"], ["Package trips"], "flat", False),
     "alcohol": (["Alcoholic beverages purchased from stores"], [], "retail", True),
-    "tobacco_cannabis": (["Tobacco products and smokers' supplies", "Cannabis for non-medical use"], [], "retail", True),
+    "tobacco": (["Tobacco products and smokers' supplies"], [], "retail", True),
+    "cannabis": (["Cannabis for non-medical use"], [], "retail", True),
     "fuel": (["Gas and other fuels (all vehicles and tools)"], [], "retail", True),
     "vehicle_service": (["Maintenance and repairs of vehicles"], [], "flat", False),
     "pets": (["Pet expenses"], [], "retail", True),
@@ -46,7 +47,7 @@ CATEGORIES = {
 # population. The household survey alone covers only about two thirds of retail sales: it leaves
 # out purchases by businesses and under-reports several categories.
 RETAIL_STORE_TYPES = {"445": ["groceries", "alcohol"], "449": ["household_goods"], "456": ["pharmacy"],
-                      "457": ["fuel"], "458": ["clothing"], "459": ["recreation_goods", "pets", "tobacco_cannabis"]}
+                      "457": ["fuel"], "458": ["clothing"], "459": ["recreation_goods", "pets"]}
 RETAIL_SCALES: dict = {}
 # LCBO retail store sales $5.87B in 2022-23 (CBC) over about 15.6M Ontarians: $376 a person; SEED: plus 30%
 # for The Beer Store, wine shops and winery stores. Dollars of 2025.
@@ -70,7 +71,9 @@ SERVED_BY = {
     # SEED: since 2024 Ontario grocery and convenience stores may sell beer and wine; LCBO and The Beer
     # Store still sell most of it
     "alcohol": {"liquor": 1.0, "grocery_food": 0.02},   # tested 0.1 / 0.02 / 0: LCBO at 0.20 / 0.37 / 0.54 of published sales
-    "tobacco_cannabis": {"tobacco_cannabis": 1.0, "grocery_food": 0.3},
+    # SEED: cigarettes are bought mostly at convenience and grocery stores; tobacconists and vape shops take a share
+    "tobacco": {"grocery_food": 1.0, "tobacco_cannabis": 0.5},
+    "cannabis": {"tobacco_cannabis": 1.0},
     "fuel": {"fuel": 1.0},
     "vehicle_service": {"auto_service": 1.0},
     "pets": {"pet": 1.0, "grocery_food": 0.2},
@@ -81,7 +84,7 @@ SERVED_BY = {
 # trip rate, and revenue is fixed by the budgets whatever these values are.
 TYPICAL_VISIT_SPEND = {"general_merchandise": 80, "groceries": 70, "restaurants": 40, "clothing": 90, "household_goods": 130,
                        "personal_care": 50, "pharmacy": 35, "health_services": 150, "recreation_goods": 70,
-                       "recreation_services": 45, "alcohol": 45, "tobacco_cannabis": 30, "fuel": 60,
+                       "recreation_services": 45, "alcohol": 45, "tobacco": 15, "cannabis": 40, "fuel": 60,
                        "vehicle_service": 250, "pets": 55, "games_of_chance": 100}
 
 AGE_COLUMN = {"15_24": "Less than 30 years", "25_34": "30 to 39 years", "35_44": "40 to 54 years",
@@ -163,6 +166,10 @@ def assign_budgets(pack: Pack, households: list[dict], year: int) -> np.ndarray:
         out[:, cols] *= k
         RETAIL_SCALES[group] = round(float(k), 3)
     out[:, col["general_merchandise"]] = targets["455"]["per_capita_sales"] * to_year * basket / basket.sum()
+    # cannabis: the survey under-reports it; set from Ontario's legal sales per person (data/cannabis_market.json)
+    cm = json.loads((DATA_DIR / "cannabis_market.json").read_text())
+    c = col["cannabis"]
+    out[:, c] *= cm["resident_per_person"] * population * to_year / out[:, c].sum()
     return out
 
 
