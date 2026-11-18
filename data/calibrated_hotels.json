@@ -9,42 +9,42 @@
    "published_occupancy": 0.368,
    "model_occupancy": 0.378,
    "published_rate": 127.64,
-   "model_rate": 131.7
+   "model_rate": 131.68
   },
   {
    "period": "3",
    "published_occupancy": 0.474,
    "model_occupancy": 0.444,
    "published_rate": 149.66,
-   "model_rate": 149.84
+   "model_rate": 149.78
   },
   {
    "period": "11",
    "published_occupancy": 0.453,
-   "model_occupancy": 0.499,
+   "model_occupancy": 0.498,
    "published_rate": 169.15,
-   "model_rate": 164.65
+   "model_rate": 164.56
   },
   {
    "period": "1+2+3",
    "published_occupancy": 0.416,
    "model_occupancy": 0.405,
    "published_rate": 140.92,
-   "model_rate": 139.67
+   "model_rate": 139.74
   },
   {
    "period": "1+2+3+4+5+6+7",
    "published_occupancy": 0.595,
-   "model_occupancy": 0.582,
+   "model_occupancy": 0.583,
    "published_rate": 206.28,
-   "model_rate": 209.0
+   "model_rate": 209.08
   },
   {
    "period": "1+2+3+4+5+6+7+8+9+10+11",
    "published_occupancy": 0.632,
    "model_occupancy": 0.621,
    "published_rate": 217.08,
-   "model_rate": 216.69
+   "model_rate": 216.73
   }
  ],
  "room_rate_line": {
@@ -52,50 +52,50 @@
   "b": 272.0
  },
  "hotel": {
-  "rooms_per_party": 1.3611,
-  "base_share": 0.1434,
+  "rooms_per_party": 1.3582,
+  "base_share": 0.1452,
   "rate_by_month": [
-   131.7,
-   135.4,
-   149.84,
-   154.28,
-   189.08,
-   254.24,
+   131.68,
+   135.75,
+   149.78,
+   154.59,
+   189.31,
+   254.33,
    292.84,
    292.84,
-   202.04,
-   202.41,
-   164.65,
-   176.87
+   202.24,
+   202.24,
+   164.56,
+   177.12
   ]
  },
  "survey_only_occupancy_by_month": [
-  0.172,
+  0.171,
   0.182,
-  0.221,
+  0.22,
   0.233,
   0.327,
   0.503,
-  0.633,
-  0.62,
+  0.632,
+  0.619,
   0.362,
-  0.363,
-  0.261,
+  0.362,
+  0.26,
   0.294
  ],
  "fitted_occupancy_by_month_before_capacity_limits": [
   0.378,
-  0.391,
+  0.392,
   0.444,
-  0.461,
+  0.462,
   0.589,
   0.828,
   0.97,
   0.97,
-  0.636,
-  0.638,
-  0.499,
-  0.544
+  0.637,
+  0.637,
+  0.498,
+  0.545
  ],
  "fitted_full_year_before_capacity_limits": 0.614
 }
