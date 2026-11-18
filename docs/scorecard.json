@@ -7,7 +7,7 @@
    "2022"
   ]
  },
- "passed": "7 of 13",
+ "passed": "8 of 14",
  "tests": [
   {
    "area": "Traffic",
@@ -80,6 +80,14 @@
    "pass_mark": "> 0.02",
    "result": "miss",
    "note": "age, size and floor area reach 0.029 (ranking 0.664); 155 closures of 1298"
+  },
+  {
+   "area": "Closures",
+   "test": "Two-year closure chance (kind, age, size, floor area, vacancy nearby), pooled 2016-2025, cross-validated ranking",
+   "score": 0.712,
+   "pass_mark": ">= 0.7",
+   "result": "pass",
+   "note": "skill over each kind's rate 0.042; 388 closures; shown for new businesses on the page"
   },
   {
    "area": "Outlooks",

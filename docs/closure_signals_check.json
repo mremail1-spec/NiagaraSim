@@ -1,0 +1,125 @@
+{
+ "_meta": {
+  "what": "Do neighbourhood signals predict closures beyond a business's kind, age and size?"
+ },
+ "after_pandemic": {
+  "window": "open 2023, status 2025",
+  "businesses": 1298,
+  "closed": 155,
+  "models": {
+   "kind rate": {
+    "skill_vs_kind_rate": 0.0,
+    "ranking": 0.534
+   },
+   "facts": {
+    "skill_vs_kind_rate": 0.036,
+    "ranking": 0.667
+   },
+   "facts + neighbourhood": {
+    "skill_vs_kind_rate": 0.031,
+    "ranking": 0.67
+   },
+   "facts + site": {
+    "skill_vs_kind_rate": 0.031,
+    "ranking": 0.659
+   },
+   "everything": {
+    "skill_vs_kind_rate": 0.028,
+    "ranking": 0.663
+   }
+  },
+  "single_signal_ranking_higher_means_more_closures": {
+   "log age": 0.41,
+   "employee band": 0.354,
+   "log floor area": 0.463,
+   "vacancy within 300 m": 0.565,
+   "area trend (open businesses within 500 m)": 0.502,
+   "new same-kind competitors within 500 m": 0.512,
+   "same kind within 300 m": 0.512,
+   "people on foot (model)": 0.501,
+   "vehicles passing (model)": 0.524,
+   "bus departures within 300 m": 0.516,
+   "model forecast rank in kind": 0.509
+  }
+ },
+ "before_pandemic": {
+  "window": "open 2016, status 2018",
+  "businesses": 783,
+  "closed": 20,
+  "models": {
+   "kind rate": {
+    "skill_vs_kind_rate": 0.0,
+    "ranking": 0.61
+   },
+   "facts": {
+    "skill_vs_kind_rate": -0.002,
+    "ranking": 0.653
+   },
+   "facts + neighbourhood": {
+    "skill_vs_kind_rate": -0.001,
+    "ranking": 0.715
+   },
+   "facts + site": {
+    "skill_vs_kind_rate": -0.002,
+    "ranking": 0.675
+   },
+   "everything": {
+    "skill_vs_kind_rate": -0.003,
+    "ranking": 0.723
+   }
+  },
+  "single_signal_ranking_higher_means_more_closures": {
+   "log age": 0.371,
+   "employee band": 0.398,
+   "log floor area": 0.408,
+   "vacancy within 300 m": 0.698,
+   "area trend (open businesses within 500 m)": 0.5,
+   "new same-kind competitors within 500 m": 0.425,
+   "same kind within 300 m": 0.44,
+   "people on foot (model)": 0.519,
+   "vehicles passing (model)": 0.493,
+   "bus departures within 300 m": 0.67,
+   "model forecast rank in kind": 0.566
+  }
+ },
+ "pooled": {
+  "window": "pooled two-year windows 2016-18, 2017-19, 2022-24, 2023-25",
+  "businesses": 4322,
+  "closed": 388,
+  "models": {
+   "kind rate": {
+    "skill_vs_kind_rate": 0.0,
+    "ranking": 0.583
+   },
+   "facts": {
+    "skill_vs_kind_rate": 0.04,
+    "ranking": 0.697
+   },
+   "facts + neighbourhood": {
+    "skill_vs_kind_rate": 0.042,
+    "ranking": 0.712
+   },
+   "facts + site": {
+    "skill_vs_kind_rate": 0.039,
+    "ranking": 0.698
+   },
+   "everything": {
+    "skill_vs_kind_rate": 0.042,
+    "ranking": 0.711
+   }
+  },
+  "single_signal_ranking_higher_means_more_closures": {
+   "log age": 0.427,
+   "employee band": 0.373,
+   "log floor area": 0.431,
+   "vacancy within 300 m": 0.627,
+   "area trend (open businesses within 500 m)": 0.48,
+   "new same-kind competitors within 500 m": 0.501,
+   "same kind within 300 m": 0.502,
+   "people on foot (model)": 0.497,
+   "vehicles passing (model)": 0.5,
+   "bus departures within 300 m": 0.531,
+   "model forecast rank in kind": 0.51
+  }
+ }
+}

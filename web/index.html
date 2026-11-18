@@ -677,8 +677,29 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
     if (risk && !isStandin) $("bNote").textContent += " " + risk;
   }
 
+  // a new business at this spot: two-year closure chance from the fitted model (data/closure_model.json)
+  function spotClosure(kind) {
+    const cm = city.closure_model;
+    if (!cm || !site) return "";
+    const kr = cm.kind_rate[kind] ?? cm._meta.overall_two_year_rate;
+    const vac0 = (city.nodes.vacancy_300m || [])[site.node];
+    const vac = vac0 == null ? 0.317 : vac0;
+    const area = cm.median_floor_area[kind] ?? 150;
+    const chance = (band) => {
+      const x = [Math.log(kr / (1 - kr)), Math.log1p(0.5), band, Math.log1p(area), vac];
+      let z = cm.weights[0];
+      for (let j = 0; j < x.length; j++) z += cm.weights[j + 1] * (x[j] - cm.mean[j]) / cm.sd[j];
+      return 1 / (1 + Math.exp(-z));
+    };
+    const pct = (v) => Math.round(v * 100) + "%";
+    return `Chance a new business like this closes within two years at this spot: ${pct(chance(1))} with 1-4 staff, ${pct(chance(2))} with 5 or more (fitted on 388 closures in Niagara Falls, 2016-2025; Niagara Region Employment Inventory). ` +
+      (vac0 == null ? "Too few surveyed businesses nearby to measure vacancy." : `${pct(vac)} of business units within 300 m stand vacant or closed (city median 32%); more vacancy nearby means more closures.`);
+  }
+
   // a new business: measured two-year closure chance for new businesses of its group (Employment Inventory)
   function newBusinessNote(kind) {
+    const s = spotClosure(kind);
+    if (s) return s;
     const nb = city.new_business_closure;
     if (!nb) return closureNote(kind);
     const g = nb.kind_group[kind], r = (g && nb.groups[g]) || nb.all, label = g || "business";

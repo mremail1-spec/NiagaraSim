@@ -61,6 +61,12 @@ def main() -> dict:
             "> 0.02", cl["model_location"]["skill_vs_kind_rate"] > 0.02,
             f"age, size and floor area reach {cl['facts']['skill_vs_kind_rate']} (ranking {cl['facts']['ranking']}); "
             f"{inv['closures_2023_2025']['closed']} closures of {inv['closures_2023_2025']['businesses']}")
+    cs = _load("closure_signals_check.json")
+    if cs and "pooled" in cs:
+        m = cs["pooled"]["models"]["facts + neighbourhood"]
+        add("Closures", "Two-year closure chance (kind, age, size, floor area, vacancy nearby), pooled 2016-2025, cross-validated ranking",
+            m["ranking"], ">= 0.7", m["ranking"] >= 0.7,
+            f"skill over each kind's rate {m['skill_vs_kind_rate']}; {cs['pooled']['closed']} closures; shown for new businesses on the page")
     o = _load("outlook_check.json")
     if o:
         inside = o["inside_band"]["us_overnight"]

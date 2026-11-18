@@ -1,0 +1,86 @@
+{
+ "_meta": {
+  "what": "Two-year closure chance for a business at any spot, fitted on the Employment Inventory.",
+  "features": [
+   "kind rate (logit)",
+   "log(1 + age)",
+   "employee band (1 micro, 2 small, 3 medium, 4 large)",
+   "log(1 + floor area m2... as surveyed)",
+   "vacancy share within 300 m"
+  ],
+  "fitted_on": "4322 business-windows, 388 closures",
+  "overall_two_year_rate": 0.0898
+ },
+ "weights": [
+  -2.60369,
+  0.4166,
+  -0.28784,
+  -0.507,
+  -0.23876,
+  0.27555
+ ],
+ "mean": [
+  -2.38034,
+  2.59396,
+  1.59139,
+  3.4632,
+  0.16904
+ ],
+ "sd": [
+  0.39026,
+  0.92806,
+  0.55231,
+  3.83491,
+  0.12817
+ ],
+ "kind_rate": {
+  "accommodation": 0.0677,
+  "apparel": 0.1611,
+  "attraction": 0.1113,
+  "auto_dealer": 0.1318,
+  "auto_service": 0.0708,
+  "bar_pub": 0.151,
+  "cafe": 0.0855,
+  "car_rental": 0.0411,
+  "casino": 0.0781,
+  "childcare": 0.0904,
+  "entertainment": 0.117,
+  "fast_food": 0.0809,
+  "fuel": 0.0574,
+  "general_merchandise": 0.0764,
+  "grocery_food": 0.0446,
+  "health": 0.0716,
+  "home_electronics": 0.1106,
+  "leisure_paid": 0.042,
+  "personal_services": 0.1338,
+  "pharmacy": 0.0562,
+  "restaurant": 0.1079,
+  "retail_other": 0.1042,
+  "souvenir_gift": 0.1219
+ },
+ "median_floor_area": {
+  "accommodation": 5000.0,
+  "apparel": 3232.5,
+  "attraction": 2500.0,
+  "auto_dealer": 2200.0,
+  "auto_service": 2000.0,
+  "bar_pub": 400.0,
+  "cafe": 1600.0,
+  "car_rental": 2000.0,
+  "casino": 1251805.5,
+  "childcare": 2600.0,
+  "entertainment": 6500.0,
+  "fast_food": 1140.0,
+  "fuel": 900.0,
+  "general_merchandise": 5750.0,
+  "grocery_food": 1465.0,
+  "health": 1100.0,
+  "home_electronics": 3200.0,
+  "leisure_paid": 4500.0,
+  "personal_services": 900.0,
+  "pharmacy": 1419.0,
+  "restaurant": 1800.0,
+  "retail_other": 2000.0,
+  "souvenir_gift": 1900.0
+ }
+}

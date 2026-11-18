@@ -75,6 +75,8 @@ def main(year: int = 2025, seed: int = 1) -> None:
         add_commuting_and_through_traffic()
         from .foot_traffic import main as add_foot_traffic
         add_foot_traffic()
+        from .closure_model import main as add_closure_model
+        add_closure_model()
     (out / "report.json").write_text(json.dumps(city["report"], indent=1))
     for k, v in city["report"].items():
         print(f"{k:40s} {v}")
