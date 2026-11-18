@@ -162,20 +162,42 @@ def build_tourism(pack: Pack, businesses: list[dict], year: int) -> dict:
     transport_share = (rest["public_transport"] + rest["local_transport"]) / sum(rest.values())
 
     # --- rooms: the city total spread over mapped hotels and motels by staff, known counts kept ---
-    hotels = [x for x in businesses if x["sim_category"] == "accommodation" and x["source"] == "osm"]
+    hotels = [x for x in businesses if x["sim_category"] == "accommodation" and x["source"] in ("osm", "correction")]
     weight = {x["business_id"]: max(x["staff"], 2) for x in hotels}
     known = {x["business_id"]: int(float(x["rooms"])) for x in hotels if x["rooms"]}
+    # rooms the hotels publish themselves (data/hotel_rooms_published.json); one hotel listed twice on the
+    # map (two towers) shares its rooms by staff
+    import re as _re
+    taken = set()
+    for h in json.loads((DATA_DIR / "hotel_rooms_published.json").read_text())["hotels"]:
+        hit = [x for x in hotels if x["business_id"] not in taken and _re.search(h["match"], x["name"], _re.I)]
+        tot = sum(weight[x["business_id"]] for x in hit)
+        for x in hit:
+            known[x["business_id"]] = max(1, round(h["rooms"] * weight[x["business_id"]] / tot))
+            taken.add(x["business_id"])
+    classes = json.loads((DATA_DIR / "hotel_classes.json").read_text())
+    names = classes["_meta"]["classes"]
+
+    def hotel_tier(x) -> int:
+        text = f'{x.get("brand") or ""} {x["name"]}'
+        for cls, pattern in classes["brands"]:
+            if _re.search(pattern, text, _re.I):
+                return names.index(cls)
+        if x.get("osm_tag") == "motel":
+            return 0
+        return 2 if x.get("in_tourist_core") == 1 and weight[x["business_id"]] >= 20 else 1
     market = json.loads((DATA_DIR / "hotel_market_2025.json").read_text())
     spread = market["hotel_rooms"] - sum(known.values())
     wsum = sum(w for i, w in weight.items() if i not in known)
-    capacity, lodging_type = {}, {}
+    capacity, lodging_type, tier = {}, {}, {}
     for x in businesses:
         if x["sim_category"] != "accommodation":
             continue
         i = x["business_id"]
-        if x["source"] == "osm":
+        if x["source"] in ("osm", "correction"):
             capacity[i] = known.get(i) or max(4, round(spread * weight[i] / wsum))
             lodging_type[i] = "hotel"
+            tier[i] = hotel_tier(x)
         elif x["source"].endswith("campground"):
             capacity[i], lodging_type[i] = 150, "camping"                                  # SEED: sites per campground
         else:
@@ -212,6 +234,8 @@ def build_tourism(pack: Pack, businesses: list[dict], year: int) -> dict:
         "day_of_week": DAY_OF_WEEK, "first_weekday": first,
         "gateways": GATEWAYS, "car_share": car_share,
         "capacity": capacity, "lodging_type": lodging_type, "attendance_target": attendance,
+        "hotel_tier": tier, "tier_price_raw": classes["price_vs_midscale"],
+        "tier_pref": [classes["preference"][seg["origin"]] for seg in segments],
         "hotel": (json.loads((DATA_DIR / "calibrated_hotels.json").read_text())["hotel"]
                   if (DATA_DIR / "calibrated_hotels.json").exists() else None),
         "hotel_rooms": HOTEL_ROOMS,

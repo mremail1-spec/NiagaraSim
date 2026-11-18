@@ -1,0 +1,68 @@
+{
+ "_meta": {
+  "what": "Hotel classes for visitor hotel choice and room prices.",
+  "classes": [
+   "economy",
+   "midscale",
+   "upper midscale",
+   "upscale",
+   "upper upscale and luxury"
+  ],
+  "class_of_brand": "STR (CoStar) chain scales, the hotel industry's standard brand classification (third-party). Independent hotels: motels economy; large Tourist Core hotels upper midscale; others midscale.",
+  "price": "Room price relative to midscale, rounded ratios of average daily rate by STR chain scale (approximate). The engine keeps the city-wide average on the CBRE-fitted monthly rate: factors are normalised so the room-weighted average is 1.",
+  "preference": "Owner's first-hand observation (SEED until a survey figure is found): overseas and American overnight visitors favour premium, larger hotels, as the trip is a big occasion; Canadians lean to mid-range and budget. Weight on a hotel = its rooms x the segment's factor for its class.",
+  "order": "Brands are checked from economy upward, so 'Days Inn by Wyndham' or 'Courtyard by Marriott' take their own brand's class, not the parent company's."
+ },
+ "price_vs_midscale": [
+  0.72,
+  1.0,
+  1.25,
+  1.6,
+  2.1
+ ],
+ "preference": {
+  "domestic": [
+   1.2,
+   1.1,
+   1.0,
+   0.9,
+   0.8
+  ],
+  "us": [
+   0.7,
+   0.8,
+   1.0,
+   1.3,
+   1.6
+  ],
+  "overseas": [
+   0.5,
+   0.7,
+   1.0,
+   1.4,
+   1.9
+  ]
+ },
+ "brands": [
+  [
+   "economy",
+   "days inn|travelodge|super 8|econo lodge|howard johnson|thriftlodge|knights inn|rodeway|motel 6|americas best value|7 days|red carpet|motel"
+  ],
+  [
+   "midscale",
+   "ramada|best western(?! plus)|la quinta|baymont|sleep inn|wingate"
+  ],
+  [
+   "upper midscale",
+   "holiday inn|country inn|comfort|quality|best western plus|fairfield|hampton|hilton garden|clarion|wyndham garden|hyatt place|cambria|towneplace"
+  ],
+  [
+   "upscale",
+   "four points|courtyard|doubletree|radisson|tapestry|the brock|crowne plaza|great wolf|oakes|old stone|wyndham|niagara fallsview hotel"
+  ],
+  [
+   "upper upscale and luxury",
+   "fallsview casino|embassy suites|sheraton|hyatt regency|hilton|marriott"
+  ]
+ ]
+}

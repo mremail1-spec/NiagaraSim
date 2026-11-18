@@ -42,6 +42,10 @@ pub struct TourRt {
     /// Multiplier that turns published attendance into pull, tuned so Journey Behind the Falls matches.
     pub attendance_pull: f64,
     cdf_cache: HashMap<u64, Vec<f32>>,
+    /// Per segment: cumulative share of hotel choices over the hotel group's entries (by rooms, class preference).
+    pub hotel_cdf: Vec<Vec<f64>>,
+    /// Room price factor per business (1.0 where no class is known).
+    pub price: Vec<f64>,
 }
 
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq)]
@@ -241,8 +245,22 @@ impl Engine {
             seg_fares.push(other * t.transport_fare_share);
         }
 
+        // hotel choice by class: rooms x the segment's preference for the hotel's class; price by class
+        let tier_of = |b: usize| -> usize { t.hotel_tier.get(b).copied().unwrap_or(1) as usize };
+        let price: Vec<f64> = (0..n_biz).map(|b| if t.tier_price.is_empty() { 1.0 } else { t.tier_price[tier_of(b).min(t.tier_price.len() - 1)] }).collect();
+        let mut hotel_cdf = Vec::new();
+        if !t.tier_pref.is_empty() && t.hotel_tier.len() == n_biz {
+            for seg in 0..t.segments.len() {
+                let pref = &t.tier_pref[seg.min(t.tier_pref.len() - 1)];
+                let w: Vec<f64> = groups[GROUP_HOTEL].business.iter().enumerate()
+                    .map(|(i, &b)| weights[GROUP_HOTEL][i] * pref[tier_of(b as usize).min(pref.len() - 1)]).collect();
+                let total: f64 = w.iter().sum();
+                let mut acc = 0.0;
+                hotel_cdf.push(w.iter().map(|x| { acc += x / total.max(1e-12); acc }).collect());
+            }
+        }
         let mut rt = TourRt { n_cat, cat_business, cat_pull, groups, dist: vec![], seg_budget, seg_fares, seg_elsewhere, avg_nights,
-                              nights_cdf, attendance_pull: 1.0, cdf_cache: HashMap::new() };
+                              nights_cdf, attendance_pull: 1.0, cdf_cache: HashMap::new(), hotel_cdf, price };
 
         // tune the pull of attractions with published attendance so Journey Behind the Falls matches
         if let Some(ac) = attraction_cat {
@@ -420,7 +438,8 @@ impl Engine {
                         break;
                     }
                     let u = self.state.rng.f64();
-                    let i = rt.groups[g].cdf.partition_point(|&x| x <= u).min(rt.groups[g].cdf.len() - 1);
+                    let cdf = if g == GROUP_HOTEL && !rt.hotel_cdf.is_empty() { &rt.hotel_cdf[seg] } else { &rt.groups[g].cdf };
+                    let i = cdf.partition_point(|&x| x <= u).min(cdf.len() - 1);
                     let b = rt.groups[g].business[i];
                     if b == NO_BUSINESS || self.state.tour.free[b as usize] >= rooms as u32 {
                         base = Some(i);
@@ -507,7 +526,7 @@ impl Engine {
         if let Some(h) = &t.hotel {
             for &b in &rt.groups[GROUP_HOTEL].business {
                 let base = Self::base_rooms(&t, b as usize) as f64 * self.scenario[3];
-                let pay = base * h.rate_by_month[month];
+                let pay = base * h.rate_by_month[month] * rt.price[b as usize];
                 self.state.revenue[b as usize] += pay;
                 self.state.tour.revenue[b as usize] += pay;
                 self.state.tour.base_room_revenue += pay;
@@ -526,7 +545,7 @@ impl Engine {
             if p.lodging != NO_BUSINESS {
                 let hotel = p.group as usize == GROUP_HOTEL;
                 let pay = match &t.hotel {
-                    Some(h) if hotel => p.rooms as f64 * h.rate_by_month[month],
+                    Some(h) if hotel => p.rooms as f64 * h.rate_by_month[month] * rt.price[p.lodging as usize],
                     _ => t.accommodation_spend_per_paid_person_night * p.size as f64,
                 };
                 self.state.revenue[p.lodging as usize] += pay;
@@ -661,14 +680,19 @@ impl Engine {
                         Some(h) if g == GROUP_HOTEL => room_nights * h.rate_by_month[month],
                         _ => pd * t.accommodation_spend_per_paid_person_night,
                     };
+                    let cdf = if g == GROUP_HOTEL && !rt.hotel_cdf.is_empty() { &rt.hotel_cdf[seg] } else { &rt.groups[g].cdf };
+                    let hotel_priced = g == GROUP_HOTEL && t.hotel.is_some();
                     let mut prev = 0.0;
+                    let mut paid = 0.0;
                     for (i, &b) in rt.groups[g].business.iter().enumerate() {
-                        let share = rt.groups[g].cdf[i] - prev;
-                        prev = rt.groups[g].cdf[i];
-                        self.state.revenue[b as usize] += pay * share;
-                        self.state.tour.revenue[b as usize] += pay * share;
+                        let share = cdf[i] - prev;
+                        prev = cdf[i];
+                        let amount = pay * share * if hotel_priced { rt.price[b as usize] } else { 1.0 };
+                        self.state.revenue[b as usize] += amount;
+                        self.state.tour.revenue[b as usize] += amount;
+                        paid += amount;
                     }
-                    self.state.tour.accommodation_by_month[month] += pay;
+                    self.state.tour.accommodation_by_month[month] += paid;
                     if g == GROUP_HOTEL {
                         self.state.tour.room_nights_by_month[month] += room_nights;
                     }
@@ -693,7 +717,7 @@ impl Engine {
         if let Some(h) = &t.hotel {
             for &b in &rt.groups[GROUP_HOTEL].business {
                 let base = Self::base_rooms(&t, b as usize) as f64 * self.scenario[3];
-                let pay = base * h.rate_by_month[month];
+                let pay = base * h.rate_by_month[month] * rt.price[b as usize];
                 self.state.revenue[b as usize] += pay;
                 self.state.tour.revenue[b as usize] += pay;
                 self.state.tour.base_room_revenue += pay;

@@ -200,6 +200,20 @@ def _gateways(tour: dict, nodes: list[dict], edges: list[dict], toward_node: int
     return out
 
 
+def _hotel_classes(tour: dict, cap: list[int], n_total: int) -> dict:
+    """Hotel class per business; price factors normalised so the room-weighted average over hotels is 1
+    (the city-wide rate stays on the CBRE-fitted monthly rate)."""
+    if not tour.get("hotel_tier"):
+        return {}
+    tier = [1] * n_total
+    for i, v in tour["hotel_tier"].items():
+        tier[i] = int(v)
+    raw = tour["tier_price_raw"]
+    rooms = sum(cap[i] for i in tour["hotel_tier"])
+    mean = sum(cap[i] * raw[int(v)] for i, v in tour["hotel_tier"].items()) / max(rooms, 1)
+    return {"hotel_tier": tier, "tier_price": [round(p / mean, 4) for p in raw], "tier_pref": tour["tier_pref"]}
+
+
 def _tourism_block(tour: dict, sim_cats: list[str], n_total: int) -> dict:
     """Tourism inputs with per-business arrays aligned to the engine's business list."""
     kind = {"hotel": 1, "rental": 2, "camping": 3}
@@ -217,6 +231,7 @@ def _tourism_block(tour: dict, sim_cats: list[str], n_total: int) -> dict:
             "transport_fare_share": tour["transport_fare_share"], "day_of_week": tour["day_of_week"],
             "hotel": tour.get("hotel"),
             "first_weekday": tour["first_weekday"], "capacity": cap, "lodging_type": typ, "attendance_target": att,
+            **_hotel_classes(tour, cap, n_total),
             "hotel_rooms_published_range": [tour["hotel_rooms"]["low"], tour["hotel_rooms"]["high"]]}
 
 

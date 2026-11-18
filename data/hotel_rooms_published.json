@@ -1,0 +1,127 @@
+{
+ "_meta": {
+  "what": "Room counts published by the hotels themselves or by booking and meeting-venue listings (third-party/operator data), for the model's hotel capacity. Where sources disagree, the hotel's own figure is preferred, then the figure most listings agree on.",
+  "collected": "2026-11-18, web search; more hotels to be added",
+  "note": "White Oaks Resort is in Niagara-on-the-Lake, outside the city: not used."
+ },
+ "hotels": [
+  {
+   "match": "hilton niagara falls|hilton.*fallsview hotel",
+   "rooms": 1100,
+   "source": "Wikipedia, Hilton Niagara Falls Tower 2 (combined towers; 'more than 500' in the older tower)",
+   "confidence": "medium"
+  },
+  {
+   "match": "sheraton fallsview|sheraton on the falls",
+   "rooms": 669,
+   "source": "Wikipedia; meetings directories (669); travel site 'over 670'",
+   "confidence": "high"
+  },
+  {
+   "match": "embassy suites",
+   "rooms": 565,
+   "source": "Oyster review and hotel directory (565 suites); Cvent lists 613, Skyscraper Center 512",
+   "confidence": "medium"
+  },
+  {
+   "match": "marriott.*fallsview|fallsview.*marriott",
+   "rooms": 432,
+   "source": "Marriott (432 guestrooms and suites); Wikipedia",
+   "confidence": "high"
+  },
+  {
+   "match": "marriott on the falls",
+   "rooms": 404,
+   "source": "Marriott (404 guestrooms and suites); Wikipedia 405",
+   "confidence": "high"
+  },
+  {
+   "match": "great wolf",
+   "rooms": 421,
+   "source": "Great Wolf Lodge, About us (421 suites incl. 15 cottages)",
+   "confidence": "high"
+  },
+  {
+   "match": "four points",
+   "rooms": 404,
+   "source": "hotel listings (404 rooms, 11 suites); SkyscraperPage 262",
+   "confidence": "medium"
+  },
+  {
+   "match": "fallsview casino",
+   "rooms": 374,
+   "source": "Frommer's (374-room Fallsview Casino Resort)",
+   "confidence": "medium"
+  },
+  {
+   "match": "the brock|crowne plaza",
+   "rooms": 234,
+   "source": "Wikipedia, The Brock Hotel (234); directories 207",
+   "confidence": "medium"
+  },
+  {
+   "match": "radisson hotel & suites fallsview|niagara fallsview hotel",
+   "rooms": 232,
+   "source": "Hotels.com and Expedia (232 rooms); now named Niagara Fallsview Hotel & Suites",
+   "confidence": "high"
+  },
+  {
+   "match": "doubletree",
+   "rooms": 224,
+   "source": "Trip.com, meeting-venue listings (224 guest rooms)",
+   "confidence": "high"
+  },
+  {
+   "match": "travelodge fallsview",
+   "rooms": 130,
+   "source": "meeting-venue directories and Oyster (130); Trip.com 125",
+   "confidence": "medium"
+  },
+  {
+   "match": "courtyard",
+   "rooms": 258,
+   "source": "HotelPlanner and Successful Meetings (258 rooms, 5950 Victoria Ave)",
+   "confidence": "high"
+  },
+  {
+   "match": "wyndham garden.*fallsview|wyndham garden tower",
+   "rooms": 348,
+   "source": "meeting-venue directories (348 rooms, 2 towers); Trip.com 201",
+   "confidence": "medium"
+  },
+  {
+   "match": "holiday inn",
+   "rooms": 122,
+   "source": "meeting-venue directories and Oyster (122 rooms, 5339 Murray St)",
+   "confidence": "high"
+  },
+  {
+   "match": "days inn.*centre",
+   "rooms": 155,
+   "source": "HotelPlanner, Agoda, Meetings-Conventions (155 rooms)",
+   "confidence": "high"
+  },
+  {
+   "match": "country inn",
+   "rooms": 108,
+   "source": "Northstar Meetings Group and Niagara Falls Live (108 rooms)",
+   "confidence": "high"
+  },
+  {
+   "match": "oakes",
+   "rooms": 212,
+   "source": "listings disagree: venue listing 239, Trip.com 185 (midpoint)",
+   "confidence": "low"
+  },
+  {
+   "match": "comfort inn fallsview",
+   "rooms": 107,
+   "source": "niagarafallshotels.com (107 rooms; dated page)",
+   "confidence": "low"
+  }
+ ],
+ "city_total": {
+  "rooms": "over 12,000",
+  "source": "Niagara Falls Tourism, Hotels & Motels page (undated)"
+ }
+}

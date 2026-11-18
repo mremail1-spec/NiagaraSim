@@ -274,6 +274,14 @@ pub struct Tourism {
     /// (18-24, 25-34, 35-44, 45-54, 55-64, 65+), from the travel survey.
     #[serde(default)]
     pub party_profile: Option<PartyProfile>,
+    /// Hotel class per business (0 economy, 1 midscale, 2 upper midscale, 3 upscale, 4 upper upscale and luxury),
+    /// room price factor per class, and each visitor segment's preference for each class ([segment][class]).
+    #[serde(default)]
+    pub hotel_tier: Vec<u8>,
+    #[serde(default)]
+    pub tier_price: Vec<f64>,
+    #[serde(default)]
+    pub tier_pref: Vec<Vec<f64>>,
     pub nights: Nights,
     pub lodging_share: LodgingShare,
     pub accommodation_spend_per_paid_person_night: f64,
