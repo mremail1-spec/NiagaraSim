@@ -408,4 +408,4 @@ Niagara Parks annual reports list vehicles parked per lot (`data/niagara_parks_p
 - Lot split: with equal pull the model sent more parking to Rapidsview than to the Falls lots (0.69 to 1); measured is 6.4-9.3 to 1. Each lot now has a `pull` in `data/niagara_parks_places.json` (Falls lots 2.17, Rapidsview 0.8); the model gives 8.0 to 1. Fitted, so not scored.
 - SARS 2003: the Falls lot fell to x0.813. The health-scare card's domestic figure was a seed (x0.95) and gave x0.899 overall; SARS was centred in Toronto, so the lot fits domestic x0.83-0.86. Set to x0.85; blended card x0.828.
 - Highway 420 at Stanley Ave fell 2.7% below its usual year in 2003, which fits visitors at 15% of its traffic, as the model has. The replay's 20-30% is not supported. Scored (one year, partly estimated counts).
-- Current daily counts are not public: they need a request to Niagara Parks (Lot A), the City's paid traffic-data service or private lot operators.
+- Current daily counts are not public. The project works privately (no data requests to the City or operators), so later years come from public proxies: crossings, Highway 420 counts and the Region's road counts.
