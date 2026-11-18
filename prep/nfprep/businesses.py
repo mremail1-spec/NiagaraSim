@@ -318,7 +318,6 @@ def build_businesses(pack: Pack, seed: int = 1) -> list[dict]:
             if in_city(la, lo) and not _already_listed(rows, name, la, lo, kind):
                 add("inventory", name, kind, la, lo)
                 rows[-1]["address_hint"] = f'{x["businessstreetnumber"]} {x["businessstreetname"].strip()}'.strip()
-                rows[-1]["inventory_size"] = x["sizerangeemployees"]
 
     # civic address: the licence's own address, else the nearest city address point within 80 m
     pts = pack.tables["address_points.csv"]
