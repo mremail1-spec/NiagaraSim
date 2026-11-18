@@ -52,7 +52,7 @@
   {
    "area": "Sales at a site",
    "test": "Chain branches, model median against published sales per location",
-   "score": 1.27,
+   "score": 1.0,
    "pass_mark": "0.67-1.5",
    "result": "pass",
    "note": "4 chains; a tourist city can sit above national averages"

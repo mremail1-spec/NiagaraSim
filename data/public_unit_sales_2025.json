@@ -1,12 +1,52 @@
-{"_meta": {"what": "Published sales per location for chains with branches in Niagara Falls. National figures: a Niagara Falls branch can sit above the average (tourists), but rarely above the brand's best unit.",
+{
+ "_meta": {
+  "what": "Published sales per location for chains with branches in Niagara Falls. National figures: a Niagara Falls branch can sit above the average (tourists), but rarely above the brand's best unit.",
   "sources": {
    "pizza_pizza": "Pizza Pizza Royalty Corp., Q4 and full-year 2025 results: Pizza Pizza royalty-pool sales $547.6M, 694 restaurants (https://retail-insider.com/retail-insider/2026/03/pizza-pizza-releases-q4-and-2025-annual-results/)",
    "keg": "Keg Royalties Income Fund, Q2 2025: average sales per operating week $138,000 year to date, 104 restaurants (https://daytraders.com/news/2025/08/13/the-keg-royalties-income-fund-announces-second-quarter-2025-results)",
    "boston_pizza": "Boston Pizza Royalties Income Fund: 2024 franchise sales $931.7M (https://newswire.ca/news-releases/boston-pizza-royalties-income-fund-announces-2024-fourth-quarter-and-annual-results-and-franchise-sales-of-931-7-million-for-the-year-858027642.html); about 372 restaurants (analyst note, https://www.suredividend.com/wp-content/uploads/2026/06/BPZZF-2026-06-03.pdf). Count not from the Fund itself.",
-   "tim_hortons": "Tim Hortons franchise disclosure document, Item 19, as reviewed by Franchise Chatter (2023): median monthly gross sales $93,090, highest shop $330,167 a month (https://www.franchisechatter.com/2023/06/27/fdd-talk-tim-hortons-franchise-costs-fees-average-revenues-and-or-profits-2023-review/). Scope (US or Canada) not confirmed; second-hand."},
-  "not_found": "McDonald's, Subway, A&W and Dollarama do not publish Canadian sales per location in what was found; Dollarama's $7.26B total includes Latin America and Australia. Canadian Tire sold its gas bars in 2025; Kalibrate's fuel census is paid."},
+   "tim_hortons": "Tim Hortons franchise disclosure document, Item 19, as reviewed by Franchise Chatter (2023): median monthly gross sales $93,090, highest shop $330,167 a month (https://www.franchisechatter.com/2023/06/27/fdd-talk-tim-hortons-franchise-costs-fees-average-revenues-and-or-profits-2023-review/). Scope (US or Canada) not confirmed; second-hand.",
+   "a_and_w": "A&W Food Services of Canada, 2025 quarterly results: system sales Q1 $396.9M, Q2 $452.3M, Q3 $479.6M (https://awincomefund.mediaroom.com/2025-10-17-A-W-FOOD-SERVICES-OF-CANADA-INC-ANNOUNCES-THIRD-QUARTER-RESULTS-FOR-FISCAL-2025); Q4 assumed like Q1-Q3 average (~$443M) for ~$1.77B; about 1,060 restaurants (1,037 in early 2024 per a third-party profile, plus openings). Estimate.",
+   "lcbo": "LCBO fiscal 2022-23 retail store sales $5.87B (CBC, https://amp.cbc.ca/lite/story/1.7260107) over about 680 stores (LCBO filing). Older year; estimate."
+  },
+  "not_found": "McDonald's, Subway, A&W and Dollarama do not publish Canadian sales per location in what was found; Dollarama's $7.26B total includes Latin America and Australia. Canadian Tire sold its gas bars in 2025; Kalibrate's fuel census is paid."
+ },
  "brands": {
-  "Pizza Pizza": {"pattern": "^pizza pizza", "average": 789000, "high": null, "quality": "company filing"},
-  "The Keg": {"pattern": "\\bkeg\\b", "average": 7176000, "high": null, "quality": "company filing"},
-  "Boston Pizza": {"pattern": "^boston pizza", "average": 2505000, "high": null, "quality": "filing sales / analyst count"},
-  "Tim Hortons": {"pattern": "tim horton", "average": 1117000, "high": 3962000, "quality": "franchise disclosure, second-hand, median not mean"}}}
+  "Pizza Pizza": {
+   "pattern": "^pizza pizza",
+   "average": 789000,
+   "high": null,
+   "quality": "company filing"
+  },
+  "The Keg": {
+   "pattern": "\\bkeg\\b",
+   "average": 7176000,
+   "high": null,
+   "quality": "company filing"
+  },
+  "Boston Pizza": {
+   "pattern": "^boston pizza",
+   "average": 2505000,
+   "high": null,
+   "quality": "filing sales / analyst count"
+  },
+  "Tim Hortons": {
+   "pattern": "tim horton",
+   "average": 1117000,
+   "high": 3962000,
+   "quality": "franchise disclosure, second-hand, median not mean"
+  },
+  "A&W": {
+   "pattern": "^a ?& ?w\\b",
+   "average": 1670000,
+   "high": null,
+   "quality": "estimate from system sales and approximate count"
+  },
+  "LCBO": {
+   "pattern": "^lcbo",
+   "average": 8630000,
+   "high": null,
+   "quality": "2022-23 retail sales over store count"
+  }
+ }
+}
