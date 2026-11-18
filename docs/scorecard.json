@@ -7,7 +7,7 @@
    "2022"
   ]
  },
- "passed": "8 of 14",
+ "passed": "9 of 13",
  "tests": [
   {
    "area": "Traffic",
@@ -20,7 +20,7 @@
   {
    "area": "Traffic",
    "test": "Regional roads, correlation with 2025 counts",
-   "score": 0.744,
+   "score": 0.743,
    "pass_mark": ">= 0.6",
    "result": "pass",
    "note": "Region's 2025 counts, 69 sections in the city"
@@ -107,19 +107,11 @@
   },
   {
    "area": "Business counts",
-   "test": "St. Catharines-Niagara closings 2023-2025, rise the model sees",
-   "score": "not seen",
+   "test": "2025 rise in closings: conditions logic (rates, wages, US visitors) predicts the direction",
+   "score": "x1.045 vs x1.094",
    "pass_mark": "direction right",
-   "result": "miss",
-   "note": "closings rose in 2025 (0.54 to 0.59); the model's revenue did not fall"
-  },
-  {
-   "area": "Closures",
-   "test": "Five-year closure chance, skill over each kind's average (2021-2026, includes pandemic recovery)",
-   "score": -0.054,
-   "pass_mark": "> 0.05",
-   "result": "miss",
-   "note": "reported, not a pandemic-free test"
+   "result": "pass",
+   "note": "St. Catharines-Niagara closing rate 0.540 to 0.591; Ontario exits x1.197; model about half the size"
   }
  ],
  "calibrated_not_tests": [

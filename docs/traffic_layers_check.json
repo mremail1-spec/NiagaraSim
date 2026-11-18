@@ -26,6 +26,7 @@
    "between_stops": 25189,
    "other_home_based": 27303
   },
+  "between_other_towns_trips_per_day": 55,
   "bridges": {
    "nfbc_cars_two_way_per_day": 13041,
    "queenston_cars_from_405_count": 7700,
@@ -60,16 +61,16 @@
   "correlation_regional_roads": 0.735,
   "median_share_explained_regional_pct": 38.9,
   "correlation_highways": 0.768,
-  "median_share_explained_highways_pct": 54.0,
-  "typical_error_factor": 6.09
+  "median_share_explained_highways_pct": 54.1,
+  "typical_error_factor": 6.08
  },
  "against_2025_regional_counts": {
   "sections_tested": 77,
   "correlation_all": 0.865,
-  "correlation_regional_roads": 0.744,
+  "correlation_regional_roads": 0.743,
   "median_share_explained_regional_pct": 38.2,
   "correlation_highways": 0.768,
-  "median_share_explained_highways_pct": 54.0,
+  "median_share_explained_highways_pct": 54.1,
   "typical_error_factor": 6.45
  },
  "sections": [
@@ -86,15 +87,15 @@
    "section": 49806,
    "where": "",
    "counted_aadt_2019": 18300,
-   "simulated_per_day": 22167,
-   "share_explained_pct": 121.1
+   "simulated_per_day": 22179,
+   "share_explained_pct": 121.2
   },
   {
    "highway": "420",
    "section": 49810,
    "where": "",
    "counted_aadt_2019": 33000,
-   "simulated_per_day": 30678,
+   "simulated_per_day": 30687,
    "share_explained_pct": 93.0
   },
   {
@@ -118,7 +119,7 @@
    "section": 10043,
    "where": "",
    "counted_aadt_2019": 70700,
-   "simulated_per_day": 36130,
+   "simulated_per_day": 36163,
    "share_explained_pct": 51.1
   },
   {
@@ -126,24 +127,24 @@
    "section": 10040,
    "where": "",
    "counted_aadt_2019": 74000,
-   "simulated_per_day": 41028,
-   "share_explained_pct": 55.4
+   "simulated_per_day": 41067,
+   "share_explained_pct": 55.5
   },
   {
    "highway": "QEW",
    "section": 10032,
    "where": "",
    "counted_aadt_2019": 47500,
-   "simulated_per_day": 25050,
-   "share_explained_pct": 52.7
+   "simulated_per_day": 25078,
+   "share_explained_pct": 52.8
   },
   {
    "highway": "QEW",
    "section": 10030,
    "where": "",
    "counted_aadt_2019": 34400,
-   "simulated_per_day": 30555,
-   "share_explained_pct": 88.8
+   "simulated_per_day": 30591,
+   "share_explained_pct": 88.9
   },
   {
    "highway": "QEW",
@@ -254,8 +255,8 @@
    "section": 610167,
    "where": "REG. RD. 98 (Montrose Rd.) to REG. RD. 102 (Stanley Ave.)",
    "counted_aadt_2019": 9000,
-   "simulated_per_day": 15435,
-   "share_explained_pct": 171.5
+   "simulated_per_day": 15442,
+   "share_explained_pct": 171.6
   },
   {
    "highway": "RR116",
@@ -302,7 +303,7 @@
    "section": 610273,
    "where": "Q.E.W. (int. # 101QEN) to Dorchester Road",
    "counted_aadt_2019": 12700,
-   "simulated_per_day": 3786,
+   "simulated_per_day": 3787,
    "share_explained_pct": 29.8
   },
   {
@@ -518,8 +519,8 @@
    "section": 610503,
    "where": "REG. RD. 98 (Kalar Rd.) to Q.E.W. (int. # 101QEN)",
    "counted_aadt_2019": 12100,
-   "simulated_per_day": 17666,
-   "share_explained_pct": 146.0
+   "simulated_per_day": 17681,
+   "share_explained_pct": 146.1
   },
   {
    "highway": "RR98",

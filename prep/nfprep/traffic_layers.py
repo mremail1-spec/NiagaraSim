@@ -48,7 +48,14 @@ JOBS_AT_USUAL_PLACE = 0.8
 OUTINGS_PER_PERSON = 0.475            # engine: outings per person (5+) per day
 DRIVER_SHARE_OF_OUTINGS = 0.677       # engine: share of outings driven
 WEEKDAY_TO_AVERAGE_DAY = 0.9          # SEED: the survey describes a weekday; counts are annual averages
-OTHER_TRIP_KM = 4.0                   # SEED: distance fall-off of errands and trips between stops              # share of inventory jobs held by someone who travels to that workplace (part-time
+OTHER_TRIP_KM = 4.0
+REGION_POPULATION_2021 = 477941          # Niagara Region, 2021 Census
+# SEED: pairs of other towns whose fastest real route crosses Niagara Falls (the model's towns join
+# only through the city's roads, so every other pair would be routed through it by mistake)
+THROUGH_PAIRS = {frozenset(p) for p in [("Fort Erie", "St. Catharines"), ("Fort Erie", "Thorold"),
+                                        ("Fort Erie", "Niagara-on-the-Lake"), ("Welland", "Niagara-on-the-Lake")]}
+INTRA_TOWN_KM = 3.0                      # SEED: typical trip within a town
+INTER_TOWN_KM = 5.5 / 2                  # SEED: gravity fall-off, half the survey's median driving trip                   # SEED: distance fall-off of errands and trips between stops              # share of inventory jobs held by someone who travels to that workplace (part-time
                                        # overlap, work from home, no fixed workplace)
 TOWN_DECAY_KM = 15.0                   # commuting falls off with distance like exp(-km / 15)
 INPUT_SECTIONS = {("QEW", 10050), ("QEW", 10025), ("405", 48600)}   # used to size the layers; never scored
@@ -192,6 +199,31 @@ def build_trips(city: dict, spending_vol: np.ndarray) -> tuple[list, dict]:
     trips += gravity(lat, lon, home_w, dest_w, missing - nhb, OTHER_TRIP_KM)
     sizes["other_car_trips_per_day"] = {"survey_driver_trips": round(survey), "already_simulated": round(simulated),
                                         "between_stops": round(nhb), "other_home_based": round(missing - nhb)}
+
+    # trips between the other towns that cross Niagara Falls: the travel survey's region-wide trips,
+    # shared between towns by population and distance (gravity); only pairs of other towns are added
+    region_trips = tb["trips_per_day_region"] * tb["mode_pct"]["auto_driver"] / 100 * WEEKDAY_TO_AVERAGE_DAY
+    places = [(t["name"], t["population_2021"], t["lat"], t["lon"]) for t in towns] + [("Niagara Falls", 94415, 43.08, -79.08)]
+    region_pop = REGION_POPULATION_2021
+    P = np.array([p_[1] for p_ in places], float)
+    D = np.array([[INTRA_TOWN_KM if a == b else np.hypot((places[a][2] - places[b][2]) * 111.3, (places[a][3] - places[b][3]) * 81.2)
+                   for b in range(len(places))] for a in range(len(places))])
+    G = P[:, None] * P[None, :] * np.exp(-D / INTER_TOWN_KM)
+    G = G / G.sum() * region_trips * P.sum() / region_pop
+    town_by_name = {k: v for k, v in town_node.items()}
+    inter = 0.0
+    for a in range(len(places) - 1):
+        for b_ in range(len(places) - 1):
+            if a == b_:
+                continue
+            na = next((v for k, v in town_by_name.items() if places[a][0] in k), None)
+            nb = next((v for k, v in town_by_name.items() if places[b_][0] in k), None)
+            pair = frozenset((places[a][0], places[b_][0]))
+            if na is None or nb is None or G[a, b_] < 1 or pair not in THROUGH_PAIRS:
+                continue
+            trips.append([int(na), int(nb), round(float(G[a, b_]), 1)])
+            inter += G[a, b_]
+    sizes["between_other_towns_trips_per_day"] = round(inter)
 
     # trucks and through cars, from the edge counts
     m = json.loads((DATA_DIR / "traffic_counts_provincial_highways.json").read_text())

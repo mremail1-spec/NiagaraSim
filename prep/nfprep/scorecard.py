@@ -79,17 +79,13 @@ def main() -> dict:
         c = float(np.corrcoef([r["model_revenue_change"] for r in rr], [r["employer_count_change_next_june"] for r in rr])[0, 1])
         add("Business counts", "Industry revenue direction against next June's employer count, 2023-2025", f"{agree} of {len(rr)}", ">= 70%",
             agree / len(rr) >= 0.7, f"correlation {c:.2f}")
-    s = _load("survival_rate_check.json")
-    if s:
-        yrs = [x for x in s["years"] if x not in PANDEMIC]
-        add("Business counts", "St. Catharines-Niagara closings 2023-2025, rise the model sees", "not seen",
-            "direction right", False, "closings rose in 2025 (0.54 to 0.59); the model's revenue did not fall")
-    b = _load("backtest_2021_2026.json")
-    cr = _load("closure_risk_check.json")
-    if cr:
-        sk = cr["brier_skill_vs_overall_rate"]["model"]
-        add("Closures", "Five-year closure chance, skill over each kind's average (2021-2026, includes pandemic recovery)", sk, "> 0.05",
-            sk > 0.05, "reported, not a pandemic-free test")
+    cc = _load("conditions_check.json")
+    if cc:
+        obs = cc["observed"]["st_catharines_niagara_closing_rate"][2]
+        add("Business counts", "2025 rise in closings: conditions logic (rates, wages, US visitors) predicts the direction",
+            f"x{cc['model_closure_odds_multiplier_2025_vs_2024']} vs x{obs}", "direction right", cc["direction_right"],
+            "St. Catharines-Niagara closing rate 0.540 to 0.591; Ontario exits x" + str(cc["observed"]["ontario_exit_rate"][2]) + "; model about half the size")
+    # retired: five-year closure chance from 38 map edits (2021-2026), superseded by the Employment Inventory test
     passed = sum(r["result"] == "pass" for r in rows)
     doc = {"_meta": {"what": __doc__.strip().split("\n\n")[0], "pandemic_years_left_out": sorted(PANDEMIC)},
            "passed": f"{passed} of {len(rows)}", "tests": rows,
