@@ -21,7 +21,7 @@ PARKS_ATTRACTIONS = {"journey_behind_the_falls": "Journey Behind the Falls",
 # Tourist spending category -> (share key(s) in the travel survey's spending mix, businesses that serve it)
 TOURIST_CATEGORIES = {
     "restaurants": (["restaurants"], {"restaurant": 1, "fast_food": 1, "cafe": 1, "bar_pub": 1, "nightlife": 1}),
-    "food_from_stores": (["food_from_stores"], {"grocery_food": 1, "liquor": 0.3}),
+    "food_from_stores": (["food_from_stores"], {"grocery_food": 1, "liquor": 1.0}),   # tested 0.3 / 1 / 2: LCBO 0.30 / 0.41 / 0.56 of published
     "fuel": (["vehicle_operation"], {"fuel": 1}),
     "parking": (["vehicle_operation"], {"parking": 1}),
     "vehicle_rental": (["vehicle_rental"], {"car_rental": 1}),
@@ -39,7 +39,7 @@ TOURIST_CATEGORIES = {
     # visitors around the parks and viewpoints, and on the roads and paths that lead there.
     "sightseeing": ([], {"free_sight": 1}),
     "other_retail": (["other_retail"], {"souvenir_gift": 1, "retail_other": 0.5, "general_merchandise": 0.05,
-                                         "tobacco_cannabis": 0.2, "pharmacy": 0.3}),
+                                         "tobacco_cannabis": 0.2, "tobacconist": 0.3, "pharmacy": 0.3}),
 }
 VEHICLE_OPERATION_SPLIT = {"fuel": 0.7, "parking": 0.3}      # SEED: fuel vs parking within "vehicle operation"
 # SEED: purchases per party per day in each category (sets how many stops a party makes, not what it spends)

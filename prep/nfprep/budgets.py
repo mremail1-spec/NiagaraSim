@@ -72,7 +72,7 @@ SERVED_BY = {
     # Store still sell most of it
     "alcohol": {"liquor": 1.0, "grocery_food": 0.02},   # tested 0.1 / 0.02 / 0: LCBO at 0.20 / 0.37 / 0.54 of published sales
     # SEED: cigarettes are bought mostly at convenience and grocery stores; tobacconists and vape shops take a share
-    "tobacco": {"grocery_food": 1.0, "tobacco_cannabis": 0.5},
+    "tobacco": {"grocery_food": 1.0, "tobacconist": 0.5},
     "cannabis": {"tobacco_cannabis": 1.0},
     "fuel": {"fuel": 1.0},
     "vehicle_service": {"auto_service": 1.0},
