@@ -5,9 +5,9 @@ inside the city are kept back to test the result.
 
   commuting   2021 Census: 13,560 residents work in the city, 8,865 elsewhere in Niagara Region,
               2,045 elsewhere in Ontario; 84.7% drive. Residents' homes from the synthetic
-              population (employed persons); jobs at the model's businesses (staff) and, for the
-              rest, spread like the population. Workers driving in from the other towns fill the
-              business jobs residents do not.
+              population (employed persons); jobs at every employer in Niagara Region's
+              Employment Inventory 2025 (about 44,000 jobs by employee band). Workers driving in
+              from the other towns fill the jobs residents do not.
   trucks      MTO 2019 truck counts on the QEW at the city's north (section 10050) and south
               (10025) edges and on Highway 405 at the Queenston-Lewiston Bridge (48600).
   bridges     Niagara Falls Bridge Commission: 2.38 million cars a year west-bound over its three
@@ -35,8 +35,11 @@ ROOT = Path(__file__).resolve().parents[2]
 CITY = ROOT / "build" / "city_2025"
 WORKDAYS = 240 / 365                  # average day share of a commute (holidays, leave, sick days)
 # SEEDs
-RESIDENT_SHARE_OF_BUSINESS_JOBS = 0.6  # of residents who work in the city, the share working at the shops, restaurants,
-                                       # hotels and attractions the model lists (the rest: hospital, schools, plants, offices)
+# jobs per employer from the Employment Inventory's employee band (band midpoints, large capped)
+BAND_JOBS = {"Micro (1-4 Employees)": 2.5, "Small (5-99 Employees)": 20, "Medium (100-499 Employees)": 220,
+             "Large (500 + Employees)": 800}
+JOBS_AT_USUAL_PLACE = 0.8              # share of inventory jobs held by someone who travels to that workplace (part-time
+                                       # overlap, work from home, no fixed workplace)
 TOWN_DECAY_KM = 15.0                   # commuting falls off with distance like exp(-km / 15)
 INPUT_SECTIONS = {("QEW", 10050), ("QEW", 10025), ("405", 48600)}   # used to size the layers; never scored
 
@@ -64,10 +67,18 @@ def build_trips(city: dict, spending_vol: np.ndarray) -> tuple[list, dict]:
     for h in range(n_city_hh):
         pop[hh["node"][h]] += hh["persons5"][h]
     pop_w = pop / pop.sum()
+    # where the jobs are: every employer in Niagara Region's Employment Inventory 2025 (all sectors,
+    # including hospitals, plants and offices), jobs from its employee band
+    from .inventory_check import load as load_inventory
+    status, rec = load_inventory()
     jobs = np.zeros(len(lat))
-    for i in range(len(b["node"])):
-        if not b["external"][i]:
-            jobs[b["node"][i]] += b["staff"][i]
+    for i, st in status.items():
+        if st.get(2025) != "open":
+            continue
+        x = rec[i][2025]
+        if not x["lat"]:
+            continue
+        jobs[_nearest(lat, lon, float(x["lat"]), float(x["lon"]))] += BAND_JOBS.get(x["sizerangeemployees"], 0)
     business_jobs = jobs.sum()
     jobs_w = jobs / business_jobs
     towns = json.loads((DATA_DIR / "neighbouring_municipalities.json").read_text())["towns"]
@@ -103,20 +114,19 @@ def build_trips(city: dict, spending_vol: np.ndarray) -> tuple[list, dict]:
         return out
 
     in_city = dest["within_niagara_falls"] * drive * WORKDAYS
-    to_biz = in_city * RESIDENT_SHARE_OF_BUSINESS_JOBS
-    trips += spread(home_w, jobs_w, to_biz)
-    trips += spread(home_w, pop_w, in_city - to_biz)
+    trips += spread(home_w, jobs_w, in_city)
     out_region = dest["elsewhere_in_niagara_region"] * drive * WORKDAYS
     for node, w in tw.items():
         trips += [[o, d, v] for o, d, v in spread(home_w, np.eye(len(lat))[node], out_region * w)]
     out_prov = dest["outside_region_in_ontario"] * drive * WORKDAYS
     trips += spread(home_w, np.eye(len(lat))[north], out_prov)
-    in_comm = max(business_jobs * WORKDAYS - to_biz / drive, 0) * drive    # business shifts not filled by residents
+    # jobs held at a usual place of work on an average day, less those filled by residents
+    in_comm = max(business_jobs * JOBS_AT_USUAL_PLACE - dest["within_niagara_falls"], 0) * drive * WORKDAYS
     for node, w in tw.items():
         trips += spread(np.eye(len(lat))[node], jobs_w, in_comm * w)
     sizes["commute_round_trips_per_day"] = {"residents_in_city": round(in_city), "residents_to_other_towns": round(out_region),
                                             "residents_outside_region": round(out_prov), "workers_driving_in": round(in_comm),
-                                            "business_jobs_in_model": int(business_jobs)}
+                                            "inventory_jobs": int(business_jobs)}
 
     # trucks and through cars, from the edge counts
     m = json.loads((DATA_DIR / "traffic_counts_provincial_highways.json").read_text())
