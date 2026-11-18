@@ -1,3 +1,4 @@
 # Project rules (from the owner)
 - Never use any .ru domain for any information, download or service (no mirrors, APIs or sources on .ru).
 - Work privately: do not plan on contacting the City, Niagara Parks, businesses or other outside parties for data. Use public data, the owner's own collection, and what can be measured or observed. Outside parties are involved only once there is something to demonstrate.
+- Trust order for evidence: measured third-party data first (navigation companies such as TomTom or Google, CBRE, operators' ticket, room and crossing counts), then government figures. Government statistics can be less than truthful: where they conflict with third-party measurements, follow the third party and find the cause elsewhere; never tune the model to a government figure against third-party evidence. Label every government-sourced input and check as such.
