@@ -256,6 +256,37 @@ OPERATORS = ["", "niagara_parks", "casino"]
 NPC_TRANSIT_ESTIMATE = 16_000_000
 
 
+CHAIN_EXCLUDED = {"accommodation", "free_sight", "parking", "attraction", "leisure_paid", "entertainment", "services", "office"}
+GENERIC_NAME = re.compile(r"^(viewpoint|food stand|paid activity|municipal|gas station|unnamed|estimated|parking)", re.I)
+
+
+def chain_key(b: dict) -> str:
+    if b.get("brand"):
+        return b["brand"].lower().strip()
+    n = (b.get("name") or "").lower()
+    n = re.sub(r"\(.*?\)|#\s*\d+|\bstore\b\s*\d+|[^a-z0-9&' ]", " ", n)
+    n = re.sub(r"\b(niagara falls|niagara|lundy'?s lane|on|ontario|the)\b", " ", n)
+    return " ".join(n.split())
+
+
+def chain_ids(biz: list[dict]) -> list[int]:
+    """Branches of the same chain (same brand or name, same kind of business, 2+ in the city) share an id;
+    shoppers consider only the nearest branch of each chain. -1: not a chain."""
+    keys = [(chain_key(b), b["sim_category"]) if b.get("name") and b["sim_category"] not in CHAIN_EXCLUDED
+            and not GENERIC_NAME.match(b["name"]) else None for b in biz]
+    count = {}
+    for k in keys:
+        if k and k[0]:
+            count[k] = count.get(k, 0) + 1
+    ids, out = {}, []
+    for k in keys:
+        if k and k[0] and count[k] >= 2:
+            out.append(ids.setdefault(k, len(ids)))
+        else:
+            out.append(-1)
+    return out
+
+
 def operator_of(b: dict) -> int:
     """1 = run by the Niagara Parks Commission, 2 = an OLG casino, 0 = anyone else."""
     if b["sim_category"] == "casino":
@@ -360,6 +391,7 @@ def export_city(pack: Pack, city: dict, budgets: np.ndarray, year: int, path: Pa
                        "group": [group_of.get(b["naics"], len(group_names)) for b in biz] + [len(group_names)] * len(ext),
                        "address": [b.get("address", "") for b in biz] + [""] * len(ext),
                        "standin": [int(b["source"] == "synthetic") for b in biz] + [0] * len(ext),
+                       "chain": chain_ids(biz) + [-1] * len(ext),
                        "osm_id": [b.get("osm_id", "") for b in biz] + [""] * len(ext),
                        "employer": [int(b.get("employer", 0)) for b in biz] + [0] * len(ext),
                        "operator": [operator_of(b) for b in biz] + [0] * len(ext),

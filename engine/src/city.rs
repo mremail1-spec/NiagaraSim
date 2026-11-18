@@ -354,6 +354,10 @@ pub struct Businesses {
     pub extra_min: Vec<f32>,
     /// A town's pull as a multiple of the whole city's pull in the same category.
     pub pull_scale: Vec<f64>,
+    /// Chain id shared by branches of the same chain (-1: not a chain). Shoppers consider only the
+    /// nearest branch of each chain: nobody drives past one Shoppers Drug Mart to reach another.
+    #[serde(default)]
+    pub chain: Vec<i32>,
     /// Pull from the site itself (passing traffic), 1 when absent; filled by `City::prepare_sites`.
     #[serde(default)]
     pub site: Vec<f64>,

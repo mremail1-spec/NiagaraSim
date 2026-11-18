@@ -316,6 +316,9 @@ impl Engine {
         b.extra_km.push(0.0);
         b.extra_min.push(0.0);
         b.pull_scale.push(0.0);
+        if !b.chain.is_empty() {
+            b.chain.push(-1);
+        }
         self.dest_of_business.push(dest);
         if let Some(t) = self.city.tourism.as_mut() {
             t.capacity.push(0);

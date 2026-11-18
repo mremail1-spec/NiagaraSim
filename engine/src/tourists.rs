@@ -157,7 +157,8 @@ impl Engine {
             out.push(w);
             total += w;
         }
-        total
+        let _ = total;
+        self.nearest_branch_only(node, &rt.cat_business[c], out)
     }
 
     /// Build the tourist tables. Called whenever the distance parameter is set.

@@ -317,14 +317,32 @@ impl Engine {
 
     pub(crate) fn weights(&self, node: usize, c: usize, beta: f64, out: &mut Vec<f64>) -> f64 {
         out.clear();
-        let mut total = 0.0;
         for (i, &b) in self.cat_business[c].iter().enumerate() {
             let t = self.trip_minutes(node, b as usize);
-            let w = self.cat_pull[c][i] / t.max(self.city.params.min_minutes).powf(beta);
-            out.push(w);
-            total += w;
+            out.push(self.cat_pull[c][i] / t.max(self.city.params.min_minutes).powf(beta));
         }
-        total
+        self.nearest_branch_only(node, &self.cat_business[c], out)
+    }
+
+    /// Keep only the nearest branch of each chain among `list` (weights in `out`), and return the total.
+    pub(crate) fn nearest_branch_only(&self, node: usize, list: &[u32], out: &mut [f64]) -> f64 {
+        let chain = &self.city.businesses.chain;
+        if !chain.is_empty() {
+            let mut best: std::collections::HashMap<i32, (usize, f64)> = std::collections::HashMap::new();
+            for (i, &b) in list.iter().enumerate() {
+                let k = chain.get(b as usize).copied().unwrap_or(-1);
+                if k < 0 {
+                    continue;
+                }
+                let t = self.trip_minutes(node, b as usize);
+                match best.get(&k) {
+                    Some(&(j, tj)) if tj <= t => { out[i] = 0.0; let _ = j; }
+                    Some(&(j, _)) => { out[j] = 0.0; best.insert(k, (i, t)); }
+                    None => { best.insert(k, (i, t)); }
+                }
+            }
+        }
+        out.iter().sum()
     }
 
     /// Outings per day leaving each home node for each category.
