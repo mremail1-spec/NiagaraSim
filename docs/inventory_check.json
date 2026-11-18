@@ -15,7 +15,7 @@
    },
    "fast_food": {
     "matched": 50,
-    "rank_correlation": 0.083
+    "rank_correlation": 0.084
    },
    "restaurant": {
     "matched": 67,
@@ -34,15 +34,15 @@
     "rank_correlation": 0.097
    },
    "tobacco_cannabis": {
-    "matched": 21,
-    "rank_correlation": -0.135
+    "matched": 17,
+    "rank_correlation": 0.044
    },
    "retail_other": {
     "matched": 12,
     "rank_correlation": -0.07
    }
   },
-  "weighted_rank_correlation": 0.214
+  "weighted_rank_correlation": 0.227
  },
  "closures_2023_2025": {
   "window": "open in 2023, closed by 2025",
@@ -176,8 +176,8 @@
   "coefficients_standardised": {
    "intercept": -2.202,
    "kind (none here)": 0.0,
-   "model forecast rank within kind": -0.029,
-   "model visitor share": 0.178,
+   "model forecast rank within kind": -0.03,
+   "model visitor share": 0.18,
    "log age": -0.308,
    "age unknown": -0.056,
    "employee band": -0.643,
@@ -209,8 +209,8 @@
     "ranking": 0.665
    },
    "facts_and_model": {
-    "brier": 0.1065,
-    "skill_vs_overall": 0.033,
+    "brier": 0.1064,
+    "skill_vs_overall": 0.034,
     "skill_vs_kind_rate": 0.016,
     "ranking": 0.67
    }
@@ -314,10 +314,10 @@
    }
   },
   "coefficients_standardised": {
-   "intercept": -2.052,
+   "intercept": -2.053,
    "kind (none here)": 0.0,
-   "model forecast rank within kind": -0.19,
-   "model visitor share": 0.205,
+   "model forecast rank within kind": -0.192,
+   "model visitor share": 0.206,
    "log age": -0.183,
    "age unknown": -0.05,
    "employee band": -0.462,

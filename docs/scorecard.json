@@ -36,7 +36,7 @@
   {
    "area": "Traffic",
    "test": "Regional roads, median share of counted traffic",
-   "score": "30.8%",
+   "score": "30.6%",
    "pass_mark": ">= 50%",
    "result": "miss",
    "note": "school trips and trips between stops are not simulated yet"
@@ -68,7 +68,7 @@
   {
    "area": "Sales at a site",
    "test": "Model revenue against surveyed employee band (Employment Inventory 2025)",
-   "score": 0.214,
+   "score": 0.227,
    "pass_mark": ">= 0.3",
    "result": "miss",
    "note": "408 businesses matched"

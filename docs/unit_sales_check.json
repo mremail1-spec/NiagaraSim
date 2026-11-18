@@ -5,10 +5,10 @@
  "summary": {
   "median_ratio_model_to_published": 1.09,
   "branches_above_brand_best": 1,
-  "site_error_log_sd": 0.666,
+  "site_error_log_sd": 0.578,
   "site_range_p10_p90": [
-   0.43,
-   2.35
+   0.48,
+   2.1
   ]
  },
  "brands": {
@@ -16,26 +16,26 @@
    "branches": [
     {
      "address": "5200 Robinson St",
-     "model_revenue": 1657152
+     "model_revenue": 1660336
     },
     {
      "address": "4945 Clifton Hl",
-     "model_revenue": 3390750
+     "model_revenue": 3401939
     },
     {
      "address": "3643-3739 Portage Rd",
-     "model_revenue": 1319376
+     "model_revenue": 1320528
     },
     {
      "address": "5619 Stanley Av",
-     "model_revenue": 1019992
+     "model_revenue": 1020436
     },
     {
      "address": "6225 Lundy's Ln",
-     "model_revenue": 2767022
+     "model_revenue": 2766564
     }
    ],
-   "model_median": 1657152,
+   "model_median": 1660336,
    "published_average": 789000,
    "ratio": 2.1,
    "above_brand_best_unit": 0,
@@ -45,10 +45,10 @@
    "branches": [
     {
      "address": "5950 Victoria Av",
-     "model_revenue": 6697783
+     "model_revenue": 6696335
     }
    ],
-   "model_median": 6697783,
+   "model_median": 6696335,
    "published_average": 7176000,
    "ratio": 0.93,
    "above_brand_best_unit": 0,
@@ -58,18 +58,18 @@
    "branches": [
     {
      "address": "4950 Clifton Hill",
-     "model_revenue": 11291173
+     "model_revenue": 11288594
     },
     {
      "address": "6962 Optimist Ln",
-     "model_revenue": 1414990
+     "model_revenue": 1414789
     },
     {
      "address": "8444 Lundy's Ln",
-     "model_revenue": 4472468
+     "model_revenue": 4472370
     }
    ],
-   "model_median": 4472468,
+   "model_median": 4472370,
    "published_average": 2505000,
    "ratio": 1.79,
    "above_brand_best_unit": 0,
@@ -79,70 +79,70 @@
    "branches": [
     {
      "address": "7307 Oakwood Dr",
-     "model_revenue": 675248
+     "model_revenue": 675137
     },
     {
      "address": "6948 McLeod Rd",
-     "model_revenue": 782602
+     "model_revenue": 782496
     },
     {
      "address": "8089 Portage Road",
-     "model_revenue": 788077
+     "model_revenue": 787969
     },
     {
      "address": "7311 Pin Oak Dr",
-     "model_revenue": 453465
+     "model_revenue": 453409
     },
     {
      "address": "5233 Stanley Av",
-     "model_revenue": 1921030
+     "model_revenue": 1920634
     },
     {
      "address": "6192 Lundy's Ln",
-     "model_revenue": 1744645
+     "model_revenue": 1744344
     },
     {
      "address": "6345 Niagara River Py",
-     "model_revenue": 2058625
+     "model_revenue": 2058086
     },
     {
      "address": "5687 Stanley Av",
-     "model_revenue": 2791427
+     "model_revenue": 2790856
     },
     {
      "address": "6380 Fallsview Bv",
-     "model_revenue": 4942725
+     "model_revenue": 4941354
     },
     {
      "address": "5551 Murray Street",
-     "model_revenue": 3736209
+     "model_revenue": 3735442
     },
     {
      "address": "8159 Lundy's Ln",
-     "model_revenue": 1263017
+     "model_revenue": 1263019
     },
     {
      "address": "3930 Montrose Rd",
-     "model_revenue": 786244
+     "model_revenue": 786159
     },
     {
      "address": "4835 Victoria Av",
-     "model_revenue": 1536790
+     "model_revenue": 1536449
     },
     {
      "address": "6907 Morrison St",
-     "model_revenue": 571826
+     "model_revenue": 571739
     },
     {
      "address": "6161 Thorold Stone Road",
-     "model_revenue": 719905
+     "model_revenue": 719805
     },
     {
      "address": "5470 Drummond Rd",
-     "model_revenue": 1543643
+     "model_revenue": 1543385
     }
    ],
-   "model_median": 1399904,
+   "model_median": 1399734,
    "published_average": 1117000,
    "ratio": 1.25,
    "above_brand_best_unit": 1,
@@ -152,14 +152,14 @@
    "branches": [
     {
      "address": "6980-7000 McLeod Rd",
-     "model_revenue": 754635
+     "model_revenue": 757204
     },
     {
      "address": "7665 Thorold Stone Rd",
-     "model_revenue": 1212128
+     "model_revenue": 1212152
     }
    ],
-   "model_median": 983382,
+   "model_median": 984678,
    "published_average": 1670000,
    "ratio": 0.59,
    "above_brand_best_unit": 0,
@@ -169,24 +169,24 @@
    "branches": [
     {
      "address": "7481 Oakwood Dr",
-     "model_revenue": 9832695
+     "model_revenue": 10932685
     },
     {
      "address": "3714 Portage Rd",
-     "model_revenue": 1438915
+     "model_revenue": 1580488
     },
     {
      "address": "4694 Victoria Avenue",
-     "model_revenue": 2311378
+     "model_revenue": 2832390
     },
     {
      "address": "5389 Ferry Street",
-     "model_revenue": 2887811
+     "model_revenue": 4298938
     }
    ],
-   "model_median": 2599594,
+   "model_median": 3565664,
    "published_average": 8630000,
-   "ratio": 0.3,
+   "ratio": 0.41,
    "above_brand_best_unit": 0,
    "source_quality": "2022-23 retail sales over store count"
   }
