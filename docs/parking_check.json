@@ -1,0 +1,63 @@
+{
+ "_meta": {
+  "what": "Niagara Parks lot counts (2000-2004) against the model.",
+  "data": "data/niagara_parks_parking_history.json"
+ },
+ "split_falls_to_rapidsview": {
+  "measured_by_year": {
+   "2000": 6.37,
+   "2001": 6.35,
+   "2002": 6.63,
+   "2003": 7.72,
+   "2004": 9.27
+  },
+  "model": 8.03,
+  "model_lot_sales": {
+   "Niagara Parks Falls Parking (Lot A)": 13569925,
+   "Niagara Parks Falls Overflow Parking": 9185550,
+   "Niagara Parks Rapidsview Parking (Lot C)": 2835314,
+   "Niagara Parks Dufferin Islands Parking": 1505152,
+   "Niagara Parks Butterfly Conservatory Parking": 1406099
+  },
+  "fitted": true
+ },
+ "sars_2003": {
+  "falls_lot_2003_vs_2002": 0.813,
+  "all_lots_2003_vs_2002": 0.827,
+  "health_card_blended": 0.828,
+  "abs_log_error": 0.018,
+  "health_card_before_with_domestic_seed_0.95": 0.899,
+  "domestic_multiplier_that_fits": {
+   "todays_mix": 0.829,
+   "mix_40pct_us": 0.856
+  },
+  "reading": "SARS was centred in Toronto, so Ontario visitors stayed away too: domestic about x0.83-0.86, not the seed x0.95."
+ },
+ "highway_420_2003": {
+  "sections": {
+   "STANLEY AV (NIAGARA RD 102)": {
+    "2003_vs_2002": 1.009,
+    "usual_year": 1.037,
+    "visitor_share_that_fits": 0.15
+   },
+   "DRUMMOND RD IC-NIAGARA FALLS": {
+    "2003_vs_2002": 1.038,
+    "usual_year": 1.041,
+    "visitor_share_that_fits": 0.02
+   },
+   "DORCHESTER RD IC-NIAGARA FALLS": {
+    "2003_vs_2002": 1.09,
+    "usual_year": 1.017,
+    "visitor_share_that_fits": -0.38
+   },
+   "QEW IC-NIAGARA FALLS": {
+    "2003_vs_2002": 1.006,
+    "usual_year": 1.008,
+    "visitor_share_that_fits": 0.01
+   }
+  },
+  "average_vs_usual_year": 1.01,
+  "visitor_share_that_fits": -0.05,
+  "reading": "Averaged over its sections Highway 420 grew at its usual rate in 2003 while the Falls lot fell 19%. The Stanley Avenue end, nearest the Falls, fell 2.7% below its usual year, which fits visitors at about 14% of its traffic; the model has 15%. The replay's 20-30% is not supported. MTO between-count years are partly estimated, so this is loose."
+ }
+}

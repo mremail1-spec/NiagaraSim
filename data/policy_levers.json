@@ -73,9 +73,9 @@
    "label": "Health scare (SARS-like)",
    "us": 0.76,
    "overseas": 0.8,
-   "domestic": 0.95,
+   "domestic": 0.85,
    "headline": "Health scare: visitors stay away",
-   "sources": "SARS 2003: US overnight visitors x0.655 in April-June, x0.76 for the year (measured); overseas and domestic effects SEED."
+   "sources": "SARS 2003: US overnight visitors x0.655 in April-June, x0.76 for the year (measured, Niagara ports). Domestic x0.85 from the Niagara Parks Falls lot (2003 vehicles x0.813 of 2002) with the visitor mix (docs/parking_check.json); overseas SEED."
   },
   "security": {
    "label": "Security shock (9/11-like)",

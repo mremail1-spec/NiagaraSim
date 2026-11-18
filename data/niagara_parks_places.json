@@ -1,8 +1,42 @@
-{"_meta": {"purpose": "Niagara Parks paid parking lots missing from the business list. Identified on OpenStreetMap (17 November 2026) by name and position along the Niagara Parkway; OpenStreetMap does not record their operator. Rapidsview is a cluster of unnamed fee lots, entered as one point.",
-  "confidence": "Falls Parking Lot, Falls Overflow and NPC Butterfly Parking are named on the map; Rapidsview and the Dufferin Islands lot are inferred from position and should be checked."},
+{
+ "_meta": {
+  "purpose": "Niagara Parks paid parking lots missing from the business list. Identified on OpenStreetMap (17 November 2026) by name and position along the Niagara Parkway; OpenStreetMap does not record their operator. Rapidsview is a cluster of unnamed fee lots, entered as one point.",
+  "confidence": "Falls Parking Lot, Falls Overflow and NPC Butterfly Parking are named on the map; Rapidsview and the Dufferin Islands lot are inferred from position and should be checked.",
+  "pull": "'pull' multiplies a lot's draw so the model's split between the Falls lots and Rapidsview matches the measured vehicles (2000-2004 average: Falls 414,208, Rapids View 58,629, ratio 7.1 to 1; data/niagara_parks_parking_history.json). With equal pull the model gave Falls (Lot A + Overflow) $8.2M against Rapidsview $12.0M (0.69 to 1); the split moves with the pull ratio to the power 1.3 to 1.7, so Falls 2.17 and Rapidsview 0.8. Dufferin Islands and Butterfly lots were not counted and keep 1."
+ },
  "add": [
-  {"name": "Niagara Parks Falls Parking (Lot A)", "category": "parking", "lat": 43.07644, "lon": -79.07996},
-  {"name": "Niagara Parks Falls Overflow Parking", "category": "parking", "lat": 43.07206, "lon": -79.07874},
-  {"name": "Niagara Parks Rapidsview Parking (Lot C)", "category": "parking", "lat": 43.06664, "lon": -79.06641},
-  {"name": "Niagara Parks Dufferin Islands Parking", "category": "parking", "lat": 43.06457, "lon": -79.05038},
-  {"name": "Niagara Parks Butterfly Conservatory Parking", "category": "parking", "lat": 43.13601, "lon": -79.05336}]}
+  {
+   "name": "Niagara Parks Falls Parking (Lot A)",
+   "category": "parking",
+   "lat": 43.07644,
+   "lon": -79.07996,
+   "pull": 2.17
+  },
+  {
+   "name": "Niagara Parks Falls Overflow Parking",
+   "category": "parking",
+   "lat": 43.07206,
+   "lon": -79.07874,
+   "pull": 2.17
+  },
+  {
+   "name": "Niagara Parks Rapidsview Parking (Lot C)",
+   "category": "parking",
+   "lat": 43.06664,
+   "lon": -79.06641,
+   "pull": 0.8
+  },
+  {
+   "name": "Niagara Parks Dufferin Islands Parking",
+   "category": "parking",
+   "lat": 43.06457,
+   "lon": -79.05038
+  },
+  {
+   "name": "Niagara Parks Butterfly Conservatory Parking",
+   "category": "parking",
+   "lat": 43.13601,
+   "lon": -79.05336
+  }
+ ]
+}

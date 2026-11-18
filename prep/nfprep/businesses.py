@@ -291,6 +291,7 @@ def build_businesses(pack: Pack, seed: int = 1) -> list[dict]:
             continue
         add("correction", c["name"], c["category"], la, lo)
         rows[-1]["address_hint"] = nice_case(c.get("address", ""))
+        rows[-1]["format_weight"] *= float(c.get("pull", 1.0))      # measured draw, e.g. Niagara Parks lot counts
 
     # synthetic businesses up to the register count, placed beside existing shops outside the Tourist Core
     anchors = [r for r in rows if r["source"] == "osm" and r["in_tourist_core"] == 0

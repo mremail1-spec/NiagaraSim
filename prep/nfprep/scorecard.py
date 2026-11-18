@@ -44,6 +44,12 @@ def main() -> dict:
         add("Foot traffic", "Model walkers higher on the City's sidewalk sweeper routes (ranking)", f["ranking_score"], ">= 0.7",
             f["ranking_score"] >= 0.7, f"{f['top_100_walking_nodes_on_routes']} of the model's 100 busiest walking spots are on a route "
             f"({f['share_of_nodes_on_routes']:.0%} of road nodes are)")
+    pk = _load("parking_check.json")
+    if pk:
+        st = next(v for k, v in pk["highway_420_2003"]["sections"].items() if k.startswith("STANLEY"))
+        share = st["visitor_share_that_fits"]
+        add("Traffic", "Highway 420 at Stanley Ave, visitor share from the 2003 (SARS) dip", share, "0.08-0.22 (model 0.15)",
+            0.08 <= share <= 0.22, "Niagara Parks Falls lot x0.813 that year; one year of partly estimated MTO counts")
     u = _load("unit_sales_check.json")
     if u:
         r = u["summary"]["median_ratio_model_to_published"]

@@ -7,7 +7,7 @@
    "2022"
   ]
  },
- "passed": "10 of 13",
+ "passed": "11 of 14",
  "tests": [
   {
    "area": "Traffic",
@@ -48,6 +48,14 @@
    "pass_mark": ">= 0.7",
    "result": "pass",
    "note": "81 of the model's 100 busiest walking spots are on a route (11% of road nodes are)"
+  },
+  {
+   "area": "Traffic",
+   "test": "Highway 420 at Stanley Ave, visitor share from the 2003 (SARS) dip",
+   "score": 0.15,
+   "pass_mark": "0.08-0.22 (model 0.15)",
+   "result": "pass",
+   "note": "Niagara Parks Falls lot x0.813 that year; one year of partly estimated MTO counts"
   },
   {
    "area": "Sales at a site",
