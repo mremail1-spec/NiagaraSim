@@ -35,7 +35,7 @@
   "restaurant": 0.81,
   "retail_other": -0.3,
   "souvenir_gift": 0.55,
-  "tobacco_cannabis": 0.0
+  "tobacco_cannabis": -0.0
  },
  "observed": {
   "st_catharines_niagara_closing_rate": [

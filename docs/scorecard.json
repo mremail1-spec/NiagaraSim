@@ -12,7 +12,7 @@
   {
    "area": "Traffic",
    "test": "Regional roads, correlation with 2019 counts",
-   "score": 0.74,
+   "score": 0.724,
    "pass_mark": ">= 0.6",
    "result": "pass",
    "note": "77 sections; edge counts used as inputs are not scored"
@@ -20,7 +20,7 @@
   {
    "area": "Traffic",
    "test": "Regional roads, correlation with 2025 counts",
-   "score": 0.75,
+   "score": 0.733,
    "pass_mark": ">= 0.6",
    "result": "pass",
    "note": "Region's 2025 counts, 69 sections in the city"
@@ -28,7 +28,7 @@
   {
    "area": "Traffic",
    "test": "Provincial highways, correlation with 2019 counts",
-   "score": 0.761,
+   "score": 0.765,
    "pass_mark": ">= 0.6",
    "result": "pass",
    "note": ""
@@ -36,7 +36,7 @@
   {
    "area": "Traffic",
    "test": "Regional roads, median share of counted traffic",
-   "score": "51.2%",
+   "score": "56.1%",
    "pass_mark": ">= 50%",
    "result": "pass",
    "note": "school trips and trips between stops are not simulated yet"
@@ -44,7 +44,7 @@
   {
    "area": "Foot traffic",
    "test": "Model walkers higher on the City's sidewalk sweeper routes (ranking)",
-   "score": 0.792,
+   "score": 0.793,
    "pass_mark": ">= 0.7",
    "result": "pass",
    "note": "81 of the model's 100 busiest walking spots are on a route (11% of road nodes are)"
@@ -52,7 +52,7 @@
   {
    "area": "Sales at a site",
    "test": "Chain branches, model median against published sales per location",
-   "score": 1.09,
+   "score": 1.08,
    "pass_mark": "0.67-1.5",
    "result": "pass",
    "note": "4 chains; a tourist city can sit above national averages"

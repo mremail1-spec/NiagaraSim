@@ -7,7 +7,7 @@
   "by_kind": {
    "grocery_food": {
     "matched": 28,
-    "rank_correlation": 0.436
+    "rank_correlation": 0.458
    },
    "accommodation": {
     "matched": 68,
@@ -15,11 +15,11 @@
    },
    "fast_food": {
     "matched": 50,
-    "rank_correlation": 0.084
+    "rank_correlation": 0.079
    },
    "restaurant": {
     "matched": 67,
-    "rank_correlation": 0.137
+    "rank_correlation": 0.142
    },
    "cafe": {
     "matched": 20,
@@ -27,7 +27,7 @@
    },
    "personal_services": {
     "matched": 31,
-    "rank_correlation": 0.389
+    "rank_correlation": 0.363
    },
    "auto_service": {
     "matched": 31,
@@ -60,7 +60,7 @@
     "brier": 0.107,
     "skill_vs_overall": -0.018,
     "skill_vs_kind_rate": -0.012,
-    "ranking": 0.535
+    "ranking": 0.536
    },
    "facts": {
     "brier": 0.1027,
@@ -76,7 +76,7 @@
    }
   },
   "single_feature_ranking_higher_means_more_closures": {
-   "model forecast rank within kind": 0.509,
+   "model forecast rank within kind": 0.511,
    "model visitor share": 0.503,
    "log age": 0.41,
    "age unknown": 0.491,
@@ -176,8 +176,8 @@
   "coefficients_standardised": {
    "intercept": -2.202,
    "kind (none here)": 0.0,
-   "model forecast rank within kind": -0.03,
-   "model visitor share": 0.18,
+   "model forecast rank within kind": -0.024,
+   "model visitor share": 0.179,
    "log age": -0.308,
    "age unknown": -0.056,
    "employee band": -0.643,
@@ -200,7 +200,7 @@
     "brier": 0.1078,
     "skill_vs_overall": 0.021,
     "skill_vs_kind_rate": 0.003,
-    "ranking": 0.594
+    "ranking": 0.593
    },
    "facts": {
     "brier": 0.1084,
@@ -209,14 +209,14 @@
     "ranking": 0.665
    },
    "facts_and_model": {
-    "brier": 0.1064,
-    "skill_vs_overall": 0.034,
+    "brier": 0.1065,
+    "skill_vs_overall": 0.033,
     "skill_vs_kind_rate": 0.016,
     "ranking": 0.67
    }
   },
   "single_feature_ranking_higher_means_more_closures": {
-   "model forecast rank within kind": 0.468,
+   "model forecast rank within kind": 0.467,
    "model visitor share": 0.529,
    "log age": 0.439,
    "age unknown": 0.485,
@@ -316,12 +316,12 @@
   "coefficients_standardised": {
    "intercept": -2.053,
    "kind (none here)": 0.0,
-   "model forecast rank within kind": -0.192,
-   "model visitor share": 0.206,
-   "log age": -0.183,
-   "age unknown": -0.05,
-   "employee band": -0.462,
-   "log floor area": 0.268
+   "model forecast rank within kind": -0.198,
+   "model visitor share": 0.208,
+   "log age": -0.182,
+   "age unknown": -0.051,
+   "employee band": -0.464,
+   "log floor area": 0.269
   }
  }
 }
