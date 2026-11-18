@@ -12,7 +12,7 @@
   {
    "area": "Traffic",
    "test": "Regional roads, correlation with 2019 counts",
-   "score": 0.676,
+   "score": 0.685,
    "pass_mark": ">= 0.6",
    "result": "pass",
    "note": "77 sections; edge counts used as inputs are not scored"
@@ -20,7 +20,7 @@
   {
    "area": "Traffic",
    "test": "Regional roads, correlation with 2025 counts",
-   "score": 0.687,
+   "score": 0.697,
    "pass_mark": ">= 0.6",
    "result": "pass",
    "note": "Region's 2025 counts, 69 sections in the city"
@@ -28,7 +28,7 @@
   {
    "area": "Traffic",
    "test": "Provincial highways, correlation with 2019 counts",
-   "score": 0.765,
+   "score": 0.758,
    "pass_mark": ">= 0.6",
    "result": "pass",
    "note": ""
@@ -36,7 +36,7 @@
   {
    "area": "Traffic",
    "test": "Regional roads, median share of counted traffic",
-   "score": "30.3%",
+   "score": "30.6%",
    "pass_mark": ">= 50%",
    "result": "miss",
    "note": "school trips and trips between stops are not simulated yet"
@@ -44,7 +44,7 @@
   {
    "area": "Foot traffic",
    "test": "Model walkers higher on the City's sidewalk sweeper routes (ranking)",
-   "score": 0.789,
+   "score": 0.791,
    "pass_mark": ">= 0.7",
    "result": "pass",
    "note": "79 of the model's 100 busiest walking spots are on a route (11% of road nodes are)"
@@ -68,7 +68,7 @@
   {
    "area": "Sales at a site",
    "test": "Model revenue against surveyed employee band (Employment Inventory 2025)",
-   "score": 0.241,
+   "score": 0.245,
    "pass_mark": ">= 0.3",
    "result": "miss",
    "note": "394 businesses matched"

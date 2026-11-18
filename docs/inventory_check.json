@@ -6,8 +6,8 @@
   "matched_businesses": 394,
   "by_kind": {
    "grocery_food": {
-    "matched": 33,
-    "rank_correlation": 0.349
+    "matched": 28,
+    "rank_correlation": 0.421
    },
    "accommodation": {
     "matched": 68,
@@ -15,19 +15,19 @@
    },
    "fast_food": {
     "matched": 50,
-    "rank_correlation": 0.168
+    "rank_correlation": 0.162
    },
    "restaurant": {
     "matched": 67,
-    "rank_correlation": 0.099
+    "rank_correlation": 0.104
    },
    "cafe": {
     "matched": 20,
-    "rank_correlation": 0.162
+    "rank_correlation": 0.144
    },
    "personal_services": {
     "matched": 31,
-    "rank_correlation": 0.135
+    "rank_correlation": 0.136
    },
    "auto_service": {
     "matched": 31,
@@ -38,7 +38,7 @@
     "rank_correlation": 0.175
    }
   },
-  "weighted_rank_correlation": 0.241
+  "weighted_rank_correlation": 0.245
  },
  "closures_2023_2025": {
   "window": "open in 2023, closed by 2025",
@@ -56,7 +56,7 @@
     "brier": 0.107,
     "skill_vs_overall": -0.018,
     "skill_vs_kind_rate": -0.012,
-    "ranking": 0.535
+    "ranking": 0.536
    },
    "facts": {
     "brier": 0.1027,
@@ -66,13 +66,13 @@
    },
    "facts_and_model": {
     "brier": 0.1027,
-    "skill_vs_overall": 0.024,
+    "skill_vs_overall": 0.023,
     "skill_vs_kind_rate": 0.029,
     "ranking": 0.667
    }
   },
   "single_feature_ranking_higher_means_more_closures": {
-   "model forecast rank within kind": 0.508,
+   "model forecast rank within kind": 0.512,
    "model visitor share": 0.503,
    "log age": 0.41,
    "age unknown": 0.491,
@@ -170,12 +170,12 @@
    }
   },
   "coefficients_standardised": {
-   "intercept": -2.202,
+   "intercept": -2.203,
    "kind (none here)": 0.0,
-   "model forecast rank within kind": -0.031,
-   "model visitor share": 0.182,
-   "log age": -0.308,
-   "age unknown": -0.056,
+   "model forecast rank within kind": -0.02,
+   "model visitor share": 0.181,
+   "log age": -0.307,
+   "age unknown": -0.057,
    "employee band": -0.644,
    "log floor area": -0.204
   }
@@ -193,10 +193,10 @@
     "ranking": 0.591
    },
    "model_location": {
-    "brier": 0.108,
+    "brier": 0.1079,
     "skill_vs_overall": 0.02,
     "skill_vs_kind_rate": 0.002,
-    "ranking": 0.593
+    "ranking": 0.592
    },
    "facts": {
     "brier": 0.1084,
@@ -205,14 +205,14 @@
     "ranking": 0.665
    },
    "facts_and_model": {
-    "brier": 0.1067,
-    "skill_vs_overall": 0.032,
-    "skill_vs_kind_rate": 0.014,
-    "ranking": 0.669
+    "brier": 0.1066,
+    "skill_vs_overall": 0.033,
+    "skill_vs_kind_rate": 0.015,
+    "ranking": 0.668
    }
   },
   "single_feature_ranking_higher_means_more_closures": {
-   "model forecast rank within kind": 0.475,
+   "model forecast rank within kind": 0.47,
    "model visitor share": 0.53,
    "log age": 0.439,
    "age unknown": 0.485,
@@ -312,12 +312,12 @@
   "coefficients_standardised": {
    "intercept": -2.051,
    "kind (none here)": 0.0,
-   "model forecast rank within kind": -0.178,
+   "model forecast rank within kind": -0.179,
    "model visitor share": 0.205,
    "log age": -0.182,
-   "age unknown": -0.046,
-   "employee band": -0.463,
-   "log floor area": 0.269
+   "age unknown": -0.047,
+   "employee band": -0.462,
+   "log floor area": 0.268
   }
  }
 }
