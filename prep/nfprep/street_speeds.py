@@ -26,7 +26,7 @@ from .road_times import group
 
 ROOT = Path(__file__).resolve().parents[2]
 OUT = DATA_DIR / "street_speeds_tomtom.json"
-URL = "https://api.tomtom.com/traffic/services/4/flowSegmentData/absolute/12/json?point={lat},{lon}"
+URL = "https://api.tomtom.com/traffic/services/4/flowSegmentData/absolute/18/json?point={lat},{lon}"
 SNAP_M = 20
 MAX_ANGLE = np.radians(30)
 

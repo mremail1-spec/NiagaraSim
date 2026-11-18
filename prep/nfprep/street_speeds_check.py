@@ -26,7 +26,7 @@ from .road_times import group
 
 ROOT = Path(__file__).resolve().parents[2]
 CACHE = ROOT / "build" / "tomtom_flow_segments.json"
-URL = "https://api.tomtom.com/traffic/services/4/flowSegmentData/absolute/12/json?point={lat},{lon}"
+URL = "https://api.tomtom.com/traffic/services/4/flowSegmentData/absolute/18/json?point={lat},{lon}"
 PER_GROUP = {"motorway": 40, "arterial": 120, "collector": 80, "local": 60}
 SNAP_M = 20
 
