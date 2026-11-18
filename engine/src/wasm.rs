@@ -227,7 +227,7 @@ pub extern "C" fn nf_tourist_trip_count() -> u32 {
 
 /// Copy up to `max` of the last hour's tourist purchases into the buffer as
 /// (base road node, business, persons, spend, party, segment, group, lodging (-1 none), nights left,
-/// category, minutes, km).
+/// category, minutes, km, adults' age band, children).
 #[no_mangle]
 pub extern "C" fn nf_tourist_trips(max: u32) -> u32 {
     let e = engine();
@@ -249,6 +249,8 @@ pub extern "C" fn nf_tourist_trips(max: u32) -> u32 {
             BUF.push(t.category as f32);
             BUF.push(e.trip_minutes(t.base_node as usize, t.business as usize) as f32);
             BUF.push(e.trip_km(t.base_node as usize, t.business as usize) as f32);
+            BUF.push(t.age_band as f32);
+            BUF.push(t.children as f32);
         }
     }
     take as u32

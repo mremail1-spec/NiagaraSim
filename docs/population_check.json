@@ -1,0 +1,1600 @@
+{
+ "_meta": {
+  "what": "The simulated population against the 2021 census, tract by tract.",
+  "census": "data/tract_profiles.csv (2021 census profile, 21 tracts)"
+ },
+ "city": {
+  "avg_hh_size": {
+   "census_city": 2.5,
+   "sim_city": 2.5,
+   "tract_correlation": 0.993,
+   "tract_mean_abs_diff": 0.0
+  },
+  "median_hh_income": {
+   "census_city": null,
+   "sim_city": 75119.0,
+   "tract_correlation": 0.996,
+   "tract_mean_abs_diff": 1483.2,
+   "census_city_approx": 75000
+  },
+  "pct_hh_income_100k_plus": {
+   "census_city": 33.1,
+   "sim_city": 33.7,
+   "tract_correlation": 0.998,
+   "tract_mean_abs_diff": 0.9
+  },
+  "pct_hh_income_under_40k": {
+   "census_city": 21.1,
+   "sim_city": 21.0,
+   "tract_correlation": 0.996,
+   "tract_mean_abs_diff": 0.7
+  },
+  "pct_owner": {
+   "census_city": 70.3,
+   "sim_city": 70.7,
+   "tract_correlation": 0.999,
+   "tract_mean_abs_diff": 0.7
+  },
+  "pct_owners_with_mortgage": {
+   "census_city": 59.6,
+   "sim_city": 59.5,
+   "tract_correlation": 0.99,
+   "tract_mean_abs_diff": 0.9
+  },
+  "pct_single_detached": {
+   "census_city": 66.1,
+   "sim_city": 64.8,
+   "tract_correlation": 0.956,
+   "tract_mean_abs_diff": 2.5
+  },
+  "pct_apartments": {
+   "census_city": 20.7,
+   "sim_city": 19.9,
+   "tract_correlation": 0.998,
+   "tract_mean_abs_diff": 1.0
+  },
+  "pct_couple_with_children": {
+   "census_city": 24.1,
+   "sim_city": 24.2,
+   "tract_correlation": 0.994,
+   "tract_mean_abs_diff": 0.8
+  },
+  "pct_couple_no_children": {
+   "census_city": 24.2,
+   "sim_city": 24.0,
+   "tract_correlation": 0.977,
+   "tract_mean_abs_diff": 0.9
+  },
+  "pct_one_parent": {
+   "census_city": 11.2,
+   "sim_city": 11.1,
+   "tract_correlation": 0.968,
+   "tract_mean_abs_diff": 0.6
+  },
+  "pct_one_person": {
+   "census_city": 27.9,
+   "sim_city": 27.6,
+   "tract_correlation": 0.996,
+   "tract_mean_abs_diff": 0.8
+  },
+  "pct_multigenerational": {
+   "census_city": 3.8,
+   "sim_city": 3.8,
+   "tract_correlation": 0.967,
+   "tract_mean_abs_diff": 0.3
+  },
+  "pct_kids_0_17": {
+   "census_city": 18.2,
+   "sim_city": 18.1,
+   "tract_correlation": 0.992,
+   "tract_mean_abs_diff": 0.4
+  },
+  "pct_seniors_65plus": {
+   "census_city": 21.0,
+   "sim_city": 21.7,
+   "tract_correlation": 0.984,
+   "tract_mean_abs_diff": 0.9
+  },
+  "pct_female": {
+   "census_city": 51.3,
+   "sim_city": 51.3,
+   "tract_correlation": 0.98,
+   "tract_mean_abs_diff": 0.2
+  }
+ },
+ "cars": {
+  "tts_2022_niagara_region": {
+   "per_household": 1.75,
+   "pct_by_count": {
+    "0": 7,
+    "1": 39,
+    "2": 36,
+    "3": 12,
+    "4+": 6
+   }
+  },
+  "sim": {
+   "per_household": 1.75,
+   "pct_by_count": {
+    "0": 7.0,
+    "1": 39.0,
+    "2": 36.0,
+    "3": 12.0,
+    "4+": 6.0
+   }
+  },
+  "note": "Region-wide survey; Niagara Falls has more renters and apartments than the region, so its true rate is likely a little lower."
+ },
+ "tracts": [
+  {
+   "tract": "0200.00",
+   "community": "Willoughby / Crowland",
+   "households_sim": 2106,
+   "households_2021": 1555.0,
+   "avg_hh_size": {
+    "census": 2.7,
+    "sim": 2.7
+   },
+   "median_hh_income": {
+    "census": 100000.0,
+    "sim": 100944.5
+   },
+   "pct_hh_income_100k_plus": {
+    "census": 50.2,
+    "sim": 50.6
+   },
+   "pct_hh_income_under_40k": {
+    "census": 10.6,
+    "sim": 10.5
+   },
+   "pct_owner": {
+    "census": 89.0,
+    "sim": 89.1
+   },
+   "pct_owners_with_mortgage": {
+    "census": 56.1,
+    "sim": 55.1
+   },
+   "pct_single_detached": {
+    "census": 91.6,
+    "sim": 82.1
+   },
+   "pct_apartments": {
+    "census": 4.2,
+    "sim": 3.9
+   },
+   "pct_couple_with_children": {
+    "census": 28.6,
+    "sim": 28.0
+   },
+   "pct_couple_no_children": {
+    "census": 36.3,
+    "sim": 37.7
+   },
+   "pct_one_parent": {
+    "census": 5.1,
+    "sim": 5.0
+   },
+   "pct_one_person": {
+    "census": 15.8,
+    "sim": 15.1
+   },
+   "pct_multigenerational": {
+    "census": 4.8,
+    "sim": 4.8
+   },
+   "pct_kids_0_17": {
+    "census": 17.3,
+    "sim": 16.5
+   },
+   "pct_seniors_65plus": {
+    "census": 22.7,
+    "sim": 22.9
+   },
+   "pct_female": {
+    "census": 50.4,
+    "sim": 50.4
+   }
+  },
+  {
+   "tract": "0201.00",
+   "community": "Queen Victoria / Chippawa",
+   "households_sim": 2387,
+   "households_2021": 1990.0,
+   "avg_hh_size": {
+    "census": 2.4,
+    "sim": 2.4
+   },
+   "median_hh_income": {
+    "census": 77500.0,
+    "sim": 76697.0
+   },
+   "pct_hh_income_100k_plus": {
+    "census": 32.9,
+    "sim": 32.8
+   },
+   "pct_hh_income_under_40k": {
+    "census": 17.1,
+    "sim": 17.5
+   },
+   "pct_owner": {
+    "census": 73.7,
+    "sim": 74.1
+   },
+   "pct_owners_with_mortgage": {
+    "census": 58.2,
+    "sim": 58.0
+   },
+   "pct_single_detached": {
+    "census": 66.3,
+    "sim": 65.7
+   },
+   "pct_apartments": {
+    "census": 16.3,
+    "sim": 16.2
+   },
+   "pct_couple_with_children": {
+    "census": 23.6,
+    "sim": 24.9
+   },
+   "pct_couple_no_children": {
+    "census": 27.4,
+    "sim": 25.2
+   },
+   "pct_one_parent": {
+    "census": 12.3,
+    "sim": 13.7
+   },
+   "pct_one_person": {
+    "census": 26.9,
+    "sim": 25.6
+   },
+   "pct_multigenerational": {
+    "census": 2.8,
+    "sim": 2.8
+   },
+   "pct_kids_0_17": {
+    "census": 18.5,
+    "sim": 18.5
+   },
+   "pct_seniors_65plus": {
+    "census": 22.8,
+    "sim": 24.2
+   },
+   "pct_female": {
+    "census": 50.8,
+    "sim": 50.8
+   }
+  },
+  {
+   "tract": "0202.00",
+   "community": "Westlane / Drummond",
+   "households_sim": 1815,
+   "households_2021": 1140.0,
+   "avg_hh_size": {
+    "census": 3.3,
+    "sim": 3.3
+   },
+   "median_hh_income": {
+    "census": 87000.0,
+    "sim": 87592.0
+   },
+   "pct_hh_income_100k_plus": {
+    "census": 41.0,
+    "sim": 41.3
+   },
+   "pct_hh_income_under_40k": {
+    "census": 13.1,
+    "sim": 14.8
+   },
+   "pct_owner": {
+    "census": 54.5,
+    "sim": 54.5
+   },
+   "pct_owners_with_mortgage": {
+    "census": 72.4,
+    "sim": 73.8
+   },
+   "pct_single_detached": {
+    "census": 88.6,
+    "sim": 73.0
+   },
+   "pct_apartments": {
+    "census": 1.3,
+    "sim": 2.2
+   },
+   "pct_couple_with_children": {
+    "census": 39.5,
+    "sim": 39.2
+   },
+   "pct_couple_no_children": {
+    "census": 15.4,
+    "sim": 14.9
+   },
+   "pct_one_parent": {
+    "census": 11.4,
+    "sim": 13.2
+   },
+   "pct_one_person": {
+    "census": 13.6,
+    "sim": 12.8
+   },
+   "pct_multigenerational": {
+    "census": 8.8,
+    "sim": 7.9
+   },
+   "pct_kids_0_17": {
+    "census": 31.0,
+    "sim": 30.5
+   },
+   "pct_seniors_65plus": {
+    "census": 7.9,
+    "sim": 8.2
+   },
+   "pct_female": {
+    "census": 50.3,
+    "sim": 49.8
+   }
+  },
+  {
+   "tract": "0203.01",
+   "community": "Drummond / Queen Victoria",
+   "households_sim": 2695,
+   "households_2021": 2325.0,
+   "avg_hh_size": {
+    "census": 2.3,
+    "sim": 2.3
+   },
+   "median_hh_income": {
+    "census": 61600.0,
+    "sim": 62935.0
+   },
+   "pct_hh_income_100k_plus": {
+    "census": 20.5,
+    "sim": 22.3
+   },
+   "pct_hh_income_under_40k": {
+    "census": 27.4,
+    "sim": 25.8
+   },
+   "pct_owner": {
+    "census": 59.3,
+    "sim": 60.6
+   },
+   "pct_owners_with_mortgage": {
+    "census": 60.4,
+    "sim": 61.5
+   },
+   "pct_single_detached": {
+    "census": 60.4,
+    "sim": 62.4
+   },
+   "pct_apartments": {
+    "census": 24.5,
+    "sim": 23.5
+   },
+   "pct_couple_with_children": {
+    "census": 16.3,
+    "sim": 16.0
+   },
+   "pct_couple_no_children": {
+    "census": 21.5,
+    "sim": 23.9
+   },
+   "pct_one_parent": {
+    "census": 15.7,
+    "sim": 15.5
+   },
+   "pct_one_person": {
+    "census": 31.8,
+    "sim": 30.4
+   },
+   "pct_multigenerational": {
+    "census": 3.9,
+    "sim": 3.2
+   },
+   "pct_kids_0_17": {
+    "census": 18.9,
+    "sim": 18.6
+   },
+   "pct_seniors_65plus": {
+    "census": 21.6,
+    "sim": 21.5
+   },
+   "pct_female": {
+    "census": 53.1,
+    "sim": 53.3
+   }
+  },
+  {
+   "tract": "0203.02",
+   "community": "Drummond",
+   "households_sim": 2269,
+   "households_2021": 1930.0,
+   "avg_hh_size": {
+    "census": 2.7,
+    "sim": 2.7
+   },
+   "median_hh_income": {
+    "census": 84000.0,
+    "sim": 80880.0
+   },
+   "pct_hh_income_100k_plus": {
+    "census": 37.8,
+    "sim": 36.4
+   },
+   "pct_hh_income_under_40k": {
+    "census": 14.2,
+    "sim": 15.0
+   },
+   "pct_owner": {
+    "census": 72.7,
+    "sim": 71.6
+   },
+   "pct_owners_with_mortgage": {
+    "census": 63.4,
+    "sim": 62.0
+   },
+   "pct_single_detached": {
+    "census": 67.1,
+    "sim": 66.2
+   },
+   "pct_apartments": {
+    "census": 10.1,
+    "sim": 11.1
+   },
+   "pct_couple_with_children": {
+    "census": 28.2,
+    "sim": 28.4
+   },
+   "pct_couple_no_children": {
+    "census": 25.1,
+    "sim": 24.3
+   },
+   "pct_one_parent": {
+    "census": 11.1,
+    "sim": 10.6
+   },
+   "pct_one_person": {
+    "census": 20.2,
+    "sim": 21.3
+   },
+   "pct_multigenerational": {
+    "census": 4.1,
+    "sim": 4.2
+   },
+   "pct_kids_0_17": {
+    "census": 20.9,
+    "sim": 21.3
+   },
+   "pct_seniors_65plus": {
+    "census": 16.3,
+    "sim": 16.2
+   },
+   "pct_female": {
+    "census": 51.3,
+    "sim": 51.3
+   }
+  },
+  {
+   "tract": "0204.00",
+   "community": "Drummond",
+   "households_sim": 3808,
+   "households_2021": 3140.0,
+   "avg_hh_size": {
+    "census": 2.2,
+    "sim": 2.1
+   },
+   "median_hh_income": {
+    "census": 58400.0,
+    "sim": 57122.5
+   },
+   "pct_hh_income_100k_plus": {
+    "census": 21.2,
+    "sim": 22.1
+   },
+   "pct_hh_income_under_40k": {
+    "census": 31.2,
+    "sim": 31.5
+   },
+   "pct_owner": {
+    "census": 50.4,
+    "sim": 51.5
+   },
+   "pct_owners_with_mortgage": {
+    "census": 59.8,
+    "sim": 60.4
+   },
+   "pct_single_detached": {
+    "census": 55.9,
+    "sim": 55.1
+   },
+   "pct_apartments": {
+    "census": 39.8,
+    "sim": 38.7
+   },
+   "pct_couple_with_children": {
+    "census": 15.0,
+    "sim": 16.1
+   },
+   "pct_couple_no_children": {
+    "census": 22.0,
+    "sim": 21.1
+   },
+   "pct_one_parent": {
+    "census": 11.5,
+    "sim": 11.0
+   },
+   "pct_one_person": {
+    "census": 37.3,
+    "sim": 38.1
+   },
+   "pct_multigenerational": {
+    "census": 2.5,
+    "sim": 2.2
+   },
+   "pct_kids_0_17": {
+    "census": 13.7,
+    "sim": 13.4
+   },
+   "pct_seniors_65plus": {
+    "census": 23.1,
+    "sim": 23.9
+   },
+   "pct_female": {
+    "census": 50.8,
+    "sim": 50.9
+   }
+  },
+  {
+   "tract": "0205.00",
+   "community": "Queen Victoria",
+   "households_sim": 786,
+   "households_2021": 640.0,
+   "avg_hh_size": {
+    "census": 2.1,
+    "sim": 2.1
+   },
+   "median_hh_income": {
+    "census": 48800.0,
+    "sim": 47865.5
+   },
+   "pct_hh_income_100k_plus": {
+    "census": 14.7,
+    "sim": 14.9
+   },
+   "pct_hh_income_under_40k": {
+    "census": 38.8,
+    "sim": 40.7
+   },
+   "pct_owner": {
+    "census": 42.7,
+    "sim": 42.6
+   },
+   "pct_owners_with_mortgage": {
+    "census": 47.2,
+    "sim": 49.6
+   },
+   "pct_single_detached": {
+    "census": 43.8,
+    "sim": 46.2
+   },
+   "pct_apartments": {
+    "census": 53.9,
+    "sim": 51.1
+   },
+   "pct_couple_with_children": {
+    "census": 15.6,
+    "sim": 16.3
+   },
+   "pct_couple_no_children": {
+    "census": 21.1,
+    "sim": 20.9
+   },
+   "pct_one_parent": {
+    "census": 9.4,
+    "sim": 9.0
+   },
+   "pct_one_person": {
+    "census": 39.1,
+    "sim": 37.2
+   },
+   "pct_multigenerational": {
+    "census": 2.3,
+    "sim": 3.2
+   },
+   "pct_kids_0_17": {
+    "census": 12.9,
+    "sim": 12.4
+   },
+   "pct_seniors_65plus": {
+    "census": 17.3,
+    "sim": 18.6
+   },
+   "pct_female": {
+    "census": 48.0,
+    "sim": 47.5
+   }
+  },
+  {
+   "tract": "0206.00",
+   "community": "Elgin",
+   "households_sim": 2603,
+   "households_2021": 2190.0,
+   "avg_hh_size": {
+    "census": 2.2,
+    "sim": 2.2
+   },
+   "median_hh_income": {
+    "census": 56800.0,
+    "sim": 57100.0
+   },
+   "pct_hh_income_100k_plus": {
+    "census": 18.9,
+    "sim": 19.9
+   },
+   "pct_hh_income_under_40k": {
+    "census": 33.6,
+    "sim": 32.8
+   },
+   "pct_owner": {
+    "census": 49.9,
+    "sim": 51.6
+   },
+   "pct_owners_with_mortgage": {
+    "census": 66.5,
+    "sim": 66.3
+   },
+   "pct_single_detached": {
+    "census": 54.2,
+    "sim": 53.9
+   },
+   "pct_apartments": {
+    "census": 42.3,
+    "sim": 42.8
+   },
+   "pct_couple_with_children": {
+    "census": 14.8,
+    "sim": 14.6
+   },
+   "pct_couple_no_children": {
+    "census": 19.9,
+    "sim": 19.8
+   },
+   "pct_one_parent": {
+    "census": 11.6,
+    "sim": 10.6
+   },
+   "pct_one_person": {
+    "census": 37.4,
+    "sim": 37.6
+   },
+   "pct_multigenerational": {
+    "census": 2.5,
+    "sim": 2.4
+   },
+   "pct_kids_0_17": {
+    "census": 15.9,
+    "sim": 15.5
+   },
+   "pct_seniors_65plus": {
+    "census": 18.2,
+    "sim": 19.8
+   },
+   "pct_female": {
+    "census": 49.3,
+    "sim": 50.0
+   }
+  },
+  {
+   "tract": "0207.00",
+   "community": "Drummond / Elgin",
+   "households_sim": 3323,
+   "households_2021": 2740.0,
+   "avg_hh_size": {
+    "census": 2.2,
+    "sim": 2.2
+   },
+   "median_hh_income": {
+    "census": 62400.0,
+    "sim": 62032.0
+   },
+   "pct_hh_income_100k_plus": {
+    "census": 23.0,
+    "sim": 23.7
+   },
+   "pct_hh_income_under_40k": {
+    "census": 29.0,
+    "sim": 29.1
+   },
+   "pct_owner": {
+    "census": 57.1,
+    "sim": 57.3
+   },
+   "pct_owners_with_mortgage": {
+    "census": 63.3,
+    "sim": 64.0
+   },
+   "pct_single_detached": {
+    "census": 58.6,
+    "sim": 58.6
+   },
+   "pct_apartments": {
+    "census": 35.4,
+    "sim": 35.7
+   },
+   "pct_couple_with_children": {
+    "census": 16.2,
+    "sim": 16.3
+   },
+   "pct_couple_no_children": {
+    "census": 21.7,
+    "sim": 21.4
+   },
+   "pct_one_parent": {
+    "census": 11.1,
+    "sim": 11.6
+   },
+   "pct_one_person": {
+    "census": 38.1,
+    "sim": 37.7
+   },
+   "pct_multigenerational": {
+    "census": 2.0,
+    "sim": 2.0
+   },
+   "pct_kids_0_17": {
+    "census": 14.2,
+    "sim": 14.1
+   },
+   "pct_seniors_65plus": {
+    "census": 24.4,
+    "sim": 26.6
+   },
+   "pct_female": {
+    "census": 51.9,
+    "sim": 52.3
+   }
+  },
+  {
+   "tract": "0208.00",
+   "community": "Stamford",
+   "households_sim": 3436,
+   "households_2021": 2660.0,
+   "avg_hh_size": {
+    "census": 2.3,
+    "sim": 2.2
+   },
+   "median_hh_income": {
+    "census": 75000.0,
+    "sim": 73145.5
+   },
+   "pct_hh_income_100k_plus": {
+    "census": 32.3,
+    "sim": 31.0
+   },
+   "pct_hh_income_under_40k": {
+    "census": 19.0,
+    "sim": 19.8
+   },
+   "pct_owner": {
+    "census": 78.8,
+    "sim": 79.5
+   },
+   "pct_owners_with_mortgage": {
+    "census": 48.6,
+    "sim": 49.4
+   },
+   "pct_single_detached": {
+    "census": 64.5,
+    "sim": 56.3
+   },
+   "pct_apartments": {
+    "census": 17.3,
+    "sim": 15.6
+   },
+   "pct_couple_with_children": {
+    "census": 22.0,
+    "sim": 20.8
+   },
+   "pct_couple_no_children": {
+    "census": 25.4,
+    "sim": 24.9
+   },
+   "pct_one_parent": {
+    "census": 11.1,
+    "sim": 11.2
+   },
+   "pct_one_person": {
+    "census": 30.8,
+    "sim": 32.3
+   },
+   "pct_multigenerational": {
+    "census": 3.2,
+    "sim": 3.3
+   },
+   "pct_kids_0_17": {
+    "census": 15.2,
+    "sim": 15.1
+   },
+   "pct_seniors_65plus": {
+    "census": 28.2,
+    "sim": 28.3
+   },
+   "pct_female": {
+    "census": 52.5,
+    "sim": 52.6
+   }
+  },
+  {
+   "tract": "0209.03",
+   "community": "Westlane",
+   "households_sim": 2370,
+   "households_2021": 1845.0,
+   "avg_hh_size": {
+    "census": 2.6,
+    "sim": 2.6
+   },
+   "median_hh_income": {
+    "census": 74500.0,
+    "sim": 76873.0
+   },
+   "pct_hh_income_100k_plus": {
+    "census": 31.9,
+    "sim": 32.4
+   },
+   "pct_hh_income_under_40k": {
+    "census": 21.1,
+    "sim": 20.1
+   },
+   "pct_owner": {
+    "census": 68.2,
+    "sim": 69.4
+   },
+   "pct_owners_with_mortgage": {
+    "census": 65.2,
+    "sim": 64.9
+   },
+   "pct_single_detached": {
+    "census": 59.2,
+    "sim": 57.7
+   },
+   "pct_apartments": {
+    "census": 17.3,
+    "sim": 17.7
+   },
+   "pct_couple_with_children": {
+    "census": 26.0,
+    "sim": 25.8
+   },
+   "pct_couple_no_children": {
+    "census": 23.0,
+    "sim": 23.1
+   },
+   "pct_one_parent": {
+    "census": 16.3,
+    "sim": 16.6
+   },
+   "pct_one_person": {
+    "census": 22.5,
+    "sim": 21.4
+   },
+   "pct_multigenerational": {
+    "census": 4.9,
+    "sim": 4.2
+   },
+   "pct_kids_0_17": {
+    "census": 20.7,
+    "sim": 18.9
+   },
+   "pct_seniors_65plus": {
+    "census": 19.7,
+    "sim": 23.8
+   },
+   "pct_female": {
+    "census": 53.1,
+    "sim": 53.3
+   }
+  },
+  {
+   "tract": "0209.04",
+   "community": "Westlane",
+   "households_sim": 1482,
+   "households_2021": 1240.0,
+   "avg_hh_size": {
+    "census": 2.7,
+    "sim": 2.7
+   },
+   "median_hh_income": {
+    "census": 82000.0,
+    "sim": 83326.5
+   },
+   "pct_hh_income_100k_plus": {
+    "census": 38.3,
+    "sim": 40.1
+   },
+   "pct_hh_income_under_40k": {
+    "census": 16.5,
+    "sim": 16.7
+   },
+   "pct_owner": {
+    "census": 78.5,
+    "sim": 79.0
+   },
+   "pct_owners_with_mortgage": {
+    "census": 59.8,
+    "sim": 60.6
+   },
+   "pct_single_detached": {
+    "census": 73.5,
+    "sim": 75.7
+   },
+   "pct_apartments": {
+    "census": 10.0,
+    "sim": 9.2
+   },
+   "pct_couple_with_children": {
+    "census": 29.4,
+    "sim": 30.5
+   },
+   "pct_couple_no_children": {
+    "census": 23.0,
+    "sim": 20.2
+   },
+   "pct_one_parent": {
+    "census": 13.3,
+    "sim": 13.6
+   },
+   "pct_one_person": {
+    "census": 20.2,
+    "sim": 20.9
+   },
+   "pct_multigenerational": {
+    "census": 5.6,
+    "sim": 5.4
+   },
+   "pct_kids_0_17": {
+    "census": 19.5,
+    "sim": 19.9
+   },
+   "pct_seniors_65plus": {
+    "census": 16.7,
+    "sim": 17.4
+   },
+   "pct_female": {
+    "census": 51.2,
+    "sim": 50.6
+   }
+  },
+  {
+   "tract": "0209.05",
+   "community": "North-West",
+   "households_sim": 2940,
+   "households_2021": 2425.0,
+   "avg_hh_size": {
+    "census": 2.7,
+    "sim": 2.7
+   },
+   "median_hh_income": {
+    "census": 93000.0,
+    "sim": 95533.0
+   },
+   "pct_hh_income_100k_plus": {
+    "census": 45.2,
+    "sim": 46.3
+   },
+   "pct_hh_income_under_40k": {
+    "census": 12.0,
+    "sim": 11.2
+   },
+   "pct_owner": {
+    "census": 85.1,
+    "sim": 85.8
+   },
+   "pct_owners_with_mortgage": {
+    "census": 61.9,
+    "sim": 63.2
+   },
+   "pct_single_detached": {
+    "census": 73.6,
+    "sim": 74.6
+   },
+   "pct_apartments": {
+    "census": 6.4,
+    "sim": 5.4
+   },
+   "pct_couple_with_children": {
+    "census": 32.8,
+    "sim": 33.9
+   },
+   "pct_couple_no_children": {
+    "census": 25.6,
+    "sim": 25.1
+   },
+   "pct_one_parent": {
+    "census": 11.5,
+    "sim": 11.6
+   },
+   "pct_one_person": {
+    "census": 19.2,
+    "sim": 18.3
+   },
+   "pct_multigenerational": {
+    "census": 4.3,
+    "sim": 4.3
+   },
+   "pct_kids_0_17": {
+    "census": 18.1,
+    "sim": 19.0
+   },
+   "pct_seniors_65plus": {
+    "census": 17.9,
+    "sim": 17.7
+   },
+   "pct_female": {
+    "census": 51.5,
+    "sim": 51.2
+   }
+  },
+  {
+   "tract": "0209.06",
+   "community": "North-West",
+   "households_sim": 1421,
+   "households_2021": 1220.0,
+   "avg_hh_size": {
+    "census": 2.4,
+    "sim": 2.4
+   },
+   "median_hh_income": {
+    "census": 92000.0,
+    "sim": 93279.0
+   },
+   "pct_hh_income_100k_plus": {
+    "census": 45.5,
+    "sim": 47.2
+   },
+   "pct_hh_income_under_40k": {
+    "census": 15.6,
+    "sim": 15.4
+   },
+   "pct_owner": {
+    "census": 85.4,
+    "sim": 85.3
+   },
+   "pct_owners_with_mortgage": {
+    "census": 45.1,
+    "sim": 43.6
+   },
+   "pct_single_detached": {
+    "census": 59.0,
+    "sim": 60.2
+   },
+   "pct_apartments": {
+    "census": 20.1,
+    "sim": 19.1
+   },
+   "pct_couple_with_children": {
+    "census": 27.0,
+    "sim": 26.5
+   },
+   "pct_couple_no_children": {
+    "census": 31.6,
+    "sim": 32.5
+   },
+   "pct_one_parent": {
+    "census": 7.0,
+    "sim": 6.9
+   },
+   "pct_one_person": {
+    "census": 27.0,
+    "sim": 26.3
+   },
+   "pct_multigenerational": {
+    "census": 2.9,
+    "sim": 3.0
+   },
+   "pct_kids_0_17": {
+    "census": 11.9,
+    "sim": 12.1
+   },
+   "pct_seniors_65plus": {
+    "census": 30.8,
+    "sim": 31.2
+   },
+   "pct_female": {
+    "census": 52.8,
+    "sim": 52.6
+   }
+  },
+  {
+   "tract": "0210.01",
+   "community": "Beaverdams / Stamford",
+   "households_sim": 1445,
+   "households_2021": 1190.0,
+   "avg_hh_size": {
+    "census": 2.7,
+    "sim": 2.7
+   },
+   "median_hh_income": {
+    "census": 105000.0,
+    "sim": 106286.0
+   },
+   "pct_hh_income_100k_plus": {
+    "census": 52.7,
+    "sim": 54.1
+   },
+   "pct_hh_income_under_40k": {
+    "census": 12.6,
+    "sim": 12.3
+   },
+   "pct_owner": {
+    "census": 93.2,
+    "sim": 93.7
+   },
+   "pct_owners_with_mortgage": {
+    "census": 53.7,
+    "sim": 55.7
+   },
+   "pct_single_detached": {
+    "census": 71.8,
+    "sim": 72.1
+   },
+   "pct_apartments": {
+    "census": 3.4,
+    "sim": 2.6
+   },
+   "pct_couple_with_children": {
+    "census": 32.4,
+    "sim": 31.0
+   },
+   "pct_couple_no_children": {
+    "census": 30.7,
+    "sim": 30.7
+   },
+   "pct_one_parent": {
+    "census": 6.7,
+    "sim": 7.0
+   },
+   "pct_one_person": {
+    "census": 20.6,
+    "sim": 20.1
+   },
+   "pct_multigenerational": {
+    "census": 4.6,
+    "sim": 5.3
+   },
+   "pct_kids_0_17": {
+    "census": 20.2,
+    "sim": 19.9
+   },
+   "pct_seniors_65plus": {
+    "census": 23.3,
+    "sim": 23.4
+   },
+   "pct_female": {
+    "census": 50.9,
+    "sim": 50.9
+   }
+  },
+  {
+   "tract": "0210.02",
+   "community": "Beaverdams / Westlane",
+   "households_sim": 2177,
+   "households_2021": 1820.0,
+   "avg_hh_size": {
+    "census": 3.3,
+    "sim": 3.2
+   },
+   "median_hh_income": {
+    "census": 113000.0,
+    "sim": 115297.0
+   },
+   "pct_hh_income_100k_plus": {
+    "census": 58.2,
+    "sim": 59.0
+   },
+   "pct_hh_income_under_40k": {
+    "census": 8.5,
+    "sim": 8.0
+   },
+   "pct_owner": {
+    "census": 89.9,
+    "sim": 90.7
+   },
+   "pct_owners_with_mortgage": {
+    "census": 73.6,
+    "sim": 73.7
+   },
+   "pct_single_detached": {
+    "census": 81.4,
+    "sim": 80.7
+   },
+   "pct_apartments": {
+    "census": 2.7,
+    "sim": 3.3
+   },
+   "pct_couple_with_children": {
+    "census": 47.5,
+    "sim": 45.8
+   },
+   "pct_couple_no_children": {
+    "census": 16.8,
+    "sim": 17.3
+   },
+   "pct_one_parent": {
+    "census": 8.5,
+    "sim": 8.2
+   },
+   "pct_one_person": {
+    "census": 12.4,
+    "sim": 12.4
+   },
+   "pct_multigenerational": {
+    "census": 7.1,
+    "sim": 7.4
+   },
+   "pct_kids_0_17": {
+    "census": 26.7,
+    "sim": 26.1
+   },
+   "pct_seniors_65plus": {
+    "census": 11.1,
+    "sim": 12.7
+   },
+   "pct_female": {
+    "census": 50.8,
+    "sim": 51.1
+   }
+  },
+  {
+   "tract": "0211.00",
+   "community": "Stamford",
+   "households_sim": 1844,
+   "households_2021": 1580.0,
+   "avg_hh_size": {
+    "census": 2.7,
+    "sim": 2.7
+   },
+   "median_hh_income": {
+    "census": 100000.0,
+    "sim": 98870.5
+   },
+   "pct_hh_income_100k_plus": {
+    "census": 50.0,
+    "sim": 49.2
+   },
+   "pct_hh_income_under_40k": {
+    "census": 9.8,
+    "sim": 10.1
+   },
+   "pct_owner": {
+    "census": 91.6,
+    "sim": 90.3
+   },
+   "pct_owners_with_mortgage": {
+    "census": 48.3,
+    "sim": 48.6
+   },
+   "pct_single_detached": {
+    "census": 89.0,
+    "sim": 89.8
+   },
+   "pct_apartments": {
+    "census": 1.9,
+    "sim": 2.1
+   },
+   "pct_couple_with_children": {
+    "census": 32.6,
+    "sim": 34.8
+   },
+   "pct_couple_no_children": {
+    "census": 31.0,
+    "sim": 29.6
+   },
+   "pct_one_parent": {
+    "census": 9.2,
+    "sim": 7.5
+   },
+   "pct_one_person": {
+    "census": 18.0,
+    "sim": 18.9
+   },
+   "pct_multigenerational": {
+    "census": 4.1,
+    "sim": 3.7
+   },
+   "pct_kids_0_17": {
+    "census": 19.0,
+    "sim": 19.3
+   },
+   "pct_seniors_65plus": {
+    "census": 24.8,
+    "sim": 24.7
+   },
+   "pct_female": {
+    "census": 50.5,
+    "sim": 50.5
+   }
+  },
+  {
+   "tract": "0212.00",
+   "community": "Stamford",
+   "households_sim": 1136,
+   "households_2021": 985.0,
+   "avg_hh_size": {
+    "census": 1.9,
+    "sim": 1.9
+   },
+   "median_hh_income": {
+    "census": 55600.0,
+    "sim": 58456.5
+   },
+   "pct_hh_income_100k_plus": {
+    "census": 20.3,
+    "sim": 21.4
+   },
+   "pct_hh_income_under_40k": {
+    "census": 28.4,
+    "sim": 29.0
+   },
+   "pct_owner": {
+    "census": 61.2,
+    "sim": 62.1
+   },
+   "pct_owners_with_mortgage": {
+    "census": 55.8,
+    "sim": 55.0
+   },
+   "pct_single_detached": {
+    "census": 39.1,
+    "sim": 39.8
+   },
+   "pct_apartments": {
+    "census": 43.1,
+    "sim": 42.3
+   },
+   "pct_couple_with_children": {
+    "census": 14.7,
+    "sim": 13.8
+   },
+   "pct_couple_no_children": {
+    "census": 20.8,
+    "sim": 21.6
+   },
+   "pct_one_parent": {
+    "census": 11.7,
+    "sim": 11.2
+   },
+   "pct_one_person": {
+    "census": 46.2,
+    "sim": 46.0
+   },
+   "pct_multigenerational": {
+    "census": 1.5,
+    "sim": 1.8
+   },
+   "pct_kids_0_17": {
+    "census": 14.9,
+    "sim": 15.0
+   },
+   "pct_seniors_65plus": {
+    "census": 31.1,
+    "sim": 31.5
+   },
+   "pct_female": {
+    "census": 55.6,
+    "sim": 55.2
+   }
+  },
+  {
+   "tract": "0213.00",
+   "community": "Stamford",
+   "households_sim": 1440,
+   "households_2021": 1190.0,
+   "avg_hh_size": {
+    "census": 2.6,
+    "sim": 2.6
+   },
+   "median_hh_income": {
+    "census": 92000.0,
+    "sim": 95477.0
+   },
+   "pct_hh_income_100k_plus": {
+    "census": 44.7,
+    "sim": 46.0
+   },
+   "pct_hh_income_under_40k": {
+    "census": 12.7,
+    "sim": 12.6
+   },
+   "pct_owner": {
+    "census": 91.2,
+    "sim": 90.6
+   },
+   "pct_owners_with_mortgage": {
+    "census": 56.6,
+    "sim": 57.9
+   },
+   "pct_single_detached": {
+    "census": 89.9,
+    "sim": 90.1
+   },
+   "pct_apartments": {
+    "census": 5.5,
+    "sim": 4.9
+   },
+   "pct_couple_with_children": {
+    "census": 28.6,
+    "sim": 29.2
+   },
+   "pct_couple_no_children": {
+    "census": 31.9,
+    "sim": 32.0
+   },
+   "pct_one_parent": {
+    "census": 8.4,
+    "sim": 7.8
+   },
+   "pct_one_person": {
+    "census": 21.0,
+    "sim": 20.3
+   },
+   "pct_multigenerational": {
+    "census": 4.6,
+    "sim": 4.8
+   },
+   "pct_kids_0_17": {
+    "census": 16.9,
+    "sim": 17.1
+   },
+   "pct_seniors_65plus": {
+    "census": 26.0,
+    "sim": 25.6
+   },
+   "pct_female": {
+    "census": 51.2,
+    "sim": 51.2
+   }
+  },
+  {
+   "tract": "0214.00",
+   "community": "Stamford",
+   "households_sim": 2303,
+   "households_2021": 1930.0,
+   "avg_hh_size": {
+    "census": 2.3,
+    "sim": 2.2
+   },
+   "median_hh_income": {
+    "census": 73500.0,
+    "sim": 74223.0
+   },
+   "pct_hh_income_100k_plus": {
+    "census": 29.8,
+    "sim": 30.4
+   },
+   "pct_hh_income_under_40k": {
+    "census": 20.2,
+    "sim": 18.9
+   },
+   "pct_owner": {
+    "census": 74.1,
+    "sim": 74.5
+   },
+   "pct_owners_with_mortgage": {
+    "census": 57.4,
+    "sim": 57.1
+   },
+   "pct_single_detached": {
+    "census": 63.7,
+    "sim": 64.3
+   },
+   "pct_apartments": {
+    "census": 17.9,
+    "sim": 17.2
+   },
+   "pct_couple_with_children": {
+    "census": 19.9,
+    "sim": 19.0
+   },
+   "pct_couple_no_children": {
+    "census": 26.9,
+    "sim": 26.7
+   },
+   "pct_one_parent": {
+    "census": 12.2,
+    "sim": 11.6
+   },
+   "pct_one_person": {
+    "census": 30.6,
+    "sim": 31.4
+   },
+   "pct_multigenerational": {
+    "census": 3.6,
+    "sim": 4.1
+   },
+   "pct_kids_0_17": {
+    "census": 15.4,
+    "sim": 15.0
+   },
+   "pct_seniors_65plus": {
+    "census": 27.0,
+    "sim": 28.6
+   },
+   "pct_female": {
+    "census": 52.0,
+    "sim": 52.3
+   }
+  },
+  {
+   "tract": "0215.00",
+   "community": "Elgin",
+   "households_sim": 2617,
+   "households_2021": 2050.0,
+   "avg_hh_size": {
+    "census": 2.1,
+    "sim": 2.0
+   },
+   "median_hh_income": {
+    "census": 49600.0,
+    "sim": 49262.0
+   },
+   "pct_hh_income_100k_plus": {
+    "census": 12.0,
+    "sim": 12.6
+   },
+   "pct_hh_income_under_40k": {
+    "census": 38.9,
+    "sim": 38.8
+   },
+   "pct_owner": {
+    "census": 52.2,
+    "sim": 52.0
+   },
+   "pct_owners_with_mortgage": {
+    "census": 63.3,
+    "sim": 62.2
+   },
+   "pct_single_detached": {
+    "census": 51.7,
+    "sim": 48.5
+   },
+   "pct_apartments": {
+    "census": 44.4,
+    "sim": 40.3
+   },
+   "pct_couple_with_children": {
+    "census": 13.4,
+    "sim": 13.3
+   },
+   "pct_couple_no_children": {
+    "census": 17.6,
+    "sim": 19.0
+   },
+   "pct_one_parent": {
+    "census": 12.4,
+    "sim": 12.7
+   },
+   "pct_one_person": {
+    "census": 42.4,
+    "sim": 41.3
+   },
+   "pct_multigenerational": {
+    "census": 2.7,
+    "sim": 3.0
+   },
+   "pct_kids_0_17": {
+    "census": 16.0,
+    "sim": 15.6
+   },
+   "pct_seniors_65plus": {
+    "census": 16.9,
+    "sim": 18.7
+   },
+   "pct_female": {
+    "census": 49.5,
+    "sim": 49.6
+   }
+  }
+ ]
+}

@@ -1,0 +1,28 @@
+[
+ {
+  "preference": {
+   "motorway": 1.0,
+   "arterial": 1.0,
+   "collector": 1.0,
+   "local": 1.0
+  },
+  "regional_2019": 0.649,
+  "regional_2025": 0.679,
+  "highways": 0.756,
+  "share_regional": 54.1,
+  "share_highways": 76.5
+ },
+ {
+  "preference": {
+   "motorway": 1.0,
+   "arterial": 0.78,
+   "collector": 1.0,
+   "local": 1.0
+  },
+  "regional_2019": 0.658,
+  "regional_2025": 0.665,
+  "highways": 0.788,
+  "share_regional": 66.6,
+  "share_highways": 72.8
+ }
+]

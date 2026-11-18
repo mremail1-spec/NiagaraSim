@@ -443,13 +443,13 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
     }
     const nt = wasm.nf_tourist_trips(rate === 1 ? 260 : 60);
     if (!nt) return;
-    const TS = 12;
+    const TS = 14;
     const tdata = Array.from(new Float32Array(wasm.memory.buffer, wasm.nf_buf_ptr(), nt * TS));
     for (let i = 0; i < nt; i++) {
       const base = tdata[i * TS], biz = tdata[i * TS + 1];
       const who = { kind: "tour", party: tdata[i * TS + 4], persons: tdata[i * TS + 2], spend: tdata[i * TS + 3], seg: tdata[i * TS + 5],
                     group: tdata[i * TS + 6], lodging: tdata[i * TS + 7], nights: tdata[i * TS + 8], cat: tdata[i * TS + 9],
-                    min: tdata[i * TS + 10], km: tdata[i * TS + 11], biz };
+                    min: tdata[i * TS + 10], km: tdata[i * TS + 11], age: tdata[i * TS + 12], kids: tdata[i * TS + 13], biz };
       if (follow && follow.kind === "tour" && follow.id === who.party) continue;
       const len = wasm.nf_route(base, biz);
       const ids = new Float32Array(wasm.memory.buffer, wasm.nf_buf_ptr(), len);
@@ -496,7 +496,10 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
       $("pName").textContent = `Visitor party ${Math.round(w.party).toLocaleString()}`;
       const stay = w.lodging >= 0 ? `staying at ${placeName(w.lodging)} (${GROUP_NAMES[w.group]}), ${w.nights} ${w.nights === 1 ? "night" : "nights"} left`
                                   : (w.group === 4 ? "here for the day" : `staying with ${GROUP_NAMES[w.group]}`);
-      $("pWho").textContent = `${from} ${sg.overnight ? "overnight visitors" : "day-trippers"}, ${w.persons} ${w.persons === 1 ? "person" : "people"}, ${stay}.`;
+      const AGE = ["18\u201324", "25\u201334", "35\u201344", "45\u201354", "55\u201364", "65+"];
+      const adults = w.persons - (w.kids || 0);
+      const crew = `${adults} ${adults === 1 ? "adult" : "adults"} aged ${AGE[w.age] || "45\u201354"}` + (w.kids ? ` with ${w.kids} ${w.kids === 1 ? "child" : "children"}` : "");
+      $("pWho").textContent = `${from} ${sg.overnight ? "overnight visitors" : "day-trippers"}: ${crew}, ${stay}.`;
       $("pMembers").textContent = "";
       return;
     }

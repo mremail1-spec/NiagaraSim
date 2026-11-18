@@ -209,7 +209,7 @@ def _tourism_block(tour: dict, sim_cats: list[str], n_total: int) -> dict:
     for i, v in tour["attendance_target"].items():
         att[i] = float(v)
     c = tour["categories"]
-    return {"segments": tour["segments"], "party_size_mean": tour["party_size_mean"], "nights": tour["nights"],
+    return {"segments": tour["segments"], "party_size_mean": tour["party_size_mean"], "party_profile": tour.get("party_profile"), "nights": tour["nights"],
             "lodging_share": tour["lodging_share"],
             "accommodation_spend_per_paid_person_night": tour["accommodation_spend_per_paid_person_night"],
             "categories": {"name": c["name"], "share": c["share"], "events_per_party_day": c["events_per_party_day"],

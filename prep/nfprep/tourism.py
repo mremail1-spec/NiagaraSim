@@ -6,6 +6,7 @@ Regional figures are scaled to the City of Niagara Falls with the shares in
 from __future__ import annotations
 
 import datetime
+import math
 import json
 
 from .loader import DATA_DIR, Pack
@@ -195,6 +196,13 @@ def build_tourism(pack: Pack, businesses: list[dict], year: int) -> dict:
     return {
         "segments": segments,
         "party_size_mean": t["party"]["avg_party_size"],
+        # who is in a party: the survey's share of parties with children is over all parties; only
+        # parties of 2+ can have one, and sizes are 1 + Poisson(mean - 1), so P(size 1) = exp(1 - mean)
+        "party_profile": {"children_share_of_multi": round(t["party"]["pct_parties_with_children"] / 100
+                                                           / (1 - math.exp(1 - t["party"]["avg_party_size"]))
+                                                           / (1 - (t["party"]["adult_age_pct"]["18-24"] + t["party"]["adult_age_pct"]["65+"]) / 100), 4),
+                          "adult_age_share": [t["party"]["adult_age_pct"][k] / 100 for k in
+                                              ("18-24", "25-34", "35-44", "45-54", "55-64", "65+")]},
         "nights": {"n": list(NIGHTS), "weight": list(NIGHTS.values())},
         "lodging_share": lodging_share,
         "accommodation_spend_per_paid_person_night": round(acc_per_paid_night * 1.0, 2),

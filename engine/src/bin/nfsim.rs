@@ -150,6 +150,8 @@ fn main() {
                 "hotel_rooms": engine.hotel_rooms(), "hotel_occupancy": (engine.hotel_occupancy() * 1000.0).round() / 1000.0,
                 "hotel_occupancy_by_month": occ_month, "parties_turned_away_from_full_lodging": tour.turned_away,
                 "attendance": attendance, "top_tourist_businesses": top10,
+                "parties": serde_json::to_value(&tour.stats).unwrap_or_default(),
+                "arrivals_by_segment_month": tour.arrivals.iter().map(|m| m.iter().map(|x| x.round()).collect::<Vec<f64>>()).collect::<Vec<_>>(),
                 "free_sight_visits": free_sights,
             })
         }

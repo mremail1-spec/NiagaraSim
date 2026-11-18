@@ -58,6 +58,37 @@ pub struct Party {
     /// Stable number of the party, from its arrival (0, 1, 2, ...).
     #[serde(default)]
     pub id: u32,
+    /// Adults' age band (0: 18-24 ... 5: 65+) and number of children in the party.
+    #[serde(default)]
+    pub age_band: u8,
+    #[serde(default)]
+    pub children: u8,
+}
+
+/// Who arrived over the run, for checking against the travel survey.
+#[derive(Clone, Debug, Default, Serialize, Deserialize, PartialEq)]
+pub struct PartyStats {
+    pub parties_by_segment: Vec<f64>,
+    pub persons_by_segment: Vec<f64>,
+    /// parties by size 1..12 (index 0 = size 1)
+    pub size: Vec<f64>,
+    /// overnight parties by nights 1..30+ (index 0 = 1 night)
+    pub nights: Vec<f64>,
+    /// parties and persons by where they stay (hotel, rental, camping, friends, day)
+    pub group_parties: Vec<f64>,
+    pub group_persons: Vec<f64>,
+    pub with_children: f64,
+    pub age_band: Vec<f64>,
+}
+
+/// A number in [0, 1) fixed by the party's id, so drawing who is in a party does not disturb the
+/// simulation's random stream.
+fn party_u(id: u32, salt: u64) -> f64 {
+    let mut z = (id as u64).wrapping_mul(0x9E37_79B9_7F4A_7C15) ^ salt.wrapping_mul(0xBF58_476D_1CE4_E5B9);
+    z = (z ^ (z >> 30)).wrapping_mul(0xBF58_476D_1CE4_E5B9);
+    z = (z ^ (z >> 27)).wrapping_mul(0x94D0_49BB_1331_11EB);
+    z ^= z >> 31;
+    (z >> 11) as f64 / (1u64 << 53) as f64
 }
 
 #[derive(Clone, Copy, Debug, Serialize, Deserialize, PartialEq)]
@@ -79,6 +110,10 @@ pub struct TouristTrip {
     pub lodging: u32,
     #[serde(default)]
     pub days_left: u8,
+    #[serde(default)]
+    pub age_band: u8,
+    #[serde(default)]
+    pub children: u8,
 }
 
 /// Everything about tourists that changes over time.
@@ -108,6 +143,8 @@ pub struct TourState {
     /// Number the next arriving party gets.
     #[serde(default)]
     pub next_party_id: u32,
+    #[serde(default)]
+    pub stats: PartyStats,
 }
 
 impl Engine {
@@ -304,6 +341,7 @@ impl Engine {
                 room_nights_by_month: vec![0.0; 12], arrivals: vec![vec![0.0; 12]; n_seg], fares: 0.0, elsewhere: 0.0,
                 free: (0..n_biz).map(|b| t.capacity[b] - Self::base_rooms(&t, b)).collect(), turned_away: 0,
                 base_room_revenue: 0.0, visitors_today: 0.0, next_party_id: 0,
+                stats: PartyStats::default(),
             };
         }
         self.tour = Some(rt);
@@ -424,8 +462,44 @@ impl Engine {
                 self.state.tour.arrivals[seg][month] += size as f64;
                 let id = self.state.tour.next_party_id;
                 self.state.tour.next_party_id = id.wrapping_add(1);
+                // who is in the party (from the travel survey's party profile)
+                let (mut age_band, mut children) = (3u8, 0u8);
+                if let Some(pp) = &t.party_profile {
+                    let u = party_u(id, 1);
+                    let mut acc = 0.0;
+                    for (k, sh) in pp.adult_age_share.iter().enumerate() {
+                        acc += sh;
+                        if u < acc {
+                            age_band = k as u8;
+                            break;
+                        }
+                    }
+                    if size >= 2 && age_band >= 1 && age_band <= 4 && party_u(id, 2) < pp.children_share_of_multi {
+                        let adults = if size >= 3 { 2 } else { 1 };
+                        children = size - adults;
+                    }
+                }
+                let st = &mut self.state.tour.stats;
+                if st.size.is_empty() {
+                    let n_seg = t.segments.len();
+                    *st = PartyStats { parties_by_segment: vec![0.0; n_seg], persons_by_segment: vec![0.0; n_seg], size: vec![0.0; 12],
+                                       nights: vec![0.0; 30], group_parties: vec![0.0; 5], group_persons: vec![0.0; 5],
+                                       with_children: 0.0, age_band: vec![0.0; 6] };
+                }
+                st.parties_by_segment[seg] += 1.0;
+                st.persons_by_segment[seg] += size as f64;
+                st.size[(size as usize).clamp(1, 12) - 1] += 1.0;
+                if t.segments[seg].overnight == 1 {
+                    st.nights[(days as usize).clamp(1, 30) - 1] += 1.0;
+                }
+                st.group_parties[g] += 1.0;
+                st.group_persons[g] += size as f64;
+                if children > 0 {
+                    st.with_children += 1.0;
+                }
+                st.age_band[age_band as usize] += 1.0;
                 self.state.tour.parties.push(Party { segment: seg as u8, group: g as u8, size, days_left: days,
-                                                     base_node: rt.groups[g].nodes[i], lodging, rooms, id });
+                                                     base_node: rt.groups[g].nodes[i], lodging, rooms, id, age_band, children });
             }
         }
         // rooms held by stays outside the travel survey earn the hotel its room rate every night
@@ -504,7 +578,7 @@ impl Engine {
                     self.state.tour.plan[hour].push(TouristTrip { base_node: p.base_node, business: b, category: c as u8,
                                                                   persons: p.size, spend: spend as f32, party: p.id,
                                                                   segment: p.segment, group: p.group, lodging: p.lodging,
-                                                                  days_left: p.days_left });
+                                                                  days_left: p.days_left, age_band: p.age_band, children: p.children });
                 }
             }
         }

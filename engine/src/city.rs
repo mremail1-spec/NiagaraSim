@@ -254,6 +254,12 @@ pub struct HotelParams {
 }
 
 #[derive(Clone, Deserialize)]
+pub struct PartyProfile {
+    pub children_share_of_multi: f64,
+    pub adult_age_share: Vec<f64>,
+}
+
+#[derive(Clone, Deserialize)]
 pub struct Tourism {
     #[serde(default)]
     pub hotel: Option<HotelParams>,
@@ -264,6 +270,10 @@ pub struct Tourism {
     pub car_share: CarShare,
     pub segments: Vec<Segment>,
     pub party_size_mean: f64,
+    /// Who is in a party: chance a party of 2+ has children, and the adults' age band shares
+    /// (18-24, 25-34, 35-44, 45-54, 55-64, 65+), from the travel survey.
+    #[serde(default)]
+    pub party_profile: Option<PartyProfile>,
     pub nights: Nights,
     pub lodging_share: LodgingShare,
     pub accommodation_spend_per_paid_person_night: f64,
