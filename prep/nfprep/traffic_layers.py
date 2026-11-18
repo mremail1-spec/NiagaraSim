@@ -8,6 +8,8 @@ inside the city are kept back to test the result.
               population (employed persons); jobs at every employer in Niagara Region's
               Employment Inventory 2025 (about 44,000 jobs by employee band). Workers driving in
               from the other towns fill the jobs residents do not.
+  school runs Students aged 5-13 and 14-17 from the synthetic population, driven to the two
+              nearest elementary or secondary schools (Niagara Region's school list).
   trucks      MTO 2019 truck counts on the QEW at the city's north (section 10050) and south
               (10025) edges and on Highway 405 at the Queenston-Lewiston Bridge (48600).
   bridges     Niagara Falls Bridge Commission: 2.38 million cars a year west-bound over its three
@@ -38,6 +40,9 @@ WORKDAYS = 240 / 365                  # average day share of a commute (holidays
 # jobs per employer from the Employment Inventory's employee band (band midpoints, large capped)
 BAND_JOBS = {"Micro (1-4 Employees)": 2.5, "Small (5-99 Employees)": 20, "Medium (100-499 Employees)": 220,
              "Large (500 + Employees)": 800}
+DRIVEN_TO_SCHOOL = {"elementary": 0.35, "secondary": 0.25}   # SEED: share of students driven (Ontario travel surveys)
+SCHOOL_RUNS_PER_DRIVEN_CHILD = 1.5     # SEED: drop-off and pick-up, less siblings and runs chained with a commute
+SCHOOL_DAYS = 190 / 365
 JOBS_AT_USUAL_PLACE = 0.8              # share of inventory jobs held by someone who travels to that workplace (part-time
                                        # overlap, work from home, no fixed workplace)
 TOWN_DECAY_KM = 15.0                   # commuting falls off with distance like exp(-km / 15)
@@ -127,6 +132,30 @@ def build_trips(city: dict, spending_vol: np.ndarray) -> tuple[list, dict]:
     sizes["commute_round_trips_per_day"] = {"residents_in_city": round(in_city), "residents_to_other_towns": round(out_region),
                                             "residents_outside_region": round(out_prov), "workers_driving_in": round(in_comm),
                                             "inventory_jobs": int(business_jobs)}
+
+    # school runs: students from the synthetic population to the nearest schools (Region's school list)
+    schools = json.loads((DATA_DIR / "schools_niagara_falls.json").read_text())["schools"]
+    elem = [s_ for s_ in schools if "Elementary" in s_["type"]]
+    sec = [s_ for s_ in schools if "Secondary" in s_["type"]]
+    kids = {"elementary": np.zeros(len(lat)), "secondary": np.zeros(len(lat))}
+    for r in csv.DictReader(open(ROOT / "build" / "persons_2025.csv")):
+        h, a = int(r["household_id"]), int(r["age"])
+        if h < n_city_hh and 5 <= a <= 17:
+            kids["elementary" if a <= 13 else "secondary"][hh["node"][h]] += 1
+    school_trips = {}
+    for level, group, driven in (("elementary", elem, DRIVEN_TO_SCHOOL["elementary"]), ("secondary", sec, DRIVEN_TO_SCHOOL["secondary"])):
+        snodes = [_nearest(lat, lon, s_["lat"], s_["lon"]) for s_ in group]
+        total = 0.0
+        for o in np.nonzero(kids[level])[0]:
+            d = np.hypot((np.array([lat[n] for n in snodes]) - lat[o]) * 111.3, (np.array([lon[n] for n in snodes]) - lon[o]) * 81.2)
+            near = np.argsort(d)[:2]                       # nearest two (public and Catholic boards)
+            v = kids[level][o] * driven * SCHOOL_RUNS_PER_DRIVEN_CHILD * SCHOOL_DAYS
+            for j in near:
+                if snodes[j] != o:
+                    trips.append([int(o), int(snodes[j]), round(2 * v / len(near), 2)])
+            total += v
+        school_trips[level] = round(total)
+    sizes["school_runs_round_trips_per_day"] = school_trips
 
     # trucks and through cars, from the edge counts
     m = json.loads((DATA_DIR / "traffic_counts_provincial_highways.json").read_text())

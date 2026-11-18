@@ -1,0 +1,1809 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.4 2390de5a",
+  "osm3s": {
+    "timestamp_osm_base": "2026-11-18T01:24:51Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+    {
+      "type": "node",
+      "id": 357545375,
+      "lat": 43.0989444,
+      "lon": -79.0544889,
+      "tags": {
+        "amenity": "school",
+        "ele": "185",
+        "gnis:feature_id": "942634",
+        "name": "Ashland Avenue School"
+      }
+    },
+    {
+      "type": "node",
+      "id": 357547656,
+      "lat": 43.1157595,
+      "lon": -79.0403369,
+      "tags": {
+        "amenity": "school",
+        "ele": "179",
+        "gnis:feature_id": "943501",
+        "name": "Beech Avenue School"
+      }
+    },
+    {
+      "type": "node",
+      "id": 357554145,
+      "lat": 43.1072777,
+      "lon": -79.0469888,
+      "tags": {
+        "amenity": "school",
+        "ele": "183",
+        "gnis:feature_id": "946848",
+        "name": "Cleveland Avenue School"
+      }
+    },
+    {
+      "type": "node",
+      "id": 357565272,
+      "lat": 43.0867224,
+      "lon": -79.0442106,
+      "tags": {
+        "amenity": "school",
+        "ele": "177",
+        "gnis:feature_id": "953116",
+        "name": "Holy Trinity School"
+      }
+    },
+    {
+      "type": "node",
+      "id": 357568985,
+      "lat": 43.154222,
+      "lon": -79.0378226,
+      "tags": {
+        "amenity": "school",
+        "ele": "183",
+        "gnis:feature_id": "955259",
+        "name": "Lewiston Heights Public School 6"
+      }
+    },
+    {
+      "type": "node",
+      "id": 357570241,
+      "lat": 43.1253332,
+      "lon": -79.0511559,
+      "tags": {
+        "amenity": "school",
+        "ele": "182",
+        "gnis:feature_id": "956386",
+        "name": "Maple Avenue School"
+      }
+    },
+    {
+      "type": "node",
+      "id": 357573098,
+      "lat": 43.1169999,
+      "lon": -79.0305995,
+      "tags": {
+        "amenity": "school",
+        "ele": "182",
+        "gnis:feature_id": "958383",
+        "name": "Nevada Avenue School"
+      }
+    },
+    {
+      "type": "node",
+      "id": 357574186,
+      "lat": 43.1064444,
+      "lon": -79.0444887,
+      "tags": {
+        "amenity": "school",
+        "ele": "184",
+        "fixme": "school no longer exists",
+        "gnis:feature_id": "958836",
+        "name": "North Junior High School"
+      }
+    },
+    {
+      "type": "node",
+      "id": 357588965,
+      "lat": 43.0989445,
+      "lon": -79.041433,
+      "tags": {
+        "amenity": "school",
+        "ele": "180",
+        "gnis:feature_id": "964866",
+        "name": "Seventeenth Street School"
+      }
+    },
+    {
+      "type": "node",
+      "id": 357592729,
+      "lat": 43.0881112,
+      "lon": -79.0455996,
+      "tags": {
+        "amenity": "school",
+        "ele": "178",
+        "gnis:feature_id": "967383",
+        "name": "Thirteenth Street School"
+      }
+    },
+    {
+      "type": "node",
+      "id": 357593472,
+      "lat": 43.0989445,
+      "lon": -79.0492109,
+      "tags": {
+        "amenity": "school",
+        "ele": "184",
+        "gnis:feature_id": "967851",
+        "name": "Trott Vocational School"
+      }
+    },
+    {
+      "type": "node",
+      "id": 357593685,
+      "lat": 43.107,
+      "lon": -79.0361552,
+      "tags": {
+        "amenity": "school",
+        "ele": "179",
+        "gnis:feature_id": "968029",
+        "name": "Twentysecond Street School"
+      }
+    },
+    {
+      "type": "node",
+      "id": 357597212,
+      "lat": 43.1011667,
+      "lon": -79.0400441,
+      "tags": {
+        "amenity": "school",
+        "ele": "179",
+        "gnis:feature_id": "971177",
+        "name": "Whitney Avenue School"
+      }
+    },
+    {
+      "type": "node",
+      "id": 357598645,
+      "lat": 43.1028333,
+      "lon": -79.0497666,
+      "tags": {
+        "amenity": "school",
+        "ele": "183",
+        "gnis:feature_id": "973427",
+        "name": "Abate School"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9163643667,
+      "lat": 43.0863052,
+      "lon": -79.062352,
+      "tags": {
+        "addr:city": "Niagara Falls",
+        "addr:housenumber": "28",
+        "addr:postcode": "14303",
+        "addr:state": "NY",
+        "addr:street": "Old Falls Street",
+        "amenity": "school",
+        "name": "Niagara Falls Culinary Institute"
+      }
+    },
+    {
+      "type": "way",
+      "id": 178419337,
+      "center": {
+        "lat": 43.0844387,
+        "lon": -79.1050871
+      },
+      "nodes": [
+        1887703986,
+        1887703989,
+        1887703984,
+        1887495344,
+        1887703986
+      ],
+      "tags": {
+        "addr:city": "Niagara Falls",
+        "addr:housenumber": "6624",
+        "addr:postcode": "L2G 2C4",
+        "addr:street": "Culp Street",
+        "amenity": "school",
+        "fax": "+1-905-354-2413",
+        "isced:level": "1;2",
+        "name": "Princess Margaret Public School",
+        "operator": "District School Board of Niagara",
+        "operator:short": "DSBN",
+        "operator:type": "public",
+        "operator:wikidata": "Q5283366",
+        "phone": "+1-905-354-2333",
+        "school:language": "english",
+        "source": "Bing",
+        "website": "https://princessm.dsbn.org/"
+      }
+    },
+    {
+      "type": "way",
+      "id": 178591250,
+      "center": {
+        "lat": 43.1268738,
+        "lon": -79.1098714
+      },
+      "nodes": [
+        1889320133,
+        1889320131,
+        1889320130,
+        1889320132,
+        3679673510,
+        1889320133
+      ],
+      "tags": {
+        "addr:city": "Niagara Falls",
+        "addr:housenumber": "3112",
+        "addr:postcode": "L2J 2Z7",
+        "addr:street": "Dorchester Road",
+        "amenity": "school",
+        "fax": "+1-905-356-2163",
+        "isced:level": "1;2",
+        "name": "Prince Philip Public School",
+        "operator": "District School Board of Niagara",
+        "operator:short": "DSBN",
+        "operator:type": "public",
+        "operator:wikidata": "Q5283366",
+        "phone": "+1-905-356-0521",
+        "school:language": "english",
+        "source": "Bing",
+        "website": "https://princephilips.dsbn.org/"
+      }
+    },
+    {
+      "type": "way",
+      "id": 179188505,
+      "center": {
+        "lat": 43.0548702,
+        "lon": -79.0520111
+      },
+      "nodes": [
+        1895353917,
+        1895353914,
+        1895353913,
+        1895353915,
+        1895353917
+      ],
+      "tags": {
+        "addr:city": "Niagara Falls",
+        "addr:housenumber": "8450",
+        "addr:postcode": "L2G 6Z2",
+        "addr:street": "Oliver Street",
+        "amenity": "school",
+        "denomination": "catholic",
+        "fax": "+1-905-295-1221",
+        "isced:level": "1;2",
+        "name": "Sacred Heart Catholic Elementary School",
+        "operator": "Niagara Catholic District School Board",
+        "operator:short": "NCDSB",
+        "operator:type": "public",
+        "operator:wikidata": "Q16957770",
+        "phone": "+1-905-295-3732",
+        "religion": "christian",
+        "school:language": "english",
+        "source": "Bing",
+        "website": "http://portal.niagaracatholic.ca/elementary/sacredheart/"
+      }
+    },
+    {
+      "type": "way",
+      "id": 179353062,
+      "center": {
+        "lat": 43.0834004,
+        "lon": -79.137324
+      },
+      "nodes": [
+        1897031563,
+        1897031564,
+        1897031519,
+        1897031517,
+        1897031515,
+        1897031522,
+        1897031563
+      ],
+      "tags": {
+        "addr:city": "Niagara Falls",
+        "addr:housenumber": "8406",
+        "addr:postcode": "L2H 0B9",
+        "addr:street": "Forestview Boulevard",
+        "amenity": "school",
+        "fax": "+1-905-354-7313",
+        "isced:level": "1;2",
+        "name": "Forestview Public School",
+        "operator": "District School Board of Niagara",
+        "operator:short": "DSBN",
+        "operator:type": "public",
+        "operator:wikidata": "Q5283366",
+        "phone": "+1-905-354-6261",
+        "school:language": "english",
+        "source": "Bing",
+        "start_date": "2008-09-01",
+        "website": "https://forestview.dsbn.org/"
+      }
+    },
+    {
+      "type": "way",
+      "id": 179354063,
+      "center": {
+        "lat": 43.0871451,
+        "lon": -79.1309241
+      },
+      "nodes": [
+        6646750896,
+        6646750898,
+        6646750899,
+        6646750897,
+        1897045525,
+        7324344056,
+        1897045519,
+        1897045506,
+        8811611744,
+        1897045522,
+        6646750896
+      ],
+      "tags": {
+        "addr:city": "Niagara Falls",
+        "addr:housenumber": "5960",
+        "addr:postcode": "L2H 1T5",
+        "addr:street": "Pitton Road",
+        "amenity": "school",
+        "fax": "+1-905-356-1885",
+        "isced:level": "3",
+        "name": "Westlane Secondary School",
+        "operator": "District School Board of Niagara",
+        "operator:short": "DSBN",
+        "operator:type": "public",
+        "operator:wikidata": "Q5283366",
+        "phone": "+1-905-356-2401",
+        "school:language": "english",
+        "source": "Bing",
+        "website": "https://westlane.dsbn.org/",
+        "wikidata": "Q7989030"
+      }
+    },
+    {
+      "type": "way",
+      "id": 179355568,
+      "center": {
+        "lat": 43.0749373,
+        "lon": -79.1381272
+      },
+      "nodes": [
+        6646701908,
+        1897058896,
+        8746303159,
+        1897058894,
+        6646701910,
+        6646701892,
+        6646701908
+      ],
+      "tags": {
+        "addr:city": "Niagara Falls",
+        "addr:housenumber": "6855",
+        "addr:postcode": "L2H 2T3",
+        "addr:street": "Kalar Road",
+        "amenity": "school",
+        "denomination": "catholic",
+        "fax": "+1-905-356-4893",
+        "isced:level": "1;2",
+        "name": "Loretto Catholic Elementary School",
+        "operator": "Niagara Catholic District School Board",
+        "operator:short": "NCDSB",
+        "operator:type": "public",
+        "operator:wikidata": "Q16957770",
+        "phone": "+1-905-356-4175",
+        "religion": "christian",
+        "school:language": "english",
+        "source": "Bing",
+        "start_date": "1999-09-01",
+        "website": "http://portal.niagaracatholic.ca/elementary/lorettocatholic/"
+      }
+    },
+    {
+      "type": "way",
+      "id": 179379930,
+      "center": {
+        "lat": 43.0711539,
+        "lon": -79.1435668
+      },
+      "nodes": [
+        1888852374,
+        1888852372,
+        1888852371,
+        1897389949,
+        1897389951,
+        1897389952,
+        1897389953,
+        1897389955,
+        1897389954,
+        1888852374
+      ],
+      "tags": {
+        "addr:city": "Niagara Falls",
+        "addr:housenumber": "8699",
+        "addr:postcode": "L2H 0Z2",
+        "addr:street": "Mcleod Rd",
+        "amenity": "school",
+        "denomination": "catholic",
+        "fax": "+1-905-356-6626",
+        "isced:level": "3",
+        "name": "Saint Michael Catholic High School",
+        "operator": "Niagara Catholic District School Board",
+        "operator:short": "NCDSB",
+        "operator:type": "public",
+        "operator:wikidata": "Q16957770",
+        "phone": "+1-905-356-5155",
+        "religion": "christian",
+        "school:language": "english",
+        "source": "Bing",
+        "start_date": "1989-09-01",
+        "website": "https://www.saintmichaelmustangs.com/index.php",
+        "wikidata": "Q7401914"
+      }
+    },
+    {
+      "type": "way",
+      "id": 180141008,
+      "center": {
+        "lat": 43.12692,
+        "lon": -79.106869
+      },
+      "nodes": [
+        1905723029,
+        1889320133,
+        1889320131,
+        1905723026,
+        1905723029
+      ],
+      "tags": {
+        "addr:city": "Niagara Falls",
+        "addr:housenumber": "3155",
+        "addr:postcode": "L2J 2R7",
+        "addr:street": "St Andrew Avenue",
+        "amenity": "school",
+        "fax": "+1-905-358-6416",
+        "isced:level": "1;2",
+        "name": "Martha Cullimore Public School",
+        "operator": "District School Board of Niagara",
+        "operator:short": "DSBN",
+        "operator:type": "public",
+        "operator:wikidata": "Q5283366",
+        "phone": "+1-905-358-5142",
+        "school:language": "english",
+        "source": "Bing",
+        "website": "https://marthac.dsbn.org/"
+      }
+    },
+    {
+      "type": "way",
+      "id": 180141221,
+      "center": {
+        "lat": 43.1217197,
+        "lon": -79.1032169
+      },
+      "nodes": [
+        6646818691,
+        6646818690,
+        1905725168,
+        1905725167,
+        1905725169,
+        1905725170,
+        6646818691
+      ],
+      "tags": {
+        "addr:city": "Niagara Falls",
+        "addr:housenumber": "6338",
+        "addr:neighbourhood": "Stamford",
+        "addr:postcode": "L2J 1M7",
+        "addr:province": "ON",
+        "addr:region": "Golden Horseshoe",
+        "addr:street": "O'Neil Street",
+        "addr:subregion": "Niagara Region",
+        "amenity": "school",
+        "fax": "+1-905-358-0788",
+        "grades": "9-12",
+        "isced:level": "3",
+        "name": "A. N. Myer Secondary School",
+        "operator": "District School Board of Niagara",
+        "operator:short": "DSBN",
+        "operator:type": "public",
+        "operator:wikidata": "Q5283366",
+        "phone": "+1-905-358-5753",
+        "school:language": "english",
+        "short_name": "Myer",
+        "website": "https://anmyer.dsbn.org/",
+        "wikidata": "Q20311545"
+      }
+    },
+    {
+      "type": "way",
+      "id": 185138858,
+      "center": {
+        "lat": 43.1153098,
+        "lon": -79.1367868
+      },
+      "nodes": [
+        1957084212,
+        1957084213,
+        1957084194,
+        1957084193,
+        1957084212
+      ],
+      "tags": {
+        "addr:city": "Niagara Falls",
+        "addr:housenumber": "3900",
+        "addr:postcode": "L2H 0K2",
+        "addr:street": "Kalar Road",
+        "amenity": "school",
+        "check_date": "2024-12-25",
+        "denomination": "catholic",
+        "fax": "+1-905-356-6202",
+        "isced:level": "1;2",
+        "name": "St. Vincent de Paul Catholic Elementary School",
+        "operator": "Niagara Catholic District School Board",
+        "operator:short": "NCDSB",
+        "operator:type": "public",
+        "operator:wikidata": "Q16957770",
+        "phone": "+1-905-356-7505",
+        "religion": "christian",
+        "school:language": "english",
+        "source": "Bing",
+        "start_date": "2004-09-01",
+        "website": "http://portal.niagaracatholic.ca/elementary/stvincentdepaul/"
+      }
+    },
+    {
+      "type": "way",
+      "id": 232194008,
+      "center": {
+        "lat": 43.1020114,
+        "lon": -79.0715724
+      },
+      "nodes": [
+        2405673211,
+        2405673213,
+        7339618781,
+        2405673215,
+        4574393062,
+        4574393061,
+        2405673217,
+        4574394276,
+        2405673211
+      ],
+      "tags": {
+        "addr:city": "Niagara Falls",
+        "addr:housenumber": "4760",
+        "addr:postcode": "L2E 1V6",
+        "addr:street": "Simcoe Street",
+        "amenity": "school",
+        "fax": "+1-905-358-1768",
+        "isced:level": "1;2",
+        "name": "Simcoe Street Public School",
+        "operator": "District School Board of Niagara",
+        "operator:short": "DSBN",
+        "operator:type": "public",
+        "operator:wikidata": "Q5283366",
+        "phone": "+1-905-358-9121",
+        "school:language": "english",
+        "website": "https://simcoestreet.dsbn.org/"
+      }
+    },
+    {
+      "type": "way",
+      "id": 243098359,
+      "center": {
+        "lat": 43.068067,
+        "lon": -79.1018941
+      },
+      "nodes": [
+        2505333996,
+        2505333998,
+        2505333993,
+        2505333990,
+        2505333986,
+        2505333987,
+        2505333991,
+        2505333995,
+        2505333997,
+        2505333999,
+        2505334000,
+        2505333994,
+        2505333984,
+        2505333982,
+        2505333981,
+        2505333980,
+        2505333983,
+        2505333996
+      ],
+      "tags": {
+        "addr:city": "Niagara Falls",
+        "addr:housenumber": "7374",
+        "addr:postcode": "L2G 4S1",
+        "addr:street": "Wilson Crescent",
+        "amenity": "school",
+        "denomination": "catholic",
+        "fax": "+1-905-357-2829",
+        "isced:level": "1;2",
+        "name": "École élémentaire catholique Notre-Dame-de-la-Jeunesse",
+        "operator": "Conseil scolaire catholique MonAvenir",
+        "operator:type": "public",
+        "operator:wikidata": "Q648393",
+        "phone": "+1-905-357-2311",
+        "religion": "christian",
+        "school:language": "french",
+        "start_date": "1991-09-03",
+        "website": "https://nddljnf.csdccs.edu.on.ca/"
+      }
+    },
+    {
+      "type": "way",
+      "id": 243098415,
+      "center": {
+        "lat": 43.0723523,
+        "lon": -79.1085811
+      },
+      "nodes": [
+        2406850137,
+        6659093802,
+        2505334382,
+        2505334383,
+        2406850129,
+        2406850132,
+        2406850134,
+        2406850137
+      ],
+      "tags": {
+        "addr:city": "Niagara Falls",
+        "addr:housenumber": "7112",
+        "addr:postcode": "L2G 5V6",
+        "addr:street": "Dorchester Road",
+        "amenity": "school",
+        "fax": "+1-905-358-5550",
+        "isced:level": "1;2",
+        "name": "James Morden Public School",
+        "operator": "District School Board of Niagara",
+        "operator:short": "DSBN",
+        "operator:type": "public",
+        "operator:wikidata": "Q5283366",
+        "phone": "+1-905-358-5011",
+        "school:language": "english",
+        "website": "https://jamesmorden.dsbn.org/"
+      }
+    },
+    {
+      "type": "way",
+      "id": 253654934,
+      "center": {
+        "lat": 43.1166576,
+        "lon": -79.1021274
+      },
+      "nodes": [
+        2595549256,
+        2595549257,
+        2595549258,
+        2595549259,
+        2595549256
+      ],
+      "tags": {
+        "addr:city": "Niagara Falls",
+        "addr:housenumber": "3910",
+        "addr:postcode": "L2J 2R3",
+        "addr:street": "St James Avenue",
+        "amenity": "school",
+        "fax": "+1-905-358-8482",
+        "isced:level": "1;2",
+        "name": "John Marshall Public School",
+        "operator": "District School Board of Niagara",
+        "operator:short": "DSBN",
+        "operator:type": "public",
+        "operator:wikidata": "Q5283366",
+        "phone": "+1-905-358-3711",
+        "school:language": "english",
+        "website": "https://jmarshall.dsbn.org/"
+      }
+    },
+    {
+      "type": "way",
+      "id": 345562103,
+      "center": {
+        "lat": 43.0879914,
+        "lon": -79.030996
+      },
+      "nodes": [
+        3522056188,
+        10635250768,
+        3522056189,
+        3522056187,
+        3522056186,
+        3522056188
+      ],
+      "tags": {
+        "amenity": "school",
+        "ele": "173",
+        "gnis:feature_id": "958549",
+        "name": "Niagara Street School"
+      }
+    },
+    {
+      "type": "way",
+      "id": 364037805,
+      "center": {
+        "lat": 43.1167317,
+        "lon": -79.1068724
+      },
+      "nodes": [
+        3681466631,
+        3681466633,
+        3681466697,
+        3681466696,
+        3681466701,
+        3681466717,
+        3681466710,
+        3681466646,
+        7320698908,
+        3681466645,
+        3681466631
+      ],
+      "tags": {
+        "addr:city": "Niagara Falls",
+        "addr:housenumber": "6559",
+        "addr:postcode": "L2J 1C2",
+        "addr:street": "Caswell Street",
+        "amenity": "school",
+        "denomination": "catholic",
+        "fax": "+1-905-358-9589",
+        "isced:level": "1;2",
+        "name": "Notre Dame Catholic Elementary School",
+        "operator": "Niagara Catholic District School Board",
+        "operator:short": "NCDSB",
+        "operator:type": "public",
+        "operator:wikidata": "Q16957770",
+        "phone": "+1-905-358-3861",
+        "religion": "christian",
+        "school:language": "english",
+        "website": "http://portal.niagaracatholic.ca/elementary/notredame/"
+      }
+    },
+    {
+      "type": "way",
+      "id": 364037817,
+      "center": {
+        "lat": 43.1172914,
+        "lon": -79.1093898
+      },
+      "nodes": [
+        3681464620,
+        3681466638,
+        3681466632,
+        3681466644,
+        3681466646,
+        3681466710,
+        3681466984,
+        3681466985,
+        3681467070,
+        3681467067,
+        3681466674,
+        3681466629,
+        3681464620
+      ],
+      "tags": {
+        "addr:city": "Niagara Falls",
+        "addr:housenumber": "3834",
+        "addr:postcode": "L2J 2Y5",
+        "addr:street": "Windermere Road",
+        "amenity": "school",
+        "denomination": "catholic",
+        "fax": "+1-905-356-6605",
+        "isced:level": "3",
+        "name": "Saint Paul Catholic High School",
+        "operator": "Niagara Catholic District School Board",
+        "operator:short": "NCDSB",
+        "operator:type": "public",
+        "operator:wikidata": "Q16957770",
+        "phone": "+1-905-356-4313",
+        "religion": "christian",
+        "school:language": "english",
+        "start_date": "1982-09-01",
+        "website": "https://www.spchs.ca/"
+      }
+    },
+    {
+      "type": "way",
+      "id": 401520589,
+      "center": {
+        "lat": 43.0941478,
+        "lon": -79.1220743
+      },
+      "nodes": [
+        4039423023,
+        4039423022,
+        4039423020,
+        4039423013,
+        4039423012,
+        4039423023
+      ],
+      "tags": {
+        "addr:city": "Niagara Falls",
+        "addr:housenumber": "5504",
+        "addr:postcode": "L2H 1K7",
+        "addr:street": "Montrose Road",
+        "amenity": "school",
+        "fax": "+1-905-358-7533",
+        "isced:level": "1;2",
+        "name": "Greendale Public School",
+        "operator": "District School Board of Niagara",
+        "operator:short": "DSBN",
+        "operator:type": "public",
+        "operator:wikidata": "Q5283366",
+        "phone": "+1-905-358-8111",
+        "school:language": "english",
+        "website": "https://greendale.dsbn.org/"
+      }
+    },
+    {
+      "type": "way",
+      "id": 401526700,
+      "center": {
+        "lat": 43.0913257,
+        "lon": -79.0987414
+      },
+      "nodes": [
+        4039481936,
+        4039481937,
+        4039481919,
+        7324394030,
+        7324391024,
+        4039481917,
+        4039481928,
+        4039481929,
+        4039481935,
+        4039481934,
+        4039481936
+      ],
+      "tags": {
+        "addr:city": "Niagara Falls",
+        "addr:housenumber": "5775",
+        "addr:postcode": "L2G 4L2",
+        "addr:street": "Drummond Road",
+        "amenity": "school",
+        "fax": "+1-905-354-6618",
+        "isced:level": "3",
+        "name": "Stamford Collegiate",
+        "operator": "District School Board of Niagara",
+        "operator:short": "DSBN",
+        "operator:type": "public",
+        "operator:wikidata": "Q5283366",
+        "phone": "+1-905-354-7409",
+        "school:language": "english",
+        "website": "https://stamford.dsbn.org/"
+      }
+    },
+    {
+      "type": "way",
+      "id": 488693144,
+      "center": {
+        "lat": 43.0788144,
+        "lon": -79.108386
+      },
+      "nodes": [
+        4809851443,
+        4809851442,
+        4809851441,
+        4809851440,
+        4809851438,
+        4809851439,
+        4809851443
+      ],
+      "tags": {
+        "amenity": "school",
+        "name": "Pathways Academy and Early Learning Centre",
+        "operator:type": "private"
+      }
+    },
+    {
+      "type": "way",
+      "id": 488781728,
+      "center": {
+        "lat": 43.1192474,
+        "lon": -79.1134883
+      },
+      "nodes": [
+        4810717701,
+        4810717700,
+        4810717699,
+        4810717698,
+        4810717701
+      ],
+      "tags": {
+        "addr:city": "Niagara Falls",
+        "addr:housenumber": "3691",
+        "addr:postcode": "L2J 3A6",
+        "addr:street": "Dorchester Road",
+        "amenity": "school",
+        "fax": "+1-905-354-2909",
+        "isced:level": "1;2",
+        "name": "Orchard Park Public School",
+        "operator": "District School Board of Niagara",
+        "operator:short": "DSBN",
+        "operator:type": "public",
+        "operator:wikidata": "Q5283366",
+        "phone": "+1-905-354-3916",
+        "school:language": "english",
+        "website": "https://orchardpark.dsbn.org/"
+      }
+    },
+    {
+      "type": "way",
+      "id": 706150387,
+      "center": {
+        "lat": 43.0928608,
+        "lon": -79.1976178
+      },
+      "nodes": [
+        6635089162,
+        6635089161,
+        6635089160,
+        6635089159,
+        6635089158,
+        6635089157,
+        6635089156,
+        7319408560,
+        6635089155,
+        6635089154,
+        6635089162
+      ],
+      "tags": {
+        "addr:city": "Thorold",
+        "addr:housenumber": "550",
+        "addr:postcode": "L2V 1A8",
+        "addr:street": "Allanburg Road",
+        "amenity": "school",
+        "fax": "+1-905-227-8804",
+        "isced:level": "1;2",
+        "name": "Ontario Public School",
+        "operator": "District School Board of Niagara",
+        "operator:short": "DSBN",
+        "operator:type": "public",
+        "operator:wikidata": "Q5283366",
+        "phone": "+1-905-227-2851",
+        "school:language": "english",
+        "website": "https://ontario.dsbn.org/"
+      }
+    },
+    {
+      "type": "way",
+      "id": 706150393,
+      "center": {
+        "lat": 43.1290973,
+        "lon": -79.1985298
+      },
+      "nodes": [
+        6635123194,
+        6635123193,
+        6635123192,
+        6635123191,
+        6635123194
+      ],
+      "tags": {
+        "addr:city": "Thorold",
+        "addr:housenumber": "50",
+        "addr:postcode": "L2V 1Z1",
+        "addr:street": "Ormond Street North",
+        "amenity": "school",
+        "fax": "+1-905-227-1505",
+        "isced:level": "3",
+        "name": "Thorold Secondary School",
+        "operator": "District School Board of Niagara",
+        "operator:short": "DSBN",
+        "operator:type": "public",
+        "operator:wikidata": "Q5283366",
+        "phone": "+1-905-227-1188",
+        "school:language": "english",
+        "website": "https://tss.dsbn.org/",
+        "wikidata": "Q7796617"
+      }
+    },
+    {
+      "type": "way",
+      "id": 706152036,
+      "center": {
+        "lat": 43.1678811,
+        "lon": -79.0585747
+      },
+      "nodes": [
+        6635137592,
+        6635137591,
+        6635137590,
+        6635137589,
+        6635137588,
+        6635137587,
+        6635137586,
+        6635137585,
+        6635129884,
+        6635129883,
+        6635129882,
+        6635129881,
+        6635129880,
+        6635129879,
+        6635129878,
+        6635137592
+      ],
+      "tags": {
+        "amenity": "school",
+        "name": "Willowbank",
+        "operator:type": "private",
+        "wikidata": "Q7762545"
+      }
+    },
+    {
+      "type": "way",
+      "id": 707287013,
+      "center": {
+        "lat": 43.0756216,
+        "lon": -79.1381559
+      },
+      "nodes": [
+        6646701892,
+        6646701909,
+        1897058898,
+        1897058900,
+        6646701908,
+        6646701892
+      ],
+      "tags": {
+        "addr:city": "Niagara Falls",
+        "addr:housenumber": "6855",
+        "addr:postcode": "L2H 2T3",
+        "addr:street": "Kalar Road",
+        "amenity": "school",
+        "fax": "+1-905-356-7063",
+        "isced:level": "1;2",
+        "name": "Kate S Durdan Public School",
+        "operator": "District School Board of Niagara",
+        "operator:short": "DSBN",
+        "operator:type": "public",
+        "operator:wikidata": "Q5283366",
+        "phone": "+1-905-356-0488",
+        "school:language": "english",
+        "source": "Bing",
+        "start_date": "1999-09-01",
+        "website": "https://katedurdan.dsbn.org/"
+      }
+    },
+    {
+      "type": "way",
+      "id": 707287017,
+      "center": {
+        "lat": 43.0562519,
+        "lon": -79.0485259
+      },
+      "nodes": [
+        6646701922,
+        6646701921,
+        6646701920,
+        6646701919,
+        6646701918,
+        6646701915,
+        6646701917,
+        6646701916,
+        6646701922
+      ],
+      "tags": {
+        "amenity": "school",
+        "name": "Wali ul Asr Learning Institute - Niagara Campus",
+        "operator:type": "private"
+      }
+    },
+    {
+      "type": "way",
+      "id": 707287023,
+      "center": {
+        "lat": 43.07447,
+        "lon": -79.0933443
+      },
+      "nodes": [
+        6646701959,
+        6646701958,
+        6646701957,
+        6646701956,
+        6646701955,
+        7348261295,
+        6646701954,
+        6646701953,
+        6646701952,
+        6646701959
+      ],
+      "tags": {
+        "addr:city": "Niagara Falls",
+        "addr:housenumber": "6032",
+        "addr:postcode": "L2G 2X1",
+        "addr:street": "Churchill Street",
+        "amenity": "school",
+        "denomination": "catholic",
+        "fax": "+1-905-354-1509",
+        "isced:level": "1;2",
+        "name": "Father Hennepin Catholic Elementary School",
+        "operator": "Niagara Catholic District School Board",
+        "operator:short": "NCDSB",
+        "operator:type": "public",
+        "operator:wikidata": "Q16957770",
+        "phone": "+1-905-354-4469",
+        "religion": "christian",
+        "school:language": "english",
+        "website": "http://portal.niagaracatholic.ca/elementary/fatherhennepin/"
+      }
+    },
+    {
+      "type": "way",
+      "id": 707287029,
+      "center": {
+        "lat": 43.0546561,
+        "lon": -79.0423568
+      },
+      "nodes": [
+        6646703091,
+        6646703090,
+        6646703089,
+        6646703088,
+        6646703087,
+        6646703086,
+        6646703085,
+        6646701984,
+        6646701983,
+        6646703091
+      ],
+      "tags": {
+        "addr:city": "Niagara Falls",
+        "addr:housenumber": "3300",
+        "addr:postcode": "L2G 6M9",
+        "addr:street": "Cattell Drive",
+        "amenity": "school",
+        "fax": "+1-905-295-6684",
+        "isced:level": "1;2",
+        "name": "River View Public School",
+        "operator": "District School Board of Niagara",
+        "operator:short": "DSBN",
+        "operator:type": "public",
+        "operator:wikidata": "Q5283366",
+        "phone": "+1-905-295-3251",
+        "school:language": "english",
+        "website": "https://riverview.dsbn.org/"
+      }
+    },
+    {
+      "type": "way",
+      "id": 707292691,
+      "center": {
+        "lat": 43.1019875,
+        "lon": -79.0821755
+      },
+      "nodes": [
+        6646717182,
+        6646717181,
+        6646717180,
+        6646717179,
+        6646717178,
+        6646717177,
+        6646717176,
+        6646717182
+      ],
+      "tags": {
+        "addr:city": "Niagara Falls",
+        "addr:housenumber": "5315",
+        "addr:postcode": "L2E 1X4",
+        "addr:street": "Valley Way",
+        "amenity": "school",
+        "fax": "+1-905-356-1772",
+        "isced:level": "1;2",
+        "name": "Valley Way Public School",
+        "operator": "District School Board of Niagara",
+        "operator:short": "DSBN",
+        "operator:type": "public",
+        "operator:wikidata": "Q5283366",
+        "phone": "+1-905-356-6611",
+        "school:language": "english",
+        "website": "https://valleyway.dsbn.org/"
+      }
+    },
+    {
+      "type": "way",
+      "id": 707297328,
+      "center": {
+        "lat": 43.1289662,
+        "lon": -79.0905265
+      },
+      "nodes": [
+        6646740776,
+        6646740775,
+        6646740774,
+        6646740773,
+        6646740783,
+        6646740782,
+        6646740781,
+        6646740772,
+        6646740776
+      ],
+      "tags": {
+        "addr:city": "Niagara Falls",
+        "addr:housenumber": "5635",
+        "addr:postcode": "L2J 3L6",
+        "addr:street": "Heritage Drive",
+        "amenity": "school",
+        "fax": "+1-905-354-9385",
+        "isced:level": "1",
+        "name": "Victoria Public School",
+        "operator": "District School Board of Niagara",
+        "operator:short": "DSBN",
+        "operator:type": "public",
+        "operator:wikidata": "Q5283366",
+        "phone": "+1-905-354-1321",
+        "school:language": "english",
+        "website": "https://victoria.dsbn.org/"
+      }
+    },
+    {
+      "type": "way",
+      "id": 707297329,
+      "center": {
+        "lat": 43.1286469,
+        "lon": -79.1137805
+      },
+      "nodes": [
+        6646740784,
+        3679676304,
+        3679676302,
+        1889318817,
+        6646740784
+      ],
+      "tags": {
+        "addr:city": "Niagara Falls",
+        "addr:housenumber": "2999",
+        "addr:postcode": "L2J 2Z9",
+        "addr:street": "Dorchester Road",
+        "amenity": "school",
+        "denomination": "catholic",
+        "fax": "+1-905-354-9665",
+        "isced:level": "1;2",
+        "name": "Mary Ward Catholic Elementary School",
+        "operator": "Niagara Catholic District School Board",
+        "operator:short": "NCDSB",
+        "operator:type": "public",
+        "operator:wikidata": "Q16957770",
+        "phone": "+1-905-354-9221",
+        "religion": "christian",
+        "school:language": "english",
+        "website": "http://portal.niagaracatholic.ca/elementary/maryward/"
+      }
+    },
+    {
+      "type": "way",
+      "id": 707301217,
+      "center": {
+        "lat": 43.077733,
+        "lon": -79.1012085
+      },
+      "nodes": [
+        6646811425,
+        6646811424,
+        6646811423,
+        6646811422,
+        6646811421,
+        6646811420,
+        6646811419,
+        6646811425
+      ],
+      "tags": {
+        "addr:city": "Niagara Falls",
+        "addr:housenumber": "6727",
+        "addr:postcode": "L2G 4T1",
+        "addr:street": "Heximer Avenue",
+        "amenity": "school",
+        "isced:level": "1;2",
+        "name": "Heximer Avenue Public School",
+        "operator": "District School Board of Niagara",
+        "operator:short": "DSBN",
+        "operator:type": "public",
+        "operator:wikidata": "Q5283366",
+        "phone": "+1-905-356-0932",
+        "school:language": "english",
+        "website": "https://heximer.dsbn.org/"
+      }
+    },
+    {
+      "type": "way",
+      "id": 707301223,
+      "center": {
+        "lat": 43.1064681,
+        "lon": -79.1070127
+      },
+      "nodes": [
+        6646811455,
+        6646811453,
+        6646811452,
+        2611692911,
+        1914659119,
+        6646811454,
+        6646811455
+      ],
+      "tags": {
+        "addr:city": "Niagara Falls",
+        "addr:housenumber": "4635",
+        "addr:postcode": "L2E 6L4",
+        "addr:street": "Pettit Avenue",
+        "amenity": "school",
+        "fax": "+1-905-356-5759",
+        "isced:level": "1;2",
+        "name": "Cherrywood Acres Public School",
+        "operator": "District School Board of Niagara",
+        "operator:short": "DSBN",
+        "operator:type": "public",
+        "operator:wikidata": "Q5283366",
+        "phone": "+1-905-356-2801",
+        "school:language": "english",
+        "website": "https://cherrywood.dsbn.org/"
+      }
+    },
+    {
+      "type": "way",
+      "id": 707314195,
+      "center": {
+        "lat": 43.1049486,
+        "lon": -79.1001624
+      },
+      "nodes": [
+        6646904825,
+        6646904824,
+        6646904823,
+        6646904822,
+        6646904821,
+        6646904820,
+        6646904819,
+        7320723428,
+        6646904825
+      ],
+      "tags": {
+        "addr:city": "Niagara Falls",
+        "addr:housenumber": "4571",
+        "addr:postcode": "L2E 6C8",
+        "addr:street": "Drummond Road",
+        "amenity": "school",
+        "fax": "+1-905-374-0889",
+        "isced:level": "1;2",
+        "name": "École élémentaire LaMarsh",
+        "operator": "Conseil scolaire Viamonde",
+        "operator:type": "public",
+        "operator:wikidata": "Q2994271",
+        "phone": "+1-905-374-6777",
+        "school:language": "french",
+        "start_date": "1991-09-03",
+        "website": "http://lamarsh.csviamonde.ca/"
+      }
+    },
+    {
+      "type": "way",
+      "id": 707314200,
+      "center": {
+        "lat": 43.1081503,
+        "lon": -79.0936782
+      },
+      "nodes": [
+        6646904865,
+        6646904864,
+        6646904863,
+        6646904862,
+        6646904861,
+        6646904860,
+        6646904865
+      ],
+      "tags": {
+        "addr:city": "Niagara Falls",
+        "addr:housenumber": "4572",
+        "addr:postcode": "L2E 6A8",
+        "addr:street": "Portage Road",
+        "amenity": "school",
+        "denomination": "catholic",
+        "fax": "+1-905-356-2537",
+        "isced:level": "1;2",
+        "name": "École élémentaire catholique Saint-Antoine",
+        "operator": "Conseil scolaire catholique MonAvenir",
+        "operator:type": "public",
+        "operator:wikidata": "Q648393",
+        "phone": "+1-905-356-2522",
+        "religion": "christian",
+        "school:language": "french",
+        "website": "https://sa.csdccs.edu.on.ca/wp/"
+      }
+    },
+    {
+      "type": "way",
+      "id": 707314201,
+      "center": {
+        "lat": 43.1065147,
+        "lon": -79.0739847
+      },
+      "nodes": [
+        6646904870,
+        6646904869,
+        6646904868,
+        4574448958,
+        4574448959,
+        4574448960,
+        4574448961,
+        4574448962,
+        4574448963,
+        4574448964,
+        4574448965,
+        4574448966,
+        4574448967,
+        4574448968,
+        6646904867,
+        6646904866,
+        6646904870
+      ],
+      "tags": {
+        "addr:city": "Niagara Falls",
+        "addr:housenumber": "4653",
+        "addr:postcode": "L2E 4B8",
+        "addr:street": "Victoria Avenue",
+        "amenity": "school",
+        "denomination": "catholic",
+        "fax": "+1-905-354-1787",
+        "isced:level": "1;2",
+        "name": "St. Patrick Catholic Elementary School",
+        "operator": "Niagara Catholic District School Board",
+        "operator:short": "NCDSB",
+        "operator:type": "public",
+        "operator:wikidata": "Q16957770",
+        "phone": "+1-905-354-6631",
+        "religion": "christian",
+        "school:language": "english",
+        "website": "http://portal.niagaracatholic.ca/elementary/stpatrick-niagarafalls/"
+      }
+    },
+    {
+      "type": "way",
+      "id": 707314205,
+      "center": {
+        "lat": 43.1051096,
+        "lon": -79.0900853
+      },
+      "nodes": [
+        1887020817,
+        12786960240,
+        12786960237,
+        12786960231,
+        6646905695,
+        6646905694,
+        6646905693,
+        1887020823,
+        1887020817
+      ],
+      "tags": {
+        "addr:city": "Niagara Falls",
+        "addr:housenumber": "5719",
+        "addr:postcode": "L2E 2E8",
+        "addr:street": "Morrison Street",
+        "amenity": "school",
+        "denomination": "catholic",
+        "fax": "+1-905-354-7975",
+        "isced:level": "1;2",
+        "name": "St. Mary Catholic Elementary School",
+        "operator": "Niagara Catholic District School Board",
+        "operator:short": "NCDSB",
+        "operator:type": "public",
+        "operator:wikidata": "Q16957770",
+        "phone": "+1-905-354-7744",
+        "religion": "christian",
+        "school:language": "english",
+        "website": "http://portal.niagaracatholic.ca/elementary/stmary-niagarafalls/"
+      }
+    },
+    {
+      "type": "way",
+      "id": 707314209,
+      "center": {
+        "lat": 43.1222119,
+        "lon": -79.0972723
+      },
+      "nodes": [
+        6646905723,
+        6646905722,
+        6646905721,
+        6646905720,
+        6646905719,
+        6646905718,
+        6646905717,
+        6646905716,
+        6646905723
+      ],
+      "tags": {
+        "addr:city": "Niagara Falls",
+        "addr:housenumber": "6121",
+        "addr:postcode": "L2J 1L4",
+        "addr:street": "Vine Street",
+        "amenity": "school",
+        "denomination": "catholic",
+        "fax": "+1-905-354-6155",
+        "isced:level": "1;2",
+        "name": "St. Gabriel Lalemant Catholic Elementary School",
+        "operator": "Niagara Catholic District School Board",
+        "operator:short": "NCDSB",
+        "operator:type": "public",
+        "operator:wikidata": "Q16957770",
+        "phone": "+1-905-354-5422",
+        "religion": "christian",
+        "school:language": "english",
+        "website": "http://portal.niagaracatholic.ca/elementary/stgabriellalemant/"
+      }
+    },
+    {
+      "type": "way",
+      "id": 707314215,
+      "center": {
+        "lat": 43.0807709,
+        "lon": -79.1083029
+      },
+      "nodes": [
+        6646905770,
+        6646905769,
+        6646905768,
+        6646905767,
+        6646905766,
+        6646905765,
+        6646905764,
+        6646905763,
+        6646905762,
+        6646905770
+      ],
+      "tags": {
+        "addr:city": "Niagara Falls",
+        "addr:housenumber": "6525",
+        "addr:postcode": "L2G 5K4",
+        "addr:street": "Carlton Avenue",
+        "amenity": "school",
+        "denomination": "catholic",
+        "fax": "+1-905-354-1467",
+        "isced:level": "1;2",
+        "name": "Our Lady of Mount Carmel Catholic Elementary School",
+        "operator": "Niagara Catholic District School Board",
+        "operator:short": "NCDSB",
+        "operator:type": "public",
+        "operator:wikidata": "Q16957770",
+        "phone": "+1-905-354-2523",
+        "religion": "christian",
+        "school:language": "english",
+        "website": "http://portal.niagaracatholic.ca/elementary/ourladyofmountcarmel/"
+      }
+    },
+    {
+      "type": "way",
+      "id": 707314217,
+      "center": {
+        "lat": 43.0937872,
+        "lon": -79.1327814
+      },
+      "nodes": [
+        4039423005,
+        6646905776,
+        6646905775,
+        6646905774,
+        6646905773,
+        13965623364,
+        6646905772,
+        4039423019,
+        4039423015,
+        4039423014,
+        4039423007,
+        4039423005
+      ],
+      "tags": {
+        "addr:city": "Niagara Falls",
+        "addr:housenumber": "8120",
+        "addr:postcode": "L2H 1R8",
+        "addr:street": "Beaverdams Road",
+        "amenity": "school",
+        "denomination": "catholic",
+        "fax": "+1-905-354-9147",
+        "isced:level": "1;2",
+        "name": "Cardinal Newman Catholic Elementary School",
+        "operator": "Niagara Catholic District School Board",
+        "operator:short": "NCDSB",
+        "operator:type": "public",
+        "operator:wikidata": "Q16957770",
+        "phone": "+1-905-354-9033",
+        "religion": "christian",
+        "school:language": "english",
+        "website": "http://portal.niagaracatholic.ca/elementary/cardinalnewman/"
+      }
+    },
+    {
+      "type": "way",
+      "id": 707322460,
+      "center": {
+        "lat": 43.159486,
+        "lon": -79.1070074
+      },
+      "nodes": [
+        6646950791,
+        6646950790,
+        6646950789,
+        6646950788,
+        6646950787,
+        6646950786,
+        6646950791
+      ],
+      "tags": {
+        "addr:city": "St. Davids",
+        "addr:housenumber": "1344",
+        "addr:postcode": "L0S 1P0",
+        "addr:street": "York Road",
+        "amenity": "school",
+        "fax": "+1-905-262-5114",
+        "isced:level": "1;2",
+        "name": "St. Davids Public School",
+        "operator": "District School Board of Niagara",
+        "operator:short": "DSBN",
+        "operator:type": "public",
+        "operator:wikidata": "Q5283366",
+        "phone": "+1-905-262-4533",
+        "school:language": "english",
+        "website": "https://stdavids.dsbn.org/"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1141821675,
+      "center": {
+        "lat": 43.0922836,
+        "lon": -79.0462901
+      },
+      "nodes": [
+        357590230,
+        10635146340,
+        7563341297,
+        7563341298,
+        7563341303,
+        7563341304,
+        7563341305,
+        7563341306,
+        7563341307,
+        357590230
+      ],
+      "tags": {
+        "amenity": "school",
+        "ele": "185",
+        "gnis:feature_id": "965795",
+        "name": "South Junior High School"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1141821686,
+      "center": {
+        "lat": 43.0907501,
+        "lon": -79.0420575
+      },
+      "nodes": [
+        10635146444,
+        10635146441,
+        10635146442,
+        10635146443,
+        10635146444
+      ],
+      "tags": {
+        "amenity": "school",
+        "ele": "177",
+        "gnis:feature_id": "950006",
+        "name": "Ferry Avenue School"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1141836603,
+      "center": {
+        "lat": 43.0975175,
+        "lon": -79.0326992
+      },
+      "nodes": [
+        10635250965,
+        10635250966,
+        10635250967,
+        10635250968,
+        10635250965
+      ],
+      "tags": {
+        "amenity": "school"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1141836607,
+      "center": {
+        "lat": 43.1061881,
+        "lon": -79.0524398
+      },
+      "nodes": [
+        10635250982,
+        10635250983,
+        10635250984,
+        10635250985,
+        10635250986,
+        10635250982
+      ],
+      "tags": {
+        "amenity": "school"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1282198956,
+      "center": {
+        "lat": 43.1020071,
+        "lon": -79.0502639
+      },
+      "nodes": [
+        11898884834,
+        12709520760,
+        12709520711,
+        12709520326,
+        12709520595,
+        12709520308,
+        12709520307,
+        12709520325,
+        11898884835,
+        12709520352,
+        11898884836,
+        12709520351,
+        12709520350,
+        12709520323,
+        12709520349,
+        12709520322,
+        11898884837,
+        12709520321,
+        12709520320,
+        12709520319,
+        12709520348,
+        12709520318,
+        12709520347,
+        11898884838,
+        12709520346,
+        12709520317,
+        11898884839,
+        12709520345,
+        12709520316,
+        12709520344,
+        12709520315,
+        11898884840,
+        12709520361,
+        12709520362,
+        12709520532,
+        12709520343,
+        12709520820,
+        12709520821,
+        12709520838,
+        12709520837,
+        12709520870,
+        12709520328,
+        12709520327,
+        11898884841,
+        12709520342,
+        11898884842,
+        11898884843,
+        12709520877,
+        12709520876,
+        12709520341,
+        11898884834
+      ],
+      "tags": {
+        "amenity": "school"
+      }
+    }
+  ]
+}

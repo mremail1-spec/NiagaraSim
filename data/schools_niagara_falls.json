@@ -1,0 +1,437 @@
+{
+"_meta": {
+"source": "Niagara Region Open Data, All Schools (CSV supplied by the user 18 November 2026), Niagara Falls schools; positions converted from Web Mercator. Contact fields dropped."
+},
+"schools": [
+{
+"name": "University Of Niagara Falls Canada",
+"type": "Post-Secondary Institution",
+"grade": "",
+"board": "",
+"category": "Private",
+"address": "4342 Queen Street",
+"lat": 43.106307,
+"lon": -79.064734
+},
+{
+"name": "Cherrywood Acres Public School",
+"type": "Elementary",
+"grade": "JK-8",
+"board": "DSB Niagara",
+"category": "Public",
+"address": "4635 Pettit Avenue",
+"lat": 43.106381,
+"lon": -79.106346
+},
+{
+"name": "\u00c9cole \u00c9l\u00e9mentaire Lamarsh",
+"type": "Elementary",
+"grade": "JK-8",
+"board": "CS Viamonde",
+"category": "Public",
+"address": "4751 Drummond Road",
+"lat": 43.105036,
+"lon": -79.099699
+},
+{
+"name": "Greendale Public School",
+"type": "Elementary",
+"grade": "JK-8",
+"board": "DSB Niagara",
+"category": "Public",
+"address": "5504 Montrose Road",
+"lat": 43.094234,
+"lon": -79.121965
+},
+{
+"name": "Heximer Avenue Public School",
+"type": "Elementary",
+"grade": "JK-8",
+"board": "DSB Niagara",
+"category": "Public",
+"address": "6727 Heximer Avenue",
+"lat": 43.077513,
+"lon": -79.100623
+},
+{
+"name": "James Morden Public School",
+"type": "Elementary",
+"grade": "JK-8",
+"board": "DSB Niagara",
+"category": "Public",
+"address": "7112 Dorchester Road",
+"lat": 43.072379,
+"lon": -79.109159
+},
+{
+"name": "John Marshall Public School",
+"type": "Elementary",
+"grade": "JK-8",
+"board": "DSB Niagara",
+"category": "Public",
+"address": "3910 St James Avenue",
+"lat": 43.11667,
+"lon": -79.102128
+},
+{
+"name": "Kate S Durdan Public School",
+"type": "Elementary",
+"grade": "JK-8",
+"board": "DSB Niagara",
+"category": "Public",
+"address": "6855 Kalar Road",
+"lat": 43.075288,
+"lon": -79.1382
+},
+{
+"name": "Forestview Public School",
+"type": "Elementary",
+"grade": "JK-8",
+"board": "DSB Niagara",
+"category": "Public",
+"address": "8406 Forestview Boulevard",
+"lat": 43.083396,
+"lon": -79.137905
+},
+{
+"name": "Martha Cullimore Public School",
+"type": "Elementary",
+"grade": "JK-8",
+"board": "DSB Niagara",
+"category": "Public",
+"address": "3155 St Andrew Avenue",
+"lat": 43.12674,
+"lon": -79.105932
+},
+{
+"name": "Thundering Heights Public School",
+"type": "Elementary",
+"grade": "JK-8",
+"board": "DSB Niagara",
+"category": "Public",
+"address": "8422 McLeod Road",
+"lat": 43.069059,
+"lon": -79.137011
+},
+{
+"name": "Orchard Park Public School",
+"type": "Elementary",
+"grade": "JK-8",
+"board": "DSB Niagara",
+"category": "Public",
+"address": "3691 Dorchester Road",
+"lat": 43.119203,
+"lon": -79.112927
+},
+{
+"name": "Prince Philip Public School",
+"type": "Elementary",
+"grade": "1-8",
+"board": "DSB Niagara",
+"category": "Public",
+"address": "3112 Dorchester Road",
+"lat": 43.126755,
+"lon": -79.11079
+},
+{
+"name": "Princess Margaret Public School",
+"type": "Elementary",
+"grade": "JK-8",
+"board": "DSB Niagara",
+"category": "Public",
+"address": "6624 Culp Street",
+"lat": 43.084687,
+"lon": -79.105051
+},
+{
+"name": "River View Public School",
+"type": "Elementary",
+"grade": "JK-8",
+"board": "DSB Niagara",
+"category": "Public",
+"address": "3300 Cattell Drive",
+"lat": 43.05472,
+"lon": -79.04232
+},
+{
+"name": "Simcoe Street Public School",
+"type": "Elementary",
+"grade": "JK-8",
+"board": "DSB Niagara",
+"category": "Public",
+"address": "4760 Simcoe Street",
+"lat": 43.102162,
+"lon": -79.071975
+},
+{
+"name": "Valley Way Public School",
+"type": "Elementary",
+"grade": "JK-8",
+"board": "DSB Niagara",
+"category": "Public",
+"address": "5315 Valley Way",
+"lat": 43.102078,
+"lon": -79.082177
+},
+{
+"name": "Victoria Public School",
+"type": "Elementary",
+"grade": "JK-6",
+"board": "DSB Niagara",
+"category": "Public",
+"address": "5635 Heritage Drive",
+"lat": 43.12902,
+"lon": -79.08999
+},
+{
+"name": "Niagara Support Services",
+"type": "Elementary",
+"grade": "1-8",
+"board": "DSB Niagara",
+"category": "Public",
+"address": "3470 Sinnicks Avenue",
+"lat": 43.12251,
+"lon": -79.094321
+},
+{
+"name": "Niagara Centre Academy",
+"type": "Elementary and Secondary",
+"grade": "",
+"board": "",
+"category": "Private",
+"address": "4758-4762 Kincaid Place",
+"lat": 43.098365,
+"lon": -79.072027
+},
+{
+"name": "Kent School",
+"type": "Secondary",
+"grade": "",
+"board": "",
+"category": "Private",
+"address": "4700 Epworth Circle",
+"lat": 43.098535,
+"lon": -79.070667
+},
+{
+"name": "Al-Mahdi Learning Institute",
+"type": "Elementary",
+"grade": "",
+"board": "",
+"category": "Private",
+"address": "8333 Willoughby Drive",
+"lat": 43.056837,
+"lon": -79.048391
+},
+{
+"name": "St John Henry Newman Catholic Elementary School",
+"type": "Elementary",
+"grade": "JK-8",
+"board": "Niagara CDSB",
+"category": "Catholic",
+"address": "8120 Beaverdams Road",
+"lat": 43.093529,
+"lon": -79.132802
+},
+{
+"name": "Our Lady Of Mount Carmel Catholic Elementary School",
+"type": "Elementary",
+"grade": "JK-8",
+"board": "Niagara CDSB",
+"category": "Catholic",
+"address": "6525 Carlton Avenue",
+"lat": 43.080597,
+"lon": -79.108372
+},
+{
+"name": "Father Hennepin Catholic Elementary School",
+"type": "Elementary",
+"grade": "JK-8",
+"board": "Niagara CDSB",
+"category": "Catholic",
+"address": "6032 Churchill Street",
+"lat": 43.074506,
+"lon": -79.093717
+},
+{
+"name": "Loretto Catholic Elementary School",
+"type": "Elementary",
+"grade": "JK-8",
+"board": "Niagara CDSB",
+"category": "Catholic",
+"address": "6855 Kalar Road",
+"lat": 43.075288,
+"lon": -79.1382
+},
+{
+"name": "Mary Ward Catholic Elementary School",
+"type": "Elementary",
+"grade": "JK-8",
+"board": "Niagara CDSB",
+"category": "Catholic",
+"address": "2999 Dorchester Road",
+"lat": 43.128651,
+"lon": -79.113299
+},
+{
+"name": "St Vincent De Paul Catholic Elementary School",
+"type": "Elementary",
+"grade": "JK-8",
+"board": "Niagara CDSB",
+"category": "Catholic",
+"address": "3900 Kalar Road",
+"lat": 43.115256,
+"lon": -79.136831
+},
+{
+"name": "Notre Dame Catholic Elementary School",
+"type": "Elementary",
+"grade": "JK-8",
+"board": "Niagara CDSB",
+"category": "Catholic",
+"address": "6559 Caswell Street",
+"lat": 43.116773,
+"lon": -79.1067
+},
+{
+"name": "\u00c9\u00e9c Notre-Dame-De-La-Jeunesse-Niagara.f",
+"type": "Elementary",
+"grade": "JK-8",
+"board": "CS catholique MonAvenir",
+"category": "Catholic",
+"address": "7374 Wilson Crescent",
+"lat": 43.068152,
+"lon": -79.102059
+},
+{
+"name": "Sacred Heart Catholic Elementary School",
+"type": "Elementary",
+"grade": "JK-8",
+"board": "Niagara CDSB",
+"category": "Catholic",
+"address": "8450 Oliver Street",
+"lat": 43.05462,
+"lon": -79.0526
+},
+{
+"name": "Saint Paul Catholic High School",
+"type": "Secondary",
+"grade": "9-12",
+"board": "Niagara CDSB",
+"category": "Catholic",
+"address": "3834 Windermere Road",
+"lat": 43.117531,
+"lon": -79.10982
+},
+{
+"name": "Saint Michael Catholic High School",
+"type": "Secondary",
+"grade": "9-12",
+"board": "Niagara CDSB",
+"category": "Catholic",
+"address": "8699 McLeod Road",
+"lat": 43.071084,
+"lon": -79.143455
+},
+{
+"name": "\u00c9\u00e9c Saint-Antoine",
+"type": "Elementary",
+"grade": "JK-8",
+"board": "CS catholique MonAvenir",
+"category": "Catholic",
+"address": "4572 Portage Road",
+"lat": 43.107815,
+"lon": -79.093785
+},
+{
+"name": "St Gabriel Lalemant Catholic Elementary School",
+"type": "Elementary",
+"grade": "JK-8",
+"board": "Niagara CDSB",
+"category": "Catholic",
+"address": "6121 Vine Street",
+"lat": 43.122445,
+"lon": -79.098329
+},
+{
+"name": "St Mary Catholic Elementary School",
+"type": "Elementary",
+"grade": "JK-8",
+"board": "Niagara CDSB",
+"category": "Catholic",
+"address": "5719 Morrison Street",
+"lat": 43.104798,
+"lon": -79.089971
+},
+{
+"name": "St Patrick Catholic Elementary School",
+"type": "Elementary",
+"grade": "JK-8",
+"board": "Niagara CDSB",
+"category": "Catholic",
+"address": "4653 Victoria Avenue",
+"lat": 43.10686,
+"lon": -79.074103
+},
+{
+"name": "Pathways Academy & Early Learning Centre",
+"type": "Elementary",
+"grade": "",
+"board": "",
+"category": "Private",
+"address": "6642 St Thomas More Drive",
+"lat": 43.078851,
+"lon": -79.108911
+},
+{
+"name": "Millwoods International School",
+"type": "Elementary and Secondary",
+"grade": "",
+"board": "",
+"category": "Private",
+"address": "4786 Queen Street",
+"lat": 43.106411,
+"lon": -79.072892
+},
+{
+"name": "Bee Montessori Niagara",
+"type": "Elementary",
+"grade": "",
+"board": "",
+"category": "Private",
+"address": "3428 Portage Road",
+"lat": 43.123823,
+"lon": -79.099275
+},
+{
+"name": "A N Myer Secondary School",
+"type": "Secondary",
+"grade": "9-12",
+"board": "DSB Niagara",
+"category": "Public",
+"address": "6338 O'Neil Street",
+"lat": 43.122007,
+"lon": -79.102098
+},
+{
+"name": "Stamford Collegiate",
+"type": "Secondary",
+"grade": "9-12",
+"board": "DSB Niagara",
+"category": "Public",
+"address": "5775 Drummond Road",
+"lat": 43.091454,
+"lon": -79.09866
+},
+{
+"name": "Westlane Secondary School",
+"type": "Secondary",
+"grade": "9-12",
+"board": "DSB Niagara",
+"category": "Public",
+"address": "5960 Pitton Road",
+"lat": 43.087344,
+"lon": -79.131077
+}
+]
+}
