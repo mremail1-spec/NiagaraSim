@@ -42,6 +42,10 @@ TOURIST_CATEGORIES = {
     "other_retail": (["other_retail"], {"souvenir_gift": 1, "retail_other": 0.5, "general_merchandise": 0.05,
                                          "tobacco_cannabis": 0.2, "tobacconist": 0.3, "pharmacy": 0.3}),
 }
+# guest rating's pull on hotel choice: weight x exp(QUALITY_PULL x (rating - mean)); SEED, about 2x per point.
+# Ratings from few reviews are pulled toward the mean as if QUALITY_PRIOR_REVIEWS average reviews were added.
+QUALITY_PULL = 0.7
+QUALITY_PRIOR_REVIEWS = 20
 VEHICLE_OPERATION_SPLIT = {"fuel": 0.7, "parking": 0.3}      # SEED: fuel vs parking within "vehicle operation"
 # SEED: purchases per party per day in each category (sets how many stops a party makes, not what it spends)
 EVENTS_PER_PARTY_DAY = {"sightseeing": 1.5, "gaming": 0.15, "cannabis": 0.1, "restaurants": 2.0, "food_from_stores": 0.3, "fuel": 0.3, "parking": 0.7,
@@ -203,6 +207,36 @@ def build_tourism(pack: Pack, businesses: list[dict], year: int) -> dict:
         else:
             capacity[i], lodging_type[i] = (3 if x["source"].endswith("bed_and_breakfast") else 1), "rental"
 
+    # Google Hotels (third-party, data/hotels_google_2026-11.json): real price, guest rating and stars
+    from .hotel_match import match as _match
+    hotel_price, hotel_quality = {}, {}
+    gfile = DATA_DIR / "hotels_google_2026-11.json"
+    if gfile.exists():
+        listings = [x for x in json.loads(gfile.read_text())["listings"] if not x["rental"]]
+        ids = [x["business_id"] for x in hotels]
+        pairs = _match([x["name"] for x in hotels], [y["name"] for y in listings])
+        got = {ids[i]: listings[j] for i, j in pairs.items()}
+        prices = sorted(g["price"] for g in got.values() if g["price"])
+        med = prices[len(prices) // 2] if prices else 1
+        ratings = [g["rating"] for g in got.values() if g["rating"]]
+        mean_r = sum(ratings) / len(ratings) if ratings else 3.8
+        for i, g in got.items():
+            if g["price"]:
+                r = g["price"] / med
+                tier[i] = 0 if r < 0.65 else 1 if r < 0.9 else 2 if r < 1.25 else 3 if r < 1.7 else 4
+                hotel_price[i] = float(g["price"])
+            elif g["stars"]:
+                tier[i] = {1: 0, 2: 0, 3: 2, 4: 3, 5: 4}[g["stars"]]
+            if g["rating"]:
+                n = g["reviews"] or 0
+                r_adj = (g["rating"] * n + mean_r * QUALITY_PRIOR_REVIEWS) / (n + QUALITY_PRIOR_REVIEWS)
+                hotel_quality[i] = round(math.exp(QUALITY_PULL * (r_adj - mean_r)), 4)
+        # hotels without a published price: their class's price on the same scale
+        raw = classes["price_vs_midscale"]
+        for i in tier:
+            if i not in hotel_price:
+                hotel_price[i] = med * raw[tier[i]] / raw[2]
+
     att = t["attractions_attendance_niagara_parks_fy2024_25"]
     attendance = {}
     for key, name in PARKS_ATTRACTIONS.items():
@@ -235,6 +269,7 @@ def build_tourism(pack: Pack, businesses: list[dict], year: int) -> dict:
         "gateways": GATEWAYS, "car_share": car_share,
         "capacity": capacity, "lodging_type": lodging_type, "attendance_target": attendance,
         "hotel_tier": tier, "tier_price_raw": classes["price_vs_midscale"],
+        "hotel_price_raw": hotel_price, "hotel_quality": hotel_quality,
         "tier_pref": [classes["preference"][seg["origin"]] for seg in segments],
         "hotel": (json.loads((DATA_DIR / "calibrated_hotels.json").read_text())["hotel"]
                   if (DATA_DIR / "calibrated_hotels.json").exists() else None),

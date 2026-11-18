@@ -1,0 +1,2002 @@
+{
+ "_meta": {
+  "what": "Hotels in Niagara Falls on Google Hotels: price per night (CAD, one night), guest rating (out of 5), number of reviews, hotel class (stars). Third-party data, collected with a headless browser.",
+  "collected": "2026-11-18, prices for the night of 29-30 November 2026 (Google's default dates); ratings and stars do not depend on dates.",
+  "use": "Hotel quality (rating), class (stars) and relative price for visitor hotel choice and room prices. Seasonal level comes from CBRE monthly rates.",
+  "not_used": "Booking.com refused (403), Hotels.com errored, TripAdvisor showed a CAPTCHA: not pursued."
+ },
+ "listings": [
+  {
+   "name": "Niagara Luxury Suites - Deluxe Double Room with Balcony",
+   "stars": null,
+   "price": 189,
+   "rating": null,
+   "reviews": 16100,
+   "rental": true
+  },
+  {
+   "name": "The Oakes Hotel Overlooking the Falls",
+   "stars": 4,
+   "price": 90,
+   "rating": 3.4,
+   "reviews": 5200,
+   "rental": false
+  },
+  {
+   "name": "DoubleTree Fallsview Resort & Spa by Hilton - Niagara Falls",
+   "stars": 4,
+   "price": 108,
+   "rating": 4.2,
+   "reviews": 3400,
+   "rental": false
+  },
+  {
+   "name": "Niagara Falls Dream Family Retreat - Three-Bedroom Apartment",
+   "stars": null,
+   "price": 213,
+   "rating": 5.0,
+   "reviews": 8,
+   "rental": true
+  },
+  {
+   "name": "Sheraton Fallsview Hotel",
+   "stars": 4,
+   "price": 154,
+   "rating": 4.1,
+   "reviews": 13800,
+   "rental": false
+  },
+  {
+   "name": "Courtyard by Marriott Niagara Falls",
+   "stars": 3,
+   "price": 113,
+   "rating": 4.2,
+   "reviews": 2900,
+   "rental": false
+  },
+  {
+   "name": "Adorable 2-bedroom unit with jacuzzi beside falls",
+   "stars": null,
+   "price": 215,
+   "rating": 4.3,
+   "reviews": 90,
+   "rental": true
+  },
+  {
+   "name": "Ramada by Wyndham Niagara Falls/Fallsview",
+   "stars": 4,
+   "price": 51,
+   "rating": 3.1,
+   "reviews": 4400,
+   "rental": false
+  },
+  {
+   "name": "Tower Hotel Fallsview Niagara Falls",
+   "stars": 4,
+   "price": 133,
+   "rating": 3.8,
+   "reviews": 1500,
+   "rental": false
+  },
+  {
+   "name": "Days Inn by Wyndham Fallsview",
+   "stars": 3,
+   "price": 50,
+   "rating": 3.1,
+   "reviews": 2000,
+   "rental": false
+  },
+  {
+   "name": "Travelodge by Wyndham Niagara Falls Fallsview",
+   "stars": 3,
+   "price": 54,
+   "rating": 3.5,
+   "reviews": 1500,
+   "rental": false
+  },
+  {
+   "name": "Walk to the Falls 3BR Retreat Free Parking",
+   "stars": null,
+   "price": 248,
+   "rating": 4.6,
+   "reviews": 4,
+   "rental": true
+  },
+  {
+   "name": "Niagara Falls Marriott on the Falls",
+   "stars": 4,
+   "price": 181,
+   "rating": 4.2,
+   "reviews": 5400,
+   "rental": false
+  },
+  {
+   "name": "Comfort Inn Fallsview",
+   "stars": 4,
+   "price": 61,
+   "rating": 3.4,
+   "reviews": 2200,
+   "rental": false
+  },
+  {
+   "name": "Hilton Niagara Falls/Fallsview Hotel & Suites",
+   "stars": 4,
+   "price": 152,
+   "rating": 3.8,
+   "reviews": 16100,
+   "rental": false
+  },
+  {
+   "name": "Cozy Casino Hideaway in Niagara Falls",
+   "stars": null,
+   "price": 182,
+   "rating": 5.0,
+   "reviews": 2,
+   "rental": true
+  },
+  {
+   "name": "Clifton Victoria Inn at the Falls",
+   "stars": 3,
+   "price": 75,
+   "rating": 3.4,
+   "reviews": 2700,
+   "rental": false
+  },
+  {
+   "name": "Skyline Hotel & Waterpark",
+   "stars": 3,
+   "price": 71,
+   "rating": 3.5,
+   "reviews": 3800,
+   "rental": false
+  },
+  {
+   "name": "Holiday Inn Niagara Falls - by the Falls by IHG",
+   "stars": 3,
+   "price": 96,
+   "rating": 3.8,
+   "reviews": 2200,
+   "rental": false
+  },
+  {
+   "name": "Ramada by Wyndham, Niagara Falls Near Fallsview District",
+   "stars": 3,
+   "price": 85,
+   "rating": 3.9,
+   "reviews": 3200,
+   "rental": false
+  },
+  {
+   "name": "Wyndham Garden Niagara Falls Fallsview",
+   "stars": 4,
+   "price": 88,
+   "rating": 3.7,
+   "reviews": 3300,
+   "rental": false
+  },
+  {
+   "name": "Niagara Lodge & Suites",
+   "stars": 2,
+   "price": 33,
+   "rating": 2.5,
+   "reviews": 1400,
+   "rental": false
+  },
+  {
+   "name": "Cannery Lofts Niagara",
+   "stars": null,
+   "price": 95,
+   "rating": 4.8,
+   "reviews": 4,
+   "rental": true
+  },
+  {
+   "name": "Howard Johnson by Wyndham Niagara Falls",
+   "stars": 2,
+   "price": 37,
+   "rating": 3.2,
+   "reviews": 1800,
+   "rental": false
+  },
+  {
+   "name": "Fairfield by Marriott Niagara Falls, Canada",
+   "stars": 3,
+   "price": 112,
+   "rating": 4.1,
+   "reviews": 761,
+   "rental": false
+  },
+  {
+   "name": "Howard Johnson Plaza by Wyndham by the Falls / Niagara Falls",
+   "stars": 3,
+   "price": 73,
+   "rating": 3.9,
+   "reviews": 3300,
+   "rental": false
+  },
+  {
+   "name": "Super 8 by Wyndham Niagara Falls North",
+   "stars": 1,
+   "price": 48,
+   "rating": 3.4,
+   "reviews": 1100,
+   "rental": false
+  },
+  {
+   "name": "Niagara Fallsview Hotel",
+   "stars": 3,
+   "price": 88,
+   "rating": 3.9,
+   "reviews": 279,
+   "rental": false
+  },
+  {
+   "name": "Days Inn by Wyndham Niagara Falls Centre St. By the Falls",
+   "stars": 2,
+   "price": 67,
+   "rating": 4.0,
+   "reviews": 2900,
+   "rental": false
+  },
+  {
+   "name": "Wyndham Grand Fallsview Hotel",
+   "stars": 4,
+   "price": 112,
+   "rating": 3.5,
+   "reviews": 68,
+   "rental": false
+  },
+  {
+   "name": "Niagara Falls Marriott Fallsview Hotel & Spa",
+   "stars": 4,
+   "price": 176,
+   "rating": 4.1,
+   "reviews": 6400,
+   "rental": false
+  },
+  {
+   "name": "King Bed/Large Bathtub/Selfie Wall/Laundry",
+   "stars": null,
+   "price": 219,
+   "rating": 5.0,
+   "reviews": 10,
+   "rental": true
+  },
+  {
+   "name": "Cannery Lofts",
+   "stars": 4,
+   "price": 95,
+   "rating": 4.6,
+   "reviews": 318,
+   "rental": false
+  },
+  {
+   "name": "Days Inn by Wyndham Niagara Falls Near The Falls",
+   "stars": 2,
+   "price": 72,
+   "rating": 3.9,
+   "reviews": 2700,
+   "rental": false
+  },
+  {
+   "name": "Vittoria Hotel & Suites",
+   "stars": 4,
+   "price": 100,
+   "rating": 4.2,
+   "reviews": 2800,
+   "rental": false
+  },
+  {
+   "name": "Econo Lodge By the Falls",
+   "stars": 3,
+   "price": 59,
+   "rating": 3.2,
+   "reviews": 605,
+   "rental": false
+  },
+  {
+   "name": "Quality Hotel Fallsview Cascade",
+   "stars": 4,
+   "price": 71,
+   "rating": 3.4,
+   "reviews": 1400,
+   "rental": false
+  },
+  {
+   "name": "Super 8 by Wyndham Niagara Falls by the Falls",
+   "stars": 2,
+   "price": 56,
+   "rating": 3.8,
+   "reviews": 848,
+   "rental": false
+  },
+  {
+   "name": "Comfort Inn",
+   "stars": 4,
+   "price": 65,
+   "rating": 3.6,
+   "reviews": 1100,
+   "rental": false
+  },
+  {
+   "name": "The Highlander Inn",
+   "stars": null,
+   "price": 54,
+   "rating": 3.7,
+   "reviews": 119,
+   "rental": false
+  },
+  {
+   "name": "Best Western Plus Cairn Croft Hotel",
+   "stars": 3,
+   "price": 105,
+   "rating": 4.2,
+   "reviews": 2400,
+   "rental": false
+  },
+  {
+   "name": "Old Stone Inn Boutique Hotel",
+   "stars": 4,
+   "price": 89,
+   "rating": 3.6,
+   "reviews": 1500,
+   "rental": false
+  },
+  {
+   "name": "Ramada Plaza by Wyndham Niagara Falls",
+   "stars": 2,
+   "price": 83,
+   "rating": 3.2,
+   "reviews": 2400,
+   "rental": false
+  },
+  {
+   "name": "Americana Conference Resort Spa & Waterpark",
+   "stars": 3,
+   "price": 128,
+   "rating": 3.8,
+   "reviews": 5800,
+   "rental": false
+  },
+  {
+   "name": "Advance Inn",
+   "stars": 2,
+   "price": 37,
+   "rating": 3.5,
+   "reviews": 360,
+   "rental": false
+  },
+  {
+   "name": "Country Inn & Suites by Radisson, Niagara Falls, ON",
+   "stars": 4,
+   "price": 114,
+   "rating": 4.2,
+   "reviews": 2100,
+   "rental": false
+  },
+  {
+   "name": "Mammas Inn",
+   "stars": 2,
+   "price": 79,
+   "rating": 3.9,
+   "reviews": 204,
+   "rental": false
+  },
+  {
+   "name": "River Rapids Inn",
+   "stars": null,
+   "price": 60,
+   "rating": 3.7,
+   "reviews": 695,
+   "rental": false
+  },
+  {
+   "name": "Choice Inn by the Falls",
+   "stars": 2,
+   "price": 79,
+   "rating": 3.7,
+   "reviews": 223,
+   "rental": false
+  },
+  {
+   "name": "Niagara Getaway across Fallsview - Two-Bedroom Apartment",
+   "stars": null,
+   "price": 318,
+   "rating": 4.7,
+   "reviews": 121,
+   "rental": true
+  },
+  {
+   "name": "Victoria Family Vacation Home_4 Minutes To The Falls",
+   "stars": null,
+   "price": 199,
+   "rating": 4.6,
+   "reviews": 108,
+   "rental": true
+  },
+  {
+   "name": "Ritz Inn Niagara",
+   "stars": 1,
+   "price": 48,
+   "rating": 3.0,
+   "reviews": 491,
+   "rental": false
+  },
+  {
+   "name": "Spacious 2BR Private Suite | Near Niagara Falls",
+   "stars": null,
+   "price": 182,
+   "rating": null,
+   "reviews": null,
+   "rental": true
+  },
+  {
+   "name": "TownePlace Suites by Marriott Niagara Falls Canada",
+   "stars": 3,
+   "price": 121,
+   "rating": 4.3,
+   "reviews": 185,
+   "rental": false
+  },
+  {
+   "name": "Beautiful home, a few minutes to the waterfall and attractions",
+   "stars": null,
+   "price": 322,
+   "rating": 4.7,
+   "reviews": 14,
+   "rental": true
+  },
+  {
+   "name": "Travelodge by Wyndham Niagara Falls at the Falls",
+   "stars": 3,
+   "price": 87,
+   "rating": 4.0,
+   "reviews": 1200,
+   "rental": false
+  },
+  {
+   "name": "Niagara's Best Inn",
+   "stars": 3,
+   "price": 51,
+   "rating": 3.6,
+   "reviews": 470,
+   "rental": false
+  },
+  {
+   "name": "Two-bedroom Suite with King Bed-4 Minutes to The Falls - Two-Bedroom House",
+   "stars": null,
+   "price": 208,
+   "rating": 4.6,
+   "reviews": 48,
+   "rental": true
+  },
+  {
+   "name": "3 Mins to Clifton Hill! - Steve's Falls Retreat",
+   "stars": null,
+   "price": 301,
+   "rating": 5.0,
+   "reviews": 52,
+   "rental": true
+  },
+  {
+   "name": "Econo Lodge By the Falls - Queen Room with Two Queen Beds - Non-Smoking",
+   "stars": null,
+   "price": 84,
+   "rating": 4.9,
+   "reviews": 8,
+   "rental": true
+  },
+  {
+   "name": "Cozy unit with 1 parking space and Wi-Fi, in a safe neighborhood in the North End of Niagara Falls",
+   "stars": null,
+   "price": 157,
+   "rating": 4.8,
+   "reviews": 12,
+   "rental": true
+  },
+  {
+   "name": "Falls Lodge by the Falls, Niagara Falls, ON",
+   "stars": 3,
+   "price": 65,
+   "rating": 3.5,
+   "reviews": 805,
+   "rental": false
+  },
+  {
+   "name": "Entire house/Open Concept Relaxing 5 Min drive/ about 25 Min walk to Falls",
+   "stars": null,
+   "price": 269,
+   "rating": 4.8,
+   "reviews": 52,
+   "rental": true
+  },
+  {
+   "name": "Falls Lodge & Suites",
+   "stars": 3,
+   "price": 72,
+   "rating": 3.6,
+   "reviews": 645,
+   "rental": false
+  },
+  {
+   "name": "Villager Lodge",
+   "stars": 2,
+   "price": 70,
+   "rating": 3.7,
+   "reviews": 278,
+   "rental": false
+  },
+  {
+   "name": "Niagara Inn & Suites",
+   "stars": 2,
+   "price": 69,
+   "rating": 2.8,
+   "reviews": 252,
+   "rental": false
+  },
+  {
+   "name": "The Brock Niagara Falls Fallsview, Tapestry by Hilton",
+   "stars": 4,
+   "price": 142,
+   "rating": 3.5,
+   "reviews": 4700,
+   "rental": false
+  },
+  {
+   "name": "Blue Moon Motel",
+   "stars": 2,
+   "price": 56,
+   "rating": 4.4,
+   "reviews": 457,
+   "rental": false
+  },
+  {
+   "name": "The Falls Hotel and Inn",
+   "stars": 3,
+   "price": 66,
+   "rating": 3.2,
+   "reviews": 1300,
+   "rental": false
+  },
+  {
+   "name": "Fallsview Casino Resort",
+   "stars": 4,
+   "price": null,
+   "rating": 4.3,
+   "reviews": 25200,
+   "rental": false
+  },
+  {
+   "name": "Fullerton Manor Inn",
+   "stars": 3,
+   "price": 80,
+   "rating": 3.8,
+   "reviews": 274,
+   "rental": false
+  },
+  {
+   "name": "Empress Inn and Suites",
+   "stars": 3,
+   "price": 66,
+   "rating": 4.3,
+   "reviews": 47,
+   "rental": false
+  },
+  {
+   "name": "7 Nights Stay",
+   "stars": null,
+   "price": 58,
+   "rating": 3.9,
+   "reviews": 587,
+   "rental": false
+  },
+  {
+   "name": "The Diplomat Inn",
+   "stars": 3,
+   "price": 53,
+   "rating": 3.7,
+   "reviews": 583,
+   "rental": false
+  },
+  {
+   "name": "Clifton Hill Luxury Mojo Dojo!",
+   "stars": null,
+   "price": 361,
+   "rating": 5.0,
+   "reviews": 54,
+   "rental": true
+  },
+  {
+   "name": "Entire house /Open Concept Relaxing 5 Min drive / about 25 Min walk to Falls",
+   "stars": null,
+   "price": 320,
+   "rating": 5.0,
+   "reviews": 16,
+   "rental": true
+  },
+  {
+   "name": "Stylish Townhome Gem with Several Amenities Just Minutes To The Falls - Two-Bedroom Apartment",
+   "stars": null,
+   "price": 344,
+   "rating": 5.0,
+   "reviews": 8,
+   "rental": true
+  },
+  {
+   "name": "Luxury Stylish Home, Walk to Falls, Fire PitMore - Three-Bedroom House",
+   "stars": null,
+   "price": 335,
+   "rating": 4.9,
+   "reviews": 32,
+   "rental": true
+  },
+  {
+   "name": "Clifton Hill, Niagara Falls - Three-Bedroom House",
+   "stars": null,
+   "price": 320,
+   "rating": null,
+   "reviews": null,
+   "rental": true
+  },
+  {
+   "name": "Hyatt Regency Niagara Falls Fallsview",
+   "stars": 4,
+   "price": 169,
+   "rating": 3.9,
+   "reviews": 619,
+   "rental": false
+  },
+  {
+   "name": "Sunset Inn",
+   "stars": 2,
+   "price": 63,
+   "rating": 3.8,
+   "reviews": 665,
+   "rental": false
+  },
+  {
+   "name": "The Glengate Hotel and Suites",
+   "stars": 2,
+   "price": 53,
+   "rating": 3.9,
+   "reviews": 1300,
+   "rental": false
+  },
+  {
+   "name": "Oasis Motel",
+   "stars": 2,
+   "price": 59,
+   "rating": 3.1,
+   "reviews": 361,
+   "rental": false
+  },
+  {
+   "name": "Niagara Inn",
+   "stars": 2,
+   "price": 111,
+   "rating": 3.5,
+   "reviews": 251,
+   "rental": false
+  },
+  {
+   "name": "Rainbow Motor Inn",
+   "stars": 2,
+   "price": 54,
+   "rating": 2.4,
+   "reviews": 377,
+   "rental": false
+  },
+  {
+   "name": "Falcon Inn",
+   "stars": 2,
+   "price": 62,
+   "rating": 2.8,
+   "reviews": 421,
+   "rental": false
+  },
+  {
+   "name": "A-1 INN",
+   "stars": 2,
+   "price": 74,
+   "rating": 3.3,
+   "reviews": 156,
+   "rental": false
+  },
+  {
+   "name": "Cadillac Motel",
+   "stars": 1,
+   "price": 119,
+   "rating": 4.6,
+   "reviews": 516,
+   "rental": false
+  },
+  {
+   "name": "Scottish Inns Niagara Falls, Canada",
+   "stars": 2,
+   "price": 76,
+   "rating": 3.6,
+   "reviews": 295,
+   "rental": false
+  },
+  {
+   "name": "The Parkway Boutique Hotel by the Falls",
+   "stars": null,
+   "price": 127,
+   "rating": 4.2,
+   "reviews": 30,
+   "rental": false
+  },
+  {
+   "name": "A Night to Remember",
+   "stars": 4,
+   "price": 88,
+   "rating": 4.6,
+   "reviews": 170,
+   "rental": false
+  },
+  {
+   "name": "Niagara Inn Bed & Breakfast",
+   "stars": 3,
+   "price": 108,
+   "rating": 4.6,
+   "reviews": 75,
+   "rental": false
+  },
+  {
+   "name": "Olympia Motel",
+   "stars": 2,
+   "price": 59,
+   "rating": 3.0,
+   "reviews": 313,
+   "rental": false
+  },
+  {
+   "name": "Heritage Inn & Suites Niagara",
+   "stars": null,
+   "price": null,
+   "rating": 4.1,
+   "reviews": 50,
+   "rental": false
+  },
+  {
+   "name": "Two-bedroom Suite with King Bed-4 Minutes to The Falls",
+   "stars": null,
+   "price": 177,
+   "rating": 4.4,
+   "reviews": 79,
+   "rental": true
+  },
+  {
+   "name": "Niagara Comfort Suites 1BR Apartment 550sqft",
+   "stars": null,
+   "price": 153,
+   "rating": 5.0,
+   "reviews": 1,
+   "rental": true
+  },
+  {
+   "name": "C&J Cozy House near Niagara Falls 2 BR/a 3rd BR is available at an up charge",
+   "stars": null,
+   "price": 236,
+   "rating": 5.0,
+   "reviews": 2,
+   "rental": true
+  },
+  {
+   "name": "Two-bedroom Suite with King Bed - 4 Min to The Falls",
+   "stars": null,
+   "price": 190,
+   "rating": 4.6,
+   "reviews": 40,
+   "rental": true
+  },
+  {
+   "name": "Bright Escape Falls Retreat - Two-Bedroom Apartment",
+   "stars": null,
+   "price": 247,
+   "rating": null,
+   "reviews": null,
+   "rental": true
+  },
+  {
+   "name": "Courtside Inn Niagara Falls",
+   "stars": 2,
+   "price": 70,
+   "rating": 2.6,
+   "reviews": 346,
+   "rental": false
+  },
+  {
+   "name": "Niagara Grandview Boutique Hotel",
+   "stars": 4,
+   "price": 174,
+   "rating": 4.4,
+   "reviews": 509,
+   "rental": false
+  },
+  {
+   "name": "Rainbow Bed & Breakfast",
+   "stars": 3,
+   "price": 112,
+   "rating": 4.7,
+   "reviews": 84,
+   "rental": false
+  },
+  {
+   "name": "A Moment In Time Bed & Breakfast",
+   "stars": 3,
+   "price": 106,
+   "rating": 4.5,
+   "reviews": 167,
+   "rental": false
+  },
+  {
+   "name": "Great Wolf Lodge | Niagara",
+   "stars": 4,
+   "price": 383,
+   "rating": 4.4,
+   "reviews": 14900,
+   "rental": false
+  },
+  {
+   "name": "Grand Persepolis Inn",
+   "stars": 2,
+   "price": null,
+   "rating": 4.5,
+   "reviews": 85,
+   "rental": false
+  },
+  {
+   "name": "The Falls Family Lodge",
+   "stars": 2,
+   "price": 77,
+   "rating": 3.0,
+   "reviews": 260,
+   "rental": false
+  },
+  {
+   "name": "Persepolis Inn",
+   "stars": null,
+   "price": null,
+   "rating": 4.1,
+   "reviews": 108,
+   "rental": false
+  },
+  {
+   "name": "Strathaird Bed and Breakfast",
+   "stars": 3,
+   "price": 151,
+   "rating": 4.9,
+   "reviews": 92,
+   "rental": false
+  },
+  {
+   "name": "Thriftlodge Niagara Falls at the Falls",
+   "stars": 2,
+   "price": null,
+   "rating": 3.6,
+   "reviews": 310,
+   "rental": false
+  },
+  {
+   "name": "Susan's Villa Bed & Breakfast",
+   "stars": 4,
+   "price": 116,
+   "rating": 4.5,
+   "reviews": 108,
+   "rental": false
+  },
+  {
+   "name": "Caravan Inn",
+   "stars": 2,
+   "price": 89,
+   "rating": 2.8,
+   "reviews": 175,
+   "rental": false
+  },
+  {
+   "name": "Blue Gables B&B",
+   "stars": 4,
+   "price": 122,
+   "rating": 4.8,
+   "reviews": 146,
+   "rental": false
+  },
+  {
+   "name": "Victoria Motor Inn",
+   "stars": 2,
+   "price": null,
+   "rating": 3.4,
+   "reviews": 335,
+   "rental": false
+  },
+  {
+   "name": "Stylish Home, Walk to Falls, Fire Pit&More",
+   "stars": null,
+   "price": 292,
+   "rating": 4.6,
+   "reviews": 36,
+   "rental": true
+  },
+  {
+   "name": "Cute Cozy 3 Bedroom Home - Best Value in Niagara",
+   "stars": null,
+   "price": 238,
+   "rating": null,
+   "reviews": null,
+   "rental": true
+  },
+  {
+   "name": "Your Niagara destination",
+   "stars": null,
+   "price": 126,
+   "rating": 4.8,
+   "reviews": 14,
+   "rental": true
+  },
+  {
+   "name": "Comfy Downtown Niagara Falls Apartment",
+   "stars": null,
+   "price": 188,
+   "rating": 4.0,
+   "reviews": 36,
+   "rental": true
+  },
+  {
+   "name": "Victoria Family Vacation Home - King Bed Private Yard BBQ Deck Gazebo - 4 Minutes To The Falls",
+   "stars": null,
+   "price": 233,
+   "rating": 5.0,
+   "reviews": 17,
+   "rental": true
+  },
+  {
+   "name": "Butterfly Manor",
+   "stars": 4,
+   "price": 185,
+   "rating": 4.9,
+   "reviews": 232,
+   "rental": false
+  },
+  {
+   "name": "Niagara Parkway Court Motel",
+   "stars": 2,
+   "price": null,
+   "rating": 3.9,
+   "reviews": 201,
+   "rental": false
+  },
+  {
+   "name": "Cozy House B&B",
+   "stars": 4,
+   "price": 124,
+   "rating": 4.6,
+   "reviews": 43,
+   "rental": false
+  },
+  {
+   "name": "Serene Niagara Inn",
+   "stars": 4,
+   "price": 130,
+   "rating": 4.9,
+   "reviews": 99,
+   "rental": false
+  },
+  {
+   "name": "CJS Inn",
+   "stars": 2,
+   "price": null,
+   "rating": 4.1,
+   "reviews": 119,
+   "rental": false
+  },
+  {
+   "name": "Jellystone Park\u2122 Niagara Falls",
+   "stars": null,
+   "price": null,
+   "rating": 4.0,
+   "reviews": 896,
+   "rental": false
+  },
+  {
+   "name": "K Niagara Guesthouse",
+   "stars": null,
+   "price": null,
+   "rating": 5.0,
+   "reviews": 6,
+   "rental": false
+  },
+  {
+   "name": "Lundy's Motel",
+   "stars": 2,
+   "price": null,
+   "rating": 4.1,
+   "reviews": 113,
+   "rental": false
+  },
+  {
+   "name": "Space Motel",
+   "stars": 2,
+   "price": null,
+   "rating": 4.1,
+   "reviews": 57,
+   "rental": false
+  },
+  {
+   "name": "Creekside B&B Niagara Falls",
+   "stars": null,
+   "price": null,
+   "rating": 4.1,
+   "reviews": 57,
+   "rental": false
+  },
+  {
+   "name": "Tropicana Inn Motel",
+   "stars": 2,
+   "price": null,
+   "rating": 2.7,
+   "reviews": 168,
+   "rental": false
+  },
+  {
+   "name": "The Rex Motel",
+   "stars": 2,
+   "price": null,
+   "rating": 4.4,
+   "reviews": 7,
+   "rental": false
+  },
+  {
+   "name": "Kingsway Motel",
+   "stars": null,
+   "price": null,
+   "rating": 3.5,
+   "reviews": 38,
+   "rental": false
+  },
+  {
+   "name": "Charming 3-Bedroom Home \u2013 4 Min Walk to Attractions!",
+   "stars": null,
+   "price": 325,
+   "rating": 4.9,
+   "reviews": 9,
+   "rental": true
+  },
+  {
+   "name": "8 KING Bed, Comfy Sofa, Close To Attractions",
+   "stars": null,
+   "price": 222,
+   "rating": 5.0,
+   "reviews": 14,
+   "rental": true
+  },
+  {
+   "name": "Adorable 2-bedroom unit with jacuzzi beside falls - Two-Bedroom House",
+   "stars": null,
+   "price": 245,
+   "rating": 4.8,
+   "reviews": 10,
+   "rental": true
+  },
+  {
+   "name": "Cedar & Live-Edge Loft | Pet Friendly | Parking",
+   "stars": null,
+   "price": 108,
+   "rating": null,
+   "reviews": null,
+   "rental": true
+  },
+  {
+   "name": "Cozy Suite in Niagara Falls minutes drive to the Falls",
+   "stars": null,
+   "price": 217,
+   "rating": null,
+   "reviews": null,
+   "rental": true
+  },
+  {
+   "name": "Paradise Point Bed and Breakfast",
+   "stars": 3,
+   "price": null,
+   "rating": 4.0,
+   "reviews": 24,
+   "rental": false
+  },
+  {
+   "name": "Niagara Hospitality Hotels",
+   "stars": 2,
+   "price": 171,
+   "rating": 4.0,
+   "reviews": 4,
+   "rental": false
+  },
+  {
+   "name": "Riverview Motel",
+   "stars": 2,
+   "price": null,
+   "rating": 3.5,
+   "reviews": 56,
+   "rental": false
+  },
+  {
+   "name": "Serenity Inn",
+   "stars": null,
+   "price": null,
+   "rating": 4.9,
+   "reviews": 143,
+   "rental": false
+  },
+  {
+   "name": "Danner House B&B",
+   "stars": 3,
+   "price": null,
+   "rating": 4.4,
+   "reviews": 16,
+   "rental": false
+  },
+  {
+   "name": "Confessions INN The Rain",
+   "stars": 2,
+   "price": null,
+   "rating": 4.1,
+   "reviews": 57,
+   "rental": false
+  },
+  {
+   "name": "Kings Inn Motor Lodge",
+   "stars": 3,
+   "price": null,
+   "rating": 4.2,
+   "reviews": 736,
+   "rental": false
+  },
+  {
+   "name": "Wyndham Garden",
+   "stars": 3,
+   "price": null,
+   "rating": 3.6,
+   "reviews": 2500,
+   "rental": false
+  },
+  {
+   "name": "Accommodations Niagara",
+   "stars": 3,
+   "price": null,
+   "rating": 4.2,
+   "reviews": 22,
+   "rental": false
+  },
+  {
+   "name": "Fairway Inn",
+   "stars": 2,
+   "price": null,
+   "rating": 2.6,
+   "reviews": 445,
+   "rental": false
+  },
+  {
+   "name": "Niagara Classic B&B",
+   "stars": 2,
+   "price": null,
+   "rating": 5.0,
+   "reviews": 2,
+   "rental": false
+  },
+  {
+   "name": "Continental mini studio apartments",
+   "stars": 3,
+   "price": null,
+   "rating": 3.1,
+   "reviews": 4,
+   "rental": false
+  },
+  {
+   "name": "Walking distance to all of attractions in Niagara Falls en-suit bathroom",
+   "stars": null,
+   "price": 174,
+   "rating": null,
+   "reviews": null,
+   "rental": true
+  },
+  {
+   "name": "Niagara Century Home | Theatre | Griddle | BBQ",
+   "stars": null,
+   "price": 368,
+   "rating": 4.6,
+   "reviews": 14,
+   "rental": true
+  },
+  {
+   "name": "3 BedroomHIDDEN GEM , WALKING DISTANCE TO FALLS",
+   "stars": null,
+   "price": 249,
+   "rating": 5.0,
+   "reviews": 16,
+   "rental": true
+  },
+  {
+   "name": "Cozy Niagara Falls Getaway | Entire Home Near Clifton Hill & The Falls",
+   "stars": null,
+   "price": 249,
+   "rating": null,
+   "reviews": null,
+   "rental": true
+  },
+  {
+   "name": "Safe HavenBackyardSunroomFree Parking 5 minutes to Falls",
+   "stars": null,
+   "price": 342,
+   "rating": 4.7,
+   "reviews": 26,
+   "rental": true
+  },
+  {
+   "name": "Yellow Pillow Inn",
+   "stars": null,
+   "price": null,
+   "rating": 3.7,
+   "reviews": 35,
+   "rental": false
+  },
+  {
+   "name": "Niagara Falls KOA Holiday",
+   "stars": null,
+   "price": null,
+   "rating": 4.4,
+   "reviews": 1600,
+   "rental": false
+  },
+  {
+   "name": "Canadian Niagara Hotels Inc",
+   "stars": null,
+   "price": null,
+   "rating": 3.6,
+   "reviews": 27,
+   "rental": false
+  },
+  {
+   "name": "The Crystal Inn",
+   "stars": 2,
+   "price": null,
+   "rating": 3.8,
+   "reviews": 189,
+   "rental": false
+  },
+  {
+   "name": "Niagara Gorgeview",
+   "stars": 3,
+   "price": null,
+   "rating": 4.6,
+   "reviews": 18,
+   "rental": false
+  },
+  {
+   "name": "Cartland Estate Bed & Breakfast",
+   "stars": null,
+   "price": null,
+   "rating": 4.9,
+   "reviews": 18,
+   "rental": false
+  },
+  {
+   "name": "Spark By Hilton Niagara Falls",
+   "stars": 3,
+   "price": null,
+   "rating": 5.0,
+   "reviews": 6400,
+   "rental": false
+  },
+  {
+   "name": "Niagara Falls Cottage Rentals - Craig House",
+   "stars": 2,
+   "price": null,
+   "rating": 4.5,
+   "reviews": 8,
+   "rental": false
+  },
+  {
+   "name": "Maple Haven Motel",
+   "stars": 2,
+   "price": null,
+   "rating": 3.8,
+   "reviews": 11,
+   "rental": false
+  },
+  {
+   "name": "Absolute Elegance Bed & Breakfast",
+   "stars": 3,
+   "price": null,
+   "rating": 3.8,
+   "reviews": 11,
+   "rental": false
+  },
+  {
+   "name": "Ellis House Bed & Breakfast",
+   "stars": 4,
+   "price": null,
+   "rating": 4.8,
+   "reviews": 123,
+   "rental": false
+  },
+  {
+   "name": "A-1 Star Inn",
+   "stars": 2,
+   "price": null,
+   "rating": 3.6,
+   "reviews": 81,
+   "rental": false
+  },
+  {
+   "name": "Campark Resorts",
+   "stars": null,
+   "price": null,
+   "rating": 4.1,
+   "reviews": 81,
+   "rental": false
+  },
+  {
+   "name": "1F backyard balcony, 2-bedrooms, spacious, 1G WiFi, near WEGO bus",
+   "stars": null,
+   "price": 260,
+   "rating": 5.0,
+   "reviews": 8,
+   "rental": true
+  },
+  {
+   "name": "Lovely 1-bedroom Basement Apartment on Niagara",
+   "stars": null,
+   "price": 93,
+   "rating": 5.0,
+   "reviews": 22,
+   "rental": true
+  },
+  {
+   "name": "Modern 1BR Suite,8 min Drive to the Majestic Falls",
+   "stars": null,
+   "price": 182,
+   "rating": null,
+   "reviews": null,
+   "rental": true
+  },
+  {
+   "name": "Min walk to Falls and all Attractions. 3 over size bedroom,5 beds,700sqf sundeck",
+   "stars": null,
+   "price": 308,
+   "rating": null,
+   "reviews": null,
+   "rental": true
+  },
+  {
+   "name": "Niagara Falls Motor Lodge",
+   "stars": 2,
+   "price": null,
+   "rating": 3.9,
+   "reviews": 95,
+   "rental": false
+  },
+  {
+   "name": "the \"hoblet\" at Natures Energy Centre & Sanctuary",
+   "stars": null,
+   "price": null,
+   "rating": 4.9,
+   "reviews": 32,
+   "rental": false
+  },
+  {
+   "name": "Lion's Head Bed & Breakfast",
+   "stars": 2,
+   "price": null,
+   "rating": 4.9,
+   "reviews": 32,
+   "rental": false
+  },
+  {
+   "name": "Trillium Bed & Breakfast",
+   "stars": 3,
+   "price": null,
+   "rating": 5.0,
+   "reviews": 5,
+   "rental": false
+  },
+  {
+   "name": "Hotel Niagara Falls, ON - Fallsview",
+   "stars": 2,
+   "price": null,
+   "rating": null,
+   "reviews": null,
+   "rental": false
+  },
+  {
+   "name": "Acacia Bed and Breakfast",
+   "stars": 3,
+   "price": null,
+   "rating": 4.7,
+   "reviews": 67,
+   "rental": false
+  },
+  {
+   "name": "Li-Li Bed and Breakfast",
+   "stars": 3,
+   "price": null,
+   "rating": 3.9,
+   "reviews": 34,
+   "rental": false
+  },
+  {
+   "name": "The Edgecliff Inn",
+   "stars": 3,
+   "price": null,
+   "rating": 2.4,
+   "reviews": 66,
+   "rental": false
+  },
+  {
+   "name": "Chestnut Inn",
+   "stars": 4,
+   "price": null,
+   "rating": 4.2,
+   "reviews": 74,
+   "rental": false
+  },
+  {
+   "name": "Ambiance By The Falls Bed And Breakfast/Cozy Suite",
+   "stars": 3,
+   "price": null,
+   "rating": 4.8,
+   "reviews": 49,
+   "rental": false
+  },
+  {
+   "name": "Angel's Hideaway Bed and Breakfast",
+   "stars": null,
+   "price": null,
+   "rating": 4.8,
+   "reviews": 6,
+   "rental": false
+  },
+  {
+   "name": "Gretna Green Niagara",
+   "stars": null,
+   "price": null,
+   "rating": 4.8,
+   "reviews": 6,
+   "rental": false
+  },
+  {
+   "name": "Somewhere in Time B&B",
+   "stars": 3,
+   "price": null,
+   "rating": 4.6,
+   "reviews": 26,
+   "rental": false
+  },
+  {
+   "name": "Min walk to Falls, all Attractions. 3 over size Brs,4 bed 2 sofabed Large Patio",
+   "stars": null,
+   "price": null,
+   "rating": 4.4,
+   "reviews": 120,
+   "rental": true
+  },
+  {
+   "name": "Modern Niagara Home | Private Deck | Quick Walk to the Falls/Attractions",
+   "stars": null,
+   "price": null,
+   "rating": 4.6,
+   "reviews": 6,
+   "rental": true
+  },
+  {
+   "name": "The Addisen ~ Clifton Hill 2 min 350Mbps Games",
+   "stars": null,
+   "price": null,
+   "rating": null,
+   "reviews": null,
+   "rental": true
+  },
+  {
+   "name": "Home away from home (basement)",
+   "stars": null,
+   "price": null,
+   "rating": null,
+   "reviews": null,
+   "rental": true
+  },
+  {
+   "name": "Oasis Motel by The Falls",
+   "stars": null,
+   "price": null,
+   "rating": 3.5,
+   "reviews": 647,
+   "rental": true
+  },
+  {
+   "name": "War of 1812 Battlefield Home by Falls - Vacation Home",
+   "stars": null,
+   "price": null,
+   "rating": null,
+   "reviews": null,
+   "rental": true
+  },
+  {
+   "name": "Luxury New Condo By Niagara Falls",
+   "stars": null,
+   "price": 212,
+   "rating": 5.0,
+   "reviews": 4,
+   "rental": true
+  },
+  {
+   "name": "Niagara Getaway across Fallsview! Pet-Friendly! 2-3 Min Drive to Fallsview,",
+   "stars": null,
+   "price": 243,
+   "rating": 4.9,
+   "reviews": 9,
+   "rental": true
+  },
+  {
+   "name": "Cedar Loft near the Falls | Parking | Pet Friendly",
+   "stars": null,
+   "price": 168,
+   "rating": 4.8,
+   "reviews": 193,
+   "rental": true
+  },
+  {
+   "name": "Niagara Getaway across Fallsview",
+   "stars": null,
+   "price": 272,
+   "rating": 4.8,
+   "reviews": 129,
+   "rental": true
+  },
+  {
+   "name": "Lovely one bedroom condo with free parking - One-Bedroom Apartment",
+   "stars": null,
+   "price": 155,
+   "rating": 4.0,
+   "reviews": 30,
+   "rental": true
+  },
+  {
+   "name": "Sunrise x Falls An Immaculate Stacked Town + Parking",
+   "stars": null,
+   "price": 239,
+   "rating": 4.0,
+   "reviews": 2,
+   "rental": true
+  },
+  {
+   "name": "Quiet & Central Studio-9 min 2 Falls/Clifton Hill",
+   "stars": null,
+   "price": 136,
+   "rating": null,
+   "reviews": null,
+   "rental": true
+  },
+  {
+   "name": "Entire Luxury Suite |Free Parking Mins to Falls",
+   "stars": null,
+   "price": 225,
+   "rating": 4.7,
+   "reviews": 3,
+   "rental": true
+  },
+  {
+   "name": "Niagara Comfort Suites 1BR Apartment 760 sqft",
+   "stars": null,
+   "price": 131,
+   "rating": null,
+   "reviews": null,
+   "rental": true
+  },
+  {
+   "name": "Luxery Home | Free Parking Mins to Falls",
+   "stars": null,
+   "price": 227,
+   "rating": 4.2,
+   "reviews": 42,
+   "rental": true
+  },
+  {
+   "name": "Pink Flamingo-9 Min drive 2 Falls/Clifton Hill/OLG",
+   "stars": null,
+   "price": 152,
+   "rating": null,
+   "reviews": null,
+   "rental": true
+  },
+  {
+   "name": "New, home-like, family-friendly spot in Niagara Falls",
+   "stars": null,
+   "price": 173,
+   "rating": null,
+   "reviews": null,
+   "rental": true
+  },
+  {
+   "name": "The Terra Retreat \u2022 Calm Family Stay, Sleeps 6 near Niagara Falls",
+   "stars": null,
+   "price": 308,
+   "rating": 5.0,
+   "reviews": 4,
+   "rental": true
+  },
+  {
+   "name": "Romeo & Juliet Niagara Retreat - Clifton Hill & Niagara Falls",
+   "stars": null,
+   "price": 253,
+   "rating": 4.7,
+   "reviews": 24,
+   "rental": true
+  },
+  {
+   "name": "Group Contemporary Rooms near the Falls",
+   "stars": null,
+   "price": 158,
+   "rating": null,
+   "reviews": null,
+   "rental": true
+  },
+  {
+   "name": "Afterglow Suite | Cozy New| 2 King Bd |10 min Fall",
+   "stars": null,
+   "price": 158,
+   "rating": null,
+   "reviews": null,
+   "rental": true
+  },
+  {
+   "name": "Adam Inn",
+   "stars": null,
+   "price": null,
+   "rating": 5.0,
+   "reviews": 34,
+   "rental": false
+  },
+  {
+   "name": "Stylish Townhome Gem with Several Amenities Just Minutes To The Falls",
+   "stars": null,
+   "price": 296,
+   "rating": 4.5,
+   "reviews": 22,
+   "rental": true
+  },
+  {
+   "name": "The Maple Leaf House - Walking Distance to The Falls and Downtown!",
+   "stars": null,
+   "price": 366,
+   "rating": 4.8,
+   "reviews": 803,
+   "rental": true
+  },
+  {
+   "name": "Elegant Downtown Niagara Falls Apartment",
+   "stars": null,
+   "price": 146,
+   "rating": 4.3,
+   "reviews": 13,
+   "rental": true
+  },
+  {
+   "name": "Spacious house near White Water Walk and many attractions",
+   "stars": null,
+   "price": 225,
+   "rating": 3.9,
+   "reviews": 14,
+   "rental": true
+  },
+  {
+   "name": "Parkway Boutique Suite 09, 10 mins to Falls & Golf",
+   "stars": null,
+   "price": 203,
+   "rating": 5.0,
+   "reviews": 31,
+   "rental": true
+  },
+  {
+   "name": "2-bedroom apartment 3 Beds in Niagara Falls with AC",
+   "stars": null,
+   "price": 316,
+   "rating": null,
+   "reviews": null,
+   "rental": true
+  },
+  {
+   "name": "9 min drive to Falls! Tropical Studio Apartment",
+   "stars": null,
+   "price": 138,
+   "rating": null,
+   "reviews": null,
+   "rental": true
+  },
+  {
+   "name": "Private Room with en-suit Bathroom 3 Mins to Falls",
+   "stars": null,
+   "price": 148,
+   "rating": 4.9,
+   "reviews": 29,
+   "rental": true
+  },
+  {
+   "name": "Located within walking distance from the Famous Niagara Falls and the atractions",
+   "stars": null,
+   "price": 201,
+   "rating": 4.7,
+   "reviews": 158,
+   "rental": true
+  },
+  {
+   "name": "Romeo Juliet Niagara Retreat - Clifton Hill - Three-Bedroom Villa",
+   "stars": null,
+   "price": 361,
+   "rating": null,
+   "reviews": null,
+   "rental": true
+  },
+  {
+   "name": "Walking distance to the Falls,",
+   "stars": null,
+   "price": 270,
+   "rating": 4.5,
+   "reviews": 84,
+   "rental": true
+  },
+  {
+   "name": "Serene 3-bedroom home with AC in charming Welland",
+   "stars": null,
+   "price": 339,
+   "rating": null,
+   "reviews": null,
+   "rental": true
+  },
+  {
+   "name": "Amazing and relaxing place to stay for a couple weeks away from you office. C",
+   "stars": null,
+   "price": 228,
+   "rating": null,
+   "reviews": null,
+   "rental": true
+  },
+  {
+   "name": "Plum Room(Breakfast Included)-Niagara Inn BedBreakfast",
+   "stars": null,
+   "price": 128,
+   "rating": 4.0,
+   "reviews": 2,
+   "rental": true
+  },
+  {
+   "name": "Cozy Traveler's Oasis in Niagara Falls",
+   "stars": null,
+   "price": 335,
+   "rating": 5.0,
+   "reviews": 4,
+   "rental": true
+  },
+  {
+   "name": "Ace Vacation Home at Niagara Falls - Canada",
+   "stars": null,
+   "price": 311,
+   "rating": 5.0,
+   "reviews": 160,
+   "rental": true
+  },
+  {
+   "name": "3 Mins Walk to Casino Niagara, Clifton the Falls",
+   "stars": null,
+   "price": 359,
+   "rating": 2.8,
+   "reviews": 10,
+   "rental": true
+  },
+  {
+   "name": "ACE Getaway. 500m to Clifton Hill. Walk to the Falls",
+   "stars": null,
+   "price": 179,
+   "rating": 4.9,
+   "reviews": 665,
+   "rental": true
+  },
+  {
+   "name": "Colours of 4927- 2 bedrooms-Queen size- one free parking",
+   "stars": null,
+   "price": 280,
+   "rating": 4.8,
+   "reviews": 10,
+   "rental": true
+  },
+  {
+   "name": "The Venture Suite",
+   "stars": null,
+   "price": 304,
+   "rating": null,
+   "reviews": null,
+   "rental": true
+  },
+  {
+   "name": "Capitol Suite",
+   "stars": null,
+   "price": 137,
+   "rating": 3.3,
+   "reviews": 14,
+   "rental": true
+  },
+  {
+   "name": "Rainbow Bed Breakfast - Twin Room",
+   "stars": null,
+   "price": 144,
+   "rating": 5.0,
+   "reviews": 8,
+   "rental": true
+  },
+  {
+   "name": "The Olive Tree Wiley Loft Suite 1, downtown St. Davids",
+   "stars": null,
+   "price": 306,
+   "rating": 3.4,
+   "reviews": 3,
+   "rental": true
+  },
+  {
+   "name": "Modern Apartment Near Niagara Falls . Walk to Attractions + Parking!",
+   "stars": null,
+   "price": null,
+   "rating": null,
+   "reviews": null,
+   "rental": true
+  },
+  {
+   "name": "Cozy Niagara Falls Retreat | Walk to the Falls",
+   "stars": null,
+   "price": null,
+   "rating": null,
+   "reviews": null,
+   "rental": true
+  },
+  {
+   "name": "Niagara RiverGlenview Home-15MinsWalkToFalls(CAN)",
+   "stars": null,
+   "price": null,
+   "rating": 4.7,
+   "reviews": 6,
+   "rental": true
+  },
+  {
+   "name": "Sunny Studio-9 min drive to Falls/Casino/OLG Stage",
+   "stars": null,
+   "price": 129,
+   "rating": 5.0,
+   "reviews": 2,
+   "rental": true
+  },
+  {
+   "name": "Niagara Getaway across Fallsview! Pet-Friendly!\\n2-3 Min Drive to Fallsview, \\n\\n",
+   "stars": null,
+   "price": 280,
+   "rating": null,
+   "reviews": null,
+   "rental": true
+  },
+  {
+   "name": "Sunshine x Falls A Pristine Stacked Town + Parking",
+   "stars": null,
+   "price": 291,
+   "rating": 4.9,
+   "reviews": 270,
+   "rental": true
+  },
+  {
+   "name": "Cozy Cabin- Close to Action-9 Mins 2 Falls/Clifton",
+   "stars": null,
+   "price": 121,
+   "rating": null,
+   "reviews": null,
+   "rental": true
+  },
+  {
+   "name": "Sunset x Falls A Superb Modern Stacked Town + Parking",
+   "stars": null,
+   "price": 260,
+   "rating": 4.9,
+   "reviews": 217,
+   "rental": true
+  },
+  {
+   "name": "Cozy 2-Bedroom Condo with Parking in Niagara Falls",
+   "stars": null,
+   "price": 288,
+   "rating": 4.5,
+   "reviews": 96,
+   "rental": true
+  },
+  {
+   "name": "Central City Nest-9 min drive 2 Falls+Clifton Hill",
+   "stars": null,
+   "price": 138,
+   "rating": 5.0,
+   "reviews": 2,
+   "rental": true
+  },
+  {
+   "name": "Parkway Boutique Suite 16, 10 mins to Falls & Golf",
+   "stars": null,
+   "price": 198,
+   "rating": 5.0,
+   "reviews": 16,
+   "rental": true
+  },
+  {
+   "name": "Serene Studio w. 2 Beds, FREE Parking&9Min 2 Falls",
+   "stars": null,
+   "price": 135,
+   "rating": null,
+   "reviews": null,
+   "rental": true
+  },
+  {
+   "name": "Parkway Boutique Suite 17, 10 mins to Falls & Golf",
+   "stars": null,
+   "price": 200,
+   "rating": 4.8,
+   "reviews": 18,
+   "rental": true
+  },
+  {
+   "name": "Parkway Boutique Suite 19, 10 mins to Falls & Golf",
+   "stars": null,
+   "price": 198,
+   "rating": 5.0,
+   "reviews": 25,
+   "rental": true
+  },
+  {
+   "name": "Parkway Boutique Suite 10, 10 mins to Falls & Golf",
+   "stars": null,
+   "price": 209,
+   "rating": 4.7,
+   "reviews": 33,
+   "rental": true
+  },
+  {
+   "name": "Parkway Boutique Suite 05, 10 mins to Falls & Golf",
+   "stars": null,
+   "price": 195,
+   "rating": 4.9,
+   "reviews": 24,
+   "rental": true
+  },
+  {
+   "name": "Centennial Suite - One-Bedroom Apartment",
+   "stars": null,
+   "price": 176,
+   "rating": 4.0,
+   "reviews": 31,
+   "rental": true
+  },
+  {
+   "name": "Parkway Boutique Suite 12, 10 mins to Falls & Golf",
+   "stars": null,
+   "price": 197,
+   "rating": 5.0,
+   "reviews": 24,
+   "rental": true
+  },
+  {
+   "name": "Parkway Boutique Suite 24",
+   "stars": null,
+   "price": 209,
+   "rating": null,
+   "reviews": null,
+   "rental": true
+  },
+  {
+   "name": "Parkway Boutique Suite 24, 10 mins to Falls & Golf",
+   "stars": null,
+   "price": 228,
+   "rating": 4.8,
+   "reviews": 34,
+   "rental": true
+  }
+ ]
+}

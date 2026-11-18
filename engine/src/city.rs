@@ -282,6 +282,12 @@ pub struct Tourism {
     pub tier_price: Vec<f64>,
     #[serde(default)]
     pub tier_pref: Vec<Vec<f64>>,
+    /// Per business: room price relative to the city average (from published prices; 0 = use the class price),
+    /// and how strongly guest ratings draw visitors (1 = average).
+    #[serde(default)]
+    pub hotel_price: Vec<f64>,
+    #[serde(default)]
+    pub hotel_quality: Vec<f64>,
     pub nights: Nights,
     pub lodging_share: LodgingShare,
     pub accommodation_spend_per_paid_person_night: f64,

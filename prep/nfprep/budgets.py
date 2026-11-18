@@ -211,7 +211,19 @@ def _hotel_classes(tour: dict, cap: list[int], n_total: int) -> dict:
     raw = tour["tier_price_raw"]
     rooms = sum(cap[i] for i in tour["hotel_tier"])
     mean = sum(cap[i] * raw[int(v)] for i, v in tour["hotel_tier"].items()) / max(rooms, 1)
-    return {"hotel_tier": tier, "tier_price": [round(p / mean, 4) for p in raw], "tier_pref": tour["tier_pref"]}
+    out = {"hotel_tier": tier, "tier_price": [round(p / mean, 4) for p in raw], "tier_pref": tour["tier_pref"]}
+    hp = tour.get("hotel_price_raw") or {}
+    if hp:
+        # each hotel's own price relative to the room-weighted city average (the level stays on CBRE's rates)
+        avg = sum(cap[i] * p for i, p in hp.items()) / max(sum(cap[i] for i in hp), 1)
+        price = [0.0] * n_total
+        for i, p in hp.items():
+            price[i] = round(p / avg, 4)
+        quality = [0.0] * n_total
+        for i, q in (tour.get("hotel_quality") or {}).items():
+            quality[i] = q
+        out.update({"hotel_price": price, "hotel_quality": quality})
+    return out
 
 
 def _tourism_block(tour: dict, sim_cats: list[str], n_total: int) -> dict:

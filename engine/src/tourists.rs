@@ -247,13 +247,17 @@ impl Engine {
 
         // hotel choice by class: rooms x the segment's preference for the hotel's class; price by class
         let tier_of = |b: usize| -> usize { t.hotel_tier.get(b).copied().unwrap_or(1) as usize };
-        let price: Vec<f64> = (0..n_biz).map(|b| if t.tier_price.is_empty() { 1.0 } else { t.tier_price[tier_of(b).min(t.tier_price.len() - 1)] }).collect();
+        let price: Vec<f64> = (0..n_biz).map(|b| match t.hotel_price.get(b) {
+            Some(&p) if p > 0.0 => p,
+            _ => if t.tier_price.is_empty() { 1.0 } else { t.tier_price[tier_of(b).min(t.tier_price.len() - 1)] },
+        }).collect();
+        let quality = |b: usize| -> f64 { t.hotel_quality.get(b).copied().filter(|q| *q > 0.0).unwrap_or(1.0) };
         let mut hotel_cdf = Vec::new();
         if !t.tier_pref.is_empty() && t.hotel_tier.len() == n_biz {
             for seg in 0..t.segments.len() {
                 let pref = &t.tier_pref[seg.min(t.tier_pref.len() - 1)];
                 let w: Vec<f64> = groups[GROUP_HOTEL].business.iter().enumerate()
-                    .map(|(i, &b)| weights[GROUP_HOTEL][i] * pref[tier_of(b as usize).min(pref.len() - 1)]).collect();
+                    .map(|(i, &b)| weights[GROUP_HOTEL][i] * pref[tier_of(b as usize).min(pref.len() - 1)] * quality(b as usize)).collect();
                 let total: f64 = w.iter().sum();
                 let mut acc = 0.0;
                 hotel_cdf.push(w.iter().map(|x| { acc += x / total.max(1e-12); acc }).collect());
