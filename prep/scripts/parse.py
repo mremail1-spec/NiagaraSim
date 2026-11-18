@@ -1,4 +1,5 @@
 import json, re, sys
+USD_CAD = 1.4135   # Bank of Canada, data/policy_levers.json 'today'
 pages=json.load(open(sys.argv[1]))
 recs={}
 for t in pages:
@@ -8,7 +9,13 @@ for t in pages:
         if not m: continue
         name=m.group(1).strip(); stars=int(m.group(2)) if m.group(2) else None
         back=L[max(0,i-10):i]
-        price=next((int(x[1:].replace(',','')) for x in back if re.fullmatch(r'\$[\d,]+',x)),None)
+        price=None
+        for x in back:
+            mm=re.fullmatch(r'(US|CA)?\$([\d,]+)',x)
+            if mm:
+                v=int(mm.group(2).replace(',',''))
+                price=round(v*USD_CAD) if mm.group(1)=='US' else v   # Google switches to US$ after the first page
+                break
         rating=next((float(x) for x in back if re.fullmatch(r'[1-5]\.\d',x)),None)
         rev=next((x for x in back if re.fullmatch(r'\([\d.,]+K?\)',x)),None)
         n=None
