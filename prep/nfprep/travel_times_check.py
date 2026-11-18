@@ -4,8 +4,8 @@
 (Orbis v3, traffic "historical") for future departure times: a Tuesday and a Saturday in July and in
 November. TomTom answers from its record of typical speeds for that weekday and hour, so this is the
 usual trip time, not a live reading. The same trips are timed on the model's road network:
-  - as built (posted or class speeds, unsigned local streets 35 km/h);
-  - with waits at signals and stop signs (prep/nfprep/intersections.py values; not in the build).
+  - as the engine has them: the route a driver chooses (route cost, prep/nfprep/road_times.py),
+    timed in real minutes (road speeds and waits at lights and stop signs fitted to TomTom).
 
 TomTom's replies are kept in build/ only (not committed: their terms limit storing results); docs/
 gets the comparison figures. Needs the TomTom key saved as a network secret for api.tomtom.com
@@ -24,7 +24,6 @@ from pathlib import Path
 import numpy as np
 import heapq
 
-from . import intersections
 
 ROOT = Path(__file__).resolve().parents[2]
 CACHE = ROOT / "build" / "tomtom_travel_times.json"
@@ -102,39 +101,29 @@ def main(city_path: Path = ROOT / "build" / "city_2025" / "city.json") -> dict:
         return int(d.argmin())
     where = {k: snap(v) for k, v in {**HOMES, **PLACES}.items()}
 
-    # model times: as built, and with waits at signals and stop signs
-    neighbours = [set() for _ in range(n)]
-    for x, y in zip(a, b):
-        neighbours[x].add(y); neighbours[y].add(x)
-    junction = np.array([len(s) >= 3 for s in neighbours])
-    sig, allway, stop = intersections.controls(lat, lon, junction)
-    delay = np.zeros(len(a))
-    for i, to in enumerate(b):
-        c = cls[i]
-        if to in sig:
-            delay[i] = intersections.SIGNAL_MIN
-        elif to in allway or (to in stop and c in intersections.MINOR):
-            delay[i] = intersections.STOP_MIN
+    # model times as the engine has them: route chosen on route cost, timed in real minutes
+    cost = np.array(ed.get("route_cost") or ed["minutes"], dtype=float)
     origins = sorted({where[h] for h in HOMES})
     out_edges = [[] for _ in range(n)]
     for i, x in enumerate(a):
         out_edges[x].append(i)
-    def times(w):
+    def times():
         res = {}
         for o in origins:
-            dist = np.full(n, np.inf); pred = np.full(n, -1); dist[o] = 0.0
+            best = np.full(n, np.inf); mins = np.full(n, np.inf); pred = np.full(n, -1); best[o] = 0.0; mins[o] = 0.0
             q = [(0.0, o)]
             while q:
                 dv, v = heapq.heappop(q)
-                if dv > dist[v]:
+                if dv > best[v]:
                     continue
                 for i in out_edges[v]:
-                    nd = dv + w[i]
-                    if nd < dist[b[i]]:
-                        dist[b[i]] = nd; pred[b[i]] = v; heapq.heappush(q, (nd, int(b[i])))
-            res[o] = (dist, pred)
+                    nd = dv + cost[i]
+                    if nd < best[b[i]]:
+                        best[b[i]] = nd; mins[b[i]] = mins[v] + minutes[i]; pred[b[i]] = v
+                        heapq.heappush(q, (nd, int(b[i])))
+            res[o] = (mins, pred)
         return res
-    base, delayed = times(minutes), times(minutes + delay)
+    base = times()
     edge_len = {(int(x), int(y)): float(l) for x, y, l in zip(a, b, length)}
 
     def path_m(tree, o, d):
@@ -163,7 +152,6 @@ def main(city_path: Path = ROOT / "build" / "city_2025" / "city.json") -> dict:
         o, d = where[h], where[p]
         tt = {label: cache[f"{o}>{d}@{when}"] for when, label in TIMES}
         rows.append({"from": h, "to": p, "model_min": round(float(base[o][0][d]), 2),
-                     "model_with_waits_min": round(float(delayed[o][0][d]), 2),
                      "model_km": round(path_m(base, o, d) / 1000, 2),
                      "tomtom_km": round(tt["Tue Jul 3am"]["m"] / 1000, 2),
                      "tomtom_min": {k: round(v["s"] / 60, 2) for k, v in tt.items()}})
@@ -178,7 +166,6 @@ def main(city_path: Path = ROOT / "build" / "city_2025" / "city.json") -> dict:
     labels = [l for _, l in TIMES]
     summary = {"trips": len(rows), "requests_this_run": asked,
                "as_built": {l: stats("model_min", l) for l in labels},
-               "with_waits": {l: stats("model_with_waits_min", l) for l in labels},
                "distance_ratio_model_to_tomtom": round(float(np.median([r["model_km"] / r["tomtom_km"] for r in rows])), 3)}
     night = np.array([r["tomtom_min"]["Tue Jul 3am"] for r in rows])
     summary["tomtom_slowdown_vs_3am"] = {l: round(float(np.median(np.array([r["tomtom_min"][l] for r in rows]) / night)), 3)
@@ -193,9 +180,9 @@ def main(city_path: Path = ROOT / "build" / "city_2025" / "city.json") -> dict:
     (ROOT / "docs" / "travel_times_check.json").write_text(json.dumps(doc, indent=1))
     print(f"asked TomTom {asked} times; distance ratio {summary['distance_ratio_model_to_tomtom']}")
     for l in labels:
-        s0, s1 = summary["as_built"][l], summary["with_waits"][l]
-        print(f"{l:13s} slowdown x{summary['tomtom_slowdown_vs_3am'][l]:.2f}  as built ratio {s0['median_ratio_model_to_tomtom']} "
-              f"r {s0['correlation']}  |  with waits ratio {s1['median_ratio_model_to_tomtom']} r {s1['correlation']}")
+        s0 = summary["as_built"][l]
+        print(f"{l:13s} slowdown x{summary['tomtom_slowdown_vs_3am'][l]:.2f}  model ratio {s0['median_ratio_model_to_tomtom']} "
+              f"r {s0['correlation']}")
     return doc
 
 

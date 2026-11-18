@@ -167,31 +167,37 @@ impl Engine {
             dest_of_business.push(dest_index[node as usize]);
         }
         let n_dest = dests.len();
-        // reversed adjacency: to reach `to`, you can come from `from`
-        let mut rev: Vec<Vec<(u32, f32, f32)>> = vec![Vec::new(); n_nodes];
+        // reversed adjacency: to reach `to`, you can come from `from`. Routes are chosen on the
+        // route cost; the minutes recorded are the real driving minutes along the chosen route.
+        let cost = city.edges.cost();
+        let mut rev: Vec<Vec<(u32, f32, f32, f32)>> = vec![Vec::new(); n_nodes];
         for e in 0..city.edges.from.len() {
-            rev[city.edges.to[e] as usize].push((city.edges.from[e], city.edges.minutes[e], city.edges.km[e]));
+            rev[city.edges.to[e] as usize].push((city.edges.from[e], cost[e], city.edges.minutes[e], city.edges.km[e]));
         }
         let mut minutes = vec![f32::INFINITY; n_dest * n_nodes];
         let mut km = vec![0f32; n_dest * n_nodes];
         let mut next_hop = vec![u16::MAX; n_dest * n_nodes];
+        let mut best = vec![f32::INFINITY; n_nodes];
         for (d, &dest) in dests.iter().enumerate() {
             let base = d * n_nodes;
+            best.iter_mut().for_each(|x| *x = f32::INFINITY);
             let mut heap = BinaryHeap::new();
+            best[dest as usize] = 0.0;
             minutes[base + dest as usize] = 0.0;
             next_hop[base + dest as usize] = dest as u16;
             heap.push(HeapItem(0.0, dest));
-            while let Some(HeapItem(t, u)) = heap.pop() {
-                if t > minutes[base + u as usize] {
+            while let Some(HeapItem(c, u)) = heap.pop() {
+                if c > best[u as usize] {
                     continue;
                 }
-                for &(v, dt, dk) in &rev[u as usize] {
-                    let nt = t + dt;
-                    if nt < minutes[base + v as usize] {
-                        minutes[base + v as usize] = nt;
+                for &(v, dc, dt, dk) in &rev[u as usize] {
+                    let nc = c + dc;
+                    if nc < best[v as usize] {
+                        best[v as usize] = nc;
+                        minutes[base + v as usize] = minutes[base + u as usize] + dt;
                         km[base + v as usize] = km[base + u as usize] + dk;
                         next_hop[base + v as usize] = u as u16;
-                        heap.push(HeapItem(nt, v));
+                        heap.push(HeapItem(nc, v));
                     }
                 }
             }

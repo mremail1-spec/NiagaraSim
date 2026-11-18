@@ -68,6 +68,8 @@ def main(year: int = 2025, seed: int = 1) -> None:
     for name in ("households", "persons", "businesses", "road_nodes", "road_edges"):
         write_csv(out / f"{name}.csv", city[name])
     export_city(city["pack"], city, city["budgets"], year, out / "city.json")
+    from .road_times import apply as set_road_times           # real minutes (TomTom fit) and route choice
+    set_road_times(out / "city.json", out / "road_edges.csv")
     from .passby import apply as add_passing_traffic          # needs the engine binary
     add_passing_traffic(out / "city.json")
     if year == 2025:

@@ -55,6 +55,9 @@ pub struct Party {
     /// Hotel rooms the party holds.
     #[serde(default)]
     pub rooms: u8,
+    /// Stable number of the party, from its arrival (0, 1, 2, ...).
+    #[serde(default)]
+    pub id: u32,
 }
 
 #[derive(Clone, Copy, Debug, Serialize, Deserialize, PartialEq)]
@@ -64,6 +67,18 @@ pub struct TouristTrip {
     pub category: u8,
     pub persons: u8,
     pub spend: f32,
+    /// Who made the trip: the party's number, travel segment, lodging group, where it stays and
+    /// nights left (copied, since a party leaving today still makes today's trips).
+    #[serde(default)]
+    pub party: u32,
+    #[serde(default)]
+    pub segment: u8,
+    #[serde(default)]
+    pub group: u8,
+    #[serde(default)]
+    pub lodging: u32,
+    #[serde(default)]
+    pub days_left: u8,
 }
 
 /// Everything about tourists that changes over time.
@@ -90,6 +105,9 @@ pub struct TourState {
     #[serde(default)]
     pub base_room_revenue: f64,
     pub visitors_today: f64,
+    /// Number the next arriving party gets.
+    #[serde(default)]
+    pub next_party_id: u32,
 }
 
 impl Engine {
@@ -285,7 +303,7 @@ impl Engine {
                 month_category_revenue: vec![vec![0.0; n_cat]; 12], accommodation_by_month: vec![0.0; 12],
                 room_nights_by_month: vec![0.0; 12], arrivals: vec![vec![0.0; 12]; n_seg], fares: 0.0, elsewhere: 0.0,
                 free: (0..n_biz).map(|b| t.capacity[b] - Self::base_rooms(&t, b)).collect(), turned_away: 0,
-                base_room_revenue: 0.0, visitors_today: 0.0,
+                base_room_revenue: 0.0, visitors_today: 0.0, next_party_id: 0,
             };
         }
         self.tour = Some(rt);
@@ -404,8 +422,10 @@ impl Engine {
                     self.count_vehicles(3, gate, route_to, 2.0);
                 }
                 self.state.tour.arrivals[seg][month] += size as f64;
+                let id = self.state.tour.next_party_id;
+                self.state.tour.next_party_id = id.wrapping_add(1);
                 self.state.tour.parties.push(Party { segment: seg as u8, group: g as u8, size, days_left: days,
-                                                     base_node: rt.groups[g].nodes[i], lodging, rooms });
+                                                     base_node: rt.groups[g].nodes[i], lodging, rooms, id });
             }
         }
         // rooms held by stays outside the travel survey earn the hotel its room rate every night
@@ -482,7 +502,9 @@ impl Engine {
                         }
                     }
                     self.state.tour.plan[hour].push(TouristTrip { base_node: p.base_node, business: b, category: c as u8,
-                                                                  persons: p.size, spend: spend as f32 });
+                                                                  persons: p.size, spend: spend as f32, party: p.id,
+                                                                  segment: p.segment, group: p.group, lodging: p.lodging,
+                                                                  days_left: p.days_left });
                 }
             }
         }

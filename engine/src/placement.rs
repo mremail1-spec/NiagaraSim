@@ -43,35 +43,40 @@ impl Ord for Item {
 }
 
 impl Engine {
-    /// Fastest travel time, distance and next step from every road node to `dest`.
+    /// Travel time, distance and next step from every road node to `dest`, along the route a
+    /// driver would choose (route cost), timed in real minutes.
     fn routes_to(&self, dest: u32) -> (Vec<f32>, Vec<f32>, Vec<u16>) {
-        self.routes_to_with(dest, &self.city.edges.minutes)
+        self.routes_to_with(dest, self.city.edges.cost())
     }
 
-    /// Like `routes_to`, with the given minutes for each edge (used to spread traffic over routes).
-    fn routes_to_with(&self, dest: u32, edge_minutes: &[f32]) -> (Vec<f32>, Vec<f32>, Vec<u16>) {
+    /// Like `routes_to`, with the given route cost for each edge (used to spread traffic over routes).
+    fn routes_to_with(&self, dest: u32, edge_cost: &[f32]) -> (Vec<f32>, Vec<f32>, Vec<u16>) {
         let n = self.n_nodes;
-        let mut rev: Vec<Vec<(u32, f32, f32)>> = vec![Vec::new(); n];
+        let mins = &self.city.edges.minutes;
+        let mut rev: Vec<Vec<(u32, f32, f32, f32)>> = vec![Vec::new(); n];
         for e in 0..self.city.edges.from.len() {
-            rev[self.city.edges.to[e] as usize].push((self.city.edges.from[e], edge_minutes[e], self.city.edges.km[e]));
+            rev[self.city.edges.to[e] as usize].push((self.city.edges.from[e], edge_cost[e], mins[e], self.city.edges.km[e]));
         }
+        let mut best = vec![f32::INFINITY; n];
         let mut minutes = vec![f32::INFINITY; n];
         let mut km = vec![0f32; n];
         let mut next = vec![u16::MAX; n];
+        best[dest as usize] = 0.0;
         minutes[dest as usize] = 0.0;
         next[dest as usize] = dest as u16;
         let mut heap = BinaryHeap::new();
         heap.push(Item(0.0, dest));
-        while let Some(Item(t, u)) = heap.pop() {
-            if t > minutes[u as usize] {
+        while let Some(Item(c, u)) = heap.pop() {
+            if c > best[u as usize] {
                 continue;
             }
-            for &(v, dt, dk) in &rev[u as usize] {
-                if t + dt < minutes[v as usize] {
-                    minutes[v as usize] = t + dt;
+            for &(v, dc, dt, dk) in &rev[u as usize] {
+                if c + dc < best[v as usize] {
+                    best[v as usize] = c + dc;
+                    minutes[v as usize] = minutes[u as usize] + dt;
                     km[v as usize] = km[u as usize] + dk;
                     next[v as usize] = u as u16;
-                    heap.push(Item(t + dt, v));
+                    heap.push(Item(c + dc, v));
                 }
             }
         }
@@ -92,7 +97,7 @@ impl Engine {
             by_dest.entry(d).or_default().push((o, v / draws.max(1) as f64));
         }
         let mut rng = crate::rng::Rng::new(seed);
-        let base = &self.city.edges.minutes;
+        let base = self.city.edges.cost().to_vec();
         let tables: Vec<Vec<f32>> = (0..draws.max(1))
             .map(|k| if k == 0 && draws <= 1 { base.clone() } else {
                 base.iter().map(|&m| m * (spread * rng.normal() - spread * spread / 2.0).exp() as f32).collect()

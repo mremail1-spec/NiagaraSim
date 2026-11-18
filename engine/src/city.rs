@@ -301,7 +301,19 @@ pub struct Edges {
     pub from: Vec<u32>,
     pub to: Vec<u32>,
     pub km: Vec<f32>,
+    /// Real driving time on the segment (what the clock shows).
     pub minutes: Vec<f32>,
+    /// What a driver weighs when choosing a route: the minutes with main roads preferred.
+    /// Empty = choose routes on the minutes themselves.
+    #[serde(default)]
+    pub route_cost: Vec<f32>,
+}
+
+impl Edges {
+    /// Route-choice cost of every edge.
+    pub fn cost(&self) -> &[f32] {
+        if self.route_cost.len() == self.minutes.len() { &self.route_cost } else { &self.minutes }
+    }
 }
 
 #[derive(Clone, Deserialize)]

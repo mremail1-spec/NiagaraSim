@@ -68,6 +68,18 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
 #sheet dd { margin: 2px 0 0; font-family: var(--font-display); font-size: 17px; font-variant-numeric: tabular-nums; }
 #sheet.street dl { display: none; }
 #sheet p { margin: 0; font-size: 12px; color: var(--ink-soft); }
+#person { position: absolute; left: 0; right: 0; bottom: 0; background: var(--panel); border-top: 1px solid var(--panel-edge);
+         border-radius: 14px 14px 0 0; padding-block: 12px 14px; max-height: 58%; overflow-y: auto; display: grid; gap: 8px;
+         padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+#person h2 { font-family: var(--font-display); font-size: 16px; margin: 0; }
+#person .kind { font-size: 12px; color: var(--ink-soft); }
+#person p { margin: 0; font-size: 13px; }
+#person .now { font-size: 14px; }
+#person .who { color: var(--ink-soft); font-size: 12px; }
+#person ol { margin: 0; padding-left: 18px; font-size: 12px; display: grid; gap: 2px; font-variant-numeric: tabular-nums; }
+#person .row { display: flex; gap: 8px; }
+#person .row button { font: inherit; font-size: 13px; padding: 6px 12px; border-radius: 8px; border: 1px solid var(--panel-edge); background: var(--panel); color: var(--ink); cursor: pointer; }
+#person .row button[aria-pressed="true"] { background: var(--ink); color: var(--panel); }
 #build, #cond { position: absolute; left: 0; right: 0; bottom: 0; background: var(--panel); border-top: 1px solid var(--panel-edge);
          border-radius: 14px 14px 0 0; padding-block: 12px 14px; max-height: 62%; overflow-y: auto;
          padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
@@ -151,6 +163,17 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
       <div><dt>Per year, at this pace</dt><dd id="bYear">$0</dd></div>
     </dl>
     <p id="bNote"></p>
+  </section>
+  <section id="person" hidden aria-live="polite">
+    <button id="closePerson" aria-label="Close" style="position:absolute;right:max(10px,env(safe-area-inset-right,0px));top:8px;font-size:20px;background:none;border:0;color:var(--ink);cursor:pointer">&times;</button>
+    <div class="kind" id="pKind"></div>
+    <h2 id="pName"></h2>
+    <p class="now" id="pNow"></p>
+    <p id="pWho"></p>
+    <p class="who" id="pMembers"></p>
+    <div class="row"><button id="pFollow" type="button" aria-pressed="false">Follow</button></div>
+    <p class="who" id="pLogHead" hidden>Trips since you started following:</p>
+    <ol id="pLog"></ol>
   </section>
   <section id="build" hidden>
     <h2>Place a business</h2>
@@ -397,36 +420,144 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
   function stepHour(animate) {
     wasm.nf_step_hour();
     tripsTotal += wasm.nf_trip_count();
+    followStep(animate);                                     // before nf_trips: both use the shared buffer
     if (!animate) return;
     const want = rate === 1 ? 320 : 70;
     const n = wasm.nf_trips(want);
     if (!n) return;
-    const data = Array.from(new Float32Array(wasm.memory.buffer, wasm.nf_buf_ptr(), n * 4));
+    const RS = 8;
+    const data = Array.from(new Float32Array(wasm.memory.buffer, wasm.nf_buf_ptr(), n * RS));
     const duration = 900 / rate, now = performance.now();
     for (let i = 0; i < n; i++) {
-      const home = data[i * 4], biz = data[i * 4 + 1], mode = data[i * 4 + 2];
+      const home = data[i * RS], biz = data[i * RS + 1], mode = data[i * RS + 2];
+      const who = { kind: "res", hh: data[i * RS + 4], mode, spend: data[i * RS + 3], cat: data[i * RS + 5], min: data[i * RS + 6], km: data[i * RS + 7], biz };
       if (city.businesses.external[biz]) continue;           // out-of-town trips leave the map
+      if (follow && follow.kind === "res" && follow.id === who.hh) continue;   // drawn by followStep
       const len = wasm.nf_route(home, biz);
       const ids = new Float32Array(wasm.memory.buffer, wasm.nf_buf_ptr(), len);
       const xs = new Float32Array(len + 1), ys = new Float32Array(len + 1), cum = new Float32Array(len + 1);
       for (let k = 0; k < len; k++) { xs[k] = nodeX[ids[k]]; ys[k] = nodeY[ids[k]]; }
       xs[len] = bizX[biz]; ys[len] = bizY[biz];
       for (let k = 1; k <= len; k++) cum[k] = cum[k - 1] + Math.hypot(xs[k] - xs[k - 1], ys[k] - ys[k - 1]);
-      trips.push({ xs, ys, cum, t0: now + Math.random() * duration * 0.5, dur: duration * (0.5 + Math.random() * 0.5), color: MODE_COLOR[mode], biz, seg: 1 });
+      trips.push({ xs, ys, cum, t0: now + Math.random() * duration * 0.5, dur: duration * (0.5 + Math.random() * 0.5), color: MODE_COLOR[mode], biz, seg: 1, who, home });
     }
     const nt = wasm.nf_tourist_trips(rate === 1 ? 260 : 60);
     if (!nt) return;
-    const tdata = Array.from(new Float32Array(wasm.memory.buffer, wasm.nf_buf_ptr(), nt * 4));
+    const TS = 12;
+    const tdata = Array.from(new Float32Array(wasm.memory.buffer, wasm.nf_buf_ptr(), nt * TS));
     for (let i = 0; i < nt; i++) {
-      const base = tdata[i * 4], biz = tdata[i * 4 + 1];
+      const base = tdata[i * TS], biz = tdata[i * TS + 1];
+      const who = { kind: "tour", party: tdata[i * TS + 4], persons: tdata[i * TS + 2], spend: tdata[i * TS + 3], seg: tdata[i * TS + 5],
+                    group: tdata[i * TS + 6], lodging: tdata[i * TS + 7], nights: tdata[i * TS + 8], cat: tdata[i * TS + 9],
+                    min: tdata[i * TS + 10], km: tdata[i * TS + 11], biz };
+      if (follow && follow.kind === "tour" && follow.id === who.party) continue;
       const len = wasm.nf_route(base, biz);
       const ids = new Float32Array(wasm.memory.buffer, wasm.nf_buf_ptr(), len);
       const xs = new Float32Array(len + 1), ys = new Float32Array(len + 1), cum = new Float32Array(len + 1);
       for (let k = 0; k < len; k++) { xs[k] = nodeX[ids[k]]; ys[k] = nodeY[ids[k]]; }
       xs[len] = bizX[biz]; ys[len] = bizY[biz];
       for (let k = 1; k <= len; k++) cum[k] = cum[k - 1] + Math.hypot(xs[k] - xs[k - 1], ys[k] - ys[k - 1]);
-      trips.push({ xs, ys, cum, t0: now + Math.random() * duration * 0.5, dur: duration * (0.5 + Math.random() * 0.5), color: TOURIST, biz, seg: 1 });
+      trips.push({ xs, ys, cum, t0: now + Math.random() * duration * 0.5, dur: duration * (0.5 + Math.random() * 0.5), color: TOURIST, biz, seg: 1, who, home: base });
     }
+  }
+
+  // ---- people: who is moving, and following one household or visitor party ----
+  let follow = null, picked = null, people = null, peopleLoading = null;
+  const GROUP_NAMES = ["hotel or motel", "short-term rental", "campground", "friends or relatives", "no overnight stay"];
+  const MODE_NAMES = ["Driving", "Riding along", "Walking", "Taking transit"];
+  const nice = (x) => String(x).replace(/_/g, " ");
+  function loadPeople() {
+    if (!peopleLoading) peopleLoading = fetch("people.json").then(r => r.ok ? r.json() : null).then(d => (people = d)).catch(() => null);
+    return peopleLoading;
+  }
+  function placeName(b) { return city.businesses.name[b] || nice(city.sim_categories[city.businesses.sim_category[b]]); }
+  function catName(w) { return w.kind === "res" ? nice(city.categories.name[w.cat]) : nice(city.tourism.categories.name[w.cat]); }
+  function clock() { const h = wasm.nf_hour(); return `day ${wasm.nf_day() + 1}, ${String(h).padStart(2, "0")}:00`; }
+  function tripLine(w) {
+    const how = w.kind === "res" ? MODE_NAMES[w.mode] || "Travelling" : (w.km > (city.params.walk_max_km || 1.2) ? "Driving" : "Walking");
+    const party = w.kind === "tour" && w.persons > 1 ? ` (${w.persons} people)` : "";
+    const min = how === "Walking" ? w.km / 4.8 * 60 : w.min;   // walking at 4.8 km/h; driving times come from the road network
+    return `${how} to ${placeName(w.biz)} for ${catName(w)}${party}: ${w.km.toFixed(1)} km, ${Math.max(1, Math.round(min))} min, spending ${money(w.spend)}.`;
+  }
+  function showPerson(w) {
+    picked = w;
+    $("sheet").hidden = true; selected = -1; streetSel = -1;
+    $("person").hidden = false;
+    const id = w.kind === "res" ? w.hh : w.party;
+    const following = follow && follow.kind === w.kind && follow.id === id;
+    $("pFollow").setAttribute("aria-pressed", String(!!following));
+    $("pFollow").textContent = following ? "Following" : "Follow";
+    $("pNow").textContent = tripLine(w);
+    if (!following) { $("pLog").textContent = ""; $("pLogHead").hidden = true; }
+    if (w.kind === "tour") {
+      const sg = city.tourism.segments[w.seg] || {};
+      const from = { domestic: "Canadian", us: "American", overseas: "Overseas" }[sg.origin] || "";
+      $("pKind").textContent = "Visitor party";
+      $("pName").textContent = `Visitor party ${Math.round(w.party).toLocaleString()}`;
+      const stay = w.lodging >= 0 ? `staying at ${placeName(w.lodging)} (${GROUP_NAMES[w.group]}), ${w.nights} ${w.nights === 1 ? "night" : "nights"} left`
+                                  : (w.group === 4 ? "here for the day" : `staying with ${GROUP_NAMES[w.group]}`);
+      $("pWho").textContent = `${from} ${sg.overnight ? "overnight visitors" : "day-trippers"}, ${w.persons} ${w.persons === 1 ? "person" : "people"}, ${stay}.`;
+      $("pMembers").textContent = "";
+      return;
+    }
+    $("pKind").textContent = "Resident household";
+    $("pName").textContent = `Household ${Math.round(w.hh).toLocaleString()}`;
+    $("pWho").textContent = "Loading who lives here\u2026"; $("pMembers").textContent = "";
+    loadPeople().then(() => {
+      if (picked !== w) return;
+      const h = people && people.households, i = w.hh;
+      if (!h || i >= h.type.length) { $("pWho").textContent = "A household in a neighbouring town."; return; }
+      const nb = h.nb[i] >= 0 ? people.neighbourhoods[h.nb[i]] : "Niagara Falls";
+      const ty = nice(people.types[h.type[i]]);
+      $("pWho").textContent = `${ty[0].toUpperCase() + ty.slice(1)} household, head of household ${nice(people.age_bands[h.age[i]]).replace(" ", "\u2013")}, `
+        + `${people.tenures[h.tenure[i]] === "owner" ? "owns" : "rents"} a ${nice(people.dwellings[h.dwelling[i]])} home in ${nb}. `
+        + `Income $${h.income_k[i]}k a year, ${h.cars[i]} ${h.cars[i] === 1 ? "car" : "cars"}.`;
+      $("pMembers").textContent = "Lives here: " + h.members[i].split(",").map(m => {
+        const [who, job] = m.split(":"); const sex = who.slice(-1), age = who.slice(0, -1);
+        return `${age} ${sex}${job ? ", works in " + job : (Number(age) < 18 ? "" : ", not working")}`;
+      }).join(" \u00b7 ");
+    });
+  }
+  function logTrip(w) {
+    const li = document.createElement("li");
+    li.textContent = `${clock()}: ${tripLine(w)}`;
+    $("pLog").appendChild(li); $("pLogHead").hidden = false;
+    while ($("pLog").children.length > 40) $("pLog").firstChild.remove();
+  }
+  function spawnFollowed(home, w) {
+    const len = wasm.nf_route(home, w.biz);
+    const ids = new Float32Array(wasm.memory.buffer, wasm.nf_buf_ptr(), len);
+    const xs = new Float32Array(len + 1), ys = new Float32Array(len + 1), cum = new Float32Array(len + 1);
+    for (let k = 0; k < len; k++) { xs[k] = nodeX[ids[k]]; ys[k] = nodeY[ids[k]]; }
+    xs[len] = bizX[w.biz]; ys[len] = bizY[w.biz];
+    for (let k = 1; k <= len; k++) cum[k] = cum[k - 1] + Math.hypot(xs[k] - xs[k - 1], ys[k] - ys[k - 1]);
+    const dur = Math.max(700, 900 / rate);
+    trips.push({ xs, ys, cum, t0: performance.now(), dur, color: "#ffffff", biz: w.biz, seg: 1, who: w, home, followed: true });
+  }
+  // each hour: every trip the followed household or party made, logged and drawn
+  function followStep(animate) {
+    if (!follow) return;
+    const F = 6;
+    const n = follow.kind === "res" ? wasm.nf_household_trips(follow.id) : wasm.nf_party_trips(follow.id);
+    if (!n) return;
+    const d = Array.from(new Float32Array(wasm.memory.buffer, wasm.nf_buf_ptr(), n * F));
+    for (let k = 0; k < n; k++) {
+      const w = follow.kind === "res"
+        ? { ...follow.base, biz: d[k * F], mode: d[k * F + 1], spend: d[k * F + 2], cat: d[k * F + 3], min: d[k * F + 4], km: d[k * F + 5] }
+        : { ...follow.base, biz: d[k * F], persons: d[k * F + 1], spend: d[k * F + 2], cat: d[k * F + 3], min: d[k * F + 4], km: d[k * F + 5] };
+      logTrip(w);
+      if (picked && (picked.kind === "res" ? picked.hh : picked.party) === follow.id) $("pNow").textContent = tripLine(w);
+      if (animate && !city.businesses.external[w.biz]) spawnFollowed(follow.home, w);
+    }
+  }
+  function pickPerson(px, py) {
+    let best = null, bestD = 16 * 16;
+    for (const t of trips) {
+      if (t.px === undefined) continue;
+      const d = (t.px - px) ** 2 + (t.py - py) ** 2;
+      if (d < bestD) { bestD = d; best = t; }
+    }
+    return best;
   }
 
   function advance(dt) {
@@ -516,7 +647,16 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
       while (t.seg < t.cum.length - 1 && t.cum[t.seg] < target) t.seg++;
       const a = t.seg - 1, span = t.cum[t.seg] - t.cum[a] || 1, f = (target - t.cum[a]) / span;
       const x = (t.xs[a] + (t.xs[t.seg] - t.xs[a]) * f) * s + view.ox, y = (t.ys[a] + (t.ys[t.seg] - t.ys[a]) * f) * s + view.oy;
-      if (x < 0 || y < 0 || x > W || y > H) continue;
+      if (x < 0 || y < 0 || x > W || y > H) { t.px = undefined; continue; }
+      t.px = x; t.py = y;
+      if (t.followed || t.who === picked) {
+        ctx.strokeStyle = css("--accent"); ctx.lineWidth = 2; ctx.globalAlpha = 0.7; ctx.beginPath();
+        for (let k = 0; k < t.xs.length; k++) { const qx = t.xs[k] * s + view.ox, qy = t.ys[k] * s + view.oy; if (k) ctx.lineTo(qx, qy); else ctx.moveTo(qx, qy); }
+        ctx.stroke(); ctx.globalAlpha = 1;
+        ctx.fillStyle = css("--accent"); ctx.beginPath(); ctx.arc(x, y, dot + 3, 0, 6.2832); ctx.fill();
+        ctx.strokeStyle = "#fff"; ctx.lineWidth = 1.5; ctx.stroke();
+        continue;
+      }
       ctx.fillStyle = t.color; ctx.beginPath(); ctx.arc(x, y, dot, 0, 6.2832); ctx.fill();
     }
     ctx.lineWidth = 1.5;
@@ -946,6 +1086,9 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
 
   function pick(px, py) {
     if (buildMode) { site = nearestNode(px, py); runForecast(); return; }
+    const who = pickPerson(px, py);
+    if (who) { showPerson(who.who); who.home !== undefined && (picked.home = who.home); return; }
+    $("person").hidden = true; picked = null;
     let best = -1, bestD = 22 * 22;
     for (let i = 0; i < bizX.length; i++) {
       if (city.businesses.external[i]) continue;
@@ -987,6 +1130,17 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
     catch (e) { fail("Could not change the outlook: " + e.message); }
   });
   $("closeSheet").addEventListener("click", () => { selected = -1; streetSel = -1; $("sheet").hidden = true; });
+  $("closePerson").addEventListener("click", () => { $("person").hidden = true; picked = null; follow = null; });
+  $("pFollow").addEventListener("click", () => {
+    if (!picked) return;
+    const id = picked.kind === "res" ? picked.hh : picked.party;
+    if (follow && follow.kind === picked.kind && follow.id === id) { follow = null; showPerson(picked); return; }
+    const base = { ...picked }; delete base.biz;
+    follow = { kind: picked.kind, id, home: picked.home, base };
+    $("pLog").textContent = ""; logTrip(picked);
+    showPerson(picked);
+    if (!playing) $("play").click();
+  });
   $("play").addEventListener("click", () => { playing = !playing; lastT = 0; $("play").textContent = playing ? "Pause" : "Play"; });
   $("speeds").addEventListener("click", (e) => {
     const btn = e.target.closest("button"); if (!btn) return;

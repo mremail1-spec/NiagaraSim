@@ -104,7 +104,8 @@ pub extern "C" fn nf_outings() -> f64 {
     engine().state().outings as f64
 }
 
-/// Copy up to `max` of the last hour's trips into the buffer as (home road node, business, mode, spend).
+/// Copy up to `max` of the last hour's trips into the buffer as (home road node, business, mode, spend,
+/// household, category, minutes, km).
 /// Returns how many were copied; they are spread evenly through the hour's trips.
 #[no_mangle]
 pub extern "C" fn nf_trips(max: u32) -> u32 {
@@ -119,9 +120,44 @@ pub extern "C" fn nf_trips(max: u32) -> u32 {
             BUF.push(t.business as f32);
             BUF.push(t.mode as u8 as f32);
             BUF.push(t.spend);
+            BUF.push(t.household as f32);
+            BUF.push(t.category as f32);
+            let home = e.city.households.node[t.household as usize] as usize;
+            BUF.push(e.trip_minutes(home, t.business as usize) as f32);
+            BUF.push(t.km);
         }
     }
     take as u32
+}
+
+/// Every trip one household made in the last hour, as (business, mode, spend, category, minutes, km).
+#[no_mangle]
+pub extern "C" fn nf_household_trips(household: u32) -> u32 {
+    let e = engine();
+    let home = e.city.households.node[household as usize] as usize;
+    unsafe {
+        BUF.clear();
+        for t in e.last_trips.iter().filter(|t| t.household == household) {
+            BUF.extend([t.business as f32, t.mode as u8 as f32, t.spend, t.category as f32,
+                        e.trip_minutes(home, t.business as usize) as f32, t.km]);
+        }
+        (BUF.len() / 6) as u32
+    }
+}
+
+/// Every purchase one tourist party made in the last hour, as (business, persons, spend, category, minutes, km).
+#[no_mangle]
+pub extern "C" fn nf_party_trips(party: u32) -> u32 {
+    let e = engine();
+    unsafe {
+        BUF.clear();
+        for t in e.last_tourist_trips.iter().filter(|t| t.party == party) {
+            BUF.extend([t.business as f32, t.persons as f32, t.spend, t.category as f32,
+                        e.trip_minutes(t.base_node as usize, t.business as usize) as f32,
+                        e.trip_km(t.base_node as usize, t.business as usize) as f32]);
+        }
+        (BUF.len() / 6) as u32
+    }
 }
 
 /// Number of trips made in the last hour stepped.
@@ -190,7 +226,8 @@ pub extern "C" fn nf_tourist_trip_count() -> u32 {
 }
 
 /// Copy up to `max` of the last hour's tourist purchases into the buffer as
-/// (base road node, business, persons, spend).
+/// (base road node, business, persons, spend, party, segment, group, lodging (-1 none), nights left,
+/// category, minutes, km).
 #[no_mangle]
 pub extern "C" fn nf_tourist_trips(max: u32) -> u32 {
     let e = engine();
@@ -204,6 +241,14 @@ pub extern "C" fn nf_tourist_trips(max: u32) -> u32 {
             BUF.push(t.business as f32);
             BUF.push(t.persons as f32);
             BUF.push(t.spend);
+            BUF.push(t.party as f32);
+            BUF.push(t.segment as f32);
+            BUF.push(t.group as f32);
+            BUF.push(if t.lodging == u32::MAX { -1.0 } else { t.lodging as f32 });
+            BUF.push(t.days_left as f32);
+            BUF.push(t.category as f32);
+            BUF.push(e.trip_minutes(t.base_node as usize, t.business as usize) as f32);
+            BUF.push(e.trip_km(t.base_node as usize, t.business as usize) as f32);
         }
     }
     take as u32
