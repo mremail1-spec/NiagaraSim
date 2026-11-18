@@ -1,0 +1,139 @@
+{
+ "_meta": {
+  "what": "Model road speeds against TomTom's measured free-flow speeds, street by street.",
+  "requests_this_run": 0,
+  "matched_segments": 199,
+  "note": "Ratios only; TomTom speeds are not stored here."
+ },
+ "by_road_type": {
+  "motorway": {
+   "segments": 38,
+   "median_model_base_over_tomtom": 0.909,
+   "median_model_real_over_tomtom": 0.882,
+   "share_within_15pct_real": 0.39,
+   "correlation_real": 0.724,
+   "by_model_base_kmh": {
+    "0-45": {
+     "segments": 2,
+     "median_model_base_over_tomtom": 0.76
+    },
+    "55-65": {
+     "segments": 15,
+     "median_model_base_over_tomtom": 1.02
+    },
+    "65-200": {
+     "segments": 21,
+     "median_model_base_over_tomtom": 0.91
+    }
+   }
+  },
+  "arterial": {
+   "segments": 119,
+   "median_model_base_over_tomtom": 0.862,
+   "median_model_real_over_tomtom": 0.667,
+   "share_within_15pct_real": 0.12,
+   "correlation_real": 0.234,
+   "by_model_base_kmh": {
+    "0-45": {
+     "segments": 4,
+     "median_model_base_over_tomtom": 0.83
+    },
+    "45-55": {
+     "segments": 98,
+     "median_model_base_over_tomtom": 0.79
+    },
+    "55-65": {
+     "segments": 8,
+     "median_model_base_over_tomtom": 1.09
+    },
+    "65-200": {
+     "segments": 9,
+     "median_model_base_over_tomtom": 1.05
+    }
+   }
+  },
+  "collector": {
+   "segments": 42,
+   "median_model_base_over_tomtom": 1.124,
+   "median_model_real_over_tomtom": 1.034,
+   "share_within_15pct_real": 0.57,
+   "correlation_real": 0.237,
+   "by_model_base_kmh": {
+    "45-55": {
+     "segments": 35,
+     "median_model_base_over_tomtom": 1.14
+    },
+    "55-65": {
+     "segments": 4,
+     "median_model_base_over_tomtom": 1.1
+    },
+    "65-200": {
+     "segments": 3,
+     "median_model_base_over_tomtom": 1.7
+    }
+   }
+  }
+ },
+ "streets_furthest_off": [
+  {
+   "street": "Netherby Road",
+   "model_over_tomtom": 0.45,
+   "segments": 4
+  },
+  {
+   "street": "Schisler Road",
+   "model_over_tomtom": 0.47,
+   "segments": 6
+  },
+  {
+   "street": "Sodom Road",
+   "model_over_tomtom": 0.5,
+   "segments": 8
+  },
+  {
+   "street": "Thorold Stone Road",
+   "model_over_tomtom": 0.55,
+   "segments": 11
+  },
+  {
+   "street": "Taylor Road",
+   "model_over_tomtom": 0.58,
+   "segments": 2
+  },
+  {
+   "street": "Thorold Townline Road",
+   "model_over_tomtom": 0.6,
+   "segments": 5
+  },
+  {
+   "street": "Lyons Creek Road",
+   "model_over_tomtom": 0.6,
+   "segments": 4
+  },
+  {
+   "street": "Niagara Parkway",
+   "model_over_tomtom": 0.61,
+   "segments": 21
+  },
+  {
+   "street": "Mountain Road",
+   "model_over_tomtom": 0.61,
+   "segments": 3
+  },
+  {
+   "street": "Biggar Road",
+   "model_over_tomtom": 0.62,
+   "segments": 5
+  },
+  {
+   "street": "Main Street",
+   "model_over_tomtom": 0.69,
+   "segments": 2
+  },
+  {
+   "street": "McLeod Road",
+   "model_over_tomtom": 0.73,
+   "segments": 4
+  }
+ ]
+}

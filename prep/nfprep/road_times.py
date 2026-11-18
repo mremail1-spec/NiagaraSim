@@ -29,6 +29,7 @@ ROOT = Path(__file__).resolve().parents[2]
 FACTORS = DATA_DIR / "road_time_factors.json"
 GROUPS = ("motorway", "arterial", "collector", "local")
 DAYTIME = ("Tue Jul 8am", "Tue Jul noon", "Tue Jul 5pm", "Tue Jul 8pm")
+COLS = ("measured", "unmeasured", "signals", "stops")
 
 
 def group(road_class: str) -> str:
@@ -49,13 +50,22 @@ def _network(city: dict, edges_csv: Path):
     assert all(int(r["from_node"]) == f and int(r["to_node"]) == t for r, f, t in zip(rows, a, b))
     cls = [r["road_class"] for r in rows] + ["connector"] * (len(a) - len(rows))
     base = np.array([float(r["minutes"]) for r in rows] + list(ed["minutes"][len(rows):]))
+    # measured: TomTom free-flow speed on the street, where TomTom covers it (not local streets)
+    from .street_speeds import speeds_for
+    kmh = speeds_for([{"pts": [tuple(map(float, p.split(","))) for p in r["polyline"].split(";")]} if group(r["road_class"]) != "local"
+                      else {"pts": []} for r in rows]) if rows else []
+    measured = np.zeros(len(a), bool)
+    for i, (r, v) in enumerate(zip(rows, kmh)):
+        if v and v > 5:
+            base[i] = float(r["length_m"]) / 1000 / v * 60
+            measured[i] = True
     nb = [set() for _ in lat]
     for x, y in zip(a, b):
         nb[x].add(y); nb[y].add(x)
     sig, allway, stop = intersections.controls(lat, lon, np.array([len(s) >= 3 for s in nb]))
     wait = np.array(["signal" if t in sig else "stop" if (t in allway or (t in stop and c in intersections.MINOR)) else ""
                      for t, c in zip(b, cls)])
-    return lat, lon, a, b, cls, base, wait
+    return lat, lon, a, b, cls, base, wait, measured
 
 
 def apply(city_path: Path, edges_csv: Path, preference: dict | None = None) -> dict:
@@ -63,15 +73,17 @@ def apply(city_path: Path, edges_csv: Path, preference: dict | None = None) -> d
     f = json.loads(FACTORS.read_text())
     pref = preference or f["route_preference"]
     city = json.loads(Path(city_path).read_text())
-    _, _, a, b, cls, base, wait = _network(city, edges_csv)
-    g = [group(c) if c != "connector" else "" for c in cls]
-    minutes = np.array([m * f["speed"].get(k, 1.0) for m, k in zip(base, g)])
+    _, _, a, b, cls, base, wait, measured = _network(city, edges_csv)
+    minutes = base * np.where(measured, f["speed"]["measured"], f["speed"]["unmeasured"])
+    minutes[np.array([c == "connector" for c in cls])] = base[np.array([c == "connector" for c in cls])]
     minutes += np.where(wait == "signal", f["seconds_per_signal"] / 60, 0) + np.where(wait == "stop", f["seconds_per_stop"] / 60, 0)
+    g = [group(c) if c != "connector" else "" for c in cls]
     cost = np.array([m * pref.get(k, 1.0) for m, k in zip(minutes, g)])
     city["edges"]["minutes"] = [round(float(x), 4) for x in minutes]
     city["edges"]["route_cost"] = [round(float(x), 4) for x in cost]
     city.setdefault("meta", {})["road_times"] = {"speed": f["speed"], "seconds_per_signal": f["seconds_per_signal"],
-                                                 "seconds_per_stop": f["seconds_per_stop"], "route_preference": pref}
+                                                 "seconds_per_stop": f["seconds_per_stop"], "route_preference": pref,
+                                                 "pieces_with_measured_speed": int(measured.sum() // 2)}
     Path(city_path).write_text(json.dumps(city, separators=(",", ":")))
     return city["meta"]["road_times"]
 
@@ -81,7 +93,7 @@ def fit(city_path: Path = ROOT / "build" / "city_2025" / "city.json") -> dict:
     type plus its number of traffic lights and stop signs (routes as TomTom and the model agree, 1%)."""
     from . import travel_times_check as T
     city = json.loads(city_path.read_text())
-    lat, lon, a, b, cls, base, wait = _network(city, city_path.with_name("road_edges.csv"))
+    lat, lon, a, b, cls, base, wait, measured = _network(city, city_path.with_name("road_edges.csv"))
     n = len(lat)
     ok = np.zeros(n, bool)
     for i in range(len(a)):
@@ -109,16 +121,16 @@ def fit(city_path: Path = ROOT / "build" / "city_2025" / "city.json") -> dict:
             for i in out[v]:
                 if dv + base[i] < dist[b[i]]:
                     dist[b[i]] = dv + base[i]; via[b[i]] = i; heapq.heappush(q, (dist[b[i]], int(b[i])))
-        row = dict.fromkeys(GROUPS + ("signals", "stops"), 0.0)
+        row = dict.fromkeys(COLS, 0.0)
         cur = d
         while cur != o:
             i = via[cur]
             if cls[i] != "connector":
-                row[group(cls[i])] += base[i]
+                row["measured" if measured[i] else "unmeasured"] += base[i]
             row["signals"] += wait[i] == "signal"
             row["stops"] += wait[i] == "stop"
             cur = a[i]
-        X.append([row[k] for k in GROUPS + ("signals", "stops")])
+        X.append([row[k] for k in COLS])
         when = {l: w for w, l in T.TIMES}
         y.append(np.mean([cache[f"{o}>{d}@{when[l]}"]["s"] / 60 for l in DAYTIME]))
     X, y = np.array(X), np.array(y)
@@ -126,15 +138,16 @@ def fit(city_path: Path = ROOT / "build" / "city_2025" / "city.json") -> dict:
     coef = np.maximum(coef, 0.0)
     pred = X @ coef
     old = json.loads(FACTORS.read_text()) if FACTORS.exists() else {}
-    doc = {"_meta": {"what": "Real driving time on the model's roads: base minutes (posted or class speed) times a factor by road type, "
-                             "plus seconds per traffic light and per stop sign. Fitted to TomTom typical weekday daytime trip times "
+    doc = {"_meta": {"what": "Real driving time on the model's roads: each piece's minutes at TomTom's measured free-flow speed "
+                             "(data/street_speeds_tomtom.json) or, where TomTom has none (local streets), at the posted or class speed; "
+                             "times a daytime factor for each of the two, plus seconds per traffic light and per stop sign. Fitted to TomTom typical weekday daytime trip times "
                              "(8 am, noon, 5 pm, 8 pm), 40 trips; written by python3 -m nfprep.road_times fit. route_preference: "
                              "how much more than its minutes a driver weighs each road type when choosing a route, fitted to the "
                              "traffic counts (python3 -m nfprep.road_times search).",
                      "trips": len(y), "fit_correlation": round(float(np.corrcoef(pred, y)[0, 1]), 3),
                      "fit_median_ratio": round(float(np.median(pred / y)), 3)},
-           "speed": {k: round(float(c), 3) for k, c in zip(GROUPS, coef[:4])},
-           "seconds_per_signal": round(float(coef[4] * 60), 1), "seconds_per_stop": round(float(coef[5] * 60), 1),
+           "speed": {"measured": round(float(coef[0]), 3), "unmeasured": round(float(coef[1]), 3)},
+           "seconds_per_signal": round(float(coef[2] * 60), 1), "seconds_per_stop": round(float(coef[3] * 60), 1),
            "route_preference": old.get("route_preference", {"motorway": 1.0, "arterial": 1.0, "collector": 1.0, "local": 1.0})}
     FACTORS.write_text(json.dumps(doc, indent=1))
     print(json.dumps(doc, indent=1))
