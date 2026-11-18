@@ -213,13 +213,13 @@ fn calibrate_sales(engine: &mut Engine, targets_path: String, out: Option<String
     let tcats = engine.city.tourism.as_ref().map(|t| t.categories.name.clone()).unwrap_or_default();
     // each store type's main spending categories: (group, resident categories, tourist categories, led by tourists?)
     let plan: Vec<(&str, Vec<&str>, Vec<&str>, bool)> = vec![
-        ("445", vec!["groceries", "alcohol_tobacco_cannabis"], vec!["food_from_stores"], true),
+        ("445", vec!["groceries", "alcohol"], vec!["food_from_stores"], true),
         ("449", vec!["household_goods"], vec![], false),
         ("455", vec!["general_merchandise"], vec![], false),
         ("456", vec!["pharmacy"], vec![], false),
         ("457", vec!["fuel"], vec!["fuel"], true),
         ("458", vec!["clothing"], vec!["clothing"], true),
-        ("459", vec!["recreation_goods", "pets"], vec!["other_retail"], true),
+        ("459", vec!["recreation_goods", "pets", "tobacco_cannabis"], vec!["other_retail"], true),
         ("722", vec!["restaurants"], vec!["restaurants"], true),
     ];
     let mut ext = vec![1.0f64; cats.len()];

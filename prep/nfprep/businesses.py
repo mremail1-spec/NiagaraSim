@@ -26,7 +26,7 @@ CATEGORY_NAICS = {
     "attraction": "713", "leisure_paid": "713", "casino": "713", "entertainment": "713",
     "grocery_food": "445", "apparel": "458", "general_merchandise": "455", "home_electronics": "449",
     "retail_other": "459", "souvenir_gift": "459", "tobacco_cannabis": "459", "pet": "459", "craft": "459",
-    "pharmacy": "456", "health": "621", "personal_services": "812", "fuel": "457",
+    "pharmacy": "456", "liquor": "445", "health": "621", "personal_services": "812", "fuel": "457",
     "auto_service": "811", "car_rental": "532", "parking": "812", "childcare": "624",
     "bank": "", "atm": "", "services": "", "office": "", "free_sight": "",
 }
@@ -163,10 +163,11 @@ LICENCE_NAME_FITS = {"RS": ("restaurant", "fast_food", "cafe", "bar_pub", "night
                      "TE": ("accommodation",), "BE": ("accommodation",), "VR": ("accommodation",), "OS": ("accommodation",),
                      "AM": ("attraction", "leisure_paid", "entertainment"), "PL": ("parking",),
                      "GE": ("auto_service",), "GB": ("auto_dealer",), "ES": ("personal_services",), "HA": ("personal_services",)}
+LIQUOR_NAME = re.compile(r"^(lcbo|the beer store|beer store|wine rack|wine shop|the wine shop)\b", re.I)
 DESCRIBE = {"accommodation": "Lodging", "free_sight": "Viewpoint", "fuel": "Gas station", "leisure_paid": "Paid activity",
             "fast_food": "Food stand", "souvenir_gift": "Gift shop", "grocery_food": "Food shop", "restaurant": "Restaurant",
             "retail_other": "Shop", "auto_service": "Auto repair", "bar_pub": "Bar", "home_electronics": "Electronics shop",
-            "personal_services": "Personal services", "cafe": "Café", "attraction": "Attraction", "parking": "Parking"}
+            "personal_services": "Personal services", "liquor": "Liquor store", "cafe": "Caf\u00e9", "attraction": "Attraction", "parking": "Parking"}
 PAID_VIEWPOINTS = {"Skylon Tower", "Incline Railway", "The Niagara SkyWheel", "Skywheel"}
 FREE_SPOTS = {"Thompson Point", "Turtle Pond", "Balancing Rock", "Birthday Boulders", "Immaculate Boulder", "Knee Bar Boulder",
               "Locomotive Boulders", "The V Boulder", "Super Flywall", "Sydney's Dock"}
@@ -336,6 +337,13 @@ def build_businesses(pack: Pack, seed: int = 1) -> list[dict]:
         for r in rows:
             if r["source"].startswith("licence") and r["name"] == l["business"] and l["lat"] and abs(r["lat"] - float(l["lat"])) < 1e-6:
                 r["address"], r["address_source"] = nice_case(l["address"]), "city licence"
+
+    # liquor stores (LCBO, The Beer Store, Wine Rack, wine shops): their own kind, serving alcohol
+    # bought from stores, which in Ontario is mostly sold there (not by grocery or cannabis shops)
+    for r in rows:
+        if r["sim_category"] in ("grocery_food", "retail_other", "tobacco_cannabis") and (
+                r.get("osm_tag") in ("alcohol", "wine", "beverages") or LIQUOR_NAME.search(r["name"] or "")):
+            r["sim_category"], r["naics"] = "liquor", "445"
 
     # places the map lists without a name: a plain description, so the page never shows a blank
     for r in rows:

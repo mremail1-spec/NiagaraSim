@@ -21,7 +21,7 @@ PARKS_ATTRACTIONS = {"journey_behind_the_falls": "Journey Behind the Falls",
 # Tourist spending category -> (share key(s) in the travel survey's spending mix, businesses that serve it)
 TOURIST_CATEGORIES = {
     "restaurants": (["restaurants"], {"restaurant": 1, "fast_food": 1, "cafe": 1, "bar_pub": 1, "nightlife": 1}),
-    "food_from_stores": (["food_from_stores"], {"grocery_food": 1}),
+    "food_from_stores": (["food_from_stores"], {"grocery_food": 1, "liquor": 0.3}),
     "fuel": (["vehicle_operation"], {"fuel": 1}),
     "parking": (["vehicle_operation"], {"parking": 1}),
     "vehicle_rental": (["vehicle_rental"], {"car_rental": 1}),

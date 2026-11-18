@@ -31,8 +31,8 @@ CATEGORIES = {
                          "Non-prescribed medicines, pharmaceutical products, health care supplies and equipment"], "flat", False),
     "recreation_goods": (["Recreational equipment and related services"], [], "retail", True),
     "recreation_services": (["Recreational services"], ["Package trips"], "flat", False),
-    "alcohol_tobacco_cannabis": (["Tobacco products and smokers' supplies", "Alcoholic beverages purchased from stores",
-                                  "Cannabis for non-medical use"], [], "retail", True),
+    "alcohol": (["Alcoholic beverages purchased from stores"], [], "retail", True),
+    "tobacco_cannabis": (["Tobacco products and smokers' supplies", "Cannabis for non-medical use"], [], "retail", True),
     "fuel": (["Gas and other fuels (all vehicles and tools)"], [], "retail", True),
     "vehicle_service": (["Maintenance and repairs of vehicles"], [], "flat", False),
     "pets": (["Pet expenses"], [], "retail", True),
@@ -45,9 +45,12 @@ CATEGORIES = {
 # retail sales per resident for that store type (Statistics Canada table 20-10-0056) times the
 # population. The household survey alone covers only about two thirds of retail sales: it leaves
 # out purchases by businesses and under-reports several categories.
-RETAIL_STORE_TYPES = {"445": ["groceries", "alcohol_tobacco_cannabis"], "449": ["household_goods"], "456": ["pharmacy"],
-                      "457": ["fuel"], "458": ["clothing"], "459": ["recreation_goods", "pets"]}
+RETAIL_STORE_TYPES = {"445": ["groceries", "alcohol"], "449": ["household_goods"], "456": ["pharmacy"],
+                      "457": ["fuel"], "458": ["clothing"], "459": ["recreation_goods", "pets", "tobacco_cannabis"]}
 RETAIL_SCALES: dict = {}
+# LCBO retail store sales $5.87B in 2022-23 (CBC) over about 15.6M Ontarians: $376 a person; SEED: plus 30%
+# for The Beer Store, wine shops and winery stores. Dollars of 2025.
+ALCOHOL_PER_PERSON = 376 * 1.3
 CATEGORY_NAMES = list(CATEGORIES)
 
 # Which kinds of business serve each spending category, and how strongly.
@@ -64,7 +67,10 @@ SERVED_BY = {
     "health_services": {"health": 1.0},
     "recreation_goods": {"retail_other": 1.0, "craft": 0.5},
     "recreation_services": {"leisure_paid": 1.0, "entertainment": 1.0, "attraction": 1.0},
-    "alcohol_tobacco_cannabis": {"tobacco_cannabis": 1.0, "grocery_food": 0.3},
+    # SEED: since 2024 Ontario grocery and convenience stores may sell beer and wine; LCBO and The Beer
+    # Store still sell most of it
+    "alcohol": {"liquor": 1.0, "grocery_food": 0.02},   # tested 0.1 / 0.02 / 0: LCBO at 0.20 / 0.37 / 0.54 of published sales
+    "tobacco_cannabis": {"tobacco_cannabis": 1.0, "grocery_food": 0.3},
     "fuel": {"fuel": 1.0},
     "vehicle_service": {"auto_service": 1.0},
     "pets": {"pet": 1.0, "grocery_food": 0.2},
@@ -75,7 +81,7 @@ SERVED_BY = {
 # trip rate, and revenue is fixed by the budgets whatever these values are.
 TYPICAL_VISIT_SPEND = {"general_merchandise": 80, "groceries": 70, "restaurants": 40, "clothing": 90, "household_goods": 130,
                        "personal_care": 50, "pharmacy": 35, "health_services": 150, "recreation_goods": 70,
-                       "recreation_services": 45, "alcohol_tobacco_cannabis": 40, "fuel": 60,
+                       "recreation_services": 45, "alcohol": 45, "tobacco_cannabis": 30, "fuel": 60,
                        "vehicle_service": 250, "pets": 55, "games_of_chance": 100}
 
 AGE_COLUMN = {"15_24": "Less than 30 years", "25_34": "30 to 39 years", "35_44": "40 to 54 years",
@@ -142,7 +148,18 @@ def assign_budgets(pack: Pack, households: list[dict], year: int) -> np.ndarray:
     basket = out[:, col["groceries"]] + out[:, col["clothing"]] + out[:, col["household_goods"]]
     for group, names in RETAIL_STORE_TYPES.items():
         cols = [col[n] for n in names]
-        k = targets[group]["per_capita_sales"] * to_year / out[:, cols].sum()
+        total = targets[group]["per_capita_sales"] * to_year
+        if group == "445":
+            # alcohol bought from stores: the household survey under-reports it badly ($28M for the city);
+            # set it from LCBO sales per Ontarian instead, and give the rest of the store type to groceries
+            a = col["alcohol"]
+            want = ALCOHOL_PER_PERSON * population * to_year
+            out[:, a] *= want / out[:, a].sum()
+            g = col["groceries"]
+            out[:, g] *= (total - want) / out[:, g].sum()
+            RETAIL_SCALES[group] = round(float(total / out[:, cols].sum()), 3)
+            continue
+        k = total / out[:, cols].sum()
         out[:, cols] *= k
         RETAIL_SCALES[group] = round(float(k), 3)
     out[:, col["general_merchandise"]] = targets["455"]["per_capita_sales"] * to_year * basket / basket.sum()
