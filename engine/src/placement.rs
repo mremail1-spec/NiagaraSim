@@ -134,7 +134,8 @@ impl Engine {
         let (nlat, nlon) = (self.city.nodes.lat[node as usize], self.city.nodes.lon[node as usize]);
         let safe_res = self.city.safety_factor_at(nlat, nlon, sim_category, false);
         let safe_vis = self.city.safety_factor_at(nlat, nlon, sim_category, true);
-        let scale = format_weight * self.city.site_factor_at(node, sim_category) * safe_res * size.max(30_000.0).powf(self.city.params.attractiveness_exponent);
+        let cluster = self.city.cluster_factor_at(nlat, nlon, sim_category, None);
+        let scale = format_weight * self.city.site_factor_at(node, sim_category) * cluster * safe_res * size.max(30_000.0).powf(self.city.params.attractiveness_exponent);
         let floor = self.city.params.min_minutes;
         let mut out = Forecast { resident: 0.0, tourist: 0.0, tourist_by_origin: [0.0; 3], from_out_of_town: 0.0, monthly: [0.0; 12], losses: vec![], total_taken: 0.0 };
         let mut loss = vec![0f64; n_biz];
@@ -292,7 +293,7 @@ impl Engine {
                 (self.n_dest - 1) as u32
             }
         };
-        let site = self.city.site_factor_at(node, sim_category);
+        let site = self.city.site_factor_at(node, sim_category) * self.city.cluster_factor_at(lat, lon, sim_category, None);
         let b = &mut self.city.businesses;
         b.site.push(site);
         b.node.push(node);

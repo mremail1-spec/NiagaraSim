@@ -26,6 +26,7 @@ from .loader import DATA_DIR
 
 ROOT = Path(__file__).resolve().parents[2]
 L2 = 10.0
+FOOD = ["restaurant", "fast_food", "cafe", "bar_pub", "nightlife"]
 
 
 def _km(lat, lon, la, lo):
@@ -69,13 +70,14 @@ def rows_for(status, rec, start, end, city):
         open_before = int(((s_p == "open") & (_km(la_p, lo_p, la, lo) < 0.5)).sum())
         new_comp = int(((k_s == k) & near5 & (s_s == "open") & (yo_s >= start - 2) & (d > 0.001)).sum())
         same300 = int(((k_s == k) & near3 & (s_s == "open")).sum())
+        food300 = int((np.isin(k_s, FOOD) & near3 & (s_s == "open")).sum()) if k in FOOD else 0
         dn = _km(nl, no, la, lo); node = int(dn.argmin())
         ds = _km(sl, so, la, lo)
         rows.append({"kind": k, "cat": cats.index(k), "lat": la, "lon": lo, "closed": st[end] == "closed",
                      "age": (start - yo) if 1900 < yo <= start else None, "band": BAND[x["sizerangeemployees"]],
                      "gfa": float(x["indoorgfa"] or 0), "vacancy_300m": vac,
                      "area_trend": np.log((open_now + 1) / (open_before + 1)), "new_competitors_500m": new_comp,
-                     "same_kind_300m": same300, "walkers": walk[node], "passing": passing[node],
+                     "same_kind_300m": same300, "food_cluster_300m": food300, "walkers": walk[node], "passing": passing[node],
                      "bus_departures_300m": float(sd[ds < 0.3].sum())})
     f = forecasts([[r["lat"], r["lon"], r["cat"], menu.get(r["cat"], 300_000.0)] for r in rows])
     for r, (res, tour) in zip(rows, f):

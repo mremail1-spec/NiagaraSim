@@ -692,8 +692,20 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
       return 1 / (1 + Math.exp(-z));
     };
     const pct = (v) => Math.round(v * 100) + "%";
+    const FOOD = ["restaurant", "fast_food", "cafe", "bar_pub", "nightlife"];
+    let cluster = "";
+    if (FOOD.includes(kind)) {
+      const b = city.businesses, kx3 = Math.cos(site.lat * Math.PI / 180) * 111.32;
+      let n = 0;
+      for (let i = 0; i < b.sim_category.length; i++) {
+        if (b.external[i] || !FOOD.includes(city.sim_categories[b.sim_category[i]])) continue;
+        if (Math.hypot((b.lat[i] - site.lat) * 111.32, (b.lon[i] - site.lon) * kx3) < 0.3) n++;
+      }
+      const band = n >= 8 ? "8 or more: 7% of such food businesses closed within two years" : n >= 3 ? "3-7: 8% closed within two years" : "0-2: 12-13% closed within two years";
+      cluster = ` ${n} food businesses within 300 m (${band}, Niagara Falls 2016-2025; dining streets keep their restaurants, though the data does not show them selling more).`;
+    }
     return `Chance a new business like this closes within two years at this spot: ${pct(chance(1))} with 1-4 staff, ${pct(chance(2))} with 5 or more (fitted on 388 closures in Niagara Falls, 2016-2025; Niagara Region Employment Inventory). ` +
-      (vac0 == null ? "Too few surveyed businesses nearby to measure vacancy." : `${pct(vac)} of business units within 300 m stand vacant or closed (city median 32%); more vacancy nearby means more closures.`);
+      (vac0 == null ? "Too few surveyed businesses nearby to measure vacancy." : `${pct(vac)} of business units within 300 m stand vacant or closed (city median 32%); more vacancy nearby means more closures.`) + cluster;
   }
 
   // a new business: measured two-year closure chance for new businesses of its group (Employment Inventory)

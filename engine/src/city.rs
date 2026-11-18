@@ -24,6 +24,13 @@ pub struct City {
     /// Places people avoid (documented open-air drug use, encampments); empty when absent.
     #[serde(default)]
     pub safety: Option<Safety>,
+    /// Cluster bonus per sim category: pull times (1 + same-kind businesses within 300 m)^exponent,
+    /// scaled to average 1 over the category's businesses (restaurants draw more on a dining street).
+    #[serde(default)]
+    pub cluster_exponent: Vec<f64>,
+    /// Mean raw cluster factor per sim category; filled by `prepare_sites`.
+    #[serde(default)]
+    pub cluster_mean: Vec<f64>,
     /// Mean vehicles per day passing the businesses of each sim category; filled by `prepare_sites`.
     #[serde(default)]
     pub passing_mean: Vec<f64>,
@@ -94,6 +101,44 @@ impl City {
             * self.safety_factor_at(bz.lat[b], bz.lon[b], bz.sim_category[b], true)
     }
 
+    /// Same-kind (cluster-group) businesses within 300 m of a point, not counting one at `skip`.
+    fn cluster_count(&self, lat: f64, lon: f64, cat: u32, skip: Option<usize>) -> f64 {
+        let b = &self.businesses;
+        let k = lat.to_radians().cos();
+        let mut n = 0.0;
+        for i in 0..b.node.len() {
+            if Some(i) == skip || b.external[i] == 1 {
+                continue;
+            }
+            let c = b.sim_category[i] as usize;
+            if self.cluster_exponent.get(c).copied().unwrap_or(0.0) <= 0.0 || !self.same_cluster(c, cat as usize) {
+                continue;
+            }
+            let d = ((b.lat[i] - lat) * 111_320.0).hypot((b.lon[i] - lon) * 111_320.0 * k);
+            if d < 300.0 {
+                n += 1.0;
+            }
+        }
+        n
+    }
+
+    /// Food kinds (restaurant, fast food, cafe, bar, nightlife) count as one cluster; others only themselves.
+    fn same_cluster(&self, a: usize, b: usize) -> bool {
+        const FOOD: [&str; 5] = ["restaurant", "fast_food", "cafe", "bar_pub", "nightlife"];
+        let (na, nb) = (self.sim_categories[a].as_str(), self.sim_categories[b].as_str());
+        a == b || (FOOD.contains(&na) && FOOD.contains(&nb))
+    }
+
+    /// Cluster factor for a business of `cat` at a point (1 when the category has no cluster bonus).
+    pub fn cluster_factor_at(&self, lat: f64, lon: f64, cat: u32, skip: Option<usize>) -> f64 {
+        let e = self.cluster_exponent.get(cat as usize).copied().unwrap_or(0.0);
+        let m = self.cluster_mean.get(cat as usize).copied().unwrap_or(0.0);
+        if e <= 0.0 || m <= 0.0 {
+            return 1.0;
+        }
+        (1.0 + self.cluster_count(lat, lon, cat, skip)).powf(e) / m
+    }
+
     /// Work out every business's site factor (call once after loading).
     pub fn prepare_sites(&mut self) {
         let n_cat = self.sim_categories.len();
@@ -113,6 +158,27 @@ impl City {
             .map(|i| if b.external[i] == 1 { 1.0 } else { self.site_factor_at(b.node[i], b.sim_category[i]) })
             .collect();
         self.businesses.site = site;
+        // cluster bonus, scaled so each category's businesses average 1
+        let n_b = self.businesses.node.len();
+        let mut sum = vec![0f64; n_cat];
+        let mut cnt = vec![0f64; n_cat];
+        let mut raw = vec![1f64; n_b];
+        for i in 0..n_b {
+            let c = self.businesses.sim_category[i] as usize;
+            let e = self.cluster_exponent.get(c).copied().unwrap_or(0.0);
+            if e > 0.0 && self.businesses.external[i] == 0 {
+                raw[i] = (1.0 + self.cluster_count(self.businesses.lat[i], self.businesses.lon[i], c as u32, Some(i))).powf(e);
+                sum[c] += raw[i];
+                cnt[c] += 1.0;
+            }
+        }
+        self.cluster_mean = (0..n_cat).map(|c| if cnt[c] > 0.0 { sum[c] / cnt[c] } else { 0.0 }).collect();
+        for i in 0..n_b {
+            let c = self.businesses.sim_category[i] as usize;
+            if cnt[c] > 0.0 && self.businesses.external[i] == 0 {
+                self.businesses.site[i] *= raw[i] / self.cluster_mean[c];
+            }
+        }
     }
 
     /// A business's pull before size: its format weight times its site factor.
