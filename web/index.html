@@ -393,7 +393,7 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
     }
     labelOrder = runs.map((_, i) => i).sort((a, b) => runs[b].cls - runs[a].cls || runs[b].len - runs[a].len);
     bizKeyHtml = $("key").innerHTML = GROUPS.map((g) => `<span><i style="background:${g.color}"></i>${g.label}</span>`).join("")
-      + `<span><i style="border:1.5px solid var(--ink-soft);background:none"></i>Ring: estimated, not a real business</span><span><i style="background:${MODE_COLOR[0]}"></i>Car trip</span><span><i style="background:${MODE_COLOR[2]}"></i>On foot or bike</span><span><i style="background:${MODE_COLOR[3]}"></i>Transit</span><span><i style="background:${TOURIST}"></i>Tourists</span>`;
+      + `<span><i style="background:${MODE_COLOR[0]}"></i>Car trip</span><span><i style="background:${MODE_COLOR[2]}"></i>On foot or bike</span><span><i style="background:${MODE_COLOR[3]}"></i>Transit</span><span><i style="background:${TOURIST}"></i>Tourists</span>`;
   }
 
   function resize() {

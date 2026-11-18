@@ -1,8 +1,8 @@
 """Phase 3a: the business list.
 
-One record per mapped place (OpenStreetMap), plus licensed accommodation and
-parking the map misses, plus synthetic businesses so each consumer-facing
-industry reaches its count on the Statistics Canada business register.
+One record per real place: mapped places (OpenStreetMap), licensed accommodation and parking the
+map misses, and named establishments from Niagara Region's Employment Inventory 2025 that the
+map misses. No synthetic stand-ins: every business is a real, named place.
 
 `revenue_prior` is a starting estimate drawn from the industry's revenue
 quartiles. The engine replaces it with revenue earned from simulated spending;
@@ -30,11 +30,19 @@ CATEGORY_NAICS = {
     "auto_service": "811", "car_rental": "532", "parking": "812", "childcare": "624",
     "bank": "", "atm": "", "services": "", "office": "", "free_sight": "",
 }
-# Register groups topped up with synthetic businesses, and the category the synthetic ones get.
-# 449 also absorbs 444 (building material and garden), which the map files under home_electronics.
-TOP_UP = {"445": "grocery_food", "455": "general_merchandise", "449": "home_electronics", "456": "pharmacy",
-          "621": "health", "812": "personal_services", "811": "auto_service", "532": "car_rental",
-          "441": "auto_dealer"}
+# Kinds of business added from the Region's Employment Inventory when the map misses them
+# (NAICS prefix -> model category; 444 building and garden is filed with home_electronics, as on the map).
+INVENTORY_KINDS = [("445320", None), ("445", "grocery_food"), ("455", "general_merchandise"), ("449", "home_electronics"),
+                   ("444", "home_electronics"), ("456", "pharmacy"), ("6211", "health"), ("6212", "health"), ("6213", "health"),
+                   ("6214", "health"), ("6215", "health"), ("8111", "auto_service"), ("5321", "car_rental"),
+                   ("441", "auto_dealer"), ("812", "personal_services")]
+
+
+def inventory_kind(naics: str):
+    for prefix, kind in INVENTORY_KINDS:
+        if naics.startswith(prefix):
+            return kind
+    return None
 EXTRA_REGISTER = {"449": ["444"]}
 SIZE_BANDS = ["nf_1_4", "nf_5_9", "nf_10_19", "nf_20_49", "nf_50_99", "nf_100_plus"]
 BAND_STAFF = {"non_employer": (0, 0), "nf_1_4": (1, 4), "nf_5_9": (5, 9), "nf_10_19": (10, 19),
@@ -293,18 +301,24 @@ def build_businesses(pack: Pack, seed: int = 1) -> list[dict]:
         rows[-1]["address_hint"] = nice_case(c.get("address", ""))
         rows[-1]["format_weight"] *= float(c.get("pull", 1.0))      # measured draw, e.g. Niagara Parks lot counts
 
-    # synthetic businesses up to the register count, placed beside existing shops outside the Tourist Core
-    anchors = [r for r in rows if r["source"] == "osm" and r["in_tourist_core"] == 0
-               and r["naics"] in ("445", "455", "449", "456", "459", "812", "811", "722", "457")]
-    for naics, category in TOP_UP.items():
-        register = sum(int(_f(bench[n]["nf_employer_businesses_2026"])) for n in [naics] + EXTRA_REGISTER.get(naics, []))
-        have = sum(1 for r in rows if r["naics"] == naics)
-        for k in range(max(0, register - have)):
-            a = anchors[int(rng.integers(len(anchors)))]
-            ang, dist = rng.uniform(0, 2 * math.pi), rng.uniform(30, 90)
-            add("synthetic", f"Synthetic {category} {k + 1}", category,
-                a["lat"] + dist * math.sin(ang) / 111_320,
-                a["lon"] + dist * math.cos(ang) / (111_320 * math.cos(math.radians(a["lat"]))))
+    # real businesses the map misses, from Niagara Region's Employment Inventory 2025 (each one a named
+    # establishment at a surveyed address). These replace the synthetic stand-ins the build used to add
+    # up to the business register's counts: every business in the model is now a real, named place.
+    import csv as _csv0
+    inv0 = DATA_DIR / "sources" / "region" / "employment_inventory_niagara_falls_2016_2025.csv"
+    if inv0.exists():
+        for x in _csv0.DictReader(open(inv0, encoding="utf-8-sig")):
+            if x["Year"] != "2025" or x["sizerangeemployees"].startswith("Permanently") or not x["lat"]:
+                continue
+            kind = inventory_kind(x["primarynaics"])
+            if not kind:
+                continue
+            la, lo = float(x["lat"]), float(x["lon"])
+            name = x["businessname"].strip()
+            if in_city(la, lo) and not _already_listed(rows, name, la, lo, kind):
+                add("inventory", name, kind, la, lo)
+                rows[-1]["address_hint"] = f'{x["businessstreetnumber"]} {x["businessstreetname"].strip()}'.strip()
+                rows[-1]["inventory_size"] = x["sizerangeemployees"]
 
     # civic address: the licence's own address, else the nearest city address point within 80 m
     pts = pack.tables["address_points.csv"]

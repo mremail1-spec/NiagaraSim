@@ -1,19 +1,16 @@
 {
  "_meta": {
-  "what": "Real driving time on the model's roads: base minutes (posted or class speed) times a factor by road type, plus seconds per traffic light and per stop sign. Fitted to TomTom typical weekday daytime trip times (8 am, noon, 5 pm, 8 pm), 40 trips; written by python3 -m nfprep.road_times fit. route_preference: how much more than its minutes a driver weighs each road type when choosing a route, fitted to the traffic counts (python3 -m nfprep.road_times search).",
+  "what": "Real driving time on the model's roads: each piece's minutes at TomTom's measured free-flow speed (data/street_speeds_tomtom.json) or, where TomTom has none (local streets), at the posted or class speed; times a daytime factor for each of the two, plus seconds per traffic light and per stop sign. Fitted to TomTom typical weekday daytime trip times (8 am, noon, 5 pm, 8 pm), 40 trips; written by python3 -m nfprep.road_times fit. route_preference: how much more than its minutes a driver weighs each road type when choosing a route, fitted to the traffic counts (python3 -m nfprep.road_times search).",
   "trips": 40,
-  "fit_correlation": 0.939,
-  "fit_median_ratio": 0.983,
-  "route_choice": "Drivers follow navigation (the owner's first-hand observation: residents and visitors use it and take its route), so routes are the fastest at real minutes, with no preference by road type. Tried against the counts: none 0.649, arterials weighed at x0.78 0.658 (docs/route_preference_search.json); the count gap comes from elsewhere."
+  "fit_correlation": 0.971,
+  "fit_median_ratio": 0.995
  },
  "speed": {
-  "motorway": 1.031,
-  "arterial": 1.292,
-  "collector": 1.087,
-  "local": 0.963
+  "measured": 1.15,
+  "unmeasured": 1.188
  },
  "seconds_per_signal": 4.7,
- "seconds_per_stop": 18.6,
+ "seconds_per_stop": 2.3,
  "route_preference": {
   "motorway": 1.0,
   "arterial": 1.0,
