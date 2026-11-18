@@ -49,6 +49,12 @@ OUTINGS_PER_PERSON = 0.475            # engine: outings per person (5+) per day
 DRIVER_SHARE_OF_OUTINGS = 0.677       # engine: share of outings driven
 WEEKDAY_TO_AVERAGE_DAY = 0.9          # SEED: the survey describes a weekday; counts are annual averages
 OTHER_TRIP_KM = 4.0
+# Quick Response Freight Manual (FHWA 1996) Table 4.1, commercial vehicle trips per unit per day:
+# four-tire vehicles, single-unit trucks, combinations (Phoenix study, a US benchmark)
+QRFM = {"agriculture_construction": (1.110, 0.289, 0.174), "manufacturing_transport_wholesale": (0.938, 0.242, 0.104),
+        "retail": (0.888, 0.253, 0.065), "office_services": (0.437, 0.068, 0.009), "household": (0.251, 0.099, 0.038)}
+VAN_KM, TRUCK_KM = 4.0, 6.0             # SEED: distance fall-off of local commercial trips
+TRUCKS_LOCAL = 0.5                      # SEED: half of trucks serving the city's businesses start inside it
 REGION_POPULATION_2021 = 477941          # Niagara Region, 2021 Census
 # SEED: pairs of other towns whose fastest real route crosses Niagara Falls (the model's towns join
 # only through the city's roads, so every other pair would be routed through it by mistake)
@@ -63,6 +69,17 @@ INPUT_SECTIONS = {("QEW", 10050), ("QEW", 10025), ("405", 48600)}   # used to si
 
 def _nearest(lat, lon, la, lo):
     return int(np.argmin(np.hypot((lat - la) * 111_320, (lon - lo) * 111_320 * np.cos(np.radians(la)))))
+
+
+def qrfm_group(naics: str) -> str:
+    n2 = naics[:2]
+    if n2 in ("11", "21", "23"):
+        return "agriculture_construction"
+    if n2 in ("22", "31", "32", "33", "41", "42", "48", "49", "51"):
+        return "manufacturing_transport_wholesale"
+    if n2 in ("44", "45") or naics.startswith("722"):
+        return "retail"                                   # eating and drinking places are retail trade in the manual
+    return "office_services"
 
 
 def gravity(lat, lon, o_w, d_w, total, tau_km, top=250):
@@ -104,13 +121,19 @@ def build_trips(city: dict, spending_vol: np.ndarray) -> tuple[list, dict]:
     from .inventory_check import load as load_inventory
     status, rec = load_inventory()
     jobs = np.zeros(len(lat))
+    van_ends, truck_ends = np.zeros(len(lat)), np.zeros(len(lat))
     for i, st in status.items():
         if st.get(2025) != "open":
             continue
         x = rec[i][2025]
         if not x["lat"]:
             continue
-        jobs[_nearest(lat, lon, float(x["lat"]), float(x["lon"]))] += BAND_JOBS.get(x["sizerangeemployees"], 0)
+        node_ = _nearest(lat, lon, float(x["lat"]), float(x["lon"]))
+        jn = BAND_JOBS.get(x["sizerangeemployees"], 0)
+        jobs[node_] += jn
+        g = qrfm_group(x["primarynaics"])
+        van_ends[node_] += jn * QRFM[g][0]
+        truck_ends[node_] += jn * (QRFM[g][1] + QRFM[g][2])
     business_jobs = jobs.sum()
     jobs_w = jobs / business_jobs
     towns = json.loads((DATA_DIR / "neighbouring_municipalities.json").read_text())["towns"]
@@ -199,6 +222,23 @@ def build_trips(city: dict, spending_vol: np.ndarray) -> tuple[list, dict]:
     trips += gravity(lat, lon, home_w, dest_w, missing - nhb, OTHER_TRIP_KM)
     sizes["other_car_trips_per_day"] = {"survey_driver_trips": round(survey), "already_simulated": round(simulated),
                                         "between_stops": round(nhb), "other_home_based": round(missing - nhb)}
+
+    # commercial vehicles (vans, pickups and trucks working, not commuting): Quick Response Freight
+    # Manual trip rates per employee by sector and per household; vans local, trucks half from the highways
+    hh_count = np.zeros(len(lat))
+    for h in range(n_city_hh):
+        hh_count[hh["node"][h]] += 1
+    van_ends += hh_count * QRFM["household"][0]
+    truck_ends += hh_count * (QRFM["household"][1] + QRFM["household"][2])
+    vans, trucks_local = float(van_ends.sum()), float(truck_ends.sum())
+    trips += gravity(lat, lon, van_ends / vans, van_ends / vans, vans, VAN_KM)
+    trips += gravity(lat, lon, truck_ends / trucks_local, truck_ends / trucks_local, trucks_local * TRUCKS_LOCAL, TRUCK_KM)
+    hw = {(x["highway"], x["section_id"]): x for x in json.loads((DATA_DIR / "traffic_counts_provincial_highways.json").read_text())["sections"]}
+    edge = np.zeros(len(lat)); edge[north] = 0.7
+    edge[_nearest(lat, lon, *np.array(hw[("QEW", 10025)]["polyline"]).mean(0))] = 0.3      # SEED: 70% from Hamilton-Toronto
+    trips += gravity(lat, lon, edge, truck_ends / trucks_local, trucks_local * (1 - TRUCKS_LOCAL), 1e6, top=400)
+    sizes["commercial_vehicles_per_day"] = {"vans_and_pickups": round(vans), "trucks": round(trucks_local),
+                                            "trucks_from_highways": round(trucks_local * (1 - TRUCKS_LOCAL))}
 
     # trips between the other towns that cross Niagara Falls: the travel survey's region-wide trips,
     # shared between towns by population and distance (gravity); only pairs of other towns are added

@@ -1,0 +1,225 @@
+{
+ "_meta": {
+  "what": "Replay of Highway 420 traffic 1988-2024: the model's split of 420 traffic into city-driven (residents, jobs, deliveries; grows with census population) and visitor-driven parts, and the visitor index each year's count implies.",
+  "shares_2025_model": {
+   "local": 0.913,
+   "visitors": 0.087
+  },
+  "census_population": {
+   "1986": 72107,
+   "1991": 75399,
+   "1996": 76917,
+   "2001": 78815,
+   "2006": 82184,
+   "2011": 82997,
+   "2016": 88071,
+   "2021": 94415
+  }
+ },
+ "years": {
+  "1988": {
+   "hwy420_index": 0.525,
+   "population_index": 0.799,
+   "implied_visitor_index": -2.373,
+   "us_visitors_index": 2.059
+  },
+  "1989": {
+   "hwy420_index": 0.557,
+   "population_index": 0.806,
+   "implied_visitor_index": -2.073,
+   "us_visitors_index": 1.91
+  },
+  "1990": {
+   "hwy420_index": 0.587,
+   "population_index": 0.813,
+   "implied_visitor_index": -1.804,
+   "us_visitors_index": 1.92
+  },
+  "1991": {
+   "hwy420_index": 0.574,
+   "population_index": 0.821,
+   "implied_visitor_index": -2.025,
+   "us_visitors_index": 1.891
+  },
+  "1992": {
+   "hwy420_index": 0.579,
+   "population_index": 0.824,
+   "implied_visitor_index": -2.006,
+   "us_visitors_index": 1.792
+  },
+  "1993": {
+   "hwy420_index": 0.58,
+   "population_index": 0.827,
+   "implied_visitor_index": -2.026,
+   "us_visitors_index": 1.737
+  },
+  "1994": {
+   "hwy420_index": 0.586,
+   "population_index": 0.831,
+   "implied_visitor_index": -1.992,
+   "us_visitors_index": 1.783
+  },
+  "1995": {
+   "hwy420_index": 0.615,
+   "population_index": 0.834,
+   "implied_visitor_index": -1.697,
+   "us_visitors_index": 1.842
+  },
+  "1996": {
+   "hwy420_index": 0.631,
+   "population_index": 0.837,
+   "implied_visitor_index": -1.541,
+   "us_visitors_index": 1.845
+  },
+  "1997": {
+   "hwy420_index": 0.647,
+   "population_index": 0.841,
+   "implied_visitor_index": -1.408,
+   "us_visitors_index": 2.134
+  },
+  "1998": {
+   "hwy420_index": 0.662,
+   "population_index": 0.845,
+   "implied_visitor_index": -1.268,
+   "us_visitors_index": 2.226
+  },
+  "1999": {
+   "hwy420_index": 0.688,
+   "population_index": 0.85,
+   "implied_visitor_index": -1.013,
+   "us_visitors_index": 2.174
+  },
+  "2000": {
+   "hwy420_index": 0.714,
+   "population_index": 0.854,
+   "implied_visitor_index": -0.758,
+   "us_visitors_index": 2.141
+  },
+  "2001": {
+   "hwy420_index": 0.739,
+   "population_index": 0.858,
+   "implied_visitor_index": -0.51,
+   "us_visitors_index": 2.225
+  },
+  "2002": {
+   "hwy420_index": 0.749,
+   "population_index": 0.865,
+   "implied_visitor_index": -0.473,
+   "us_visitors_index": 2.158
+  },
+  "2003": {
+   "hwy420_index": 0.777,
+   "population_index": 0.872,
+   "implied_visitor_index": -0.228,
+   "us_visitors_index": 1.699
+  },
+  "2004": {
+   "hwy420_index": 0.793,
+   "population_index": 0.88,
+   "implied_visitor_index": -0.122,
+   "us_visitors_index": 1.673
+  },
+  "2005": {
+   "hwy420_index": 0.852,
+   "population_index": 0.887,
+   "implied_visitor_index": 0.482,
+   "us_visitors_index": 1.458
+  },
+  "2006": {
+   "hwy420_index": 0.809,
+   "population_index": 0.894,
+   "implied_visitor_index": -0.093,
+   "us_visitors_index": 1.348
+  },
+  "2007": {
+   "hwy420_index": 0.811,
+   "population_index": 0.896,
+   "implied_visitor_index": -0.088,
+   "us_visitors_index": 1.157
+  },
+  "2008": {
+   "hwy420_index": 0.82,
+   "population_index": 0.898,
+   "implied_visitor_index": 0.0,
+   "us_visitors_index": 0.985
+  },
+  "2009": {
+   "hwy420_index": 0.754,
+   "population_index": 0.9,
+   "implied_visitor_index": -0.784,
+   "us_visitors_index": 0.877
+  },
+  "2010": {
+   "hwy420_index": 0.771,
+   "population_index": 0.902,
+   "implied_visitor_index": -0.604,
+   "us_visitors_index": 0.874
+  },
+  "2011": {
+   "hwy420_index": 0.863,
+   "population_index": 0.903,
+   "implied_visitor_index": 0.434,
+   "us_visitors_index": 0.85
+  },
+  "2012": {
+   "hwy420_index": 0.817,
+   "population_index": 0.914,
+   "implied_visitor_index": -0.211,
+   "us_visitors_index": 0.866
+  },
+  "2013": {
+   "hwy420_index": 0.924,
+   "population_index": 0.925,
+   "implied_visitor_index": 0.906,
+   "us_visitors_index": 0.813
+  },
+  "2014": {
+   "hwy420_index": 0.883,
+   "population_index": 0.936,
+   "implied_visitor_index": 0.322,
+   "us_visitors_index": 0.795
+  },
+  "2015": {
+   "hwy420_index": 0.941,
+   "population_index": 0.948,
+   "implied_visitor_index": 0.872,
+   "us_visitors_index": 0.876
+  },
+  "2016": {
+   "hwy420_index": 0.958,
+   "population_index": 0.959,
+   "implied_visitor_index": 0.955,
+   "us_visitors_index": 0.945
+  },
+  "2017": {
+   "hwy420_index": 0.975,
+   "population_index": 0.972,
+   "implied_visitor_index": 1.0,
+   "us_visitors_index": 0.953
+  },
+  "2018": {
+   "hwy420_index": 0.991,
+   "population_index": 0.986,
+   "implied_visitor_index": 1.046,
+   "us_visitors_index": 0.983
+  },
+  "2019": {
+   "hwy420_index": 1.0,
+   "population_index": 1.0,
+   "implied_visitor_index": 1.0,
+   "us_visitors_index": 1.0
+  },
+  "2023": {
+   "hwy420_index": 1.01,
+   "population_index": 1.028,
+   "implied_visitor_index": 0.824,
+   "us_visitors_index": 0.796
+  },
+  "2024": {
+   "hwy420_index": 0.938,
+   "population_index": 1.028,
+   "implied_visitor_index": -0.011,
+   "us_visitors_index": 0.897
+  }
+ }
+}

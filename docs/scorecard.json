@@ -7,12 +7,12 @@
    "2022"
   ]
  },
- "passed": "9 of 13",
+ "passed": "10 of 13",
  "tests": [
   {
    "area": "Traffic",
    "test": "Regional roads, correlation with 2019 counts",
-   "score": 0.735,
+   "score": 0.74,
    "pass_mark": ">= 0.6",
    "result": "pass",
    "note": "77 sections; edge counts used as inputs are not scored"
@@ -20,7 +20,7 @@
   {
    "area": "Traffic",
    "test": "Regional roads, correlation with 2025 counts",
-   "score": 0.743,
+   "score": 0.75,
    "pass_mark": ">= 0.6",
    "result": "pass",
    "note": "Region's 2025 counts, 69 sections in the city"
@@ -28,7 +28,7 @@
   {
    "area": "Traffic",
    "test": "Provincial highways, correlation with 2019 counts",
-   "score": 0.768,
+   "score": 0.761,
    "pass_mark": ">= 0.6",
    "result": "pass",
    "note": ""
@@ -36,9 +36,9 @@
   {
    "area": "Traffic",
    "test": "Regional roads, median share of counted traffic",
-   "score": "38.9%",
+   "score": "51.2%",
    "pass_mark": ">= 50%",
-   "result": "miss",
+   "result": "pass",
    "note": "school trips and trips between stops are not simulated yet"
   },
   {
