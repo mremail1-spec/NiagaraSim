@@ -1,0 +1,96 @@
+{
+ "_meta": {
+  "what": "Political and economic levers for the page's Conditions panel. Each effect is a multiplier on visitors or residents' spending, or a change in business costs as a share of revenue, relative to the calibrated year (2025). 'measured' effects come from data; 'SEED' effects are stated assumptions.",
+  "closure_response": "Two-year closure odds are multiplied by exp(gamma x profit squeeze), the squeeze being extra costs plus lost gross margin as a share of revenue. SEED gamma = 40 (a squeeze of 1% of revenue raises the odds by about half): yearly closures in the Employment Inventory roughly doubled from 2016-2019 to 2022-2025 while the prime rate rose about 2.3 points (debt costs about 0.5% of revenue), but that period also had pandemic debts and CEBA repayments, so only part of the doubling is credited to rates."
+ },
+ "baseline": {
+  "year": 2025,
+  "prime_rate": 4.91,
+  "usd_in_cad": 1.3979,
+  "minimum_wage": 17.3,
+  "tariffs": "2025"
+ },
+ "today": {
+  "prime_rate": 4.45,
+  "usd_in_cad": 1.4135,
+  "minimum_wage": 17.6,
+  "tariffs": "2025",
+  "as_of": "October 2026 (Bank of Canada; Ontario minimum wage from October 2025)"
+ },
+ "gamma": 40,
+ "interest_rate": {
+  "business_debt_share_of_revenue": 0.2,
+  "resident_spending_per_point": -0.007,
+  "sources": "Debt 20% of revenue: SEED (prep/nfprep/survival.py DEBT_RATIO). Residents' spending -0.7% per point of prime rate: SEED, in the range of Bank of Canada estimates of how rate changes pass to consumption over a year or two."
+ },
+ "tariffs": {
+  "levels": {
+   "none": {
+    "label": "No tariffs (before 2025)",
+    "us": 1.134,
+    "domestic": 0.95,
+    "goods_cost": -0.01
+   },
+   "2025": {
+    "label": "2025 trade tensions (now)",
+    "us": 1.0,
+    "domestic": 1.0,
+    "goods_cost": 0.0
+   },
+   "escalation": {
+    "label": "Escalation",
+    "us": 0.882,
+    "domestic": 1.03,
+    "goods_cost": 0.02
+   }
+  },
+  "sources": "US overnight visitors through Niagara fell to 0.882 of 2024 in 2025 (Statistics Canada 24-10-0053, measured); 'none' undoes that drop, 'escalation' repeats it (SEED). Canadians' trips to the US fell 30% in 2025 and they travelled at home; domestic visitors -5% if that unwinds, +3% if it deepens (SEED). Goods cost: counter-tariffs on US goods raise the cost of goods sold by about 2% in an escalation (SEED); removing them lowers it 1%."
+ },
+ "exchange_rate": {
+  "us_elasticity": 0.84,
+  "sources": "US overnight visitors against the US dollar's price in Canadian dollars, 67 ordinary months 2017-2026: elasticity 0.84 (measured; correlation only 0.15, a weak link)."
+ },
+ "minimum_wage": {
+  "wage_share_linked": {
+   "722": 0.6,
+   "721": 0.5,
+   "713": 0.5,
+   "445": 0.5,
+   "812": 0.4,
+   "621": 0.15,
+   "default": 0.3
+  },
+  "sources": "Share of a kind's wages that move with the minimum wage: SEED (prep/nfprep/survival.py). Wage costs from Statistics Canada industry benchmarks."
+ },
+ "events": {
+  "border": {
+   "label": "Border restrictions",
+   "us": 0.5,
+   "overseas": 0.8,
+   "headline": "Border restrictions: US visitors halved",
+   "sources": "SEED; 2020-21 closures cut US visitors far more, a partial restriction is assumed."
+  },
+  "recession": {
+   "label": "Recession",
+   "resident": 0.96,
+   "domestic": 0.93,
+   "headline": "Recession: residents and Canadian visitors spend less",
+   "sources": "Matches the outlook's low end for residents and domestic visitors (data/scenario_ranges.json, SEED)."
+  },
+  "gas": {
+   "label": "Gas price spike",
+   "domestic": 0.97,
+   "resident": 0.995,
+   "headline": "Gas price spike: fewer drive-in day trips",
+   "sources": "SEED: most Canadian visitors drive in."
+  },
+  "mat": {
+   "label": "Hotel tax up to 5%",
+   "domestic": 0.995,
+   "us": 0.995,
+   "overseas": 0.995,
+   "headline": "Municipal accommodation tax rises to 5%",
+   "sources": "City of Niagara Falls by-law 2025-009: 4% from April 2026, 5% from April 2027 (measured policy); SEED: room-price elasticity gives about -0.5% visitors."
+  }
+ }
+}

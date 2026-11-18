@@ -68,15 +68,15 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
 #sheet dd { margin: 2px 0 0; font-family: var(--font-display); font-size: 17px; font-variant-numeric: tabular-nums; }
 #sheet.street dl { display: none; }
 #sheet p { margin: 0; font-size: 12px; color: var(--ink-soft); }
-#build { position: absolute; left: 0; right: 0; bottom: 0; background: var(--panel); border-top: 1px solid var(--panel-edge);
+#build, #cond { position: absolute; left: 0; right: 0; bottom: 0; background: var(--panel); border-top: 1px solid var(--panel-edge);
          border-radius: 14px 14px 0 0; padding-block: 12px 14px; max-height: 62%; overflow-y: auto;
          padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
          display: grid; gap: 10px; }
-#build h2 { font-family: var(--font-display); font-size: 16px; margin: 0; }
+#build h2, #cond h2 { font-family: var(--font-display); font-size: 16px; margin: 0; }
 #build label { font-size: 12px; color: var(--ink-soft); display: grid; gap: 4px; }
-#build select { font: inherit; font-size: 15px; height: 44px; border-radius: 10px; border: 1px solid var(--panel-edge);
+#build select, #cond select { font: inherit; font-size: 15px; height: 44px; border-radius: 10px; border: 1px solid var(--panel-edge);
                 background: var(--ground); color: var(--ink); padding: 0 10px; max-width: 100%; }
-#build p { margin: 0; font-size: 13px; color: var(--ink-soft); }
+#build p, #cond p { margin: 0; font-size: 13px; color: var(--ink-soft); }
 #build table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; font-size: 13px; }
 #build th { text-align: right; font-weight: 500; color: var(--ink-soft); font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; padding: 4px 0; }
 #build th:first-child, #build td:first-child { text-align: left; }
@@ -107,6 +107,16 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
 #loading strong { font-family: var(--font-display); font-size: 20px; }
 #loading span { color: var(--ink-soft); font-size: 13px; max-width: 34ch; }
 #loading.error span { color: var(--warn); }
+
+#cond { max-height: 70vh; overflow-y: auto; }
+#cond label { display: block; margin: 8px 0; font-size: 13px; }
+#cond input[type=range] { width: 100%; }
+#cond output { float: right; font-weight: 600; color: var(--accent); }
+#cond .events label { display: inline-flex; align-items: center; gap: 6px; margin: 4px 10px 4px 0; }
+#cond .row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
+#cond .row button, #condBtn { height: 44px; padding: 0 14px; border-radius: 22px; border: 1px solid var(--panel-edge); background: none; color: var(--ink); cursor: pointer; }
+#cSummary { font-size: 13px; }
+#news { position: absolute; left: 12px; right: 64px; top: 8px; z-index: 5; background: rgba(214,69,61,0.92); color: #fff; font-size: 13px; padding: 6px 10px; border-radius: 10px; }
 </style>
 
 <header id="top" class="bar">
@@ -123,6 +133,7 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
 
 <main id="stage">
   <canvas id="map" aria-label="Map of Niagara Falls with businesses and moving trips"></canvas>
+  <div id="news" hidden></div>
   <div id="key" hidden></div>
   <div class="float">
     <button class="round" id="zoomIn" aria-label="Zoom in">+</button>
@@ -151,7 +162,7 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
         <tbody id="fRows"></tbody>
       </table>
       <p id="fMix"></p>
-      <p>Range: the low and high outlooks for the next 12 months, widened by how far the model's sales for a single site are from published chain sales (&times;0.42 to &times;2.39, from 6 chains; 8 times in 10 if those chains are typical). The US band comes from monthly border crossings at the Niagara ports (latest months against a year earlier, plus the usual yearly swing, and never less than a repeat of 2025's drop); the others are judgement calls, because political decisions cannot be predicted. Profit is for the 2025 calibrated year and uses the industry's average cost shares. Its sales come out of other businesses' tills, not new spending.</p>
+      <p>Range: the low and high outlooks for the next 12 months, widened by how far the model's sales for a single site are from published chain sales (measured against 6 chains; 8 times in 10 if those chains are typical). The US band comes from monthly border crossings at the Niagara ports (latest months against a year earlier, plus the usual yearly swing, and never less than a repeat of 2025's drop); the others are judgement calls, because political decisions cannot be predicted. Profit is for the 2025 calibrated year and uses the industry's average cost shares. Its sales come out of other businesses' tills, not new spending.</p>
       <p>Takes the most from:</p>
       <ul id="fLosers"></ul>
     </div>
@@ -159,6 +170,17 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
       <button class="primary" id="buildGo" disabled>Build it here</button>
       <button id="buildCancel">Close</button>
     </div>
+  </section>
+  <section id="cond" hidden>
+    <h2>Conditions: politics and the economy</h2>
+    <label for="cPrime">Prime interest rate <output id="cPrimeV"></output><input type="range" id="cPrime" min="2" max="9" step="0.05"></label>
+    <label for="cFx">US dollar in Canadian dollars <output id="cFxV"></output><input type="range" id="cFx" min="1.20" max="1.60" step="0.01"></label>
+    <label for="cMw">Ontario minimum wage <output id="cMwV"></output><input type="range" id="cMw" min="15" max="22" step="0.05"></label>
+    <label for="cTariff">US trade<select id="cTariff"></select></label>
+    <div class="events" id="cEvents"></div>
+    <p id="cSummary"></p>
+    <div class="row"><button id="cBase">2025 (calibrated)</button><button id="cToday">Today's settings</button><button id="cClose">Close</button></div>
+    <p class="note">Each lever moves visitors, residents' spending or business costs (sources and assumptions in data/policy_levers.json). Forecasts' profit and closure chance react; the moving city does too.</p>
   </section>
   <div id="loading"><strong>Building the city</strong><span id="loadMsg">Loading roads, 46,000 households, 1,675 businesses and a year of visitors.</span></div>
 </main>
@@ -187,6 +209,7 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
       <option value="high">Next 12 months, high</option>
     </select>
   </label>
+  <button id="condBtn" disabled>Conditions</button>
   <button id="buildBtn" disabled>Build</button>
   <button id="restart" disabled>Restart</button>
 </footer>
@@ -217,7 +240,7 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
   let roadPaths = [null, null, null];
   let playing = false, rate = 1, acc = 0, lastT = 0, selected = -1;
   let trips = [], pulses = [], tripsTotal = 0;
-  let outlookKey = "calibrated", layer = "biz", bizKeyHtml = "";
+  let outlookKey = "calibrated", layer = "biz", bizKeyHtml = "", cond = null, condSqueeze = 0;
   let streets = [], runs = [], labelOrder = [], streetSel = -1;
   let buildMode = false, site = null, baseCount = 0, groupOf = {}, townNode = new Set();
   let kx = 1, lon0 = 0, lat0 = 0, startDate = new Date(Date.UTC(2025, 0, 1));
@@ -257,7 +280,7 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
     startEngine();
     delete city.households.budget;                          // the engine has its own copy
     $("loading").hidden = true;
-    $("play").disabled = false; $("restart").disabled = false; $("buildBtn").disabled = false; $("outlook").disabled = false; $("layer").disabled = false;
+    $("play").disabled = false; $("restart").disabled = false; $("buildBtn").disabled = false; $("outlook").disabled = false; $("layer").disabled = false; $("condBtn").disabled = false; initConditions();
     const labels = (city.scenarios._meta || {}).labels || {};
     for (const o of $("outlook").options) { if (labels[o.value]) o.textContent = labels[o.value]; if (!city.scenarios[o.value]) o.remove(); }
     $("kind").innerHTML = city.build_menu.map((m, i) => `<option value="${i}">${m.label}</option>`).join("");
@@ -685,9 +708,10 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
     const vac0 = (city.nodes.vacancy_300m || [])[site.node];
     const vac = vac0 == null ? 0.317 : vac0;
     const area = cm.median_floor_area[kind] ?? 150;
+    const g = city.policy ? city.policy.gamma * condSqueeze : 0;
     const chance = (band) => {
       const x = [Math.log(kr / (1 - kr)), Math.log1p(0.5), band, Math.log1p(area), vac];
-      let z = cm.weights[0];
+      let z = cm.weights[0] + g;
       for (let j = 0; j < x.length; j++) z += cm.weights[j + 1] * (x[j] - cm.mean[j]) / cm.sd[j];
       return 1 / (1 + Math.exp(-z));
     };
@@ -704,8 +728,9 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
       const band = n >= 8 ? "8 or more: 7% of such food businesses closed within two years" : n >= 3 ? "3-7: 8% closed within two years" : "0-2: 12-13% closed within two years";
       cluster = ` ${n} food businesses within 300 m (${band}, Niagara Falls 2016-2025; dining streets keep their restaurants, though the data does not show them selling more).`;
     }
+    const condNote = Math.abs(condSqueeze) > 0.0005 ? ` Under the conditions set, costs and lost sales take ${(condSqueeze * 100).toFixed(1)}% of sales, which ${condSqueeze > 0 ? "raises" : "lowers"} these chances.` : "";
     return `Chance a new business like this closes within two years at this spot: ${pct(chance(1))} with 1-4 staff, ${pct(chance(2))} with 5 or more (fitted on 388 closures in Niagara Falls, 2016-2025; Niagara Region Employment Inventory). ` +
-      (vac0 == null ? "Too few surveyed businesses nearby to measure vacancy." : `${pct(vac)} of business units within 300 m stand vacant or closed (city median 32%); more vacancy nearby means more closures.`) + cluster;
+      (vac0 == null ? "Too few surveyed businesses nearby to measure vacancy." : `${pct(vac)} of business units within 300 m stand vacant or closed (city median 32%); more vacancy nearby means more closures.`) + cluster + condNote;
   }
 
   // a new business: measured two-year closure chance for new businesses of its group (Employment Inventory)
@@ -791,9 +816,19 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
       const under = (s) => o[0] * s.resident / cur.resident + o[1] * s.domestic / cur.domestic + o[2] * s.us / cur.us + o[3] * s.overseas / cur.overseas;
       const fe = city.forecast_error || { p10_factor: 1, p90_factor: 1 };
       const lo = under(sc.low) * fe.p10_factor, hi = under(sc.high) * fe.p90_factor;   // outlook and model error together
-      const revenue = f[0] + f[1], profit = revenue * margin - fixedShare * size;   // costs sized for a business of that scale
-      if (key === "typical") typical = f;
-      const pLo = lo * margin - fixedShare * size, pHi = hi * margin - fixedShare * size;
+      const revenue = f[0] + f[1], profit = revenue * (margin - costShock(m)) - fixedShare * size;   // costs sized for a business of that scale
+      if (key === "typical") {
+        typical = f;
+        // squeeze from conditions: extra costs plus lost gross margin on sales lost to them
+        let lost = 0;
+        if (cond) {
+          const e = condEffects(), base = o[0] / e.resident + o[1] / e.domestic + o[2] / e.us + o[3] / e.overseas;
+          lost = base > 0 ? 1 - (o[0] + o[1] + o[2] + o[3]) / base : 0;
+        }
+        condSqueeze = costShock(m) + lost * margin;
+      }
+      const shock = costShock(m);
+      const pLo = lo * (margin - shock) - fixedShare * size, pHi = hi * (margin - shock) - fixedShare * size;
       const sm = (v) => (v < 0 ? "\u2212" : "") + money(Math.abs(v));
       rows += `<tr><td>${label}</td><td>${money(revenue)}</td><td>${money(lo)}\u2013${money(hi)}</td><td class="${profit >= 0 ? "good" : "bad"}">${sm(profit)}<br><small>${sm(pLo)} to ${sm(pHi)}</small></td></tr>`;
     }
@@ -830,6 +865,67 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
     }
     notes.push(`${same} of the same kind within 250 m. From 2021 to 2026, places with more of their own kind nearby closed slightly less often, but with 38 closures that is not a firm pattern.`);
     return notes.join(" ");
+  }
+
+
+  // --- political and economic conditions (data/policy_levers.json) ---
+  function initConditions() {
+    const P = city.policy; if (!P) { $("condBtn").hidden = true; return; }
+    $("cTariff").innerHTML = Object.entries(P.tariffs.levels).map(([k, v]) => `<option value="${k}">${v.label}</option>`).join("");
+    $("cEvents").innerHTML = Object.entries(P.events).map(([k, v]) => `<label><input type="checkbox" value="${k}">${v.label}</label>`).join("");
+    setConditions(P.baseline);
+    for (const id of ["cPrime", "cFx", "cMw", "cTariff"]) $(id).addEventListener("input", readConditions);
+    $("cEvents").addEventListener("change", readConditions);
+    $("cBase").addEventListener("click", () => { setConditions(P.baseline); applyConditions(); });
+    $("cToday").addEventListener("click", () => { setConditions(P.today); applyConditions(); });
+    $("cClose").addEventListener("click", () => { $("cond").hidden = true; showNews(); });
+    $("condBtn").addEventListener("click", () => { $("cond").hidden = !$("cond").hidden; $("build").hidden = true; showNews(); });
+  }
+  function setConditions(v) {
+    cond = { prime: v.prime_rate, fx: v.usd_in_cad, mw: v.minimum_wage, tariff: v.tariffs, events: new Set() };
+    $("cPrime").value = cond.prime; $("cFx").value = cond.fx; $("cMw").value = cond.mw; $("cTariff").value = cond.tariff;
+    for (const c of $("cEvents").querySelectorAll("input")) c.checked = false;
+    showConditionValues();
+  }
+  function readConditions() {
+    cond.prime = Number($("cPrime").value); cond.fx = Number($("cFx").value); cond.mw = Number($("cMw").value); cond.tariff = $("cTariff").value;
+    cond.events = new Set([...$("cEvents").querySelectorAll("input:checked")].map((c) => c.value));
+    showConditionValues(); applyConditions();
+  }
+  function showConditionValues() {
+    $("cPrimeV").textContent = cond.prime.toFixed(2) + "%"; $("cFxV").textContent = "$" + cond.fx.toFixed(2); $("cMwV").textContent = "$" + cond.mw.toFixed(2);
+  }
+  // multipliers on visitors and residents, relative to the calibrated year
+  function condEffects() {
+    const P = city.policy, B = P.baseline, t = P.tariffs.levels[cond.tariff];
+    const e = { us: t.us * Math.pow(cond.fx / B.usd_in_cad, P.exchange_rate.us_elasticity), domestic: t.domestic, overseas: 1,
+                resident: 1 + P.interest_rate.resident_spending_per_point * (cond.prime - B.prime_rate) };
+    for (const k of cond.events) { const ev = P.events[k]; for (const f of ["us", "domestic", "overseas", "resident"]) if (ev[f]) e[f] *= ev[f]; }
+    return e;
+  }
+  // extra costs as a share of revenue for a kind of business
+  function costShock(m) {
+    if (!cond) return 0;
+    const P = city.policy, B = P.baseline, t = P.tariffs.levels[cond.tariff];
+    const linked = P.minimum_wage.wage_share_linked[m.naics] ?? P.minimum_wage.wage_share_linked.default;
+    const retail = /^4[4-5]/.test(m.naics) ? 1 : 0.5;     // goods-heavy shops feel tariffs on goods most
+    return P.interest_rate.business_debt_share_of_revenue * (cond.prime - B.prime_rate) / 100
+      + t.goods_cost * retail * m.cost_of_sales_pct / 100
+      + m.wages_pct / 100 * linked * (cond.mw / B.minimum_wage - 1);
+  }
+  function showNews() { $("news").hidden = !$("news").textContent || !$("cond").hidden; }
+  function applyConditions() {
+    if (!cond) return;
+    const s = city.scenarios[outlookKey], e = condEffects();
+    wasm.nf_set_scenario(s.us * e.us, s.domestic * e.domestic, s.overseas * e.overseas, s.base_stays, s.resident * e.resident);
+    const pc = (v) => (v >= 1 ? "+" : "\u2212") + Math.abs(Math.round((v - 1) * 100)) + "%";
+    $("cSummary").textContent = `Against 2025: US visitors ${pc(e.us)}, Canadian visitors ${pc(e.domestic)}, overseas ${pc(e.overseas)}, residents' spending ${pc(e.resident)}. ` +
+      `Restaurant costs ${((costShock(city.build_menu[0]) * 100) >= 0 ? "+" : "\u2212")}${Math.abs(costShock(city.build_menu[0]) * 100).toFixed(1)}% of sales.`;
+    const P = city.policy, heads = [...cond.events].map((k) => P.events[k].headline);
+    if (cond.tariff !== "2025") heads.unshift(P.tariffs.levels[cond.tariff].label);
+    if (Math.abs(cond.prime - P.baseline.prime_rate) >= 0.5) heads.push(`Prime rate ${cond.prime.toFixed(2)}%`);
+    $("news").textContent = heads.join(" \u00b7 "); showNews();
+    runForecast();
   }
 
   function closeBuild() { buildMode = false; site = null; $("build").hidden = true; $("forecast").hidden = true; $("buildGo").disabled = true; $("buildHint").textContent = "Tap the map where you want it."; }
@@ -884,7 +980,7 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
     outlookKey = $("outlook").value;
     const s = city.scenarios[outlookKey];
     try {
-      wasm.nf_set_scenario(s.us, s.domestic, s.overseas, s.base_stays, s.resident);
+      if (cond) applyConditions(); else wasm.nf_set_scenario(s.us, s.domestic, s.overseas, s.base_stays, s.resident);
       if (city.safety && wasm.nf_set_safety) { const sc = city.safety.scenarios[outlookKey] ?? 1; city.safety.scale = sc; wasm.nf_set_safety(sc); }
       runForecast();
     }
