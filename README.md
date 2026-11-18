@@ -387,3 +387,9 @@ The page has a **Conditions** panel (`data/policy_levers.json`, exported into ci
 - Exchange rate, yearly 2000-2025 without 2020-22: US overnight visitors 0.71% per 1% change in the US dollar's price (correlation 0.35, 23 years); Canadians' US trips -1.0%.
 The Conditions panel now uses these: exchange-rate elasticity 0.71; event cards "Passport-type border rule" (x0.85), "Health scare (SARS-like)" (x0.76), "Security shock (9/11-like)" (x0.98); tariff escalation x0.873.
 Older data found but not yet used: MTO highway traffic volumes 1988-2016 (PDF and CSV, Ministry of Transportation library), which would give a 30-year traffic test. No Niagara Falls hotel occupancy history before the CBRE reports was found.
+
+## Highway traffic 1988-2024 (18 November 2026)
+The Ministry of Transportation's Traffic Volumes 1988-2024 file (`data/sources/mto/traffic_volumes_1988_2024.csv`, downloaded directly; the QEW is highway "1") gives yearly AADT and truck share for all 20 highway sections in and around Niagara Falls (`data/traffic_history_mto_1988_2024.json`).
+- Highway 420, the main tourist route (four sections): 79,100 vehicles a day summed in 1988, 113,000 in 2002, 150,800 in 2019, 141,400 in 2024. QEW in the city (four sections): 143,600 to 278,900. Over the same years US visitors through the Niagara ports fell from 10.5 million to 4.6 million. Levels move in opposite directions (correlation -0.79) and yearly changes are unrelated (-0.04): the city's traffic grew with Canadian visitors, the casinos (1996, 2004) and population, not with Americans.
+- The Ministry estimates volumes in years without a count: Highway 420 shows almost no 2021 dip, so single years are not reliable.
+- Truck shares: QEW 4-15%, Highway 58 7-10%, Highway 20 8%, Highway 7186 6%, Highway 420 1%, the Queenston-Lewiston Bridge approach 53%. Trucks are likely 5-10% of regional-road traffic, part of the gap between the model's 39% of counted traffic and the counts.
