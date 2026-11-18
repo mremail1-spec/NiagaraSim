@@ -1,0 +1,374 @@
+{
+ "_meta": {
+  "what": "Measured effects of past shocks on visitors through the Niagara ports (Statistics Canada 24-10-0053, Niagara Area), used for the Conditions panel's event cards.",
+  "data": "data/monthly_history_1972_2026.json (border crossings 1972-2026; US dollar in Canadian dollars 1999-2026)"
+ },
+ "events": {
+  "casino_and_weak_dollar_1997_1998": {
+   "us_overnight_1997_vs_1996": 1.069,
+   "1998_vs_1997": 1.091,
+   "note": "Casino Niagara opened December 1996; the Canadian dollar near 70 US cents."
+  },
+  "september_11": {
+   "us_overnight_oct2001_sep2002": 1.03,
+   "us_sameday_2002_vs_2001": 0.945
+  },
+  "sars_2003": {
+   "us_overnight_apr_jun": 0.655,
+   "us_overnight_year": 0.76
+  },
+  "passport_rule_june_2009": {
+   "us_overnight_12m": 0.872,
+   "us_sameday_12m": 0.819
+  },
+  "parity_2002_to_2011": {
+   "us_overnight": 0.686,
+   "usd_price": 0.63
+  },
+  "tariffs_2025": {
+   "us_overnight": 0.873,
+   "canadians_to_us": 0.689
+  },
+  "same_day_collapse": {
+   "us_sameday_2001": 8536919,
+   "us_sameday_2009": 2319674
+  }
+ },
+ "elasticity": {
+  "us_overnight_vs_usd_price_2000_2025": {
+   "value": 0.71,
+   "correlation": 0.35,
+   "years": 23
+  },
+  "canadians_to_us_vs_usd_price": {
+   "value": -1.0,
+   "correlation": -0.39
+  }
+ },
+ "by_year": {
+  "1972": {
+   "us_overnight": 2550508,
+   "us_sameday": 6720145,
+   "canadians_to_us": 3830332,
+   "overseas": 209805
+  },
+  "1973": {
+   "us_overnight": 2642544,
+   "us_sameday": 7146091,
+   "canadians_to_us": 3788074,
+   "overseas": 238686
+  },
+  "1974": {
+   "us_overnight": 2509315,
+   "us_sameday": 6745296,
+   "canadians_to_us": 3805950,
+   "overseas": 207351
+  },
+  "1975": {
+   "us_overnight": 2469402,
+   "us_sameday": 6847689,
+   "canadians_to_us": 4278435,
+   "overseas": 253612
+  },
+  "1976": {
+   "us_overnight": 2352466,
+   "us_sameday": 6309068,
+   "canadians_to_us": 4635163,
+   "overseas": 344365
+  },
+  "1977": {
+   "us_overnight": 2307051,
+   "us_sameday": 6173042,
+   "canadians_to_us": 4656645,
+   "overseas": 279470
+  },
+  "1978": {
+   "us_overnight": 2287748,
+   "us_sameday": 6318857,
+   "canadians_to_us": 4742450,
+   "overseas": 381999
+  },
+  "1979": {
+   "us_overnight": 2156413,
+   "us_sameday": 6427238,
+   "canadians_to_us": 4485268,
+   "overseas": 482584
+  },
+  "1980": {
+   "us_overnight": 2214069,
+   "us_sameday": 10346627,
+   "canadians_to_us": 4658516,
+   "overseas": 481692
+  },
+  "1981": {
+   "us_overnight": 2284403,
+   "us_sameday": 11540258,
+   "canadians_to_us": 4717783,
+   "overseas": 452873
+  },
+  "1982": {
+   "us_overnight": 2113728,
+   "us_sameday": 7556694,
+   "canadians_to_us": 4831485,
+   "overseas": 389941
+  },
+  "1983": {
+   "us_overnight": 2253813,
+   "us_sameday": 7436554,
+   "canadians_to_us": 5532019,
+   "overseas": 299404
+  },
+  "1984": {
+   "us_overnight": 2291613,
+   "us_sameday": 7332233,
+   "canadians_to_us": 5484343,
+   "overseas": 332203
+  },
+  "1985": {
+   "us_overnight": 2236731,
+   "us_sameday": 7371176,
+   "canadians_to_us": 5255900,
+   "overseas": 314503
+  },
+  "1986": {
+   "us_overnight": 2395015,
+   "us_sameday": 7930279,
+   "canadians_to_us": 5259595,
+   "overseas": 386725
+  },
+  "1987": {
+   "us_overnight": 2576832,
+   "us_sameday": 8271403,
+   "canadians_to_us": 5918215,
+   "overseas": 582893
+  },
+  "1988": {
+   "us_overnight": 2553388,
+   "us_sameday": 7935585,
+   "canadians_to_us": 7529138,
+   "overseas": 634317
+  },
+  "1989": {
+   "us_overnight": 2242630,
+   "us_sameday": 7489875,
+   "canadians_to_us": 9824811,
+   "overseas": 611899
+  },
+  "1990": {
+   "us_overnight": 2345277,
+   "us_sameday": 7435711,
+   "canadians_to_us": 12168133,
+   "overseas": 539887
+  },
+  "1991": {
+   "us_overnight": 2453101,
+   "us_sameday": 7180171,
+   "canadians_to_us": 12909207,
+   "overseas": 545158
+  },
+  "1992": {
+   "us_overnight": 2444021,
+   "us_sameday": 6686606,
+   "canadians_to_us": 12398421,
+   "overseas": 588563
+  },
+  "1993": {
+   "us_overnight": 2375048,
+   "us_sameday": 6473607,
+   "canadians_to_us": 10484545,
+   "overseas": 556629
+  },
+  "1994": {
+   "us_overnight": 2515228,
+   "us_sameday": 6569696,
+   "canadians_to_us": 8058338,
+   "overseas": 622989
+  },
+  "1995": {
+   "us_overnight": 2435520,
+   "us_sameday": 6947240,
+   "canadians_to_us": 7418394,
+   "overseas": 703296
+  },
+  "1996": {
+   "us_overnight": 2368113,
+   "us_sameday": 7031488,
+   "canadians_to_us": 7278767,
+   "overseas": 796899
+  },
+  "1997": {
+   "us_overnight": 2532522,
+   "us_sameday": 8337169,
+   "canadians_to_us": 7107371,
+   "overseas": 483802
+  },
+  "1998": {
+   "us_overnight": 2764011,
+   "us_sameday": 8574851,
+   "canadians_to_us": 5566822,
+   "overseas": 286020
+  },
+  "1999": {
+   "us_overnight": 2638595,
+   "us_sameday": 8436172,
+   "canadians_to_us": 5547915,
+   "overseas": 233005
+  },
+  "2000": {
+   "us_overnight": 2463450,
+   "us_sameday": 8441157,
+   "canadians_to_us": 5613760,
+   "overseas": 253908
+  },
+  "2001": {
+   "us_overnight": 2797037,
+   "us_sameday": 8536919,
+   "canadians_to_us": 5300815,
+   "overseas": 179511
+  },
+  "2002": {
+   "us_overnight": 2925298,
+   "us_sameday": 8067532,
+   "canadians_to_us": 4865671,
+   "overseas": 139482
+  },
+  "2003": {
+   "us_overnight": 2221880,
+   "us_sameday": 6434586,
+   "canadians_to_us": 4637669,
+   "overseas": 88342
+  },
+  "2004": {
+   "us_overnight": 2590123,
+   "us_sameday": 5932562,
+   "canadians_to_us": 4915487,
+   "overseas": 189550
+  },
+  "2005": {
+   "us_overnight": 2460917,
+   "us_sameday": 4964386,
+   "canadians_to_us": 5349073,
+   "overseas": 168116
+  },
+  "2006": {
+   "us_overnight": 2426797,
+   "us_sameday": 4441040,
+   "canadians_to_us": 6200875,
+   "overseas": 129820
+  },
+  "2007": {
+   "us_overnight": 2427051,
+   "us_sameday": 3468330,
+   "canadians_to_us": 7042106,
+   "overseas": 131414
+  },
+  "2008": {
+   "us_overnight": 2322976,
+   "us_sameday": 2695755,
+   "canadians_to_us": 7221500,
+   "overseas": 122370
+  },
+  "2009": {
+   "us_overnight": 2149872,
+   "us_sameday": 2319674,
+   "canadians_to_us": 6577644,
+   "overseas": 84795
+  },
+  "2010": {
+   "us_overnight": 2089704,
+   "us_sameday": 2363817,
+   "canadians_to_us": 7370320,
+   "overseas": 77639
+  },
+  "2011": {
+   "us_overnight": 2005845,
+   "us_sameday": 2323621,
+   "canadians_to_us": 8249466,
+   "overseas": 91638
+  },
+  "2012": {
+   "us_overnight": 2134626,
+   "us_sameday": 2275950,
+   "canadians_to_us": 8634602,
+   "overseas": 129744
+  },
+  "2013": {
+   "us_overnight": 2091214,
+   "us_sameday": 2049715,
+   "canadians_to_us": 8330568,
+   "overseas": 130233
+  },
+  "2014": {
+   "us_overnight": 2017655,
+   "us_sameday": 2033443,
+   "canadians_to_us": 7459065,
+   "overseas": 237413
+  },
+  "2015": {
+   "us_overnight": 2242827,
+   "us_sameday": 2217751,
+   "canadians_to_us": 6045699,
+   "overseas": 265984
+  },
+  "2016": {
+   "us_overnight": 2386004,
+   "us_sameday": 2430106,
+   "canadians_to_us": 5491468,
+   "overseas": 269183
+  },
+  "2017": {
+   "us_overnight": 2460329,
+   "us_sameday": 2396049,
+   "canadians_to_us": 5673167,
+   "overseas": 257457
+  },
+  "2018": {
+   "us_overnight": 2547048,
+   "us_sameday": 2458684,
+   "canadians_to_us": 5903781,
+   "overseas": 267605
+  },
+  "2019": {
+   "us_overnight": 2507541,
+   "us_sameday": 2586768,
+   "canadians_to_us": 5664452,
+   "overseas": 559726
+  },
+  "2020": {
+   "us_overnight": 270653,
+   "us_sameday": 392752,
+   "canadians_to_us": 1167365,
+   "overseas": 35142
+  },
+  "2021": {
+   "us_overnight": 338553,
+   "us_sameday": 210885,
+   "canadians_to_us": 564703,
+   "overseas": 16961
+  },
+  "2022": {
+   "us_overnight": 1434412,
+   "us_sameday": 1076155,
+   "canadians_to_us": 2995285,
+   "overseas": 213701
+  },
+  "2023": {
+   "us_overnight": 2117535,
+   "us_sameday": 1939295,
+   "canadians_to_us": 4784784,
+   "overseas": 431277
+  },
+  "2024": {
+   "us_overnight": 2363734,
+   "us_sameday": 2205473,
+   "canadians_to_us": 5339263,
+   "overseas": 473189
+  },
+  "2025": {
+   "us_overnight": 2063194,
+   "us_sameday": 2216498,
+   "canadians_to_us": 3676372,
+   "overseas": 408779
+  }
+ }
+}

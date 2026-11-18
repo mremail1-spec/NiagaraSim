@@ -374,3 +374,16 @@ The page has a **Conditions** panel (`data/policy_levers.json`, exported into ci
 - **Traffic between other towns** (`traffic_layers.py`): Statistics Canada's commuting flows between municipalities (98-10-0459) are behind its bot check, also through the user's gateway (403). Estimated instead from the travel survey's 1.03 million trips a day across the region, shared by population and distance (gravity), keeping only pairs whose real route crosses Niagara Falls (Fort Erie with St. Catharines, Thorold or Niagara-on-the-Lake; Welland with Niagara-on-the-Lake; SEED list): 55 trips a day, no effect on the fit. Routing every pair through the city (the model's towns join only through its roads) gave 118,500 trips and wrecked the fit (0.36), so the pair list matters. The volume gap (39% of counted traffic) is more likely trucks and commercial vehicles, 10-20% of traffic on Ontario's main roads, which the model does not simulate.
 - **2025 conditions** (`python3 -m nfprep.conditions_check`, `docs/conditions_check.json`): the Conditions panel's formula fed 2024 and 2025's real settings (prime 6.77% to 4.91%, minimum wage $16.71 to $17.30, US overnight visitors x0.873) for every business at its customer mix predicts closure odds x1.045. Observed: St. Catharines-Niagara closing rate x1.094, Ontario exits x1.197. Direction right, size about half. Tourist businesses were squeezed (attractions 1.7% of sales, restaurants 0.8%); resident-serving ones gained from lower rates.
 - **Scorecard**: the "2025 rise" test now uses this check (pass on direction); the old five-year closure test (38 map edits) is retired, superseded by the Employment Inventory tests.
+
+## History back to 1972 (18 November 2026)
+`data/monthly_history_1972_2026.json`: monthly border crossings at the Niagara ports since January 1972 (Statistics Canada 24-10-0053) and the US dollar in Canadian dollars since January 1999 (Bank of Canada IEXM0101 to April 2017, then FXMUSDCAD; FRED's older series timed out). `docs/history_shocks.json` measures past shocks on US visitors:
+- Casino Niagara (December 1996) and a dollar near 70 US cents: US overnight visitors +7% in 1997, +9% in 1998.
+- 9/11: overnight x1.03 the following year (held up), same-day x0.945.
+- SARS 2003: overnight x0.655 in April-June, x0.76 for the year.
+- Passport rule at the land border (June 2009): overnight x0.872, same-day x0.819.
+- Dollar at par: overnight 2011 x0.686 of 2002 as the US dollar's price fell 37%.
+- 2025 tariffs: overnight x0.873; Canadians' US trips x0.689.
+- US same-day trips fell from 8.5 million (2001) to 2.3 million (2009) and never came back.
+- Exchange rate, yearly 2000-2025 without 2020-22: US overnight visitors 0.71% per 1% change in the US dollar's price (correlation 0.35, 23 years); Canadians' US trips -1.0%.
+The Conditions panel now uses these: exchange-rate elasticity 0.71; event cards "Passport-type border rule" (x0.85), "Health scare (SARS-like)" (x0.76), "Security shock (9/11-like)" (x0.98); tariff escalation x0.873.
+Older data found but not yet used: MTO highway traffic volumes 1988-2016 (PDF and CSV, Ministry of Transportation library), which would give a 30-year traffic test. No Niagara Falls hotel occupancy history before the CBRE reports was found.

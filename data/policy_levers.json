@@ -27,7 +27,7 @@
   "levels": {
    "none": {
     "label": "No tariffs (before 2025)",
-    "us": 1.134,
+    "us": 1.145,
     "domestic": 0.95,
     "goods_cost": -0.01
    },
@@ -39,16 +39,16 @@
    },
    "escalation": {
     "label": "Escalation",
-    "us": 0.882,
+    "us": 0.873,
     "domestic": 1.03,
     "goods_cost": 0.02
    }
   },
-  "sources": "US overnight visitors through Niagara fell to 0.882 of 2024 in 2025 (Statistics Canada 24-10-0053, measured); 'none' undoes that drop, 'escalation' repeats it (SEED). Canadians' trips to the US fell 30% in 2025 and they travelled at home; domestic visitors -5% if that unwinds, +3% if it deepens (SEED). Goods cost: counter-tariffs on US goods raise the cost of goods sold by about 2% in an escalation (SEED); removing them lowers it 1%."
+  "sources": "US overnight visitors through Niagara fell to 0.873 of 2024 in 2025 (calendar year) (Statistics Canada 24-10-0053, measured); 'none' undoes that drop, 'escalation' repeats it (SEED). Canadians' trips to the US fell 30% in 2025 and they travelled at home; domestic visitors -5% if that unwinds, +3% if it deepens (SEED). Goods cost: counter-tariffs on US goods raise the cost of goods sold by about 2% in an escalation (SEED); removing them lowers it 1%."
  },
  "exchange_rate": {
-  "us_elasticity": 0.84,
-  "sources": "US overnight visitors against the US dollar's price in Canadian dollars, 67 ordinary months 2017-2026: elasticity 0.84 (measured; correlation only 0.15, a weak link)."
+  "us_elasticity": 0.71,
+  "sources": "US overnight visitors through Niagara against the US dollar's price in Canadian dollars, yearly 2000-2025 without 2020-22: elasticity 0.71 (correlation 0.35, 23 years; Statistics Canada 24-10-0053 and Bank of Canada IEXM0101/FXMUSDCAD, data/monthly_history_1972_2026.json). Monthly 2017-2026 gave 0.84. Canadians' own US trips move the other way (-1.0)."
  },
  "minimum_wage": {
   "wage_share_linked": {
@@ -64,11 +64,24 @@
  },
  "events": {
   "border": {
-   "label": "Border restrictions",
-   "us": 0.5,
+   "label": "Passport-type border rule",
+   "us": 0.85,
+   "headline": "Tighter border documents: US visitors -15%",
+   "sources": "June 2009 passport requirement at the land border (WHTI): US overnight visitors x0.872, same-day x0.819 in the following 12 months (measured, Niagara ports)."
+  },
+  "health": {
+   "label": "Health scare (SARS-like)",
+   "us": 0.76,
    "overseas": 0.8,
-   "headline": "Border restrictions: US visitors halved",
-   "sources": "SEED; 2020-21 closures cut US visitors far more, a partial restriction is assumed."
+   "domestic": 0.95,
+   "headline": "Health scare: visitors stay away",
+   "sources": "SARS 2003: US overnight visitors x0.655 in April-June, x0.76 for the year (measured); overseas and domestic effects SEED."
+  },
+  "security": {
+   "label": "Security shock (9/11-like)",
+   "us": 0.98,
+   "headline": "Security shock: US day trips dip, overnight holds",
+   "sources": "Year after 9/11: US overnight visitors x1.03, same-day x0.945 (measured); the mix gives about x0.98."
   },
   "recession": {
    "label": "Recession",
@@ -92,5 +105,9 @@
    "headline": "Municipal accommodation tax rises to 5%",
    "sources": "City of Niagara Falls by-law 2025-009: 4% from April 2026, 5% from April 2027 (measured policy); SEED: room-price elasticity gives about -0.5% visitors."
   }
+ },
+ "history": {
+  "us_overnight_by_year": {},
+  "note": "See docs/history_shocks.json"
  }
 }
