@@ -1,0 +1,84 @@
+{
+ "history": [
+  {
+   "iteration": 1,
+   "regional_2019": 0.735,
+   "regional_2025": 0.744,
+   "highways": 0.768,
+   "share_regional": 38.9,
+   "share_highways": 54.0,
+   "edges_over_capacity_pct": 1.85,
+   "max_slowdown": 11.57
+  },
+  {
+   "iteration": 2,
+   "regional_2019": 0.716,
+   "regional_2025": 0.732,
+   "highways": 0.759,
+   "share_regional": 41.4,
+   "share_highways": 51.3,
+   "edges_over_capacity_pct": 1.33,
+   "max_slowdown": 10.24
+  },
+  {
+   "iteration": 3,
+   "regional_2019": 0.742,
+   "regional_2025": 0.761,
+   "highways": 0.754,
+   "share_regional": 47.3,
+   "share_highways": 52.2,
+   "edges_over_capacity_pct": 1.24,
+   "max_slowdown": 11.13
+  },
+  {
+   "iteration": 4,
+   "regional_2019": 0.732,
+   "regional_2025": 0.747,
+   "highways": 0.75,
+   "share_regional": 40.8,
+   "share_highways": 51.5,
+   "edges_over_capacity_pct": 1.18,
+   "max_slowdown": 11.15
+  },
+  {
+   "iteration": 5,
+   "regional_2019": 0.732,
+   "regional_2025": 0.747,
+   "highways": 0.75,
+   "share_regional": 40.9,
+   "share_highways": 51.5,
+   "edges_over_capacity_pct": 1.17,
+   "max_slowdown": 11.13
+  },
+  {
+   "iteration": 6,
+   "regional_2019": 0.733,
+   "regional_2025": 0.748,
+   "highways": 0.75,
+   "share_regional": 40.9,
+   "share_highways": 51.5,
+   "edges_over_capacity_pct": 1.17,
+   "max_slowdown": 11.12
+  },
+  {
+   "iteration": 7,
+   "regional_2019": 0.735,
+   "regional_2025": 0.751,
+   "highways": 0.749,
+   "share_regional": 41.0,
+   "share_highways": 51.5,
+   "edges_over_capacity_pct": 1.2,
+   "max_slowdown": 11.13
+  },
+  {
+   "iteration": 8,
+   "regional_2019": 0.734,
+   "regional_2025": 0.748,
+   "highways": 0.75,
+   "share_regional": 41.0,
+   "share_highways": 51.5,
+   "edges_over_capacity_pct": 1.18,
+   "max_slowdown": 11.03
+  }
+ ]
+}

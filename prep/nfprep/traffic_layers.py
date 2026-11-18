@@ -43,7 +43,12 @@ BAND_JOBS = {"Micro (1-4 Employees)": 2.5, "Small (5-99 Employees)": 20, "Medium
 DRIVEN_TO_SCHOOL = {"elementary": 0.35, "secondary": 0.25}   # SEED: share of students driven (Ontario travel surveys)
 SCHOOL_RUNS_PER_DRIVEN_CHILD = 1.5     # SEED: drop-off and pick-up, less siblings and runs chained with a commute
 SCHOOL_DAYS = 190 / 365
-JOBS_AT_USUAL_PLACE = 0.8              # share of inventory jobs held by someone who travels to that workplace (part-time
+JOBS_AT_USUAL_PLACE = 0.8
+# other car trips (travel survey gap); the model's shopping outings come from the engine's report
+OUTINGS_PER_PERSON = 0.475            # engine: outings per person (5+) per day
+DRIVER_SHARE_OF_OUTINGS = 0.677       # engine: share of outings driven
+WEEKDAY_TO_AVERAGE_DAY = 0.9          # SEED: the survey describes a weekday; counts are annual averages
+OTHER_TRIP_KM = 4.0                   # SEED: distance fall-off of errands and trips between stops              # share of inventory jobs held by someone who travels to that workplace (part-time
                                        # overlap, work from home, no fixed workplace)
 TOWN_DECAY_KM = 15.0                   # commuting falls off with distance like exp(-km / 15)
 INPUT_SECTIONS = {("QEW", 10050), ("QEW", 10025), ("405", 48600)}   # used to size the layers; never scored
@@ -51,6 +56,21 @@ INPUT_SECTIONS = {("QEW", 10050), ("QEW", 10025), ("405", 48600)}   # used to si
 
 def _nearest(lat, lon, la, lo):
     return int(np.argmin(np.hypot((lat - la) * 111_320, (lon - lo) * 111_320 * np.cos(np.radians(la)))))
+
+
+def gravity(lat, lon, o_w, d_w, total, tau_km, top=250):
+    """`total` one-way trips a day from origin to destination weights, falling off as exp(-km / tau)."""
+    oi = np.argsort(o_w)[::-1][:top]; di = np.argsort(d_w)[::-1][:top]
+    km = np.hypot((lat[oi][:, None] - lat[di][None, :]) * 111.3, (lon[oi][:, None] - lon[di][None, :]) * 81.2)
+    m = o_w[oi][:, None] * d_w[di][None, :] * np.exp(-km / tau_km)
+    np.fill_diagonal(m, 0) if len(oi) == len(di) and (oi == di).all() else None
+    m = m / m.sum() * total
+    out = []
+    for a in range(len(oi)):
+        for b in range(len(di)):
+            if m[a, b] > 0.05 and oi[a] != di[b]:
+                out.append([int(oi[a]), int(di[b]), round(float(m[a, b]), 2)])
+    return out
 
 
 def build_trips(city: dict, spending_vol: np.ndarray) -> tuple[list, dict]:
@@ -156,6 +176,22 @@ def build_trips(city: dict, spending_vol: np.ndarray) -> tuple[list, dict]:
             total += v
         school_trips[level] = round(total)
     sizes["school_runs_round_trips_per_day"] = school_trips
+
+    # other car trips: the travel survey's trip rate less what the model already sends
+    # (shopping, commuting, school runs); between stops (non-home-based) and other home-based
+    tb = json.loads((DATA_DIR / "behaviour_parameters.json").read_text())["residents"]["trips"]
+    persons = float(sum(hh["persons5"][h] for h in range(n_city_hh)))
+    survey = persons * tb["trips_per_person_5plus"] * tb["mode_pct"]["auto_driver"] / 100 * WEEKDAY_TO_AVERAGE_DAY
+    simulated = persons * OUTINGS_PER_PERSON * 2 * DRIVER_SHARE_OF_OUTINGS + 2 * (in_city + out_region + out_prov) \
+        + 2 * sum(school_trips.values())
+    missing = max(survey - simulated, 0.0)
+    nhb = min(missing, persons * tb["trips_per_person_5plus"] * tb["purpose_pct"]["non_home_based"] / 100
+              * tb["mode_pct"]["auto_driver"] / 100 * WEEKDAY_TO_AVERAGE_DAY)
+    dest_w = 0.5 * jobs_w + 0.5 * pop_w                       # errands and visits: workplaces and homes alike
+    trips += gravity(lat, lon, jobs_w, jobs_w, nhb, OTHER_TRIP_KM)
+    trips += gravity(lat, lon, home_w, dest_w, missing - nhb, OTHER_TRIP_KM)
+    sizes["other_car_trips_per_day"] = {"survey_driver_trips": round(survey), "already_simulated": round(simulated),
+                                        "between_stops": round(nhb), "other_home_based": round(missing - nhb)}
 
     # trucks and through cars, from the edge counts
     m = json.loads((DATA_DIR / "traffic_counts_provincial_highways.json").read_text())
@@ -263,6 +299,16 @@ def main() -> dict:
     (ROOT / "docs" / "traffic_layers_check.json").write_text(json.dumps(result, indent=1))
     print(json.dumps({k: v for k, v in result.items() if k not in ("sections", "_meta")}, indent=1))
     return result
+
+
+def main_quiet() -> dict:
+    import contextlib, io
+    with contextlib.redirect_stdout(io.StringIO()):
+        r = main()
+    a, b = r["with_commuting_and_through_traffic"], r["against_2025_regional_counts"]
+    return {"regional_2019": a["correlation_regional_roads"], "regional_2025": b["correlation_regional_roads"],
+            "highways": a["correlation_highways"], "share_regional": a["median_share_explained_regional_pct"],
+            "share_highways": a["median_share_explained_highways_pct"]}
 
 
 if __name__ == "__main__":
