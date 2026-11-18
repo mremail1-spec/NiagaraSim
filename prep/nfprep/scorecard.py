@@ -50,6 +50,13 @@ def main() -> dict:
         share = st["visitor_share_that_fits"]
         add("Traffic", "Highway 420 at Stanley Ave, visitor share from the 2003 (SARS) dip", share, "0.08-0.22 (model 0.15)",
             0.08 <= share <= 0.22, "Niagara Parks Falls lot x0.813 that year; one year of partly estimated MTO counts")
+    tt = _load("travel_times_check.json")
+    if tt:
+        noon = tt["summary"]["as_built"]["Tue Jul noon"]
+        add("Traffic", "Trip times, correlation with TomTom typical times (40 trips, Tuesday noon)", noon["correlation"], ">= 0.8",
+            noon["correlation"] >= 0.8, f"routes match: model distance x{tt['summary']['distance_ratio_model_to_tomtom']} of TomTom's")
+        add("Traffic", "Trip times, model against TomTom (median ratio, Tuesday noon)", noon["median_ratio_model_to_tomtom"], "0.8-1.25",
+            0.8 <= noon["median_ratio_model_to_tomtom"] <= 1.25, "model about 1.5x fast; fixing it in routing hurts the count fit")
     u = _load("unit_sales_check.json")
     if u:
         r = u["summary"]["median_ratio_model_to_published"]

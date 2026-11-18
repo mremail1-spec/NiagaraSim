@@ -409,3 +409,10 @@ Niagara Parks annual reports list vehicles parked per lot (`data/niagara_parks_p
 - SARS 2003: the Falls lot fell to x0.813. The health-scare card's domestic figure was a seed (x0.95) and gave x0.899 overall; SARS was centred in Toronto, so the lot fits domestic x0.83-0.86. Set to x0.85; blended card x0.828.
 - Highway 420 at Stanley Ave fell 2.7% below its usual year in 2003, which fits visitors at 15% of its traffic, as the model has. The replay's 20-30% is not supported. Scored (one year, partly estimated counts).
 - Current daily counts are not public. The project works privately (no data requests to the City or operators), so later years come from public proxies: crossings, Highway 420 counts and the Region's road counts.
+
+## Trip times against TomTom (18 November 2026)
+`python3 -m nfprep.travel_times_check` times 40 trips (10 home areas to 4 destinations each) on the model's roads and asks TomTom's Routing API for typical-traffic times at 13 departure times (Tuesday and Saturday, July and November). TomTom's replies stay in `build/` (their terms limit storing results); `docs/travel_times_check.json` keeps only the comparison. The key is a network secret for api.tomtom.com, added by the session proxy.
+- Routes match (model distance x0.99 of TomTom's); times correlate 0.88; the model is about 1.5x fast.
+- TomTom's typical slowdown against 3 am: x1.07 at 8 am, x1.14 at 5 pm on a weekday, x1.18 on a summer Saturday at 5 pm. July and November come back the same, so TomTom's typical speeds do not vary by season.
+- Fitted per trip: arterials 1.3x slower than the model, about 5 s per traffic light, 19 s per stop sign.
+- Putting those into routing lowers the count fit (regional roads 0.724 to 0.64; with the old 25 s lights, 0.53): real drivers keep to main roads more than shortest-time routing predicts. Routing stays as built.

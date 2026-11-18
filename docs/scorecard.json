@@ -7,7 +7,7 @@
    "2022"
   ]
  },
- "passed": "11 of 14",
+ "passed": "12 of 16",
  "tests": [
   {
    "area": "Traffic",
@@ -56,6 +56,22 @@
    "pass_mark": "0.08-0.22 (model 0.15)",
    "result": "pass",
    "note": "Niagara Parks Falls lot x0.813 that year; one year of partly estimated MTO counts"
+  },
+  {
+   "area": "Traffic",
+   "test": "Trip times, correlation with TomTom typical times (40 trips, Tuesday noon)",
+   "score": 0.877,
+   "pass_mark": ">= 0.8",
+   "result": "pass",
+   "note": "routes match: model distance x0.989 of TomTom's"
+  },
+  {
+   "area": "Traffic",
+   "test": "Trip times, model against TomTom (median ratio, Tuesday noon)",
+   "score": 0.663,
+   "pass_mark": "0.8-1.25",
+   "result": "miss",
+   "note": "model about 1.5x fast; fixing it in routing hurts the count fit"
   },
   {
    "area": "Sales at a site",
