@@ -1,0 +1,21 @@
+WARNING: this request cost about $5.33 (34,713 tokens in, 10,331 out): ask for less per request
+Based on the archives of the Niagara Association of REALTORS® (NAR) and local real estate reports, here are the URLs containing Niagara Falls housing figures for specific months:
+
+2026-10 | https://www.davidsdelaat.com/niagara-real-estate-market-report-october-2026-stats/
+2026-09 | https://www.davidsdelaat.com/niagara-real-estate-market-report-september-2026-stats/
+2026-08 | https://www.davidsdelaat.com/niagara-real-estate-market-report-august-2026-stats/
+2026-07 | https://www.davidsdelaat.com/niagara-real-estate-market-report-july-2026-stats/
+2026-06 | https://www.davidsdelaat.com/niagara-real-estate-market-report-june-2026-stats/
+2026-05 | https://www.davidsdelaat.com/niagara-real-estate-market-report-may-2026-stats/
+2026-04 | https://www.davidsdelaat.com/niagara-real-estate-market-report-april-2026-stats/
+2026-03 | https://www.davidsdelaat.com/niagara-real-estate-market-report-march-2026-stats/
+2026-02 | https://www.davidsdelaat.com/niagara-real-estate-market-report-february-2026-stats/
+2026-01 | https://www.davidsdelaat.com/niagara-real-estate-market-report-january-2026-stats/
+2024-08 | https://niagararealtor.ca/fall-2024-local-real-estate-market-outlook/
+2023-12 | https://www.davidsdelaat.com/the-state-of-real-estate-in-niagara-market-update-december-2023/
+2019-04 | https://www.crea.ca/housing-market-niagara-region-home-sales-activity-on-the-rise/
+2018-12 | http://yourniagarahome.com/market-activity-in-niagara-december-2018/
+2018-11 | http://yourniagarahome.com/niagara-market-activity-november-2018/
+
+---PAGES READ---
+---COST this request $5.3333; total $6.0433 of $5.00 cap---
