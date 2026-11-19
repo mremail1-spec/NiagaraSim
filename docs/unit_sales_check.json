@@ -3,12 +3,12 @@
   "what": "Model revenue of chain branches in Niagara Falls against the chains' published sales per location."
  },
  "summary": {
-  "median_ratio_model_to_published": 1.0,
-  "branches_above_brand_best": 5,
-  "site_error_log_sd": 0.857,
+  "median_ratio_model_to_published": 1.08,
+  "branches_above_brand_best": 1,
+  "site_error_log_sd": 0.766,
   "site_range_p10_p90": [
-   0.33,
-   3.0
+   0.38,
+   2.66
   ]
  },
  "brands": {
@@ -16,28 +16,28 @@
    "branches": [
     {
      "address": "5200 Robinson St",
-     "model_revenue": 3815495
+     "model_revenue": 2399638
     },
     {
      "address": "4945 Clifton Hl",
-     "model_revenue": 4263699
+     "model_revenue": 2597785
     },
     {
      "address": "3643-3739 Portage Rd",
-     "model_revenue": 1854013
+     "model_revenue": 1371426
     },
     {
      "address": "5619 Stanley Av",
-     "model_revenue": 2600675
+     "model_revenue": 1573308
     },
     {
      "address": "6225 Lundy's Ln",
-     "model_revenue": 2859876
+     "model_revenue": 2450868
     }
    ],
-   "model_median": 2859876,
+   "model_median": 2399638,
    "published_average": 789000,
-   "ratio": 3.62,
+   "ratio": 3.04,
    "above_brand_best_unit": 0,
    "source_quality": "company filing"
   },
@@ -45,12 +45,12 @@
    "branches": [
     {
      "address": "5950 Victoria Av",
-     "model_revenue": 5009577
+     "model_revenue": 7088667
     }
    ],
-   "model_median": 5009577,
+   "model_median": 7088667,
    "published_average": 7176000,
-   "ratio": 0.7,
+   "ratio": 0.99,
    "above_brand_best_unit": 0,
    "source_quality": "company filing"
   },
@@ -58,20 +58,20 @@
    "branches": [
     {
      "address": "4950 Clifton Hill",
-     "model_revenue": 8733945
+     "model_revenue": 5134795
     },
     {
      "address": "6962 Optimist Ln",
-     "model_revenue": 2870838
+     "model_revenue": 2162394
     },
     {
      "address": "8444 Lundy's Ln",
-     "model_revenue": 3257511
+     "model_revenue": 4855082
     }
    ],
-   "model_median": 3257511,
+   "model_median": 4855082,
    "published_average": 2505000,
-   "ratio": 1.3,
+   "ratio": 1.94,
    "above_brand_best_unit": 0,
    "source_quality": "filing sales / analyst count"
   },
@@ -79,35 +79,35 @@
    "branches": [
     {
      "address": "7307 Oakwood Dr",
-     "model_revenue": 303683
+     "model_revenue": 207338
     },
     {
      "address": "6948 McLeod Rd",
-     "model_revenue": 3035129
+     "model_revenue": 1223586
     },
     {
      "address": "8089 Portage Road",
-     "model_revenue": 4331636
+     "model_revenue": 1369815
     },
     {
      "address": "7311 Pin Oak Dr",
-     "model_revenue": 1615264
+     "model_revenue": 669389
     },
     {
      "address": "5233 Stanley Av",
-     "model_revenue": 3445291
+     "model_revenue": 1672500
     },
     {
      "address": "6192 Lundy's Ln",
-     "model_revenue": 2775939
+     "model_revenue": 1435378
     },
     {
      "address": "6345 Niagara River Py",
-     "model_revenue": 1803779
+     "model_revenue": 1188948
     },
     {
      "address": "5687 Stanley Av",
-     "model_revenue": 7306998
+     "model_revenue": 3742577
     },
     {
      "address": "6380 Fallsview Bv",
@@ -115,53 +115,53 @@
     },
     {
      "address": "5551 Murray Street",
-     "model_revenue": 14414656
+     "model_revenue": 5706643
     },
     {
      "address": "8159 Lundy's Ln",
-     "model_revenue": 6557265
+     "model_revenue": 2122485
     },
     {
      "address": "3930 Montrose Rd",
-     "model_revenue": 3190830
+     "model_revenue": 1464957
     },
     {
      "address": "4835 Victoria Av",
-     "model_revenue": 5428615
+     "model_revenue": 2478582
     },
     {
      "address": "6907 Morrison St",
-     "model_revenue": 1207802
+     "model_revenue": 486333
     },
     {
      "address": "6161 Thorold Stone Road",
-     "model_revenue": 2924791
+     "model_revenue": 1236339
     },
     {
      "address": "5470 Drummond Rd",
-     "model_revenue": 985827
+     "model_revenue": 465951
     }
    ],
-   "model_median": 2979960,
+   "model_median": 1303077,
    "published_average": 1117000,
-   "ratio": 2.67,
-   "above_brand_best_unit": 5,
+   "ratio": 1.17,
+   "above_brand_best_unit": 1,
    "source_quality": "franchise disclosure, second-hand, median not mean"
   },
   "A&W": {
    "branches": [
     {
      "address": "6980-7000 McLeod Rd",
-     "model_revenue": 574801
+     "model_revenue": 672194
     },
     {
      "address": "7665 Thorold Stone Rd",
-     "model_revenue": 551536
+     "model_revenue": 538194
     }
    ],
-   "model_median": 563168,
+   "model_median": 605194,
    "published_average": 1670000,
-   "ratio": 0.34,
+   "ratio": 0.36,
    "above_brand_best_unit": 0,
    "source_quality": "estimate from system sales and approximate count"
   },
@@ -169,24 +169,24 @@
    "branches": [
     {
      "address": "7481 Oakwood Dr",
-     "model_revenue": 4167773
+     "model_revenue": 3569292
     },
     {
      "address": "3714 Portage Rd",
-     "model_revenue": 4940473
+     "model_revenue": 3532354
     },
     {
      "address": "4694 Victoria Avenue",
-     "model_revenue": 1888354
+     "model_revenue": 1184932
     },
     {
      "address": "5389 Ferry Street",
-     "model_revenue": 10362751
+     "model_revenue": 5524529
     }
    ],
-   "model_median": 4554123,
+   "model_median": 3550823,
    "published_average": 8630000,
-   "ratio": 0.53,
+   "ratio": 0.41,
    "above_brand_best_unit": 0,
    "source_quality": "2022-23 retail sales over store count"
   }
