@@ -8,82 +8,82 @@
   "requests_this_run": 0,
   "as_built": {
    "Tue Jul 3am": {
-    "median_ratio_model_to_tomtom": 1.086,
-    "log_sd": 0.086,
+    "median_ratio_model_to_tomtom": 1.101,
+    "log_sd": 0.084,
     "correlation": 0.964,
-    "mean_abs_error_min": 0.76
+    "mean_abs_error_min": 0.79
    },
    "Tue Jul 8am": {
-    "median_ratio_model_to_tomtom": 1.016,
-    "log_sd": 0.081,
-    "correlation": 0.968,
+    "median_ratio_model_to_tomtom": 1.018,
+    "log_sd": 0.082,
+    "correlation": 0.967,
     "mean_abs_error_min": 0.53
    },
    "Tue Jul noon": {
-    "median_ratio_model_to_tomtom": 0.986,
-    "log_sd": 0.083,
-    "correlation": 0.966,
+    "median_ratio_model_to_tomtom": 0.994,
+    "log_sd": 0.088,
+    "correlation": 0.964,
     "mean_abs_error_min": 0.52
    },
    "Tue Jul 5pm": {
-    "median_ratio_model_to_tomtom": 0.953,
-    "log_sd": 0.085,
-    "correlation": 0.968,
-    "mean_abs_error_min": 0.59
+    "median_ratio_model_to_tomtom": 0.971,
+    "log_sd": 0.09,
+    "correlation": 0.964,
+    "mean_abs_error_min": 0.56
    },
    "Tue Jul 8pm": {
-    "median_ratio_model_to_tomtom": 1.014,
-    "log_sd": 0.074,
-    "correlation": 0.973,
-    "mean_abs_error_min": 0.46
+    "median_ratio_model_to_tomtom": 1.032,
+    "log_sd": 0.076,
+    "correlation": 0.971,
+    "mean_abs_error_min": 0.51
    },
    "Sat Jul noon": {
-    "median_ratio_model_to_tomtom": 0.933,
-    "log_sd": 0.106,
-    "correlation": 0.94,
-    "mean_abs_error_min": 0.81
+    "median_ratio_model_to_tomtom": 0.961,
+    "log_sd": 0.111,
+    "correlation": 0.933,
+    "mean_abs_error_min": 0.79
    },
    "Sat Jul 5pm": {
-    "median_ratio_model_to_tomtom": 0.923,
-    "log_sd": 0.115,
-    "correlation": 0.929,
+    "median_ratio_model_to_tomtom": 0.937,
+    "log_sd": 0.121,
+    "correlation": 0.92,
     "mean_abs_error_min": 0.96
    },
    "Sat Jul 8pm": {
-    "median_ratio_model_to_tomtom": 1.007,
-    "log_sd": 0.126,
-    "correlation": 0.915,
-    "mean_abs_error_min": 0.9
+    "median_ratio_model_to_tomtom": 1.006,
+    "log_sd": 0.127,
+    "correlation": 0.911,
+    "mean_abs_error_min": 0.89
    },
    "Tue Nov 3am": {
-    "median_ratio_model_to_tomtom": 1.086,
-    "log_sd": 0.086,
+    "median_ratio_model_to_tomtom": 1.101,
+    "log_sd": 0.084,
     "correlation": 0.964,
-    "mean_abs_error_min": 0.76
+    "mean_abs_error_min": 0.79
    },
    "Tue Nov 8am": {
-    "median_ratio_model_to_tomtom": 1.016,
-    "log_sd": 0.081,
-    "correlation": 0.968,
+    "median_ratio_model_to_tomtom": 1.018,
+    "log_sd": 0.082,
+    "correlation": 0.967,
     "mean_abs_error_min": 0.53
    },
    "Tue Nov noon": {
-    "median_ratio_model_to_tomtom": 0.986,
-    "log_sd": 0.083,
-    "correlation": 0.966,
+    "median_ratio_model_to_tomtom": 0.994,
+    "log_sd": 0.088,
+    "correlation": 0.964,
     "mean_abs_error_min": 0.52
    },
    "Tue Nov 5pm": {
-    "median_ratio_model_to_tomtom": 0.953,
-    "log_sd": 0.085,
-    "correlation": 0.968,
-    "mean_abs_error_min": 0.59
+    "median_ratio_model_to_tomtom": 0.971,
+    "log_sd": 0.09,
+    "correlation": 0.964,
+    "mean_abs_error_min": 0.56
    },
    "Sat Nov 1pm": {
-    "median_ratio_model_to_tomtom": 0.933,
-    "log_sd": 0.108,
-    "correlation": 0.938,
-    "mean_abs_error_min": 0.84
+    "median_ratio_model_to_tomtom": 0.961,
+    "log_sd": 0.113,
+    "correlation": 0.931,
+    "mean_abs_error_min": 0.82
    }
   },
   "distance_ratio_model_to_tomtom": 1.0,
@@ -107,322 +107,322 @@
   {
    "from": "Chippawa",
    "to": "Clifton Hill (top)",
-   "model_min": 10.07,
+   "model_min": 10.35,
    "model_km": 5.82,
    "model_over_tomtom_km": 0.93,
-   "model_over_tomtom_tue_jul_noon": 0.96
+   "model_over_tomtom_tue_jul_noon": 0.99
   },
   {
    "from": "Chippawa",
    "to": "Main at Ferry",
-   "model_min": 9.2,
+   "model_min": 9.42,
    "model_km": 5.47,
    "model_over_tomtom_km": 0.9,
-   "model_over_tomtom_tue_jul_noon": 0.93
+   "model_over_tomtom_tue_jul_noon": 0.96
   },
   {
    "from": "Chippawa",
    "to": "Fallsview Casino",
-   "model_min": 5.83,
+   "model_min": 6.29,
    "model_km": 4.03,
-   "model_over_tomtom_km": 1.0,
-   "model_over_tomtom_tue_jul_noon": 0.94
-  },
-  {
-   "from": "Chippawa",
-   "to": "South Niagara hospital site",
-   "model_min": 10.04,
-   "model_km": 9.23,
    "model_over_tomtom_km": 1.0,
    "model_over_tomtom_tue_jul_noon": 1.02
   },
   {
+   "from": "Chippawa",
+   "to": "South Niagara hospital site",
+   "model_min": 10.38,
+   "model_km": 9.23,
+   "model_over_tomtom_km": 1.0,
+   "model_over_tomtom_tue_jul_noon": 1.06
+  },
+  {
    "from": "Montrose at Lundy's Lane",
    "to": "Falls Parking Lot A",
-   "model_min": 10.2,
-   "model_km": 5.23,
-   "model_over_tomtom_km": 0.98,
-   "model_over_tomtom_tue_jul_noon": 0.98
+   "model_min": 9.93,
+   "model_km": 5.05,
+   "model_over_tomtom_km": 0.95,
+   "model_over_tomtom_tue_jul_noon": 0.95
   },
   {
    "from": "Montrose at Lundy's Lane",
    "to": "Queen at Erie",
-   "model_min": 10.43,
-   "model_km": 7.24,
-   "model_over_tomtom_km": 1.05,
+   "model_min": 10.49,
+   "model_km": 6.91,
+   "model_over_tomtom_km": 1.0,
    "model_over_tomtom_tue_jul_noon": 1.13
   },
   {
    "from": "Montrose at Lundy's Lane",
    "to": "Lundy's Lane at the QEW",
-   "model_min": 2.22,
+   "model_min": 2.16,
    "model_km": 1.25,
    "model_over_tomtom_km": 0.99,
-   "model_over_tomtom_tue_jul_noon": 1.0
+   "model_over_tomtom_tue_jul_noon": 0.97
   },
   {
    "from": "Montrose at Lundy's Lane",
    "to": "Rainbow Bridge",
-   "model_min": 9.24,
+   "model_min": 9.06,
    "model_km": 6.22,
+   "model_over_tomtom_km": 1.0,
+   "model_over_tomtom_tue_jul_noon": 1.06
+  },
+  {
+   "from": "Mount Carmel",
+   "to": "Main at Ferry",
+   "model_min": 8.09,
+   "model_km": 5.94,
+   "model_over_tomtom_km": 1.0,
+   "model_over_tomtom_tue_jul_noon": 0.98
+  },
+  {
+   "from": "Mount Carmel",
+   "to": "Fallsview Casino",
+   "model_min": 11.25,
+   "model_km": 7.35,
+   "model_over_tomtom_km": 0.95,
+   "model_over_tomtom_tue_jul_noon": 1.07
+  },
+  {
+   "from": "Mount Carmel",
+   "to": "McLeod Road shops",
+   "model_min": 8.45,
+   "model_km": 6.96,
    "model_over_tomtom_km": 1.0,
    "model_over_tomtom_tue_jul_noon": 1.08
   },
   {
    "from": "Mount Carmel",
-   "to": "Main at Ferry",
-   "model_min": 7.68,
-   "model_km": 5.92,
-   "model_over_tomtom_km": 1.0,
-   "model_over_tomtom_tue_jul_noon": 0.93
-  },
-  {
-   "from": "Mount Carmel",
-   "to": "Fallsview Casino",
-   "model_min": 10.98,
-   "model_km": 7.52,
-   "model_over_tomtom_km": 0.98,
-   "model_over_tomtom_tue_jul_noon": 1.04
-  },
-  {
-   "from": "Mount Carmel",
-   "to": "McLeod Road shops",
-   "model_min": 8.09,
-   "model_km": 6.96,
-   "model_over_tomtom_km": 1.0,
-   "model_over_tomtom_tue_jul_noon": 1.04
-  },
-  {
-   "from": "Mount Carmel",
    "to": "Niagara Square",
-   "model_min": 8.4,
+   "model_min": 8.76,
    "model_km": 7.15,
    "model_over_tomtom_km": 1.0,
-   "model_over_tomtom_tue_jul_noon": 1.04
+   "model_over_tomtom_tue_jul_noon": 1.08
   },
   {
    "from": "Stamford (Portage at Thorold Stone)",
    "to": "Queen at Erie",
-   "model_min": 7.84,
+   "model_min": 8.67,
    "model_km": 4.43,
    "model_over_tomtom_km": 0.99,
-   "model_over_tomtom_tue_jul_noon": 0.93
+   "model_over_tomtom_tue_jul_noon": 1.03
   },
   {
    "from": "Stamford (Portage at Thorold Stone)",
    "to": "Lundy's Lane at the QEW",
-   "model_min": 8.91,
+   "model_min": 9.2,
    "model_km": 5.02,
    "model_over_tomtom_km": 0.99,
-   "model_over_tomtom_tue_jul_noon": 0.86
+   "model_over_tomtom_tue_jul_noon": 0.89
   },
   {
    "from": "Stamford (Portage at Thorold Stone)",
    "to": "South Niagara hospital site",
-   "model_min": 12.99,
+   "model_min": 13.23,
    "model_km": 10.22,
    "model_over_tomtom_km": 1.0,
-   "model_over_tomtom_tue_jul_noon": 1.01
+   "model_over_tomtom_tue_jul_noon": 1.03
   },
   {
    "from": "Stamford (Portage at Thorold Stone)",
    "to": "Clifton Hill (top)",
-   "model_min": 9.22,
-   "model_km": 4.77,
-   "model_over_tomtom_km": 0.98,
-   "model_over_tomtom_tue_jul_noon": 0.93
+   "model_min": 9.94,
+   "model_km": 4.81,
+   "model_over_tomtom_km": 0.99,
+   "model_over_tomtom_tue_jul_noon": 1.0
   },
   {
    "from": "Dorchester at Morrison",
    "to": "Fallsview Casino",
-   "model_min": 7.22,
+   "model_min": 7.13,
    "model_km": 3.18,
    "model_over_tomtom_km": 0.95,
-   "model_over_tomtom_tue_jul_noon": 1.05
+   "model_over_tomtom_tue_jul_noon": 1.04
   },
   {
    "from": "Dorchester at Morrison",
    "to": "McLeod Road shops",
-   "model_min": 7.95,
+   "model_min": 7.78,
    "model_km": 6.91,
    "model_over_tomtom_km": 1.0,
-   "model_over_tomtom_tue_jul_noon": 1.1
+   "model_over_tomtom_tue_jul_noon": 1.08
   },
   {
    "from": "Dorchester at Morrison",
    "to": "Rainbow Bridge",
-   "model_min": 7.26,
+   "model_min": 7.07,
    "model_km": 3.71,
    "model_over_tomtom_km": 1.0,
-   "model_over_tomtom_tue_jul_noon": 0.99
+   "model_over_tomtom_tue_jul_noon": 0.96
   },
   {
    "from": "Dorchester at Morrison",
    "to": "Falls Parking Lot A",
-   "model_min": 9.07,
+   "model_min": 8.9,
    "model_km": 5.0,
    "model_over_tomtom_km": 1.14,
+   "model_over_tomtom_tue_jul_noon": 0.97
+  },
+  {
+   "from": "McLeod at Dorchester",
+   "to": "Lundy's Lane at the QEW",
+   "model_min": 4.84,
+   "model_km": 3.14,
+   "model_over_tomtom_km": 1.0,
+   "model_over_tomtom_tue_jul_noon": 0.88
+  },
+  {
+   "from": "McLeod at Dorchester",
+   "to": "South Niagara hospital site",
+   "model_min": 5.88,
+   "model_km": 3.74,
+   "model_over_tomtom_km": 1.0,
    "model_over_tomtom_tue_jul_noon": 0.98
   },
   {
    "from": "McLeod at Dorchester",
-   "to": "Lundy's Lane at the QEW",
-   "model_min": 4.91,
-   "model_km": 3.14,
-   "model_over_tomtom_km": 1.0,
-   "model_over_tomtom_tue_jul_noon": 0.9
-  },
-  {
-   "from": "McLeod at Dorchester",
-   "to": "South Niagara hospital site",
-   "model_min": 6.0,
-   "model_km": 3.74,
-   "model_over_tomtom_km": 1.0,
-   "model_over_tomtom_tue_jul_noon": 1.01
-  },
-  {
-   "from": "McLeod at Dorchester",
    "to": "Niagara Square",
-   "model_min": 1.68,
+   "model_min": 1.65,
    "model_km": 1.08,
    "model_over_tomtom_km": 1.0,
-   "model_over_tomtom_tue_jul_noon": 0.86
+   "model_over_tomtom_tue_jul_noon": 0.85
   },
   {
    "from": "McLeod at Dorchester",
    "to": "Main at Ferry",
-   "model_min": 4.63,
+   "model_min": 4.54,
    "model_km": 2.7,
    "model_over_tomtom_km": 1.0,
-   "model_over_tomtom_tue_jul_noon": 0.91
+   "model_over_tomtom_tue_jul_noon": 0.89
   },
   {
    "from": "Garner at Lundy's Lane",
    "to": "McLeod Road shops",
-   "model_min": 6.94,
+   "model_min": 6.73,
    "model_km": 4.68,
    "model_over_tomtom_km": 1.0,
-   "model_over_tomtom_tue_jul_noon": 0.92
+   "model_over_tomtom_tue_jul_noon": 0.89
   },
   {
    "from": "Garner at Lundy's Lane",
    "to": "Rainbow Bridge",
-   "model_min": 11.94,
+   "model_min": 11.72,
    "model_km": 8.39,
    "model_over_tomtom_km": 1.0,
-   "model_over_tomtom_tue_jul_noon": 0.96
+   "model_over_tomtom_tue_jul_noon": 0.94
   },
   {
    "from": "Garner at Lundy's Lane",
    "to": "Clifton Hill (top)",
-   "model_min": 10.03,
-   "model_km": 7.17,
-   "model_over_tomtom_km": 1.17,
-   "model_over_tomtom_tue_jul_noon": 0.92
+   "model_min": 10.33,
+   "model_km": 7.21,
+   "model_over_tomtom_km": 1.18,
+   "model_over_tomtom_tue_jul_noon": 0.95
   },
   {
    "from": "Garner at Lundy's Lane",
    "to": "Queen at Erie",
-   "model_min": 13.14,
-   "model_km": 9.42,
-   "model_over_tomtom_km": 1.04,
+   "model_min": 13.15,
+   "model_km": 9.09,
+   "model_over_tomtom_km": 1.0,
    "model_over_tomtom_tue_jul_noon": 1.0
   },
   {
    "from": "Drummond at Thorold Stone",
    "to": "South Niagara hospital site",
-   "model_min": 11.2,
+   "model_min": 11.0,
    "model_km": 9.32,
    "model_over_tomtom_km": 1.0,
-   "model_over_tomtom_tue_jul_noon": 1.05
+   "model_over_tomtom_tue_jul_noon": 1.03
   },
   {
    "from": "Drummond at Thorold Stone",
    "to": "Niagara Square",
-   "model_min": 9.99,
+   "model_min": 9.76,
    "model_km": 8.28,
    "model_over_tomtom_km": 1.0,
-   "model_over_tomtom_tue_jul_noon": 1.01
+   "model_over_tomtom_tue_jul_noon": 0.98
   },
   {
    "from": "Drummond at Thorold Stone",
    "to": "Falls Parking Lot A",
-   "model_min": 12.23,
-   "model_km": 6.44,
-   "model_over_tomtom_km": 0.99,
-   "model_over_tomtom_tue_jul_noon": 0.91
-  },
-  {
-   "from": "Drummond at Thorold Stone",
-   "to": "Fallsview Casino",
-   "model_min": 9.86,
-   "model_km": 5.29,
+   "model_min": 11.93,
+   "model_km": 6.27,
    "model_over_tomtom_km": 0.97,
    "model_over_tomtom_tue_jul_noon": 0.89
   },
   {
+   "from": "Drummond at Thorold Stone",
+   "to": "Fallsview Casino",
+   "model_min": 9.59,
+   "model_km": 5.11,
+   "model_over_tomtom_km": 0.94,
+   "model_over_tomtom_tue_jul_noon": 0.86
+  },
+  {
    "from": "Downtown (Victoria at Bridge)",
    "to": "Rainbow Bridge",
-   "model_min": 5.38,
+   "model_min": 5.31,
    "model_km": 3.43,
    "model_over_tomtom_km": 1.12,
-   "model_over_tomtom_tue_jul_noon": 0.72
+   "model_over_tomtom_tue_jul_noon": 0.71
   },
   {
    "from": "Downtown (Victoria at Bridge)",
    "to": "Clifton Hill (top)",
-   "model_min": 5.56,
-   "model_km": 2.26,
-   "model_over_tomtom_km": 0.92,
-   "model_over_tomtom_tue_jul_noon": 0.96
+   "model_min": 6.01,
+   "model_km": 2.48,
+   "model_over_tomtom_km": 1.01,
+   "model_over_tomtom_tue_jul_noon": 1.04
   },
   {
    "from": "Downtown (Victoria at Bridge)",
    "to": "Main at Ferry",
-   "model_min": 7.55,
+   "model_min": 7.35,
    "model_km": 3.9,
    "model_over_tomtom_km": 1.0,
-   "model_over_tomtom_tue_jul_noon": 1.05
+   "model_over_tomtom_tue_jul_noon": 1.02
   },
   {
    "from": "Downtown (Victoria at Bridge)",
    "to": "Lundy's Lane at the QEW",
-   "model_min": 9.59,
+   "model_min": 9.42,
    "model_km": 6.28,
    "model_over_tomtom_km": 1.22,
-   "model_over_tomtom_tue_jul_noon": 1.03
+   "model_over_tomtom_tue_jul_noon": 1.01
   },
   {
    "from": "Valley Way at Drummond",
    "to": "Niagara Square",
-   "model_min": 9.01,
-   "model_km": 4.79,
-   "model_over_tomtom_km": 1.0,
-   "model_over_tomtom_tue_jul_noon": 1.08
+   "model_min": 8.91,
+   "model_km": 7.08,
+   "model_over_tomtom_km": 1.48,
+   "model_over_tomtom_tue_jul_noon": 1.07
   },
   {
    "from": "Valley Way at Drummond",
    "to": "Falls Parking Lot A",
-   "model_min": 8.49,
-   "model_km": 3.76,
-   "model_over_tomtom_km": 1.05,
-   "model_over_tomtom_tue_jul_noon": 0.94
+   "model_min": 8.31,
+   "model_km": 3.59,
+   "model_over_tomtom_km": 1.0,
+   "model_over_tomtom_tue_jul_noon": 0.92
   },
   {
    "from": "Valley Way at Drummond",
    "to": "Queen at Erie",
-   "model_min": 8.54,
-   "model_km": 4.13,
-   "model_over_tomtom_km": 1.22,
-   "model_over_tomtom_tue_jul_noon": 1.0
+   "model_min": 8.69,
+   "model_km": 3.89,
+   "model_over_tomtom_km": 1.15,
+   "model_over_tomtom_tue_jul_noon": 1.02
   },
   {
    "from": "Valley Way at Drummond",
    "to": "McLeod Road shops",
-   "model_min": 8.76,
+   "model_min": 8.6,
    "model_km": 6.89,
    "model_over_tomtom_km": 1.38,
-   "model_over_tomtom_tue_jul_noon": 1.09
+   "model_over_tomtom_tue_jul_noon": 1.07
   }
  ]
 }
