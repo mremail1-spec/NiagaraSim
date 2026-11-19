@@ -135,6 +135,13 @@ def fit(city_path: Path = ROOT / "build" / "city_2025" / "city.json") -> dict:
     X, y = np.array(X), np.array(y)
     coef, *_ = np.linalg.lstsq(X, y, rcond=None)
     coef = np.maximum(coef, 0.0)
+    # when the test trips hardly use unmeasured roads (once TomTom covers nearly every street), their
+    # factor cannot be estimated: they take the measured roads' factor
+    if X[:, 1].sum() < 0.05 * X[:, :2].sum():
+        Xc = np.column_stack([X[:, 0] + X[:, 1], X[:, 2], X[:, 3]])
+        c2, *_ = np.linalg.lstsq(Xc, y, rcond=None)
+        c2 = np.maximum(c2, 0.0)
+        coef = np.array([c2[0], c2[0], c2[1], c2[2]])
     pred = X @ coef
     old = json.loads(FACTORS.read_text()) if FACTORS.exists() else {}
     doc = {"_meta": {"what": "Real driving time on the model's roads: each piece's minutes at TomTom's measured free-flow speed "
