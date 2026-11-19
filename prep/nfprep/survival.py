@@ -3,6 +3,8 @@
 Every business gets a yearly profit and loss from the model's revenue for that year (run with the
 year's real conditions) and its industry's cost structure (Statistics Canada benchmarks):
   - goods and part of wages move with sales; rent, utilities and the rest of wages are fixed;
+  - rent: the industry's rent share, scaled by asking rent on the business's street against the
+    city median (rent_surface.py; 13 listings, so districts rather than blocks);
   - wage costs rise with the real minimum wage (Ontario, deflated by Ontario's consumer price index);
   - debt costs follow the Bank of Canada prime rate;
   - 2020-2021: wage and rent subsidies when revenue fell more than 30%; a $60,000 CEBA loan in 2020,
@@ -27,6 +29,7 @@ import numpy as np
 from .businesses import CATEGORY_NAICS
 from .loader import DATA_DIR
 from .population import BUILD_DIR
+from .rent_surface import location_factors
 from .yearly_check import INDUSTRIES, SHARE, count
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -73,8 +76,11 @@ def yearly_revenue(city_path: Path, tag: str, reuse: bool = False) -> dict[str, 
     return out
 
 
-def simulate(revenue: dict, naics: list[str], buffer_months: float, seed: int = 1):
-    """Returns closed[year] -> (n_business, DRAWS) booleans of financial closures in that year."""
+def simulate(revenue: dict, naics: list[str], buffer_months: float, seed: int = 1, rent_factor: np.ndarray | None = None):
+    """Returns closed[year] -> (n_business, DRAWS) booleans of financial closures in that year.
+
+    rent_factor: rent on each business's street relative to the city's median asking rent
+    (rent_surface.location_factors); its rent is the industry's rent share times that factor."""
     ind = json.loads((DATA_DIR / "economic_indicators.json").read_text())
     bench = {r["naics"]: r for r in csv.DictReader(open(DATA_DIR / "business_revenue_benchmarks.csv"))}
     rng = np.random.default_rng(seed)
@@ -82,7 +88,8 @@ def simulate(revenue: dict, naics: list[str], buffer_months: float, seed: int = 
     f = lambda k: np.array([float(bench.get(x, {}).get(k) or 0) / 100 for x in naics])
     margin = f("net_profit_pct")[:, None] + rng.normal(0, MARGIN_SPREAD, (n, DRAWS))
     wages = (f("wages_benefits_pct") + f("labour_commissions_pct"))[:, None]
-    fixed_share = (f("rent_pct") + f("utilities_pct"))[:, None] + 0.4 * wages
+    rent = f("rent_pct") * (np.ones(n) if rent_factor is None else np.clip(rent_factor, 0.3, 3.0))
+    fixed_share = (rent + f("utilities_pct"))[:, None] + 0.4 * wages
     linked = np.array([WAGE_LINKED_TO_MINIMUM.get(x, 0.3) for x in naics])[:, None]
     r0 = revenue["2019"][:n][:, None]
     variable = 1 - margin - fixed_share
@@ -156,6 +163,7 @@ def main() -> dict:
     revenue = yearly_revenue(city_path, "city")
     rev = {y: v[keep] for y, v in revenue.items()}
     naics = [naics_all[i] for i in keep]
+    rf = location_factors([b["lat"][i] for i in keep], [b["lon"][i] for i in keep])
     actual = {code: {y: count(counts, f"{y}-06", code) for y in ["2021", "2022", "2023", "2024", "2025", "2026"]} for code in INDUSTRIES}
 
     def error(series):
@@ -168,7 +176,7 @@ def main() -> dict:
 
     best = None
     for months in (1, 2, 3, 4, 6, 9):
-        closed = simulate(rev, naics, months)
+        closed = simulate(rev, naics, months, rent_factor=rf)
         for tau in (0.0, 0.3, 0.4, 0.5, 0.6, 0.7):
             for s in (0.0, 0.2, 0.5):
                 err = error(industry_counts(rev, naics, closed, counts, tau, s))
@@ -208,7 +216,7 @@ def closure_test(buffer_months: float = 3.0) -> dict:
     n = len(b["name"])
     naics = [CATEGORY_NAICS.get(cats[c], "") for c in b["sim_category"]]
     rev = {y: np.pad(v, (0, max(0, n - len(v))))[:n] for y, v in revenue.items()}
-    closed = simulate(rev, naics, buffer_months)
+    closed = simulate(rev, naics, buffer_months, rent_factor=location_factors(b["lat"], b["lon"]))
     survived_2020 = ~closed["2020"]
     later = np.zeros_like(survived_2020)
     for y in ("2021", "2022", "2023", "2024", "2025"):
@@ -259,7 +267,8 @@ def rate_check(buffer_months: float = 3.0) -> dict:
     revenue = yearly_revenue(city_path, "city", reuse=True)
     rev = {y: v[keep] for y, v in revenue.items()}
     naics = [naics_all[i] for i in keep]
-    closed = simulate(rev, naics, buffer_months)
+    rf = location_factors([b["lat"][i] for i in keep], [b["lon"][i] for i in keep])
+    closed = simulate(rev, naics, buffer_months, rent_factor=rf)
     alive = np.ones_like(closed["2020"])
     model = {}
     for y in YEARS[1:]:

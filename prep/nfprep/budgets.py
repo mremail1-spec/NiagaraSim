@@ -270,7 +270,7 @@ def _build_menu(pack: Pack, sim_cats: list[str]) -> list[dict]:
         menu.append({"sim_category": sim_cats.index(cat), "label": label, "naics": b["naics"], "industry": b["industry"],
                      "sizes": {"small": f("q1_avg_revenue"), "typical": f("median_cutoff"), "large": f("q3_avg_revenue")},
                      "cost_of_sales_pct": f("cost_of_sales_pct"), "net_profit_pct": f("net_profit_pct"),
-                     "wages_pct": f("wages_benefits_pct") + f("labour_commissions_pct"),
+                     "wages_pct": f("wages_benefits_pct") + f("labour_commissions_pct"), "rent_pct": f("rent_pct"),
                      "open": o, "close": c})
     return menu
 
@@ -479,6 +479,8 @@ def export_city(pack: Pack, city: dict, budgets: np.ndarray, year: int, path: Pa
         doc["tourism"]["categories"]["capture"] = [cal.get("tourist_capture", {}).get(c, 1.0)
                                                    for c in doc["tourism"]["categories"]["name"]]
     doc["build_menu"] = _build_menu(pack, sim_cats)
+    from .rent_surface import for_web
+    doc["rent_surface"] = for_web()
     doc["scenarios"] = json.loads((DATA_DIR / "scenario_ranges.json").read_text())
     if (DATA_DIR / "safety_hotspots.json").exists():
         doc["safety"] = safety_block(doc["sim_categories"])

@@ -943,11 +943,25 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
     return { node: best, x, y, lon: lon0 + x / kx, lat: lat0 - y / KM };
   }
 
+  // asking rent per sq ft a year at a spot, from the lease listings (same rule as prep/nfprep/rent_surface.py)
+  function rentAt(lat, lon) {
+    const r = city.rent_surface;
+    if (!r) return null;
+    let w = 0, s = 0;
+    for (let i = 0; i < r.psf.length; i++) {
+      const d = Math.hypot((r.lat[i] - lat) * 111.32, (r.lon[i] - lon) * 111.32 * Math.cos(lat * Math.PI / 180));
+      if (d < r.radius_km) { const k = 1 / (d + 0.2) ** 2; w += k; s += k * r.psf[i]; }
+    }
+    return (s + r.prior_listings * r.median_psf) / (w + r.prior_listings);
+  }
+
   function runForecast() {
     if (!site) return;
     const m = city.build_menu[Number($("kind").value)];
     // goods and labour rise with sales; rent, utilities and other overheads are sized for the scale you build
-    const fixedShare = (100 - m.cost_of_sales_pct - m.wages_pct - m.net_profit_pct) / 100, margin = 1 - (m.cost_of_sales_pct + m.wages_pct) / 100;
+    // rent: the industry's rent share for a business of that size, at this street's asking rent against the city median
+    const psf = rentAt(site.lat, site.lon), rentFactor = psf ? Math.min(3, Math.max(0.3, psf / city.rent_surface.median_psf)) : 1;
+    const fixedShare = (100 - m.cost_of_sales_pct - m.wages_pct - m.net_profit_pct + (m.rent_pct || 0) * (rentFactor - 1)) / 100, margin = 1 - (m.cost_of_sales_pct + m.wages_pct) / 100;
     let rows = "", typical = null;
     for (const [label, key] of [["small one", "small"], ["typical one", "typical"], ["large one", "large"]]) {
       const size = m.sizes[key];
@@ -978,6 +992,7 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
     $("fRows").innerHTML = rows;
     const rev = typical[0] + typical[1];
     $("fMix").textContent = `Typical size: ${Math.round(typical[1] / rev * 100)}% of sales from tourists, ${money(typical[2])} won back from out-of-town shopping. Busiest month ${["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"][typical.slice(3, 15).indexOf(Math.max(...typical.slice(3, 15)))]}.`;
+    if (psf) $("fMix").textContent += " Asking rent here about $" + psf.toFixed(0) + " a sq ft a year (city median $" + city.rent_surface.median_psf.toFixed(0) + ", from " + city.rent_surface.psf.length + " lease listings, so only roughly by district).";
     $("fMix").textContent += " " + safetyNote(site.lat, site.lon, m.sim_category) + " " + siteNotes(m.sim_category) + " " + newBusinessNote(city.sim_categories[m.sim_category]);
     const count = typical[15];
     let losers = "";
