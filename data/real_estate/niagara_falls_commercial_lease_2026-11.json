@@ -1,0 +1,314 @@
+{
+ "_meta": {
+  "what": "Commercial space for lease in Niagara Falls, Ontario: asking rents as listed (not achieved rents).",
+  "collected": "2026-11-19. Pages that refuse this session were read by Google's page reader through the Gemini API (url_context); every row here was on the page named in 'page' at that time.",
+  "terms": "Net or gross is rarely stated. LoopNet rents are per sq ft per year; Square Yards gives monthly rents, likely gross for small units; rent_psf_year_from_month = monthly x 12 / sq ft.",
+  "excluded": "Rows from a first Gemini answer that cited the wrong page for many listings were dropped unless found again on the page itself. The Square Yards list was cut off by the model's answer length after about 30 listings."
+ },
+ "listings": [
+  {
+   "address": "6518 Lundy's Ln",
+   "use": "retail",
+   "sqft": 3800,
+   "rent_psf_year": 25.0,
+   "page": "https://www.loopnet.ca/search/retail-space/niagara-falls-on--canada/for-lease/"
+  },
+  {
+   "address": "3643-3739 Portage Rd, unit 2",
+   "use": "retail",
+   "sqft": 1233,
+   "rent_psf_year": 26.0,
+   "page": "https://www.loopnet.ca/search/retail-space/niagara-falls-on--canada/for-lease/"
+  },
+  {
+   "address": "7637 Lundy's Ln, unit 3",
+   "use": "office/retail",
+   "sqft": 1100,
+   "rent_psf_year": 37.09,
+   "page": "https://www.loopnet.ca/search/retail-space/niagara-falls-on--canada/for-lease/"
+  },
+  {
+   "address": "5784 Stanley Ave",
+   "use": "retail",
+   "sqft": 1000,
+   "rent_psf_year": null,
+   "page": "https://www.loopnet.ca/search/retail-space/niagara-falls-on--canada/for-lease/"
+  },
+  {
+   "address": "4786 Queen St",
+   "use": "office",
+   "sqft": 255,
+   "rent_psf_year": 72.0,
+   "page": "https://www.loopnet.ca/search/office-space/niagara-falls-on--canada/for-lease/"
+  },
+  {
+   "address": "4700 Epworth Cir, unit 3",
+   "use": "office",
+   "sqft": 5000,
+   "rent_psf_year": 20.0,
+   "page": "https://www.loopnet.ca/search/office-space/niagara-falls-on--canada/for-lease/"
+  },
+  {
+   "address": "6040 Progress St",
+   "use": "industrial",
+   "sqft": [
+    36704,
+    79886
+   ],
+   "rent_psf_year": 10.0,
+   "page": "https://www.loopnet.ca/search/industrial-space/niagara-falls-on--canada/for-lease/"
+  },
+  {
+   "address": "6050 Don Murie St",
+   "use": "industrial",
+   "sqft": 26937,
+   "rent_psf_year": 9.0,
+   "page": "https://www.loopnet.ca/search/industrial-space/niagara-falls-on--canada/for-lease/"
+  },
+  {
+   "address": "7901 Blackburn Pky, unit 5",
+   "use": "industrial",
+   "sqft": [
+    20000,
+    55000
+   ],
+   "rent_psf_year": 15.0,
+   "page": "https://www.loopnet.ca/search/industrial-space/niagara-falls-on--canada/for-lease/"
+  },
+  {
+   "address": "5881 Thorold Stone Rd, unit 3",
+   "use": "industrial",
+   "sqft": [
+    70000,
+    350000
+   ],
+   "rent_psf_year": 2.95,
+   "page": "https://www.loopnet.ca/search/industrial-space/niagara-falls-on--canada/for-lease/"
+  },
+  {
+   "address": "5001 Victoria Ave, unit 2",
+   "use": "retail",
+   "sqft": 3930,
+   "rent_psf_year": 14.0,
+   "tmi_psf_year": 6.0,
+   "page": "https://www.collierscanada.com/en-ca/properties/3930-sf-retail-unit-great-visibility-in-downtown-niagara-falls-commercial-building/can-5001-victoria-avenue-unit-2-niagara-falls-on-l2e-4c9/can2021784"
+  },
+  {
+   "address": "4383 Portage Road, unit 204",
+   "use": "office",
+   "sqft": 1200.0,
+   "rent_month": null,
+   "page": "https://www.squareyards.ca/lease/on/niagara/niagara-falls/commercial-for-lease"
+  },
+  {
+   "address": "6140 William Street, unit 2",
+   "use": "office",
+   "sqft": 600.0,
+   "rent_month": 1200.0,
+   "page": "https://www.squareyards.ca/lease/on/niagara/niagara-falls/commercial-for-lease",
+   "rent_psf_year_from_month": 24.0
+  },
+  {
+   "address": "4691 Ontario Avenue",
+   "use": "office",
+   "sqft": 700.0,
+   "rent_month": 1600.0,
+   "page": "https://www.squareyards.ca/lease/on/niagara/niagara-falls/commercial-for-lease",
+   "rent_psf_year_from_month": 27.43
+  },
+  {
+   "address": "4683 Crysler Avenue",
+   "use": "commercial retail",
+   "sqft": null,
+   "rent_month": null,
+   "page": "https://www.squareyards.ca/lease/on/niagara/niagara-falls/commercial-for-lease"
+  },
+  {
+   "address": "4383 Portage Road, unit B100",
+   "use": "office",
+   "sqft": 1500.0,
+   "rent_month": null,
+   "page": "https://www.squareyards.ca/lease/on/niagara/niagara-falls/commercial-for-lease"
+  },
+  {
+   "address": "7950 Portage Road",
+   "use": "store w apartment/office",
+   "sqft": 1200.0,
+   "rent_month": 3500.0,
+   "page": "https://www.squareyards.ca/lease/on/niagara/niagara-falls/commercial-for-lease",
+   "rent_psf_year_from_month": 35.0
+  },
+  {
+   "address": "8192 Cummington Square W",
+   "use": "commercial retail",
+   "sqft": null,
+   "rent_month": 1400.0,
+   "page": "https://www.squareyards.ca/lease/on/niagara/niagara-falls/commercial-for-lease"
+  },
+  {
+   "address": "6080 Mcleod Road, unit 16A",
+   "use": "commercial retail",
+   "sqft": 6100.0,
+   "rent_month": null,
+   "page": "https://www.squareyards.ca/lease/on/niagara/niagara-falls/commercial-for-lease"
+  },
+  {
+   "address": "6801 Lundy's Lane, unit Lower",
+   "use": "commercial retail",
+   "sqft": null,
+   "rent_month": 1000.0,
+   "page": "https://www.squareyards.ca/lease/on/niagara/niagara-falls/commercial-for-lease"
+  },
+  {
+   "address": "6788 Thorold Stone Road, unit 1",
+   "use": "commercial retail",
+   "sqft": 2000.0,
+   "rent_month": null,
+   "page": "https://www.squareyards.ca/lease/on/niagara/niagara-falls/commercial-for-lease"
+  },
+  {
+   "address": "5001 Victoria Avenue, unit 2",
+   "use": "commercial retail",
+   "sqft": 3930.0,
+   "rent_month": null,
+   "page": "https://www.squareyards.ca/lease/on/niagara/niagara-falls/commercial-for-lease"
+  },
+  {
+   "address": "5719 Victoria Avenue, unit UPPER",
+   "use": "commercial retail",
+   "sqft": null,
+   "rent_month": 6000.0,
+   "page": "https://www.squareyards.ca/lease/on/niagara/niagara-falls/commercial-for-lease"
+  },
+  {
+   "address": "8685 LUNDYS Lane, unit 5",
+   "use": "commercial retail",
+   "sqft": 1591.0,
+   "rent_month": null,
+   "page": "https://www.squareyards.ca/lease/on/niagara/niagara-falls/commercial-for-lease"
+  },
+  {
+   "address": "5124 Morrison Street, unit Main Floor",
+   "use": "commercial retail",
+   "sqft": 1900.0,
+   "rent_month": 2500.0,
+   "page": "https://www.squareyards.ca/lease/on/niagara/niagara-falls/commercial-for-lease",
+   "rent_psf_year_from_month": 15.79
+  },
+  {
+   "address": "4515 Queen Street",
+   "use": "commercial retail",
+   "sqft": 1200.0,
+   "rent_month": 2890.0,
+   "page": "https://www.squareyards.ca/lease/on/niagara/niagara-falls/commercial-for-lease",
+   "rent_psf_year_from_month": 28.9
+  },
+  {
+   "address": "8123 LUNDY'S Lane, unit 10",
+   "use": "commercial retail",
+   "sqft": 1575.0,
+   "rent_month": null,
+   "page": "https://www.squareyards.ca/lease/on/niagara/niagara-falls/commercial-for-lease"
+  },
+  {
+   "address": "6453 Morrison Street, unit 103",
+   "use": "office",
+   "sqft": 1000.0,
+   "rent_month": null,
+   "page": "https://www.squareyards.ca/lease/on/niagara/niagara-falls/commercial-for-lease"
+  },
+  {
+   "address": "4129 Stanley Avenue, unit 7",
+   "use": "office",
+   "sqft": null,
+   "rent_month": 2600.0,
+   "page": "https://www.squareyards.ca/lease/on/niagara/niagara-falls/commercial-for-lease"
+  },
+  {
+   "address": "8407 Stanley Avenue, unit 6",
+   "use": "commercial retail",
+   "sqft": 2193.0,
+   "rent_month": null,
+   "page": "https://www.squareyards.ca/lease/on/niagara/niagara-falls/commercial-for-lease"
+  },
+  {
+   "address": "4949 VICTORIA Avenue",
+   "use": "commercial retail",
+   "sqft": 2610.0,
+   "rent_month": 2800.0,
+   "page": "https://www.squareyards.ca/lease/on/niagara/niagara-falls/commercial-for-lease",
+   "rent_psf_year_from_month": 12.87
+  },
+  {
+   "address": "3505 Portage Road, unit Unit J",
+   "use": "office",
+   "sqft": 2640.0,
+   "rent_month": null,
+   "page": "https://www.squareyards.ca/lease/on/niagara/niagara-falls/commercial-for-lease"
+  },
+  {
+   "address": "5126 Victoria Avenue, unit 2",
+   "use": "commercial retail",
+   "sqft": null,
+   "rent_month": 1800.0,
+   "page": "https://www.squareyards.ca/lease/on/niagara/niagara-falls/commercial-for-lease"
+  },
+  {
+   "address": "4703 Queen Street",
+   "use": "office",
+   "sqft": 600.0,
+   "rent_month": 1500.0,
+   "page": "https://www.squareyards.ca/lease/on/niagara/niagara-falls/commercial-for-lease",
+   "rent_psf_year_from_month": 30.0
+  },
+  {
+   "address": "3643 Portage Road, unit 4A",
+   "use": "commercial retail",
+   "sqft": 1233.0,
+   "rent_month": null,
+   "page": "https://www.squareyards.ca/lease/on/niagara/niagara-falls/commercial-for-lease"
+  },
+  {
+   "address": "4728 Dorchester Road, unit 9",
+   "use": "office",
+   "sqft": 880.0,
+   "rent_month": null,
+   "page": "https://www.squareyards.ca/lease/on/niagara/niagara-falls/commercial-for-lease"
+  },
+  {
+   "address": "6518 Lundy's Lane",
+   "use": "commercial retail",
+   "sqft": 3800.0,
+   "rent_month": null,
+   "page": "https://www.squareyards.ca/lease/on/niagara/niagara-falls/commercial-for-lease"
+  },
+  {
+   "address": "4541 CRYSLER Avenue",
+   "use": "commercial retail",
+   "sqft": null,
+   "rent_month": 1600.0,
+   "page": "https://www.squareyards.ca/lease/on/niagara/niagara-falls/commercial-for-lease"
+  },
+  {
+   "address": "4830 Bridge Street",
+   "use": "commercial retail",
+   "sqft": null,
+   "rent_month": 1200.0,
+   "page": "https://www.squareyards.ca/lease/on/niagara/niagara-falls/commercial-for-lease"
+  },
+  {
+   "address": "4129 Stanley Avenue, unit 6",
+   "use": "industrial",
+   "sqft": null,
+   "rent_month": null,
+   "page": "https://www.squareyards.ca/lease/on/niagara/niagara-falls/commercial-for-lease"
+  },
+  {
+   "address": "6710 Drummond Road, unit 8",
+   "use": "commercial retail",
+   "sqft": 1700.0,
+   "rent_month": null,
+   "page": "https://www.squareyards.ca/lease/on/niagara/niagara-falls/commercial-for-lease"
+  }
+ ]
+}

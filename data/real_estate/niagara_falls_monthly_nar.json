@@ -1,8 +1,9 @@
 {
  "_meta": {
   "what": "Niagara Falls monthly new listings, sales, MLS HPI benchmark price and days on market.",
-  "source": "Niagara Association of REALTORS stats package, March 2026 data (cdn.agentbook.com, NAR Stats Package (March data 2026).pdf): March 2026 against March 2025, and February 2026. Only packages found online; more months would need the association's archive.",
-  "note": "Benchmark (HPI) price is a typical-home index, not an average or median."
+  "source": "Niagara Association of REALTORS stats package, March 2026 data (cdn.agentbook.com, NAR Stats Package (March data 2026).pdf): March 2026 against March 2025, and February 2026. Only packages found online; more months would need the association's archive. September and October 2025 and 2026: niagarahomeportal.ca monthly posts quoting NAR, read through Google's page reader (Gemini API); exact sentences checked.",
+  "note": "Benchmark (HPI) price is a typical-home index, not an average or median.",
+  "check": "October 2026: 102 sales and 48 days on market, as RoofUp reports for the same month."
  },
  "months": {
   "2026-03": {
@@ -22,6 +23,34 @@
    "sales": 64,
    "benchmark_price": 566000,
    "dom": 42
+  },
+  "2026-10": {
+   "new_listings": 238,
+   "sales": 102,
+   "benchmark_price": 553700,
+   "dom": 48,
+   "source": "https://www.niagarahomeportal.ca/blog/niagara-market-update-october-2026/"
+  },
+  "2025-10": {
+   "new_listings": 275,
+   "sales": 105,
+   "benchmark_price": 579300,
+   "dom": 45,
+   "source": "https://www.niagarahomeportal.ca/blog/niagara-market-update-october-2026/"
+  },
+  "2026-09": {
+   "new_listings": 276,
+   "sales": 93,
+   "benchmark_price": 560500,
+   "dom": 43,
+   "source": "https://www.niagarahomeportal.ca/blog/niagara-market-update-september-2026/"
+  },
+  "2025-09": {
+   "new_listings": 345,
+   "sales": 74,
+   "benchmark_price": 587200,
+   "dom": 36,
+   "source": "https://www.niagarahomeportal.ca/blog/niagara-market-update-september-2026/"
   }
  }
 }
