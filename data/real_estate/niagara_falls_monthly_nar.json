@@ -1,0 +1,27 @@
+{
+ "_meta": {
+  "what": "Niagara Falls monthly new listings, sales, MLS HPI benchmark price and days on market.",
+  "source": "Niagara Association of REALTORS stats package, March 2026 data (cdn.agentbook.com, NAR Stats Package (March data 2026).pdf): March 2026 against March 2025, and February 2026. Only packages found online; more months would need the association's archive.",
+  "note": "Benchmark (HPI) price is a typical-home index, not an average or median."
+ },
+ "months": {
+  "2026-03": {
+   "new_listings": 266,
+   "sales": 72,
+   "benchmark_price": 580300,
+   "dom": 42
+  },
+  "2025-03": {
+   "new_listings": 288,
+   "sales": 85,
+   "benchmark_price": 605000,
+   "dom": 39
+  },
+  "2026-02": {
+   "new_listings": 172,
+   "sales": 64,
+   "benchmark_price": 566000,
+   "dom": 42
+  }
+ }
+}

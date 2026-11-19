@@ -1,0 +1,666 @@
+{
+ "_meta": {
+  "what": "Commercial properties for sale in Niagara Falls listed on MLS, 19 November 2026: asking price, use, MLS community, building area (sq ft; land in acres), lot, property taxes, business type.",
+  "source": "caprate.ca listings (MLS feed), 36 listings over 3 pages. Third-party asking prices, not sales.",
+  "lease_rents": "No machine-readable lease list was reachable (Realtor.ca, Zolo, LoopNet, Soldwell, Squareyards, CommercialSearch refuse automated access). Asking rents found by search are in 'lease_asking_rents' with their sources; net/gross terms are often unstated."
+ },
+ "for_sale": [
+  {
+   "address": "0 OAKWOOD DR, Niagara Falls, ON L2G 0J4",
+   "price": 1499000.0,
+   "price_text": "$1,499,000",
+   "transaction": "For Sale",
+   "use": "Land",
+   "community": "221 - Marineland",
+   "building_sqft": 1.495,
+   "lot_ft": [
+    25.06,
+    694.57
+   ],
+   "taxes": 23789.56,
+   "tax_year": "2026",
+   "business_type": null,
+   "mls": "X13702834"
+  },
+  {
+   "address": "0 Stanley Avenue, Niagara Falls, ON L2G 2Y5",
+   "price": null,
+   "price_text": "Price on application",
+   "transaction": "For Sale",
+   "use": "Land",
+   "community": "220 - Oldfield",
+   "building_sqft": 3.24,
+   "lot_ft": [
+    574.0,
+    412.0
+   ],
+   "taxes": 35090.53,
+   "tax_year": "2025",
+   "business_type": "Other",
+   "mls": "X13865564"
+  },
+  {
+   "address": "3380 Baker Road, Niagara Falls, ON L2E 6S6",
+   "price": 3499990.0,
+   "price_text": "$3,499,990",
+   "transaction": "For Sale",
+   "use": "Farm",
+   "community": "224 - Lyons Creek",
+   "building_sqft": 51.0,
+   "lot_ft": [
+    851.0,
+    2658.0
+   ],
+   "taxes": 3918.0,
+   "tax_year": "2025",
+   "business_type": null,
+   "mls": "X14150648"
+  },
+  {
+   "address": "3477 Portage Road Unit C, Niagara Falls, ON L2J 2K5",
+   "price": 24000.0,
+   "price_text": "$24,000",
+   "transaction": "For Sale",
+   "use": "Sale Of Business",
+   "community": "206 - Stamford",
+   "building_sqft": null,
+   "lot_ft": [
+    null,
+    null
+   ],
+   "taxes": null,
+   "tax_year": "2026",
+   "business_type": "Barber/Beauty",
+   "mls": "X13854712"
+  },
+  {
+   "address": "3714 Portage Road 205, Niagara Falls, ON L2J 2K9",
+   "price": 159000.0,
+   "price_text": "$159,000",
+   "transaction": "For Sale",
+   "use": "Sale Of Business",
+   "community": "205 - Church's Lane",
+   "building_sqft": null,
+   "lot_ft": [
+    null,
+    null
+   ],
+   "taxes": 19.9,
+   "tax_year": "2026",
+   "business_type": "Restaurant",
+   "mls": "X13876804"
+  },
+  {
+   "address": "4020 Main Street, Niagara Falls, ON L2G 6B8",
+   "price": 669000.0,
+   "price_text": "$669,000",
+   "transaction": "For Sale",
+   "use": "Commercial Retail",
+   "community": "223 - Chippawa",
+   "building_sqft": 0.23,
+   "lot_ft": [
+    60.0,
+    165.0
+   ],
+   "taxes": 4105.0,
+   "tax_year": "2026",
+   "business_type": null,
+   "mls": "X14168830"
+  },
+  {
+   "address": "4107 Portage Road, Niagara Falls, ON L2E 6A2",
+   "price": 799000.0,
+   "price_text": "$799,000",
+   "transaction": "For Sale",
+   "use": "Commercial Retail",
+   "community": "211 - Cherrywood",
+   "building_sqft": 1100.0,
+   "lot_ft": [
+    40.0,
+    115.44
+   ],
+   "taxes": 6023.0,
+   "tax_year": "2025",
+   "business_type": null,
+   "mls": "X13827672"
+  },
+  {
+   "address": "4291 Simcoe Street, Niagara Falls, ON L2E 1T5",
+   "price": 1800000.0,
+   "price_text": "$1,800,000",
+   "transaction": "For Sale",
+   "use": "Investment",
+   "community": "210 - Downtown",
+   "building_sqft": 4036.0,
+   "lot_ft": [
+    75.0,
+    171.0
+   ],
+   "taxes": 8272.59,
+   "tax_year": "2026",
+   "business_type": "Bed & Breakfast",
+   "mls": "X13793358"
+  },
+  {
+   "address": "4465 Drummond Road 4, Niagara Falls, ON L2E 6C5",
+   "price": 329000.0,
+   "price_text": "$329,000",
+   "transaction": "For Sale",
+   "use": "Sale Of Business",
+   "community": "212 - Morrison",
+   "building_sqft": 6300.0,
+   "lot_ft": [
+    6300.0,
+    null
+   ],
+   "taxes": null,
+   "tax_year": "2026",
+   "business_type": "Entertainment",
+   "mls": "X13837992"
+  },
+  {
+   "address": "4548 Victoria Avenue, Niagara Falls, ON L2E 4B6",
+   "price": 399900.0,
+   "price_text": "$399,900",
+   "transaction": "For Sale",
+   "use": "Investment",
+   "community": "210 - Downtown",
+   "building_sqft": 1916.0,
+   "lot_ft": [
+    26.2,
+    86.0
+   ],
+   "taxes": 2059.0,
+   "tax_year": "2025",
+   "business_type": null,
+   "mls": "X14119268"
+  },
+  {
+   "address": "4770 Victoria Avenue, Niagara Falls, ON L2E 4C2",
+   "price": 998000.0,
+   "price_text": "$998,000",
+   "transaction": "For Sale",
+   "use": "Land",
+   "community": "210 - Downtown",
+   "building_sqft": 16351.0,
+   "lot_ft": [
+    127.48,
+    139.55
+   ],
+   "taxes": 5582.0,
+   "tax_year": "2025",
+   "business_type": null,
+   "mls": "X14115490"
+  },
+  {
+   "address": "4880 Victoria Avenue, Niagara Falls, ON L2E 4C5",
+   "price": 1500000.0,
+   "price_text": "$1,500,000",
+   "transaction": "For Sale",
+   "use": "Commercial Retail",
+   "community": "210 - Downtown",
+   "building_sqft": 9900.0,
+   "lot_ft": [
+    66.0,
+    150.0
+   ],
+   "taxes": 15545.1,
+   "tax_year": "2025",
+   "business_type": "Hospitality/Food Related",
+   "mls": "X13745248"
+  },
+  {
+   "address": "4898 VICTORIA Avenue, Niagara Falls, ON L2E 4C6",
+   "price": 2300000.0,
+   "price_text": "$2,300,000",
+   "transaction": "For Sale",
+   "use": "Commercial Retail",
+   "community": "210 - Downtown",
+   "building_sqft": 10000.0,
+   "lot_ft": [
+    86.22,
+    113.1
+   ],
+   "taxes": 19753.98,
+   "tax_year": "2026",
+   "business_type": null,
+   "mls": "X13792932"
+  },
+  {
+   "address": "4967 Clifton Hill, Niagara Falls, ON L2G 3N4",
+   "price": 299000.0,
+   "price_text": "$299,000",
+   "transaction": "For Sale",
+   "use": "Sale Of Business",
+   "community": "214 - Clifton Hill",
+   "building_sqft": 300.0,
+   "lot_ft": [
+    null,
+    null
+   ],
+   "taxes": null,
+   "tax_year": "2025",
+   "business_type": "Fast Food/Takeout",
+   "mls": "X14141710"
+  },
+  {
+   "address": "5024 Centre Street, Niagara Falls, ON L2G 3N7",
+   "price": 899900.0,
+   "price_text": "$899,900",
+   "transaction": "For Sale",
+   "use": "Commercial Retail",
+   "community": "214 - Clifton Hill",
+   "building_sqft": 600.0,
+   "lot_ft": [
+    13.43,
+    61.0
+   ],
+   "taxes": 6459.0,
+   "tax_year": "2025",
+   "business_type": null,
+   "mls": "X14118900"
+  },
+  {
+   "address": "5043 Centre Street, Niagara Falls, ON L2G 3N8",
+   "price": 399000.0,
+   "price_text": "$399,000",
+   "transaction": "For Sale",
+   "use": "Sale Of Business",
+   "community": "214 - Clifton Hill",
+   "building_sqft": 10000.0,
+   "lot_ft": [
+    50.59,
+    128.0
+   ],
+   "taxes": null,
+   "tax_year": "2026",
+   "business_type": "Restaurant",
+   "mls": "X13709584"
+  },
+  {
+   "address": "5377 Kitchener Street, Niagara Falls, ON L2G 1B6",
+   "price": 2000000.0,
+   "price_text": "$2,000,000",
+   "transaction": "For Sale",
+   "use": "Land",
+   "community": "214 - Clifton Hill",
+   "building_sqft": 10233.0,
+   "lot_ft": [
+    100.0,
+    102.33
+   ],
+   "taxes": 9029.0,
+   "tax_year": "2025",
+   "business_type": null,
+   "mls": "X13867550"
+  },
+  {
+   "address": "5400 Portage Road 603-604, Niagara Falls, ON L2G 5X7",
+   "price": 297000.0,
+   "price_text": "$297,000",
+   "transaction": "For Sale",
+   "use": "Office",
+   "community": "215 - Hospital",
+   "building_sqft": 1213.0,
+   "lot_ft": [
+    null,
+    null
+   ],
+   "taxes": 4549.0,
+   "tax_year": "2025",
+   "business_type": "Medical/Dental",
+   "mls": "X14141220"
+  },
+  {
+   "address": "5470 + 5480 Victoria Avenue, Niagara Falls, ON L2G 3L2",
+   "price": 2888000.0,
+   "price_text": "$2,888,000",
+   "transaction": "For Sale",
+   "use": "Commercial Retail",
+   "community": "214 - Clifton Hill",
+   "building_sqft": 0.315,
+   "lot_ft": [
+    120.0,
+    115.0
+   ],
+   "taxes": 22177.21,
+   "tax_year": "2025",
+   "business_type": null,
+   "mls": "X14137006"
+  },
+  {
+   "address": "5544 Mcleod Road, Niagara Falls, ON L2G 2E3",
+   "price": 5995000.0,
+   "price_text": "$5,995,000",
+   "transaction": "For Sale",
+   "use": "Investment",
+   "community": "220 - Oldfield",
+   "building_sqft": 1.52,
+   "lot_ft": [
+    324.0,
+    212.84
+   ],
+   "taxes": 31751.0,
+   "tax_year": "2025",
+   "business_type": null,
+   "mls": "X14173612"
+  },
+  {
+   "address": "5677 Reixinger Road, Niagara Falls, ON L2G 0S1",
+   "price": 150000.0,
+   "price_text": "$150,000",
+   "transaction": "For Sale",
+   "use": "Sale Of Business",
+   "community": "224 - Lyons Creek",
+   "building_sqft": null,
+   "lot_ft": [
+    null,
+    null
+   ],
+   "taxes": 7297.88,
+   "tax_year": "2026",
+   "business_type": "Service Related",
+   "mls": "X13848052"
+  },
+  {
+   "address": "5703 Ferry Street, Niagara Falls, ON L2G 1S5",
+   "price": null,
+   "price_text": "Price on application",
+   "transaction": "For Sale",
+   "use": "Commercial Retail",
+   "community": "215 - Hospital",
+   "building_sqft": 6000.0,
+   "lot_ft": [
+    40.13,
+    168.88
+   ],
+   "taxes": 8250.0,
+   "tax_year": "2025",
+   "business_type": "Hospitality/Food Related",
+   "mls": "X13849190"
+  },
+  {
+   "address": "5809 Mcleod Road, Niagara Falls, ON L2G 3E5",
+   "price": 2899000.0,
+   "price_text": "$2,899,000",
+   "transaction": "For Sale",
+   "use": "Land",
+   "community": "217 - Arad/Fallsview",
+   "building_sqft": 45811.0,
+   "lot_ft": [
+    166.0,
+    272.0
+   ],
+   "taxes": 2322.0,
+   "tax_year": "2026",
+   "business_type": null,
+   "mls": "X13698066"
+  },
+  {
+   "address": "5815 Main Street, Niagara Falls, ON L2G 5Z6",
+   "price": 1249900.0,
+   "price_text": "$1,249,900",
+   "transaction": "For Sale",
+   "use": "Commercial Retail",
+   "community": "215 - Hospital",
+   "building_sqft": 1539.0,
+   "lot_ft": [
+    39.5,
+    202.5
+   ],
+   "taxes": 8069.0,
+   "tax_year": "2026",
+   "business_type": "Hospitality/Food Related",
+   "mls": "X13854386"
+  },
+  {
+   "address": "5842 Ferry Street S, Niagara Falls, ON L2G 1S9",
+   "price": 1099999.0,
+   "price_text": "$1,099,999",
+   "transaction": "For Sale",
+   "use": "Commercial Retail",
+   "community": "216 - Dorchester",
+   "building_sqft": 6545.0,
+   "lot_ft": [
+    40.79,
+    161.68
+   ],
+   "taxes": 10701.0,
+   "tax_year": "2025",
+   "business_type": "Retail Store Related",
+   "mls": "X13829186"
+  },
+  {
+   "address": "5890 Main Street, Niagara Falls, ON L2G 5Z8",
+   "price": 1499990.0,
+   "price_text": "$1,499,990",
+   "transaction": "For Sale",
+   "use": "Commercial Retail",
+   "community": "216 - Dorchester",
+   "building_sqft": 7900.0,
+   "lot_ft": [
+    56.0,
+    108.0
+   ],
+   "taxes": 22876.7,
+   "tax_year": "2026",
+   "business_type": null,
+   "mls": "X14094008"
+  },
+  {
+   "address": "5920 Main Street, Niagara Falls, ON L2G 5Z8",
+   "price": 64999.0,
+   "price_text": "$64,999",
+   "transaction": "For Sale",
+   "use": "Sale Of Business",
+   "community": "216 - Dorchester",
+   "building_sqft": 1215.0,
+   "lot_ft": [
+    4.92,
+    187.4
+   ],
+   "taxes": 5730.0,
+   "tax_year": "2026",
+   "business_type": "Restaurant",
+   "mls": "X13805208"
+  },
+  {
+   "address": "5932 Carlton Avenue, Niagara Falls, ON L2G 5J5",
+   "price": 520000.0,
+   "price_text": "$520,000",
+   "transaction": "For Sale",
+   "use": "Investment",
+   "community": "216 - Dorchester",
+   "building_sqft": 1147.0,
+   "lot_ft": [
+    40.0,
+    221.0
+   ],
+   "taxes": 2636.0,
+   "tax_year": "2025",
+   "business_type": null,
+   "mls": "X13853256"
+  },
+  {
+   "address": "5936 MAIN Street, Niagara Falls, ON L2G 5Z8",
+   "price": 1689000.0,
+   "price_text": "$1,689,000",
+   "transaction": "For Sale",
+   "use": "Commercial Retail",
+   "community": "216 - Dorchester",
+   "building_sqft": 13240.0,
+   "lot_ft": [
+    39.7,
+    186.8
+   ],
+   "taxes": 6839.16,
+   "tax_year": "2026",
+   "business_type": null,
+   "mls": "X14125070"
+  },
+  {
+   "address": "6111 Carlton Avenue, Niagara Falls, ON L2G 5J8",
+   "price": 599000.0,
+   "price_text": "$599,000",
+   "transaction": "For Sale",
+   "use": "Land",
+   "community": "216 - Dorchester",
+   "building_sqft": 0.72,
+   "lot_ft": [
+    23.9,
+    363.74
+   ],
+   "taxes": null,
+   "tax_year": "2026",
+   "business_type": null,
+   "mls": "X14190600"
+  },
+  {
+   "address": "6535 Thorold Stone Road, Niagara Falls, ON L2J 1B2",
+   "price": 2999000.0,
+   "price_text": "$2,999,000",
+   "transaction": "For Sale",
+   "use": "Commercial Retail",
+   "community": "206 - Stamford",
+   "building_sqft": 6000.0,
+   "lot_ft": [
+    100.0,
+    150.0
+   ],
+   "taxes": 23000.0,
+   "tax_year": "2025",
+   "business_type": null,
+   "mls": "X13814364"
+  },
+  {
+   "address": "7004 Lundy\u2019s Lane, Niagara Falls, ON L2G 1V9",
+   "price": 799900.0,
+   "price_text": "$799,900",
+   "transaction": "For Sale",
+   "use": "Commercial Retail",
+   "community": "216 - Dorchester",
+   "building_sqft": 852.38,
+   "lot_ft": [
+    50.0,
+    150.0
+   ],
+   "taxes": 11425.0,
+   "tax_year": "2025",
+   "business_type": null,
+   "mls": "X14112404"
+  },
+  {
+   "address": "7742 Lundys Lane, Niagara Falls, ON L2H 1H1",
+   "price": 1499000.0,
+   "price_text": "$1,499,000",
+   "transaction": "For Sale",
+   "use": "Sale Of Business",
+   "community": "218 - West Wood",
+   "building_sqft": 1500.0,
+   "lot_ft": [
+    60.14,
+    300.7
+   ],
+   "taxes": 17636.0,
+   "tax_year": "2025",
+   "business_type": "Hotel/Motel/Inn",
+   "mls": "X13724700"
+  },
+  {
+   "address": "7797 Lundys Lane, Niagara Falls, ON L2H 1H3",
+   "price": 2799900.0,
+   "price_text": "$2,799,900",
+   "transaction": "For Sale",
+   "use": "Land",
+   "community": "213 - Ascot",
+   "building_sqft": 1.859,
+   "lot_ft": [
+    209.26,
+    384.71
+   ],
+   "taxes": 34160.89,
+   "tax_year": "2025",
+   "business_type": null,
+   "mls": "X13735090"
+  },
+  {
+   "address": "8163 Cummington Square E, Niagara Falls, ON L2G 6W1",
+   "price": 2498800.0,
+   "price_text": "$2,498,800",
+   "transaction": "For Sale",
+   "use": "Investment",
+   "community": "223 - Chippawa",
+   "building_sqft": 9028.0,
+   "lot_ft": [
+    67.74,
+    76.0
+   ],
+   "taxes": 16112.5,
+   "tax_year": "2025",
+   "business_type": null,
+   "mls": "X13762684"
+  },
+  {
+   "address": "Lot 23 Oakwood Drive, Niagara Falls, ON L2E 6S5",
+   "price": 1750000.0,
+   "price_text": "$1,750,000",
+   "transaction": "For Sale",
+   "use": "Land",
+   "community": "217 - Arad/Fallsview",
+   "building_sqft": 2.034,
+   "lot_ft": [
+    170.0,
+    267.46
+   ],
+   "taxes": 11689.0,
+   "tax_year": "2026",
+   "business_type": null,
+   "mls": "X13874716"
+  }
+ ],
+ "lease_asking_rents": [
+  {
+   "place": "6518 Lundy's Lane",
+   "rent_psf_net": 25,
+   "area_sqft": 3800,
+   "source": "https://res.cloudinary.com/jll-global-sandbox/image/upload/v1787687301/MyListing/public/prod/property-875455/6518-lundy-s-lane-niagara-falls.pdf"
+  },
+  {
+   "place": "6518 Lundy's Lane (listing page)",
+   "rent_psf": 18,
+   "source": "https://property.jll.com/en-ca/listings/6518-lundys-lane"
+  },
+  {
+   "place": "6510 Lundy's Lane",
+   "rent_psf_net": 16,
+   "terms": "plus TMI and HST",
+   "source": "https://ontario.onepercentrealty.com/properties/1072440164/NIAGARA_FALLS-6510_LUNDY'S_LANE"
+  },
+  {
+   "place": "8685 Lundy's Lane",
+   "rent_psf": 25,
+   "source": "https://houseindex.ca/mls/listing/niagara-falls/pt-1-8685-lundys-lane/X12911006"
+  },
+  {
+   "place": "4337 Queen Street (Downtown)",
+   "rent_psf": 15,
+   "source": "search result, zolo.ca listing"
+  },
+  {
+   "place": "4683 Crysler Avenue (Downtown, off Queen)",
+   "rent_psf": 21,
+   "source": "search result, zolo.ca listing"
+  },
+  {
+   "place": "Crysler Avenue (Downtown)",
+   "rent_psf": 18,
+   "source": "search result, zolo.ca listing"
+  },
+  {
+   "place": "5729 Victoria Avenue (Clifton Hill), 2nd and 3rd floors",
+   "rent_month": 5590,
+   "area_sqft": 4416,
+   "source": "https://ontario.onepercentrealty.com/properties/1404022801/Niagara_Falls_(Clifton_Hill)-5729_VICTORIA_AVENUE"
+  }
+ ]
+}

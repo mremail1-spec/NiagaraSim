@@ -1,0 +1,1413 @@
+{
+ "_meta": {
+  "what": "Niagara Falls home sales by MLS community (neighbourhood), quarterly: sales, dollar volume, average and median price, new and active listings, average sale-to-list price (%), average days on market. All home types.",
+  "source": "Toronto Regional Real Estate Board, Community Housing Market Reports, Niagara Falls, 2025 Q1 to 2026 Q3 (public.trreb.ca/wp-content/files/market-stats/community-reports/<year>/Q<q>/NiagaraFallsQ<q><year>.pdf). Third-party: built from MLS sales. Earlier quarters are not published.",
+  "note": "Prices are not reported for communities with two sales or fewer."
+ },
+ "quarters": {
+  "2025Q1": {
+   "Arad/Fallsview": {
+    "sales": 20,
+    "dollar_volume": 9903000,
+    "avg_price": 495150,
+    "median_price": 433250,
+    "new_listings": 46,
+    "active_listings": 27,
+    "sp_lp_pct": 96,
+    "dom": 33
+   },
+   "Ascot": {
+    "sales": 15,
+    "dollar_volume": 10289500,
+    "avg_price": 685967,
+    "median_price": 675000,
+    "new_listings": 62,
+    "active_listings": 37,
+    "sp_lp_pct": 98,
+    "dom": 49
+   },
+   "Beaverdams": {
+    "sales": 0,
+    "new_listings": 0,
+    "active_listings": 0
+   },
+   "Brown": {
+    "sales": 17,
+    "dollar_volume": 12837500,
+    "avg_price": 755147,
+    "median_price": 700000,
+    "new_listings": 75,
+    "active_listings": 59,
+    "sp_lp_pct": 98,
+    "dom": 39
+   },
+   "Casey": {
+    "sales": 7,
+    "dollar_volume": 4987100,
+    "avg_price": 712443,
+    "median_price": 696000,
+    "new_listings": 11,
+    "active_listings": 9,
+    "sp_lp_pct": 97,
+    "dom": 51
+   },
+   "Cherrywood": {
+    "sales": 19,
+    "dollar_volume": 9567500,
+    "avg_price": 503553,
+    "median_price": 480000,
+    "new_listings": 47,
+    "active_listings": 40,
+    "sp_lp_pct": 95,
+    "dom": 52
+   },
+   "Chippawa": {
+    "sales": 7,
+    "dollar_volume": 4469500,
+    "avg_price": 638500,
+    "median_price": 625000,
+    "new_listings": 36,
+    "active_listings": 14,
+    "sp_lp_pct": 96,
+    "dom": 68
+   },
+   "Church's Lane": {
+    "sales": 12,
+    "dollar_volume": 6495500,
+    "avg_price": 541292,
+    "median_price": 554950,
+    "new_listings": 28,
+    "active_listings": 12,
+    "sp_lp_pct": 97,
+    "dom": 35
+   },
+   "Clifton Hill": {
+    "sales": 1,
+    "new_listings": 5,
+    "active_listings": 2
+   },
+   "Dorchester": {
+    "sales": 12,
+    "dollar_volume": 6166500,
+    "avg_price": 513875,
+    "median_price": 487500,
+    "new_listings": 42,
+    "active_listings": 27,
+    "sp_lp_pct": 97,
+    "dom": 45
+   },
+   "Downtown": {
+    "sales": 14,
+    "dollar_volume": 6387000,
+    "avg_price": 456214,
+    "median_price": 435000,
+    "new_listings": 44,
+    "active_listings": 31,
+    "sp_lp_pct": 98,
+    "dom": 38
+   },
+   "Forestview": {
+    "sales": 11,
+    "dollar_volume": 10350111,
+    "avg_price": 940919,
+    "median_price": 1010000,
+    "new_listings": 59,
+    "active_listings": 34,
+    "sp_lp_pct": 95,
+    "dom": 36
+   },
+   "Hospital": {
+    "sales": 13,
+    "dollar_volume": 6954900,
+    "avg_price": 534992,
+    "median_price": 500000,
+    "new_listings": 30,
+    "active_listings": 15,
+    "sp_lp_pct": 94,
+    "dom": 49
+   },
+   "Lyons Creek": {
+    "sales": 6,
+    "dollar_volume": 4986000,
+    "avg_price": 831000,
+    "median_price": 854000,
+    "new_listings": 39,
+    "active_listings": 18,
+    "sp_lp_pct": 99,
+    "dom": 18
+   },
+   "Marineland": {
+    "sales": 2,
+    "new_listings": 11,
+    "active_listings": 9
+   },
+   "Morrison": {
+    "sales": 10,
+    "dollar_volume": 5905000,
+    "avg_price": 590500,
+    "median_price": 585000,
+    "new_listings": 61,
+    "active_listings": 35,
+    "sp_lp_pct": 96,
+    "dom": 44
+   },
+   "Mt. Carmel": {
+    "sales": 5,
+    "dollar_volume": 3111000,
+    "avg_price": 622200,
+    "median_price": 605000,
+    "new_listings": 21,
+    "active_listings": 17,
+    "sp_lp_pct": 96,
+    "dom": 90
+   },
+   "Oldfield": {
+    "sales": 13,
+    "dollar_volume": 7017900,
+    "avg_price": 539838,
+    "median_price": 520000,
+    "new_listings": 54,
+    "active_listings": 26,
+    "sp_lp_pct": 98,
+    "dom": 27
+   },
+   "Schisler": {
+    "sales": 0,
+    "new_listings": 3,
+    "active_listings": 0
+   },
+   "Stamford": {
+    "sales": 12,
+    "dollar_volume": 7479990,
+    "avg_price": 623333,
+    "median_price": 621000,
+    "new_listings": 35,
+    "active_listings": 28,
+    "sp_lp_pct": 96,
+    "dom": 63
+   },
+   "West Wood": {
+    "sales": 10,
+    "dollar_volume": 5899000,
+    "avg_price": 589900,
+    "median_price": 612500,
+    "new_listings": 22,
+    "active_listings": 7,
+    "sp_lp_pct": 97,
+    "dom": 56
+   }
+  },
+  "2025Q2": {
+   "Arad/Fallsview": {
+    "sales": 15,
+    "dollar_volume": 7794500,
+    "avg_price": 519633,
+    "median_price": 537500,
+    "new_listings": 41,
+    "active_listings": 27,
+    "sp_lp_pct": 97,
+    "dom": 53
+   },
+   "Ascot": {
+    "sales": 36,
+    "dollar_volume": 22787300,
+    "avg_price": 632981,
+    "median_price": 620000,
+    "new_listings": 80,
+    "active_listings": 32,
+    "sp_lp_pct": 97,
+    "dom": 37
+   },
+   "Beaverdams": {
+    "sales": 1,
+    "new_listings": 5,
+    "active_listings": 2
+   },
+   "Brown": {
+    "sales": 13,
+    "dollar_volume": 10218500,
+    "avg_price": 786038,
+    "median_price": 775000,
+    "new_listings": 78,
+    "active_listings": 65,
+    "sp_lp_pct": 96,
+    "dom": 79
+   },
+   "Casey": {
+    "sales": 7,
+    "dollar_volume": 5530000,
+    "avg_price": 790000,
+    "median_price": 750000,
+    "new_listings": 23,
+    "active_listings": 10,
+    "sp_lp_pct": 96,
+    "dom": 56
+   },
+   "Cherrywood": {
+    "sales": 22,
+    "dollar_volume": 10413500,
+    "avg_price": 473341,
+    "median_price": 462500,
+    "new_listings": 74,
+    "active_listings": 33,
+    "sp_lp_pct": 97,
+    "dom": 27
+   },
+   "Chippawa": {
+    "sales": 18,
+    "dollar_volume": 11896777,
+    "avg_price": 660932,
+    "median_price": 654889,
+    "new_listings": 40,
+    "active_listings": 32,
+    "sp_lp_pct": 96,
+    "dom": 47
+   },
+   "Church's Lane": {
+    "sales": 11,
+    "dollar_volume": 6255000,
+    "avg_price": 568636,
+    "median_price": 530000,
+    "new_listings": 29,
+    "active_listings": 15,
+    "sp_lp_pct": 97,
+    "dom": 32
+   },
+   "Clifton Hill": {
+    "sales": 3,
+    "dollar_volume": 1635000,
+    "avg_price": 545000,
+    "median_price": 535000,
+    "new_listings": 5,
+    "active_listings": 5,
+    "sp_lp_pct": 97,
+    "dom": 41
+   },
+   "Dorchester": {
+    "sales": 19,
+    "dollar_volume": 10656000,
+    "avg_price": 560842,
+    "median_price": 470000,
+    "new_listings": 65,
+    "active_listings": 30,
+    "sp_lp_pct": 95,
+    "dom": 33
+   },
+   "Downtown": {
+    "sales": 13,
+    "dollar_volume": 5072577,
+    "avg_price": 390198,
+    "median_price": 390000,
+    "new_listings": 73,
+    "active_listings": 49,
+    "sp_lp_pct": 97,
+    "dom": 36
+   },
+   "Forestview": {
+    "sales": 26,
+    "dollar_volume": 21148000,
+    "avg_price": 813385,
+    "median_price": 827750,
+    "new_listings": 82,
+    "active_listings": 45,
+    "sp_lp_pct": 98,
+    "dom": 41
+   },
+   "Hospital": {
+    "sales": 6,
+    "dollar_volume": 3210999,
+    "avg_price": 535167,
+    "median_price": 527500,
+    "new_listings": 31,
+    "active_listings": 17,
+    "sp_lp_pct": 98,
+    "dom": 51
+   },
+   "Lyons Creek": {
+    "sales": 12,
+    "dollar_volume": 9848400,
+    "avg_price": 820700,
+    "median_price": 789950,
+    "new_listings": 44,
+    "active_listings": 30,
+    "sp_lp_pct": 96,
+    "dom": 27
+   },
+   "Marineland": {
+    "sales": 3,
+    "dollar_volume": 1915000,
+    "avg_price": 638333,
+    "median_price": 710000,
+    "new_listings": 9,
+    "active_listings": 7,
+    "sp_lp_pct": 101,
+    "dom": 21
+   },
+   "Morrison": {
+    "sales": 27,
+    "dollar_volume": 16354000,
+    "avg_price": 605704,
+    "median_price": 575000,
+    "new_listings": 79,
+    "active_listings": 52,
+    "sp_lp_pct": 97,
+    "dom": 39
+   },
+   "Mt. Carmel": {
+    "sales": 10,
+    "dollar_volume": 8917500,
+    "avg_price": 891750,
+    "median_price": 793500,
+    "new_listings": 37,
+    "active_listings": 21,
+    "sp_lp_pct": 97,
+    "dom": 26
+   },
+   "Oldfield": {
+    "sales": 17,
+    "dollar_volume": 11752399,
+    "avg_price": 691318,
+    "median_price": 620000,
+    "new_listings": 52,
+    "active_listings": 25,
+    "sp_lp_pct": 98,
+    "dom": 31
+   },
+   "Schisler": {
+    "sales": 1,
+    "new_listings": 3,
+    "active_listings": 3
+   },
+   "Stamford": {
+    "sales": 17,
+    "dollar_volume": 12185000,
+    "avg_price": 716765,
+    "median_price": 585000,
+    "new_listings": 54,
+    "active_listings": 30,
+    "sp_lp_pct": 97,
+    "dom": 45
+   },
+   "Unknown": {
+    "sales": 1,
+    "new_listings": 11,
+    "active_listings": 1
+   },
+   "West Wood": {
+    "sales": 13,
+    "dollar_volume": 8760000,
+    "avg_price": 673846,
+    "median_price": 660000,
+    "new_listings": 45,
+    "active_listings": 17,
+    "sp_lp_pct": 97,
+    "dom": 21
+   }
+  },
+  "2025Q3": {
+   "Arad/Fallsview": {
+    "sales": 18,
+    "dollar_volume": 9604450,
+    "avg_price": 533581,
+    "median_price": 546250,
+    "new_listings": 43,
+    "active_listings": 26,
+    "sp_lp_pct": 97,
+    "dom": 39
+   },
+   "Ascot": {
+    "sales": 18,
+    "dollar_volume": 11532500,
+    "avg_price": 640694,
+    "median_price": 641250,
+    "new_listings": 72,
+    "active_listings": 47,
+    "sp_lp_pct": 96,
+    "dom": 34
+   },
+   "Beaverdams": {
+    "sales": 0,
+    "new_listings": 4,
+    "active_listings": 4
+   },
+   "Brown": {
+    "sales": 27,
+    "dollar_volume": 19035400,
+    "avg_price": 705015,
+    "median_price": 665000,
+    "new_listings": 79,
+    "active_listings": 61,
+    "sp_lp_pct": 97,
+    "dom": 61
+   },
+   "Casey": {
+    "sales": 10,
+    "dollar_volume": 7011899,
+    "avg_price": 701190,
+    "median_price": 664500,
+    "new_listings": 27,
+    "active_listings": 16,
+    "sp_lp_pct": 97,
+    "dom": 35
+   },
+   "Cherrywood": {
+    "sales": 16,
+    "dollar_volume": 7897800,
+    "avg_price": 493613,
+    "median_price": 474500,
+    "new_listings": 62,
+    "active_listings": 41,
+    "sp_lp_pct": 94,
+    "dom": 35
+   },
+   "Chippawa": {
+    "sales": 13,
+    "dollar_volume": 8109500,
+    "avg_price": 623808,
+    "median_price": 585000,
+    "new_listings": 39,
+    "active_listings": 26,
+    "sp_lp_pct": 96,
+    "dom": 34
+   },
+   "Church's Lane": {
+    "sales": 14,
+    "dollar_volume": 8292000,
+    "avg_price": 592286,
+    "median_price": 556000,
+    "new_listings": 28,
+    "active_listings": 12,
+    "sp_lp_pct": 98,
+    "dom": 38
+   },
+   "Clifton Hill": {
+    "sales": 2,
+    "new_listings": 4,
+    "active_listings": 3
+   },
+   "Dorchester": {
+    "sales": 15,
+    "dollar_volume": 6976500,
+    "avg_price": 465100,
+    "median_price": 455000,
+    "new_listings": 55,
+    "active_listings": 36,
+    "sp_lp_pct": 94,
+    "dom": 29
+   },
+   "Downtown": {
+    "sales": 21,
+    "dollar_volume": 9510242,
+    "avg_price": 452869,
+    "median_price": 444000,
+    "new_listings": 61,
+    "active_listings": 61,
+    "sp_lp_pct": 94,
+    "dom": 49
+   },
+   "Forestview": {
+    "sales": 21,
+    "dollar_volume": 17300000,
+    "avg_price": 823810,
+    "median_price": 812000,
+    "new_listings": 82,
+    "active_listings": 49,
+    "sp_lp_pct": 97,
+    "dom": 33
+   },
+   "Hospital": {
+    "sales": 10,
+    "dollar_volume": 5018800,
+    "avg_price": 501880,
+    "median_price": 491900,
+    "new_listings": 39,
+    "active_listings": 26,
+    "sp_lp_pct": 97,
+    "dom": 44
+   },
+   "Lyons Creek": {
+    "sales": 10,
+    "dollar_volume": 7983500,
+    "avg_price": 798350,
+    "median_price": 697000,
+    "new_listings": 28,
+    "active_listings": 27,
+    "sp_lp_pct": 95,
+    "dom": 52
+   },
+   "Marineland": {
+    "sales": 6,
+    "dollar_volume": 3511500,
+    "avg_price": 585250,
+    "median_price": 562500,
+    "new_listings": 10,
+    "active_listings": 6,
+    "sp_lp_pct": 102,
+    "dom": 22
+   },
+   "Morrison": {
+    "sales": 27,
+    "dollar_volume": 16253250,
+    "avg_price": 601972,
+    "median_price": 595000,
+    "new_listings": 77,
+    "active_listings": 54,
+    "sp_lp_pct": 96,
+    "dom": 40
+   },
+   "Mt. Carmel": {
+    "sales": 5,
+    "dollar_volume": 4680900,
+    "avg_price": 936180,
+    "median_price": 890000,
+    "new_listings": 46,
+    "active_listings": 30,
+    "sp_lp_pct": 96,
+    "dom": 33
+   },
+   "Oldfield": {
+    "sales": 16,
+    "dollar_volume": 9544500,
+    "avg_price": 596531,
+    "median_price": 571500,
+    "new_listings": 53,
+    "active_listings": 44,
+    "sp_lp_pct": 97,
+    "dom": 34
+   },
+   "Schisler": {
+    "sales": 1,
+    "new_listings": 4,
+    "active_listings": 3
+   },
+   "Stamford": {
+    "sales": 19,
+    "dollar_volume": 13534300,
+    "avg_price": 712332,
+    "median_price": 600000,
+    "new_listings": 79,
+    "active_listings": 44,
+    "sp_lp_pct": 97,
+    "dom": 38
+   },
+   "Unknown": {
+    "sales": 1,
+    "new_listings": 0,
+    "active_listings": 4
+   },
+   "West Wood": {
+    "sales": 20,
+    "dollar_volume": 11110650,
+    "avg_price": 555533,
+    "median_price": 578500,
+    "new_listings": 38,
+    "active_listings": 23,
+    "sp_lp_pct": 97,
+    "dom": 33
+   }
+  },
+  "2025Q4": {
+   "Arad/Fallsview": {
+    "sales": 14,
+    "dollar_volume": 6145500,
+    "avg_price": 438964,
+    "median_price": 405500,
+    "new_listings": 23,
+    "active_listings": 24,
+    "sp_lp_pct": 92,
+    "dom": 53
+   },
+   "Ascot": {
+    "sales": 21,
+    "dollar_volume": 13449925,
+    "avg_price": 640473,
+    "median_price": 660000,
+    "new_listings": 39,
+    "active_listings": 45,
+    "sp_lp_pct": 96,
+    "dom": 34
+   },
+   "Beaverdams": {
+    "sales": 0,
+    "new_listings": 1,
+    "active_listings": 2
+   },
+   "Brown": {
+    "sales": 12,
+    "dollar_volume": 9318000,
+    "avg_price": 776500,
+    "median_price": 736500,
+    "new_listings": 54,
+    "active_listings": 61,
+    "sp_lp_pct": 96,
+    "dom": 44
+   },
+   "Casey": {
+    "sales": 7,
+    "dollar_volume": 5303000,
+    "avg_price": 757571,
+    "median_price": 745000,
+    "new_listings": 23,
+    "active_listings": 20,
+    "sp_lp_pct": 97,
+    "dom": 30
+   },
+   "Cherrywood": {
+    "sales": 24,
+    "dollar_volume": 10857277,
+    "avg_price": 452387,
+    "median_price": 427889,
+    "new_listings": 53,
+    "active_listings": 46,
+    "sp_lp_pct": 95,
+    "dom": 51
+   },
+   "Chippawa": {
+    "sales": 11,
+    "dollar_volume": 6390000,
+    "avg_price": 580909,
+    "median_price": 540000,
+    "new_listings": 27,
+    "active_listings": 25,
+    "sp_lp_pct": 96,
+    "dom": 69
+   },
+   "Church's Lane": {
+    "sales": 11,
+    "dollar_volume": 7118000,
+    "avg_price": 647091,
+    "median_price": 600000,
+    "new_listings": 23,
+    "active_listings": 12,
+    "sp_lp_pct": 96,
+    "dom": 40
+   },
+   "Clifton Hill": {
+    "sales": 2,
+    "new_listings": 1,
+    "active_listings": 4
+   },
+   "Dorchester": {
+    "sales": 19,
+    "dollar_volume": 10082600,
+    "avg_price": 530663,
+    "median_price": 509000,
+    "new_listings": 32,
+    "active_listings": 32,
+    "sp_lp_pct": 96,
+    "dom": 31
+   },
+   "Downtown": {
+    "sales": 12,
+    "dollar_volume": 4855000,
+    "avg_price": 404583,
+    "median_price": 399500,
+    "new_listings": 39,
+    "active_listings": 44,
+    "sp_lp_pct": 92,
+    "dom": 49
+   },
+   "Forestview": {
+    "sales": 16,
+    "dollar_volume": 13750400,
+    "avg_price": 859400,
+    "median_price": 850000,
+    "new_listings": 44,
+    "active_listings": 50,
+    "sp_lp_pct": 93,
+    "dom": 44
+   },
+   "Hospital": {
+    "sales": 12,
+    "dollar_volume": 5895800,
+    "avg_price": 491317,
+    "median_price": 495500,
+    "new_listings": 12,
+    "active_listings": 25,
+    "sp_lp_pct": 95,
+    "dom": 52
+   },
+   "Lyons Creek": {
+    "sales": 5,
+    "dollar_volume": 3230000,
+    "avg_price": 646000,
+    "median_price": 650000,
+    "new_listings": 18,
+    "active_listings": 27,
+    "sp_lp_pct": 96,
+    "dom": 65
+   },
+   "Marineland": {
+    "sales": 5,
+    "dollar_volume": 2968500,
+    "avg_price": 593700,
+    "median_price": 483500,
+    "new_listings": 9,
+    "active_listings": 5,
+    "sp_lp_pct": 95,
+    "dom": 21
+   },
+   "Morrison": {
+    "sales": 15,
+    "dollar_volume": 8505500,
+    "avg_price": 567033,
+    "median_price": 560000,
+    "new_listings": 45,
+    "active_listings": 44,
+    "sp_lp_pct": 95,
+    "dom": 57
+   },
+   "Mt. Carmel": {
+    "sales": 6,
+    "dollar_volume": 4167500,
+    "avg_price": 694583,
+    "median_price": 707500,
+    "new_listings": 16,
+    "active_listings": 32,
+    "sp_lp_pct": 92,
+    "dom": 58
+   },
+   "Oldfield": {
+    "sales": 8,
+    "dollar_volume": 3919500,
+    "avg_price": 489938,
+    "median_price": 481750,
+    "new_listings": 18,
+    "active_listings": 27,
+    "sp_lp_pct": 97,
+    "dom": 60
+   },
+   "Schisler": {
+    "sales": 0,
+    "new_listings": 3,
+    "active_listings": 5
+   },
+   "Stamford": {
+    "sales": 25,
+    "dollar_volume": 16193900,
+    "avg_price": 647756,
+    "median_price": 600000,
+    "new_listings": 47,
+    "active_listings": 62,
+    "sp_lp_pct": 98,
+    "dom": 44
+   },
+   "Unknown": {
+    "sales": 0,
+    "new_listings": 0,
+    "active_listings": 1
+   },
+   "West Wood": {
+    "sales": 11,
+    "dollar_volume": 5968900,
+    "avg_price": 542627,
+    "median_price": 540000,
+    "new_listings": 17,
+    "active_listings": 14,
+    "sp_lp_pct": 95,
+    "dom": 36
+   }
+  },
+  "2026Q1": {
+   "Arad/Fallsview": {
+    "sales": 10,
+    "dollar_volume": 5472400,
+    "avg_price": 547240,
+    "median_price": 510000,
+    "new_listings": 28,
+    "active_listings": 24,
+    "sp_lp_pct": 96,
+    "dom": 42
+   },
+   "Ascot": {
+    "sales": 25,
+    "dollar_volume": 15619499,
+    "avg_price": 624780,
+    "median_price": 625000,
+    "new_listings": 51,
+    "active_listings": 34,
+    "sp_lp_pct": 96,
+    "dom": 45
+   },
+   "Beaverdams": {
+    "sales": 0,
+    "new_listings": 1,
+    "active_listings": 0
+   },
+   "Brown": {
+    "sales": 10,
+    "dollar_volume": 6412000,
+    "avg_price": 641200,
+    "median_price": 631000,
+    "new_listings": 44,
+    "active_listings": 38,
+    "sp_lp_pct": 96,
+    "dom": 58
+   },
+   "Casey": {
+    "sales": 7,
+    "dollar_volume": 4100000,
+    "avg_price": 585714,
+    "median_price": 600000,
+    "new_listings": 19,
+    "active_listings": 9,
+    "sp_lp_pct": 97,
+    "dom": 30
+   },
+   "Cherrywood": {
+    "sales": 20,
+    "dollar_volume": 9969500,
+    "avg_price": 498475,
+    "median_price": 504000,
+    "new_listings": 46,
+    "active_listings": 32,
+    "sp_lp_pct": 97,
+    "dom": 25
+   },
+   "Chippawa": {
+    "sales": 9,
+    "dollar_volume": 4894545,
+    "avg_price": 543838,
+    "median_price": 585000,
+    "new_listings": 37,
+    "active_listings": 20,
+    "sp_lp_pct": 96,
+    "dom": 77
+   },
+   "Church's Lane": {
+    "sales": 14,
+    "dollar_volume": 8007700,
+    "avg_price": 571979,
+    "median_price": 542500,
+    "new_listings": 29,
+    "active_listings": 14,
+    "sp_lp_pct": 97,
+    "dom": 25
+   },
+   "Clifton Hill": {
+    "sales": 0,
+    "new_listings": 3,
+    "active_listings": 0
+   },
+   "Dorchester": {
+    "sales": 7,
+    "dollar_volume": 3505000,
+    "avg_price": 500714,
+    "median_price": 490000,
+    "new_listings": 35,
+    "active_listings": 20,
+    "sp_lp_pct": 94,
+    "dom": 64
+   },
+   "Downtown": {
+    "sales": 10,
+    "dollar_volume": 4798000,
+    "avg_price": 479800,
+    "median_price": 405250,
+    "new_listings": 47,
+    "active_listings": 40,
+    "sp_lp_pct": 93,
+    "dom": 75
+   },
+   "Forestview": {
+    "sales": 16,
+    "dollar_volume": 12238000,
+    "avg_price": 764875,
+    "median_price": 766500,
+    "new_listings": 61,
+    "active_listings": 33,
+    "sp_lp_pct": 97,
+    "dom": 53
+   },
+   "Hospital": {
+    "sales": 7,
+    "dollar_volume": 3398000,
+    "avg_price": 485429,
+    "median_price": 488000,
+    "new_listings": 16,
+    "active_listings": 14,
+    "sp_lp_pct": 98,
+    "dom": 48
+   },
+   "Lyons Creek": {
+    "sales": 3,
+    "dollar_volume": 1825000,
+    "avg_price": 608333,
+    "median_price": 560000,
+    "new_listings": 20,
+    "active_listings": 14,
+    "sp_lp_pct": 98,
+    "dom": 52
+   },
+   "Marineland": {
+    "sales": 2,
+    "new_listings": 3,
+    "active_listings": 2
+   },
+   "Morrison": {
+    "sales": 26,
+    "dollar_volume": 13584600,
+    "avg_price": 522485,
+    "median_price": 512500,
+    "new_listings": 54,
+    "active_listings": 21,
+    "sp_lp_pct": 96,
+    "dom": 43
+   },
+   "Mt. Carmel": {
+    "sales": 7,
+    "dollar_volume": 4598000,
+    "avg_price": 656857,
+    "median_price": 695000,
+    "new_listings": 20,
+    "active_listings": 15,
+    "sp_lp_pct": 97,
+    "dom": 31
+   },
+   "Oldfield": {
+    "sales": 7,
+    "dollar_volume": 3893500,
+    "avg_price": 556214,
+    "median_price": 540000,
+    "new_listings": 25,
+    "active_listings": 13,
+    "sp_lp_pct": 97,
+    "dom": 46
+   },
+   "Schisler": {
+    "sales": 0,
+    "new_listings": 1,
+    "active_listings": 2
+   },
+   "Stamford": {
+    "sales": 14,
+    "dollar_volume": 10105900,
+    "avg_price": 721850,
+    "median_price": 621000,
+    "new_listings": 49,
+    "active_listings": 45,
+    "sp_lp_pct": 96,
+    "dom": 53
+   },
+   "Unknown": {
+    "sales": 0,
+    "new_listings": 0,
+    "active_listings": 0
+   },
+   "West Wood": {
+    "sales": 4,
+    "dollar_volume": 2317500,
+    "avg_price": 579375,
+    "median_price": 595000,
+    "new_listings": 18,
+    "active_listings": 12,
+    "sp_lp_pct": 96,
+    "dom": 48
+   }
+  },
+  "2026Q2": {
+   "Arad/Fallsview": {
+    "sales": 14,
+    "dollar_volume": 6798400,
+    "avg_price": 485600,
+    "median_price": 508625,
+    "new_listings": 33,
+    "active_listings": 18,
+    "sp_lp_pct": 99,
+    "dom": 49
+   },
+   "Ascot": {
+    "sales": 20,
+    "dollar_volume": 12093500,
+    "avg_price": 604675,
+    "median_price": 590000,
+    "new_listings": 67,
+    "active_listings": 42,
+    "sp_lp_pct": 97,
+    "dom": 32
+   },
+   "Beaverdams": {
+    "sales": 0,
+    "new_listings": 2,
+    "active_listings": 1
+   },
+   "Brown": {
+    "sales": 15,
+    "dollar_volume": 9857012,
+    "avg_price": 657134,
+    "median_price": 632500,
+    "new_listings": 68,
+    "active_listings": 42,
+    "sp_lp_pct": 99,
+    "dom": 75
+   },
+   "Casey": {
+    "sales": 17,
+    "dollar_volume": 11240000,
+    "avg_price": 661176,
+    "median_price": 645000,
+    "new_listings": 34,
+    "active_listings": 14,
+    "sp_lp_pct": 97,
+    "dom": 60
+   },
+   "Cherrywood": {
+    "sales": 15,
+    "dollar_volume": 6527888,
+    "avg_price": 435193,
+    "median_price": 425000,
+    "new_listings": 51,
+    "active_listings": 39,
+    "sp_lp_pct": 97,
+    "dom": 47
+   },
+   "Chippawa": {
+    "sales": 20,
+    "dollar_volume": 11358500,
+    "avg_price": 567925,
+    "median_price": 534250,
+    "new_listings": 33,
+    "active_listings": 15,
+    "sp_lp_pct": 98,
+    "dom": 32
+   },
+   "Church's Lane": {
+    "sales": 22,
+    "dollar_volume": 12761800,
+    "avg_price": 580082,
+    "median_price": 539000,
+    "new_listings": 41,
+    "active_listings": 18,
+    "sp_lp_pct": 97,
+    "dom": 35
+   },
+   "Clifton Hill": {
+    "sales": 1,
+    "new_listings": 7,
+    "active_listings": 4
+   },
+   "Dorchester": {
+    "sales": 19,
+    "dollar_volume": 8964500,
+    "avg_price": 471816,
+    "median_price": 450000,
+    "new_listings": 60,
+    "active_listings": 37,
+    "sp_lp_pct": 96,
+    "dom": 40
+   },
+   "Downtown": {
+    "sales": 18,
+    "dollar_volume": 7866000,
+    "avg_price": 437000,
+    "median_price": 392000,
+    "new_listings": 55,
+    "active_listings": 40,
+    "sp_lp_pct": 94,
+    "dom": 46
+   },
+   "Forestview": {
+    "sales": 25,
+    "dollar_volume": 19561400,
+    "avg_price": 782456,
+    "median_price": 765000,
+    "new_listings": 84,
+    "active_listings": 55,
+    "sp_lp_pct": 96,
+    "dom": 46
+   },
+   "Hospital": {
+    "sales": 12,
+    "dollar_volume": 6472000,
+    "avg_price": 539333,
+    "median_price": 525000,
+    "new_listings": 24,
+    "active_listings": 12,
+    "sp_lp_pct": 95,
+    "dom": 33
+   },
+   "Lyons Creek": {
+    "sales": 10,
+    "dollar_volume": 8879000,
+    "avg_price": 887900,
+    "median_price": 737500,
+    "new_listings": 35,
+    "active_listings": 23,
+    "sp_lp_pct": 93,
+    "dom": 66
+   },
+   "Marineland": {
+    "sales": 2,
+    "new_listings": 10,
+    "active_listings": 4
+   },
+   "Morrison": {
+    "sales": 22,
+    "dollar_volume": 11534800,
+    "avg_price": 524309,
+    "median_price": 512500,
+    "new_listings": 53,
+    "active_listings": 36,
+    "sp_lp_pct": 97,
+    "dom": 34
+   },
+   "Mt. Carmel": {
+    "sales": 10,
+    "dollar_volume": 5778900,
+    "avg_price": 577890,
+    "median_price": 569950,
+    "new_listings": 23,
+    "active_listings": 20,
+    "sp_lp_pct": 96,
+    "dom": 69
+   },
+   "Oldfield": {
+    "sales": 8,
+    "dollar_volume": 4607500,
+    "avg_price": 575938,
+    "median_price": 596250,
+    "new_listings": 44,
+    "active_listings": 31,
+    "sp_lp_pct": 96,
+    "dom": 34
+   },
+   "Schisler": {
+    "sales": 2,
+    "new_listings": 4,
+    "active_listings": 2
+   },
+   "Stamford": {
+    "sales": 24,
+    "dollar_volume": 16792566,
+    "avg_price": 699690,
+    "median_price": 597500,
+    "new_listings": 81,
+    "active_listings": 41,
+    "sp_lp_pct": 97,
+    "dom": 28
+   },
+   "Unknown": {
+    "sales": 0,
+    "new_listings": 0,
+    "active_listings": 0
+   },
+   "West Wood": {
+    "sales": 13,
+    "dollar_volume": 7174300,
+    "avg_price": 551869,
+    "median_price": 574000,
+    "new_listings": 32,
+    "active_listings": 16,
+    "sp_lp_pct": 98,
+    "dom": 38
+   }
+  },
+  "2026Q3": {
+   "Arad/Fallsview": {
+    "sales": 15,
+    "dollar_volume": 7348400,
+    "avg_price": 489893,
+    "median_price": 450000,
+    "new_listings": 34,
+    "active_listings": 17,
+    "sp_lp_pct": 97,
+    "dom": 25
+   },
+   "Ascot": {
+    "sales": 29,
+    "dollar_volume": 18442300,
+    "avg_price": 635941,
+    "median_price": 598000,
+    "new_listings": 55,
+    "active_listings": 47,
+    "sp_lp_pct": 97,
+    "dom": 45
+   },
+   "Beaverdams": {
+    "sales": 0,
+    "new_listings": 1,
+    "active_listings": 2
+   },
+   "Brown": {
+    "sales": 11,
+    "dollar_volume": 7860500,
+    "avg_price": 714591,
+    "median_price": 662500,
+    "new_listings": 62,
+    "active_listings": 59,
+    "sp_lp_pct": 97,
+    "dom": 57
+   },
+   "Casey": {
+    "sales": 11,
+    "dollar_volume": 7713000,
+    "avg_price": 701182,
+    "median_price": 638000,
+    "new_listings": 28,
+    "active_listings": 20,
+    "sp_lp_pct": 97,
+    "dom": 43
+   },
+   "Cherrywood": {
+    "sales": 21,
+    "dollar_volume": 8743900,
+    "avg_price": 416376,
+    "median_price": 415000,
+    "new_listings": 46,
+    "active_listings": 32,
+    "sp_lp_pct": 96,
+    "dom": 47
+   },
+   "Chippawa": {
+    "sales": 16,
+    "dollar_volume": 8248400,
+    "avg_price": 515525,
+    "median_price": 522250,
+    "new_listings": 40,
+    "active_listings": 22,
+    "sp_lp_pct": 96,
+    "dom": 28
+   },
+   "Church's Lane": {
+    "sales": 16,
+    "dollar_volume": 7964400,
+    "avg_price": 497775,
+    "median_price": 512450,
+    "new_listings": 17,
+    "active_listings": 10,
+    "sp_lp_pct": 97,
+    "dom": 44
+   },
+   "Clifton Hill": {
+    "sales": 3,
+    "dollar_volume": 1920000,
+    "avg_price": 640000,
+    "median_price": 640000,
+    "new_listings": 6,
+    "active_listings": 6,
+    "sp_lp_pct": 93,
+    "dom": 67
+   },
+   "Dorchester": {
+    "sales": 15,
+    "dollar_volume": 6507123,
+    "avg_price": 433808,
+    "median_price": 425000,
+    "new_listings": 67,
+    "active_listings": 43,
+    "sp_lp_pct": 97,
+    "dom": 32
+   },
+   "Downtown": {
+    "sales": 26,
+    "dollar_volume": 9767800,
+    "avg_price": 375685,
+    "median_price": 380000,
+    "new_listings": 51,
+    "active_listings": 48,
+    "sp_lp_pct": 96,
+    "dom": 53
+   },
+   "Forestview": {
+    "sales": 35,
+    "dollar_volume": 28749000,
+    "avg_price": 821400,
+    "median_price": 819000,
+    "new_listings": 72,
+    "active_listings": 50,
+    "sp_lp_pct": 96,
+    "dom": 42
+   },
+   "Hospital": {
+    "sales": 9,
+    "dollar_volume": 4170000,
+    "avg_price": 463333,
+    "median_price": 436000,
+    "new_listings": 32,
+    "active_listings": 25,
+    "sp_lp_pct": 96,
+    "dom": 45
+   },
+   "Lyons Creek": {
+    "sales": 8,
+    "dollar_volume": 8589100,
+    "avg_price": 1073638,
+    "median_price": 608300,
+    "new_listings": 33,
+    "active_listings": 30,
+    "sp_lp_pct": 96,
+    "dom": 39
+   },
+   "Marineland": {
+    "sales": 1,
+    "dollar_volume": 599900,
+    "avg_price": 599900,
+    "median_price": 599900,
+    "new_listings": 6,
+    "active_listings": 3,
+    "sp_lp_pct": 100,
+    "dom": 24
+   },
+   "Morrison": {
+    "sales": 18,
+    "dollar_volume": 10462000,
+    "avg_price": 581222,
+    "median_price": 607500,
+    "new_listings": 60,
+    "active_listings": 43,
+    "sp_lp_pct": 96,
+    "dom": 59
+   },
+   "Mt. Carmel": {
+    "sales": 14,
+    "dollar_volume": 13660250,
+    "avg_price": 975732,
+    "median_price": 827500,
+    "new_listings": 31,
+    "active_listings": 18,
+    "sp_lp_pct": 97,
+    "dom": 58
+   },
+   "Oldfield": {
+    "sales": 11,
+    "dollar_volume": 5879000,
+    "avg_price": 534455,
+    "median_price": 489000,
+    "new_listings": 37,
+    "active_listings": 34,
+    "sp_lp_pct": 96,
+    "dom": 38
+   },
+   "Schisler": {
+    "sales": 1,
+    "dollar_volume": 777000,
+    "avg_price": 777000,
+    "median_price": 777000,
+    "new_listings": 2,
+    "active_listings": 2,
+    "sp_lp_pct": 91,
+    "dom": 41
+   },
+   "Stamford": {
+    "sales": 36,
+    "dollar_volume": 23791270,
+    "avg_price": 660869,
+    "median_price": 550000,
+    "new_listings": 62,
+    "active_listings": 51,
+    "sp_lp_pct": 97,
+    "dom": 38
+   },
+   "West Wood": {
+    "sales": 13,
+    "dollar_volume": 7586500,
+    "avg_price": 583577,
+    "median_price": 593000,
+    "new_listings": 30,
+    "active_listings": 17,
+    "sp_lp_pct": 97,
+    "dom": 36
+   }
+  }
+ }
+}

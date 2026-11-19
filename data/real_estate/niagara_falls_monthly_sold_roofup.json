@@ -1,0 +1,217 @@
+{
+ "_meta": {
+  "what": "Niagara Falls residential sales by month: closed sales, average and median sold price, sale-to-list ratio (%), share sold over asking (%), average days on market.",
+  "source": "RoofUp, Niagara Falls sold home prices by month (roofup.ca/ontario-sold-home-prices/niagara-falls/<month>-<year>/), September 2024 to October 2026. Third-party, from MLS sales; RoofUp notes it is not official board data.",
+  "check": "Quarterly sums agree with TRREB within 3 sales and 2% on average price (2025 Q4 to 2026 Q3)."
+ },
+ "months": {
+  "2024-12": {
+   "sales": 73,
+   "avg_price": 658112,
+   "median_price": 635000,
+   "sale_to_list_pct": 96.6,
+   "over_asking_pct": 2.7,
+   "dom": 55
+  },
+  "2024-11": {
+   "sales": 89,
+   "avg_price": 638865,
+   "median_price": 617000,
+   "sale_to_list_pct": 96.7,
+   "over_asking_pct": 6.7,
+   "dom": 42
+  },
+  "2024-10": {
+   "sales": 104,
+   "avg_price": 623594,
+   "median_price": 600000,
+   "sale_to_list_pct": 96.9,
+   "over_asking_pct": 4.8,
+   "dom": 45
+  },
+  "2024-09": {
+   "sales": 88,
+   "avg_price": 638828,
+   "median_price": 645000,
+   "sale_to_list_pct": 98.2,
+   "over_asking_pct": 12.5,
+   "dom": 39
+  },
+  "2025-04": {
+   "sales": 96,
+   "avg_price": 631679,
+   "median_price": 602500,
+   "sale_to_list_pct": 96.7,
+   "over_asking_pct": 8.3,
+   "dom": 39
+  },
+  "2025-08": {
+   "sales": 108,
+   "avg_price": 631282,
+   "median_price": 582500,
+   "sale_to_list_pct": 96.4,
+   "over_asking_pct": 15.7,
+   "dom": 42
+  },
+  "2025-12": {
+   "sales": 57,
+   "avg_price": 573817,
+   "median_price": 520000,
+   "sale_to_list_pct": 94.6,
+   "over_asking_pct": 5.3,
+   "dom": 53
+  },
+  "2025-02": {
+   "sales": 63,
+   "avg_price": 632248,
+   "median_price": 600000,
+   "sale_to_list_pct": 96.3,
+   "over_asking_pct": 19.0,
+   "dom": 45
+  },
+  "2025-01": {
+   "sales": 64,
+   "avg_price": 574622,
+   "median_price": 539950,
+   "sale_to_list_pct": 96.5,
+   "over_asking_pct": 4.7,
+   "dom": 47
+  },
+  "2025-07": {
+   "sales": 116,
+   "avg_price": 620514,
+   "median_price": 596000,
+   "sale_to_list_pct": 96.1,
+   "over_asking_pct": 6.0,
+   "dom": 40
+  },
+  "2025-06": {
+   "sales": 99,
+   "avg_price": 639806,
+   "median_price": 599900,
+   "sale_to_list_pct": 97.6,
+   "over_asking_pct": 15.2,
+   "dom": 41
+  },
+  "2025-03": {
+   "sales": 84,
+   "avg_price": 595774,
+   "median_price": 582500,
+   "sale_to_list_pct": 97.0,
+   "over_asking_pct": 8.3,
+   "dom": 38
+  },
+  "2025-05": {
+   "sales": 92,
+   "avg_price": 668103,
+   "median_price": 637500,
+   "sale_to_list_pct": 96.2,
+   "over_asking_pct": 14.1,
+   "dom": 38
+  },
+  "2025-11": {
+   "sales": 76,
+   "avg_price": 563426,
+   "median_price": 538000,
+   "sale_to_list_pct": 95.0,
+   "over_asking_pct": 5.3,
+   "dom": 44
+  },
+  "2025-10": {
+   "sales": 102,
+   "avg_price": 594964,
+   "median_price": 572500,
+   "sale_to_list_pct": 94.9,
+   "over_asking_pct": 4.9,
+   "dom": 44
+  },
+  "2025-09": {
+   "sales": 75,
+   "avg_price": 633847,
+   "median_price": 589000,
+   "sale_to_list_pct": 96.2,
+   "over_asking_pct": 10.7,
+   "dom": 33
+  },
+  "2026-04": {
+   "sales": 107,
+   "avg_price": 542324,
+   "median_price": 530000,
+   "sale_to_list_pct": 96.2,
+   "over_asking_pct": 9.3,
+   "dom": 52
+  },
+  "2026-08": {
+   "sales": 111,
+   "avg_price": 592885,
+   "median_price": 560000,
+   "sale_to_list_pct": 97.0,
+   "over_asking_pct": 15.3,
+   "dom": 47
+  },
+  "2026-02": {
+   "sales": 62,
+   "avg_price": 609839,
+   "median_price": 580000,
+   "sale_to_list_pct": 96.5,
+   "over_asking_pct": 8.1,
+   "dom": 41
+  },
+  "2026-01": {
+   "sales": 66,
+   "avg_price": 599668,
+   "median_price": 572500,
+   "sale_to_list_pct": 96.0,
+   "over_asking_pct": 6.1,
+   "dom": 52
+  },
+  "2026-07": {
+   "sales": 107,
+   "avg_price": 596614,
+   "median_price": 565000,
+   "sale_to_list_pct": 97.1,
+   "over_asking_pct": 15.0,
+   "dom": 39
+  },
+  "2026-06": {
+   "sales": 94,
+   "avg_price": 655767,
+   "median_price": 606000,
+   "sale_to_list_pct": 96.2,
+   "over_asking_pct": 10.6,
+   "dom": 38
+  },
+  "2026-03": {
+   "sales": 72,
+   "avg_price": 566521,
+   "median_price": 530000,
+   "sale_to_list_pct": 96.3,
+   "over_asking_pct": 9.7,
+   "dom": 42
+  },
+  "2026-05": {
+   "sales": 89,
+   "avg_price": 593093,
+   "median_price": 575000,
+   "sale_to_list_pct": 97.0,
+   "over_asking_pct": 7.9,
+   "dom": 40
+  },
+  "2026-10": {
+   "sales": 102,
+   "avg_price": 591031,
+   "median_price": 569000,
+   "sale_to_list_pct": 95.5,
+   "over_asking_pct": 2.9,
+   "dom": 48
+  },
+  "2026-09": {
+   "sales": 94,
+   "avg_price": 608431,
+   "median_price": 552500,
+   "sale_to_list_pct": 95.7,
+   "over_asking_pct": 5.3,
+   "dom": 43
+  }
+ }
+}
