@@ -53,6 +53,7 @@ class RentSurface:
                 continue
             p = pts.get(_key(r["address"]))
             if p:
+                # a net asking rent with stated TMI joins the others as listed (most listings do not say)
                 lat.append(float(p["lat"])); lon.append(float(p["lon"])); v.append(float(r["rent_psf_year"]))
         self.lat, self.lon, self.v = np.array(lat), np.array(lon), np.array(v)
         self.median = float(np.median(self.v))
