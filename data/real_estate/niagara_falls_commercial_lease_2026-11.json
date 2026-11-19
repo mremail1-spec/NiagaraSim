@@ -3,7 +3,8 @@
   "what": "Commercial space for lease in Niagara Falls, Ontario: asking rents as listed (not achieved rents).",
   "collected": "2026-11-19. Pages that refuse this session were read by Google's page reader through the Gemini API (url_context); every row here was on the page named in 'page' at that time.",
   "terms": "Net or gross is rarely stated. LoopNet rents are per sq ft per year; Square Yards gives monthly rents, likely gross for small units; rent_psf_year_from_month = monthly x 12 / sq ft.",
-  "excluded": "Rows from a first Gemini answer that cited the wrong page for many listings were dropped unless found again on the page itself. Square Yards: the full page, read again on 2026-11-19 (one page per request)."
+  "excluded": "Rows from a first Gemini answer that cited the wrong page for many listings were dropped unless found again on the page itself. Square Yards: the full page, read again on 2026-11-19 (one page per request).",
+  "rechecked": "2026-11-19: all five source pages re-read through Gemini's page reader with retrieval confirmed for each; all 41 listings found on their pages with the same address, size and rent (none made up)."
  },
  "listings": [
   {
