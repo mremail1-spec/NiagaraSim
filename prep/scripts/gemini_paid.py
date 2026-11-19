@@ -10,7 +10,7 @@ import json, sys, time, urllib.request, urllib.error
 from pathlib import Path
 
 LEDGER = Path(__file__).resolve().parents[2] / "build" / "gemini_ledger.json"
-CAP = 5.00
+CAP = 4.00   # US$, under the owner's CA$6.00 monthly cap on Google's side
 # USD per million tokens (input, output incl. thinking), set high on purpose; search per query
 PRICE = {"flash": (0.50, 3.00), "pro": (2.00, 12.00)}
 SEARCH_QUERY = 0.035
