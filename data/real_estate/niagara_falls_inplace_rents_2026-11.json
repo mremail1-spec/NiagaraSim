@@ -1,0 +1,24 @@
+{
+ "_meta": {
+  "what": "Rents actually paid or offered on a fixed lease in Niagara Falls commercial space, as stated in properties and businesses listed for sale (rent rolls and lease terms). Rent per sq ft a year = monthly rent x 12 / stated floor area.",
+  "collected": "2026-11-19 from caprate.ca listing pages (MLS feed; the site's robots.txt allows AI readers). Each row names its MLS number; the page is https://caprate.ca/listings/<address-slug>-<mls>/.",
+  "terms": "basis says whether the rent includes taxes and running costs (gross) or not (net), as the listing states; 'unstated' when it does not say. HST is never included. Gross rents run roughly $8-10 a sq ft above net in this market (TMI quoted at $8 on Thorold Stone Road and $10 on Centre Street, 2025-2026).",
+  "kind": "in_place = a tenant pays it now; offered = the lease a buyer of the business takes on; seller_leaseback = the seller's offer to stay as tenant (set by the seller, may be high); contracted = a future step in a signed lease.",
+  "dating": "Rents are as of the listing (2026) unless a lease date is given. These are signed-lease rents, not asking rents, so they lag the market: a lease signed years ago is still in place."
+ },
+ "rents": [
+  {"address": "5043 Centre St", "community": "214 - Clifton Hill", "mls": "X13709584", "use": "restaurant / entertainment, 3 levels, rooftop patio", "sqft": 10000, "rent_month": 30000, "basis": "gross (includes TMI)", "kind": "offered", "lease": "5 years + 5-year renewal", "rent_psf_year": 36.0},
+  {"address": "5448 Victoria Av", "community": "214 - Clifton Hill", "mls": "X13551486", "use": "restaurant, 1,600 sq ft main + 800 sq ft upper", "sqft": 2400, "rent_month": 7500, "basis": "unstated (landlord covers HVAC maintenance)", "kind": "offered", "lease": "5 + 5 years", "rent_psf_year": 37.5},
+  {"address": "5470 Victoria Av", "community": "214 - Clifton Hill", "mls": "X14137006", "use": "restaurant with upper residence, whole building", "sqft": 3613, "rent_month": 12000, "basis": "unstated", "kind": "contracted", "lease": "$12,000/month from 2028, $13,500 from 2030, $15,000 from 2032 (current rent not stated)", "rent_psf_year": 39.9, "year": 2028},
+  {"address": "5689 Main St", "community": "215 - Hospital", "mls": "X13502100", "use": "restaurant, ground floor", "sqft": 2000, "rent_month": 4300, "basis": "unstated (plus HST)", "kind": "in_place", "lease": "3 years left; $4,500 from August, then $200 a year more", "rent_psf_year": 25.8},
+  {"address": "5689 Main St", "community": "215 - Hospital", "mls": "X13502100", "use": "massage therapy, upper floor", "sqft": 1200, "rent_month": 2000, "basis": "unstated", "kind": "in_place", "rent_psf_year": 20.0, "upper_floor": true},
+  {"address": "5703 Ferry St", "community": "215 - Hospital", "mls": "X13849190", "use": "Caribbean restaurant, 30 seats", "sqft": 1700, "rent_month": 5500, "basis": "unstated", "kind": "seller_leaseback", "rent_psf_year": 38.8},
+  {"address": "5553 Ferry St", "community": "215 - Hospital", "mls": "X12865832", "use": "pizzeria franchise, licensed, 30-seat patio", "sqft": 800, "rent_month": 3000, "basis": "unstated ('very low rent')", "kind": "in_place", "lease": "long term", "rent_psf_year": 45.0},
+  {"address": "6240 Thorold Stone Rd", "community": "212 - Morrison", "mls": "X13576822", "use": "chicken wings franchise in a plaza", "sqft": 1065, "rent_month": 2430, "basis": "gross (includes TMI)", "kind": "in_place", "rent_psf_year": 27.4}
+ ],
+ "dates_without_rent": [
+  {"address": "3477 Portage Rd, Unit C", "mls": "X13854712", "use": "hair salon, Stamford Green Plaza", "sqft": 1328, "lease": "5 years to February 2028 (signed about February 2023), 5-year renewal option"},
+  {"address": "4967 Clifton Hill", "mls": "X14141710", "use": "bubble tea franchise", "sqft": 300, "lease": "about 5 years left; 'below-market rent'"},
+  {"address": "5024 Centre St", "mls": "X14118900", "use": "chain convenience store", "sqft": 600, "lease": "long-term lease, 'stable rent'"}
+ ]
+}

@@ -1,6 +1,7 @@
 """Commercial rent at any spot and each business's floor area.
 
 Rent per square foot per year at a point = distance-weighted average of retail and office asking rents
+(and of rents tenants pay, from businesses and buildings for sale: niagara_falls_inplace_rents_2026-11.json)
 within 1.5 km (data/real_estate/niagara_falls_commercial_lease_2026-11.json, placed on the City's
 address points), leaning toward the city median where listings are few (as if two median listings
 stood at the point). Only 13 asking rents exist, so this separates districts, not blocks: approximate.
@@ -46,6 +47,13 @@ class RentSurface:
                 p = next((q for a, q in pts.items() if a.startswith(k.rsplit(" ", 1)[0])), None)
             if p:
                 lat.append(float(p["lat"])); lon.append(float(p["lon"])); v.append(float(rent))
+        # rents tenants pay now or take on with a business for sale (ground floor, not future lease steps)
+        for r in json.loads((DATA_DIR / "real_estate/niagara_falls_inplace_rents_2026-11.json").read_text())["rents"]:
+            if r.get("upper_floor") or r["kind"] == "contracted":
+                continue
+            p = pts.get(_key(r["address"]))
+            if p:
+                lat.append(float(p["lat"])); lon.append(float(p["lon"])); v.append(float(r["rent_psf_year"]))
         self.lat, self.lon, self.v = np.array(lat), np.array(lon), np.array(v)
         self.median = float(np.median(self.v))
 
@@ -85,4 +93,4 @@ def for_web() -> dict:
     return {"lat": [round(float(x), 6) for x in rs.lat], "lon": [round(float(x), 6) for x in rs.lon],
             "psf": [round(float(x), 2) for x in rs.v], "median_psf": rs.median, "radius_km": RADIUS_KM,
             "prior_listings": PRIOR_LISTINGS,
-            "source": "Retail and office asking rents, Niagara Falls commercial lease listings, November 2026 (13 with a rent)"}
+            "source": "Retail and office asking rents (lease listings) and rents tenants pay (businesses and buildings for sale), Niagara Falls, November 2026"}

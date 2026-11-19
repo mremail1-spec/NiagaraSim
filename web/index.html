@@ -992,7 +992,7 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
     $("fRows").innerHTML = rows;
     const rev = typical[0] + typical[1];
     $("fMix").textContent = `Typical size: ${Math.round(typical[1] / rev * 100)}% of sales from tourists, ${money(typical[2])} won back from out-of-town shopping. Busiest month ${["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"][typical.slice(3, 15).indexOf(Math.max(...typical.slice(3, 15)))]}.`;
-    if (psf) $("fMix").textContent += " Asking rent here about $" + psf.toFixed(0) + " a sq ft a year (city median $" + city.rent_surface.median_psf.toFixed(0) + ", from " + city.rent_surface.psf.length + " lease listings, so only roughly by district).";
+    if (psf) $("fMix").textContent += " Asking rent here about $" + psf.toFixed(0) + " a sq ft a year (city median $" + city.rent_surface.median_psf.toFixed(0) + ", from " + city.rent_surface.psf.length + " lease listings and rents tenants pay, so only roughly by district).";
     $("fMix").textContent += " " + safetyNote(site.lat, site.lon, m.sim_category) + " " + siteNotes(m.sim_category) + " " + newBusinessNote(city.sim_categories[m.sim_category]);
     const count = typical[15];
     let losers = "";
