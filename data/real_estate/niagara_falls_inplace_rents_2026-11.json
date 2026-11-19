@@ -113,6 +113,18 @@
    "kind": "asking",
    "year": 2025,
    "source": "Colliers International Niagara brochure, updated November 2025: https://images1.showcase.com/d2/MkwwD470NTippb4XHVdxj73WwyQENma5vsUT5uxlDd0/document.pdf (read through Gemini's page reader; this session gets 403)"
+  },
+  {
+   "address": "6080 McLeod Rd",
+   "community": "220 - Oldfield",
+   "use": "retail/office plaza unit (tenants include Service Canada, Pharmasave, medical clinic)",
+   "sqft": 6100,
+   "rent_psf_year": 25.0,
+   "tmi_psf_year": 10.0,
+   "basis": "net (+ TMI + utilities + HST)",
+   "kind": "asking",
+   "year": 2026,
+   "source": "Colliers International Niagara brochure, (c) 2026: https://images.loopnet.ca/d2/HYkG6WtJr2EpIUip02BcWtyTDFmcSzucMAeTAfYyz54/Lease%20Brochure.pdf (read through Gemini's page reader, retrieval confirmed; this session gets 403)"
   }
  ],
  "history": [
@@ -159,6 +171,13 @@
    "what": "All three 100.0% occupied at the end of 2015 (Crombie 2015 annual report, property list). Rents are given only for Crombie's whole Canadian portfolio: renewals at $16.32 a sq ft, new leases $16.90, 2015 expiring leases $16.61.",
    "source": "https://investors.crombie.ca/_resources/reports/annual/2015-Annual-Report.pdf",
    "note": "Occupancy is local; the rents are not."
+  },
+  {
+   "place": "McLeod Square, 7835-7957 McLeod Rd (about 90,697 sq ft; Metro, Scotiabank, Niagara Region health office)",
+   "year": 2022,
+   "what": "'Net Rent: Contact Listing Agent'; 'Additional Rent: $11.45 PSF (Tax $5.85 psf and Op Cost $5.60 psf) - est. 2022' (JLL brochure, October 2022).",
+   "tmi_psf_year": 11.45,
+   "source": "https://images.hello.jll.com/Web/JLLAmericas/{08fecc5e-5ee1-41db-877c-c236e3112dec}_7835-7957_McLeod_Road_-_MacLeod_Square_-_Oct_2022.pdf"
   }
  ],
  "checked_and_not_used": [
@@ -189,6 +208,10 @@
   {
    "claim": "Sears creditor list shows landlord OPB Realty at Niagara Square",
    "finding": "OPB Realty in that list is the Pen Centre, St. Catharines; the list gives amounts owed, not rents (https://cfcanada.fticonsulting.com/searscanada/docs/Credior%20Listing%20Sears%20062717.pdf). The Alvarez & Marsal appendix refuses this session (403)."
+  },
+  {
+   "claim": "Gemini's quotes of brochures it could not open",
+   "finding": "For 3 LoopNet PDFs the page reader reported a retrieval error yet Gemini answered with made-up Oshawa and North York listings. Only reads with confirmed retrieval are used; 7 Niagara Falls brochures (6788 Thorold Stone Rd, 6853 Lundy's Ln, 6240 McLeod Rd and others) remain unread."
   }
  ],
  "dates_without_rent": [

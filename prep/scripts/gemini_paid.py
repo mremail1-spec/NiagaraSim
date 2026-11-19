@@ -60,6 +60,10 @@ def ask(prompt: str, model="gemini-3-flash-preview", search=False, max_out=8192,
     LEDGER.write_text(json.dumps(led, indent=1))
     text = "".join(p.get("text", "") for p in c.get("content", {}).get("parts", []))
     pages = [(m.get("urlRetrievalStatus"), m.get("retrievedUrl")) for m in c.get("urlContextMetadata", {}).get("urlMetadata", [])]
+    if pages and any(s != "URL_RETRIEVAL_STATUS_SUCCESS" for s, _ in pages):
+        # Gemini answers anyway when a page fails to open, with made-up content (seen 2026-11-19)
+        print("WARNING: a page did NOT open; do not use this answer for that page", file=sys.stderr)
+        text = "PAGE NOT RETRIEVED (answer discarded)\n" + ("" if all(s != "URL_RETRIEVAL_STATUS_SUCCESS" for s, _ in pages) else text)
     if cost > 0.05:
         print(f"WARNING: this request cost about ${cost:.2f} ({tin:,} tokens in, {tout:,} out): ask for less per request", file=sys.stderr)
     return text, pages, cost
