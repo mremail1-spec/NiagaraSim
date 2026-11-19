@@ -16,6 +16,13 @@
   {"address": "5553 Ferry St", "community": "215 - Hospital", "mls": "X12865832", "use": "pizzeria franchise, licensed, 30-seat patio", "sqft": 800, "rent_month": 3000, "basis": "unstated ('very low rent')", "kind": "in_place", "lease": "long term", "rent_psf_year": 45.0},
   {"address": "6240 Thorold Stone Rd", "community": "212 - Morrison", "mls": "X13576822", "use": "chicken wings franchise in a plaza", "sqft": 1065, "rent_month": 2430, "basis": "gross (includes TMI)", "kind": "in_place", "rent_psf_year": 27.4}
  ],
+ "history": [
+  {"place": "Niagara Square, 7555 Montrose Rd (enclosed mall, anchors included)", "year": 2010,
+   "what": "RioCan bought a 30% interest for $14.1 million at a cap rate of 8.4% (RioCan Q3 2010 results). Implied value of the whole centre $47.0 million; net operating income 8.4% of that = $3.95 million a year over 382,300 sq ft = about $10.3 a sq ft a year (net of running costs, averaged over anchors, small shops and any empty space).",
+   "net_income_psf_year": 10.3, "sqft": 382300,
+   "source": "https://bayfieldadvisors.com/rio-can-announces-results-for-third-quarter-2010/ (now cogircre.ca; robots.txt allows all)",
+   "note": "A whole-mall average, not a shop rent: anchors pay far less a sq ft than small shops. Later redeveloped into an open-air centre of 265,611 sq ft with Costco next door."}
+ ],
  "dates_without_rent": [
   {"address": "3477 Portage Rd, Unit C", "mls": "X13854712", "use": "hair salon, Stamford Green Plaza", "sqft": 1328, "lease": "5 years to February 2028 (signed about February 2023), 5-year renewal option"},
   {"address": "4967 Clifton Hill", "mls": "X14141710", "use": "bubble tea franchise", "sqft": 300, "lease": "about 5 years left; 'below-market rent'"},
