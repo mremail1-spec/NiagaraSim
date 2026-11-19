@@ -21,7 +21,25 @@
    "what": "RioCan bought a 30% interest for $14.1 million at a cap rate of 8.4% (RioCan Q3 2010 results). Implied value of the whole centre $47.0 million; net operating income 8.4% of that = $3.95 million a year over 382,300 sq ft = about $10.3 a sq ft a year (net of running costs, averaged over anchors, small shops and any empty space).",
    "net_income_psf_year": 10.3, "sqft": 382300,
    "source": "https://bayfieldadvisors.com/rio-can-announces-results-for-third-quarter-2010/ (now cogircre.ca; robots.txt allows all)",
-   "note": "A whole-mall average, not a shop rent: anchors pay far less a sq ft than small shops. Later redeveloped into an open-air centre of 265,611 sq ft with Costco next door."}
+   "note": "A whole-mall average, not a shop rent: anchors pay far less a sq ft than small shops. Later redeveloped into an open-air centre of 265,611 sq ft with Costco next door."},
+  {"place": "5641 Stanley Ave (new 1,800 sq ft drive-thru restaurant pad at a Pioneer gas station)", "year": 2019,
+   "what": "Asking rent $40.00 a sq ft a year plus TMI and utilities, 5-15 year term, built to suit (Metropolitan Commercial Realty brochure, March 2019).",
+   "asking_net_psf_year": 40.0, "sqft": 1800,
+   "source": "https://www.metcomrealty.com/wp-content/uploads/2019/03/5641-Stanley-Ave.pdf",
+   "note": "Asking rent for new construction on a highway-entry gas station site; new pads ask more than existing space."},
+  {"place": "Canada One Outlets, 7500 Lundy's Lane", "year": 2020,
+   "what": "H&R REIT SOLD it (100%, 164,365 sq ft) on April 1, 2020 for $10.2 million, about $62 a sq ft (H&R Q1 2021 report, 2020 dispositions table).",
+   "sale_price_psf": 62, "sqft": 164365,
+   "source": "https://www.hr-reit.com/wp-content/uploads/2021/05/Q1-2021-Mar-31-Complete-Report.pdf",
+   "note": "A low price for retail space, so its rents were low or much of it was empty. The same report's average rents ($20.30 retail, $26.79 office, Q1 2021) are for H&R's whole Canadian portfolio, not Niagara Falls."}
+ ],
+ "checked_and_not_used": [
+  {"claim": "H&R acquired Canada One at 100% occupancy; Niagara rents $20.60-26.79", "finding": "H&R sold it on April 1, 2020; '100%' is the ownership share sold; $26.79 is H&R's Canada-wide office rent."},
+  {"claim": "Linens 'n Things 2008 court record shows Niagara Square leases at $12-18 a sq ft", "finding": "The record names the landlord (RioCan Property Services, 7555 Montrose Rd) but states no rent per sq ft anywhere (https://cdncases.alixpartners.com/.../1557_motionrecord-linens-oct-302008.pdf)."},
+  {"claim": "TRREB retail net lease $25.34 (Q4 2024) to $29.97 (Q4 2025)", "finding": "Correct figures, but for TRREB's Toronto-region MLS leases, not Niagara Falls (https://trreb.ca/market-data/commercial-report/)."},
+  {"claim": "Aion Appraisals: Lundy's Lane $18-26, Clifton Hill $30-50", "finding": "Page shows no figures without running JavaScript; unverified."},
+  {"claim": "6853 Lundy's Lane $31.00-31.50 net", "finding": "Landlord page confirms the building is for lease (next to UPS, Booster Juice, F45) but shows no rent."},
+  {"claim": "5001 Victoria Ave unit 2 $14 net + $6 TMI; 5719 Victoria upper $6,000/month", "finding": "Both pages refuse this session (403); a search summary showed $14 with TMI $7.96."}
  ],
  "dates_without_rent": [
   {"address": "3477 Portage Rd, Unit C", "mls": "X13854712", "use": "hair salon, Stamford Green Plaza", "sqft": 1328, "lease": "5 years to February 2028 (signed about February 2023), 5-year renewal option"},
