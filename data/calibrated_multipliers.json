@@ -1,31 +1,31 @@
 {
- "attraction_visits_per_party_day": 0.7962320435186792,
- "beta": 1.402255673892796,
+ "attraction_visits_per_party_day": 0.7742622570095751,
+ "beta": 1.4547933088615537,
  "external_scale": {
-  "alcohol": 1.1668521396976368,
+  "alcohol": 1.2127309403030784,
   "cannabis": 1.0,
-  "clothing": 2.9014023792991233,
-  "fuel": 2.5577531085232548,
+  "clothing": 3.2896070737210326,
+  "fuel": 2.650687137723451,
   "games_of_chance": 1.0,
-  "general_merchandise": 0.2628912984386371,
-  "groceries": 1.1668521396976368,
+  "general_merchandise": 0.2176190696845551,
+  "groceries": 1.2127309403030784,
   "health_services": 1.0,
-  "household_goods": 0.17414294713053366,
+  "household_goods": 0.18474528577274485,
   "personal_care": 1.0,
   "pets": 0.02,
-  "pharmacy": 0.77175718643631,
+  "pharmacy": 0.8043769931747047,
   "recreation_goods": 0.02,
   "recreation_services": 1.0,
-  "restaurants": 1.5321589209199473,
+  "restaurants": 1.5539893098938564,
   "tobacco": 1.0,
   "vehicle_service": 1.0
  },
  "operator_pull": {
-  "niagara_parks": 7.799780105364956
+  "niagara_parks": 9.637854868293855
  },
  "operator_revenue": {
-  "casino": 524442472.0,
-  "niagara_parks": 129851348.0,
+  "casino": 545821191.0,
+  "niagara_parks": 129851439.0,
   "targets": {
    "casino": 550000000.0,
    "niagara_parks": 129848000.0,
@@ -34,57 +34,57 @@
  },
  "sales_by_group": {
   "445": {
-   "after": 532026707.0,
-   "before": 537806726.0,
+   "after": 532124408.0,
+   "before": 539962269.0,
    "target": 531833926.0
   },
   "449": {
-   "after": 268538449.0,
-   "before": 271732642.0,
+   "after": 268558377.0,
+   "before": 270318598.0,
    "target": 269459230.0
   },
   "455": {
-   "after": 438034035.0,
-   "before": 437951696.0,
+   "after": 437774778.0,
+   "before": 427036031.0,
    "target": 438871932.0
   },
   "456": {
-   "after": 175538247.0,
-   "before": 173663541.0,
+   "after": 175548982.0,
+   "before": 177117284.0,
    "target": 175619457.0
   },
   "457": {
-   "after": 201241756.0,
-   "before": 195773483.0,
+   "after": 201246160.0,
+   "before": 203465925.0,
    "target": 201282991.0
   },
   "458": {
-   "after": 107749454.0,
-   "before": 116363537.0,
+   "after": 107751016.0,
+   "before": 116255419.0,
    "target": 107775746.0
   },
   "459": {
-   "after": 252355464.0,
-   "before": 252536763.0,
+   "after": 253688246.0,
+   "before": 253004301.0,
    "target": 310888215.0
   },
   "722": {
-   "after": 730206983.0,
-   "before": 721435132.0,
+   "after": 730210529.0,
+   "before": 733024534.0,
    "target": 730241134.0
   }
  },
  "tourist_capture": {
   "attractions": 1.0,
   "cannabis": 1.0,
-  "clothing": 0.467267677914004,
-  "food_from_stores": 0.8956360216828807,
-  "fuel": 0.5042498851713665,
+  "clothing": 0.4271804898265654,
+  "food_from_stores": 0.8713010640573527,
+  "fuel": 0.498426463062517,
   "gaming": 1.0,
   "other_retail": 1.0,
   "parking": 1.0,
   "recreation": 1.0,
-  "restaurants": 0.7328340331223473,
+  "restaurants": 0.7298799092069536,
   "sightseeing": 1.0,
   "vehicle_rental": 1.0
  }
