@@ -226,7 +226,7 @@ def _hotel_classes(tour: dict, cap: list[int], n_total: int) -> dict:
     return out
 
 
-def _tourism_block(tour: dict, sim_cats: list[str], n_total: int) -> dict:
+def _tourism_block(tour: dict, sim_cats: list[str], n_total: int, names: list[str] | None = None) -> dict:
     """Tourism inputs with per-business arrays aligned to the engine's business list."""
     kind = {"hotel": 1, "rental": 2, "camping": 3}
     cap, typ, att = [0] * n_total, [0] * n_total, [0.0] * n_total
@@ -234,6 +234,8 @@ def _tourism_block(tour: dict, sim_cats: list[str], n_total: int) -> dict:
         cap[i], typ[i] = int(v), kind[tour["lodging_type"][i]]
     for i, v in tour["attendance_target"].items():
         att[i] = float(v)
+    from .attendance_fit import factors_for
+    fit = factors_for(names or [], att)
     c = tour["categories"]
     return {"segments": tour["segments"], "party_size_mean": tour["party_size_mean"], "party_profile": tour.get("party_profile"), "nights": tour["nights"],
             "lodging_share": tour["lodging_share"],
@@ -242,7 +244,7 @@ def _tourism_block(tour: dict, sim_cats: list[str], n_total: int) -> dict:
                            "served_by": [[float(sv.get(x, 0.0)) for x in sim_cats] for sv in c["served_by"]]},
             "transport_fare_share": tour["transport_fare_share"], "day_of_week": tour["day_of_week"],
             "hotel": tour.get("hotel"),
-            "first_weekday": tour["first_weekday"], "capacity": cap, "lodging_type": typ, "attendance_target": att,
+            "first_weekday": tour["first_weekday"], "capacity": cap, "lodging_type": typ, "attendance_target": att, "attendance_fit_factor": fit,
             "night_price_factor": tour.get("night_price_factor", [1.0] * 7),
             **_hotel_classes(tour, cap, n_total),
             "hotel_rooms_published_range": [tour["hotel_rooms"]["low"], tour["hotel_rooms"]["high"]]}
@@ -469,7 +471,7 @@ def export_city(pack: Pack, city: dict, budgets: np.ndarray, year: int, path: Pa
             doc["businesses"]["format_weight"][i] = round(doc["businesses"]["format_weight"][i] * pull[name], 4)
     doc["calibration"] = {"sales_targets": sales_targets(pack, len(city["persons"])), "beta": cal.get("beta")}
     if city.get("tourism"):
-        doc["tourism"] = _tourism_block(city["tourism"], sim_cats, n_real + len(ext))
+        doc["tourism"] = _tourism_block(city["tourism"], sim_cats, n_real + len(ext), [b["name"] for b in biz])
         falls = next(x["road_node"] for x in biz if x["name"] == "Journey Behind the Falls")
         doc["tourism"]["gateways"] = _gateways(city["tourism"], nodes, edges, falls)
         tc = doc["tourism"]["categories"]

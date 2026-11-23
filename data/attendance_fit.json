@@ -1,0 +1,39 @@
+{
+ "_meta": {
+  "what": "Attraction attendance: a correction from one full agent year.",
+  "last_run": {
+   "Butterfly Conservatory": {
+    "published": 303791.0,
+    "simulated_before": 312362.0
+   },
+   "Floral Showhouse": {
+    "published": 63488.0,
+    "simulated_before": 63154.0
+   },
+   "Journey Behind the Falls": {
+    "published": 917075.0,
+    "simulated_before": 919319.0
+   },
+   "Niagara Parks Power Station": {
+    "published": 334206.0,
+    "simulated_before": 330831.0
+   },
+   "Whirlpool Aero Car": {
+    "published": 190481.0,
+    "simulated_before": 200587.0
+   },
+   "White Water Walk": {
+    "published": 211930.0,
+    "simulated_before": 216687.0
+   }
+  }
+ },
+ "factor": {
+  "Butterfly Conservatory": 0.9726,
+  "Floral Showhouse": 1.0053,
+  "Journey Behind the Falls": 0.9976,
+  "Niagara Parks Power Station": 1.0102,
+  "Whirlpool Aero Car": 0.9496,
+  "White Water Walk": 0.978
+ }
+}

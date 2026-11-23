@@ -211,6 +211,7 @@ fn journey_behind_the_falls_and_other_attendance_match() {
             continue;
         }
         let got = e.state().tour.persons[b];
+        println!("{}: model {got:.0}, published {target:.0}, {:+.1}%", e.city.businesses.name[b], 100.0 * (got / target - 1.0));
         let limit = if target == 917_075.0 { 0.02 } else { 0.05 };
         assert!((got - target).abs() / target < limit, "{}: {got} vs {target}", e.city.businesses.name[b]);
         checked += 1;

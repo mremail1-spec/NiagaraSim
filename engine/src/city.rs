@@ -304,6 +304,10 @@ pub struct Tourism {
     pub lodging_type: Vec<u8>,
     /// Published yearly attendance for the attractions that report it; 0 otherwise.
     pub attendance_target: Vec<f64>,
+    /// Correction applied to the target when fitting pulls (published / simulated from a full agent
+    /// year, nfprep.attendance_fit): the fit is exact in expectation, the agent year shifts it a little.
+    #[serde(default)]
+    pub attendance_fit_factor: Vec<f64>,
 }
 
 #[derive(Clone, Deserialize)]

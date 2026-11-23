@@ -324,6 +324,9 @@ impl Engine {
             t.capacity.push(0);
             t.lodging_type.push(0);
             t.attendance_target.push(0.0);
+            if !t.attendance_fit_factor.is_empty() {
+                t.attendance_fit_factor.push(1.0);
+            }
         }
         self.state.revenue.push(0.0);
         self.state.visits.push(0);

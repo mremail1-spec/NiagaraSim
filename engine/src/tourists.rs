@@ -269,7 +269,7 @@ impl Engine {
         // tune the pull of attractions with published attendance so Journey Behind the Falls matches
         if let Some(ac) = attraction_cat {
             let base_pull = rt.cat_pull[ac].clone();
-            let has_target: Vec<f64> = rt.cat_business[ac].iter().map(|&b| t.attendance_target[b as usize]).collect();
+            let has_target: Vec<f64> = rt.cat_business[ac].iter().map(|&b| t.attendance_target[b as usize] * t.attendance_fit_factor.get(b as usize).copied().unwrap_or(1.0)).collect();
             let lead = has_target.iter().cloned().fold(0.0, f64::max);
             if lead > 0.0 {
                 let lead_i = has_target.iter().position(|&x| x == lead).unwrap();
