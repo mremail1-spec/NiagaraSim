@@ -11,9 +11,9 @@ asked for: status alone is the 'Pro' kind (5,000 free a month), with rating and 
 allowances, counted per calendar month in build/google_places_usage.json; run it again next month
 to fill in the ratings still missing.
 
-Google's replies stay in build/ (their terms limit storing Places content); only our own
-open/closed decision per business is used in the build. The project never offers a map or
-directory built on them.
+Google's replies are kept in data/google_places.json (the owner's decision; the repository stays
+private, as for the TomTom speeds). The build drops businesses Google lists as permanently closed
+(businesses.py). The project never offers a map or directory built on them.
 
 Usage: python3 -m nfprep.google_places            (both kinds, up to the free allowances)
        python3 -m nfprep.google_places --test N   (first N businesses only)
@@ -31,7 +31,7 @@ from pathlib import Path
 import numpy as np
 
 ROOT = Path(__file__).resolve().parents[2]
-OUT = ROOT / "build" / "google_places.json"
+OUT = ROOT / "data" / "google_places.json"   # kept (owner: private repo, like the TomTom speeds)
 USAGE = ROOT / "build" / "google_places_usage.json"
 URL = "https://places.googleapis.com/v1/places:searchText"
 BASE_FIELDS = ["places.id", "places.displayName", "places.formattedAddress", "places.location",
@@ -50,6 +50,18 @@ def month() -> str:
 def usage() -> dict:
     u = json.loads(USAGE.read_text()) if USAGE.exists() else {}
     return u.setdefault(month(), {"pro": 0, "enterprise": 0}) and u
+
+
+def key(b: dict) -> str:
+    return b["osm_id"] or f"{b['source']}:{b['name']}:{b['address']}"
+
+
+def closed_keys() -> dict:
+    """Businesses Google lists as permanently closed: key -> (Google's name, date checked)."""
+    if not OUT.exists():
+        return {}
+    return {k: ((v["match"].get("displayName") or {}).get("text"), v["checked"]) for k, v in json.loads(OUT.read_text()).items()
+            if v.get("match") and v["match"].get("businessStatus") == "CLOSED_PERMANENTLY"}
 
 
 def search(text: str, lat: float, lon: float, ratings: bool):
@@ -112,8 +124,8 @@ def main(limit: int | None = None) -> dict:
     m = u[month()]
     asked = 0
     for b in rows[:limit] if limit else rows:
-        key = b["osm_id"] or f"{b['source']}:{b['name']}:{b['address']}"
-        have = done.get(key)
+        k = key(b)
+        have = done.get(k)
         if have and (not have["match"] or have["ratings_asked"]):
             continue                               # done (not on Google, or ratings already asked)
         ratings = m["enterprise"] < FREE["enterprise"]
@@ -125,7 +137,7 @@ def main(limit: int | None = None) -> dict:
         m["enterprise" if ratings else "pro"] += 1
         asked += 1
         hit = best_match(b, places)
-        done[key] = {"business_id": int(b["business_id"]), "name": b["name"], "address": b["address"], "query": text,
+        done[k] = {"business_id": int(b["business_id"]), "name": b["name"], "address": b["address"], "query": text,
                      "match": hit, "same_address": None if hit else same_address(b, places), "ratings_asked": ratings, "checked": time.strftime("%Y-%m-%d"),
                      "candidates": [{"name": (p.get("displayName") or {}).get("text"), "status": p.get("businessStatus"),
                                      "address": p.get("formattedAddress")} for p in places[:5]]}

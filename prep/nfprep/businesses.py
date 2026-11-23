@@ -388,6 +388,17 @@ def build_businesses(pack: Pack, seed: int = 1) -> list[dict]:
             r["name"] = f"{what} on {street}" if street else what
             r["name_source"] = "description (no name on the map)"
 
+    # closed for good: businesses Google Places lists as permanently closed (data/google_places.json,
+    # checked November 2026). OpenStreetMap and older lists keep shops for years after they close.
+    from .google_places import closed_keys, key as _gkey
+    closed = closed_keys()
+    if closed:
+        gone = [r for r in rows if _gkey(r) in closed]
+        rows[:] = [r for r in rows if _gkey(r) not in closed]
+        for i, r in enumerate(rows):
+            r["business_id"] = i
+        print(f"dropped {len(gone)} businesses Google lists as permanently closed")
+
     # tract and Tourist Core flags for everything added after the map places
     lat = np.array([r["lat"] for r in rows])
     lon = np.array([r["lon"] for r in rows])
