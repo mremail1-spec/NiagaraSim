@@ -1,0 +1,117 @@
+<title>Niagara Falls Openings</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one reading column; verdict by kind first, then the spots, then the listed spaces and the caveats */
+:root {
+  --bg: #f6f8f9; --surface: #ffffff; --ink: #0f1a22; --ink-2: #4a5964; --ink-3: #74838d;
+  --rule: #d9e1e6; --mist: #e8eef2;
+  --bar: #2a78d6; --mark: #0f1a22;
+  --good: #0a7d0a; --good-bg: #e3f3e3; --none: #8a4a1f; --none-bg: #f8ebe2;
+  --display: "Space Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #101619; --surface: #172025; --ink: #eef3f6; --ink-2: #b4c1c9; --ink-3: #8797a1; --rule: #2b373e; --mist: #212c32;
+  --bar: #3987e5; --mark: #eef3f6; --good: #5fd35f; --good-bg: #173322; --none: #f0a774; --none-bg: #3a2417; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #101619; --surface: #172025; --ink: #eef3f6; --ink-2: #b4c1c9; --ink-3: #8797a1; --rule: #2b373e; --mist: #212c32;
+  --bar: #3987e5; --mark: #eef3f6; --good: #5fd35f; --good-bg: #173322; --none: #f0a774; --none-bg: #3a2417; color-scheme: dark }
+body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 15px; line-height: 1.55; }
+.wrap { max-width: 860px; margin: 0 auto; padding-block: 32px 64px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); display: grid; gap: 40px; }
+h1, h2 { font-family: var(--display); text-wrap: balance; margin: 0; }
+h1 { font-size: clamp(28px, 5vw, 40px); line-height: 1.1; letter-spacing: -0.01em; }
+h2 { font-size: 21px; line-height: 1.25; }
+p { margin: 0; max-width: 68ch; }
+.eyebrow { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); font-weight: 600; }
+.lede { font-size: 17px; color: var(--ink-2); }
+section { display: grid; gap: 14px; }
+.num { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+.fig { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 18px; display: grid; gap: 12px; min-width: 0; }
+.note { font-size: 13px; color: var(--ink-2); }
+.k { display: grid; grid-template-columns: minmax(0, 210px) minmax(0, 1fr) 96px; gap: 4px 14px; align-items: center; font-size: 13px; }
+.k .name small { display: block; color: var(--ink-3); }
+.track { position: relative; height: 14px; background: var(--mist); border-radius: 0 4px 4px 0; }
+.bar { position: absolute; left: 0; top: 0; height: 14px; background: var(--bar); border-radius: 0 4px 4px 0; }
+.line { position: absolute; top: -4px; bottom: -4px; width: 2px; background: var(--mark); }
+.line.lbl::after { content: attr(data-l); position: absolute; top: -18px; left: -12px; font-size: 11px; color: var(--ink-2); white-space: nowrap; }
+.pill { display: inline-block; font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 999px; white-space: nowrap; text-align: center; }
+.pill.yes { background: var(--good-bg); color: var(--good); }
+.pill.no { background: var(--none-bg); color: var(--none); }
+.pill.yes::before { content: "\2713  "; } .pill.no::before { content: "\2014  "; }
+@media (max-width: 560px) { .k { grid-template-columns: 1fr 80px; } .k .track { grid-column: 1 / -1; } }
+.tablewrap { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+th, td { text-align: left; padding: 7px 10px 7px 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
+th { font-weight: 600; color: var(--ink-2); font-size: 12px; }
+td.r, th.r { text-align: right; font-family: var(--mono); font-variant-numeric: tabular-nums; white-space: nowrap; }
+ul { margin: 0; padding-left: 18px; display: grid; gap: 6px; max-width: 70ch; }
+#tip { position: fixed; pointer-events: none; background: var(--ink); color: var(--bg); font-size: 12px; padding: 6px 9px; border-radius: 6px; max-width: 260px; z-index: 5; line-height: 1.4; }
+</style>
+
+<div class="wrap">
+  <header style="display:grid;gap:12px">
+    <div class="eyebrow">Niagara Falls simulation · forecast for a new business today · default plus 5 scenarios</div>
+    <h1>Where a new business could still work</h1>
+    <p class="lede">Every kind of business, tested at <span class="num" id="nSites"></span> spots across the city and in every space listed for lease. The tourist trade is full: no restaurant, cafe, bar, souvenir shop or attraction finds a spot that clearly beats the ones already there. The openings are in everyday shopping for residents: groceries, pharmacies and specialty shops in the middle of the city.</p>
+  </header>
+
+  <section>
+    <h2>Best spot for each kind of business</h2>
+    <p class="note">How a newcomer at the best spot would do against the median business of its kind already in the city, in the least favourable scenario. The dark line marks 1.3×, the bar a spot must clear in every scenario to count.</p>
+    <div class="fig" id="kinds"></div>
+  </section>
+
+  <section>
+    <h2>The strongest spots</h2>
+    <div class="fig tablewrap"><table id="top"></table></div>
+    <p class="note">Forecast first-year sales in the default scenario, for a newcomer the size of the median business of its kind. Margin: the industry's normal profit margin after the rent on that street (asking rents from lease listings and rents tenants pay).</p>
+  </section>
+
+  <section>
+    <h2>Spaces listed for lease that fit</h2>
+    <div class="fig tablewrap"><table id="lease"></table></div>
+  </section>
+
+  <section>
+    <h2>Read this with care</h2>
+    <ul class="note">
+      <li>A single forecast can be off by about ×<span class="num" id="err"></span> either way: that is how far the model misses a chain when the chain is left out of its fitting. Comparing spots and kinds is more reliable than the dollar figures.</li>
+      <li>Groceries clear the sales test but keep thin margins (about 1–2% after rent). A pharmacy keeps about 7%.</li>
+      <li>The model knows the businesses on the map, the City's licences and the Region's employment survey, and leaves out those now closed. A competitor that opened recently and is on none of them is not counted.</li>
+      <li>Every scenario matches the chains' published sales per store, Niagara Parks' revenue, hotel occupancy, road traffic counts and Statistics Canada's sales by type of store.</li>
+    </ul>
+  </section>
+</div>
+<div id="tip" hidden></div>
+
+<script>
+fetch("opportunities_data.json").then(r => r.json()).then(draw).catch(e => {
+  document.querySelector(".lede").textContent = "The data file did not load: " + e.message;
+});
+const k$ = v => "$" + (v >= 1e6 ? (v / 1e6).toFixed(1) + "M" : Math.round(v / 1e3) + "k");
+function draw(D) {
+  const $ = id => document.getElementById(id);
+  $("nSites").textContent = D.meta.sites_tested;
+  $("err").textContent = D.forecast_error.p90_factor;
+  const max = 2.5, x = v => Math.min(v, max) / max * 100 + "%";
+  $("kinds").innerHTML = D.kinds.map((k, i) => `
+    <div class="k" data-tip="${k.kind}: best spot ${k.best}, ${k.best_x}× the median of ${k.now} existing (median ${k$(k.median)}); ${k.spots} spots clear 1.3× in every scenario">
+      <div class="name">${k.kind}<small>${k.now} in the city · best: ${k.best}</small></div>
+      <div class="track"><div class="bar" style="width:${x(k.best_x)}"></div><div class="line ${i === 0 ? "lbl" : ""}" data-l="1.3×" style="left:${x(1.3)}"></div></div>
+      <div>${k.spots > 0 ? `<span class="pill yes">${k.spots} spots</span>` : `<span class="pill no">none</span>`} <span class="num" style="font-size:12px;color:var(--ink-2)">${k.best_x}×</span></div>
+    </div>`).join("");
+  $("top").innerHTML = "<tr><th>Kind</th><th>Where</th><th class='r'>vs median, worst case</th><th class='r'>Forecast sales</th><th class='r'>Margin</th><th class='r'>Rent /sq ft</th></tr>" +
+    D.top.map(o => `<tr><td>${o.kind}</td><td>${o.where}${o.for_lease ? " <b>(for lease)</b>" : ""}</td><td class="r">${o.vs_median_competitor_worst}×</td><td class="r">${k$(o.forecast_sales_default)}</td><td class="r">${o.margin_after_street_rent_pct}%</td><td class="r">$${o.rent_psf}</td></tr>`).join("");
+  $("lease").innerHTML = "<tr><th>Space</th><th>Kind</th><th class='r'>vs median, worst case</th><th class='r'>Forecast sales</th><th class='r'>Margin</th></tr>" +
+    D.lease.map(o => `<tr><td>${o.where}</td><td>${o.kind}</td><td class="r">${o.vs_median_competitor_worst}×</td><td class="r">${k$(o.forecast_sales_default)}</td><td class="r">${o.margin_after_street_rent_pct}%</td></tr>`).join("");
+  const tip = $("tip");
+  document.addEventListener("pointermove", e => {
+    const t = e.target.closest("[data-tip]");
+    if (!t) { tip.hidden = true; return; }
+    tip.textContent = t.dataset.tip; tip.hidden = false;
+    tip.style.left = Math.min(e.clientX + 12, innerWidth - 270) + "px"; tip.style.top = (e.clientY + 14) + "px";
+  });
+}
+</script>
