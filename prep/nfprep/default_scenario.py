@@ -45,6 +45,41 @@ def choose() -> dict:
     return doc
 
 
+def fit_brands(city: dict, beta: float, rounds: int = 8) -> dict:
+    """Each chain's pull, fitted so its branches' median sales match its published sales per store.
+    Spending stays in the same kind of business; it moves between the chain and its competitors."""
+    import csv, math, re, subprocess, tempfile
+    import numpy as np
+    bench = json.loads((DATA_DIR / "public_unit_sales_2025.json").read_text())["brands"]
+    b = city["businesses"]
+    cats = city["sim_categories"]
+    groups = {brand: [i for i, nm in enumerate(b["name"]) if re.search(v["pattern"], nm.lower())
+                      and ("category" not in v or cats[b["sim_category"][i]] == v["category"])]
+              for brand, v in bench.items()}
+    groups = {k: v for k, v in groups.items() if v}
+    mult = {k: 1.0 for k in groups}
+    hist = []
+    for _ in range(rounds):
+        with tempfile.TemporaryDirectory() as d:
+            cp, bp = Path(d) / "city.json", Path(d) / "biz.csv"
+            cp.write_text(json.dumps(city, separators=(",", ":")))
+            subprocess.run([str(ROOT / "engine/target/release/nfsim"), "run", str(cp), "--mode", "flow", "--days", "365",
+                            "--beta", str(beta), "--businesses", str(bp)], check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+            rev = {int(r["business"]): float(r["revenue"]) for r in csv.DictReader(open(bp))}
+        ratios = {k: float(np.median([rev.get(i, 0) for i in ids])) / bench[k]["average"] for k, ids in groups.items()}
+        hist.append({k: round(v, 3) for k, v in ratios.items()})
+        for k, ids in groups.items():
+            step = (1.0 / max(ratios[k], 1e-3)) ** 0.7          # damped: competitors react
+            step = min(max(step, 0.25), 4.0)
+            mult[k] *= step
+            for i in ids:
+                b["format_weight"][i] *= step
+    print("chain sales per store, model / published, by round:")
+    for h in hist:
+        print("  ", h)
+    return {"multiplier": {k: round(v, 4) for k, v in mult.items()}, "ratio_by_round": hist}
+
+
 def apply() -> None:
     from .ensemble import apply as apply_knobs
     if not FILE.exists():
@@ -57,6 +92,13 @@ def apply() -> None:
     city.setdefault("meta", {})["default_scenario"] = k
     CITY.write_text(json.dumps(city, separators=(",", ":")))
     cal = json.loads(CAL.read_text())
+    beta = cal.get("beta_fit", cal["beta"]) if cal.get("beta_fit_source") == "calibrate" else cal["beta"]
+    fit = fit_brands(city, beta * k["beta_mult"])
+    city.setdefault("meta", {})["brand_pull"] = fit
+    CITY.write_text(json.dumps(city, separators=(",", ":")))
+    doc = json.loads(FILE.read_text())
+    doc["brand_pull"] = fit
+    FILE.write_text(json.dumps(doc, indent=1))
     if cal.get("beta_fit_source") != "calibrate":     # first apply since calibration: keep the fitted beta
         cal["beta_fit"], cal["beta_fit_source"] = cal["beta"], "calibrate"
     cal["beta"] = round(cal["beta_fit"] * k["beta_mult"], 6)
