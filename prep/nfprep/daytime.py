@@ -26,14 +26,19 @@ JOBS_AT_USUAL_PLACE = 0.8      # as in traffic_layers: share of jobs worked at t
 
 def places() -> list[dict]:
     """Every school and workplace with its people and the money they spend nearby each year."""
-    spend = json.loads((DATA_DIR / "daytime_spending.json").read_text())["groups"]
+    sd = json.loads((DATA_DIR / "daytime_spending.json").read_text())
+    spend, notes = sd["groups"], sd.get("schools", {})
     out = []
     for s in json.loads((DATA_DIR / "school_enrolment_2022_23.json").read_text())["schools"]:
         if not s["enrolment"] or s["lat"] is None:
             continue
         g = "high_school_student" if s["level"] == "Secondary" else "elementary_student"
-        v = spend[g]
-        out.append({"name": s["name"], "kind": "high school" if g.startswith("high") else "elementary school",
+        v = dict(spend[g])
+        closed = notes.get(s["name"], {}).get("cafeteria") == "closed"
+        if closed:   # no cafeteria: what students would spend in it goes off campus as well
+            for k in ("per_year", "low", "high"):
+                v[k] += v.get("cafeteria_per_year", 0)
+        out.append({"cafeteria_closed": closed, "name": s["name"], "kind": "high school" if g.startswith("high") else "elementary school",
                     "address": s["address"], "lat": float(s["lat"]), "lon": float(s["lon"]), "people": s["enrolment"],
                     "group": g, "per_year": s["enrolment"] * v["per_year"], "low": s["enrolment"] * v["low"], "high": s["enrolment"] * v["high"]})
     from .traffic_layers import BAND_JOBS
