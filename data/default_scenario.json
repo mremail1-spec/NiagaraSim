@@ -1,0 +1,144 @@
+{
+ "_meta": {
+  "what": "The model's default: the scenario that matches the chains' own published sales most closely.",
+  "chosen_from": "8 scenarios that fit every fact (run 548 of 800)",
+  "chains_by_brand_model_over_published": {
+   "Pizza Pizza": 1.968,
+   "The Keg": 0.811,
+   "Boston Pizza": 0.791,
+   "Tim Hortons": 0.74,
+   "A&W": 0.256,
+   "LCBO": 0.328,
+   "Dollarama": 0.196,
+   "Shoppers Drug Mart": 0.334,
+   "Canadian Tire": 5.444
+  },
+  "chains_typical_error_factor": 2.994
+ },
+ "knobs": {
+  "beta_mult": 0.827172441184045,
+  "attract_exp": 0.48233224046690515,
+  "tourist_floor_min": 2.531300670822257,
+  "visitors_mult": 1.032564583118936,
+  "spend_mult": 0.9744034285009897,
+  "restaurant_capture": 0.7779184591889162,
+  "chain_mult": 0.6663592326320705,
+  "core_mult": 1.2677341342528696,
+  "casino_mult": 1.1660482896533446,
+  "parks_mult": 0.7,
+  "safety_scale": 0.9840694921056011,
+  "outings_mult": 1.0767280687074374
+ },
+ "brand_pull": {
+  "multiplier": {
+   "Pizza Pizza": 0.5131,
+   "The Keg": 1.2445,
+   "Boston Pizza": 1.0248,
+   "Tim Hortons": 1.3651,
+   "A&W": 3.913,
+   "LCBO": 4.9756,
+   "Dollarama": 4.0964,
+   "Shoppers Drug Mart": 3.4287,
+   "Canadian Tire": 0.1375,
+   "Niagara Parks (total)": 1.285
+  },
+  "ratio_by_round": [
+   {
+    "Pizza Pizza": 1.988,
+    "The Keg": 0.818,
+    "Boston Pizza": 0.998,
+    "Tim Hortons": 0.749,
+    "A&W": 0.261,
+    "LCBO": 0.355,
+    "Dollarama": 0.191,
+    "Shoppers Drug Mart": 0.364,
+    "Canadian Tire": 5.625,
+    "Niagara Parks (total)": 0.889
+   },
+   {
+    "Pizza Pizza": 1.219,
+    "The Keg": 0.934,
+    "Boston Pizza": 0.989,
+    "Tim Hortons": 0.908,
+    "A&W": 0.662,
+    "LCBO": 0.6,
+    "Dollarama": 0.739,
+    "Shoppers Drug Mart": 0.666,
+    "Canadian Tire": 2.071,
+    "Niagara Parks (total)": 0.923
+   },
+   {
+    "Pizza Pizza": 1.056,
+    "The Keg": 0.975,
+    "Boston Pizza": 0.991,
+    "Tim Hortons": 0.966,
+    "A&W": 0.878,
+    "LCBO": 0.747,
+    "Dollarama": 0.946,
+    "Shoppers Drug Mart": 0.834,
+    "Canadian Tire": 1.286,
+    "Niagara Parks (total)": 0.945
+   },
+   {
+    "Pizza Pizza": 1.013,
+    "The Keg": 0.99,
+    "Boston Pizza": 0.994,
+    "Tim Hortons": 0.986,
+    "A&W": 0.959,
+    "LCBO": 0.836,
+    "Dollarama": 0.993,
+    "Shoppers Drug Mart": 0.918,
+    "Canadian Tire": 1.088,
+    "Niagara Parks (total)": 0.962
+   },
+   {
+    "Pizza Pizza": 1.002,
+    "The Keg": 0.996,
+    "Boston Pizza": 0.997,
+    "Tim Hortons": 0.994,
+    "A&W": 0.986,
+    "LCBO": 0.892,
+    "Dollarama": 1.001,
+    "Shoppers Drug Mart": 0.96,
+    "Canadian Tire": 1.029,
+    "Niagara Parks (total)": 0.974
+   },
+   {
+    "Pizza Pizza": 1.0,
+    "The Keg": 0.998,
+    "Boston Pizza": 0.998,
+    "Tim Hortons": 0.997,
+    "A&W": 0.995,
+    "LCBO": 0.928,
+    "Dollarama": 1.002,
+    "Shoppers Drug Mart": 0.98,
+    "Canadian Tire": 1.01,
+    "Niagara Parks (total)": 0.982
+   },
+   {
+    "Pizza Pizza": 0.999,
+    "The Keg": 0.999,
+    "Boston Pizza": 0.999,
+    "Tim Hortons": 0.998,
+    "A&W": 0.998,
+    "LCBO": 0.951,
+    "Dollarama": 1.001,
+    "Shoppers Drug Mart": 0.99,
+    "Canadian Tire": 1.003,
+    "Niagara Parks (total)": 0.988
+   },
+   {
+    "Pizza Pizza": 0.999,
+    "The Keg": 0.999,
+    "Boston Pizza": 0.999,
+    "Tim Hortons": 0.999,
+    "A&W": 0.999,
+    "LCBO": 0.967,
+    "Dollarama": 1.001,
+    "Shoppers Drug Mart": 0.995,
+    "Canadian Tire": 1.001,
+    "Niagara Parks (total)": 0.992
+   }
+  ]
+ }
+}
