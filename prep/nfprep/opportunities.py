@@ -5,12 +5,10 @@ souvenir shop...) at every spot where businesses already trade or space is liste
 engine forecasts a typical-size newcomer's first-year sales, taking customers from the businesses
 around it. Businesses known to be closed are left out (a newcomer opens into today's city).
 
-Sales become profit with the industry's cost structure (Statistics Canada benchmarks, as in the game)
-and rent on that street (rent_surface.py). An opportunity must hold in every scenario that fits the
-evidence (nfprep.ensemble), not just the default: sales at least those of a typical business of its
-kind and a profit in all of them.
-
-Also reported: what residents spend in each neighbouring town (money that leaves the city).
+The yardstick is the competition: what the businesses of that kind already trading in the city earn
+in the same scenario. An opportunity is a spot where a newcomer would clearly out-sell the median
+one, in every scenario that fits the evidence (nfprep.ensemble), and where the industry's normal profit
+margin survives the rent on that street (rent_surface.py).
 
 Usage: python3 -m nfprep.opportunities [scenarios]   (default 5 scenarios plus the default)
 """
@@ -32,6 +30,7 @@ ROOT = Path(__file__).resolve().parents[2]
 CITY = ROOT / "build" / "city_2025" / "city.json"
 NFSIM = str(ROOT / "engine/target/release/nfsim")
 NOW = "209912"          # every known closure
+BEAT = 1.3              # a newcomer must out-sell the median business of its kind by this much, in every scenario
 
 
 def sites(city: dict) -> list[dict]:
@@ -108,47 +107,45 @@ def main(n_scen: int = 5) -> dict:
     with Pool(min(4, len(scen))) as pool:
         res = pool.starmap(forecast, [(p, beta, site_list, menu) for _, p, beta in scen])
     sales = np.stack([r.sum(axis=2) for r in res])   # [scen, site, kind]
-    margin = np.array([1 - (m["cost_of_sales_pct"] + m["wages_pct"]) / 100 for m in menu])
-    size = np.array([m["sizes"]["typical"] for m in menu])
-    base_fixed = np.array([(100 - m["cost_of_sales_pct"] - m["wages_pct"] - m["net_profit_pct"]) / 100 for m in menu])
-    rent_pct = np.array([m.get("rent_pct", 0) / 100 for m in menu])
-    fixed = (base_fixed[None, :] + rent_pct[None, :] * (rent_f[:, None] - 1)) * size[None, :]      # [site, kind]
-    prof = sales * margin[None, None, :] - fixed[None, :, :]
-    typical = np.array([m["sizes"]["typical"] for m in menu])
-    ratio = sales / typical[None, None, :]
-    robust = (ratio.min(axis=0) >= 1.0) & (prof.min(axis=0) > 0)              # holds in every scenario
+    # the yardstick: what the businesses of that kind already in the city earn, in the same scenario
+    b = city["businesses"]
+    med = np.zeros((len(scen), len(menu)))
+    counts = np.zeros(len(menu), int)
+    for si, (_, p, beta) in enumerate(scen):
+        with tempfile.TemporaryDirectory() as d:
+            bp = Path(d) / "biz.csv"
+            subprocess.run([NFSIM, "run", str(p), "--mode", "flow", "--days", "365", "--beta", str(beta), "--closures-as-of", NOW,
+                            "--businesses", str(bp)], check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+            rev = {int(r["business"]): float(r["revenue"]) for r in csv.DictReader(open(bp))}
+        for k, m in enumerate(menu):
+            ids = [i for i in range(len(b["node"])) if b["sim_category"][i] == m["sim_category"] and not b["external"][i] and not b["closed_from"][i]]
+            counts[k] = len(ids)
+            med[si, k] = float(np.median([rev.get(i, 0.0) for i in ids])) if ids else np.nan
+    rel = sales / med[:, None, :]                                               # newcomer / median existing business
+    # profit margin a business of that kind keeps on this street: the industry's normal margin, less extra rent
+    margin = np.array([[m["net_profit_pct"] - m.get("rent_pct", 0) * (rent_f[i] - 1) for m in menu] for i in range(len(site_list))])
+    robust = (rel.min(axis=0) >= BEAT) & (margin > 0)
     found = []
     for i, k in zip(*np.where(robust)):
         found.append({"kind": menu[k]["label"], "where": site_list[i]["where"], "for_lease": site_list[i]["for_lease"],
                       "lat": round(site_list[i]["lat"], 5), "lon": round(site_list[i]["lon"], 5),
-                      "sales_vs_typical_min": round(float(ratio[:, i, k].min()), 2), "sales_vs_typical_default": round(float(ratio[0, i, k]), 2),
-                      "profit_min": round(float(prof[:, i, k].min())), "profit_default": round(float(prof[0, i, k])),
-                      "rent_psf": round(rs.at(site_list[i]["lat"], site_list[i]["lon"]), 1)})
-    found.sort(key=lambda x: -x["profit_min"])
-    # per kind: how many spots work, and the best one
+                      "vs_median_competitor_worst": round(float(rel[:, i, k].min()), 2), "vs_median_competitor_default": round(float(rel[0, i, k]), 2),
+                      "forecast_sales_default": round(float(sales[0, i, k])), "median_competitor_default": round(float(med[0, k])),
+                      "margin_after_street_rent_pct": round(float(margin[i, k]), 1), "rent_psf": round(rs.at(site_list[i]["lat"], site_list[i]["lon"]), 1)})
+    found.sort(key=lambda x: -x["vs_median_competitor_worst"])
     by_kind = {}
     for k, m in enumerate(menu):
-        ok = robust[:, k]
-        best = int(np.argmax(prof.min(axis=0)[:, k]))
-        by_kind[m["label"]] = {"spots_that_work_in_every_scenario": int(ok.sum()), "spots_tested": len(site_list),
-                               "best_spot": site_list[best]["where"], "best_profit_worst_scenario": round(float(prof.min(axis=0)[best, k])),
-                               "median_sales_vs_typical": round(float(np.median(ratio[0, :, k])), 2)}
-    # money residents spend in the neighbouring towns, by kind (default scenario)
-    with tempfile.TemporaryDirectory() as d:
-        bp = Path(d) / "biz.csv"
-        subprocess.run([NFSIM, "run", str(CITY), "--mode", "flow", "--days", "365", "--beta", str(cal["beta"]), "--closures-as-of", NOW,
-                        "--businesses", str(bp)], check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-        b = city["businesses"]
-        leak = defaultdict(float)
-        for row in csv.DictReader(open(bp)):
-            i = int(row["business"])
-            if i < len(b["external"]) and b["external"][i]:
-                leak[b["name"][i]] += float(row["revenue"])
+        worst = rel.min(axis=0)[:, k]
+        best = int(np.nanargmax(worst))
+        by_kind[m["label"]] = {"businesses_now": int(counts[k]), "median_sales_now_default": round(float(med[0, k])),
+                               "spots_beating_median_in_every_scenario": int(robust[:, k].sum()), "spots_tested": len(site_list),
+                               "best_spot": site_list[best]["where"], "best_spot_vs_median_worst_scenario": round(float(worst[best]), 2),
+                               "best_spot_forecast_default": round(float(sales[0, best, k]))}
     doc = {"_meta": {"what": __doc__.strip().split("\n\n")[0], "scenarios": [s[0] for s in scen], "sites_tested": len(site_list),
                      "for_lease_sites": sum(s["for_lease"] for s in site_list), "kinds": len(menu),
-                     "rule": "sales at least a typical business of its kind, and a profit after rent on that street, in every scenario"},
-           "by_kind": by_kind, "opportunities": found[:200], "opportunities_total": len(found),
-           "residents_spending_in_neighbouring_towns_musd": {k: round(v / 1e6, 1) for k, v in sorted(leak.items(), key=lambda z: -z[1])}}
+                     "rule": f"a newcomer of typical size sells at least {BEAT}x the median business of its kind already in the city, in every scenario, and keeps a profit margin after rent on that street",
+                     "caution": "A single site's sales forecast can be off by up to about x3.6 either way (data/forecast_error.json); comparisons between spots and kinds are more reliable than the dollar figures."},
+           "by_kind": by_kind, "opportunities": found[:200], "opportunities_total": len(found)}
     (ROOT / "docs" / "opportunities.json").write_text(json.dumps(doc, indent=1))
     for p in tmpdir.glob("*.json"):
         p.unlink()
