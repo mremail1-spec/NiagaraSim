@@ -128,6 +128,8 @@ pub struct Engine {
     pub(crate) scenario_base: Option<(Vec<f64>, Vec<f32>)>,
     /// Attraction pulls fitted to published attendance, kept so an outlook does not refit them.
     pub(crate) fitted_attraction_pull: Option<Vec<f64>>,
+    /// Format weights and lodging capacities as built, kept while closures are applied.
+    pub(crate) before_closures: Option<(Vec<f64>, Vec<u32>)>,
     /// Vehicles counted passing each road node so far (agent mode), when switched on.
     pub traffic: Option<Vec<f64>>,
     /// Tourist purchases made in the hour most recently stepped (agent mode).
@@ -281,7 +283,7 @@ impl Engine {
         let mut e = Engine {
             city, beta, n_nodes, n_cat, dest_of_business, n_dest, minutes, km, next_hop, cat_business, cat_pull,
             home_nodes, node_slot, cdf: Vec::new(), flow: Vec::new(), flow_leak: Vec::new(), flow_inbound: Vec::new(), hh_rate, hh_pcat, hh_ticket, hour_cdf,
-            walk_near: 0.0, state, last_trips: Vec::new(), tour: None, last_tourist_trips: Vec::new(), first_added: n_biz, traffic: None, walkers: None, scenario: [1.0; 5], scenario_base: None, fitted_attraction_pull: None,
+            walk_near: 0.0, state, last_trips: Vec::new(), tour: None, last_tourist_trips: Vec::new(), first_added: n_biz, traffic: None, walkers: None, scenario: [1.0; 5], scenario_base: None, fitted_attraction_pull: None, before_closures: None,
         };
         e.set_beta(beta);
         e

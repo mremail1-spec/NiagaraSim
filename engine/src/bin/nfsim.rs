@@ -70,6 +70,11 @@ fn main() {
         let v: Vec<f64> = sc.split(',').map(|x| x.parse().expect("scenario numbers")).collect();
         engine.set_scenario(v[0], v[1], v[2], v[3], v[4]);
     }
+    if let Some(m) = arg(&args, "--closures-as-of") {
+        // YYYYMM: businesses known closed by then stop trading (forward runs)
+        let n = engine.apply_closures(m.replace('-', "").parse().expect("--closures-as-of YYYYMM"));
+        eprintln!("{n} businesses closed as of {m}");
+    }
     let traffic_out = arg(&args, "--traffic");
     if traffic_out.is_some() {
         engine.enable_traffic();

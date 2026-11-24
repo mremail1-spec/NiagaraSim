@@ -382,6 +382,9 @@ pub struct Businesses {
     /// Pull from the site itself (passing traffic), 1 when absent; filled by `City::prepare_sites`.
     #[serde(default)]
     pub site: Vec<f64>,
+    /// Month a business closed for good ("YYYY-MM"), "" if open; see Engine::apply_closures.
+    #[serde(default)]
+    pub closed_from: Vec<String>,
 }
 
 #[derive(Clone, Deserialize)]

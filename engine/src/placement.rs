@@ -373,6 +373,37 @@ impl Engine {
         self.set_beta(beta);
     }
 
+    /// Switch off businesses known to be closed by a month (YYYYMM, e.g. 202611), for estimates from
+    /// that month on; 0 brings every business back (simulating the calibrated year or earlier).
+    /// Returns how many are closed. A closed business draws no one: no pull, no rooms.
+    pub fn apply_closures(&mut self, as_of: u32) -> u32 {
+        let n = self.city.businesses.node.len();
+        if self.before_closures.is_none() {
+            let cap = self.city.tourism.as_ref().map(|t| t.capacity.clone()).unwrap_or_default();
+            self.before_closures = Some((self.city.businesses.format_weight.clone(), cap));
+        }
+        let (fw, cap) = self.before_closures.clone().unwrap();
+        let mut closed = 0;
+        for b in 0..n {
+            let month = self.city.businesses.closed_from.get(b)
+                .and_then(|s| s.replace('-', "").get(..6).and_then(|m| m.parse::<u32>().ok())).unwrap_or(0);
+            let shut = as_of > 0 && month > 0 && month <= as_of;
+            if b < fw.len() {
+                self.city.businesses.format_weight[b] = if shut { 0.0 } else { fw[b] };
+            }
+            if let Some(t) = self.city.tourism.as_mut() {
+                if b < cap.len() {
+                    t.capacity[b] = if shut { 0 } else { cap[b] };
+                }
+            }
+            closed += shut as u32;
+        }
+        self.rebuild_categories();
+        let beta = self.beta;
+        self.set_beta(beta);
+        closed
+    }
+
     /// Set the calibration multipliers and rebuild every table that depends on them.
     pub fn set_multipliers(&mut self, external_scale: Vec<f64>, capture: Vec<f64>) {
         self.city.categories.external_scale = external_scale;

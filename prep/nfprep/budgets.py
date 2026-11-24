@@ -423,6 +423,7 @@ def export_city(pack: Pack, city: dict, budgets: np.ndarray, year: int, path: Pa
                        "standin": [int(b["source"] == "synthetic") for b in biz] + [0] * len(ext),
                        "chain": chain_ids(biz) + [-1] * len(ext),
                        "osm_id": [b.get("osm_id", "") for b in biz] + [""] * len(ext),
+                       "closed_from": [b.get("closed_from", "") for b in biz] + [""] * len(ext),
                        "employer": [int(b.get("employer", 0)) for b in biz] + [0] * len(ext),
                        "operator": [operator_of(b) for b in biz] + [0] * len(ext),
                        "external": [0] * n_real + [1] * len(ext),

@@ -1,0 +1,11 @@
+{
+ "_meta": {
+  "what": "Businesses known to have closed, with the month they closed (closed_from) where known. Simulations of earlier years keep them; forward estimates (outlooks, forecasts for a new business) treat them as closed from that month. Google Places closures (data/google_places.json, CLOSED_PERMANENTLY) are added by the build with closed_from = the date Google was checked, because Google does not say when they closed.",
+  "fields": "key = the business's OpenStreetMap id (or source:name:address); closed_from = YYYY-MM; evidence = what shows it; source = who observed it."
+ },
+ "closures": [
+  {"key": "node/4274824245", "name": "Johnny Rocco's Italian Grill", "address": "6889 Lundy's Ln", "closed_from": "2026-11",
+   "evidence": "Closing notice on the door: 'After 19 wonderful years ... we announce the closing of our Johnny Rocco's Niagara Falls' (photo data/sources/closures/johnny_roccos_6889_lundys_ln_2026-11-24.jpg). Google still listed it as open on 2026-11-23.",
+   "source": "owner, first-hand, 2026-11-24"}
+ ]
+}

@@ -294,6 +294,12 @@ pub extern "C" fn nf_inbound() -> f64 {
 // ---- outlooks ----
 
 /// Apply an outlook (multipliers on the calibrated year). Call before stepping, or after a restart.
+/// Businesses known closed by this month (YYYYMM) stop trading; 0 reopens all. Returns how many closed.
+#[no_mangle]
+pub extern "C" fn nf_apply_closures(as_of: u32) -> u32 {
+    engine().apply_closures(as_of)
+}
+
 #[no_mangle]
 pub extern "C" fn nf_set_safety(scale: f64) {
     engine().set_safety_scale(scale);

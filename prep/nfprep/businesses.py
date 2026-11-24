@@ -388,16 +388,17 @@ def build_businesses(pack: Pack, seed: int = 1) -> list[dict]:
             r["name"] = f"{what} on {street}" if street else what
             r["name_source"] = "description (no name on the map)"
 
-    # closed for good: businesses Google Places lists as permanently closed (data/google_places.json,
-    # checked November 2026). OpenStreetMap and older lists keep shops for years after they close.
+    # closed for good, with a date: data/closures.json (first-hand, with the month) and Google Places'
+    # permanently closed listings (data/google_places.json; Google gives no date, so the date checked).
+    # Simulations of earlier years keep them; forward estimates switch them off from that month
+    # (engine apply_closures). OpenStreetMap and older lists keep shops for years after they close.
     from .google_places import closed_keys, key as _gkey
-    closed = closed_keys()
-    if closed:
-        gone = [r for r in rows if _gkey(r) in closed]
-        rows[:] = [r for r in rows if _gkey(r) not in closed]
-        for i, r in enumerate(rows):
-            r["business_id"] = i
-        print(f"dropped {len(gone)} businesses Google lists as permanently closed")
+    dated = {c["key"]: (c["closed_from"], c["source"]) for c in json.loads((DATA_DIR / "closures.json").read_text())["closures"]}
+    for k, (_, checked) in closed_keys().items():
+        dated.setdefault(k, (checked[:7], "Google Places: permanently closed when checked " + checked))
+    for r in rows:
+        r["closed_from"], r["closed_source"] = dated.get(_gkey(r), ("", ""))
+    print(f"{sum(1 for r in rows if r['closed_from'])} businesses dated as closed (kept for past years)")
 
     # tract and Tourist Core flags for everything added after the map places
     lat = np.array([r["lat"] for r in rows])

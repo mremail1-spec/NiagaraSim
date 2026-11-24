@@ -839,8 +839,12 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
       : "Model estimate from simulated resident and tourist spending, not the business's real sales.";
     const sn = safetyNote(b.lat[i], b.lon[i], b.sim_category[i]);
     if (sn && !isStandin) $("bNote").textContent += " " + sn;
-    const risk = closureNote(city.sim_categories[b.sim_category[i]]);
-    if (risk && !isStandin) $("bNote").textContent += " " + risk;
+    const shut = closedNote(i);
+    if (shut) $("bNote").textContent = shut.trim() + " " + $("bNote").textContent;
+    else {
+      const risk = closureNote(city.sim_categories[b.sim_category[i]]);
+      if (risk && !isStandin) $("bNote").textContent += " " + risk;
+    }
   }
 
   // a new business at this spot: two-year closure chance from the fitted model (data/closure_model.json)
@@ -955,8 +959,26 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
     return (s + r.prior_listings * r.median_psf) / (w + r.prior_listings);
   }
 
+  // businesses known closed (data/closures.json, Google Places) stop trading in forward estimates;
+  // the 2025 calibrated year keeps them, as they were then
+  const NOW_MONTH = 209912;   // every known closure, whatever its month
+  let closuresOn = false;
+  function setClosures(on) {
+    if (!wasm.nf_apply_closures || on === closuresOn) return;
+    wasm.nf_apply_closures(on ? NOW_MONTH : 0); closuresOn = on;
+  }
+  function closedNote(b) {
+    const c = (city.businesses.closed_from || [])[b];
+    return c ? ` Closed (known by ${c}): kept for the ${city.scenarios._meta?.labels?.calibrated || "calibrated year"}, left out of forward outlooks and forecasts.` : "";
+  }
+
   function runForecast() {
     if (!site) return;
+    const wasOn = closuresOn;
+    setClosures(true);         // a forecast for a new business is about now and later
+    try { runForecastInner(); } finally { setClosures(wasOn); }
+  }
+  function runForecastInner() {
     const m = city.build_menu[Number($("kind").value)];
     // goods and labour rise with sales; rent, utilities and other overheads are sized for the scale you build
     // rent: the industry's rent share for a business of that size, at this street's asking rent against the city median
@@ -1143,6 +1165,7 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
     try {
       if (cond) applyConditions(); else wasm.nf_set_scenario(s.us, s.domestic, s.overseas, s.base_stays, s.resident);
       if (city.safety && wasm.nf_set_safety) { const sc = city.safety.scenarios[outlookKey] ?? 1; city.safety.scale = sc; wasm.nf_set_safety(sc); }
+      setClosures(outlookKey !== "calibrated");
       runForecast();
     }
     catch (e) { fail("Could not change the outlook: " + e.message); }
