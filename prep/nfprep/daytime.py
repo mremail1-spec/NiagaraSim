@@ -98,3 +98,68 @@ if __name__ == "__main__":
         near(a[1], float(a[2]) if len(a) > 2 else 500)
     else:
         main()
+
+
+# what each group buys, in the residents' spending categories (lunch, coffee, snacks: restaurants;
+# snacks and drinks from stores: groceries)
+TO_CATEGORY = {"high_school_student": {"restaurants": 0.65, "groceries": 0.35},
+               "elementary_student": {"restaurants": 0.7, "groceries": 0.3},
+               "worker": {"restaurants": 0.85, "groceries": 0.15}}
+RESIDENTS_WORKING_IN_CITY = 13_560     # 2021 Census, place of work (traffic_layers)
+TICKET = 12.0                          # SEED: typical daytime purchase, sets how many trips the money is spread over
+
+
+def add_to_city(doc: dict, road_nodes: list[dict]) -> dict:
+    """Add the daytime crowd to the city's households: one group per road spot where people study or
+    work, spending near it. Residents' share is taken out of city households' budgets (it was counted
+    at home); workers from other towns bring theirs in as new money. Returns a summary."""
+    import numpy as np
+    from .traffic_layers import BAND_JOBS  # noqa: F401  (same job counts as the traffic layers)
+    cats = doc["categories"]["name"]
+    h = doc["households"]
+    n_cat = len(cats)
+    n_city = sum(1 for r in h["regional"] if not r)
+    lat = np.array([n["lat"] for n in road_nodes]); lon = np.array([n["lon"] for n in road_nodes])
+    ps = places()
+    jobs = sum(p["people"] for p in ps if p["group"] == "worker")
+    resident_share = min(1.0, RESIDENTS_WORKING_IN_CITY * JOBS_AT_USUAL_PLACE / max(jobs, 1))
+    groups = {}
+    for p in ps:
+        d = np.hypot((lat - p["lat"]) * 111_320, (lon - p["lon"]) * 81_200)
+        node = int(d.argmin())
+        g = groups.setdefault(node, {"budget": np.zeros(n_cat), "resident": np.zeros(n_cat), "students": 0, "workers": 0.0, "names": []})
+        for cat, share in TO_CATEGORY[p["group"]].items():
+            amount = p["per_year"] * share
+            g["budget"][cats.index(cat)] += amount
+            g["resident"][cats.index(cat)] += amount * (1.0 if p["group"] != "worker" else resident_share)
+        if p["group"] == "worker":
+            g["workers"] += p["people"]
+        else:
+            g["students"] += p["people"]
+        if len(g["names"]) < 3:
+            g["names"].append(p["name"])
+    budget = np.array(h["budget"], dtype=float).reshape(-1, n_cat)
+    moved = sum(g["resident"] for g in groups.values())
+    city_cat = budget[:n_city].sum(axis=0)
+    keep = np.where(city_cat > 0, 1.0 - moved / np.maximum(city_cat, 1.0), 1.0)
+    budget[:n_city] *= np.clip(keep, 0.0, 1.0)[None, :]
+    rows, nodes, persons5, vehicles = [], [], [], []
+    for node, g in groups.items():
+        trips_per_day = g["budget"].sum() / TICKET / 365.0
+        nodes.append(node)
+        persons5.append(max(1, int(round(trips_per_day / doc["params"]["outings_per_person5_per_day"]))))
+        vehicles.append(1 if g["workers"] > 0 else 0)
+        rows.append(g["budget"])
+    h["budget"] = [round(float(x), 1) for x in np.vstack([budget] + rows).ravel()]
+    h["node"] = h["node"] + nodes
+    h["persons5"] = h["persons5"] + persons5
+    h["vehicles"] = h["vehicles"] + vehicles
+    h["regional"] = h["regional"] + [0] * len(nodes)
+    h["daytime_from"] = len(h["node"]) - len(nodes)      # households from here on are daytime groups
+    h["daytime_label"] = ["; ".join(g["names"]) for g in groups.values()]
+    summary = {"daytime_groups": len(nodes), "per_year_total": round(float(sum(g["budget"].sum() for g in groups.values()))),
+               "moved_from_residents_homes": {c: round(float(moved[i])) for i, c in enumerate(cats) if moved[i] > 0},
+               "new_money_from_workers_living_elsewhere": round(float(sum((g["budget"] - g["resident"]).sum() for g in groups.values()))),
+               "resident_share_of_workers": round(resident_share, 3)}
+    doc.setdefault("meta", {})["daytime"] = summary
+    return summary

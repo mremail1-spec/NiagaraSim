@@ -509,6 +509,13 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
     loadPeople().then(() => {
       if (picked !== w) return;
       const h = people && people.households, i = w.hh;
+      const hd = city.households || {};
+      if (hd.daytime_from != null && i >= hd.daytime_from) {
+        $("pKind").textContent = "Daytime crowd";
+        $("pName").textContent = (hd.daytime_label || [])[i - hd.daytime_from] || "School or workplace";
+        $("pWho").textContent = "Students or workers buying lunch, coffee and snacks near their school or workplace.";
+        return;
+      }
       if (!h || i >= h.type.length) { $("pWho").textContent = "A household in a neighbouring town."; return; }
       const nb = h.nb[i] >= 0 ? people.neighbourhoods[h.nb[i]] : "Niagara Falls";
       const ty = nice(people.types[h.type[i]]);

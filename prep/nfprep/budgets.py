@@ -461,6 +461,9 @@ def export_city(pack: Pack, city: dict, budgets: np.ndarray, year: int, path: Pa
         },
     }
     doc["business_groups"] = group_names
+    # the daytime crowd: students and workers spending near school and work (nfprep.daytime)
+    from .daytime import add_to_city
+    add_to_city(doc, nodes)
     ops = json.loads((DATA_DIR / "public_operators_2025.json").read_text())
     doc["operator_targets"] = {"niagara_parks": ops["niagara_parks"]["revenue_producing_operations_cad"] - NPC_TRANSIT_ESTIMATE,
                                "niagara_parks_admissions": ops["niagara_parks"]["admissions_estimate_cad"],
