@@ -29,7 +29,7 @@
    "10+": 0.9
   },
   "sim": {
-   "1": 51.2,
+   "1": 51.3,
    "2": 30.7,
    "3": 10.7,
    "4": 4.0,
@@ -46,7 +46,7 @@
    "friends_relatives": 25.3
   },
   "sim": {
-   "hotel": 62.9,
+   "hotel": 63.0,
    "rental": 2.1,
    "camping": 2.2,
    "friends_relatives": 32.8
@@ -88,54 +88,54 @@
    "Q4": 23.3
   },
   "sim_domestic": {
-   "Q1": 14.1,
+   "Q1": 14.0,
    "Q2": 24.1,
    "Q3": 38.6,
-   "Q4": 23.2
+   "Q4": 23.3
   }
  },
  "hotels": {
-  "rooms_in_model": 16024.0,
-  "occupancy_year_sim": 0.602,
-  "parties_turned_away": 124098,
+  "rooms_in_model": 15956.0,
+  "occupancy_year_sim": 0.606,
+  "parties_turned_away": 122882,
   "by_month": {
    "2024-01": {
     "published": 0.369,
-    "sim": 0.368
+    "sim": 0.371
    },
    "2024-03": {
     "published": 0.533,
-    "sim": 0.44
+    "sim": 0.441
    },
    "2024-06": {
     "published": 0.838,
-    "sim": 0.814
+    "sim": 0.818
    },
    "2024-07": {
     "published": 0.855,
-    "sim": 0.919
+    "sim": 0.92
    },
    "2024-10": {
     "published": 0.72,
-    "sim": 0.634
+    "sim": 0.639
    },
    "2024-11": {
     "published": 0.57,
-    "sim": 0.497
+    "sim": 0.506
    },
    "2025-01": {
     "published": 0.368,
-    "sim": 0.368
+    "sim": 0.371
    },
    "2025-03": {
     "published": 0.474,
-    "sim": 0.44
+    "sim": 0.441
    },
    "2025-11": {
     "published": 0.453,
-    "sim": 0.497
+    "sim": 0.506
    }
   },
-  "median_ratio_sim_to_published": 0.971
+  "median_ratio_sim_to_published": 0.976
  }
 }

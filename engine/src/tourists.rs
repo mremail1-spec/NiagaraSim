@@ -269,7 +269,9 @@ impl Engine {
         // tune the pull of attractions with published attendance so Journey Behind the Falls matches
         if let Some(ac) = attraction_cat {
             let base_pull = rt.cat_pull[ac].clone();
-            let has_target: Vec<f64> = rt.cat_business[ac].iter().map(|&b| t.attendance_target[b as usize] * t.attendance_fit_factor.get(b as usize).copied().unwrap_or(1.0)).collect();
+            let has_target: Vec<f64> = rt.cat_business[ac].iter().enumerate()
+                // a closed attraction (no pull: see apply_closures) keeps no attendance target
+                .map(|(j, &b)| if base_pull[j] > 0.0 { t.attendance_target[b as usize] * t.attendance_fit_factor.get(b as usize).copied().unwrap_or(1.0) } else { 0.0 }).collect();
             let lead = has_target.iter().cloned().fold(0.0, f64::max);
             if lead > 0.0 {
                 let lead_i = has_target.iter().position(|&x| x == lead).unwrap();
@@ -326,7 +328,10 @@ impl Engine {
                 }
                 // an outlook must move attendance, so pulls fitted on the calibrated year are kept
                 match &self.fitted_attraction_pull {
-                    Some(kept) if kept.len() == pull.len() && self.scenario != [1.0; 5] => pull = kept.clone(),
+                    Some(kept) if kept.len() == pull.len() && self.scenario != [1.0; 5] => {
+                        // closures since the fit: a closed attraction (no pull now) draws no one
+                        pull = kept.iter().zip(&base_pull).map(|(&k, &b)| if b > 0.0 { k } else { 0.0 }).collect();
+                    }
                     _ => self.fitted_attraction_pull = Some(pull.clone()),
                 }
                 rt.attendance_pull = pull[lead_i] / lead;

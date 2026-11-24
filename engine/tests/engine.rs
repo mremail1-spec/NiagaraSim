@@ -406,3 +406,28 @@ fn safety_hotspots_cut_pull_nearby_but_not_for_health() {
     assert_eq!(city.safety_factor_at(h.lat, h.lon, health, true), 1.0);
     assert!(city.safety_factor_at(h.lat + 0.03, h.lon, rest, true) > 0.99, "3 km away is unaffected");
 }
+
+#[test]
+fn closed_businesses_trade_in_past_years_but_not_forward() {
+    let mut e = Engine::new(city(), beta(), 1);
+    let closed: Vec<usize> = (0..e.city.businesses.closed_from.len()).filter(|&b| !e.city.businesses.closed_from[b].is_empty()).collect();
+    if closed.is_empty() {
+        return;
+    }
+    for _ in 0..7 {
+        e.step_day_flow();
+    }
+    let before: f64 = closed.iter().map(|&b| e.state().revenue[b]).sum();
+    assert!(before > 0.0, "closed businesses still trade in the calibrated year");
+    let mut f = Engine::new(city(), beta(), 1);
+    let n = f.apply_closures(209_912);
+    assert_eq!(n as usize, closed.len());
+    for _ in 0..7 {
+        f.step_day_flow();
+    }
+    let after: f64 = closed.iter().map(|&b| f.state().revenue[b]).sum();
+    assert_eq!(after, 0.0, "a closed business earns nothing in a forward run");
+    // reopening restores the calibrated city
+    f.apply_closures(0);
+    assert!(f.city.businesses.format_weight.iter().zip(&e.city.businesses.format_weight).all(|(a, b)| a == b));
+}

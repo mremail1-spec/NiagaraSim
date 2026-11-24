@@ -339,7 +339,8 @@ impl Engine {
                 if k < 0 {
                     continue;
                 }
-                let t = self.trip_minutes(node, b as usize);
+                // a closed branch (no pull) is never the nearest one people go to
+                let t = if out[i] > 0.0 { self.trip_minutes(node, b as usize) } else { f64::INFINITY };
                 let e = best.entry(k).or_insert((i, t, 0.0));
                 e.2 += out[i];
                 if t < e.1 {

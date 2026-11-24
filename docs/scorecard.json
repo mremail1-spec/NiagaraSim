@@ -12,7 +12,7 @@
   {
    "area": "Traffic",
    "test": "Regional roads, correlation with 2019 counts",
-   "score": 0.717,
+   "score": 0.723,
    "pass_mark": ">= 0.6",
    "result": "pass",
    "note": "77 sections; edge counts used as inputs are not scored"
@@ -20,7 +20,7 @@
   {
    "area": "Traffic",
    "test": "Regional roads, correlation with 2025 counts",
-   "score": 0.736,
+   "score": 0.74,
    "pass_mark": ">= 0.6",
    "result": "pass",
    "note": "Region's 2025 counts, 69 sections in the city"
@@ -28,7 +28,7 @@
   {
    "area": "Traffic",
    "test": "Provincial highways, correlation with 2019 counts",
-   "score": 0.777,
+   "score": 0.784,
    "pass_mark": ">= 0.6",
    "result": "pass",
    "note": ""
@@ -36,7 +36,7 @@
   {
    "area": "Traffic",
    "test": "Regional roads, median share of counted traffic",
-   "score": "71.3%",
+   "score": "70.7%",
    "pass_mark": ">= 50%",
    "result": "pass",
    "note": "school trips and trips between stops are not simulated yet"
@@ -76,7 +76,7 @@
   {
    "area": "Sales at a site",
    "test": "Chain branches, model median against published sales per location",
-   "score": 1.05,
+   "score": 1.08,
    "pass_mark": "0.67-1.5",
    "result": "pass",
    "note": "4 chains; a tourist city can sit above national averages"

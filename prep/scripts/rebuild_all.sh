@@ -14,7 +14,7 @@ step build1 python3 -m nfprep.build 2025 1
 step calibrate python3 -m nfprep.calibrate
 step build2 python3 -m nfprep.build 2025 1
 step attendance_fit python3 -m nfprep.attendance_fit
-step tests bash -c 'cd ../engine && cargo test --release 2>&1 | tee /dev/stderr | grep -q "test result: ok. 21 passed"'
+step tests bash -c 'cd ../engine && cargo test --release 2>&1 | tee /dev/stderr | grep -q "test result: ok. 22 passed"'
 step web bash -c "python3 -m nfprep.webexport 2025 $(beta)"
 for c in unit_sales_check population_check travel_times_check tourist_check street_speeds_check parking_check; do
   step $c python3 -m nfprep.$c
