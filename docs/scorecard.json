@@ -20,7 +20,7 @@
   {
    "area": "Traffic",
    "test": "Regional roads, correlation with 2025 counts",
-   "score": 0.748,
+   "score": 0.749,
    "pass_mark": ">= 0.6",
    "result": "pass",
    "note": "Region's 2025 counts, 69 sections in the city"
@@ -28,7 +28,7 @@
   {
    "area": "Traffic",
    "test": "Provincial highways, correlation with 2019 counts",
-   "score": 0.79,
+   "score": 0.786,
    "pass_mark": ">= 0.6",
    "result": "pass",
    "note": ""
@@ -36,7 +36,7 @@
   {
    "area": "Traffic",
    "test": "Regional roads, median share of counted traffic",
-   "score": "84.1%",
+   "score": "82.4%",
    "pass_mark": ">= 50%",
    "result": "pass",
    "note": "school trips and trips between stops are not simulated yet"
@@ -84,7 +84,7 @@
   {
    "area": "Sales at a site",
    "test": "Branches above the brand's best unit in Canada",
-   "score": 1,
+   "score": 2,
    "pass_mark": "0",
    "result": "miss",
    "note": "Tim Hortons in the Tourist Core"

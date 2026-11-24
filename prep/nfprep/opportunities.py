@@ -159,6 +159,13 @@ def main(n_scen: int = 5) -> dict:
                       "yardstick_default": round(float(med_core[0, k] if site_core[i] else med_res[0, k])),
                       "margin_after_street_rent_pct": round(float(margin[i, k]), 1), "rent_psf": round(rs.at(site_list[i]["lat"], site_list[i]["lon"]), 1)})
     found.sort(key=lambda x: -x["vs_median_competitor_worst"])
+    # the nearest school to each spot (a spot within a student's walk can count on the lunch crowd)
+    from .daytime import places as daytime_places, dist
+    schools = [p_ for p_ in daytime_places() if p_["kind"] != "workplace"]
+    for f in found:
+        s_ = min(schools, key=lambda q: dist(f["lat"], f["lon"], q["lat"], q["lon"]))
+        f["nearest_school"] = s_["name"]
+        f["nearest_school_m"] = round(dist(f["lat"], f["lon"], s_["lat"], s_["lon"]))
     by_kind = {}
     for k, m in enumerate(menu):
         worst = rel.min(axis=0)[:, k]
@@ -171,7 +178,7 @@ def main(n_scen: int = 5) -> dict:
                      "for_lease_sites": sum(s["for_lease"] for s in site_list), "kinds": len(menu),
                      "rule": f"a newcomer, small (25th percentile) or typical (median) for its kind, sells at least {BEAT}x what existing businesses of the same kind, format and area (Tourist Core or the residential city) sell, in every scenario, and keeps a profit margin after rent on that street",
                      "caution": "A single site's sales forecast can be off by up to about x3.6 either way (data/forecast_error.json); comparisons between spots and kinds are more reliable than the dollar figures."},
-           "by_kind": by_kind, "opportunities": found[:200], "opportunities_total": len(found)}
+           "by_kind": by_kind, "opportunities": found, "opportunities_total": len(found)}
     (ROOT / "docs" / "opportunities.json").write_text(json.dumps(doc, indent=1))
     for p in tmpdir.glob("*.json"):
         p.unlink()
