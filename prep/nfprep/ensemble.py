@@ -286,9 +286,49 @@ def summary() -> dict:
     return {"runs": len(done), "fit": len(good)}
 
 
+def _traffic_one(item):
+    i, k = item
+    from . import traffic_layers as T, traffic_check
+    with tempfile.TemporaryDirectory(dir=OUT) as d:
+        cp, tp, rp = Path(d) / "city.json", Path(d) / "traffic.json", Path(d) / "run.json"
+        cp.write_text(json.dumps(apply(_facts.city, k), separators=(",", ":")))
+        subprocess.run([NFSIM, "run", str(cp), "--mode", "agent", "--days", "365", "--beta", str(_facts.cal_beta * k["beta_mult"]),
+                        "--traffic", str(tp), "--out", str(rp)], check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        spend = np.array(json.loads(tp.read_text())).reshape(-1, 4).sum(axis=1)
+        bg = np.array(json.loads(CITY.with_name("background_volumes.json").read_text()))
+        a, _ = T.score(_facts.city, spend + bg, f"ens{os.getpid()}")
+        traffic_check.REGIONAL_FILE = "traffic_counts_regional_roads_2025.json"
+        b25, _ = T.score(_facts.city, spend + bg, f"ens{os.getpid()}b")
+        traffic_check.REGIONAL_FILE = "traffic_counts_regional_roads.json"
+        rep = json.loads(rp.read_text())["tourism"]
+    cbre = json.loads((DATA_DIR / "hotel_monthly_cbre.json").read_text())["monthly"]
+    occ = rep["hotel_occupancy_by_month"]
+    pairs = [(v["occupancy"], occ[int(m[5:]) - 1]) for m, v in cbre.items() if m >= "2024"]
+    hotel_err = float(np.median([abs(math.log(s_ / p_)) for p_, s_ in pairs if s_ > 0]))
+    return {"run": i, "regional_2019": a["correlation_regional_roads"], "regional_2025": b25["correlation_regional_roads"],
+            "highways": a["correlation_highways"], "share_regional_pct": a["median_share_explained_regional_pct"],
+            "hotel_monthly_median_abs_log": hotel_err, "hotel_turned_away": rep.get("parties_turned_away_from_full_lodging")}
+
+
+def traffic(limit: int = 60) -> None:
+    """Stage 2: road counts and monthly hotel occupancy for the stage-1 survivors (one agent year each)."""
+    done = [json.loads(l) for l in open(RUNS)]
+    good = [(i, d["knobs"]) for i, d in enumerate(done) if d["max_implausibility"] <= 1.0]
+    tp = OUT / "traffic.jsonl"
+    have = {json.loads(l)["run"] for l in open(tp)} if tp.exists() else set()
+    todo = [g for g in good if g[0] not in have][:limit]
+    print(f"{len(good)} survivors, {len(todo)} to score on traffic", flush=True)
+    with Pool(max(1, (os.cpu_count() or 2)), initializer=_init) as pool, open(tp, "a") as f:
+        for j, res in enumerate(pool.imap_unordered(_traffic_one, todo)):
+            f.write(json.dumps(res) + "\n"); f.flush()
+            print(f"{j + 1}/{len(todo)} {res}", flush=True)
+
+
 if __name__ == "__main__":
     a = sys.argv[1:]
     if a and a[0] == "wave":
         wave(int(a[1]))
+    elif a and a[0] == "traffic":
+        traffic(int(a[1]) if len(a) > 1 else 60)
     else:
         summary()
