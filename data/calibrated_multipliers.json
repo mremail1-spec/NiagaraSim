@@ -1,6 +1,6 @@
 {
  "attraction_visits_per_party_day": 0.7887676155540662,
- "beta": 1.4040541900321841,
+ "beta": 1.404054,
  "external_scale": {
   "alcohol": 1.1679881172347646,
   "cannabis": 1.0,
@@ -87,5 +87,7 @@
   "restaurants": 0.7331826193468162,
   "sightseeing": 1.0,
   "vehicle_rental": 1.0
- }
+ },
+ "beta_fit": 1.4040541900321841,
+ "beta_fit_source": "calibrate"
 }

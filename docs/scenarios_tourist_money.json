@@ -2,8 +2,8 @@
  "_meta": {
   "what": "Where visitors' money goes in Niagara Falls (2025), across scenarios that fit every measured fact (nfprep.ensemble).",
   "runs_tried": 800,
-  "fit_money_facts": 172,
-  "also_fit_traffic_and_hotel_months": 60,
+  "fit_money_facts": 171,
+  "also_fit_traffic_and_hotel_months": 40,
   "scenarios_shown": 7
  },
  "businesses_by_district": {
@@ -29,7 +29,7 @@
   },
   "Fallsview": {
    "businesses": 101,
-   "now_closed": 6
+   "now_closed": 5
   },
   "Chippawa and the south": {
    "businesses": 96,
@@ -50,326 +50,633 @@
  },
  "scenarios": [
   {
-   "run": 482,
+   "run": 480,
    "knobs": {
-    "beta_mult": 0.950342786234498,
-    "attract_exp": 0.6223768875786769,
-    "tourist_floor_min": 9.68212540630567,
-    "visitors_mult": 1.0541651785816948,
-    "spend_mult": 1.0473334123623477,
-    "restaurant_capture": 0.8947303802735508,
-    "chain_mult": 1.0330688227649405,
-    "core_mult": 0.9264682673217983,
-    "casino_mult": 0.7327292506722302,
-    "parks_mult": 0.8083367413975393,
-    "safety_scale": 1.4084907251579182,
-    "outings_mult": 0.9652212065549258
+    "beta_mult": 0.8413792188224533,
+    "attract_exp": 0.5393159138783451,
+    "tourist_floor_min": 7.25572421567665,
+    "visitors_mult": 0.9710632641869964,
+    "spend_mult": 0.96520918110246,
+    "restaurant_capture": 1.0674157092175767,
+    "chain_mult": 1.4363585628320379,
+    "core_mult": 1.2461493454073405,
+    "casino_mult": 0.9428948019982659,
+    "parks_mult": 0.9907954994096312,
+    "safety_scale": 0.23050246033402963,
+    "outings_mult": 0.9901510504763716
    },
    "facts": {
-    "chains_median_ratio": 1.009946636255937,
-    "niagara_parks_musd": 140.178382,
-    "casinos_musd": 579.469528,
-    "hotel_occupancy": 0.646,
-    "statcan_sales_rms_log": 0.21582916552198578,
-    "staff_rank_corr": 0.19603310873777244,
-    "closed_below_open": 0.5548601126485603
+    "chains_median_ratio": 0.7003573021181717,
+    "niagara_parks_musd": 141.324829,
+    "casinos_musd": 481.763867,
+    "hotel_occupancy": 0.606,
+    "statcan_sales_rms_log": 0.19769266323944812,
+    "staff_rank_corr": 0.202314342883986,
+    "closed_below_open": 0.5569279556568201
    },
    "traffic": {
-    "run": 482,
-    "regional_2019": 0.718,
-    "regional_2025": 0.737,
-    "highways": 0.784,
-    "share_regional_pct": 75.6,
-    "hotel_monthly_median_abs_log": 0.08398565607309272,
-    "hotel_turned_away": 143974
+    "run": 480,
+    "regional_2019": 0.722,
+    "regional_2025": 0.74,
+    "highways": 0.802,
+    "share_regional_pct": 72.8,
+    "hotel_monthly_median_abs_log": 0.07851326562163825,
+    "hotel_turned_away": 113706
    },
-   "visitor_musd": 3413.1,
+   "visitor_musd": 3018.1,
    "by_district_pct": {
-    "Clifton Hill, Falls Ave, Centre St": 25.8,
-    "Fallsview": 21.5,
-    "Casinos (province)": 16.6,
-    "Neighbourhood streets elsewhere": 11.7,
-    "Lundy's Lane": 6.2,
-    "Downtown and Victoria Ave north (with Great Wolf Lodge)": 6.0,
-    "Montrose, McLeod, Oakwood (big stores)": 5.3,
-    "Niagara Parks (province)": 4.0,
-    "Chippawa and the south": 1.5,
-    "Main and Ferry": 1.4
+    "Clifton Hill, Falls Ave, Centre St": 27.3,
+    "Fallsview": 20.9,
+    "Casinos (province)": 15.6,
+    "Neighbourhood streets elsewhere": 11.0,
+    "Lundy's Lane": 6.7,
+    "Downtown and Victoria Ave north (with Great Wolf Lodge)": 5.6,
+    "Montrose, McLeod, Oakwood (big stores)": 5.1,
+    "Niagara Parks (province)": 4.5,
+    "Main and Ferry": 1.8,
+    "Chippawa and the south": 1.6
    },
    "by_owner_pct": {
-    "Chains and brands": 42.5,
-    "Independent": 36.9,
-    "Province (casinos, Niagara Parks)": 20.7
+    "Chains and brands": 43.1,
+    "Independent": 36.8,
+    "Province (casinos, Niagara Parks)": 20.1
    },
    "by_kind_musd": {
-    "accommodation": 975.1,
-    "casino": 568.3,
-    "attraction": 326.3,
-    "restaurant": 311.2,
-    "grocery_food": 207.7,
-    "fast_food": 185.6,
-    "fuel": 127.8,
-    "parking": 108.3,
-    "leisure_paid": 107.9,
-    "cafe": 100.0,
-    "souvenir_gift": 80.2,
-    "car_rental": 59.0,
-    "general_merchandise": 54.5,
-    "entertainment": 49.9,
-    "apparel": 47.4,
-    "retail_other": 41.5,
-    "pharmacy": 19.2,
-    "tobacco_cannabis": 18.1,
-    "bar_pub": 16.7,
-    "liquor": 6.2,
+    "accommodation": 913.6,
+    "casino": 470.6,
+    "restaurant": 286.1,
+    "attraction": 268.4,
+    "fast_food": 193.4,
+    "grocery_food": 169.6,
+    "cafe": 106.1,
+    "fuel": 105.2,
+    "parking": 89.1,
+    "leisure_paid": 88.8,
+    "souvenir_gift": 72.4,
+    "car_rental": 48.5,
+    "apparel": 41.7,
+    "general_merchandise": 39.4,
+    "entertainment": 37.7,
+    "retail_other": 29.6,
+    "pharmacy": 17.1,
+    "bar_pub": 16.2,
+    "tobacco_cannabis": 15.3,
+    "liquor": 6.7,
     "nightlife": 1.5
    },
-   "top10_pct": 30.0,
-   "top50_pct": 55.2,
-   "at_businesses_now_closed_musd": 173.9,
+   "top10_pct": 27.8,
+   "top50_pct": 52.2,
+   "at_businesses_now_closed_musd": 103.2,
    "now_closed_by_district_musd": {
-    "Fallsview": 71.4,
-    "Lundy's Lane": 37.1,
-    "Clifton Hill, Falls Ave, Centre St": 31.8,
-    "Neighbourhood streets elsewhere": 18.4,
-    "Montrose, McLeod, Oakwood (big stores)": 4.2,
+    "Clifton Hill, Falls Ave, Centre St": 29.7,
+    "Lundy's Lane": 29.6,
+    "Neighbourhood streets elsewhere": 14.5,
+    "Fallsview": 14.4,
     "Chippawa and the south": 3.9,
-    "Niagara Parks (province)": 3.3,
-    "Downtown and Victoria Ave north (with Great Wolf Lodge)": 1.9,
-    "Main and Ferry": 1.9
+    "Montrose, McLeod, Oakwood (big stores)": 3.8,
+    "Niagara Parks (province)": 2.9,
+    "Main and Ferry": 2.6,
+    "Downtown and Victoria Ave north (with Great Wolf Lodge)": 1.9
    },
    "top15": [
     {
      "name": "Casino Niagara",
      "district": "Casinos (province)",
-     "visitor_musd": 300.3
+     "visitor_musd": 246.1
     },
     {
      "name": "Fallsview Casino Resort",
      "district": "Casinos (province)",
-     "visitor_musd": 268.0
+     "visitor_musd": 224.4
     },
     {
      "name": "Great Wolf Lodge",
      "district": "Downtown and Victoria Ave north (with Great Wolf Lodge)",
-     "visitor_musd": 145.1
-    },
-    {
-     "name": "Wyndham Garden",
-     "district": "Fallsview",
-     "visitor_musd": 60.5
-    },
-    {
-     "name": "Embassy Suites by Hilton",
-     "district": "Fallsview",
-     "visitor_musd": 55.2
+     "visitor_musd": 114.5
     },
     {
      "name": "Hilton Niagara Falls",
      "district": "Fallsview",
-     "visitor_musd": 54.9
+     "visitor_musd": 52.9
     },
     {
      "name": "Quality Inn & Suites",
      "district": "Clifton Hill, Falls Ave, Centre St",
-     "visitor_musd": 48.3
+     "visitor_musd": 50.3
     },
     {
-     "name": "Movieland Wax Museum of Stars",
-     "district": "Clifton Hill, Falls Ave, Centre St",
-     "visitor_musd": 45.9
-    },
-    {
-     "name": "Bird Kingdom",
-     "district": "Clifton Hill, Falls Ave, Centre St",
-     "visitor_musd": 44.8
+     "name": "Hyatt Regency Niagara Falls Fallsview",
+     "district": "Fallsview",
+     "visitor_musd": 41.4
     },
     {
      "name": "Marriott Niagara Falls Fallsview Hotel",
      "district": "Fallsview",
-     "visitor_musd": 41.0
-    },
-    {
-     "name": "Skylon Tower",
-     "district": "Fallsview",
-     "visitor_musd": 38.5
+     "visitor_musd": 39.5
     },
     {
      "name": "Courtyard by Marriott Niagara Falls",
      "district": "Clifton Hill, Falls Ave, Centre St",
-     "visitor_musd": 37.1
+     "visitor_musd": 35.8
     },
     {
      "name": "Sheraton Fallsview Hotel",
      "district": "Clifton Hill, Falls Ave, Centre St",
-     "visitor_musd": 36.5
+     "visitor_musd": 34.9
+    },
+    {
+     "name": "Wyndham",
+     "district": "Fallsview",
+     "visitor_musd": 34.7
     },
     {
      "name": "Fallsview Casino Resort Hotel",
      "district": "Fallsview",
-     "visitor_musd": 35.9
-    },
-    {
-     "name": "Food Basics",
-     "district": "Montrose, McLeod, Oakwood (big stores)",
-     "visitor_musd": 33.6
-    }
-   ]
-  },
-  {
-   "run": 432,
-   "knobs": {
-    "beta_mult": 0.8360319967814339,
-    "attract_exp": 0.7538594672187056,
-    "tourist_floor_min": 6.294925828642592,
-    "visitors_mult": 0.9682890105919266,
-    "spend_mult": 1.1198114555274299,
-    "restaurant_capture": 0.7818049570559803,
-    "chain_mult": 0.6058397559863415,
-    "core_mult": 1.4077349557313201,
-    "casino_mult": 0.7483089684318781,
-    "parks_mult": 0.7936455774098162,
-    "safety_scale": 0.9113315083104387,
-    "outings_mult": 1.047666983604139
-   },
-   "facts": {
-    "chains_median_ratio": 0.8130498037943807,
-    "niagara_parks_musd": 130.136907,
-    "casinos_musd": 583.402225,
-    "hotel_occupancy": 0.605,
-    "statcan_sales_rms_log": 0.19430730687628148,
-    "staff_rank_corr": 0.1790823243835448,
-    "closed_below_open": 0.5435952566250281
-   },
-   "traffic": {
-    "run": 432,
-    "regional_2019": 0.725,
-    "regional_2025": 0.746,
-    "highways": 0.806,
-    "share_regional_pct": 74.4,
-    "hotel_monthly_median_abs_log": 0.0881627875946716,
-    "hotel_turned_away": 113196
-   },
-   "visitor_musd": 3282.3,
-   "by_district_pct": {
-    "Clifton Hill, Falls Ave, Centre St": 26.3,
-    "Fallsview": 22.2,
-    "Casinos (province)": 17.4,
-    "Neighbourhood streets elsewhere": 11.3,
-    "Downtown and Victoria Ave north (with Great Wolf Lodge)": 5.8,
-    "Lundy's Lane": 5.6,
-    "Montrose, McLeod, Oakwood (big stores)": 4.5,
-    "Niagara Parks (province)": 3.9,
-    "Main and Ferry": 1.8,
-    "Chippawa and the south": 1.2
-   },
-   "by_owner_pct": {
-    "Chains and brands": 41.3,
-    "Independent": 37.4,
-    "Province (casinos, Niagara Parks)": 21.3
-   },
-   "by_kind_musd": {
-    "accommodation": 909.2,
-    "casino": 572.2,
-    "attraction": 328.1,
-    "restaurant": 302.2,
-    "grocery_food": 210.1,
-    "fast_food": 144.5,
-    "fuel": 128.5,
-    "parking": 108.9,
-    "leisure_paid": 105.7,
-    "souvenir_gift": 82.6,
-    "cafe": 78.4,
-    "general_merchandise": 65.5,
-    "car_rental": 59.3,
-    "entertainment": 52.0,
-    "apparel": 41.5,
-    "retail_other": 40.3,
-    "tobacco_cannabis": 17.4,
-    "pharmacy": 15.1,
-    "bar_pub": 13.9,
-    "liquor": 5.0,
-    "nightlife": 1.2
-   },
-   "top10_pct": 31.3,
-   "top50_pct": 58.9,
-   "at_businesses_now_closed_musd": 162.8,
-   "now_closed_by_district_musd": {
-    "Fallsview": 68.9,
-    "Lundy's Lane": 32.4,
-    "Clifton Hill, Falls Ave, Centre St": 31.3,
-    "Neighbourhood streets elsewhere": 18.0,
-    "Niagara Parks (province)": 3.6,
-    "Montrose, McLeod, Oakwood (big stores)": 3.0,
-    "Chippawa and the south": 2.4,
-    "Main and Ferry": 1.8,
-    "Downtown and Victoria Ave north (with Great Wolf Lodge)": 1.5
-   },
-   "top15": [
-    {
-     "name": "Casino Niagara",
-     "district": "Casinos (province)",
-     "visitor_musd": 303.2
-    },
-    {
-     "name": "Fallsview Casino Resort",
-     "district": "Casinos (province)",
-     "visitor_musd": 269.0
-    },
-    {
-     "name": "Great Wolf Lodge",
-     "district": "Downtown and Victoria Ave north (with Great Wolf Lodge)",
-     "visitor_musd": 144.1
-    },
-    {
-     "name": "Wyndham Garden",
-     "district": "Fallsview",
-     "visitor_musd": 56.7
+     "visitor_musd": 34.6
     },
     {
      "name": "Movieland Wax Museum of Stars",
      "district": "Clifton Hill, Falls Ave, Centre St",
-     "visitor_musd": 53.7
+     "visitor_musd": 34.1
     },
     {
      "name": "Bird Kingdom",
      "district": "Clifton Hill, Falls Ave, Centre St",
-     "visitor_musd": 52.2
-    },
-    {
-     "name": "Embassy Suites by Hilton",
-     "district": "Fallsview",
-     "visitor_musd": 51.5
-    },
-    {
-     "name": "Hilton Niagara Falls",
-     "district": "Fallsview",
-     "visitor_musd": 51.4
-    },
-    {
-     "name": "Quality Inn & Suites",
-     "district": "Clifton Hill, Falls Ave, Centre St",
-     "visitor_musd": 45.2
+     "visitor_musd": 33.4
     },
     {
      "name": "Skylon Tower",
      "district": "Fallsview",
-     "visitor_musd": 42.6
+     "visitor_musd": 29.9
     },
     {
-     "name": "Easy Parking Niagara Falls \u2013 Fallsview Boulevard",
+     "name": "Food Basics",
+     "district": "Montrose, McLeod, Oakwood (big stores)",
+     "visitor_musd": 29.2
+    }
+   ]
+  },
+  {
+   "run": 443,
+   "knobs": {
+    "beta_mult": 0.75,
+    "attract_exp": 0.3902208454374095,
+    "tourist_floor_min": 2.8173929955918373,
+    "visitors_mult": 0.9763697394474213,
+    "spend_mult": 1.0000309203966973,
+    "restaurant_capture": 1.039868134848046,
+    "chain_mult": 0.9779884919873644,
+    "core_mult": 1.1766680818172244,
+    "casino_mult": 1.0444823062799387,
+    "parks_mult": 0.7761066856724654,
+    "safety_scale": 1.8465267441060906,
+    "outings_mult": 0.9336861612664159
+   },
+   "facts": {
+    "chains_median_ratio": 0.7762217112597547,
+    "niagara_parks_musd": 139.823822,
+    "casinos_musd": 510.606624,
+    "hotel_occupancy": 0.609,
+    "statcan_sales_rms_log": 0.204134194293793,
+    "staff_rank_corr": 0.187058172897114,
+    "closed_below_open": 0.545688931526562
+   },
+   "traffic": {
+    "run": 443,
+    "regional_2019": 0.717,
+    "regional_2025": 0.735,
+    "highways": 0.802,
+    "share_regional_pct": 72.0,
+    "hotel_monthly_median_abs_log": 0.0858612906063924,
+    "hotel_turned_away": 116390
+   },
+   "visitor_musd": 3124.9,
+   "by_district_pct": {
+    "Clifton Hill, Falls Ave, Centre St": 28.9,
+    "Fallsview": 20.7,
+    "Casinos (province)": 16.0,
+    "Neighbourhood streets elsewhere": 10.7,
+    "Lundy's Lane": 6.9,
+    "Downtown and Victoria Ave north (with Great Wolf Lodge)": 5.1,
+    "Niagara Parks (province)": 4.3,
+    "Montrose, McLeod, Oakwood (big stores)": 3.9,
+    "Main and Ferry": 1.8,
+    "Chippawa and the south": 1.7
+   },
+   "by_owner_pct": {
+    "Independent": 40.8,
+    "Chains and brands": 38.9,
+    "Province (casinos, Niagara Parks)": 20.3
+   },
+   "by_kind_musd": {
+    "accommodation": 917.7,
+    "casino": 499.4,
+    "restaurant": 321.7,
+    "attraction": 283.6,
+    "fast_food": 183.1,
+    "grocery_food": 176.8,
+    "fuel": 111.2,
+    "parking": 94.1,
+    "leisure_paid": 94.0,
+    "cafe": 93.1,
+    "souvenir_gift": 88.7,
+    "apparel": 52.0,
+    "car_rental": 51.3,
+    "entertainment": 37.6,
+    "retail_other": 26.9,
+    "general_merchandise": 26.3,
+    "bar_pub": 20.4,
+    "tobacco_cannabis": 17.1,
+    "pharmacy": 16.1,
+    "liquor": 9.6,
+    "nightlife": 2.8,
+    "tobacconist": 1.5
+   },
+   "top10_pct": 27.5,
+   "top50_pct": 49.2,
+   "at_businesses_now_closed_musd": 114.4,
+   "now_closed_by_district_musd": {
+    "Clifton Hill, Falls Ave, Centre St": 40.7,
+    "Lundy's Lane": 27.9,
+    "Fallsview": 15.8,
+    "Neighbourhood streets elsewhere": 12.1,
+    "Chippawa and the south": 4.9,
+    "Montrose, McLeod, Oakwood (big stores)": 4.2,
+    "Main and Ferry": 3.3,
+    "Niagara Parks (province)": 3.1,
+    "Downtown and Victoria Ave north (with Great Wolf Lodge)": 2.5
+   },
+   "top15": [
+    {
+     "name": "Fallsview Casino Resort",
+     "district": "Casinos (province)",
+     "visitor_musd": 265.0
+    },
+    {
+     "name": "Casino Niagara",
+     "district": "Casinos (province)",
+     "visitor_musd": 234.4
+    },
+    {
+     "name": "Great Wolf Lodge",
+     "district": "Downtown and Victoria Ave north (with Great Wolf Lodge)",
+     "visitor_musd": 92.8
+    },
+    {
+     "name": "Hilton Niagara Falls",
      "district": "Fallsview",
-     "visitor_musd": 39.8
+     "visitor_musd": 53.2
     },
     {
-     "name": "Sobeys",
-     "district": "Neighbourhood streets elsewhere",
+     "name": "Quality Inn & Suites",
+     "district": "Clifton Hill, Falls Ave, Centre St",
+     "visitor_musd": 50.6
+    },
+    {
+     "name": "Hyatt Regency Niagara Falls Fallsview",
+     "district": "Fallsview",
+     "visitor_musd": 41.5
+    },
+    {
+     "name": "Marriott Niagara Falls Fallsview Hotel",
+     "district": "Fallsview",
+     "visitor_musd": 39.7
+    },
+    {
+     "name": "Courtyard by Marriott Niagara Falls",
+     "district": "Clifton Hill, Falls Ave, Centre St",
+     "visitor_musd": 36.0
+    },
+    {
+     "name": "Sheraton Fallsview Hotel",
+     "district": "Clifton Hill, Falls Ave, Centre St",
+     "visitor_musd": 35.1
+    },
+    {
+     "name": "Wyndham",
+     "district": "Fallsview",
+     "visitor_musd": 34.8
+    },
+    {
+     "name": "Fallsview Casino Resort Hotel",
+     "district": "Fallsview",
+     "visitor_musd": 34.8
+    },
+    {
+     "name": "Skylon Tower",
+     "district": "Fallsview",
+     "visitor_musd": 29.9
+    },
+    {
+     "name": "Movieland Wax Museum of Stars",
+     "district": "Clifton Hill, Falls Ave, Centre St",
+     "visitor_musd": 28.8
+    },
+    {
+     "name": "Marriott on the Falls Hotel",
+     "district": "Fallsview",
+     "visitor_musd": 28.8
+    },
+    {
+     "name": "Four Points by Sheraton Niagara Falls Fallsview",
+     "district": "Fallsview",
+     "visitor_musd": 27.6
+    }
+   ]
+  },
+  {
+   "run": 16,
+   "knobs": {
+    "beta_mult": 0.949835448589827,
+    "attract_exp": 0.46689625746292795,
+    "tourist_floor_min": 2.984096788331478,
+    "visitors_mult": 1.0919400303122027,
+    "spend_mult": 0.9098900142949036,
+    "restaurant_capture": 1.229626898368767,
+    "chain_mult": 1.3286831300297635,
+    "core_mult": 1.1874615784525309,
+    "casino_mult": 0.7508122164961464,
+    "parks_mult": 0.9863975293356689,
+    "safety_scale": 0.8730759342957222,
+    "outings_mult": 0.9246319578834788
+   },
+   "facts": {
+    "chains_median_ratio": 0.9124221014492754,
+    "niagara_parks_musd": 139.367741,
+    "casinos_musd": 496.351356,
+    "hotel_occupancy": 0.664,
+    "statcan_sales_rms_log": 0.24121608203354564,
+    "staff_rank_corr": 0.20296930364197097,
+    "closed_below_open": 0.553490293267245
+   },
+   "traffic": {
+    "run": 16,
+    "regional_2019": 0.716,
+    "regional_2025": 0.733,
+    "highways": 0.781,
+    "share_regional_pct": 72.5,
+    "hotel_monthly_median_abs_log": 0.06317890162153167,
+    "hotel_turned_away": 158533
+   },
+   "visitor_musd": 3276.7,
+   "by_district_pct": {
+    "Clifton Hill, Falls Ave, Centre St": 29.9,
+    "Fallsview": 22.2,
+    "Casinos (province)": 14.8,
+    "Neighbourhood streets elsewhere": 9.8,
+    "Lundy's Lane": 6.7,
+    "Downtown and Victoria Ave north (with Great Wolf Lodge)": 5.0,
+    "Niagara Parks (province)": 4.1,
+    "Montrose, McLeod, Oakwood (big stores)": 3.9,
+    "Main and Ferry": 2.1,
+    "Chippawa and the south": 1.6
+   },
+   "by_owner_pct": {
+    "Chains and brands": 42.0,
+    "Independent": 39.1,
+    "Province (casinos, Niagara Parks)": 18.9
+   },
+   "by_kind_musd": {
+    "accommodation": 1006.8,
+    "casino": 485.1,
+    "restaurant": 353.2,
+    "attraction": 277.4,
+    "fast_food": 220.4,
+    "grocery_food": 172.4,
+    "cafe": 122.6,
+    "fuel": 108.8,
+    "leisure_paid": 93.4,
+    "parking": 92.1,
+    "souvenir_gift": 87.3,
+    "car_rental": 50.2,
+    "apparel": 46.2,
+    "entertainment": 38.7,
+    "general_merchandise": 32.5,
+    "retail_other": 24.4,
+    "bar_pub": 19.5,
+    "tobacco_cannabis": 16.6,
+    "pharmacy": 15.4,
+    "liquor": 9.9,
+    "nightlife": 2.5,
+    "tobacconist": 1.2
+   },
+   "top10_pct": 26.9,
+   "top50_pct": 49.8,
+   "at_businesses_now_closed_musd": 112.7,
+   "now_closed_by_district_musd": {
+    "Clifton Hill, Falls Ave, Centre St": 40.4,
+    "Lundy's Lane": 25.7,
+    "Fallsview": 18.1,
+    "Neighbourhood streets elsewhere": 12.5,
+    "Chippawa and the south": 4.0,
+    "Main and Ferry": 3.7,
+    "Montrose, McLeod, Oakwood (big stores)": 3.5,
+    "Niagara Parks (province)": 2.7,
+    "Downtown and Victoria Ave north (with Great Wolf Lodge)": 2.1
+   },
+   "top15": [
+    {
+     "name": "Fallsview Casino Resort",
+     "district": "Casinos (province)",
+     "visitor_musd": 260.0
+    },
+    {
+     "name": "Casino Niagara",
+     "district": "Casinos (province)",
+     "visitor_musd": 225.1
+    },
+    {
+     "name": "Great Wolf Lodge",
+     "district": "Downtown and Victoria Ave north (with Great Wolf Lodge)",
+     "visitor_musd": 103.1
+    },
+    {
+     "name": "Hilton Niagara Falls",
+     "district": "Fallsview",
+     "visitor_musd": 58.1
+    },
+    {
+     "name": "Quality Inn & Suites",
+     "district": "Clifton Hill, Falls Ave, Centre St",
+     "visitor_musd": 55.2
+    },
+    {
+     "name": "Hyatt Regency Niagara Falls Fallsview",
+     "district": "Fallsview",
+     "visitor_musd": 45.4
+    },
+    {
+     "name": "Marriott Niagara Falls Fallsview Hotel",
+     "district": "Fallsview",
+     "visitor_musd": 43.5
+    },
+    {
+     "name": "Courtyard by Marriott Niagara Falls",
+     "district": "Clifton Hill, Falls Ave, Centre St",
+     "visitor_musd": 39.6
+    },
+    {
+     "name": "Sheraton Fallsview Hotel",
+     "district": "Clifton Hill, Falls Ave, Centre St",
      "visitor_musd": 38.5
     },
     {
-     "name": "Enterprise",
+     "name": "Fallsview Casino Resort Hotel",
+     "district": "Fallsview",
+     "visitor_musd": 38.2
+    },
+    {
+     "name": "Wyndham",
+     "district": "Fallsview",
+     "visitor_musd": 37.9
+    },
+    {
+     "name": "Skylon Tower",
+     "district": "Fallsview",
+     "visitor_musd": 35.2
+    },
+    {
+     "name": "Movieland Wax Museum of Stars",
      "district": "Clifton Hill, Falls Ave, Centre St",
-     "visitor_musd": 38.4
+     "visitor_musd": 34.7
+    },
+    {
+     "name": "Bird Kingdom",
+     "district": "Clifton Hill, Falls Ave, Centre St",
+     "visitor_musd": 32.0
+    },
+    {
+     "name": "Marriott on the Falls Hotel",
+     "district": "Fallsview",
+     "visitor_musd": 31.6
+    }
+   ]
+  },
+  {
+   "run": 202,
+   "knobs": {
+    "beta_mult": 0.8991014760906944,
+    "attract_exp": 0.4541526806323215,
+    "tourist_floor_min": 1.4748947317926664,
+    "visitors_mult": 0.9318080087810784,
+    "spend_mult": 1.106362456158578,
+    "restaurant_capture": 1.0476946391375748,
+    "chain_mult": 1.2631069749642552,
+    "core_mult": 0.8964299833545039,
+    "casino_mult": 0.7227672712516647,
+    "parks_mult": 0.7236783762577169,
+    "safety_scale": 0.34175780517474463,
+    "outings_mult": 0.9021350340572933
+   },
+   "facts": {
+    "chains_median_ratio": 0.9189048216276477,
+    "niagara_parks_musd": 130.90021,
+    "casinos_musd": 554.412403,
+    "hotel_occupancy": 0.587,
+    "statcan_sales_rms_log": 0.23479747729094513,
+    "staff_rank_corr": 0.2064847011135692,
+    "closed_below_open": 0.5478541258610812
+   },
+   "traffic": {
+    "run": 202,
+    "regional_2019": 0.72,
+    "regional_2025": 0.737,
+    "highways": 0.787,
+    "share_regional_pct": 68.3,
+    "hotel_monthly_median_abs_log": 0.07815507112873599,
+    "hotel_turned_away": 101592
+   },
+   "visitor_musd": 3306.4,
+   "by_district_pct": {
+    "Clifton Hill, Falls Ave, Centre St": 30.2,
+    "Fallsview": 21.2,
+    "Casinos (province)": 16.4,
+    "Neighbourhood streets elsewhere": 9.6,
+    "Lundy's Lane": 6.5,
+    "Downtown and Victoria Ave north (with Great Wolf Lodge)": 4.6,
+    "Montrose, McLeod, Oakwood (big stores)": 4.0,
+    "Niagara Parks (province)": 3.8,
+    "Main and Ferry": 2.2,
+    "Chippawa and the south": 1.4
+   },
+   "by_owner_pct": {
+    "Chains and brands": 40.1,
+    "Independent": 39.6,
+    "Province (casinos, Niagara Parks)": 20.3
+   },
+   "by_kind_musd": {
+    "accommodation": 883.4,
+    "casino": 543.2,
+    "restaurant": 345.6,
+    "attraction": 310.7,
+    "fast_food": 202.4,
+    "grocery_food": 192.1,
+    "fuel": 121.8,
+    "cafe": 115.2,
+    "leisure_paid": 104.7,
+    "parking": 103.1,
+    "souvenir_gift": 96.5,
+    "car_rental": 56.2,
+    "apparel": 53.1,
+    "entertainment": 43.3,
+    "general_merchandise": 34.7,
+    "retail_other": 27.7,
+    "bar_pub": 19.4,
+    "tobacco_cannabis": 19.3,
+    "pharmacy": 17.5,
+    "liquor": 12.0,
+    "nightlife": 2.8,
+    "tobacconist": 1.6
+   },
+   "top10_pct": 27.0,
+   "top50_pct": 49.7,
+   "at_businesses_now_closed_musd": 116.5,
+   "now_closed_by_district_musd": {
+    "Clifton Hill, Falls Ave, Centre St": 43.3,
+    "Lundy's Lane": 25.3,
+    "Fallsview": 18.3,
+    "Neighbourhood streets elsewhere": 12.4,
+    "Chippawa and the south": 4.0,
+    "Main and Ferry": 4.0,
+    "Niagara Parks (province)": 3.6,
+    "Montrose, McLeod, Oakwood (big stores)": 3.5,
+    "Downtown and Victoria Ave north (with Great Wolf Lodge)": 2.1
+   },
+   "top15": [
+    {
+     "name": "Fallsview Casino Resort",
+     "district": "Casinos (province)",
+     "visitor_musd": 301.5
+    },
+    {
+     "name": "Casino Niagara",
+     "district": "Casinos (province)",
+     "visitor_musd": 241.7
+    },
+    {
+     "name": "Great Wolf Lodge",
+     "district": "Downtown and Victoria Ave north (with Great Wolf Lodge)",
+     "visitor_musd": 92.8
+    },
+    {
+     "name": "Hilton Niagara Falls",
+     "district": "Fallsview",
+     "visitor_musd": 51.3
+    },
+    {
+     "name": "Quality Inn & Suites",
+     "district": "Clifton Hill, Falls Ave, Centre St",
+     "visitor_musd": 48.8
+    },
+    {
+     "name": "Hyatt Regency Niagara Falls Fallsview",
+     "district": "Fallsview",
+     "visitor_musd": 40.0
+    },
+    {
+     "name": "Skylon Tower",
+     "district": "Fallsview",
+     "visitor_musd": 39.2
     },
     {
      "name": "Marriott Niagara Falls Fallsview Hotel",
@@ -377,847 +684,543 @@
      "visitor_musd": 38.2
     },
     {
+     "name": "Movieland Wax Museum of Stars",
+     "district": "Clifton Hill, Falls Ave, Centre St",
+     "visitor_musd": 35.9
+    },
+    {
      "name": "Courtyard by Marriott Niagara Falls",
      "district": "Clifton Hill, Falls Ave, Centre St",
-     "visitor_musd": 34.5
+     "visitor_musd": 34.6
+    },
+    {
+     "name": "Sheraton Fallsview Hotel",
+     "district": "Clifton Hill, Falls Ave, Centre St",
+     "visitor_musd": 33.8
+    },
+    {
+     "name": "Wyndham",
+     "district": "Fallsview",
+     "visitor_musd": 33.6
+    },
+    {
+     "name": "Fallsview Casino Resort Hotel",
+     "district": "Fallsview",
+     "visitor_musd": 33.4
+    },
+    {
+     "name": "Bird Kingdom",
+     "district": "Clifton Hill, Falls Ave, Centre St",
+     "visitor_musd": 30.8
+    },
+    {
+     "name": "Enterprise",
+     "district": "Clifton Hill, Falls Ave, Centre St",
+     "visitor_musd": 30.4
     }
    ]
   },
   {
-   "run": 417,
+   "run": 448,
    "knobs": {
-    "beta_mult": 0.836714432681816,
-    "attract_exp": 0.4832604255997528,
-    "tourist_floor_min": 2.7980288414611016,
-    "visitors_mult": 0.9944376141613862,
-    "spend_mult": 0.9523137424290608,
-    "restaurant_capture": 0.9926409899013218,
-    "chain_mult": 1.385753121077742,
-    "core_mult": 1.2010521010019708,
-    "casino_mult": 1.322966795801817,
-    "parks_mult": 0.8405031204710242,
-    "safety_scale": 1.2596503855013539,
-    "outings_mult": 0.9
+    "beta_mult": 1.0532859697392447,
+    "attract_exp": 0.5015343055394842,
+    "tourist_floor_min": 2.534129252913348,
+    "visitors_mult": 1.0916242298277876,
+    "spend_mult": 0.9487041242807357,
+    "restaurant_capture": 1.3,
+    "chain_mult": 1.1177195707982979,
+    "core_mult": 1.2385688693375625,
+    "casino_mult": 0.7965577450076818,
+    "parks_mult": 0.8723364713259671,
+    "safety_scale": 0.8993222200863772,
+    "outings_mult": 0.9195090624383836
    },
    "facts": {
-    "chains_median_ratio": 1.0267840999142672,
-    "niagara_parks_musd": 124.192378,
-    "casinos_musd": 490.645044,
-    "hotel_occupancy": 0.618,
-    "statcan_sales_rms_log": 0.18031392035838834,
-    "staff_rank_corr": 0.2058655860079614,
-    "closed_below_open": 0.5577093033992429
+    "chains_median_ratio": 1.1817274247491638,
+    "niagara_parks_musd": 133.040517,
+    "casinos_musd": 527.246745,
+    "hotel_occupancy": 0.663,
+    "statcan_sales_rms_log": 0.2826689809434695,
+    "staff_rank_corr": 0.19795732824614076,
+    "closed_below_open": 0.5522178252121891
    },
    "traffic": {
-    "run": 417,
-    "regional_2019": 0.718,
-    "regional_2025": 0.735,
-    "highways": 0.793,
-    "share_regional_pct": 69.6,
-    "hotel_monthly_median_abs_log": 0.07218465341892691,
-    "hotel_turned_away": 121638
+    "run": 448,
+    "regional_2019": 0.717,
+    "regional_2025": 0.733,
+    "highways": 0.768,
+    "share_regional_pct": 71.6,
+    "hotel_monthly_median_abs_log": 0.06524052186840085,
+    "hotel_turned_away": 157265
    },
-   "visitor_musd": 2999.6,
+   "visitor_musd": 3459.4,
    "by_district_pct": {
-    "Clifton Hill, Falls Ave, Centre St": 28.5,
-    "Fallsview": 22.8,
-    "Casinos (province)": 16.0,
-    "Neighbourhood streets elsewhere": 9.9,
-    "Lundy's Lane": 6.3,
-    "Downtown and Victoria Ave north (with Great Wolf Lodge)": 5.0,
-    "Montrose, McLeod, Oakwood (big stores)": 4.2,
-    "Niagara Parks (province)": 4.0,
-    "Main and Ferry": 1.8,
+    "Clifton Hill, Falls Ave, Centre St": 30.7,
+    "Fallsview": 22.7,
+    "Casinos (province)": 14.9,
+    "Neighbourhood streets elsewhere": 9.5,
+    "Lundy's Lane": 6.5,
+    "Downtown and Victoria Ave north (with Great Wolf Lodge)": 4.8,
+    "Niagara Parks (province)": 3.7,
+    "Montrose, McLeod, Oakwood (big stores)": 3.7,
+    "Main and Ferry": 2.2,
     "Chippawa and the south": 1.5
    },
    "by_owner_pct": {
-    "Chains and brands": 42.2,
-    "Independent": 37.9,
-    "Province (casinos, Niagara Parks)": 20.0
+    "Chains and brands": 41.4,
+    "Independent": 40.0,
+    "Province (casinos, Niagara Parks)": 18.6
    },
    "by_kind_musd": {
-    "accommodation": 929.2,
-    "casino": 479.4,
-    "restaurant": 273.9,
-    "attraction": 269.7,
-    "fast_food": 174.9,
-    "grocery_food": 167.5,
-    "fuel": 105.6,
-    "cafe": 98.4,
-    "parking": 89.5,
-    "leisure_paid": 85.0,
-    "souvenir_gift": 81.7,
-    "car_rental": 48.8,
-    "apparel": 43.4,
-    "entertainment": 35.5,
-    "general_merchandise": 33.1,
-    "retail_other": 25.0,
-    "tobacco_cannabis": 16.2,
-    "pharmacy": 15.7,
-    "bar_pub": 14.7,
-    "liquor": 9.3,
-    "nightlife": 1.9,
-    "tobacconist": 1.2
+    "accommodation": 1006.6,
+    "casino": 516.0,
+    "restaurant": 412.8,
+    "attraction": 294.4,
+    "fast_food": 235.5,
+    "grocery_food": 183.0,
+    "cafe": 132.5,
+    "fuel": 115.5,
+    "leisure_paid": 97.9,
+    "parking": 97.7,
+    "souvenir_gift": 93.2,
+    "car_rental": 53.2,
+    "apparel": 47.8,
+    "entertainment": 41.1,
+    "general_merchandise": 36.6,
+    "retail_other": 25.5,
+    "bar_pub": 22.2,
+    "tobacco_cannabis": 17.6,
+    "pharmacy": 15.3,
+    "liquor": 10.4,
+    "nightlife": 3.0,
+    "tobacconist": 1.3
    },
-   "top10_pct": 28.9,
-   "top50_pct": 52.5,
-   "at_businesses_now_closed_musd": 150.2,
+   "top10_pct": 26.4,
+   "top50_pct": 49.4,
+   "at_businesses_now_closed_musd": 122.8,
    "now_closed_by_district_musd": {
-    "Fallsview": 67.1,
-    "Clifton Hill, Falls Ave, Centre St": 33.0,
-    "Lundy's Lane": 24.5,
-    "Neighbourhood streets elsewhere": 11.7,
+    "Clifton Hill, Falls Ave, Centre St": 46.5,
+    "Lundy's Lane": 25.5,
+    "Fallsview": 21.5,
+    "Neighbourhood streets elsewhere": 12.9,
+    "Main and Ferry": 4.2,
     "Chippawa and the south": 3.7,
-    "Montrose, McLeod, Oakwood (big stores)": 3.1,
+    "Montrose, McLeod, Oakwood (big stores)": 3.4,
     "Niagara Parks (province)": 2.9,
+    "Downtown and Victoria Ave north (with Great Wolf Lodge)": 2.3
+   },
+   "top15": [
+    {
+     "name": "Fallsview Casino Resort",
+     "district": "Casinos (province)",
+     "visitor_musd": 282.8
+    },
+    {
+     "name": "Casino Niagara",
+     "district": "Casinos (province)",
+     "visitor_musd": 233.3
+    },
+    {
+     "name": "Great Wolf Lodge",
+     "district": "Downtown and Victoria Ave north (with Great Wolf Lodge)",
+     "visitor_musd": 104.9
+    },
+    {
+     "name": "Hilton Niagara Falls",
+     "district": "Fallsview",
+     "visitor_musd": 58.1
+    },
+    {
+     "name": "Quality Inn & Suites",
+     "district": "Clifton Hill, Falls Ave, Centre St",
+     "visitor_musd": 55.2
+    },
+    {
+     "name": "Hyatt Regency Niagara Falls Fallsview",
+     "district": "Fallsview",
+     "visitor_musd": 45.4
+    },
+    {
+     "name": "Marriott Niagara Falls Fallsview Hotel",
+     "district": "Fallsview",
+     "visitor_musd": 43.5
+    },
+    {
+     "name": "Skylon Tower",
+     "district": "Fallsview",
+     "visitor_musd": 42.5
+    },
+    {
+     "name": "Movieland Wax Museum of Stars",
+     "district": "Clifton Hill, Falls Ave, Centre St",
+     "visitor_musd": 40.1
+    },
+    {
+     "name": "Courtyard by Marriott Niagara Falls",
+     "district": "Clifton Hill, Falls Ave, Centre St",
+     "visitor_musd": 39.6
+    },
+    {
+     "name": "Sheraton Fallsview Hotel",
+     "district": "Clifton Hill, Falls Ave, Centre St",
+     "visitor_musd": 38.5
+    },
+    {
+     "name": "Fallsview Casino Resort Hotel",
+     "district": "Fallsview",
+     "visitor_musd": 38.2
+    },
+    {
+     "name": "Wyndham",
+     "district": "Fallsview",
+     "visitor_musd": 37.9
+    },
+    {
+     "name": "Bird Kingdom",
+     "district": "Clifton Hill, Falls Ave, Centre St",
+     "visitor_musd": 35.1
+    },
+    {
+     "name": "Marriott on the Falls Hotel",
+     "district": "Fallsview",
+     "visitor_musd": 31.6
+    }
+   ]
+  },
+  {
+   "run": 720,
+   "knobs": {
+    "beta_mult": 0.9677738682952466,
+    "attract_exp": 0.5255570140670877,
+    "tourist_floor_min": 1.0,
+    "visitors_mult": 0.9699921014142941,
+    "spend_mult": 1.0691749919320601,
+    "restaurant_capture": 0.7663874028544989,
+    "chain_mult": 1.6,
+    "core_mult": 1.3213446515973164,
+    "casino_mult": 1.361900691751326,
+    "parks_mult": 0.8415883009243608,
+    "safety_scale": 1.4650940593178854,
+    "outings_mult": 0.9
+   },
+   "facts": {
+    "chains_median_ratio": 0.7093224637681159,
+    "niagara_parks_musd": 121.514522,
+    "casinos_musd": 562.311926,
+    "hotel_occupancy": 0.606,
+    "statcan_sales_rms_log": 0.1670516419504172,
+    "staff_rank_corr": 0.21200812818343828,
+    "closed_below_open": 0.5628039599738844
+   },
+   "traffic": {
+    "run": 720,
+    "regional_2019": 0.72,
+    "regional_2025": 0.737,
+    "highways": 0.78,
+    "share_regional_pct": 67.2,
+    "hotel_monthly_median_abs_log": 0.0846170485596561,
+    "hotel_turned_away": 113103
+   },
+   "visitor_musd": 3138.5,
+   "by_district_pct": {
+    "Clifton Hill, Falls Ave, Centre St": 29.6,
+    "Fallsview": 21.4,
+    "Casinos (province)": 17.6,
+    "Neighbourhood streets elsewhere": 9.4,
+    "Lundy's Lane": 6.1,
+    "Downtown and Victoria Ave north (with Great Wolf Lodge)": 4.7,
+    "Montrose, McLeod, Oakwood (big stores)": 4.3,
+    "Niagara Parks (province)": 3.7,
+    "Main and Ferry": 1.8,
+    "Chippawa and the south": 1.3
+   },
+   "by_owner_pct": {
+    "Chains and brands": 40.8,
+    "Independent": 37.9,
+    "Province (casinos, Niagara Parks)": 21.3
+   },
+   "by_kind_musd": {
+    "accommodation": 912.8,
+    "casino": 551.1,
+    "attraction": 308.8,
+    "restaurant": 243.1,
+    "grocery_food": 189.3,
+    "fast_food": 149.6,
+    "fuel": 121.1,
+    "parking": 102.5,
+    "souvenir_gift": 96.0,
+    "leisure_paid": 95.8,
+    "cafe": 93.1,
+    "car_rental": 55.8,
+    "apparel": 48.6,
+    "general_merchandise": 40.8,
+    "entertainment": 40.1,
+    "retail_other": 26.0,
+    "tobacco_cannabis": 19.3,
+    "pharmacy": 16.8,
+    "liquor": 13.6,
+    "bar_pub": 10.9,
+    "nightlife": 1.7,
+    "tobacconist": 1.5
+   },
+   "top10_pct": 29.3,
+   "top50_pct": 54.4,
+   "at_businesses_now_closed_musd": 94.8,
+   "now_closed_by_district_musd": {
+    "Clifton Hill, Falls Ave, Centre St": 33.9,
+    "Lundy's Lane": 23.3,
+    "Fallsview": 13.4,
+    "Neighbourhood streets elsewhere": 11.7,
+    "Niagara Parks (province)": 3.4,
+    "Chippawa and the south": 3.3,
+    "Montrose, McLeod, Oakwood (big stores)": 2.8,
+    "Main and Ferry": 1.7,
+    "Downtown and Victoria Ave north (with Great Wolf Lodge)": 1.2
+   },
+   "top15": [
+    {
+     "name": "Fallsview Casino Resort",
+     "district": "Casinos (province)",
+     "visitor_musd": 308.0
+    },
+    {
+     "name": "Casino Niagara",
+     "district": "Casinos (province)",
+     "visitor_musd": 243.1
+    },
+    {
+     "name": "Great Wolf Lodge",
+     "district": "Downtown and Victoria Ave north (with Great Wolf Lodge)",
+     "visitor_musd": 98.9
+    },
+    {
+     "name": "Hilton Niagara Falls",
+     "district": "Fallsview",
+     "visitor_musd": 52.9
+    },
+    {
+     "name": "Quality Inn & Suites",
+     "district": "Clifton Hill, Falls Ave, Centre St",
+     "visitor_musd": 50.3
+    },
+    {
+     "name": "Skylon Tower",
+     "district": "Fallsview",
+     "visitor_musd": 43.7
+    },
+    {
+     "name": "Hyatt Regency Niagara Falls Fallsview",
+     "district": "Fallsview",
+     "visitor_musd": 41.3
+    },
+    {
+     "name": "Movieland Wax Museum of Stars",
+     "district": "Clifton Hill, Falls Ave, Centre St",
+     "visitor_musd": 41.0
+    },
+    {
+     "name": "Marriott Niagara Falls Fallsview Hotel",
+     "district": "Fallsview",
+     "visitor_musd": 39.4
+    },
+    {
+     "name": "Courtyard by Marriott Niagara Falls",
+     "district": "Clifton Hill, Falls Ave, Centre St",
+     "visitor_musd": 35.8
+    },
+    {
+     "name": "Sheraton Fallsview Hotel",
+     "district": "Clifton Hill, Falls Ave, Centre St",
+     "visitor_musd": 34.9
+    },
+    {
+     "name": "Wyndham",
+     "district": "Fallsview",
+     "visitor_musd": 34.6
+    },
+    {
+     "name": "Fallsview Casino Resort Hotel",
+     "district": "Fallsview",
+     "visitor_musd": 34.6
+    },
+    {
+     "name": "Bird Kingdom",
+     "district": "Clifton Hill, Falls Ave, Centre St",
+     "visitor_musd": 34.4
+    },
+    {
+     "name": "Enterprise",
+     "district": "Clifton Hill, Falls Ave, Centre St",
+     "visitor_musd": 31.4
+    }
+   ]
+  },
+  {
+   "run": 624,
+   "knobs": {
+    "beta_mult": 1.1866184791331174,
+    "attract_exp": 0.4934019048703895,
+    "tourist_floor_min": 1.090433327711759,
+    "visitors_mult": 0.9905511430469244,
+    "spend_mult": 0.9976886319725565,
+    "restaurant_capture": 0.9668447937262495,
+    "chain_mult": 1.1028846194674669,
+    "core_mult": 0.7,
+    "casino_mult": 1.2887639336004002,
+    "parks_mult": 1.1261437192046992,
+    "safety_scale": 0.0,
+    "outings_mult": 1.0018616800395472
+   },
+   "facts": {
+    "chains_median_ratio": 0.9193797380156076,
+    "niagara_parks_musd": 129.330404,
+    "casinos_musd": 522.203933,
+    "hotel_occupancy": 0.615,
+    "statcan_sales_rms_log": 0.20870408796636702,
+    "staff_rank_corr": 0.20176179617595152,
+    "closed_below_open": 0.5534036854938642
+   },
+   "traffic": {
+    "run": 624,
+    "regional_2019": 0.726,
+    "regional_2025": 0.742,
+    "highways": 0.761,
+    "share_regional_pct": 69.6,
+    "hotel_monthly_median_abs_log": 0.07443259478276955,
+    "hotel_turned_away": 121019
+   },
+   "visitor_musd": 3116.5,
+   "by_district_pct": {
+    "Clifton Hill, Falls Ave, Centre St": 30.6,
+    "Fallsview": 22.3,
+    "Casinos (province)": 16.4,
+    "Neighbourhood streets elsewhere": 8.8,
+    "Lundy's Lane": 6.2,
+    "Downtown and Victoria Ave north (with Great Wolf Lodge)": 4.6,
+    "Niagara Parks (province)": 4.0,
+    "Montrose, McLeod, Oakwood (big stores)": 3.2,
     "Main and Ferry": 2.5,
+    "Chippawa and the south": 1.4
+   },
+   "by_owner_pct": {
+    "Chains and brands": 39.9,
+    "Independent": 39.8,
+    "Province (casinos, Niagara Parks)": 20.4
+   },
+   "by_kind_musd": {
+    "accommodation": 928.7,
+    "casino": 511.0,
+    "restaurant": 310.1,
+    "attraction": 286.8,
+    "grocery_food": 175.3,
+    "fast_food": 159.8,
+    "fuel": 112.5,
+    "souvenir_gift": 96.3,
+    "cafe": 95.3,
+    "parking": 95.2,
+    "leisure_paid": 89.7,
+    "car_rental": 51.9,
+    "apparel": 47.7,
+    "entertainment": 37.4,
+    "general_merchandise": 32.5,
+    "retail_other": 21.8,
+    "tobacco_cannabis": 17.8,
+    "bar_pub": 16.2,
+    "pharmacy": 13.6,
+    "liquor": 13.1,
+    "nightlife": 2.5,
+    "tobacconist": 1.5
+   },
+   "top10_pct": 28.2,
+   "top50_pct": 52.3,
+   "at_businesses_now_closed_musd": 101.6,
+   "now_closed_by_district_musd": {
+    "Clifton Hill, Falls Ave, Centre St": 40.9,
+    "Lundy's Lane": 20.3,
+    "Fallsview": 16.4,
+    "Neighbourhood streets elsewhere": 9.9,
+    "Main and Ferry": 3.4,
+    "Chippawa and the south": 3.2,
+    "Niagara Parks (province)": 3.1,
+    "Montrose, McLeod, Oakwood (big stores)": 2.7,
     "Downtown and Victoria Ave north (with Great Wolf Lodge)": 1.7
    },
    "top15": [
     {
      "name": "Fallsview Casino Resort",
      "district": "Casinos (province)",
-     "visitor_musd": 256.2
+     "visitor_musd": 291.1
     },
     {
      "name": "Casino Niagara",
      "district": "Casinos (province)",
-     "visitor_musd": 223.2
+     "visitor_musd": 219.9
     },
     {
      "name": "Great Wolf Lodge",
      "district": "Downtown and Victoria Ave north (with Great Wolf Lodge)",
-     "visitor_musd": 96.0
-    },
-    {
-     "name": "Wyndham Garden",
-     "district": "Fallsview",
-     "visitor_musd": 57.8
-    },
-    {
-     "name": "Embassy Suites by Hilton",
-     "district": "Fallsview",
-     "visitor_musd": 52.6
+     "visitor_musd": 92.5
     },
     {
      "name": "Hilton Niagara Falls",
      "district": "Fallsview",
-     "visitor_musd": 52.5
+     "visitor_musd": 53.8
     },
     {
      "name": "Quality Inn & Suites",
      "district": "Clifton Hill, Falls Ave, Centre St",
-     "visitor_musd": 46.1
+     "visitor_musd": 51.1
+    },
+    {
+     "name": "Skylon Tower",
+     "district": "Fallsview",
+     "visitor_musd": 42.5
+    },
+    {
+     "name": "Hyatt Regency Niagara Falls Fallsview",
+     "district": "Fallsview",
+     "visitor_musd": 42.0
     },
     {
      "name": "Marriott Niagara Falls Fallsview Hotel",
      "district": "Fallsview",
-     "visitor_musd": 39.0
+     "visitor_musd": 40.1
     },
     {
      "name": "Courtyard by Marriott Niagara Falls",
      "district": "Clifton Hill, Falls Ave, Centre St",
-     "visitor_musd": 35.3
+     "visitor_musd": 36.4
     },
     {
      "name": "Sheraton Fallsview Hotel",
      "district": "Clifton Hill, Falls Ave, Centre St",
-     "visitor_musd": 34.8
+     "visitor_musd": 35.5
     },
     {
      "name": "Fallsview Casino Resort Hotel",
      "district": "Fallsview",
-     "visitor_musd": 34.2
-    },
-    {
-     "name": "Movieland Wax Museum of Stars",
-     "district": "Clifton Hill, Falls Ave, Centre St",
-     "visitor_musd": 34.1
-    },
-    {
-     "name": "Skylon Tower",
-     "district": "Fallsview",
-     "visitor_musd": 33.4
+     "visitor_musd": 35.2
     },
     {
      "name": "Wyndham",
      "district": "Fallsview",
-     "visitor_musd": 31.8
-    },
-    {
-     "name": "Bird Kingdom",
-     "district": "Clifton Hill, Falls Ave, Centre St",
-     "visitor_musd": 31.3
-    }
-   ]
-  },
-  {
-   "run": 468,
-   "knobs": {
-    "beta_mult": 1.0516880540229223,
-    "attract_exp": 0.6188951965371187,
-    "tourist_floor_min": 4.063521835388804,
-    "visitors_mult": 0.9899692419515739,
-    "spend_mult": 0.9510091543628015,
-    "restaurant_capture": 1.0302323699809353,
-    "chain_mult": 0.6,
-    "core_mult": 0.8202241081944674,
-    "casino_mult": 1.197051850459245,
-    "parks_mult": 0.8291442687152761,
-    "safety_scale": 1.585687824824828,
-    "outings_mult": 0.9118717047939928
-   },
-   "facts": {
-    "chains_median_ratio": 0.9429362471917233,
-    "niagara_parks_musd": 121.367107,
-    "casinos_musd": 485.897024,
-    "hotel_occupancy": 0.616,
-    "statcan_sales_rms_log": 0.18980490859910512,
-    "staff_rank_corr": 0.177734735308232,
-    "closed_below_open": 0.5429686984738362
-   },
-   "traffic": {
-    "run": 468,
-    "regional_2019": 0.721,
-    "regional_2025": 0.738,
-    "highways": 0.77,
-    "share_regional_pct": 71.1,
-    "hotel_monthly_median_abs_log": 0.07218465341892691,
-    "hotel_turned_away": 120478
-   },
-   "visitor_musd": 3004.0,
-   "by_district_pct": {
-    "Clifton Hill, Falls Ave, Centre St": 28.5,
-    "Fallsview": 23.9,
-    "Casinos (province)": 15.8,
-    "Neighbourhood streets elsewhere": 10.0,
-    "Lundy's Lane": 5.9,
-    "Downtown and Victoria Ave north (with Great Wolf Lodge)": 5.1,
-    "Niagara Parks (province)": 3.9,
-    "Montrose, McLeod, Oakwood (big stores)": 3.5,
-    "Main and Ferry": 1.9,
-    "Chippawa and the south": 1.4
-   },
-   "by_owner_pct": {
-    "Chains and brands": 40.8,
-    "Independent": 39.5,
-    "Province (casinos, Niagara Parks)": 19.7
-   },
-   "by_kind_musd": {
-    "accommodation": 925.8,
-    "casino": 474.7,
-    "restaurant": 326.3,
-    "attraction": 267.9,
-    "grocery_food": 169.3,
-    "fast_food": 155.4,
-    "fuel": 105.0,
-    "parking": 88.9,
-    "leisure_paid": 84.0,
-    "souvenir_gift": 81.3,
-    "cafe": 81.2,
-    "car_rental": 48.4,
-    "general_merchandise": 40.0,
-    "apparel": 39.3,
-    "entertainment": 37.4,
-    "retail_other": 26.2,
-    "bar_pub": 16.6,
-    "tobacco_cannabis": 14.9,
-    "pharmacy": 12.1,
-    "liquor": 6.4,
-    "nightlife": 1.9
-   },
-   "top10_pct": 29.1,
-   "top50_pct": 54.7,
-   "at_businesses_now_closed_musd": 156.2,
-   "now_closed_by_district_musd": {
-    "Fallsview": 70.5,
-    "Clifton Hill, Falls Ave, Centre St": 35.9,
-    "Lundy's Lane": 24.6,
-    "Neighbourhood streets elsewhere": 12.7,
-    "Niagara Parks (province)": 2.9,
-    "Montrose, McLeod, Oakwood (big stores)": 2.8,
-    "Chippawa and the south": 2.7,
-    "Main and Ferry": 2.4,
-    "Downtown and Victoria Ave north (with Great Wolf Lodge)": 1.8
-   },
-   "top15": [
-    {
-     "name": "Fallsview Casino Resort",
-     "district": "Casinos (province)",
-     "visitor_musd": 243.9
-    },
-    {
-     "name": "Casino Niagara",
-     "district": "Casinos (province)",
-     "visitor_musd": 230.8
-    },
-    {
-     "name": "Great Wolf Lodge",
-     "district": "Downtown and Victoria Ave north (with Great Wolf Lodge)",
-     "visitor_musd": 106.1
-    },
-    {
-     "name": "Wyndham Garden",
-     "district": "Fallsview",
-     "visitor_musd": 57.6
-    },
-    {
-     "name": "Embassy Suites by Hilton",
-     "district": "Fallsview",
-     "visitor_musd": 52.4
-    },
-    {
-     "name": "Hilton Niagara Falls",
-     "district": "Fallsview",
-     "visitor_musd": 52.3
-    },
-    {
-     "name": "Quality Inn & Suites",
-     "district": "Clifton Hill, Falls Ave, Centre St",
-     "visitor_musd": 46.0
+     "visitor_musd": 35.2
     },
     {
      "name": "Movieland Wax Museum of Stars",
      "district": "Clifton Hill, Falls Ave, Centre St",
-     "visitor_musd": 42.6
-    },
-    {
-     "name": "Bird Kingdom",
-     "district": "Clifton Hill, Falls Ave, Centre St",
-     "visitor_musd": 41.1
-    },
-    {
-     "name": "Marriott Niagara Falls Fallsview Hotel",
-     "district": "Fallsview",
-     "visitor_musd": 38.9
-    },
-    {
-     "name": "Skylon Tower",
-     "district": "Fallsview",
-     "visitor_musd": 38.1
-    },
-    {
-     "name": "Courtyard by Marriott Niagara Falls",
-     "district": "Clifton Hill, Falls Ave, Centre St",
-     "visitor_musd": 35.1
-    },
-    {
-     "name": "Sheraton Fallsview Hotel",
-     "district": "Clifton Hill, Falls Ave, Centre St",
-     "visitor_musd": 34.6
-    },
-    {
-     "name": "Fallsview Casino Resort Hotel",
-     "district": "Fallsview",
-     "visitor_musd": 34.1
-    },
-    {
-     "name": "Wyndham",
-     "district": "Fallsview",
-     "visitor_musd": 31.7
-    }
-   ]
-  },
-  {
-   "run": 428,
-   "knobs": {
-    "beta_mult": 1.0011813633683049,
-    "attract_exp": 0.5940840985541207,
-    "tourist_floor_min": 3.959269631242002,
-    "visitors_mult": 1.0975450516393206,
-    "spend_mult": 0.9381968247951172,
-    "restaurant_capture": 1.2338914176554963,
-    "chain_mult": 0.6,
-    "core_mult": 0.8035434700353737,
-    "casino_mult": 1.1824425594468966,
-    "parks_mult": 0.7,
-    "safety_scale": 1.9391120028775046,
-    "outings_mult": 0.9417268877676241
-   },
-   "facts": {
-    "chains_median_ratio": 1.102292425980626,
-    "niagara_parks_musd": 121.845131,
-    "casinos_musd": 527.242551,
-    "hotel_occupancy": 0.667,
-    "statcan_sales_rms_log": 0.26187242956421486,
-    "staff_rank_corr": 0.17509815811986676,
-    "closed_below_open": 0.5411220007650605
-   },
-   "traffic": {
-    "run": 428,
-    "regional_2019": 0.717,
-    "regional_2025": 0.735,
-    "highways": 0.775,
-    "share_regional_pct": 73.9,
-    "hotel_monthly_median_abs_log": 0.060465195749935356,
-    "hotel_turned_away": 160104
-   },
-   "visitor_musd": 3393.4,
-   "by_district_pct": {
-    "Clifton Hill, Falls Ave, Centre St": 29.1,
-    "Fallsview": 24.2,
-    "Casinos (province)": 15.2,
-    "Neighbourhood streets elsewhere": 10.1,
-    "Lundy's Lane": 6.1,
-    "Downtown and Victoria Ave north (with Great Wolf Lodge)": 5.1,
-    "Montrose, McLeod, Oakwood (big stores)": 3.5,
-    "Niagara Parks (province)": 3.5,
-    "Main and Ferry": 1.8,
-    "Chippawa and the south": 1.5
-   },
-   "by_owner_pct": {
-    "Chains and brands": 40.8,
-    "Independent": 40.5,
-    "Province (casinos, Niagara Parks)": 18.7
-   },
-   "by_kind_musd": {
-    "accommodation": 1008.4,
-    "casino": 516.0,
-    "restaurant": 423.8,
-    "attraction": 291.4,
-    "fast_food": 203.4,
-    "grocery_food": 183.9,
-    "fuel": 114.1,
-    "cafe": 105.2,
-    "parking": 96.7,
-    "leisure_paid": 91.8,
-    "souvenir_gift": 87.3,
-    "car_rental": 52.7,
-    "apparel": 44.1,
-    "general_merchandise": 41.5,
-    "entertainment": 40.4,
-    "retail_other": 29.3,
-    "bar_pub": 22.3,
-    "tobacco_cannabis": 16.4,
-    "pharmacy": 13.8,
-    "liquor": 7.1,
-    "nightlife": 2.6,
-    "tobacconist": 1.0
-   },
-   "top10_pct": 27.9,
-   "top50_pct": 52.2,
-   "at_businesses_now_closed_musd": 181.8,
-   "now_closed_by_district_musd": {
-    "Fallsview": 80.1,
-    "Clifton Hill, Falls Ave, Centre St": 44.9,
-    "Lundy's Lane": 27.9,
-    "Neighbourhood streets elsewhere": 14.1,
-    "Montrose, McLeod, Oakwood (big stores)": 3.3,
-    "Chippawa and the south": 3.2,
-    "Main and Ferry": 3.0,
-    "Niagara Parks (province)": 2.8,
-    "Downtown and Victoria Ave north (with Great Wolf Lodge)": 2.4
-   },
-   "top15": [
-    {
-     "name": "Fallsview Casino Resort",
-     "district": "Casinos (province)",
-     "visitor_musd": 265.8
-    },
-    {
-     "name": "Casino Niagara",
-     "district": "Casinos (province)",
-     "visitor_musd": 250.3
-    },
-    {
-     "name": "Great Wolf Lodge",
-     "district": "Downtown and Victoria Ave north (with Great Wolf Lodge)",
-     "visitor_musd": 115.2
-    },
-    {
-     "name": "Wyndham Garden",
-     "district": "Fallsview",
-     "visitor_musd": 62.4
-    },
-    {
-     "name": "Embassy Suites by Hilton",
-     "district": "Fallsview",
-     "visitor_musd": 57.0
-    },
-    {
-     "name": "Hilton Niagara Falls",
-     "district": "Fallsview",
-     "visitor_musd": 56.7
-    },
-    {
-     "name": "Quality Inn & Suites",
-     "district": "Clifton Hill, Falls Ave, Centre St",
-     "visitor_musd": 49.9
-    },
-    {
-     "name": "Movieland Wax Museum of Stars",
-     "district": "Clifton Hill, Falls Ave, Centre St",
-     "visitor_musd": 45.7
-    },
-    {
-     "name": "Bird Kingdom",
-     "district": "Clifton Hill, Falls Ave, Centre St",
-     "visitor_musd": 44.1
-    },
-    {
-     "name": "Skylon Tower",
-     "district": "Fallsview",
-     "visitor_musd": 42.7
-    },
-    {
-     "name": "Marriott Niagara Falls Fallsview Hotel",
-     "district": "Fallsview",
-     "visitor_musd": 42.4
-    },
-    {
-     "name": "Courtyard by Marriott Niagara Falls",
-     "district": "Clifton Hill, Falls Ave, Centre St",
-     "visitor_musd": 38.4
-    },
-    {
-     "name": "Sheraton Fallsview Hotel",
-     "district": "Clifton Hill, Falls Ave, Centre St",
-     "visitor_musd": 37.7
-    },
-    {
-     "name": "Fallsview Casino Resort Hotel",
-     "district": "Fallsview",
-     "visitor_musd": 37.2
-    },
-    {
-     "name": "Wyndham",
-     "district": "Fallsview",
-     "visitor_musd": 34.3
-    }
-   ]
-  },
-  {
-   "run": 413,
-   "knobs": {
-    "beta_mult": 0.9707979006896192,
-    "attract_exp": 0.5467687148294509,
-    "tourist_floor_min": 1.0,
-    "visitors_mult": 0.9324037602526877,
-    "spend_mult": 1.204502745452282,
-    "restaurant_capture": 0.7567943309267031,
-    "chain_mult": 1.3313445623277527,
-    "core_mult": 1.5201920697871536,
-    "casino_mult": 1.1532745668074535,
-    "parks_mult": 0.7315176942227734,
-    "safety_scale": 0.8620608071858994,
-    "outings_mult": 0.9347888509199934
-   },
-   "facts": {
-    "chains_median_ratio": 1.0835557991225102,
-    "niagara_parks_musd": 130.48307,
-    "casinos_musd": 628.466124,
-    "hotel_occupancy": 0.588,
-    "statcan_sales_rms_log": 0.20988200633095394,
-    "staff_rank_corr": 0.20847150267107667,
-    "closed_below_open": 0.5599451266966535
-   },
-   "traffic": {
-    "run": 413,
-    "regional_2019": 0.723,
-    "regional_2025": 0.741,
-    "highways": 0.783,
-    "share_regional_pct": 67.8,
-    "hotel_monthly_median_abs_log": 0.07300705461133473,
-    "hotel_turned_away": 101612
-   },
-   "visitor_musd": 3379.2,
-   "by_district_pct": {
-    "Clifton Hill, Falls Ave, Centre St": 29.0,
-    "Fallsview": 21.9,
-    "Casinos (province)": 18.3,
-    "Neighbourhood streets elsewhere": 9.3,
-    "Lundy's Lane": 5.7,
-    "Downtown and Victoria Ave north (with Great Wolf Lodge)": 4.4,
-    "Montrose, McLeod, Oakwood (big stores)": 4.2,
-    "Niagara Parks (province)": 3.8,
-    "Main and Ferry": 2.0,
-    "Chippawa and the south": 1.3
-   },
-   "by_owner_pct": {
-    "Chains and brands": 40.1,
-    "Independent": 37.9,
-    "Province (casinos, Niagara Parks)": 22.0
-   },
-   "by_kind_musd": {
-    "accommodation": 881.6,
-    "casino": 617.3,
-    "attraction": 347.8,
-    "restaurant": 280.5,
-    "grocery_food": 214.1,
-    "fast_food": 160.1,
-    "fuel": 136.3,
-    "parking": 115.4,
-    "leisure_paid": 109.9,
-    "souvenir_gift": 107.0,
-    "cafe": 98.7,
-    "car_rental": 62.9,
-    "apparel": 53.3,
-    "general_merchandise": 46.9,
-    "entertainment": 46.7,
-    "retail_other": 30.2,
-    "tobacco_cannabis": 21.6,
-    "pharmacy": 18.4,
-    "liquor": 13.9,
-    "bar_pub": 13.1,
-    "nightlife": 1.9,
-    "tobacconist": 1.6
-   },
-   "top10_pct": 30.0,
-   "top50_pct": 54.8,
-   "at_businesses_now_closed_musd": 154.4,
-   "now_closed_by_district_musd": {
-    "Fallsview": 65.6,
-    "Clifton Hill, Falls Ave, Centre St": 37.3,
-    "Lundy's Lane": 24.6,
-    "Neighbourhood streets elsewhere": 12.9,
-    "Niagara Parks (province)": 4.0,
-    "Chippawa and the south": 3.4,
-    "Montrose, McLeod, Oakwood (big stores)": 2.9,
-    "Main and Ferry": 2.3,
-    "Downtown and Victoria Ave north (with Great Wolf Lodge)": 1.4
-   },
-   "top15": [
-    {
-     "name": "Fallsview Casino Resort",
-     "district": "Casinos (province)",
-     "visitor_musd": 347.5
-    },
-    {
-     "name": "Casino Niagara",
-     "district": "Casinos (province)",
-     "visitor_musd": 269.8
-    },
-    {
-     "name": "Great Wolf Lodge",
-     "district": "Downtown and Victoria Ave north (with Great Wolf Lodge)",
-     "visitor_musd": 99.4
-    },
-    {
-     "name": "Wyndham Garden",
-     "district": "Fallsview",
-     "visitor_musd": 55.1
-    },
-    {
-     "name": "Skylon Tower",
-     "district": "Fallsview",
-     "visitor_musd": 51.8
-    },
-    {
-     "name": "Embassy Suites by Hilton",
-     "district": "Fallsview",
-     "visitor_musd": 50.0
-    },
-    {
-     "name": "Hilton Niagara Falls",
-     "district": "Fallsview",
-     "visitor_musd": 49.9
-    },
-    {
-     "name": "Movieland Wax Museum of Stars",
-     "district": "Clifton Hill, Falls Ave, Centre St",
-     "visitor_musd": 47.2
-    },
-    {
-     "name": "Quality Inn & Suites",
-     "district": "Clifton Hill, Falls Ave, Centre St",
-     "visitor_musd": 43.9
-    },
-    {
-     "name": "Bird Kingdom",
-     "district": "Clifton Hill, Falls Ave, Centre St",
-     "visitor_musd": 39.6
-    },
-    {
-     "name": "Enterprise",
-     "district": "Clifton Hill, Falls Ave, Centre St",
-     "visitor_musd": 37.1
-    },
-    {
-     "name": "Marriott Niagara Falls Fallsview Hotel",
-     "district": "Fallsview",
-     "visitor_musd": 37.0
-    },
-    {
-     "name": "Courtyard by Marriott Niagara Falls",
-     "district": "Clifton Hill, Falls Ave, Centre St",
-     "visitor_musd": 33.4
-    },
-    {
-     "name": "Sheraton Fallsview Hotel",
-     "district": "Clifton Hill, Falls Ave, Centre St",
-     "visitor_musd": 33.0
+     "visitor_musd": 34.9
     },
     {
      "name": "Wholesale Club",
      "district": "Main and Ferry",
-     "visitor_musd": 32.4
-    }
-   ]
-  },
-  {
-   "run": 481,
-   "knobs": {
-    "beta_mult": 1.2078342383384466,
-    "attract_exp": 0.7625068263351176,
-    "tourist_floor_min": 1.6537199502208542,
-    "visitors_mult": 0.9325951862603249,
-    "spend_mult": 1.1296738066029677,
-    "restaurant_capture": 0.8330623758054891,
-    "chain_mult": 0.729524336309626,
-    "core_mult": 1.4439132905419196,
-    "casino_mult": 1.1347328569781931,
-    "parks_mult": 1.0020776354524759,
-    "safety_scale": 0.06582307346316663,
-    "outings_mult": 1.0079443051977588
-   },
-   "facts": {
-    "chains_median_ratio": 1.10199494772189,
-    "niagara_parks_musd": 121.286877,
-    "casinos_musd": 577.730311,
-    "hotel_occupancy": 0.588,
-    "statcan_sales_rms_log": 0.22287783319447016,
-    "staff_rank_corr": 0.18915655078522642,
-    "closed_below_open": 0.5542731265911279
-   },
-   "traffic": {
-    "run": 481,
-    "regional_2019": 0.73,
-    "regional_2025": 0.748,
-    "highways": 0.762,
-    "share_regional_pct": 67.7,
-    "hotel_monthly_median_abs_log": 0.07429157630369136,
-    "hotel_turned_away": 102951
-   },
-   "visitor_musd": 3228.8,
-   "by_district_pct": {
-    "Clifton Hill, Falls Ave, Centre St": 29.5,
-    "Fallsview": 24.0,
-    "Casinos (province)": 17.5,
-    "Neighbourhood streets elsewhere": 8.7,
-    "Lundy's Lane": 5.1,
-    "Downtown and Victoria Ave north (with Great Wolf Lodge)": 4.4,
-    "Niagara Parks (province)": 3.7,
-    "Montrose, McLeod, Oakwood (big stores)": 3.4,
-    "Main and Ferry": 2.8,
-    "Chippawa and the south": 1.1
-   },
-   "by_owner_pct": {
-    "Chains and brands": 40.7,
-    "Independent": 38.0,
-    "Province (casinos, Niagara Parks)": 21.2
-   },
-   "by_kind_musd": {
-    "accommodation": 881.8,
-    "casino": 566.5,
-    "attraction": 319.7,
-    "restaurant": 316.1,
-    "grocery_food": 199.8,
-    "fast_food": 141.8,
-    "fuel": 125.2,
-    "parking": 106.1,
-    "leisure_paid": 99.3,
-    "souvenir_gift": 97.9,
-    "cafe": 88.8,
-    "general_merchandise": 62.8,
-    "car_rental": 57.8,
-    "entertainment": 45.5,
-    "apparel": 37.8,
-    "retail_other": 26.5,
-    "tobacco_cannabis": 18.4,
-    "bar_pub": 12.7,
-    "pharmacy": 12.0,
-    "liquor": 9.8,
-    "nightlife": 1.5
-   },
-   "top10_pct": 31.2,
-   "top50_pct": 59.2,
-   "at_businesses_now_closed_musd": 148.7,
-   "now_closed_by_district_musd": {
-    "Fallsview": 69.2,
-    "Clifton Hill, Falls Ave, Centre St": 35.7,
-    "Lundy's Lane": 20.7,
-    "Neighbourhood streets elsewhere": 12.5,
-    "Niagara Parks (province)": 3.6,
-    "Main and Ferry": 2.2,
-    "Montrose, McLeod, Oakwood (big stores)": 1.9,
-    "Chippawa and the south": 1.8,
-    "Downtown and Victoria Ave north (with Great Wolf Lodge)": 1.1
-   },
-   "top15": [
-    {
-     "name": "Fallsview Casino Resort",
-     "district": "Casinos (province)",
-     "visitor_musd": 319.0
-    },
-    {
-     "name": "Casino Niagara",
-     "district": "Casinos (province)",
-     "visitor_musd": 247.5
-    },
-    {
-     "name": "Great Wolf Lodge",
-     "district": "Downtown and Victoria Ave north (with Great Wolf Lodge)",
-     "visitor_musd": 106.5
-    },
-    {
-     "name": "Skylon Tower",
-     "district": "Fallsview",
-     "visitor_musd": 61.7
-    },
-    {
-     "name": "Movieland Wax Museum of Stars",
-     "district": "Clifton Hill, Falls Ave, Centre St",
-     "visitor_musd": 59.6
-    },
-    {
-     "name": "Wholesale Club",
-     "district": "Main and Ferry",
-     "visitor_musd": 58.5
-    },
-    {
-     "name": "Wyndham Garden",
-     "district": "Fallsview",
-     "visitor_musd": 55.1
-    },
-    {
-     "name": "Embassy Suites by Hilton",
-     "district": "Fallsview",
-     "visitor_musd": 50.0
-    },
-    {
-     "name": "Hilton Niagara Falls",
-     "district": "Fallsview",
-     "visitor_musd": 49.9
-    },
-    {
-     "name": "Bird Kingdom",
-     "district": "Clifton Hill, Falls Ave, Centre St",
-     "visitor_musd": 47.5
-    },
-    {
-     "name": "Easy Parking Niagara Falls \u2013 Fallsview Boulevard",
-     "district": "Fallsview",
-     "visitor_musd": 44.9
-    },
-    {
-     "name": "Quality Inn & Suites",
-     "district": "Clifton Hill, Falls Ave, Centre St",
-     "visitor_musd": 43.9
+     "visitor_musd": 34.9
     },
     {
      "name": "Enterprise",
      "district": "Clifton Hill, Falls Ave, Centre St",
-     "visitor_musd": 42.4
-    },
-    {
-     "name": "Marriott Niagara Falls Fallsview Hotel",
-     "district": "Fallsview",
-     "visitor_musd": 37.0
-    },
-    {
-     "name": "Courtyard by Marriott Niagara Falls",
-     "district": "Clifton Hill, Falls Ave, Centre St",
-     "visitor_musd": 33.4
+     "visitor_musd": 30.2
     }
    ]
   }
