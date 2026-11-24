@@ -30,7 +30,10 @@ ROOT = Path(__file__).resolve().parents[2]
 CITY = ROOT / "build" / "city_2025" / "city.json"
 NFSIM = str(ROOT / "engine/target/release/nfsim")
 NOW = "209912"          # every known closure
-BEAT = 1.3              # a newcomer must out-sell the median business of its kind by this much, in every scenario
+BEAT = 1.3              # a newcomer must out-sell its yardstick by this much, in every scenario
+# formats tested: a small one (the size of the smaller quarter of existing businesses of the kind) and a
+# typical one (the median); each is judged against existing businesses of the same format and area
+FORMATS = [("small", 25), ("typical", 50)]
 
 
 def sites(city: dict) -> list[dict]:
@@ -84,10 +87,13 @@ def main(n_scen: int = 5) -> dict:
     city = json.loads(CITY.read_text())
     menu = city["build_menu"]
     bz = city["businesses"]
+    kinds = []
     for m in menu:
         sz = [bz["revenue_prior"][i] for i in range(len(bz["node"])) if bz["sim_category"][i] == m["sim_category"]
               and not bz["external"][i] and not bz["closed_from"][i] and bz["revenue_prior"][i] > 0]
-        m["_size"] = float(np.median(sz)) if sz else m["sizes"]["typical"]
+        for fmt, pct in FORMATS:
+            kinds.append(dict(m, _size=float(np.percentile(sz, pct)) if sz else m["sizes"]["typical"], _format=fmt, _pct=pct))
+    menu = kinds
     site_list = sites(city)
     cal = json.loads((DATA_DIR / "calibrated_multipliers.json").read_text())
     scen = [("default", CITY, cal["beta"])]
@@ -116,7 +122,12 @@ def main(n_scen: int = 5) -> dict:
     # the yardstick: what the businesses of that kind already in the city earn, in the same scenario
     b = city["businesses"]
     med = np.zeros((len(scen), len(menu)))
+    med_core = np.zeros((len(scen), len(menu)))
+    med_res = np.zeros((len(scen), len(menu)))
     counts = np.zeros(len(menu), int)
+    # is each spot in the Tourist Core? (the nearest business's flag)
+    blat, blon = np.array(b["lat"]), np.array(b["lon"])
+    site_core = np.array([bool(b["core"][int(np.argmin((blat - s_["lat"]) ** 2 + ((blon - s_["lon"]) * 0.73) ** 2))]) for s_ in site_list])
     for si, (_, p, beta) in enumerate(scen):
         with tempfile.TemporaryDirectory() as d:
             bp = Path(d) / "biz.csv"
@@ -126,30 +137,39 @@ def main(n_scen: int = 5) -> dict:
         for k, m in enumerate(menu):
             ids = [i for i in range(len(b["node"])) if b["sim_category"][i] == m["sim_category"] and not b["external"][i] and not b["closed_from"][i]]
             counts[k] = len(ids)
-            med[si, k] = float(np.median([rev.get(i, 0.0) for i in ids])) if ids else np.nan
-    rel = sales / med[:, None, :]                                               # newcomer / median existing business
+            pct = m["_pct"]
+            v = [rev.get(i, 0.0) for i in ids]
+            med[si, k] = float(np.percentile(v, pct)) if ids else np.nan
+            vc = [rev.get(i, 0.0) for i in ids if b["core"][i]]
+            vr = [rev.get(i, 0.0) for i in ids if not b["core"][i]]
+            # an area with fewer than 5 of the kind falls back to the whole city
+            med_core[si, k] = float(np.percentile(vc, pct)) if len(vc) >= 5 else med[si, k]
+            med_res[si, k] = float(np.percentile(vr, pct)) if len(vr) >= 5 else med[si, k]
+    rel = sales / np.where(site_core[None, :, None], med_core[:, None, :], med_res[:, None, :])   # newcomer / same format, same area
     # profit margin a business of that kind keeps on this street: the industry's normal margin, less extra rent
     margin = np.array([[m["net_profit_pct"] - m.get("rent_pct", 0) * (rent_f[i] - 1) for m in menu] for i in range(len(site_list))])
     robust = (rel.min(axis=0) >= BEAT) & (margin > 0)
     found = []
     for i, k in zip(*np.where(robust)):
-        found.append({"kind": menu[k]["label"], "where": site_list[i]["where"], "for_lease": site_list[i]["for_lease"],
+        found.append({"kind": menu[k]["label"], "format": menu[k]["_format"], "size": round(menu[k]["_size"]),
+                      "area": "Tourist Core" if site_core[i] else "residential city", "where": site_list[i]["where"], "for_lease": site_list[i]["for_lease"],
                       "lat": round(site_list[i]["lat"], 5), "lon": round(site_list[i]["lon"], 5),
                       "vs_median_competitor_worst": round(float(rel[:, i, k].min()), 2), "vs_median_competitor_default": round(float(rel[0, i, k]), 2),
-                      "forecast_sales_default": round(float(sales[0, i, k])), "median_competitor_default": round(float(med[0, k])),
+                      "forecast_sales_default": round(float(sales[0, i, k])),
+                      "yardstick_default": round(float(med_core[0, k] if site_core[i] else med_res[0, k])),
                       "margin_after_street_rent_pct": round(float(margin[i, k]), 1), "rent_psf": round(rs.at(site_list[i]["lat"], site_list[i]["lon"]), 1)})
     found.sort(key=lambda x: -x["vs_median_competitor_worst"])
     by_kind = {}
     for k, m in enumerate(menu):
         worst = rel.min(axis=0)[:, k]
         best = int(np.nanargmax(worst))
-        by_kind[m["label"]] = {"businesses_now": int(counts[k]), "median_sales_now_default": round(float(med[0, k])),
+        by_kind[m["label"] + " (" + m["_format"] + ")"] = {"businesses_now": int(counts[k]), "median_sales_now_default": round(float(med[0, k])),
                                "spots_beating_median_in_every_scenario": int(robust[:, k].sum()), "spots_tested": len(site_list),
                                "best_spot": site_list[best]["where"], "best_spot_vs_median_worst_scenario": round(float(worst[best]), 2),
                                "best_spot_forecast_default": round(float(sales[0, best, k]))}
     doc = {"_meta": {"what": __doc__.strip().split("\n\n")[0], "scenarios": [s[0] for s in scen], "sites_tested": len(site_list),
                      "for_lease_sites": sum(s["for_lease"] for s in site_list), "kinds": len(menu),
-                     "rule": f"a newcomer the size of the median business of its kind sells at least {BEAT}x the median business of its kind already in the city, in every scenario, and keeps a profit margin after rent on that street",
+                     "rule": f"a newcomer, small (25th percentile) or typical (median) for its kind, sells at least {BEAT}x what existing businesses of the same kind, format and area (Tourist Core or the residential city) sell, in every scenario, and keeps a profit margin after rent on that street",
                      "caution": "A single site's sales forecast can be off by up to about x3.6 either way (data/forecast_error.json); comparisons between spots and kinds are more reliable than the dollar figures."},
            "by_kind": by_kind, "opportunities": found[:200], "opportunities_total": len(found)}
     (ROOT / "docs" / "opportunities.json").write_text(json.dumps(doc, indent=1))

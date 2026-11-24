@@ -195,9 +195,10 @@ impl Engine {
             }
         }
         let mut homes = vec![0f64; self.home_nodes.len()];
-        for (h, &node) in self.city.households.node.iter().enumerate() {
-            if !self.is_regional(h) {       // visitors staying with friends stay with city households
-                homes[self.node_slot[node as usize] as usize] += 1.0;
+        for (h, _) in self.city.households.node.iter().enumerate() {
+            // visitors staying with friends stay with city households (not at schools or workplaces)
+            if !self.is_regional(h) && self.city.households.walk_km.get(h).copied().unwrap_or(0.0) <= 0.0 {
+                homes[self.hh_slot[h] as usize] += 1.0;
             }
         }
         for (slot, &node) in self.home_nodes.iter().enumerate() {

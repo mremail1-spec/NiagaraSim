@@ -397,6 +397,10 @@ pub struct Households {
     pub regional: Vec<u8>,
     /// Annual budget, households x categories, row by row.
     pub budget: Vec<f32>,
+    /// Walking catchment (km) for a daytime group (students or workers on a break); 0 = an ordinary
+    /// household, whose trips follow the usual distance rule. Empty = all ordinary.
+    #[serde(default)]
+    pub walk_km: Vec<f32>,
 }
 
 #[derive(Clone, Deserialize)]

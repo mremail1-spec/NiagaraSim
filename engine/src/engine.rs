@@ -102,6 +102,10 @@ pub struct Engine {
     /// Road nodes that have homes, and each node's position in that list (-1 if none).
     pub(crate) home_nodes: Vec<u32>,
     pub(crate) node_slot: Vec<i32>,
+    /// Each household's destination table (slot); daytime groups get their own.
+    pub(crate) hh_slot: Vec<u32>,
+    /// Walking catchment of each slot in km (0 = ordinary homes).
+    pub(crate) slot_walk: Vec<f32>,
     /// Cumulative destination probabilities, [slot * n_cat + category] over cat_business[category].
     pub(crate) cdf: Vec<Vec<f32>>,
     /// Expected local revenue per year for each business from each category (flow mode).
@@ -232,14 +236,25 @@ impl Engine {
         // --- households: outings per day, how they split by category, spend per visit ---
         let mut node_slot = vec![-1i32; n_nodes];
         let mut home_nodes = Vec::new();
+        let mut hh_slot: Vec<u32> = Vec::with_capacity(n_hh);
+        let mut slot_walk: Vec<f32> = Vec::new();
         let mut hh_rate = vec![0f64; n_hh];
         let mut hh_pcat = vec![0f32; n_hh * n_cat];
         let mut hh_ticket = vec![0f32; n_hh * n_cat];
         for h in 0..n_hh {
             let node = city.households.node[h] as usize;
-            if node_slot[node] < 0 {
-                node_slot[node] = home_nodes.len() as i32;
+            let walk = city.households.walk_km.get(h).copied().unwrap_or(0.0);
+            if walk > 0.0 {
+                hh_slot.push(home_nodes.len() as u32);      // a daytime group: its own table
                 home_nodes.push(node as u32);
+                slot_walk.push(walk);
+            } else {
+                if node_slot[node] < 0 {
+                    node_slot[node] = home_nodes.len() as i32;
+                    home_nodes.push(node as u32);
+                    slot_walk.push(0.0);
+                }
+                hh_slot.push(node_slot[node] as u32);
             }
             let rate = city.households.persons5[h] as f64 * city.params.outings_per_person5_per_day;
             hh_rate[h] = rate;
@@ -282,7 +297,7 @@ impl Engine {
         };
         let mut e = Engine {
             city, beta, n_nodes, n_cat, dest_of_business, n_dest, minutes, km, next_hop, cat_business, cat_pull,
-            home_nodes, node_slot, cdf: Vec::new(), flow: Vec::new(), flow_leak: Vec::new(), flow_inbound: Vec::new(), hh_rate, hh_pcat, hh_ticket, hour_cdf,
+            home_nodes, node_slot, hh_slot, slot_walk, cdf: Vec::new(), flow: Vec::new(), flow_leak: Vec::new(), flow_inbound: Vec::new(), hh_rate, hh_pcat, hh_ticket, hour_cdf,
             walk_near: 0.0, state, last_trips: Vec::new(), tour: None, last_tourist_trips: Vec::new(), first_added: n_biz, traffic: None, walkers: None, scenario: [1.0; 5], scenario_base: None, fitted_attraction_pull: None, before_closures: None,
         };
         e.set_beta(beta);
@@ -318,9 +333,36 @@ impl Engine {
     }
 
     pub(crate) fn weights(&self, node: usize, c: usize, beta: f64, out: &mut Vec<f64>) -> f64 {
+        self.weights_within(node, c, beta, 0.0, out)
+    }
+
+    /// Weights for one destination table: a daytime group only reaches places within its walking
+    /// catchment, nearer ones more (if nothing is in reach, it goes as an ordinary trip).
+    pub(crate) fn slot_weights(&self, slot: usize, c: usize, beta: f64, out: &mut Vec<f64>) -> f64 {
+        let node = self.home_nodes[slot] as usize;
+        let walk = self.slot_walk.get(slot).copied().unwrap_or(0.0) as f64;
+        if walk > 0.0 {
+            let t = self.weights_within(node, c, beta, walk, out);
+            if t > 0.0 {
+                return t;
+            }
+        }
+        self.weights(node, c, beta, out)
+    }
+
+    /// Walking pull at `km` within a catchment: nearer places draw more (SEED: halves by 400 m).
+    pub fn walk_factor(km: f64, walk: f64) -> f64 {
+        if km > walk { 0.0 } else { 1.0 / (1.0 + (km / 0.4).powi(2)) }
+    }
+
+    pub(crate) fn weights_within(&self, node: usize, c: usize, beta: f64, walk: f64, out: &mut Vec<f64>) -> f64 {
         out.clear();
         let beta = beta * self.city.params.category_beta_mult.get(c).copied().unwrap_or(1.0);
         for (i, &b) in self.cat_business[c].iter().enumerate() {
+            if walk > 0.0 {
+                out.push(self.cat_pull[c][i] * Self::walk_factor(self.trip_km(node, b as usize), walk));
+                continue;
+            }
             let t = self.trip_minutes(node, b as usize);
             out.push(self.cat_pull[c][i] / t.max(self.city.params.min_minutes).powf(beta));
         }
@@ -369,7 +411,7 @@ impl Engine {
     fn outing_weights(&self) -> Vec<f64> {
         let mut o = vec![0f64; self.home_nodes.len() * self.n_cat];
         for h in 0..self.hh_rate.len() {
-            let slot = self.node_slot[self.city.households.node[h] as usize] as usize;
+            let slot = self.hh_slot[h] as usize;
             if self.is_regional(h) {
                 continue;       // the travel survey target describes city residents' trips
             }
@@ -392,7 +434,7 @@ impl Engine {
                 if o <= 0.0 {
                     continue;
                 }
-                let total = self.weights(node as usize, c, beta, &mut w);
+                let total = self.slot_weights(slot, c, beta, &mut w);
                 for (i, &b) in self.cat_business[c].iter().enumerate() {
                     let d = self.trip_km(node as usize, b as usize);
                     hist[((d / HIST_BIN_KM) as usize).min(HIST_BINS - 1)] += o * w[i] / total;
@@ -431,7 +473,7 @@ impl Engine {
                 if o <= 0.0 {
                     continue;
                 }
-                let total = self.weights(node as usize, c, beta, &mut w);
+                let total = self.slot_weights(slot, c, beta, &mut w);
                 if total <= 0.0 {
                     continue;
                 }
@@ -458,7 +500,7 @@ impl Engine {
         let n_biz = self.city.businesses.node.len();
         let mut budget_at = vec![0f64; n_slots * self.n_cat];
         for h in 0..self.hh_rate.len() {
-            let slot = self.node_slot[self.city.households.node[h] as usize] as usize;
+            let slot = self.hh_slot[h] as usize;
             for c in 0..self.n_cat {
                 budget_at[slot * self.n_cat + c] += self.city.households.budget[h * self.n_cat + c] as f64;
             }
@@ -466,16 +508,16 @@ impl Engine {
         let mut slot_regional = vec![false; n_slots];
         for h in 0..self.hh_rate.len() {
             if self.is_regional(h) {
-                slot_regional[self.node_slot[self.city.households.node[h] as usize] as usize] = true;
+                slot_regional[self.hh_slot[h] as usize] = true;
             }
         }
         let (mut flow_leak, mut flow_inbound) = (vec![0f64; self.n_cat], vec![0f64; self.n_cat]);
         let mut cdf = Vec::with_capacity(n_slots * self.n_cat);
         let mut flow = vec![vec![0f64; n_biz]; self.n_cat];
         let mut w = Vec::new();
-        for (slot, &node) in self.home_nodes.iter().enumerate() {
+        for (slot, &_node) in self.home_nodes.iter().enumerate() {
             for c in 0..self.n_cat {
-                let total = self.weights(node as usize, c, beta, &mut w);
+                let total = self.slot_weights(slot, c, beta, &mut w);
                 let local = if self.city.categories.retail[c] == 1 { 1.0 - self.city.params.online_share_of_retail } else { 1.0 };
                 let mut acc = 0.0;
                 let mut row = Vec::with_capacity(w.len());
@@ -554,8 +596,7 @@ impl Engine {
                 }
                 // destination first, then an hour when that business is open: closing times
                 // move a visit to another hour, they never send it to a different shop
-                let node = self.city.households.node[h] as usize;
-                let row = &self.cdf[self.node_slot[node] as usize * n_cat + cat];
+                let row = &self.cdf[self.hh_slot[h] as usize * n_cat + cat];
                 if row.is_empty() {
                     continue;
                 }

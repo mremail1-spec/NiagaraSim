@@ -134,7 +134,7 @@ impl Engine {
     /// What a new business of kind `sim_category` and scale `size` (typical yearly revenue of a
     /// business its size) would earn at road node `node`, and who it would take the trade from.
     pub fn forecast(&self, node: u32, sim_category: u32, size: f64, format_weight: f64) -> Forecast {
-        let (minutes, _, _) = self.routes_to(node);
+        let (minutes, kms, _) = self.routes_to(node);
         let n_biz = self.city.businesses.node.len();
         let (nlat, nlon) = (self.city.nodes.lat[node as usize], self.city.nodes.lon[node as usize]);
         let safe_res = self.city.safety_factor_at(nlat, nlon, sim_category, false);
@@ -149,7 +149,7 @@ impl Engine {
         // residents
         let mut budget_at = vec![0f64; self.home_nodes.len() * self.n_cat];
         for h in 0..self.hh_rate.len() {
-            let slot = self.node_slot[self.city.households.node[h] as usize] as usize;
+            let slot = self.hh_slot[h] as usize;
             for c in 0..self.n_cat {
                 budget_at[slot * self.n_cat + c] += self.city.households.budget[h * self.n_cat + c] as f64;
             }
@@ -165,8 +165,19 @@ impl Engine {
                 if spend <= 0.0 {
                     continue;
                 }
-                let total = self.weights(home as usize, c, self.beta, &mut w);
-                let mine = served * scale / (minutes[home as usize] as f64).max(floor).powf(self.beta);
+                let walk = self.slot_walk[slot] as f64;
+                let cb = self.beta * self.city.params.category_beta_mult.get(c).copied().unwrap_or(1.0);
+                // a daytime group: within its walking catchment if anything is there, else an ordinary trip
+                let mut total = if walk > 0.0 { self.weights_within(home as usize, c, self.beta, walk, &mut w) } else { 0.0 };
+                let reach_on_foot = total > 0.0;
+                if !reach_on_foot {
+                    total = self.weights(home as usize, c, self.beta, &mut w);
+                }
+                let mine = if reach_on_foot {
+                    served * scale * Self::walk_factor(kms[home as usize] as f64, walk)
+                } else {
+                    served * scale / (minutes[home as usize] as f64).max(floor).powf(cb)
+                };
                 let share = mine / (total + mine);
                 out.resident += spend * share;
                 for m in 0..12 {
