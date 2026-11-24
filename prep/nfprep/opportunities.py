@@ -53,8 +53,15 @@ def sites(city: dict) -> list[dict]:
     for i in range(len(b["node"])):
         if not b["external"][i] and not b["closed_from"][i]:
             nodes[b["node"][i]].append(i)
+    # one spot per block of about 150 m where businesses trade (the spot with the most businesses)
+    cells = {}
     for n, ids in nodes.items():
         i = ids[0]
+        cell = (round(b["lat"][i] / 0.00135), round(b["lon"][i] / 0.00185))
+        if cell not in cells or len(ids) > len(nodes[cells[cell]]):
+            cells[cell] = n
+    for n in cells.values():
+        i = nodes[n][0]
         a = b["address"][i] or b["name"][i]
         out.append({"lat": b["lat"][i], "lon": b["lon"][i], "where": a, "for_lease": False, "node": n})
     return out
@@ -97,7 +104,10 @@ def main(n_scen: int = 5) -> dict:
         scen.append((f"scenario {j + 1}", p, beta))
     rs = RentSurface()
     rent_f = np.array([min(3.0, max(0.3, rs.at(s["lat"], s["lon"]) / rs.median)) for s in site_list])
-    sales = np.stack([forecast(p, beta, site_list, menu).sum(axis=2) for _, p, beta in scen])   # [scen, site, kind]
+    from multiprocessing import Pool
+    with Pool(min(4, len(scen))) as pool:
+        res = pool.starmap(forecast, [(p, beta, site_list, menu) for _, p, beta in scen])
+    sales = np.stack([r.sum(axis=2) for r in res])   # [scen, site, kind]
     margin = np.array([1 - (m["cost_of_sales_pct"] + m["wages_pct"]) / 100 for m in menu])
     size = np.array([m["sizes"]["typical"] for m in menu])
     base_fixed = np.array([(100 - m["cost_of_sales_pct"] - m["wages_pct"] - m["net_profit_pct"]) / 100 for m in menu])
