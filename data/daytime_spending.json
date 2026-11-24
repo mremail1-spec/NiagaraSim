@@ -1,0 +1,30 @@
+{
+ "_meta": {
+  "what": "Money people spend near their school or workplace (lunch, snacks, coffee, quick errands), per person per year, C$ 2025. The daytime crowd: it is spent where people are during the day, not near home.",
+  "status": "SEED values from third-party surveys (older or US where no current Canadian figure was found). Each has a low-high range; the owner can correct any figure.",
+  "double_counting": "For residents, this money is part of their household budget already: in the model it moves from near home to near school or work. Workers who live in other towns bring it in as new money."
+ },
+ "groups": {
+  "high_school_student": {
+   "per_year": 350, "low": 200, "high": 600,
+   "split": {"fast_food": 0.45, "cafe": 0.2, "grocery_food": 0.35},
+   "days": "school days (about 190 a year)",
+   "basis": "US teens spend about US$2,213 a year of their own money (Piper Sandler Taking Stock With Teens, fall 2025), about C$3,030; food is about 23-24% of it (Piper Sandler spring 2017 and spring 2023), about C$700; about half bought near school on school days (SEED).",
+   "sources": ["https://www.pipersandler.com/news/piper-sandler-completes-50th-semi-annual-teen-survey", "https://www.fooddive.com/news/food-is-gen-zs-top-spending-priority-survey-finds/598363/"]
+  },
+  "elementary_student": {
+   "per_year": 40, "low": 20, "high": 80,
+   "split": {"cafe": 0.7, "grocery_food": 0.3},
+   "days": "school days",
+   "basis": "Children spend little of their own; parents buy coffee or a snack at drop-off and pick-up a few times a month (SEED).",
+   "sources": []
+  },
+  "worker": {
+   "per_year": 650, "low": 400, "high": 1000,
+   "split": {"fast_food": 0.4, "restaurant": 0.2, "cafe": 0.25, "grocery_food": 0.15},
+   "days": "workdays (about 230 a year)",
+   "basis": "60% of Canadian workers buy lunch at least once a week, at about $8.30-9.30 (Visa Canada survey, about 2012); with restaurant prices up about 45% since, about $12.75; about 1.5 bought lunches a week among buyers over 46 weeks, about $530, plus coffee and snacks near work, about $115 (SEED).",
+   "sources": ["https://www.hrreporter.com/focus-areas/payroll/60-per-cent-of-workers-buy-lunch-at-least-once-per-week/279210", "https://globalnews.ca/news/265176/midday-meals-are-costing-canadians-serious-dough/"]
+  }
+ }
+}

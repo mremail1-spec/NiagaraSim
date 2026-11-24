@@ -1,0 +1,468 @@
+{
+ "_meta": {
+  "what": "The daytime crowd: what students and workers spend near their school or workplace.",
+  "values": "data/daytime_spending.json (SEED, ranges)",
+  "schools": "Ontario School Information 2022-23 (government)",
+  "workplaces": "Niagara Region Employment Inventory 2025 (government survey)"
+ },
+ "by_kind": {
+  "elementary school": {
+   "places": 29,
+   "people": 9620,
+   "per_year": 384800,
+   "low": 192400,
+   "high": 769600
+  },
+  "high school": {
+   "places": 5,
+   "people": 4205,
+   "per_year": 1471750,
+   "low": 841000,
+   "high": 2523000
+  },
+  "workplace": {
+   "places": 1992,
+   "people": 35504,
+   "per_year": 23077600,
+   "low": 14201600,
+   "high": 35504000
+  }
+ },
+ "biggest": [
+  {
+   "name": "Embassy Suites by Hilton",
+   "kind": "workplace",
+   "naics": "721111",
+   "address": "6700 Fallsview Boulevard",
+   "people": 640,
+   "group": "worker",
+   "per_year": 416000,
+   "low": 256000,
+   "high": 640000
+  },
+  {
+   "name": "Hilton Hotels and Suites",
+   "kind": "workplace",
+   "naics": "721111",
+   "address": "6361 Fallsview Boulevard",
+   "people": 640,
+   "group": "worker",
+   "per_year": 416000,
+   "low": 256000,
+   "high": 640000
+  },
+  {
+   "name": "Niagara Health System - Greater Niagara General",
+   "kind": "workplace",
+   "naics": "622111",
+   "address": "5546 Portage Road",
+   "people": 640,
+   "group": "worker",
+   "per_year": 416000,
+   "low": 256000,
+   "high": 640000
+  },
+  {
+   "name": "Great Wolf Lodge",
+   "kind": "workplace",
+   "naics": "721113",
+   "address": "3950 Victoria Avenue",
+   "people": 640,
+   "group": "worker",
+   "per_year": 416000,
+   "low": 256000,
+   "high": 640000
+  },
+  {
+   "name": "Niagara Fallsview Casino Resort",
+   "kind": "workplace",
+   "naics": "713210",
+   "address": "6380 Fallsview Boulevard",
+   "people": 640,
+   "group": "worker",
+   "per_year": 416000,
+   "low": 256000,
+   "high": 640000
+  },
+  {
+   "name": "Wyndham Grand Fallsview Hotel",
+   "kind": "workplace",
+   "naics": "721111",
+   "address": "6455 Fallsview Boulevard",
+   "people": 640,
+   "group": "worker",
+   "per_year": 416000,
+   "low": 256000,
+   "high": 640000
+  },
+  {
+   "name": "Niagara Region - Headquarters / NF Patrol District 2",
+   "kind": "workplace",
+   "naics": "913910",
+   "address": "5700 Valley Way",
+   "people": 640,
+   "group": "worker",
+   "per_year": 416000,
+   "low": 256000,
+   "high": 640000
+  },
+  {
+   "name": "A N Myer Secondary School",
+   "kind": "high school",
+   "address": "6338 Oneil St",
+   "people": 1170,
+   "group": "high_school_student",
+   "per_year": 409500,
+   "low": 234000,
+   "high": 702000
+  },
+  {
+   "name": "Saint Michael Catholic High School",
+   "kind": "high school",
+   "address": "8699 McLeod Rd",
+   "people": 1025,
+   "group": "high_school_student",
+   "per_year": 358750,
+   "low": 205000,
+   "high": 615000
+  },
+  {
+   "name": "Stamford Collegiate",
+   "kind": "high school",
+   "address": "5775 Drummond Rd",
+   "people": 695,
+   "group": "high_school_student",
+   "per_year": 243250,
+   "low": 139000,
+   "high": 417000
+  },
+  {
+   "name": "Westlane Secondary School",
+   "kind": "high school",
+   "address": "5960 Pitton Rd",
+   "people": 670,
+   "group": "high_school_student",
+   "per_year": 234500,
+   "low": 134000,
+   "high": 402000
+  },
+  {
+   "name": "Saint Paul Catholic High School",
+   "kind": "high school",
+   "address": "3834 Windermere Rd",
+   "people": 645,
+   "group": "high_school_student",
+   "per_year": 225750,
+   "low": 129000,
+   "high": 387000
+  },
+  {
+   "name": "Courtyard Marriott",
+   "kind": "workplace",
+   "naics": "721111",
+   "address": "5950 Victoria Avenue",
+   "people": 176,
+   "group": "worker",
+   "per_year": 114400,
+   "low": 70400,
+   "high": 176000
+  },
+  {
+   "name": "Digital Attractions",
+   "kind": "workplace",
+   "naics": "541920",
+   "address": "4530 Drummond Road",
+   "people": 176,
+   "group": "worker",
+   "per_year": 114400,
+   "low": 70400,
+   "high": 176000
+  },
+  {
+   "name": "Maintenance Centre",
+   "kind": "workplace",
+   "naics": "912910",
+   "address": "7805 Niagara River Parkway",
+   "people": 176,
+   "group": "worker",
+   "per_year": 114400,
+   "low": 70400,
+   "high": 176000
+  },
+  {
+   "name": "Niagara Region - The Meadows of Dorchester",
+   "kind": "workplace",
+   "naics": "913910",
+   "address": "6623 Kalar Road",
+   "people": 176,
+   "group": "worker",
+   "per_year": 114400,
+   "low": 70400,
+   "high": 176000
+  },
+  {
+   "name": "Zehrs",
+   "kind": "workplace",
+   "naics": "445110",
+   "address": "6940 Morrison Street",
+   "people": 176,
+   "group": "worker",
+   "per_year": 114400,
+   "low": 70400,
+   "high": 176000
+  },
+  {
+   "name": "Chippawa Creek at Bella Care Residence",
+   "kind": "workplace",
+   "naics": "623110",
+   "address": "8720 Willoughby Drive",
+   "people": 176,
+   "group": "worker",
+   "per_year": 114400,
+   "low": 70400,
+   "high": 176000
+  },
+  {
+   "name": "Post Foods Canada",
+   "kind": "workplace",
+   "naics": "311230",
+   "address": "5651 Lewis Avenue",
+   "people": 176,
+   "group": "worker",
+   "per_year": 114400,
+   "low": 70400,
+   "high": 176000
+  },
+  {
+   "name": "Boston Pizza",
+   "kind": "workplace",
+   "naics": "722511",
+   "address": "4950 Clifton Hill",
+   "people": 176,
+   "group": "worker",
+   "per_year": 114400,
+   "low": 70400,
+   "high": 176000
+  },
+  {
+   "name": "Arterra Wines Canada",
+   "kind": "workplace",
+   "naics": "312130",
+   "address": "4887 Dorchester Road",
+   "people": 176,
+   "group": "worker",
+   "per_year": 114400,
+   "low": 70400,
+   "high": 176000
+  },
+  {
+   "name": "Walker Industries Inc.",
+   "kind": "workplace",
+   "naics": "562210",
+   "address": "2800 Thorold Townline Road",
+   "people": 176,
+   "group": "worker",
+   "per_year": 114400,
+   "low": 70400,
+   "high": 176000
+  },
+  {
+   "name": "G Zavitz Ltd.",
+   "kind": "workplace",
+   "naics": "484239",
+   "address": "5795 Thorold Stone Road",
+   "people": 176,
+   "group": "worker",
+   "per_year": 114400,
+   "low": 70400,
+   "high": 176000
+  },
+  {
+   "name": "City of Niagara Falls - Service Center",
+   "kind": "workplace",
+   "naics": "624190",
+   "address": "3200 Stanley Avenue",
+   "people": 176,
+   "group": "worker",
+   "per_year": 114400,
+   "low": 70400,
+   "high": 176000
+  },
+  {
+   "name": "Canada Niagara Hotels Inc. - Rainforest Cafe",
+   "kind": "workplace",
+   "naics": "722511",
+   "address": "4915 Clifton Hill",
+   "people": 176,
+   "group": "worker",
+   "per_year": 114400,
+   "low": 70400,
+   "high": 176000
+  },
+  {
+   "name": "McDonald's",
+   "kind": "workplace",
+   "naics": "722512",
+   "address": "6161 Thorold Stone Road",
+   "people": 176,
+   "group": "worker",
+   "per_year": 114400,
+   "low": 70400,
+   "high": 176000
+  },
+  {
+   "name": "E. S. Fox Limited",
+   "kind": "workplace",
+   "naics": "236210",
+   "address": "9127 Montrose Road",
+   "people": 176,
+   "group": "worker",
+   "per_year": 114400,
+   "low": 70400,
+   "high": 176000
+  },
+  {
+   "name": "Parks Division & Revenue Office",
+   "kind": "workplace",
+   "naics": "912910",
+   "address": "7805 Niagara River Parkway",
+   "people": 176,
+   "group": "worker",
+   "per_year": 114400,
+   "low": 70400,
+   "high": 176000
+  },
+  {
+   "name": "Cantec Security Services",
+   "kind": "workplace",
+   "naics": "561612",
+   "address": "4056 Dorchester Road",
+   "people": 176,
+   "group": "worker",
+   "per_year": 114400,
+   "low": 70400,
+   "high": 176000
+  },
+  {
+   "name": "Salit Steel - Myer Salit Ltd.",
+   "kind": "workplace",
+   "naics": "416210",
+   "address": "7771 Stanley Avenue",
+   "people": 176,
+   "group": "worker",
+   "per_year": 114400,
+   "low": 70400,
+   "high": 176000
+  },
+  {
+   "name": "Walmart - Supercenter",
+   "kind": "workplace",
+   "naics": "455211",
+   "address": "7481 Oakwood Drive",
+   "people": 176,
+   "group": "worker",
+   "per_year": 114400,
+   "low": 70400,
+   "high": 176000
+  },
+  {
+   "name": "Canada Niagara Hotels Inc. - Marriott Fallsview",
+   "kind": "workplace",
+   "naics": "722511",
+   "address": "6740 Fallsview Boulevard",
+   "people": 176,
+   "group": "worker",
+   "per_year": 114400,
+   "low": 70400,
+   "high": 176000
+  },
+  {
+   "name": "Costco",
+   "kind": "workplace",
+   "naics": "455211",
+   "address": "7500 Pine Oak Drive",
+   "people": 176,
+   "group": "worker",
+   "per_year": 114400,
+   "low": 70400,
+   "high": 176000
+  },
+  {
+   "name": "Millenium Trail Manor",
+   "kind": "workplace",
+   "naics": "622310",
+   "address": "6861 Oakwood Drive",
+   "people": 176,
+   "group": "worker",
+   "per_year": 114400,
+   "low": 70400,
+   "high": 176000
+  },
+  {
+   "name": "Canada Niagara Hotels Inc. - Niagara Brewing Company/ Distillery",
+   "kind": "workplace",
+   "naics": "312120",
+   "address": "4915 Clifton Hill",
+   "people": 176,
+   "group": "worker",
+   "per_year": 114400,
+   "low": 70400,
+   "high": 176000
+  },
+  {
+   "name": "McDonald's",
+   "kind": "workplace",
+   "naics": "722512",
+   "address": "5486 Stanley Avenue",
+   "people": 176,
+   "group": "worker",
+   "per_year": 114400,
+   "low": 70400,
+   "high": 176000
+  },
+  {
+   "name": "Washington Mills Electro Minerals",
+   "kind": "workplace",
+   "naics": "327910",
+   "address": "7780 Stanley Avenue",
+   "people": 176,
+   "group": "worker",
+   "per_year": 114400,
+   "low": 70400,
+   "high": 176000
+  },
+  {
+   "name": "City of Niagara Falls - MacBain Community Center",
+   "kind": "workplace",
+   "naics": "621494",
+   "address": "7150 Montrose Road",
+   "people": 176,
+   "group": "worker",
+   "per_year": 114400,
+   "low": 70400,
+   "high": 176000
+  },
+  {
+   "name": "The Oakes Hotel",
+   "kind": "workplace",
+   "naics": "721111",
+   "address": "6546 Fallsview Boulevard",
+   "people": 176,
+   "group": "worker",
+   "per_year": 114400,
+   "low": 70400,
+   "high": 176000
+  },
+  {
+   "name": "City of Niagara Falls - Fire Operations FIre Station No. 1",
+   "kind": "workplace",
+   "naics": "913140",
+   "address": "5815  Morrison Street",
+   "people": 176,
+   "group": "worker",
+   "per_year": 114400,
+   "low": 70400,
+   "high": 176000
+  }
+ ]
+}
