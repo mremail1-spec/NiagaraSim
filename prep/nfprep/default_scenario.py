@@ -48,7 +48,7 @@ def choose() -> dict:
 FIXED = {"beta_mult": 1.0, "outings_mult": 1.0, "visitors_mult": 1.0}
 
 
-def fit_brands(city: dict, beta: float, rounds: int = 8) -> dict:
+def fit_brands(city: dict, beta: float, rounds: int = 8, hold_out: str | None = None) -> dict:
     """Each chain's pull, fitted so its branches' median sales match its published sales per store.
     Spending stays in the same kind of business; it moves between the chain and its competitors."""
     import csv, math, re, subprocess, tempfile
@@ -60,6 +60,7 @@ def fit_brands(city: dict, beta: float, rounds: int = 8) -> dict:
                       and ("category" not in v or cats[b["sim_category"][i]] == v["category"])]
               for brand, v in bench.items()}
     groups = {k: v for k, v in groups.items() if v}
+    held = groups.pop(hold_out, None) if hold_out else None
     # Niagara Parks' own annual report is as trusted as the chains: its places together must earn it
     parks = [i for i in range(len(b["node"])) if b["operator"][i] == 1]
     parks_target = city["operator_targets"]["niagara_parks"]
@@ -81,6 +82,8 @@ def fit_brands(city: dict, beta: float, rounds: int = 8) -> dict:
             for i in parks:
                 if cats[b["sim_category"][i]] != "attraction":      # attractions are fitted to attendance instead
                     b["format_weight"][i] *= step
+        if held:
+            ratios["held_out:" + hold_out] = float(np.median([rev.get(i, 0) for i in held])) / bench[hold_out]["average"]
         hist.append({k: round(v, 3) for k, v in ratios.items()})
         for k, ids in groups.items():
             step = (1.0 / max(ratios[k], 1e-3)) ** 0.7          # damped: competitors react
@@ -127,5 +130,35 @@ def apply() -> None:
     print(f"default scenario applied; beta {cal['beta_fit']} x {k['beta_mult']:.3f} = {cal['beta']}")
 
 
+def forecast_error() -> dict:
+    """Leave one chain out: fit the others, see how far off the left-out chain is. That is how far off a
+    business the fit has not touched (a new independent) is likely to be; data/forecast_error.json."""
+    import copy, math
+    import numpy as np
+    city0 = json.loads(BASE.read_text())
+    k = dict(json.loads(FILE.read_text())["knobs"]); k.update(FIXED)
+    from .ensemble import apply as apply_knobs
+    base = apply_knobs(city0, k)
+    beta = json.loads(CAL.read_text())["beta"]
+    bench = json.loads((DATA_DIR / "public_unit_sales_2025.json").read_text())["brands"]
+    out = {}
+    for brand in bench:
+        r = fit_brands(copy.deepcopy(base), beta, rounds=6, hold_out=brand)["ratio_by_round"][-1]
+        if "held_out:" + brand in r:
+            out[brand] = r["held_out:" + brand]
+            print(brand, "left out: model / published", out[brand], flush=True)
+    logs = [math.log(v) for v in out.values() if v > 0]
+    sd = float(math.sqrt(np.mean(np.square(logs))))
+    doc = {"_meta": {"what": "How far a single site's forecast is likely to be off: each chain left out of the chain fit in turn "
+                             "and compared with its own published sales per store (nfprep.default_scenario forecast_error). "
+                             f"From {len(logs)} chains, so a rough measure."},
+           "held_out_model_over_published": {k2: round(v, 3) for k2, v in out.items()},
+           "log_sd": round(sd, 3), "p10_factor": round(math.exp(-1.28 * sd), 2), "p90_factor": round(math.exp(1.28 * sd), 2),
+           "chains": len(logs)}
+    (DATA_DIR / "forecast_error.json").write_text(json.dumps(doc, indent=1))
+    print(json.dumps(doc, indent=1))
+    return doc
+
+
 if __name__ == "__main__":
-    {"choose": choose, "apply": apply}[sys.argv[1]]()
+    {"choose": choose, "apply": apply, "forecast_error": forecast_error}[sys.argv[1]]()

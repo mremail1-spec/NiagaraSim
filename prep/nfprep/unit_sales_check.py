@@ -45,7 +45,8 @@ def main(city_path: Path = ROOT / "build" / "city_2025" / "city.json") -> dict:
     sd = float(np.sqrt(np.mean(np.log(ratios) ** 2)))
     summary["site_error_log_sd"] = round(sd, 3)
     summary["site_range_p10_p90"] = [round(float(np.exp(-1.28 * sd)), 2), round(float(np.exp(1.28 * sd)), 2)]
-    (DATA_DIR / "forecast_error.json").write_text(json.dumps({
+    if not json.loads(city_path.read_text()).get("meta", {}).get("brand_pull"):   # fitted chains say nothing about error
+      (DATA_DIR / "forecast_error.json").write_text(json.dumps({
         "_meta": {"what": "Spread of model revenue for a single site against published chain sales per location (docs/unit_sales_check.json). "
                           f"From {len(ratios)} chains only, so a rough measure; written by prep/nfprep/unit_sales_check.py."},
         "log_sd": round(sd, 3), "p10_factor": summary["site_range_p10_p90"][0], "p90_factor": summary["site_range_p10_p90"][1],

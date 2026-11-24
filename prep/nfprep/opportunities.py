@@ -88,9 +88,13 @@ def main(n_scen: int = 5) -> dict:
     base = json.loads(BASE.read_text()) if BASE.exists() else city
     tmpdir = Path(tempfile.mkdtemp(dir=ROOT / "build"))
     for j, r in enumerate(pick):
+        from .default_scenario import fit_brands
         p = tmpdir / f"city_{j}.json"
-        p.write_text(json.dumps(apply_knobs(base, r["knobs"]), separators=(",", ":")))
-        scen.append((f"scenario {j + 1}", p, cal.get("beta_fit", cal["beta"]) * r["knobs"]["beta_mult"]))
+        beta = cal.get("beta_fit", cal["beta"]) * r["knobs"]["beta_mult"]
+        c = apply_knobs(base, r["knobs"])
+        fit_brands(c, beta, rounds=6)           # every scenario matches the chains' published sales too
+        p.write_text(json.dumps(c, separators=(",", ":")))
+        scen.append((f"scenario {j + 1}", p, beta))
     rs = RentSurface()
     rent_f = np.array([min(3.0, max(0.3, rs.at(s["lat"], s["lon"]) / rs.median)) for s in site_list])
     sales = np.stack([forecast(p, beta, site_list, menu).sum(axis=2) for _, p, beta in scen])   # [scen, site, kind]
