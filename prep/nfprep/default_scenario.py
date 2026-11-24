@@ -45,6 +45,9 @@ def choose() -> dict:
     return doc
 
 
+FIXED = {"beta_mult": 1.0, "outings_mult": 1.0, "visitors_mult": 1.0}
+
+
 def fit_brands(city: dict, beta: float, rounds: int = 8) -> dict:
     """Each chain's pull, fitted so its branches' median sales match its published sales per store.
     Spending stays in the same kind of business; it moves between the chain and its competitors."""
@@ -57,6 +60,9 @@ def fit_brands(city: dict, beta: float, rounds: int = 8) -> dict:
                       and ("category" not in v or cats[b["sim_category"][i]] == v["category"])]
               for brand, v in bench.items()}
     groups = {k: v for k, v in groups.items() if v}
+    # Niagara Parks' own annual report is as trusted as the chains: its places together must earn it
+    parks = [i for i in range(len(b["node"])) if b["operator"][i] == 1]
+    parks_target = city["operator_targets"]["niagara_parks"]
     mult = {k: 1.0 for k in groups}
     hist = []
     for _ in range(rounds):
@@ -67,6 +73,14 @@ def fit_brands(city: dict, beta: float, rounds: int = 8) -> dict:
                             "--beta", str(beta), "--businesses", str(bp)], check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
             rev = {int(r["business"]): float(r["revenue"]) for r in csv.DictReader(open(bp))}
         ratios = {k: float(np.median([rev.get(i, 0) for i in ids])) / bench[k]["average"] for k, ids in groups.items()}
+        if parks:
+            pr = sum(rev.get(i, 0) for i in parks) / parks_target
+            ratios["Niagara Parks (total)"] = pr
+            step = min(max((1.0 / max(pr, 1e-3)) ** 0.7, 0.5), 2.0)
+            mult["Niagara Parks (total)"] = mult.get("Niagara Parks (total)", 1.0) * step
+            for i in parks:
+                if cats[b["sim_category"][i]] != "attraction":      # attractions are fitted to attendance instead
+                    b["format_weight"][i] *= step
         hist.append({k: round(v, 3) for k, v in ratios.items()})
         for k, ids in groups.items():
             step = (1.0 / max(ratios[k], 1e-3)) ** 0.7          # damped: competitors react
@@ -85,9 +99,16 @@ def apply() -> None:
     if not FILE.exists():
         print("no default scenario chosen yet; the calibrated city is the default")
         return
-    k = json.loads(FILE.read_text())["knobs"]
-    shutil.copy(CITY, BASE)
+    k = dict(json.loads(FILE.read_text())["knobs"])
+    # settings the calibration already takes straight from a survey or count stay as calibrated:
+    # trip lengths and shopping trips (travel survey), visitor numbers (visitor count)
+    k.update(FIXED)
     city = json.loads(CITY.read_text())
+    if "default_scenario" in city.get("meta", {}) and BASE.exists():
+        shutil.copy(BASE, CITY)                # applied before: start again from the calibrated city
+        city = json.loads(CITY.read_text())
+    else:
+        shutil.copy(CITY, BASE)
     city = apply_knobs(city, k)
     city.setdefault("meta", {})["default_scenario"] = k
     CITY.write_text(json.dumps(city, separators=(",", ":")))
