@@ -42,6 +42,7 @@ from .loader import DATA_DIR
 
 ROOT = Path(__file__).resolve().parents[2]
 CITY = ROOT / "build" / "city_2025" / "city.json"
+BASE = CITY.with_name("city_base.json")      # the city as calibrated, before the default scenario
 OUT = ROOT / "build" / "ensemble"
 RUNS = OUT / "runs.jsonl"
 NFSIM = str(ROOT / "engine/target/release/nfsim")
@@ -61,6 +62,10 @@ KNOBS = {
     "safety_scale":       (0.0, 2.0, "lin"),     # how much visitors avoid documented hot spots
     "outings_mult":       (0.90, 1.10, "lin"),   # residents' shopping trips
 }
+
+# how much each chain figure is trusted (data/public_unit_sales_2025.json "quality")
+QUALITY = {"company filing": 1.0, "filing sales": 0.8, "2022-23 retail sales over store count": 0.8,
+           "franchise disclosure": 0.6, "estimate from system sales and approximate count": 0.5}
 
 # tolerances: a result within tol (as a log ratio) of the fact scores 1 at the edge
 TOL = {"chains": math.log(1.5), "niagara_parks": math.log(1.10), "casinos": math.log(1.15),
@@ -136,7 +141,8 @@ class Facts:
         self.city = city
         b = city["businesses"]
         self.n = len(b["node"])
-        self.cal_beta = json.loads((DATA_DIR / "calibrated_multipliers.json").read_text())["beta"]
+        cal = json.loads((DATA_DIR / "calibrated_multipliers.json").read_text())
+        self.cal_beta = cal.get("beta_fit", cal["beta"])
         self.op = np.array(b["operator"])
         self.cat = np.array(b["sim_category"])
         self.external = np.array(b["external"], bool)
@@ -145,9 +151,10 @@ class Facts:
         # chains: published sales per location
         self.brands = []
         for brand, v in json.loads((DATA_DIR / "public_unit_sales_2025.json").read_text())["brands"].items():
-            ids = [i for i, nm in enumerate(b["name"]) if re.search(v["pattern"], nm.lower())]
+            ids = [i for i, nm in enumerate(b["name"]) if re.search(v["pattern"], nm.lower())
+                   and ("category" not in v or city["sim_categories"][b["sim_category"][i]] == v["category"])]
             if ids:
-                self.brands.append((brand, ids, v["average"], v.get("high")))
+                self.brands.append((brand, ids, v["average"], v.get("high"), QUALITY.get(v["quality"].split(",")[0].split(" /")[0], 0.6)))
         # Statistics Canada store sales by type (government): businesses per NAICS
         biz = list(csv.DictReader(open(CITY.with_name("businesses.csv"), encoding="utf-8")))
         naics = [r["naics"] for r in biz] + [""] * (self.n - len(biz))
@@ -182,11 +189,18 @@ class Facts:
         r = {}
         # chains
         ratios, above = [], 0
-        for brand, ids, avg, high in self.brands:
+        logs, ws = [], []
+        per = {}
+        for brand, ids, avg, high, w in self.brands:
             vals = rev[ids]
-            ratios.append(float(np.median(vals)) / avg)
+            ratio = float(np.median(vals)) / avg
+            ratios.append(ratio); per[brand] = round(ratio, 3)
+            logs.append(math.log(ratio)); ws.append(w)
             above += int(sum(1 for v in vals if high and v > high))
         r["chains_median_ratio"] = float(np.median(ratios))
+        # how close every chain is to its own published figure, trusted filings counting most
+        r["chains_rms_log"] = float(math.sqrt(np.average(np.square(logs), weights=ws)))
+        r["chains_by_brand"] = per
         r["chains_above_best"] = above
         r["niagara_parks_musd"] = float(rev[self.op == 1].sum()) / 1e6
         r["casinos_musd"] = float(rev[self.op == 2].sum()) / 1e6
@@ -238,7 +252,7 @@ _facts = None
 
 def _init():
     global _facts
-    _facts = Facts(json.loads(CITY.read_text()))
+    _facts = Facts(json.loads((BASE if BASE.exists() else CITY).read_text()))
 
 
 def run_one(k: dict) -> dict:
@@ -316,6 +330,10 @@ def traffic(limit: int = 60) -> None:
     good = [(i, d["knobs"]) for i, d in enumerate(done) if d["max_implausibility"] <= 1.0]
     tp = OUT / "traffic.jsonl"
     have = {json.loads(l)["run"] for l in open(tp)} if tp.exists() else set()
+    first = OUT / "traffic_first.json"
+    if first.exists():                      # the closest to the chains first
+        order = {i: n for n, i in enumerate(json.loads(first.read_text()))}
+        good.sort(key=lambda g: order.get(g[0], 10**9))
     todo = [g for g in good if g[0] not in have][:limit]
     print(f"{len(good)} survivors, {len(todo)} to score on traffic", flush=True)
     with Pool(max(1, (os.cpu_count() or 2)), initializer=_init) as pool, open(tp, "a") as f:

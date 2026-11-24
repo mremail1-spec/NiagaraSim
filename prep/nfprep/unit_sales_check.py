@@ -27,7 +27,9 @@ def main(city_path: Path = ROOT / "build" / "city_2025" / "city.json") -> dict:
     b = json.loads(city_path.read_text())["businesses"]
     result, ratios = {}, []
     for brand, v in bench.items():
-        ids = [i for i, n in enumerate(b["name"]) if re.search(v["pattern"], n.lower()) and i in rev]
+        cats = json.loads(city_path.read_text())["sim_categories"]
+        ids = [i for i, n in enumerate(b["name"]) if re.search(v["pattern"], n.lower()) and i in rev
+               and ("category" not in v or cats[b["sim_category"][i]] == v["category"])]
         vals = [rev[i] for i in ids]
         if not vals:
             continue

@@ -47,6 +47,28 @@
    "average": 8630000,
    "high": null,
    "quality": "2022-23 retail sales over store count"
+  },
+  "Dollarama": {
+   "pattern": "^dollarama",
+   "average": 3970000,
+   "high": null,
+   "quality": "company filing",
+   "source": "Dollarama Fiscal 2025 results (newswire.ca, 2025-04): sales $6,413.1M, stores 1,551 -> 1,616 (average 1,584), 53-week year; x52/53 = $3.97M per store."
+  },
+  "Shoppers Drug Mart": {
+   "pattern": "shoppers drug",
+   "average": 12950000,
+   "high": null,
+   "quality": "company filing",
+   "source": "Loblaw 2024 Annual Report: drug retail sales $17,620M, 1,361 Associate-owned drug stores; includes pharmacy dispensing."
+  },
+  "Canadian Tire": {
+   "pattern": "^canadian tire",
+   "category": "general_merchandise",
+   "average": 24800000,
+   "high": null,
+   "quality": "company filing",
+   "source": "Canadian Tire Corporation 2025 Annual Report: CTR sales per square foot $511 (rolling 12 months, excludes garden centres) x 24.4M sq ft / 502 Canadian Tire stores. Store only; gas bars excluded."
   }
  }
 }

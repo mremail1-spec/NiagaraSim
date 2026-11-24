@@ -42,6 +42,11 @@ fn main() {
         std::fs::write(arg(&args, "--out").expect("--out FILE"), serde_json::to_string(&vol).unwrap()).unwrap();
         return;
     }
+    if let Some(m) = arg(&args, "--closures-as-of") {
+        // YYYYMM: businesses known closed by then stop trading (forward runs)
+        let n = engine.apply_closures(m.replace('-', "").parse().expect("--closures-as-of YYYYMM"));
+        eprintln!("{n} businesses closed as of {m}");
+    }
     if args[1] == "forecast" {
         // nfsim forecast <city.json> --sites sites.json --out out.json
         // sites: [[lat, lon, sim_category, size], ...] -> [[resident, tourist], ...] yearly revenue
@@ -69,11 +74,6 @@ fn main() {
         // "us,domestic,overseas,base_stays,resident"
         let v: Vec<f64> = sc.split(',').map(|x| x.parse().expect("scenario numbers")).collect();
         engine.set_scenario(v[0], v[1], v[2], v[3], v[4]);
-    }
-    if let Some(m) = arg(&args, "--closures-as-of") {
-        // YYYYMM: businesses known closed by then stop trading (forward runs)
-        let n = engine.apply_closures(m.replace('-', "").parse().expect("--closures-as-of YYYYMM"));
-        eprintln!("{n} businesses closed as of {m}");
     }
     let traffic_out = arg(&args, "--traffic");
     if traffic_out.is_some() {
