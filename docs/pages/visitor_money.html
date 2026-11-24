@@ -1,0 +1,201 @@
+<title>Where Visitor Money Goes</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one reading column, figures full column width; summary first, then each piece of evidence */
+:root {
+  --bg: #f6f8f9; --surface: #ffffff; --ink: #0f1a22; --ink-2: #4a5964; --ink-3: #74838d;
+  --rule: #d9e1e6; --mist: #e8eef2;
+  --money: #2a78d6; --biz: #eb6834; --indep: #1baf7a; --closed: #e34948;
+  --display: "Space Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #101619; --surface: #172025; --ink: #eef3f6; --ink-2: #b4c1c9; --ink-3: #8797a1;
+  --rule: #2b373e; --mist: #212c32; --money: #3987e5; --biz: #d95926; --indep: #199e70; --closed: #e66767; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #101619; --surface: #172025; --ink: #eef3f6; --ink-2: #b4c1c9; --ink-3: #8797a1;
+  --rule: #2b373e; --mist: #212c32; --money: #3987e5; --biz: #d95926; --indep: #199e70; --closed: #e66767; color-scheme: dark }
+body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 15px; line-height: 1.55; }
+.wrap { max-width: 860px; margin: 0 auto; padding-block: 32px 64px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); display: grid; gap: 40px; }
+h1, h2 { font-family: var(--display); text-wrap: balance; margin: 0; }
+h1 { font-size: clamp(28px, 5vw, 40px); line-height: 1.1; letter-spacing: -0.01em; }
+h2 { font-size: 21px; line-height: 1.25; }
+p { margin: 0; max-width: 68ch; }
+.eyebrow { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); font-weight: 600; }
+.lede { font-size: 17px; color: var(--ink-2); }
+section { display: grid; gap: 14px; }
+.num { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+.headline { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; }
+.stat { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 14px 16px; display: grid; gap: 4px; min-width: 0; }
+.stat b { font-family: var(--display); font-size: 28px; line-height: 1.1; }
+.stat span { color: var(--ink-2); font-size: 13px; }
+.stat small { color: var(--ink-3); font-size: 12px; }
+.fig { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 18px; display: grid; gap: 14px; min-width: 0; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13px; color: var(--ink-2); }
+.sw { display: inline-block; width: 12px; height: 12px; border-radius: 3px; vertical-align: -1px; margin-right: 6px; }
+.rows { display: grid; gap: 14px; }
+.row { display: grid; grid-template-columns: minmax(0, 230px) minmax(0, 1fr); gap: 4px 14px; align-items: center; }
+.row .name { font-size: 13px; color: var(--ink); line-height: 1.3; }
+.row .name small { display: block; color: var(--ink-3); }
+.bars { display: grid; gap: 3px; position: relative; }
+.track { position: relative; height: 12px; }
+.bar { position: absolute; left: 0; top: 0; height: 12px; border-radius: 0 4px 4px 0; }
+.bar.money { background: var(--money); }
+.bar.biz { background: var(--biz); height: 8px; top: 2px; }
+.whisk { position: absolute; top: 5px; height: 2px; background: var(--ink); opacity: 0.55; }
+.val { position: absolute; top: -2px; font-size: 12px; color: var(--ink-2); white-space: nowrap; padding-left: 6px; }
+.hit { position: absolute; inset: -4px 0; cursor: default; }
+@media (max-width: 560px) { .row { grid-template-columns: 1fr; } }
+.stack { display: flex; height: 34px; gap: 2px; border-radius: 4px; overflow: hidden; }
+.stack div { min-width: 0; }
+.stackl { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13px; color: var(--ink-2); }
+.tablewrap { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+th, td { text-align: left; padding: 7px 10px 7px 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
+th { font-weight: 600; color: var(--ink-2); font-size: 12px; }
+td.r, th.r { text-align: right; font-family: var(--mono); font-variant-numeric: tabular-nums; }
+.pill { display: inline-block; font-size: 11px; font-weight: 600; padding: 1px 8px; border-radius: 999px; background: var(--mist); color: var(--ink-2); white-space: nowrap; }
+.pill.ok::before { content: "\2713  "; }
+.note { font-size: 13px; color: var(--ink-2); }
+ul { margin: 0; padding-left: 18px; display: grid; gap: 6px; max-width: 70ch; }
+#tip { position: fixed; pointer-events: none; background: var(--ink); color: var(--bg); font-size: 12px; padding: 6px 9px; border-radius: 6px; max-width: 260px; z-index: 5; line-height: 1.4; }
+</style>
+
+<div class="wrap">
+  <header style="display:grid;gap:12px">
+    <div class="eyebrow">Niagara Falls simulation · 2025 · 60 scenarios that fit the evidence</div>
+    <h1>Where visitor money goes</h1>
+    <p class="lede">Visitors spend about <b class="num" id="hVis"></b> a year at Niagara Falls businesses. A quarter of the businesses, packed around the Falls, take almost three quarters of it. The rest of the city shares what's left, and that is where the closed storefronts are.</p>
+  </header>
+
+  <div class="headline" id="stats"></div>
+
+  <section>
+    <h2>A quarter of the businesses take three quarters of the money</h2>
+    <p class="note">Share of the city's businesses in each district, against its share of visitor spending. The blue bar is the middle scenario; the dark line spans all of them.</p>
+    <div class="fig">
+      <div class="legend"><span><i class="sw" style="background:var(--money)"></i>Share of visitor money</span><span><i class="sw" style="background:var(--biz)"></i>Share of businesses</span></div>
+      <div class="rows" id="dist"></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Who receives it</h2>
+    <div class="fig">
+      <div class="stack" id="ownStack" role="img" aria-label="Visitor money by type of owner"></div>
+      <div class="stackl" id="ownLegend"></div>
+    </div>
+    <p class="note">The province owns the two casinos and Niagara Parks. Chains and brands include hotel brands and franchises, whose fees and profits mostly leave the city. Independents are everyone else, including large local owners of hotels and Clifton Hill attractions.</p>
+  </section>
+
+  <section>
+    <h2>The 15 biggest earners from visitors</h2>
+    <div class="fig tablewrap"><table id="top"></table></div>
+    <p class="note">Middle scenario. A business with several records counts once (Great Wolf Lodge: hotel, indoor waterpark and parking). To check: Google lists Embassy Suites on Fallsview as permanently closed, and a single grocery store and a car rental office earning this much from visitors looks high.</p>
+  </section>
+
+  <section>
+    <h2>Closures: where the businesses that are gone now stood</h2>
+    <div class="fig tablewrap"><table id="closed"></table></div>
+    <p class="note">Businesses Google Places listed as permanently closed on November 23, 2026, plus first-hand reports (Johnny Rocco's, 6889 Lundy's Lane). They traded in 2025 in the simulation; forward outlooks leave them out. Across all scenarios, closed businesses earned less in 2025 than open neighbours of the same kind 55% of the time (50% would be no signal).</p>
+  </section>
+
+  <section>
+    <h2>The evidence every scenario had to match</h2>
+    <div class="fig tablewrap"><table id="facts"></table></div>
+    <p class="note">800 combinations of the model's unknown settings were run. 172 matched every money fact; the 60 tested further also matched road traffic counts and monthly hotel occupancy. Government figures are labelled and allowed a wider margin, as the project's rules require.</p>
+  </section>
+
+  <section>
+    <h2>What the data settles, and what it doesn't</h2>
+    <div class="fig tablewrap"><table id="knobs"></table></div>
+    <ul class="note">
+      <li>Settled: visitor numbers and spending are within about 10% of the official figures; a business's size has to matter strongly.</li>
+      <li>Open: how far visitors wander from the Falls. This alone moves the Falls area's share between 68% and 75%. Street counts on Lundy's Lane and Clifton Hill, or Google review counts by location, would narrow it.</li>
+      <li>Open: how much of visitors' restaurant money stays in the city. It sets how concentrated the top 10 are.</li>
+      <li>Not in the model yet: where money goes after the till. Franchise fees, owners' profits taken elsewhere, sales tax and commuters' wages all leave the city.</li>
+    </ul>
+  </section>
+</div>
+<div id="tip" hidden></div>
+
+<script>
+fetch("visitor_money_data.json").then(r => r.json()).then(draw).catch(e => {
+  document.querySelector(".lede").textContent = "The data file did not load: " + e.message;
+});
+function m(v) { return v >= 1000 ? "$" + (v / 1000).toFixed(2) + "B" : "$" + Math.round(v) + "M"; }
+function pct(v) { return (Math.round(v * 10) / 10) + "%"; }
+function draw(D) {
+  const $ = id => document.getElementById(id);
+  $("hVis").textContent = m(D.visitor_musd[1]);
+  const fa = D.districts.filter(x => /Clifton|Fallsview|Casinos|Niagara Parks/.test(x.name));
+  const faB = fa.reduce((a, x) => a + x.businesses, 0), allB = D.districts.reduce((a, x) => a + x.businesses, 0);
+  const lundy = D.districts.find(x => /Lundy/.test(x.name));
+  const stats = [
+    [pct(D.falls_area[1]), "of visitor money in the Falls area", `${faB} of ${allB} businesses · range ${pct(D.falls_area[0])}–${pct(D.falls_area[2])}`],
+    [pct(D.top10[1]), "goes to the 10 biggest businesses", `top 50: ${pct(D.top50[1])}`],
+    [pct(D.owner["Province (casinos, Niagara Parks)"][1]), "to the province", "two casinos and Niagara Parks"],
+    [pct(lundy.money_pct[1]), "reaches Lundy's Lane", `${lundy.businesses} businesses, ${lundy.closed} now closed`]];
+  $("stats").innerHTML = stats.map(s => `<div class="stat"><b class="num">${s[0]}</b><span>${s[1]}</span><small>${s[2]}</small></div>`).join("");
+
+  const max = Math.max(...D.districts.map(x => Math.max(x.money_pct[2], x.biz_pct))) * 1.15;
+  const x = v => (v / max * 100) + "%";
+  $("dist").innerHTML = D.districts.map((d, i) => `
+    <div class="row"><div class="name">${d.name}<small>${d.businesses} businesses · ${m(d.money_musd)} from visitors</small></div>
+      <div class="bars">
+        <div class="track"><div class="bar money" style="width:${x(d.money_pct[1])}"></div>
+          <div class="whisk" style="left:${x(d.money_pct[0])};width:calc(${x(d.money_pct[2])} - ${x(d.money_pct[0])})"></div>
+          <span class="val num" style="left:${x(d.money_pct[2])}">${pct(d.money_pct[1])}</span>
+          <div class="hit" data-tip="${d.name}: ${pct(d.money_pct[1])} of visitor money (${pct(d.money_pct[0])}–${pct(d.money_pct[2])} across scenarios), about ${m(d.money_musd)} a year"></div></div>
+        <div class="track"><div class="bar biz" style="width:${x(d.biz_pct)}"></div>
+          <span class="val num" style="left:${x(d.biz_pct)}">${pct(d.biz_pct)}</span>
+          <div class="hit" data-tip="${d.name}: ${d.businesses} businesses, ${pct(d.biz_pct)} of the city's"></div></div>
+      </div></div>`).join("");
+
+  const ownColors = { "Province (casinos, Niagara Parks)": "var(--money)", "Chains and brands": "var(--biz)", "Independent": "var(--indep)" };
+  const order = ["Province (casinos, Niagara Parks)", "Chains and brands", "Independent"];
+  $("ownStack").innerHTML = order.map(k => `<div style="flex:${D.owner[k][1]};background:${ownColors[k]}" data-tip="${k}: ${pct(D.owner[k][1])} (${pct(D.owner[k][0])}–${pct(D.owner[k][2])} across scenarios)"></div>`).join("");
+  $("ownLegend").innerHTML = order.map(k => `<span><i class="sw" style="background:${ownColors[k]}"></i>${k} <b class="num">${pct(D.owner[k][1])}</b></span>`).join("");
+
+  $("top").innerHTML = "<tr><th>Business</th><th>District</th><th class='r'>From visitors</th></tr>" +
+    D.top15.map(t => `<tr><td>${t.name}</td><td>${t.district}</td><td class="r">${m(t.visitor_musd)}</td></tr>`).join("");
+
+  $("closed").innerHTML = "<tr><th>District</th><th class='r'>Businesses</th><th class='r'>Now closed</th><th class='r'>Closed share</th><th class='r'>Their 2025 visitor money</th></tr>" +
+    [...D.districts].sort((a, b) => b.closed / b.businesses - a.closed / a.businesses).map(d =>
+      `<tr><td>${d.name}</td><td class="r">${d.businesses}</td><td class="r">${d.closed}</td><td class="r">${pct(100 * d.closed / d.businesses)}</td><td class="r">${m(d.closed_musd)}</td></tr>`).join("");
+
+  const F = D.facts, rg = (a, f = v => v) => `${f(a[0])} – ${f(a[2])}`;
+  const two = v => v.toFixed(2), mu = v => "$" + Math.round(v) + "M";
+  const facts = [
+    ["Chain sales per location, published by the chains", "third party", "model ÷ published within ×1.5", rg(F.chains, two)],
+    ["Niagara Parks revenue, annual report", "operator", "$129.8M ±10%", rg(F.parks, mu)],
+    ["Casino gaming revenue, from the City's hosting fee", "estimate", "$550M ±15%", rg(F.casinos, mu)],
+    ["Hotel occupancy, CBRE", "third party", "62% ±8%", rg(F.hotel, v => Math.round(v * 100) + "%")],
+    ["Hotel occupancy by month, CBRE", "third party", "within 10%", rg(F.hotelm, v => Math.round((Math.exp(v) - 1) * 100) + "%")],
+    ["Regional road counts 2019, correlation", "government", "0.6 or more", rg(F.reg19, two)],
+    ["Regional road counts 2025, correlation", "government", "0.6 or more", rg(F.reg25, two)],
+    ["Provincial highway counts, correlation", "government", "0.6 or more", rg(F.hwy, two)],
+    ["Store sales by type, Statistics Canada", "government", "typical error under ×1.4", rg(F.statcan, v => "×" + Math.exp(v).toFixed(2))],
+    ["Staff sizes, Niagara Region survey (rank correlation)", "government", "scored, not a gate", rg(F.staff, two)],
+    ["Known closures ranked below open neighbours", "Google, first-hand", "scored, not a gate", rg(F.closed, v => Math.round(v * 100) + "%")]];
+  $("facts").innerHTML = "<tr><th>Fact</th><th>Source</th><th>Must be</th><th class='r'>Scenarios</th></tr>" +
+    facts.map(f => `<tr><td>${f[0]}</td><td><span class="pill">${f[1]}</span></td><td>${f[2]}</td><td class="r">${f[3]}</td></tr>`).join("");
+
+  const label = { beta_mult: "How fast pull falls with travel time", attract_exp: "How much a business's size draws", tourist_floor_min: "How far visitors wander (minutes)",
+    visitors_mult: "Visitor numbers vs official", spend_mult: "Visitor spending vs official", restaurant_capture: "Restaurant money kept in the city",
+    chain_mult: "Extra pull of chain branches", core_mult: "Extra pull of the Tourist Core", casino_mult: "Pull of the casinos", parks_mult: "Pull of Niagara Parks shops",
+    safety_scale: "How much visitors avoid hot spots", outings_mult: "Residents' shopping trips" };
+  $("knobs").innerHTML = "<tr><th>Unknown setting</th><th class='r'>Tried</th><th class='r'>Scenarios that fit (10–90%)</th></tr>" +
+    Object.entries(D.knobs).map(([k, v]) => `<tr><td>${label[k] || k}</td><td class="r">${v.tried[0]}–${v.tried[1]}</td><td class="r">${v.fits[0]}–${v.fits[2]}</td></tr>`).join("");
+
+  const tip = $("tip");
+  document.addEventListener("pointermove", e => {
+    const t = e.target.closest("[data-tip]");
+    if (!t) { tip.hidden = true; return; }
+    tip.textContent = t.dataset.tip; tip.hidden = false;
+    tip.style.left = Math.min(e.clientX + 12, innerWidth - 270) + "px"; tip.style.top = (e.clientY + 14) + "px";
+  });
+}
+</script>

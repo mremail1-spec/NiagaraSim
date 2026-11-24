@@ -324,10 +324,117 @@ def traffic(limit: int = 60) -> None:
             print(f"{j + 1}/{len(todo)} {res}", flush=True)
 
 
+LUNDY = re.compile(r"lundy", re.I)
+BIGBOX = re.compile(r"montrose|mcleod|oakwood|optimist|niagara square|costco|pin oak", re.I)
+DOWNTOWN = re.compile(r"queen st|bridge st|erie av|park st|ontario av|crysler|huron st|zimmerman", re.I)
+MAINFERRY = re.compile(r"main st|ferry st|lundy.s ln e", re.I)
+
+
+def district(b: dict, i: int) -> str:
+    a, la = b["address"][i] or "", b["lat"][i]
+    if b["operator"][i] == 1:
+        return "Niagara Parks (province)"
+    if b["operator"][i] == 2:
+        return "Casinos (province)"
+    if b["core"][i]:
+        return "Fallsview" if la < 43.0875 else "Clifton Hill, Falls Ave, Centre St"
+    if la < 43.062:
+        return "Chippawa and the south"
+    if LUNDY.search(a):
+        return "Lundy's Lane"
+    if BIGBOX.search(a):
+        return "Montrose, McLeod, Oakwood (big stores)"
+    if MAINFERRY.search(a):
+        return "Main and Ferry"
+    if DOWNTOWN.search(a) or (re.search(r"victoria", a, re.I) and la > 43.098):
+        return "Downtown and Victoria Ave north (with Great Wolf Lodge)"
+    return "Neighbourhood streets elsewhere"
+
+
+def owner(b: dict, brand: list[str], i: int) -> str:
+    if b["operator"][i] in (1, 2):
+        return "Province (casinos, Niagara Parks)"
+    if (b["chain"] and b["chain"][i] >= 0) or (i < len(brand) and brand[i]):
+        return "Chains and brands"
+    return "Independent"
+
+
+def report(n: int = 7) -> dict:
+    """Where visitor money goes, across a spread of the scenarios that fit every fact."""
+    _init()
+    runs = [json.loads(l) for l in open(RUNS)]
+    tr = {json.loads(l)["run"]: json.loads(l) for l in open(OUT / "traffic.jsonl")}
+    ok = [(i, runs[i]) for i in tr]
+    ok.sort(key=lambda x: x[1]["tourist_core_share"])
+    pick = [ok[round(q * (len(ok) - 1))] for q in np.linspace(0, 1, n)]
+    city = _facts.city
+    b = city["businesses"]
+    biz = list(csv.DictReader(open(CITY.with_name("businesses.csv"), encoding="utf-8")))
+    brand = [r.get("brand", "") for r in biz]
+    cats = city["sim_categories"]
+    dist = [district(b, i) for i in range(_facts.n)]
+    own = [owner(b, brand, i) for i in range(_facts.n)]
+    scen = []
+    for i, r in pick:
+        k = r["knobs"]
+        with tempfile.TemporaryDirectory(dir=OUT) as d:
+            cp, bp, rp = Path(d) / "city.json", Path(d) / "biz.csv", Path(d) / "run.json"
+            cp.write_text(json.dumps(apply(city, k), separators=(",", ":")))
+            subprocess.run([NFSIM, "run", str(cp), "--mode", "flow", "--days", "365", "--beta", str(_facts.cal_beta * k["beta_mult"]),
+                            "--businesses", str(bp)], check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+            tour = np.zeros(_facts.n)
+            rev = np.zeros(_facts.n)
+            for row in csv.DictReader(open(bp)):
+                j = int(row["business"])
+                if j < _facts.n:
+                    tour[j], rev[j] = float(row["tourist_revenue"]), float(row["revenue"])
+        tt = tour.sum()
+        by_d, by_o, by_c, closed_d = defaultdict(float), defaultdict(float), defaultdict(float), defaultdict(float)
+        for j in range(_facts.n):
+            if b["external"][j]:
+                continue
+            by_d[dist[j]] += tour[j]; by_o[own[j]] += tour[j]; by_c[cats[b["sim_category"][j]]] += tour[j]
+            if b["closed_from"][j]:
+                closed_d[dist[j]] += tour[j]
+        # one business can have several records (Great Wolf Lodge: hotel, waterpark, parking): group by name and street number
+        grp = defaultdict(float)
+        for j in range(_facts.n):
+            if not b["external"][j]:
+                num = (b["address"][j] or "").split(" ")[0]
+                grp[(b["name"][j], num, dist[j])] += tour[j]
+        top = sorted(grp.items(), key=lambda z: -z[1])[:15]
+        scen.append({"run": i, "knobs": k, "facts": {x: r[x] for x in ("chains_median_ratio", "niagara_parks_musd", "casinos_musd", "hotel_occupancy",
+                                                                     "statcan_sales_rms_log", "staff_rank_corr", "closed_below_open")},
+                     "traffic": tr[i], "visitor_musd": round(tt / 1e6, 1),
+                     "by_district_pct": {x: round(100 * v / tt, 1) for x, v in sorted(by_d.items(), key=lambda z: -z[1])},
+                     "by_owner_pct": {x: round(100 * v / tt, 1) for x, v in sorted(by_o.items(), key=lambda z: -z[1])},
+                     "by_kind_musd": {x: round(v / 1e6, 1) for x, v in sorted(by_c.items(), key=lambda z: -z[1]) if v > 1e6},
+                     "top10_pct": round(100 * np.sort(tour)[::-1][:10].sum() / tt, 1),
+                     "top50_pct": round(100 * np.sort(tour)[::-1][:50].sum() / tt, 1),
+                     "at_businesses_now_closed_musd": round(sum(closed_d.values()) / 1e6, 1),
+                     "now_closed_by_district_musd": {x: round(v / 1e6, 1) for x, v in sorted(closed_d.items(), key=lambda z: -z[1])},
+                     "top15": [{"name": nm, "district": ds, "visitor_musd": round(v / 1e6, 1)} for (nm, _, ds), v in top]})
+    # businesses per district and how many are now closed
+    counts = defaultdict(lambda: [0, 0])
+    for j in range(_facts.n):
+        if not b["external"][j] and cats[b["sim_category"][j]] not in ("free_sight", "parking"):
+            counts[dist[j]][0] += 1
+            counts[dist[j]][1] += bool(b["closed_from"][j])
+    doc = {"_meta": {"what": "Where visitors' money goes in Niagara Falls (2025), across scenarios that fit every measured fact (nfprep.ensemble).",
+                     "runs_tried": len(runs), "fit_money_facts": sum(1 for x in runs if x["max_implausibility"] <= 1),
+                     "also_fit_traffic_and_hotel_months": len(tr), "scenarios_shown": len(scen)},
+           "businesses_by_district": {k: {"businesses": v[0], "now_closed": v[1]} for k, v in sorted(counts.items(), key=lambda z: -z[1][0])},
+           "scenarios": scen}
+    (ROOT / "docs" / "scenarios_tourist_money.json").write_text(json.dumps(doc, indent=1))
+    return doc
+
+
 if __name__ == "__main__":
     a = sys.argv[1:]
     if a and a[0] == "wave":
         wave(int(a[1]))
+    elif a and a[0] == "report":
+        report()
     elif a and a[0] == "traffic":
         traffic(int(a[1]) if len(a) > 1 else 60)
     else:
