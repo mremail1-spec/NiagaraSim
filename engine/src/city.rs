@@ -434,6 +434,10 @@ pub struct Params {
     /// near (0 = use min_minutes).
     #[serde(default)]
     pub tourist_min_minutes: f64,
+    /// Residents' distance decay by spending category, as a multiple of beta (empty = 1 for all):
+    /// groceries are bought close to home, restaurants and clothing farther (data/category_distance.json).
+    #[serde(default)]
+    pub category_beta_mult: Vec<f64>,
 }
 
 impl Params {

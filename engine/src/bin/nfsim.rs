@@ -47,6 +47,12 @@ fn main() {
         let n = engine.apply_closures(m.replace('-', "").parse().expect("--closures-as-of YYYYMM"));
         eprintln!("{n} businesses closed as of {m}");
     }
+    if args[1] == "category-km" {
+        // nfsim category-km <city.json> --beta B  -> median trip km by spending category (JSON on stdout)
+        let b = engine.beta;
+        println!("{}", serde_json::to_string(&engine.category_median_km(b)).unwrap());
+        return;
+    }
     if args[1] == "forecast" {
         // nfsim forecast <city.json> --sites sites.json --out out.json
         // sites: [[lat, lon, sim_category, size], ...] -> [[resident, tourist], ...] yearly revenue

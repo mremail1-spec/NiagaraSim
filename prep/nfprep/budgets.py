@@ -461,6 +461,10 @@ def export_city(pack: Pack, city: dict, budgets: np.ndarray, year: int, path: Pa
         },
     }
     doc["business_groups"] = group_names
+    # how far residents go for each kind of purchase (nfprep.distance_fit; data/category_distance.json)
+    cd = json.loads((DATA_DIR / "category_distance.json").read_text()).get("fitted_beta_mult", {})
+    if cd:
+        doc["params"]["category_beta_mult"] = [float(cd.get(c, 1.0)) for c in doc["categories"]["name"]]
     # the daytime crowd: students and workers spending near school and work (nfprep.daytime)
     from .daytime import add_to_city
     add_to_city(doc, nodes)

@@ -319,6 +319,7 @@ impl Engine {
 
     pub(crate) fn weights(&self, node: usize, c: usize, beta: f64, out: &mut Vec<f64>) -> f64 {
         out.clear();
+        let beta = beta * self.city.params.category_beta_mult.get(c).copied().unwrap_or(1.0);
         for (i, &b) in self.cat_business[c].iter().enumerate() {
             let t = self.trip_minutes(node, b as usize);
             out.push(self.cat_pull[c][i] / t.max(self.city.params.min_minutes).powf(beta));
@@ -416,6 +417,33 @@ impl Engine {
             }
         }
         (median, short, short * walk_near)
+    }
+
+    /// Typical trip distance (km, all modes) by spending category, from the expected destination shares:
+    /// the geometric mean (it moves smoothly when a category's trips split between near and far places).
+    pub fn category_median_km(&self, beta: f64) -> Vec<f64> {
+        let outings = self.outing_weights();
+        let mut w = Vec::new();
+        (0..self.n_cat).map(|c| {
+            let (mut sw, mut sl) = (0f64, 0f64);
+            for (slot, &node) in self.home_nodes.iter().enumerate() {
+                let o = outings[slot * self.n_cat + c];
+                if o <= 0.0 {
+                    continue;
+                }
+                let total = self.weights(node as usize, c, beta, &mut w);
+                if total <= 0.0 {
+                    continue;
+                }
+                for (i, &b) in self.cat_business[c].iter().enumerate() {
+                    let d = self.trip_km(node as usize, b as usize).max(0.2);
+                    let p = o * w[i] / total;
+                    sw += p;
+                    sl += p * d.ln();
+                }
+            }
+            if sw > 0.0 { (sl / sw).exp() } else { 0.0 }
+        }).collect()
     }
 
     /// Fix beta and rebuild the destination tables.

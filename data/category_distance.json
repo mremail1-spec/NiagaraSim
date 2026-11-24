@@ -1,0 +1,27 @@
+{
+ "_meta": {
+  "what": "How far people go for each kind of purchase, relative to all purchases: median distance from home of card transactions by sector, divided by the median for all sectors (9.0 km). The model keeps its own overall trip length (travel survey, 5.5 km driving median) and matches these ratios between categories.",
+  "source": "Agarwal, Jensen and Monte, 'The Geography of Consumption', 2018 draft (AEA 2019), Table C.4: unweighted distribution of transaction distances by sector, 1.7 million US card transactions. Third-party (bank card data), checked against the paper 2026-11-24.",
+  "url": "https://swlb1.aeaweb.org/conference/2019/preliminary/paper/Tn4QY7ht",
+  "note": "US distances; only the ratios between sectors are used. Amusement and recreation (33.3 km) includes trips while travelling and is capped at 2x for a city's own residents."
+ },
+ "all_sectors_median_km": 9.0,
+ "categories": {
+  "groceries":           {"sector": "Food Stores", "median_km": 4.2},
+  "restaurants":         {"sector": "Eating and Drinking Places", "median_km": 12.6},
+  "clothing":            {"sector": "Apparel", "median_km": 15.6},
+  "household_goods":     {"sector": "Furniture, Home Furnishings, Equip.", "median_km": 11.2},
+  "personal_care":       {"sector": "Personal Services", "median_km": 6.7},
+  "pharmacy":            {"sector": "Health Services", "median_km": 8.6},
+  "health_services":     {"sector": "Health Services", "median_km": 8.6},
+  "recreation_goods":    {"sector": "Misc. Retail", "median_km": 8.6},
+  "recreation_services": {"sector": "Amusement, Rec. Serv. (capped)", "median_km": 18.0},
+  "alcohol":             {"sector": "Misc. Retail", "median_km": 8.6},
+  "tobacco":             {"sector": "Food Stores (convenience)", "median_km": 4.2},
+  "cannabis":            {"sector": "Misc. Retail", "median_km": 8.6},
+  "fuel":                {"sector": "Gasoline Services", "median_km": 8.9},
+  "vehicle_service":     {"sector": "Auto Repair/Service/Parking", "median_km": 7.9},
+  "pets":                {"sector": "Misc. Retail", "median_km": 8.6},
+  "general_merchandise": {"sector": "General Merchandise Stores", "median_km": 8.7}
+ }
+}
