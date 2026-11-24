@@ -3,12 +3,12 @@
   "what": "Model revenue of chain branches in Niagara Falls against the chains' published sales per location."
  },
  "summary": {
-  "median_ratio_model_to_published": 1.08,
+  "median_ratio_model_to_published": 0.99,
   "branches_above_brand_best": 1,
-  "site_error_log_sd": 0.765,
+  "site_error_log_sd": 0.986,
   "site_range_p10_p90": [
-   0.38,
-   2.66
+   0.28,
+   3.53
   ]
  },
  "brands": {
@@ -16,28 +16,28 @@
    "branches": [
     {
      "address": "5200 Robinson St",
-     "model_revenue": 2400436
+     "model_revenue": 2420096
     },
     {
      "address": "4945 Clifton Hl",
-     "model_revenue": 2599114
+     "model_revenue": 2661924
     },
     {
      "address": "3643-3739 Portage Rd",
-     "model_revenue": 1369798
+     "model_revenue": 1369550
     },
     {
      "address": "5619 Stanley Av",
-     "model_revenue": 1573810
+     "model_revenue": 1444250
     },
     {
      "address": "6225 Lundy's Ln",
-     "model_revenue": 2448881
+     "model_revenue": 2479303
     }
    ],
-   "model_median": 2400436,
+   "model_median": 2420096,
    "published_average": 789000,
-   "ratio": 3.04,
+   "ratio": 3.07,
    "above_brand_best_unit": 0,
    "source_quality": "company filing"
   },
@@ -45,10 +45,10 @@
    "branches": [
     {
      "address": "5950 Victoria Av",
-     "model_revenue": 7089919
+     "model_revenue": 7113482
     }
    ],
-   "model_median": 7089919,
+   "model_median": 7113482,
    "published_average": 7176000,
    "ratio": 0.99,
    "above_brand_best_unit": 0,
@@ -58,20 +58,20 @@
    "branches": [
     {
      "address": "4950 Clifton Hill",
-     "model_revenue": 5138313
+     "model_revenue": 5167869
     },
     {
      "address": "6962 Optimist Ln",
-     "model_revenue": 2160110
+     "model_revenue": 2163712
     },
     {
      "address": "8444 Lundy's Ln",
-     "model_revenue": 4849048
+     "model_revenue": 4962910
     }
    ],
-   "model_median": 4849048,
+   "model_median": 4962910,
    "published_average": 2505000,
-   "ratio": 1.94,
+   "ratio": 1.98,
    "above_brand_best_unit": 0,
    "source_quality": "filing sales / analyst count"
   },
@@ -79,35 +79,35 @@
    "branches": [
     {
      "address": "7307 Oakwood Dr",
-     "model_revenue": 206849
+     "model_revenue": 207260
     },
     {
      "address": "6948 McLeod Rd",
-     "model_revenue": 1222234
+     "model_revenue": 1228468
     },
     {
      "address": "8089 Portage Road",
-     "model_revenue": 1368904
+     "model_revenue": 1372784
     },
     {
      "address": "7311 Pin Oak Dr",
-     "model_revenue": 668420
+     "model_revenue": 669944
     },
     {
      "address": "5233 Stanley Av",
-     "model_revenue": 1672841
+     "model_revenue": 1686459
     },
     {
      "address": "6192 Lundy's Ln",
-     "model_revenue": 1435113
+     "model_revenue": 1471530
     },
     {
      "address": "6345 Niagara River Py",
-     "model_revenue": 1189991
+     "model_revenue": 1199697
     },
     {
      "address": "5687 Stanley Av",
-     "model_revenue": 3745272
+     "model_revenue": 3844442
     },
     {
      "address": "6380 Fallsview Bv",
@@ -115,34 +115,34 @@
     },
     {
      "address": "5551 Murray Street",
-     "model_revenue": 5710798
+     "model_revenue": 5359919
     },
     {
      "address": "8159 Lundy's Ln",
-     "model_revenue": 2121564
+     "model_revenue": 2174154
     },
     {
      "address": "3930 Montrose Rd",
-     "model_revenue": 1462165
+     "model_revenue": 1462702
     },
     {
      "address": "4835 Victoria Av",
-     "model_revenue": 2479035
+     "model_revenue": 2510251
     },
     {
      "address": "6907 Morrison St",
-     "model_revenue": 485700
+     "model_revenue": 486052
     },
     {
      "address": "6161 Thorold Stone Road",
-     "model_revenue": 1234921
+     "model_revenue": 1234918
     },
     {
      "address": "5470 Drummond Rd",
-     "model_revenue": 465427
+     "model_revenue": 465850
     }
    ],
-   "model_median": 1301912,
+   "model_median": 1303851,
    "published_average": 1117000,
    "ratio": 1.17,
    "above_brand_best_unit": 1,
@@ -152,14 +152,14 @@
    "branches": [
     {
      "address": "6980-7000 McLeod Rd",
-     "model_revenue": 672023
+     "model_revenue": 670527
     },
     {
      "address": "7665 Thorold Stone Rd",
-     "model_revenue": 537956
+     "model_revenue": 542392
     }
    ],
-   "model_median": 604990,
+   "model_median": 606460,
    "published_average": 1670000,
    "ratio": 0.36,
    "above_brand_best_unit": 0,
@@ -169,26 +169,105 @@
    "branches": [
     {
      "address": "7481 Oakwood Dr",
-     "model_revenue": 3576345
+     "model_revenue": 3573170
     },
     {
      "address": "3714 Portage Rd",
-     "model_revenue": 3540343
+     "model_revenue": 3532256
     },
     {
      "address": "4694 Victoria Avenue",
-     "model_revenue": 1184736
+     "model_revenue": 1190495
     },
     {
      "address": "5389 Ferry Street",
-     "model_revenue": 5512250
+     "model_revenue": 5484957
     }
    ],
-   "model_median": 3558344,
+   "model_median": 3552713,
    "published_average": 8630000,
    "ratio": 0.41,
    "above_brand_best_unit": 0,
    "source_quality": "2022-23 retail sales over store count"
+  },
+  "Dollarama": {
+   "branches": [
+    {
+     "address": "7481 Oakwood Dr",
+     "model_revenue": 998331
+    },
+    {
+     "address": "7555 Montrose Road",
+     "model_revenue": 861044
+    },
+    {
+     "address": "7190 Morrison Street",
+     "model_revenue": 265160
+    },
+    {
+     "address": "5175 Victoria Av",
+     "model_revenue": 949293
+    },
+    {
+     "address": "6240 Lundy's Ln",
+     "model_revenue": 2093354
+    },
+    {
+     "address": "6767-6847 Morrison St",
+     "model_revenue": 875091
+    },
+    {
+     "address": "3551 Portage Road",
+     "model_revenue": 1569797
+    },
+    {
+     "address": "3770 Montrose Road",
+     "model_revenue": 1968979
+    }
+   ],
+   "model_median": 973812,
+   "published_average": 3970000,
+   "ratio": 0.25,
+   "above_brand_best_unit": 0,
+   "source_quality": "company filing"
+  },
+  "Shoppers Drug Mart": {
+   "branches": [
+    {
+     "address": "3643-3739 Portage Rd",
+     "model_revenue": 3869277
+    },
+    {
+     "address": "5175 Victoria Avenue",
+     "model_revenue": 2678192
+    },
+    {
+     "address": "5125 Montrose Road",
+     "model_revenue": 10705462
+    },
+    {
+     "address": "6565 Lundys Lane",
+     "model_revenue": 8963461
+    }
+   ],
+   "model_median": 6416369,
+   "published_average": 12950000,
+   "ratio": 0.5,
+   "above_brand_best_unit": 0,
+   "source_quality": "company filing"
+  },
+  "Canadian Tire": {
+   "branches": [
+    {
+     "address": "7190 Morrison Street",
+     "model_revenue": 129286767
+    }
+   ],
+   "model_median": 129286767,
+   "published_average": 24800000,
+   "ratio": 5.21,
+   "above_brand_best_unit": 0,
+   "source_quality": "company filing"
   }
  }
 }

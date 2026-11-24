@@ -9,14 +9,14 @@
    "overseas": 8.4
   },
   "sim": {
-   "domestic": 71.7,
-   "us": 19.9,
+   "domestic": 71.6,
+   "us": 20.0,
    "overseas": 8.4
   }
  },
  "overnight_pct_of_visitors": {
   "published_2017": 38.1,
-  "sim": 39.8
+  "sim": 39.7
  },
  "nights_pct_of_overnight_trips": {
   "published_2022_domestic": {
@@ -30,8 +30,8 @@
   },
   "sim": {
    "1": 51.3,
-   "2": 30.7,
-   "3": 10.7,
+   "2": 30.8,
+   "3": 10.6,
    "4": 4.0,
    "5": 0.7,
    "6-9": 1.8,
@@ -49,7 +49,7 @@
    "hotel": 63.0,
    "rental": 2.1,
    "camping": 2.2,
-   "friends_relatives": 32.8
+   "friends_relatives": 32.7
   }
  },
  "party": {
@@ -88,28 +88,28 @@
    "Q4": 23.3
   },
   "sim_domestic": {
-   "Q1": 14.0,
+   "Q1": 14.1,
    "Q2": 24.1,
    "Q3": 38.6,
    "Q4": 23.3
   }
  },
  "hotels": {
-  "rooms_in_model": 15956.0,
-  "occupancy_year_sim": 0.606,
-  "parties_turned_away": 122882,
+  "rooms_in_model": 15969.0,
+  "occupancy_year_sim": 0.604,
+  "parties_turned_away": 124268,
   "by_month": {
    "2024-01": {
     "published": 0.369,
-    "sim": 0.371
+    "sim": 0.369
    },
    "2024-03": {
     "published": 0.533,
-    "sim": 0.441
+    "sim": 0.443
    },
    "2024-06": {
     "published": 0.838,
-    "sim": 0.818
+    "sim": 0.814
    },
    "2024-07": {
     "published": 0.855,
@@ -117,7 +117,7 @@
    },
    "2024-10": {
     "published": 0.72,
-    "sim": 0.639
+    "sim": 0.637
    },
    "2024-11": {
     "published": 0.57,
@@ -125,17 +125,17 @@
    },
    "2025-01": {
     "published": 0.368,
-    "sim": 0.371
+    "sim": 0.369
    },
    "2025-03": {
     "published": 0.474,
-    "sim": 0.441
+    "sim": 0.443
    },
    "2025-11": {
     "published": 0.453,
     "sim": 0.506
    }
   },
-  "median_ratio_sim_to_published": 0.976
+  "median_ratio_sim_to_published": 0.971
  }
 }
