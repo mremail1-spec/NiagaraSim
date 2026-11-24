@@ -67,8 +67,9 @@ def sites(city: dict) -> list[dict]:
 
 
 def forecast(city_path: Path, beta: float, site_list: list[dict], menu: list[dict]) -> np.ndarray:
-    """[site, kind] -> (resident, tourist) yearly sales for a typical-size newcomer."""
-    rows = [[s["lat"], s["lon"], m["sim_category"], m["sizes"]["typical"]] for s in site_list for m in menu]
+    """[site, kind] -> (resident, tourist) yearly sales for a newcomer the size of the median existing
+    business of its kind (so the comparison is about the spot, not about being bigger or smaller)."""
+    rows = [[s["lat"], s["lon"], m["sim_category"], m["_size"]] for s in site_list for m in menu]
     with tempfile.TemporaryDirectory() as d:
         sp, op = Path(d) / "sites.json", Path(d) / "out.json"
         sp.write_text(json.dumps(rows))
@@ -82,6 +83,11 @@ def main(n_scen: int = 5) -> dict:
     from .rent_surface import RentSurface
     city = json.loads(CITY.read_text())
     menu = city["build_menu"]
+    bz = city["businesses"]
+    for m in menu:
+        sz = [bz["revenue_prior"][i] for i in range(len(bz["node"])) if bz["sim_category"][i] == m["sim_category"]
+              and not bz["external"][i] and not bz["closed_from"][i] and bz["revenue_prior"][i] > 0]
+        m["_size"] = float(np.median(sz)) if sz else m["sizes"]["typical"]
     site_list = sites(city)
     cal = json.loads((DATA_DIR / "calibrated_multipliers.json").read_text())
     scen = [("default", CITY, cal["beta"])]
@@ -143,7 +149,7 @@ def main(n_scen: int = 5) -> dict:
                                "best_spot_forecast_default": round(float(sales[0, best, k]))}
     doc = {"_meta": {"what": __doc__.strip().split("\n\n")[0], "scenarios": [s[0] for s in scen], "sites_tested": len(site_list),
                      "for_lease_sites": sum(s["for_lease"] for s in site_list), "kinds": len(menu),
-                     "rule": f"a newcomer of typical size sells at least {BEAT}x the median business of its kind already in the city, in every scenario, and keeps a profit margin after rent on that street",
+                     "rule": f"a newcomer the size of the median business of its kind sells at least {BEAT}x the median business of its kind already in the city, in every scenario, and keeps a profit margin after rent on that street",
                      "caution": "A single site's sales forecast can be off by up to about x3.6 either way (data/forecast_error.json); comparisons between spots and kinds are more reliable than the dollar figures."},
            "by_kind": by_kind, "opportunities": found[:200], "opportunities_total": len(found)}
     (ROOT / "docs" / "opportunities.json").write_text(json.dumps(doc, indent=1))
