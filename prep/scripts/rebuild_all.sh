@@ -11,6 +11,7 @@ step() {  # name command...
 }
 beta() { python3 -c "import json;print(json.load(open('../data/calibrated_multipliers.json'))['beta'])"; }
 step build1 python3 -m nfprep.build 2025 1
+step distance_fit python3 -m nfprep.distance_fit
 step calibrate python3 -m nfprep.calibrate
 step build2 python3 -m nfprep.build 2025 1
 step default_scenario python3 -m nfprep.default_scenario apply
