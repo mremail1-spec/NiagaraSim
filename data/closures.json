@@ -1,11 +1,28 @@
 {
  "_meta": {
   "what": "Businesses known to have closed, with the month they closed (closed_from) where known. Simulations of earlier years keep them; forward estimates (outlooks, forecasts for a new business) treat them as closed from that month. Google Places closures (data/google_places.json, CLOSED_PERMANENTLY) are added by the build with closed_from = the date Google was checked, because Google does not say when they closed.",
-  "fields": "key = the business's OpenStreetMap id (or source:name:address); closed_from = YYYY-MM; evidence = what shows it; source = who observed it."
+  "fields": "key = the business's OpenStreetMap id (or source:name:address); closed_from = YYYY-MM; evidence = what shows it; source = who observed it.",
+  "renamed": "Businesses that changed name or brand but kept trading at the same place: never closed; the build uses the new name (so prices and ratings match the new listing)."
  },
  "closures": [
-  {"key": "node/4274824245", "name": "Johnny Rocco's Italian Grill", "address": "6889 Lundy's Ln", "closed_from": "2026-11",
+  {
+   "key": "node/4274824245",
+   "name": "Johnny Rocco's Italian Grill",
+   "address": "6889 Lundy's Ln",
+   "closed_from": "2026-11",
    "evidence": "Closing notice on the door: 'After 19 wonderful years ... we announce the closing of our Johnny Rocco's Niagara Falls' (photo data/sources/closures/johnny_roccos_6889_lundys_ln_2026-11-24.jpg). Google still listed it as open on 2026-11-23.",
-   "source": "owner, first-hand, 2026-11-24"}
+   "source": "owner, first-hand, 2026-11-24"
+  }
+ ],
+ "renamed": [
+  {
+   "key": "node/5540700552",
+   "old_name": "Embassy Suites by Hilton",
+   "new_name": "Hyatt Regency Niagara Falls Fallsview",
+   "address": "6700 Fallsview Boulevard",
+   "rooms": 611,
+   "evidence": "Owner, 2026-11-24: Embassy Suites closed under that brand and reopened after renovation as the Hyatt Regency Niagara Falls Fallsview, 36 storeys, 611 rooms. Google Hotels lists 'Hyatt Regency Niagara Falls Fallsview' with prices for November 2026 and 2027 (data/hotels_google_2026-11.json). Google Places' old Embassy listing shows it closed, which is why the build had dated it closed.",
+   "source": "owner, 2026-11-24; Google Hotels"
+  }
  ]
 }

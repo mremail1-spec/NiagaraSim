@@ -396,7 +396,14 @@ def build_businesses(pack: Pack, seed: int = 1) -> list[dict]:
     dated = {c["key"]: (c["closed_from"], c["source"]) for c in json.loads((DATA_DIR / "closures.json").read_text())["closures"]}
     for k, (_, checked) in closed_keys().items():
         dated.setdefault(k, (checked[:7], "Google Places: permanently closed when checked " + checked))
+    # renamed or rebranded, still trading at the same place: new name, never closed
+    renamed = {c["key"]: c for c in json.loads((DATA_DIR / "closures.json").read_text()).get("renamed", [])}
     for r in rows:
+        c = renamed.get(_gkey(r))
+        if c:
+            r["name"], r["rooms"] = c["new_name"], c.get("rooms", r.get("rooms"))
+            r["closed_from"], r["closed_source"] = "", "renamed from " + c["old_name"]
+            continue
         r["closed_from"], r["closed_source"] = dated.get(_gkey(r), ("", ""))
     print(f"{sum(1 for r in rows if r['closed_from'])} businesses dated as closed (kept for past years)")
 

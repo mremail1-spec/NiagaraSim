@@ -118,6 +118,12 @@
    "rooms": 107,
    "source": "niagarafallshotels.com (107 rooms; dated page)",
    "confidence": "low"
+  },
+  {
+   "match": "hyatt regency niagara falls fallsview",
+   "rooms": 611,
+   "source": "Owner, 2026-11-24 (reopened after renovation, formerly Embassy Suites by Hilton Fallsview)",
+   "confidence": "medium"
   }
  ],
  "city_total": {
