@@ -174,7 +174,23 @@ def main(n_scen: int = 5) -> dict:
                                "spots_beating_median_in_every_scenario": int(robust[:, k].sum()), "spots_tested": len(site_list),
                                "best_spot": site_list[best]["where"], "best_spot_vs_median_worst_scenario": round(float(worst[best]), 2),
                                "best_spot_forecast_default": round(float(sales[0, best, k]))}
-    doc = {"_meta": {"what": __doc__.strip().split("\n\n")[0], "scenarios": [s[0] for s in scen], "sites_tested": len(site_list),
+    # next to each school: the best spot within a student's walk for every kind, passing or not
+    near_schools = {}
+    worst = rel.min(axis=0)
+    for q in schools:
+        d_ = np.array([dist(s_["lat"], s_["lon"], q["lat"], q["lon"]) for s_ in site_list])
+        idx = np.where(d_ <= 800)[0]
+        if not len(idx):
+            continue
+        rows = []
+        for k, m in enumerate(menu):
+            i = int(idx[np.nanargmax(worst[idx, k])])
+            rows.append({"kind": m["label"], "format": m["_format"], "where": site_list[i]["where"], "metres": round(float(d_[i])),
+                         "vs_yardstick_worst": round(float(worst[i, k]), 2), "vs_yardstick_default": round(float(rel[0, i, k]), 2),
+                         "forecast_sales_default": round(float(sales[0, i, k])), "passes": bool(robust[i, k])})
+        rows.sort(key=lambda r: -r["vs_yardstick_worst"])
+        near_schools[q["name"]] = {"kind": q["kind"], "students": q["people"], "spots_within_800m": int(len(idx)), "best_by_kind": rows}
+    doc = {"near_schools": near_schools, "_meta": {"what": __doc__.strip().split("\n\n")[0], "scenarios": [s[0] for s in scen], "sites_tested": len(site_list),
                      "for_lease_sites": sum(s["for_lease"] for s in site_list), "kinds": len(menu),
                      "rule": f"a newcomer, small (25th percentile) or typical (median) for its kind, sells at least {BEAT}x what existing businesses of the same kind, format and area (Tourist Core or the residential city) sell, in every scenario, and keeps a profit margin after rent on that street",
                      "caution": "A single site's sales forecast can be off by up to about x3.6 either way (data/forecast_error.json); comparisons between spots and kinds are more reliable than the dollar figures."},
