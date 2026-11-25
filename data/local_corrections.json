@@ -22,6 +22,14 @@
    "category": "accommodation",
    "address": "6380 FALLSVIEW BV",
    "reported_by": "Frommer's (374-room hotel); missing from OpenStreetMap"
+  },
+  {
+   "name": "Cookies and More Bakery",
+   "category": "grocery_food",
+   "lat": 43.1201446,
+   "lon": -79.1015406,
+   "address_hint": "3641 Portage Rd Unit 21",
+   "reported_by": "project owner (A N Myer students buy from it at lunch, 2026-11); Google Places: operational; no City bake-shop licence found"
   }
  ]
 }

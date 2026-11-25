@@ -360,7 +360,7 @@ impl Engine {
         let beta = beta * self.city.params.category_beta_mult.get(c).copied().unwrap_or(1.0);
         for (i, &b) in self.cat_business[c].iter().enumerate() {
             if walk > 0.0 {
-                out.push(self.cat_pull[c][i] * Self::walk_factor(self.trip_km(node, b as usize), walk));
+                out.push(self.cat_pull[c][i].powf(self.city.params.lunch_pull_power) * Self::walk_factor(self.trip_km(node, b as usize), walk));
                 continue;
             }
             let t = self.trip_minutes(node, b as usize);

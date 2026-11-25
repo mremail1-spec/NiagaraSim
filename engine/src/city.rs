@@ -442,6 +442,15 @@ pub struct Params {
     /// groceries are bought close to home, restaurants and clothing farther (data/category_distance.json).
     #[serde(default)]
     pub category_beta_mult: Vec<f64>,
+    /// On a short lunch break on foot, a place's size and format count for much less than for a planned
+    /// trip: a student picks a snack stop or a quick counter near school, not the biggest store. Pull is
+    /// raised to this power within walking catchments (SEED; owner's observations, data/lunch_observations.json).
+    #[serde(default = "lunch_pull_power")]
+    pub lunch_pull_power: f64,
+}
+
+fn lunch_pull_power() -> f64 {
+    0.1
 }
 
 impl Params {

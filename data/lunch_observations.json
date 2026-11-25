@@ -1,0 +1,11 @@
+{
+ "_meta": {
+  "what": "Where high-school students eat at lunch, as seen by the project owner in Niagara Falls (November 2026). Lunch break 10:45-11:25. Used to check the model, not to fit it.",
+  "source": "project owner, first-hand observation"
+ },
+ "observations": [
+  {"school": "Westlane Secondary School", "match": "Tim Hortons", "what": "Tim Hortons next to Westlane (8159 Lundy's Ln) is full of students at lunch"},
+  {"school": "A N Myer Secondary School", "match": "We The Finest", "what": "A N Myer students largely eat at We The Finest Burger Company (3643 Portage Rd)"},
+  {"school": "A N Myer Secondary School", "match": "Cookies and More", "what": "A N Myer students buy from Cookies and More Bakery near the school (3641 Portage Rd)"}
+ ]
+}

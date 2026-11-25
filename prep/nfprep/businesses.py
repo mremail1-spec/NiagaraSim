@@ -183,6 +183,36 @@ FREE_SPOTS = {"Thompson Point", "Turtle Pond", "Balancing Rock", "Birthday Bould
 LICENCE_TYPE_CATEGORY = {"GE": "auto_service", "ES": "personal_services", "HA": "personal_services", "GB": "auto_dealer"}
 
 
+FOOD_LICENCE = {"RS", "FS", "BK"}
+NOT_A_SHOP = ("HALL", "CORPS", "LEGION", "GOLF", "SCHOOL", "CHURCH", "ARENA", "CATERING", "PRIVATE CHEF", "SPORTS PERFORMANCE",
+              "CLUB", "CAMP", "COMMUNITY CENTRE", "Y.M.C.A", "YMCA")
+FAST = ("PIZZ", "SHAWARMA", "BURGER", "SUB", "BURRITO", "CHICKEN", "FRY", "FRIES", "PITA", "WING", "TACO", "DONAIR", "HOT DOG", "POUTINE", "FISH AND CHIPS", "FISH & CHIPS")
+CAFE = ("CAFE", "CAFÉ", "COFFEE", "TEA", "JUICE", "BOBA", "DONUT", "GELATO", "ICE CREAM", "DESSERT", "CREPE", "WAFFLE")
+
+
+def food_kind(licence: str, name: str) -> tuple[str, str]:
+    """Kind of business for a food licence, from its licence type and name."""
+    n = name.upper()
+    if licence == "BK":
+        return "grocery_food", "bakery"
+    if any(w in n for w in CAFE):
+        return "cafe", ""
+    if any(w in n for w in FAST):
+        return "fast_food", ""
+    if licence == "RS":
+        return "restaurant", ""
+    return "grocery_food", "convenience"            # food premises: grocers, convenience and specialty food stores
+
+
+def _listed_by_name(rows: list[dict], name: str, lat: float, lon: float) -> bool:
+    """A business of the same name within 150 m."""
+    from .backtest import same_business
+    for r in rows:
+        if r["name"] and same_business(name, r["name"]) and _dist_m(lat, lon, np.array([r["lat"]]), np.array([r["lon"]]))[0] < 150:
+            return True
+    return False
+
+
 def _already_listed(rows: list[dict], name: str, lat: float, lon: float, cat: str) -> bool:
     """Same kind of business within 40 m, or the same name within 150 m."""
     from .backtest import same_business
@@ -271,6 +301,23 @@ def build_businesses(pack: Pack, seed: int = 1) -> list[dict]:
         if in_city(lat_c, lon_c) and not _already_listed(rows, l["name"], lat_c, lon_c, cat):
             add("licence:" + l["type"][:2], nice_case(l["name"]), cat, lat_c, lon_c)
             rows[-1]["address_hint"] = nice_case(l["address"])
+
+    # The City's food licences (restaurants, food premises, bake shops). Plazas hold several food places
+    # side by side, so these are matched by name only: a licence is a separate business unless one of
+    # the same name is already within 150 m (owner's report: A N Myer students eat at a burger shop and a
+    # bakery in the Portage Rd plaza beside a Pizza Pizza, and both were missing).
+    for l in licences:
+        t = l["type"][:2]
+        if t not in FOOD_LICENCE or any(w in l["name"].upper() for w in NOT_A_SHOP):
+            continue
+        lat_c = sum(q[1] for q in l["ring"]) / len(l["ring"])
+        lon_c = sum(q[0] for q in l["ring"]) / len(l["ring"])
+        name = nice_case(re.sub(r"^.*\bO/A\s+", "", l["name"]))
+        if not in_city(lat_c, lon_c) or _listed_by_name(rows, name, lat_c, lon_c):
+            continue
+        cat, tag = food_kind(t, name)
+        add("licence:" + t, name, cat, lat_c, lon_c, tag=tag)
+        rows[-1]["address_hint"] = nice_case(l["address"])
 
     # free sights: viewpoints and free gardens and spots on the map, plus big free parks it lacks
     free = json.loads((DATA_DIR / "free_sights.json").read_text())

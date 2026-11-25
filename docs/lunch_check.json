@@ -1,0 +1,172 @@
+{
+ "_meta": {
+  "what": "Where does each high school's lunch money go in the model, and does it match what people see?"
+ },
+ "schools": {
+  "A N Myer Secondary School": {
+   "money_total": 401173,
+   "observations": [
+    {
+     "observed": "A N Myer students largely eat at We The Finest Burger Company (3643 Portage Rd)",
+     "in_model": null,
+     "rank": null
+    },
+    {
+     "observed": "A N Myer students buy from Cookies and More Bakery near the school (3641 Portage Rd)",
+     "in_model": null,
+     "rank": null
+    }
+   ],
+   "top_places": [
+    {
+     "name": "Koffee Korner",
+     "address": "3521 Portage Road",
+     "money": 41807,
+     "share_of_school": 0.104,
+     "share_of_its_sales": 0.058
+    },
+    {
+     "name": "Norchini and Co. Butchery & Deli",
+     "address": "3567 Portage Road",
+     "money": 38436,
+     "share_of_school": 0.096,
+     "share_of_its_sales": 0.113
+    },
+    {
+     "name": "Frijoles",
+     "address": "3465 Portage Road",
+     "money": 37103,
+     "share_of_school": 0.092,
+     "share_of_its_sales": 0.038
+    },
+    {
+     "name": "Holligans' Sports Bar",
+     "address": "3463-3551 Portage Rd",
+     "money": 36228,
+     "share_of_school": 0.09,
+     "share_of_its_sales": 0.046
+    },
+    {
+     "name": "Dairy Queen",
+     "address": "3509 Portage Road",
+     "money": 33056,
+     "share_of_school": 0.082,
+     "share_of_its_sales": 0.054
+    },
+    {
+     "name": "Casa Mia Ristorante",
+     "address": "3518 Portage Road",
+     "money": 28358,
+     "share_of_school": 0.071,
+     "share_of_its_sales": 0.062
+    },
+    {
+     "name": "Bulk Barn",
+     "address": "3714 Portage Rd",
+     "money": 27580,
+     "share_of_school": 0.069,
+     "share_of_its_sales": 0.002
+    },
+    {
+     "name": "British Pride Bakery",
+     "address": "3643 Portage Road",
+     "money": 26890,
+     "share_of_school": 0.067,
+     "share_of_its_sales": 0.048
+    },
+    {
+     "name": "Lee's Famous Recipe Chicken",
+     "address": "3517-3525 Portage Rd",
+     "money": 20586,
+     "share_of_school": 0.051,
+     "share_of_its_sales": 0.02
+    },
+    {
+     "name": "Joseph's Pizzeria",
+     "address": "3521 Portage Road",
+     "money": 19625,
+     "share_of_school": 0.049,
+     "share_of_its_sales": 0.03
+    }
+   ]
+  },
+  "Westlane Secondary School": {
+   "money_total": 328187,
+   "observations": [
+    {
+     "observed": "Tim Hortons next to Westlane (8159 Lundy's Ln) is full of students at lunch",
+     "in_model": "Tim Hortons",
+     "rank": 8,
+     "money": 26531,
+     "share_of_school": 0.081,
+     "share_of_its_sales": 0.015
+    }
+   ],
+   "top_places": [
+    {
+     "name": "Avondale Food Stores",
+     "address": "8214 Lundys Lane",
+     "money": 59970,
+     "share_of_school": 0.183,
+     "share_of_its_sales": 0.114
+    },
+    {
+     "name": "FreshCo",
+     "address": "5931 Kalar Rd",
+     "money": 50235,
+     "share_of_school": 0.153,
+     "share_of_its_sales": 0.001
+    },
+    {
+     "name": "The Sub Shoppe",
+     "address": "8209 Lundys Ln",
+     "money": 35971,
+     "share_of_school": 0.11,
+     "share_of_its_sales": 0.033
+    },
+    {
+     "name": "Wendy's",
+     "address": "8279 Lundy's Ln",
+     "money": 35664,
+     "share_of_school": 0.109,
+     "share_of_its_sales": 0.052
+    },
+    {
+     "name": "Domino's",
+     "address": "8201-8209 Lundy's Ln",
+     "money": 35616,
+     "share_of_school": 0.109,
+     "share_of_its_sales": 0.066
+    },
+    {
+     "name": "Starbucks",
+     "address": "5931 Kalar Road",
+     "money": 30628,
+     "share_of_school": 0.093,
+     "share_of_its_sales": 0.017
+    },
+    {
+     "name": "Pho Ying",
+     "address": "8279 Lundy's Ln",
+     "money": 27322,
+     "share_of_school": 0.083,
+     "share_of_its_sales": 0.023
+    },
+    {
+     "name": "Tim Hortons",
+     "address": "8159 Lundy's Ln",
+     "money": 26531,
+     "share_of_school": 0.081,
+     "share_of_its_sales": 0.015
+    },
+    {
+     "name": "Qualia Pizza",
+     "address": "8279 Lundy's Ln",
+     "money": 26250,
+     "share_of_school": 0.08,
+     "share_of_its_sales": 0.032
+    }
+   ]
+  }
+ }
+}
