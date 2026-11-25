@@ -14,6 +14,10 @@ for br, v in pub.items():
            and not b['closed_from'][i] and ('category' not in v or cats[b['sim_category'][i]] == v['category'])]
     if not ids: continue
     cat = cats[b['sim_category'][ids[0]]]
+    # a newcomer pulls like the typical independent business of the kind (as in the opportunity scan), not like the brand
+    peers = [b['format_weight'][j] for j in range(len(b['node'])) if b['sim_category'][j] == b['sim_category'][ids[0]] and j not in ids
+             and not b['external'][j] and b['format_weight'][j] >= 0.05]
+    fw = float(np.median(peers)) if peers else 1.0
     def one(i):
         # this branch alone taken out; a newcomer of its kind and the chain's published size forecast at its address
         c = json.loads(json.dumps(city))
@@ -21,7 +25,7 @@ for br, v in pub.items():
         with tempfile.TemporaryDirectory() as d:
             cp, sp, op = Path(d)/'c.json', Path(d)/'s.json', Path(d)/'o.json'
             cp.write_text(json.dumps(c, separators=(',', ':')))
-            sp.write_text(json.dumps([[b['lat'][i], b['lon'][i], b['sim_category'][i], v['average']]]))
+            sp.write_text(json.dumps([[b['lat'][i], b['lon'][i], b['sim_category'][i], v['average'], fw]]))
             subprocess.run([str(ROOT/'engine/target/release/nfsim'), 'forecast', str(cp), '--beta', str(beta), '--closures-as-of', '209912',
                             '--sites', str(sp), '--out', str(op)], check=True, capture_output=True, text=True)
             return float(np.array(json.load(open(op)), float).sum())
@@ -32,7 +36,7 @@ for br, v in pub.items():
     for k, i in enumerate(ids):
         s = min(hs, key=lambda q: dist(b['lat'][i], b['lon'][i], q['lat'], q['lon'])); m = dist(b['lat'][i], b['lon'][i], s['lat'], s['lon'])
         near.append(dict(address=b['address'][i], school=s['name'], metres=round(m), forecast=round(f[k]), vs_published=round(f[k]/v['average'], 2), core=bool(b['core'][i])))
-    out[br] = dict(category=cat, published=v['average'], quality=v['quality'], branches=len(ids),
+    out[br] = dict(category=cat, newcomer_pull=round(fw, 2), published=v['average'], quality=v['quality'], branches=len(ids),
                    median_forecast=round(float(np.median(f))), median_vs_published=round(float(np.median(f))/v['average'], 2),
                    branches_detail=sorted(near, key=lambda x: x['metres']))
     print(f"{br:20s} {cat:18s} n={len(ids):2d} forecast median {np.median(f)/1e6:5.2f}M published {v['average']/1e6:5.2f}M ratio {np.median(f)/v['average']:.2f}")

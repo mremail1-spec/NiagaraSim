@@ -1,6 +1,7 @@
 {
  "Pizza Pizza": {
   "category": "fast_food",
+  "newcomer_pull": 1.0,
   "published": 789000,
   "quality": "company filing",
   "branches": 4,
@@ -43,6 +44,7 @@
  },
  "The Keg": {
   "category": "restaurant",
+  "newcomer_pull": 1.0,
   "published": 7176000,
   "quality": "company filing",
   "branches": 1,
@@ -61,6 +63,7 @@
  },
  "Boston Pizza": {
   "category": "restaurant",
+  "newcomer_pull": 1.0,
   "published": 2505000,
   "quality": "filing sales / analyst count",
   "branches": 3,
@@ -95,6 +98,7 @@
  },
  "Tim Hortons": {
   "category": "cafe",
+  "newcomer_pull": 1.0,
   "published": 1117000,
   "quality": "franchise disclosure, second-hand, median not mean",
   "branches": 15,
@@ -225,6 +229,7 @@
  },
  "A&W": {
   "category": "fast_food",
+  "newcomer_pull": 1.0,
   "published": 1670000,
   "quality": "estimate from system sales and approximate count",
   "branches": 2,
@@ -251,17 +256,18 @@
  },
  "LCBO": {
   "category": "liquor",
+  "newcomer_pull": 1.0,
   "published": 8630000,
   "quality": "2022-23 retail sales over store count",
   "branches": 4,
-  "median_forecast": 3939671,
+  "median_forecast": 3937967,
   "median_vs_published": 0.46,
   "branches_detail": [
    {
     "address": "3714 Portage Rd",
     "school": "A N Myer Secondary School",
     "metres": 520,
-    "forecast": 4115580,
+    "forecast": 4113827,
     "vs_published": 0.48,
     "core": false
    },
@@ -269,7 +275,7 @@
     "address": "5389 Ferry Street",
     "school": "Stamford Collegiate",
     "metres": 1222,
-    "forecast": 4303699,
+    "forecast": 4301804,
     "vs_published": 0.5,
     "core": true
    },
@@ -277,7 +283,7 @@
     "address": "7481 Oakwood Dr",
     "school": "Saint Michael Catholic High School",
     "metres": 1856,
-    "forecast": 3763762,
+    "forecast": 3762107,
     "vs_published": 0.44,
     "core": false
    },
@@ -285,7 +291,7 @@
     "address": "4694 Victoria Avenue",
     "school": "Stamford Collegiate",
     "metres": 2689,
-    "forecast": 3174021,
+    "forecast": 3172641,
     "vs_published": 0.37,
     "core": false
    }
@@ -293,6 +299,7 @@
  },
  "Dollarama": {
   "category": "general_merchandise",
+  "newcomer_pull": 1.0,
   "published": 3970000,
   "quality": "company filing",
   "branches": 8,
@@ -367,6 +374,7 @@
  },
  "Shoppers Drug Mart": {
   "category": "pharmacy",
+  "newcomer_pull": 1.0,
   "published": 12950000,
   "quality": "company filing",
   "branches": 4,
@@ -409,18 +417,19 @@
  },
  "Canadian Tire": {
   "category": "general_merchandise",
+  "newcomer_pull": 2.7,
   "published": 24800000,
   "quality": "company filing",
   "branches": 1,
-  "median_forecast": 19041780,
-  "median_vs_published": 0.77,
+  "median_forecast": 48266635,
+  "median_vs_published": 1.95,
   "branches_detail": [
    {
     "address": "7190 Morrison Street",
     "school": "Saint Paul Catholic High School",
     "metres": 1814,
-    "forecast": 19041780,
-    "vs_published": 0.77,
+    "forecast": 48266635,
+    "vs_published": 1.95,
     "core": false
    }
   ]
