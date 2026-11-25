@@ -28,7 +28,7 @@
   {
    "area": "Traffic",
    "test": "Provincial highways, correlation with 2019 counts",
-   "score": 0.786,
+   "score": 0.785,
    "pass_mark": ">= 0.6",
    "result": "pass",
    "note": ""

@@ -459,6 +459,35 @@
    "vs_median_school": 0.95
   },
   {
+   "name": "Westlane Secondary School",
+   "kind": "high school",
+   "address": "5960 Pitton Rd",
+   "people": 670,
+   "walk_km": 0.8,
+   "own_money_per_year": 335000,
+   "nearby_workers_money_per_year": 868400,
+   "food_places_in_walk": 14,
+   "lunch_places_in_walk": 12,
+   "money_per_food_place": 85957,
+   "places": [
+    "Avondale Food Stores",
+    "CCSwirls",
+    "Domino's",
+    "FreshCo",
+    "Joe&Laurie's Restaurant",
+    "Magnolia",
+    "Pho Ying",
+    "Qualia Pizza",
+    "Starbucks",
+    "Strada West",
+    "Subway",
+    "The Sub Shoppe",
+    "Tim Hortons",
+    "Wendy's"
+   ],
+   "vs_median_school": 0.93
+  },
+  {
    "name": "Aero Car (Retail and Attraction) and neighbours",
    "kind": "workplace cluster",
    "address": "3850 Niagara River Parkway",
@@ -477,35 +506,6 @@
     "Whirlpool Restaurant"
    ],
    "vs_median_school": 0.92
-  },
-  {
-   "name": "Westlane Secondary School",
-   "kind": "high school",
-   "address": "5960 Pitton Rd",
-   "people": 670,
-   "walk_km": 0.8,
-   "own_money_per_year": 234500,
-   "nearby_workers_money_per_year": 868400,
-   "food_places_in_walk": 14,
-   "lunch_places_in_walk": 12,
-   "money_per_food_place": 78779,
-   "places": [
-    "Avondale Food Stores",
-    "CCSwirls",
-    "Domino's",
-    "FreshCo",
-    "Joe&Laurie's Restaurant",
-    "Magnolia",
-    "Pho Ying",
-    "Qualia Pizza",
-    "Starbucks",
-    "Strada West",
-    "Subway",
-    "The Sub Shoppe",
-    "Tim Hortons",
-    "Wendy's"
-   ],
-   "vs_median_school": 0.85
   },
   {
    "name": "Saint Paul Catholic High School",

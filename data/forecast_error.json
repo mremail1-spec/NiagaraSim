@@ -3,17 +3,17 @@
   "what": "How far a single site's forecast is likely to be off: each chain left out of the chain fit in turn and compared with its own published sales per store (nfprep.default_scenario forecast_error). From 9 chains, so a rough measure."
  },
  "held_out_model_over_published": {
-  "Pizza Pizza": 1.684,
-  "The Keg": 0.757,
-  "Boston Pizza": 0.561,
-  "Tim Hortons": 0.671,
-  "A&W": 0.25,
-  "LCBO": 0.302,
-  "Dollarama": 0.264,
-  "Shoppers Drug Mart": 0.353,
-  "Canadian Tire": 5.206
+  "Pizza Pizza": 1.645,
+  "The Keg": 0.727,
+  "Boston Pizza": 0.487,
+  "Tim Hortons": 0.659,
+  "A&W": 0.262,
+  "LCBO": 0.314,
+  "Dollarama": 0.262,
+  "Shoppers Drug Mart": 0.351,
+  "Canadian Tire": 5.201
  },
- "log_sd": 1.042,
+ "log_sd": 1.043,
  "p10_factor": 0.26,
  "p90_factor": 3.8,
  "chains": 9
