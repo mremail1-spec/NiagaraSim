@@ -92,8 +92,14 @@ fn flow_mode_agrees_with_agent_mode() {
     for _ in 0..365 {
         flow.step_day_flow();
     }
-    // tourists turned away from full hotels in agent mode spend a little less than flow mode expects
-    assert!((flow.city_revenue() - agent.city_revenue()).abs() / agent.city_revenue() < 0.025);
+    // tourists turned away from full hotels in agent mode spend less on rooms than flow mode expects
+    // (flow mode has no full hotels), so room revenue gets its own looser bound and the rest must agree closely
+    let rooms = |e: &Engine| e.state().tour.accommodation_by_month.iter().sum::<f64>();
+    let (fr, ar) = (rooms(&flow), rooms(agent));
+    assert!(agent.state().tour.turned_away > 0 && fr >= ar, "flow mode should not lose room revenue to full hotels");
+    assert!((fr - ar) / ar < 0.15, "room revenue: flow {fr} agent {ar}");
+    let (fo, ao) = (flow.city_revenue() - fr, agent.city_revenue() - ar);
+    assert!((fo - ao).abs() / ao < 0.01, "revenue outside rooms: flow {fo} agent {ao}");
     assert!((flow.out_of_town_revenue() - agent.out_of_town_revenue()).abs() / agent.out_of_town_revenue() < 0.01);
     for c in 0..agent.category_count() {
         let a: f64 = (0..12).map(|m| agent.state().month_category_revenue[m][c]).sum();
