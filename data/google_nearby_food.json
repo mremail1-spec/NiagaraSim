@@ -1,0 +1,3000 @@
+{
+ "_meta": {
+  "what": "Food places within walking reach of each high school, from Google Places (Nearby Search, basic fields).",
+  "checked": "2026-11-25",
+  "radius_m": 800.0
+ },
+ "places": [
+  {
+   "id": "ChIJB0JCQMRd04kRVNWhZ7rigGs",
+   "formattedAddress": "3493 Portage Rd, Niagara Falls, ON L2J 2K5, Canada",
+   "location": {
+    "latitude": 43.122329199999996,
+    "longitude": -79.1011094
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Fish Market by Tide & Vine",
+    "languageCode": "en"
+   },
+   "primaryType": "market",
+   "near_school": "A N Myer Secondary School",
+   "asked_types": [
+    "fast_food_restaurant",
+    "pizza_restaurant",
+    "hamburger_restaurant",
+    "sandwich_shop",
+    "meal_takeaway"
+   ]
+  },
+  {
+   "id": "ChIJLbXgY65c04kR6kfPI5tDQ-8",
+   "formattedAddress": "3465 Portage Rd, Niagara Falls, ON L2J 2N5, Canada",
+   "location": {
+    "latitude": 43.122585300000004,
+    "longitude": -79.10102479999999
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Frijoles",
+    "languageCode": "en"
+   },
+   "primaryType": "mexican_restaurant",
+   "near_school": "A N Myer Secondary School",
+   "asked_types": [
+    "fast_food_restaurant",
+    "pizza_restaurant",
+    "hamburger_restaurant",
+    "sandwich_shop",
+    "meal_takeaway"
+   ]
+  },
+  {
+   "id": "ChIJNeU4bYVd04kRxS7L9gheLs4",
+   "formattedAddress": "3521 Portage Rd, Niagara Falls, ON L2J 2K5, Canada",
+   "location": {
+    "latitude": 43.121894999999995,
+    "longitude": -79.1002932
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Pizza lounge",
+    "languageCode": "en"
+   },
+   "primaryType": "meal_takeaway",
+   "near_school": "A N Myer Secondary School",
+   "asked_types": [
+    "fast_food_restaurant",
+    "pizza_restaurant",
+    "hamburger_restaurant",
+    "sandwich_shop",
+    "meal_takeaway"
+   ]
+  },
+  {
+   "id": "ChIJtxaCXapE04kRc7risoxkOq0",
+   "formattedAddress": "6255 Huggins St, Niagara Falls, ON L2J 1H2, Canada",
+   "location": {
+    "latitude": 43.121064399999995,
+    "longitude": -79.10064919999999
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Pasta Fresca Niagara",
+    "languageCode": "en"
+   },
+   "primaryType": "italian_restaurant",
+   "near_school": "A N Myer Secondary School",
+   "asked_types": [
+    "fast_food_restaurant",
+    "pizza_restaurant",
+    "hamburger_restaurant",
+    "sandwich_shop",
+    "meal_takeaway"
+   ]
+  },
+  {
+   "id": "ChIJgXGBgjJd04kRHK5uAOD8VwM",
+   "formattedAddress": "3643 Portage Rd, Niagara Falls, ON L2J 2K8, Canada",
+   "location": {
+    "latitude": 43.1208064,
+    "longitude": -79.1001694
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "The Red Chip Wagon",
+    "languageCode": "en"
+   },
+   "primaryType": "fast_food_restaurant",
+   "near_school": "A N Myer Secondary School",
+   "asked_types": [
+    "fast_food_restaurant",
+    "pizza_restaurant",
+    "hamburger_restaurant",
+    "sandwich_shop",
+    "meal_takeaway"
+   ]
+  },
+  {
+   "id": "ChIJKYhZlK1c04kRqIhNfJIgYwc",
+   "formattedAddress": "3643 Portage Rd, Niagara Falls, ON L2J 2K8, Canada",
+   "location": {
+    "latitude": 43.1203352,
+    "longitude": -79.1000586
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Subway",
+    "languageCode": "en"
+   },
+   "primaryType": "sandwich_shop",
+   "near_school": "A N Myer Secondary School",
+   "asked_types": [
+    "fast_food_restaurant",
+    "pizza_restaurant",
+    "hamburger_restaurant",
+    "sandwich_shop",
+    "meal_takeaway"
+   ]
+  },
+  {
+   "id": "ChIJKYhZlK1c04kRLX49jgXlWts",
+   "formattedAddress": "3642 Portage Rd, Niagara Falls, ON L2J 2K8, Canada",
+   "location": {
+    "latitude": 43.119959,
+    "longitude": -79.100911
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Pizza Pizza",
+    "languageCode": "en"
+   },
+   "primaryType": "pizza_restaurant",
+   "near_school": "A N Myer Secondary School",
+   "asked_types": [
+    "fast_food_restaurant",
+    "pizza_restaurant",
+    "hamburger_restaurant",
+    "sandwich_shop",
+    "meal_takeaway"
+   ]
+  },
+  {
+   "id": "ChIJe_39oIFd04kRT4EJm0CQFGI",
+   "formattedAddress": "3643 Portage Rd, Niagara Falls, ON L2J 2K8, Canada",
+   "location": {
+    "latitude": 43.1202338,
+    "longitude": -79.0999575
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "We The Finest Burger Company",
+    "languageCode": "en"
+   },
+   "primaryType": "hamburger_restaurant",
+   "near_school": "A N Myer Secondary School",
+   "asked_types": [
+    "fast_food_restaurant",
+    "pizza_restaurant",
+    "hamburger_restaurant",
+    "sandwich_shop",
+    "meal_takeaway"
+   ]
+  },
+  {
+   "id": "ChIJ70ISMold04kRbIG3iRjij-A",
+   "formattedAddress": "3701 Portage Rd Unit 4A, Niagara Falls, ON L2J 2K8, Canada",
+   "location": {
+    "latitude": 43.1195569,
+    "longitude": -79.10123399999999
+   },
+   "businessStatus": "CLOSED_TEMPORARILY",
+   "displayName": {
+    "text": "Meltwich Food Co.",
+    "languageCode": "en"
+   },
+   "primaryType": "fast_food_restaurant",
+   "near_school": "A N Myer Secondary School",
+   "asked_types": [
+    "fast_food_restaurant",
+    "pizza_restaurant",
+    "hamburger_restaurant",
+    "sandwich_shop",
+    "meal_takeaway"
+   ]
+  },
+  {
+   "id": "ChIJJ_r6RiFd04kRh44PGMyJrgU",
+   "formattedAddress": "3714 Portage Rd, Niagara Falls, ON L2J 2K9, Canada",
+   "location": {
+    "latitude": 43.1187901,
+    "longitude": -79.098621
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "ZENSHI Handcrafted Sushi",
+    "languageCode": "en"
+   },
+   "primaryType": "restaurant",
+   "near_school": "A N Myer Secondary School",
+   "asked_types": [
+    "fast_food_restaurant",
+    "pizza_restaurant",
+    "hamburger_restaurant",
+    "sandwich_shop",
+    "meal_takeaway"
+   ]
+  },
+  {
+   "id": "ChIJr6m2b61c04kRkuU3Vl5wi4A",
+   "formattedAddress": "3714 Portage Rd, Niagara Falls, ON L2J 2K9, Canada",
+   "location": {
+    "latitude": 43.117995,
+    "longitude": -79.0985105
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Your Neighbourhood Pizza Company",
+    "languageCode": "en"
+   },
+   "primaryType": "pizza_restaurant",
+   "near_school": "A N Myer Secondary School",
+   "asked_types": [
+    "fast_food_restaurant",
+    "pizza_restaurant",
+    "hamburger_restaurant",
+    "sandwich_shop",
+    "meal_takeaway"
+   ]
+  },
+  {
+   "id": "ChIJY6s2cK1c04kRHeyZP9uzL9Q",
+   "formattedAddress": "3714 Portage Rd, Niagara Falls, ON L2J 2K8, Canada",
+   "location": {
+    "latitude": 43.117793,
+    "longitude": -79.098708
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Lucky Dragon(Niagara Falls)takeout",
+    "languageCode": "en"
+   },
+   "primaryType": "meal_takeaway",
+   "near_school": "A N Myer Secondary School",
+   "asked_types": [
+    "fast_food_restaurant",
+    "pizza_restaurant",
+    "hamburger_restaurant",
+    "sandwich_shop",
+    "meal_takeaway"
+   ]
+  },
+  {
+   "id": "ChIJI2c9OKFD04kR93cGz4W8ovA",
+   "formattedAddress": "6439 Thorold Stone Rd, Niagara Falls, ON L2J 1B2, Canada",
+   "location": {
+    "latitude": 43.11551,
+    "longitude": -79.10325999999999
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Wendy's",
+    "languageCode": "en"
+   },
+   "primaryType": "fast_food_restaurant",
+   "near_school": "A N Myer Secondary School",
+   "asked_types": [
+    "fast_food_restaurant",
+    "pizza_restaurant",
+    "hamburger_restaurant",
+    "sandwich_shop",
+    "meal_takeaway"
+   ]
+  },
+  {
+   "id": "ChIJmUU74rNE04kRCzqGb9ypit0",
+   "formattedAddress": "6225 Regional Rd 57, Niagara Falls, ON L2J 1A6, Canada",
+   "location": {
+    "latitude": 43.115601399999996,
+    "longitude": -79.09969
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Sahara Shawarma Wrap",
+    "languageCode": "en"
+   },
+   "primaryType": "shawarma_restaurant",
+   "near_school": "A N Myer Secondary School",
+   "asked_types": [
+    "fast_food_restaurant",
+    "pizza_restaurant",
+    "hamburger_restaurant",
+    "sandwich_shop",
+    "meal_takeaway"
+   ]
+  },
+  {
+   "id": "ChIJyc7FRUJd04kRnVZ9T3vWEX4",
+   "formattedAddress": "3507 Portage Rd, Niagara Falls, ON L2J 2K5, Canada",
+   "location": {
+    "latitude": 43.122147,
+    "longitude": -79.101102
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "The Sweet Oven Niagara",
+    "languageCode": "en"
+   },
+   "primaryType": "bakery",
+   "near_school": "A N Myer Secondary School",
+   "asked_types": [
+    "cafe",
+    "coffee_shop",
+    "bakery",
+    "ice_cream_shop"
+   ]
+  },
+  {
+   "id": "ChIJ7WStnQFd04kRaoO3_CaPYrg",
+   "formattedAddress": "3505 Portage Rd Unit B, Niagara Falls, ON L2J 1M7, Canada",
+   "location": {
+    "latitude": 43.1223998,
+    "longitude": -79.10100159999999
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Rolly & Bubbly (Portage Road)",
+    "languageCode": "en"
+   },
+   "primaryType": "tea_house",
+   "near_school": "A N Myer Secondary School",
+   "asked_types": [
+    "cafe",
+    "coffee_shop",
+    "bakery",
+    "ice_cream_shop"
+   ]
+  },
+  {
+   "id": "ChIJ6eI0Da5c04kRmC8tnQVAMcM",
+   "formattedAddress": "3509 Portage Rd, Niagara Falls, ON L2J 2K5, Canada",
+   "location": {
+    "latitude": 43.1222182,
+    "longitude": -79.1002053
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Dairy Queen (Treat)",
+    "languageCode": "en"
+   },
+   "primaryType": "ice_cream_shop",
+   "near_school": "A N Myer Secondary School",
+   "asked_types": [
+    "cafe",
+    "coffee_shop",
+    "bakery",
+    "ice_cream_shop"
+   ]
+  },
+  {
+   "id": "ChIJWwH9e6pE04kRSWBy5BjVGWc",
+   "formattedAddress": "3521 Portage Rd Unit 2, Niagara Falls, ON L2J 2K5, Canada",
+   "location": {
+    "latitude": 43.121894999999995,
+    "longitude": -79.1002932
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Koffee Korner Niagara Falls",
+    "languageCode": "en"
+   },
+   "primaryType": "food_store",
+   "near_school": "A N Myer Secondary School",
+   "asked_types": [
+    "cafe",
+    "coffee_shop",
+    "bakery",
+    "ice_cream_shop"
+   ]
+  },
+  {
+   "id": "ChIJKYhZlK1c04kRTVdaOT_-PZU",
+   "formattedAddress": "6255 Huggins, Stamford Plaza, Niagara Falls, ON L2J 2K8, Canada",
+   "location": {
+    "latitude": 43.1212641,
+    "longitude": -79.10054509999999
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Vincenzo's Cafe",
+    "languageCode": "en"
+   },
+   "primaryType": "cafe",
+   "near_school": "A N Myer Secondary School",
+   "asked_types": [
+    "cafe",
+    "coffee_shop",
+    "bakery",
+    "ice_cream_shop"
+   ]
+  },
+  {
+   "id": "ChIJZWfHhNtd04kRtQ52dIUw9fI",
+   "formattedAddress": "3521 Portage Rd Unit 2, Niagara Falls, ON L2J 2K5, Canada",
+   "location": {
+    "latitude": 43.121500100000006,
+    "longitude": -79.10002890000001
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Hummingbird Coffee Co.",
+    "languageCode": "en"
+   },
+   "primaryType": "cafe",
+   "near_school": "A N Myer Secondary School",
+   "asked_types": [
+    "cafe",
+    "coffee_shop",
+    "bakery",
+    "ice_cream_shop"
+   ]
+  },
+  {
+   "id": "ChIJH1ctSABd04kRPo1ecvyggCs",
+   "formattedAddress": "3641 Portage Rd Unit 21, Niagara Falls, ON L2J 2K8, Canada",
+   "location": {
+    "latitude": 43.120144599999996,
+    "longitude": -79.10154059999999
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Cookies and More Bakery",
+    "languageCode": "en"
+   },
+   "primaryType": "donut_shop",
+   "near_school": "A N Myer Secondary School",
+   "asked_types": [
+    "cafe",
+    "coffee_shop",
+    "bakery",
+    "ice_cream_shop"
+   ]
+  },
+  {
+   "id": "ChIJTzkQTkNd04kRRXmu2etCrcQ",
+   "formattedAddress": "3643 Portage Rd, Niagara Falls, ON L2J 2K8, Canada",
+   "location": {
+    "latitude": 43.1193664,
+    "longitude": -79.1010197
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Board to Bits Game Cafe",
+    "languageCode": "en"
+   },
+   "primaryType": "association_or_organization",
+   "near_school": "A N Myer Secondary School",
+   "asked_types": [
+    "cafe",
+    "coffee_shop",
+    "bakery",
+    "ice_cream_shop"
+   ]
+  },
+  {
+   "id": "ChIJXaSVllJD04kRXk-E76XVnLM",
+   "formattedAddress": "6225 Thorold Stone Rd, Niagara Falls, ON L2J 1A6, Canada",
+   "location": {
+    "latitude": 43.1156843,
+    "longitude": -79.0997102
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "M&M Food Market",
+    "languageCode": "en"
+   },
+   "primaryType": "grocery_store",
+   "near_school": "A N Myer Secondary School",
+   "asked_types": [
+    "cafe",
+    "coffee_shop",
+    "bakery",
+    "ice_cream_shop"
+   ]
+  },
+  {
+   "id": "ChIJZSRqZ01D04kRA8V_zFSvB98",
+   "formattedAddress": "6161 Thorold Stone Rd, Niagara Falls, ON L2J 1A4, Canada",
+   "location": {
+    "latitude": 43.1161631,
+    "longitude": -79.097645
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Commisso's Fresh Foods",
+    "languageCode": "en"
+   },
+   "primaryType": "supermarket",
+   "near_school": "A N Myer Secondary School",
+   "asked_types": [
+    "cafe",
+    "coffee_shop",
+    "bakery",
+    "ice_cream_shop"
+   ]
+  },
+  {
+   "id": "ChIJfaKyxkxd04kRNAAZ86Te7Bw",
+   "formattedAddress": "3493 Portage Rd Unit 1, Niagara Falls, ON L2J 2K5, Canada",
+   "location": {
+    "latitude": 43.122329199999996,
+    "longitude": -79.1011094
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "UZBEES",
+    "languageCode": "en"
+   },
+   "primaryType": "chicken_restaurant",
+   "near_school": "A N Myer Secondary School",
+   "asked_types": [
+    "restaurant"
+   ]
+  },
+  {
+   "id": "ChIJyWWnDa5c04kR89OEg2sas1g",
+   "formattedAddress": "3515 Portage Rd, Niagara Falls, ON L2J 2K5, Canada",
+   "location": {
+    "latitude": 43.122124,
+    "longitude": -79.10109
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Hooligans Sports Bar",
+    "languageCode": "en"
+   },
+   "primaryType": "sports_bar",
+   "near_school": "A N Myer Secondary School",
+   "asked_types": [
+    "restaurant"
+   ]
+  },
+  {
+   "id": "ChIJaZINE65c04kRl0yzpyVvUqY",
+   "formattedAddress": "3491 Portage Rd, Niagara Falls, ON L2J 2K5, Canada",
+   "location": {
+    "latitude": 43.1224499,
+    "longitude": -79.1005661
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Tide and Vine Oyster House",
+    "languageCode": "en"
+   },
+   "primaryType": "seafood_restaurant",
+   "near_school": "A N Myer Secondary School",
+   "asked_types": [
+    "restaurant"
+   ]
+  },
+  {
+   "id": "ChIJ792deSJd04kRNye1xGk8fGw",
+   "formattedAddress": "3521 Portage Rd, Niagara Falls, ON L2J 2K5, Canada",
+   "location": {
+    "latitude": 43.121894999999995,
+    "longitude": -79.1002932
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Weko Sushi",
+    "languageCode": "en"
+   },
+   "primaryType": "sushi_restaurant",
+   "near_school": "A N Myer Secondary School",
+   "asked_types": [
+    "restaurant"
+   ]
+  },
+  {
+   "id": "ChIJpWkTn5Vd04kRt3MKzpfyv8E",
+   "formattedAddress": "3641 Portage Rd, Niagara Falls, ON L2J 2K8, Canada",
+   "location": {
+    "latitude": 43.1203678,
+    "longitude": -79.10193450000001
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Pho Queen",
+    "languageCode": "en"
+   },
+   "primaryType": "restaurant",
+   "near_school": "A N Myer Secondary School",
+   "asked_types": [
+    "restaurant"
+   ]
+  },
+  {
+   "id": "ChIJL-qyDa5c04kRwh57geqrDEw",
+   "formattedAddress": "3518 Portage Rd, Niagara Falls, ON L2J 2K4, Canada",
+   "location": {
+    "latitude": 43.1220819,
+    "longitude": -79.09924939999999
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Casa Mia Ristorante",
+    "languageCode": "en"
+   },
+   "primaryType": "italian_restaurant",
+   "near_school": "A N Myer Secondary School",
+   "asked_types": [
+    "restaurant"
+   ]
+  },
+  {
+   "id": "ChIJy5ialtxd04kRCLGwZt0trBA",
+   "formattedAddress": "3643 Portage Rd #14, Niagara Falls, ON L2J 2K8, Canada",
+   "location": {
+    "latitude": 43.1199005,
+    "longitude": -79.10099679999999
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Danny's Sushi",
+    "languageCode": "en"
+   },
+   "primaryType": "sushi_restaurant",
+   "near_school": "A N Myer Secondary School",
+   "asked_types": [
+    "restaurant"
+   ]
+  },
+  {
+   "id": "ChIJr_lTk61c04kR1NpIl18g8Ck",
+   "formattedAddress": "3643 Portage Rd, Niagara Falls, ON L2J 2K8, Canada",
+   "location": {
+    "latitude": 43.1202698,
+    "longitude": -79.1000703
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Quesada Burritos & Tacos",
+    "languageCode": "en"
+   },
+   "primaryType": "mexican_restaurant",
+   "near_school": "A N Myer Secondary School",
+   "asked_types": [
+    "restaurant"
+   ]
+  },
+  {
+   "id": "ChIJW4H0_fhd04kRdy2tom4oiuI",
+   "formattedAddress": "3701 Portage Rd #6, Niagara Falls, ON L2J 2K8, Canada",
+   "location": {
+    "latitude": 43.1197181,
+    "longitude": -79.1012514
+   },
+   "businessStatus": "CLOSED_TEMPORARILY",
+   "displayName": {
+    "text": "Endless Wok",
+    "languageCode": "zh"
+   },
+   "primaryType": "restaurant",
+   "near_school": "A N Myer Secondary School",
+   "asked_types": [
+    "restaurant"
+   ]
+  },
+  {
+   "id": "ChIJ5-jJlPVd04kRLEKboEham-g",
+   "formattedAddress": "3747 Portage Rd, Niagara Falls, ON L2J 2L1, Canada",
+   "location": {
+    "latitude": 43.1188375,
+    "longitude": -79.09978819999999
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "La Revolución Taqueria",
+    "languageCode": "en"
+   },
+   "primaryType": "mexican_restaurant",
+   "near_school": "A N Myer Secondary School",
+   "asked_types": [
+    "restaurant"
+   ]
+  },
+  {
+   "id": "ChIJi6aKCgBd04kR-OAYWviBzSU",
+   "formattedAddress": "3641 Portage Rd, Niagara Falls, ON L2J 2K8, Canada",
+   "location": {
+    "latitude": 43.119971199999995,
+    "longitude": -79.1021013
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Brampton Cash and Carry - Niagara Falls",
+    "languageCode": "en"
+   },
+   "primaryType": "grocery_store",
+   "near_school": "A N Myer Secondary School",
+   "asked_types": [
+    "convenience_store",
+    "grocery_store",
+    "supermarket"
+   ]
+  },
+  {
+   "id": "ChIJRyIXlq1c04kR8hasLcQN_p4",
+   "formattedAddress": "3643 Portage Rd Unit 31, Niagara Falls, ON L2J 2K8, Canada",
+   "location": {
+    "latitude": 43.119971199999995,
+    "longitude": -79.1001426
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "British Pride Bakery Niagara Falls",
+    "languageCode": "en"
+   },
+   "primaryType": "grocery_store",
+   "near_school": "A N Myer Secondary School",
+   "asked_types": [
+    "convenience_store",
+    "grocery_store",
+    "supermarket"
+   ]
+  },
+  {
+   "id": "ChIJDaIgS61d04kRu2-AHLRXIsA",
+   "formattedAddress": "6453 Colborne St #68, Niagara Falls, ON L2J 1E7, Canada",
+   "location": {
+    "latitude": 43.119091,
+    "longitude": -79.1047038
+   },
+   "businessStatus": "CLOSED_TEMPORARILY",
+   "displayName": {
+    "text": "Sarlo Gnocchi To Go",
+    "languageCode": "en"
+   },
+   "primaryType": "grocery_store",
+   "near_school": "A N Myer Secondary School",
+   "asked_types": [
+    "convenience_store",
+    "grocery_store",
+    "supermarket"
+   ]
+  },
+  {
+   "id": "ChIJr6m2b61c04kRFl0DgkkKuHk",
+   "formattedAddress": "3714 Portage Rd, Niagara Falls, ON L2J 2K9, Canada",
+   "location": {
+    "latitude": 43.118646,
+    "longitude": -79.098721
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Sobeys Niagara Falls",
+    "languageCode": "en"
+   },
+   "primaryType": "supermarket",
+   "near_school": "A N Myer Secondary School",
+   "asked_types": [
+    "convenience_store",
+    "grocery_store",
+    "supermarket"
+   ]
+  },
+  {
+   "id": "ChIJr6m2b61c04kR8Zbnxo-_DOA",
+   "formattedAddress": "3714 Portage Rd, Niagara Falls, ON L2J 2K9, Canada",
+   "location": {
+    "latitude": 43.1181702,
+    "longitude": -79.0985359
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Bulk Barn",
+    "languageCode": "en"
+   },
+   "primaryType": "wholesaler",
+   "near_school": "A N Myer Secondary School",
+   "asked_types": [
+    "convenience_store",
+    "grocery_store",
+    "supermarket"
+   ]
+  },
+  {
+   "id": "ChIJi7q9iW9D04kRoUg2XkbfaPs",
+   "formattedAddress": "6225 Lundy's Ln, Niagara Falls, ON L2G 1T5, Canada",
+   "location": {
+    "latitude": 43.089777,
+    "longitude": -79.098084
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Pizza Pizza",
+    "languageCode": "en"
+   },
+   "primaryType": "pizza_restaurant",
+   "near_school": "Stamford Collegiate",
+   "asked_types": [
+    "fast_food_restaurant",
+    "pizza_restaurant",
+    "hamburger_restaurant",
+    "sandwich_shop",
+    "meal_takeaway"
+   ]
+  },
+  {
+   "id": "ChIJe1i-hG9D04kR7_DQLHJSPNQ",
+   "formattedAddress": "5846 Drummond Rd, Niagara Falls, ON L2G 4L5, Canada",
+   "location": {
+    "latitude": 43.0900623,
+    "longitude": -79.09732079999999
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Little Caesars Pizza",
+    "languageCode": "en"
+   },
+   "primaryType": "pizza_restaurant",
+   "near_school": "Stamford Collegiate",
+   "asked_types": [
+    "fast_food_restaurant",
+    "pizza_restaurant",
+    "hamburger_restaurant",
+    "sandwich_shop",
+    "meal_takeaway"
+   ]
+  },
+  {
+   "id": "ChIJ-RQiY2VD04kRid5Gd1M3faA",
+   "formattedAddress": "6235 Lundy's Ln, Niagara Falls, ON L2G 1T5, Canada",
+   "location": {
+    "latitude": 43.0897542,
+    "longitude": -79.0986067
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Burger King",
+    "languageCode": "en"
+   },
+   "primaryType": "fast_food_restaurant",
+   "near_school": "Stamford Collegiate",
+   "asked_types": [
+    "fast_food_restaurant",
+    "pizza_restaurant",
+    "hamburger_restaurant",
+    "sandwich_shop",
+    "meal_takeaway"
+   ]
+  },
+  {
+   "id": "ChIJe1i-hG9D04kRn0lfWP-wFyE",
+   "formattedAddress": "5846 Drummond Rd, Niagara Falls, ON L2G 4L5, Canada",
+   "location": {
+    "latitude": 43.0899435,
+    "longitude": -79.0973218
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Subway",
+    "languageCode": "en"
+   },
+   "primaryType": "sandwich_shop",
+   "near_school": "Stamford Collegiate",
+   "asked_types": [
+    "fast_food_restaurant",
+    "pizza_restaurant",
+    "hamburger_restaurant",
+    "sandwich_shop",
+    "meal_takeaway"
+   ]
+  },
+  {
+   "id": "ChIJr42-z-pD04kRsJxGkDlviag",
+   "formattedAddress": "6179 Lundy's Ln, Niagara Falls, ON L2G 1T4, Canada",
+   "location": {
+    "latitude": 43.089648499999996,
+    "longitude": -79.0971146
+   },
+   "businessStatus": "CLOSED_TEMPORARILY",
+   "displayName": {
+    "text": "Fire Wood Pizza",
+    "languageCode": "en"
+   },
+   "primaryType": "pizza_restaurant",
+   "near_school": "Stamford Collegiate",
+   "asked_types": [
+    "fast_food_restaurant",
+    "pizza_restaurant",
+    "hamburger_restaurant",
+    "sandwich_shop",
+    "meal_takeaway"
+   ]
+  },
+  {
+   "id": "ChIJRW85bGVD04kR-92evhc7cf4",
+   "formattedAddress": "6303 Lundy's Ln, Niagara Falls, ON L2G 1T5, Canada",
+   "location": {
+    "latitude": 43.089583,
+    "longitude": -79.09948589999999
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Gino's Pizza",
+    "languageCode": "en"
+   },
+   "primaryType": "pizza_restaurant",
+   "near_school": "Stamford Collegiate",
+   "asked_types": [
+    "fast_food_restaurant",
+    "pizza_restaurant",
+    "hamburger_restaurant",
+    "sandwich_shop",
+    "meal_takeaway"
+   ]
+  },
+  {
+   "id": "ChIJa-XIkW9D04kRzSqNsXVWh0I",
+   "formattedAddress": "6192 Lundy's Ln, Niagara Falls, ON L2G 1T6, Canada",
+   "location": {
+    "latitude": 43.089210699999995,
+    "longitude": -79.097155
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Tim Hortons",
+    "languageCode": "en"
+   },
+   "primaryType": "coffee_shop",
+   "near_school": "Stamford Collegiate",
+   "asked_types": [
+    "fast_food_restaurant",
+    "pizza_restaurant",
+    "hamburger_restaurant",
+    "sandwich_shop",
+    "meal_takeaway"
+   ]
+  },
+  {
+   "id": "ChIJL-YnEABD04kR1iR8DuHhvEE",
+   "formattedAddress": "6318 Lundy's Ln, Niagara Falls, ON L2G 1T6, Canada",
+   "location": {
+    "latitude": 43.0888133,
+    "longitude": -79.0996287
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Panera Bread",
+    "languageCode": "en"
+   },
+   "primaryType": "cafe",
+   "near_school": "Stamford Collegiate",
+   "asked_types": [
+    "fast_food_restaurant",
+    "pizza_restaurant",
+    "hamburger_restaurant",
+    "sandwich_shop",
+    "meal_takeaway"
+   ]
+  },
+  {
+   "id": "ChIJNT9YFGVD04kRp8a9vDccrI8",
+   "formattedAddress": "6348 Lundy's Ln, Niagara Falls, ON L2G 1T6, Canada",
+   "location": {
+    "latitude": 43.0890181,
+    "longitude": -79.1001467
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "McDonald's",
+    "languageCode": "en"
+   },
+   "primaryType": "fast_food_restaurant",
+   "near_school": "Stamford Collegiate",
+   "asked_types": [
+    "fast_food_restaurant",
+    "pizza_restaurant",
+    "hamburger_restaurant",
+    "sandwich_shop",
+    "meal_takeaway"
+   ]
+  },
+  {
+   "id": "ChIJ8QRYFGVD04kRB-b2UQzjY1A",
+   "formattedAddress": "6348 Lundy's Ln, Niagara Falls, ON L2G 1T8, Canada",
+   "location": {
+    "latitude": 43.08951,
+    "longitude": -79.10136
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Pizza Hut",
+    "languageCode": "en"
+   },
+   "primaryType": "pizza_restaurant",
+   "near_school": "Stamford Collegiate",
+   "asked_types": [
+    "fast_food_restaurant",
+    "pizza_restaurant",
+    "hamburger_restaurant",
+    "sandwich_shop",
+    "meal_takeaway"
+   ]
+  },
+  {
+   "id": "ChIJj9d4JEtD04kRlmbEwjthqMk",
+   "formattedAddress": "6465 Lundy's Ln, Niagara Falls, ON L2G 1T9, Canada",
+   "location": {
+    "latitude": 43.0895635,
+    "longitude": -79.10250529999999
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Pizzaiolo",
+    "languageCode": "en"
+   },
+   "primaryType": "pizza_restaurant",
+   "near_school": "Stamford Collegiate",
+   "asked_types": [
+    "fast_food_restaurant",
+    "pizza_restaurant",
+    "hamburger_restaurant",
+    "sandwich_shop",
+    "meal_takeaway"
+   ]
+  },
+  {
+   "id": "ChIJUSUL8VxD04kRpuzTbt1dHxM",
+   "formattedAddress": "5986 Lundy's Ln, Niagara Falls, ON L2G 1T1, Canada",
+   "location": {
+    "latitude": 43.0893277,
+    "longitude": -79.093653
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "PIZZABORO",
+    "languageCode": "en"
+   },
+   "primaryType": "pizza_restaurant",
+   "near_school": "Stamford Collegiate",
+   "asked_types": [
+    "fast_food_restaurant",
+    "pizza_restaurant",
+    "hamburger_restaurant",
+    "sandwich_shop",
+    "meal_takeaway"
+   ]
+  },
+  {
+   "id": "ChIJ49lqv2RD04kR6ZD5vxz3-is",
+   "formattedAddress": "6460 RR 20, Niagara Falls, ON L2G 1T6, Canada",
+   "location": {
+    "latitude": 43.08861650000001,
+    "longitude": -79.1024777
+   },
+   "businessStatus": "CLOSED_TEMPORARILY",
+   "displayName": {
+    "text": "Potato Heads",
+    "languageCode": "en"
+   },
+   "primaryType": "restaurant",
+   "near_school": "Stamford Collegiate",
+   "asked_types": [
+    "fast_food_restaurant",
+    "pizza_restaurant",
+    "hamburger_restaurant",
+    "sandwich_shop",
+    "meal_takeaway"
+   ]
+  },
+  {
+   "id": "ChIJmSRWFQBD04kRhrXxy4x1Xh0",
+   "formattedAddress": "5470 Drummond Rd #1, Niagara Falls, ON L2G 4L2, Canada",
+   "location": {
+    "latitude": 43.0949467,
+    "longitude": -79.09757979999999
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Tim Hortons",
+    "languageCode": "en"
+   },
+   "primaryType": "coffee_shop",
+   "near_school": "Stamford Collegiate",
+   "asked_types": [
+    "fast_food_restaurant",
+    "pizza_restaurant",
+    "hamburger_restaurant",
+    "sandwich_shop",
+    "meal_takeaway"
+   ]
+  },
+  {
+   "id": "ChIJtew6X2ND04kRLGSSqYQWgyg",
+   "formattedAddress": "6555 Lundy's Ln, Niagara Falls, ON L2G 1V1, Canada",
+   "location": {
+    "latitude": 43.089682,
+    "longitude": -79.1040149
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Taco Bell",
+    "languageCode": "en"
+   },
+   "primaryType": "taco_restaurant",
+   "near_school": "Stamford Collegiate",
+   "asked_types": [
+    "fast_food_restaurant",
+    "pizza_restaurant",
+    "hamburger_restaurant",
+    "sandwich_shop",
+    "meal_takeaway"
+   ]
+  },
+  {
+   "id": "ChIJtew6X2ND04kRLlxYS4USbWo",
+   "formattedAddress": "6555 Lundy's Ln, Niagara Falls, ON L2G 1V1, Canada",
+   "location": {
+    "latitude": 43.089668599999996,
+    "longitude": -79.1040312
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "KFC",
+    "languageCode": "en"
+   },
+   "primaryType": "fast_food_restaurant",
+   "near_school": "Stamford Collegiate",
+   "asked_types": [
+    "fast_food_restaurant",
+    "pizza_restaurant",
+    "hamburger_restaurant",
+    "sandwich_shop",
+    "meal_takeaway"
+   ]
+  },
+  {
+   "id": "ChIJu_hUDlxD04kRrHORaTEy_8E",
+   "formattedAddress": "5924 Main St, Niagara Falls, ON L2G 5Z8, Canada",
+   "location": {
+    "latitude": 43.0888117,
+    "longitude": -79.0923896
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Kanthari South Indian Restaurant and Catering",
+    "languageCode": "en"
+   },
+   "primaryType": "south_indian_restaurant",
+   "near_school": "Stamford Collegiate",
+   "asked_types": [
+    "fast_food_restaurant",
+    "pizza_restaurant",
+    "hamburger_restaurant",
+    "sandwich_shop",
+    "meal_takeaway"
+   ]
+  },
+  {
+   "id": "ChIJ7w0ko49D04kROoyRgKCo9i0",
+   "formattedAddress": "6566 Lundy's Ln, Niagara Falls, ON L2G 4Y7, Canada",
+   "location": {
+    "latitude": 43.0890213,
+    "longitude": -79.10441139999999
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Fat Bastard Burrito",
+    "languageCode": "en"
+   },
+   "primaryType": "burrito_restaurant",
+   "near_school": "Stamford Collegiate",
+   "asked_types": [
+    "fast_food_restaurant",
+    "pizza_restaurant",
+    "hamburger_restaurant",
+    "sandwich_shop",
+    "meal_takeaway"
+   ]
+  },
+  {
+   "id": "ChIJR-j517Y9K4gR8AEC6KMy9iI",
+   "formattedAddress": "5993 Main St, Niagara Falls, ON L2G 5Z7, Canada",
+   "location": {
+    "latitude": 43.087835299999995,
+    "longitude": -79.0924497
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Tabbar Social Kitchen & Bar Indian Restaurant Niagara Falls",
+    "languageCode": "en"
+   },
+   "primaryType": "indian_restaurant",
+   "near_school": "Stamford Collegiate",
+   "asked_types": [
+    "fast_food_restaurant",
+    "pizza_restaurant",
+    "hamburger_restaurant",
+    "sandwich_shop",
+    "meal_takeaway"
+   ]
+  },
+  {
+   "id": "ChIJ1Zn1OGND04kR5VgtXKUc_Pg",
+   "formattedAddress": "6624 Lundy's Ln, Niagara Falls, ON L2G 1V2, Canada",
+   "location": {
+    "latitude": 43.08902,
+    "longitude": -79.105468
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Arby's",
+    "languageCode": "en"
+   },
+   "primaryType": "fast_food_restaurant",
+   "near_school": "Stamford Collegiate",
+   "asked_types": [
+    "fast_food_restaurant",
+    "pizza_restaurant",
+    "hamburger_restaurant",
+    "sandwich_shop",
+    "meal_takeaway"
+   ]
+  },
+  {
+   "id": "ChIJ7Th1BwBD04kRsQIIloh7cgs",
+   "formattedAddress": "Drummond Heights Plaza, 5846 Drummond Rd #3, Niagara Falls, ON L2G 4L5, Canada",
+   "location": {
+    "latitude": 43.08985020000001,
+    "longitude": -79.0973715
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Crumbl",
+    "languageCode": "en"
+   },
+   "primaryType": "bakery",
+   "near_school": "Stamford Collegiate",
+   "asked_types": [
+    "cafe",
+    "coffee_shop",
+    "bakery",
+    "ice_cream_shop"
+   ]
+  },
+  {
+   "id": "ChIJAWgCAT5D04kRxUNk1AShh-g",
+   "formattedAddress": "6363 Lundy's Ln, Niagara Falls, ON L2G 1T8, Canada",
+   "location": {
+    "latitude": 43.0896726,
+    "longitude": -79.10096109999999
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Tim Hortons",
+    "languageCode": "en"
+   },
+   "primaryType": "coffee_shop",
+   "near_school": "Stamford Collegiate",
+   "asked_types": [
+    "cafe",
+    "coffee_shop",
+    "bakery",
+    "ice_cream_shop"
+   ]
+  },
+  {
+   "id": "ChIJDT3lauxD04kR3KvV4B2UQ28",
+   "formattedAddress": "6085 Lundy's Ln, Niagara Falls, ON L2G 1T3, Canada",
+   "location": {
+    "latitude": 43.0898381,
+    "longitude": -79.0949104
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Fun Fun Fun Event Architects",
+    "languageCode": "en"
+   },
+   "primaryType": "service",
+   "near_school": "Stamford Collegiate",
+   "asked_types": [
+    "cafe",
+    "coffee_shop",
+    "bakery",
+    "ice_cream_shop"
+   ]
+  },
+  {
+   "id": "ChIJNUwkz2RD04kRc1gkEblNqUo",
+   "formattedAddress": "6460 Lundy's Ln, Niagara Falls, ON L2G 1T6, Canada",
+   "location": {
+    "latitude": 43.088694,
+    "longitude": -79.102896
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Joe & Cassy's NOFRILLS Niagara Falls Lundy's Lane",
+    "languageCode": "en"
+   },
+   "primaryType": "grocery_store",
+   "near_school": "Stamford Collegiate",
+   "asked_types": [
+    "cafe",
+    "coffee_shop",
+    "bakery",
+    "ice_cream_shop"
+   ]
+  },
+  {
+   "id": "ChIJRdjZt_RD04kREWOKL1cSYrg",
+   "formattedAddress": "5891 Main St, Niagara Falls, ON L2G 5Z7, Canada",
+   "location": {
+    "latitude": 43.0892592,
+    "longitude": -79.0929676
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Bakewell magicakes Bakery",
+    "languageCode": "en"
+   },
+   "primaryType": "bakery",
+   "near_school": "Stamford Collegiate",
+   "asked_types": [
+    "cafe",
+    "coffee_shop",
+    "bakery",
+    "ice_cream_shop"
+   ]
+  },
+  {
+   "id": "ChIJa7uuTwBD04kRBLgUMzmK9W4",
+   "formattedAddress": "5943 Sylvia Pl, Niagara Falls, ON L2G 1S9, Canada",
+   "location": {
+    "latitude": 43.088435,
+    "longitude": -79.0920314
+   },
+   "businessStatus": "CLOSED_TEMPORARILY",
+   "displayName": {
+    "text": "Mahtay Café at The Exchange",
+    "languageCode": "en"
+   },
+   "primaryType": "coffee_shop",
+   "near_school": "Stamford Collegiate",
+   "asked_types": [
+    "cafe",
+    "coffee_shop",
+    "bakery",
+    "ice_cream_shop"
+   ]
+  },
+  {
+   "id": "ChIJF1BMYz5D04kRIHfmGaXzJs8",
+   "formattedAddress": "5943 Sylvia Pl, Niagara Falls, ON L2G 1S9, Canada",
+   "location": {
+    "latitude": 43.088435,
+    "longitude": -79.0920314
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Sining Cafe",
+    "languageCode": "en"
+   },
+   "primaryType": "cafe",
+   "near_school": "Stamford Collegiate",
+   "asked_types": [
+    "cafe",
+    "coffee_shop",
+    "bakery",
+    "ice_cream_shop"
+   ]
+  },
+  {
+   "id": "ChIJ5c7FbHJD04kReLkWaIBRLIA",
+   "formattedAddress": "6104 Main St, Niagara Falls, ON L2G 5Z9, Canada",
+   "location": {
+    "latitude": 43.0864032,
+    "longitude": -79.09125159999999
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Ilocos Bakeshop",
+    "languageCode": "en"
+   },
+   "primaryType": "bakery",
+   "near_school": "Stamford Collegiate",
+   "asked_types": [
+    "cafe",
+    "coffee_shop",
+    "bakery",
+    "ice_cream_shop"
+   ]
+  },
+  {
+   "id": "ChIJG4rokwlD04kRqRCBlO_QBE4",
+   "formattedAddress": "6150 Valley Way #106, Niagara Falls, ON L2E 1X9, Canada",
+   "location": {
+    "latitude": 43.0973937,
+    "longitude": -79.0971165
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Luxe Lines",
+    "languageCode": "en"
+   },
+   "primaryType": "ice_cream_shop",
+   "near_school": "Stamford Collegiate",
+   "asked_types": [
+    "cafe",
+    "coffee_shop",
+    "bakery",
+    "ice_cream_shop"
+   ]
+  },
+  {
+   "id": "ChIJpZbDy2tD04kRt1qPd-Zo13c",
+   "formattedAddress": "Greater Niagara General Hospital, 5546 Portage Rd, Niagara Falls, ON L2G 5X7, Canada",
+   "location": {
+    "latitude": 43.094179,
+    "longitude": -79.09029989999999
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Tim Hortons",
+    "languageCode": "en"
+   },
+   "primaryType": "coffee_shop",
+   "near_school": "Stamford Collegiate",
+   "asked_types": [
+    "cafe",
+    "coffee_shop",
+    "bakery",
+    "ice_cream_shop"
+   ]
+  },
+  {
+   "id": "ChIJIwmfmm9D04kRpE2OdJeMmPQ",
+   "formattedAddress": "5846 Drummond Rd, Niagara Falls, ON L2G 4L5, Canada",
+   "location": {
+    "latitude": 43.089726299999995,
+    "longitude": -79.0973728
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Church's Texas Chicken",
+    "languageCode": "en"
+   },
+   "primaryType": "chicken_restaurant",
+   "near_school": "Stamford Collegiate",
+   "asked_types": [
+    "restaurant"
+   ]
+  },
+  {
+   "id": "ChIJAyzalm9D04kRgvd5jt5Znsg",
+   "formattedAddress": "6220 Lundy's Ln, Niagara Falls, ON L2G 1T6, Canada",
+   "location": {
+    "latitude": 43.089012499999995,
+    "longitude": -79.0981437
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Red Lobster",
+    "languageCode": "en"
+   },
+   "primaryType": "seafood_restaurant",
+   "near_school": "Stamford Collegiate",
+   "asked_types": [
+    "restaurant"
+   ]
+  },
+  {
+   "id": "ChIJST2wwmRD04kR1LP6Z0-eYLk",
+   "formattedAddress": "6400 Lundy`s Lane, Niagara Falls, ON L2G 1T6, Canada",
+   "location": {
+    "latitude": 43.089092199999996,
+    "longitude": -79.1008834
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Doc Magilligan's Restaurant & Irish Pub",
+    "languageCode": "en"
+   },
+   "primaryType": "pub",
+   "near_school": "Stamford Collegiate",
+   "asked_types": [
+    "restaurant"
+   ]
+  },
+  {
+   "id": "ChIJMWk0aPBD04kR3CJU4rzlFpY",
+   "formattedAddress": "6423 Lundy's Ln, Niagara Falls, ON L2G 1T8, Canada",
+   "location": {
+    "latitude": 43.0896403,
+    "longitude": -79.101753
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Island Delights Jamaican Cuisine",
+    "languageCode": "en"
+   },
+   "primaryType": "restaurant",
+   "near_school": "Stamford Collegiate",
+   "asked_types": [
+    "restaurant"
+   ]
+  },
+  {
+   "id": "ChIJAaYEP0hD04kRzsdNuUG_dgs",
+   "formattedAddress": "5997 Lundy's Ln, Niagara Falls, ON L2G 1T2, Canada",
+   "location": {
+    "latitude": 43.0896166,
+    "longitude": -79.0938257
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Mehfil Bar & Grill (Indian Cuisine)",
+    "languageCode": "en"
+   },
+   "primaryType": "indian_restaurant",
+   "near_school": "Stamford Collegiate",
+   "asked_types": [
+    "restaurant"
+   ]
+  },
+  {
+   "id": "ChIJG7ucbMRD04kRzKHoxhz-DNw",
+   "formattedAddress": "5991 Lundy's Ln, Niagara Falls, ON L2G 1T2, Canada",
+   "location": {
+    "latitude": 43.089646699999996,
+    "longitude": -79.093603
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Royal Dosa Hut 💯% Pure Vegetarian Indian Restaurant North and South",
+    "languageCode": "en"
+   },
+   "primaryType": "south_indian_restaurant",
+   "near_school": "Stamford Collegiate",
+   "asked_types": [
+    "restaurant"
+   ]
+  },
+  {
+   "id": "ChIJa2hvg25D04kRmk1msAXe4ak",
+   "formattedAddress": "5815 Main St, Niagara Falls, ON L2G 5Z6, Canada",
+   "location": {
+    "latitude": 43.0902709,
+    "longitude": -79.09313999999999
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Red Chateau",
+    "languageCode": "en"
+   },
+   "primaryType": "european_restaurant",
+   "near_school": "Stamford Collegiate",
+   "asked_types": [
+    "restaurant"
+   ]
+  },
+  {
+   "id": "ChIJgTWKwlZD04kR4_CtMkCTij0",
+   "formattedAddress": "6192 Lundy's Ln, Niagara Falls, ON L2G 1T1, Canada",
+   "location": {
+    "latitude": 43.089200299999995,
+    "longitude": -79.0971513
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Circle K",
+    "languageCode": "en"
+   },
+   "primaryType": "convenience_store",
+   "near_school": "Stamford Collegiate",
+   "asked_types": [
+    "convenience_store",
+    "grocery_store",
+    "supermarket"
+   ]
+  },
+  {
+   "id": "ChIJNSplf25D04kRpxSWtOeA1Z8",
+   "formattedAddress": "5869 Main St, Niagara Falls, ON L2G 5Z6, Canada",
+   "location": {
+    "latitude": 43.089873999999995,
+    "longitude": -79.0931627
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Big Bee Convenience & Foodmart",
+    "languageCode": "en"
+   },
+   "primaryType": "convenience_store",
+   "near_school": "Stamford Collegiate",
+   "asked_types": [
+    "convenience_store",
+    "grocery_store",
+    "supermarket"
+   ]
+  },
+  {
+   "id": "ChIJF42GvmRD04kRschMoQ3Trno",
+   "formattedAddress": "6484 Lundy's Ln, Niagara Falls, ON L2G 1T6, Canada",
+   "location": {
+    "latitude": 43.088633,
+    "longitude": -79.102845
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Rexall",
+    "languageCode": "en"
+   },
+   "primaryType": "drugstore",
+   "near_school": "Stamford Collegiate",
+   "asked_types": [
+    "convenience_store",
+    "grocery_store",
+    "supermarket"
+   ]
+  },
+  {
+   "id": "ChIJJ0iMl6dD04kRayMXruKScE0",
+   "formattedAddress": "5894 Main St, Niagara Falls, ON L2G 5Z8, Canada",
+   "location": {
+    "latitude": 43.089250899999996,
+    "longitude": -79.09250209999999
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "WORLD BASKET",
+    "languageCode": "en"
+   },
+   "primaryType": "store",
+   "near_school": "Stamford Collegiate",
+   "asked_types": [
+    "convenience_store",
+    "grocery_store",
+    "supermarket"
+   ]
+  },
+  {
+   "id": "ChIJj8GDPWxD04kRu69KidhUy1w",
+   "formattedAddress": "5772 Main St, Niagara Falls, ON L2G 5Z5, Canada",
+   "location": {
+    "latitude": 43.090832999999996,
+    "longitude": -79.09185
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Wholesale Club Main Street",
+    "languageCode": "en"
+   },
+   "primaryType": "wholesaler",
+   "near_school": "Stamford Collegiate",
+   "asked_types": [
+    "convenience_store",
+    "grocery_store",
+    "supermarket"
+   ]
+  },
+  {
+   "id": "ChIJtYSvFQAxK4gR5BZb7boSwQo",
+   "formattedAddress": "5836 Ferry St, Niagara Falls, ON L2G 1S9, Canada",
+   "location": {
+    "latitude": 43.0893793,
+    "longitude": -79.091624
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Abeni African Foods Inc.",
+    "languageCode": "en"
+   },
+   "primaryType": "grocery_store",
+   "near_school": "Stamford Collegiate",
+   "asked_types": [
+    "convenience_store",
+    "grocery_store",
+    "supermarket"
+   ]
+  },
+  {
+   "id": "ChIJi3ABiHBD04kRISb5B5TPM_U",
+   "formattedAddress": "6218 Culp St, Niagara Falls, ON L2G 2C1, Canada",
+   "location": {
+    "latitude": 43.085457,
+    "longitude": -79.09774
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "RND Convenience & Foodmart",
+    "languageCode": "en"
+   },
+   "primaryType": "convenience_store",
+   "near_school": "Stamford Collegiate",
+   "asked_types": [
+    "convenience_store",
+    "grocery_store",
+    "supermarket"
+   ]
+  },
+  {
+   "id": "ChIJp_LX52ZD04kRKBjTZ-WseOg",
+   "formattedAddress": "5473 Highland Ave, Niagara Falls, ON L2G 4W8, Canada",
+   "location": {
+    "latitude": 43.094797,
+    "longitude": -79.1029514
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Avondale Food Stores",
+    "languageCode": "en"
+   },
+   "primaryType": "convenience_store",
+   "near_school": "Stamford Collegiate",
+   "asked_types": [
+    "convenience_store",
+    "grocery_store",
+    "supermarket"
+   ]
+  },
+  {
+   "id": "ChIJt6x36MBD04kR8TNcG5XlLps",
+   "formattedAddress": "6032 Main St, Niagara Falls, ON L2G 5Z9, Canada",
+   "location": {
+    "latitude": 43.087376899999995,
+    "longitude": -79.0918267
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "ADEMOY AFRICA GROCERY STORE",
+    "languageCode": "en"
+   },
+   "primaryType": "grocery_store",
+   "near_school": "Stamford Collegiate",
+   "asked_types": [
+    "convenience_store",
+    "grocery_store",
+    "supermarket"
+   ]
+  },
+  {
+   "id": "ChIJVcF77HxD04kR3k_dgGy8PCs",
+   "formattedAddress": "6636 Barker St, Niagara Falls, ON L2G 1Y8, Canada",
+   "location": {
+    "latitude": 43.086911099999995,
+    "longitude": -79.1055877
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Jolly's Beer Wine & Grocery",
+    "languageCode": "en"
+   },
+   "primaryType": "convenience_store",
+   "near_school": "Stamford Collegiate",
+   "asked_types": [
+    "convenience_store",
+    "grocery_store",
+    "supermarket"
+   ]
+  },
+  {
+   "id": "ChIJr4Z302JD04kRg_x3mY2hDBc",
+   "formattedAddress": "6734 Lundy's Ln Unit # 2 & 3, Niagara Falls, ON L2G 1V5, Canada",
+   "location": {
+    "latitude": 43.0888807,
+    "longitude": -79.1072653
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Patel Grocers",
+    "languageCode": "en"
+   },
+   "primaryType": "asian_grocery_store",
+   "near_school": "Stamford Collegiate",
+   "asked_types": [
+    "convenience_store",
+    "grocery_store",
+    "supermarket"
+   ]
+  },
+  {
+   "id": "ChIJTc_16bdD04kRqm8qvJmhS2g",
+   "formattedAddress": "6119 Main St, Niagara Falls, ON L2G 6A2, Canada",
+   "location": {
+    "latitude": 43.085916399999995,
+    "longitude": -79.09156469999999
+   },
+   "businessStatus": "CLOSED_TEMPORARILY",
+   "displayName": {
+    "text": "Main St Convenience",
+    "languageCode": "en"
+   },
+   "primaryType": "convenience_store",
+   "near_school": "Stamford Collegiate",
+   "asked_types": [
+    "convenience_store",
+    "grocery_store",
+    "supermarket"
+   ]
+  },
+  {
+   "id": "ChIJQ6dWqI1E04kR2cGjvNmJEos",
+   "formattedAddress": "7906 Lundy's Ln, Niagara Falls, ON L2H 1H1, Canada",
+   "location": {
+    "latitude": 43.0885813,
+    "longitude": -79.12946440000002
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Subway",
+    "languageCode": "en"
+   },
+   "primaryType": "sandwich_shop",
+   "near_school": "Westlane Secondary School",
+   "asked_types": [
+    "fast_food_restaurant",
+    "pizza_restaurant",
+    "hamburger_restaurant",
+    "sandwich_shop",
+    "meal_takeaway"
+   ]
+  },
+  {
+   "id": "ChIJTUDw2vJE04kRREpDOD6VpIk",
+   "formattedAddress": "8123 Lundy's Ln, Niagara Falls, ON L2H 1H1, Canada",
+   "location": {
+    "latitude": 43.0893137,
+    "longitude": -79.1327251
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Little Caesars Pizza",
+    "languageCode": "en"
+   },
+   "primaryType": "pizza_restaurant",
+   "near_school": "Westlane Secondary School",
+   "asked_types": [
+    "fast_food_restaurant",
+    "pizza_restaurant",
+    "hamburger_restaurant",
+    "sandwich_shop",
+    "meal_takeaway"
+   ]
+  },
+  {
+   "id": "ChIJ4zRgL5BF04kR08Mg-fXxXGM",
+   "formattedAddress": "7939 Lundy's Ln, Niagara Falls, ON L2H 1H1, Canada",
+   "location": {
+    "latitude": 43.0893035,
+    "longitude": -79.1302537
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "City South Pizza",
+    "languageCode": "en"
+   },
+   "primaryType": "pizza_restaurant",
+   "near_school": "Westlane Secondary School",
+   "asked_types": [
+    "fast_food_restaurant",
+    "pizza_restaurant",
+    "hamburger_restaurant",
+    "sandwich_shop",
+    "meal_takeaway"
+   ]
+  },
+  {
+   "id": "ChIJGS1468hF04kRisnPQK7lqz8",
+   "formattedAddress": "8123 Lundy's Ln Unit 1, Niagara Falls, ON L2H 1H3, Canada",
+   "location": {
+    "latitude": 43.08930970000001,
+    "longitude": -79.1331179
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Naan The Indian Kitchen",
+    "languageCode": "en"
+   },
+   "primaryType": "indian_restaurant",
+   "near_school": "Westlane Secondary School",
+   "asked_types": [
+    "fast_food_restaurant",
+    "pizza_restaurant",
+    "hamburger_restaurant",
+    "sandwich_shop",
+    "meal_takeaway"
+   ]
+  },
+  {
+   "id": "ChIJBVjwHfNE04kRwv30JNLQspo",
+   "formattedAddress": "8159 Lundy's Ln, Niagara Falls, ON L2H 1H5, Canada",
+   "location": {
+    "latitude": 43.0892554,
+    "longitude": -79.13436460000001
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Tim Hortons",
+    "languageCode": "en"
+   },
+   "primaryType": "coffee_shop",
+   "near_school": "Westlane Secondary School",
+   "asked_types": [
+    "fast_food_restaurant",
+    "pizza_restaurant",
+    "hamburger_restaurant",
+    "sandwich_shop",
+    "meal_takeaway"
+   ]
+  },
+  {
+   "id": "ChIJQwkcKY1E04kRjGYEPl3ZNFg",
+   "formattedAddress": "8214 Lundy's Ln, Niagara Falls, ON L2H 0L4, Canada",
+   "location": {
+    "latitude": 43.0882962,
+    "longitude": -79.13573989999999
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Lakeport Fish & Chips",
+    "languageCode": "en"
+   },
+   "primaryType": "fish_and_chips_restaurant",
+   "near_school": "Westlane Secondary School",
+   "asked_types": [
+    "fast_food_restaurant",
+    "pizza_restaurant",
+    "hamburger_restaurant",
+    "sandwich_shop",
+    "meal_takeaway"
+   ]
+  },
+  {
+   "id": "ChIJ-QAB6o1E04kR1VW74yaWYds",
+   "formattedAddress": "7805 Lundy's Ln, Niagara Falls, ON L2H 1H3, Canada",
+   "location": {
+    "latitude": 43.08951,
+    "longitude": -79.12769899999999
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Epic Pita Niagara",
+    "languageCode": "en"
+   },
+   "primaryType": "fast_food_restaurant",
+   "near_school": "Westlane Secondary School",
+   "asked_types": [
+    "fast_food_restaurant",
+    "pizza_restaurant",
+    "hamburger_restaurant",
+    "sandwich_shop",
+    "meal_takeaway"
+   ]
+  },
+  {
+   "id": "ChIJTbwwq_NE04kRbEtfPGBA1a8",
+   "formattedAddress": "8209 Lundy's Ln, Niagara Falls, ON L2H 1H3, Canada",
+   "location": {
+    "latitude": 43.089286099999995,
+    "longitude": -79.1357761
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Domino's Pizza",
+    "languageCode": "en"
+   },
+   "primaryType": "pizza_delivery",
+   "near_school": "Westlane Secondary School",
+   "asked_types": [
+    "fast_food_restaurant",
+    "pizza_restaurant",
+    "hamburger_restaurant",
+    "sandwich_shop",
+    "meal_takeaway"
+   ]
+  },
+  {
+   "id": "ChIJQzQnHGVD04kRx9tblCnweOQ",
+   "formattedAddress": "8279 Lundy's Ln, Niagara Falls, ON L2H 1H5, Canada",
+   "location": {
+    "latitude": 43.08920200000001,
+    "longitude": -79.13653359999999
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Wendy's",
+    "languageCode": "en"
+   },
+   "primaryType": "fast_food_restaurant",
+   "near_school": "Westlane Secondary School",
+   "asked_types": [
+    "fast_food_restaurant",
+    "pizza_restaurant",
+    "hamburger_restaurant",
+    "sandwich_shop",
+    "meal_takeaway"
+   ]
+  },
+  {
+   "id": "ChIJ_6_BDHZF04kRgJNOi3Hn57A",
+   "formattedAddress": "8279 Lundy's Ln, Niagara Falls, ON L2H 1H5, Canada",
+   "location": {
+    "latitude": 43.0897868,
+    "longitude": -79.13674139999999
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Qualia Pizza",
+    "languageCode": "en"
+   },
+   "primaryType": "pizza_restaurant",
+   "near_school": "Westlane Secondary School",
+   "asked_types": [
+    "fast_food_restaurant",
+    "pizza_restaurant",
+    "hamburger_restaurant",
+    "sandwich_shop",
+    "meal_takeaway"
+   ]
+  },
+  {
+   "id": "ChIJN644uI9E04kR5_KDDqqTbHk",
+   "formattedAddress": "7600 Lundy's Ln, Niagara Falls, ON L2H 1G8, Canada",
+   "location": {
+    "latitude": 43.0886707,
+    "longitude": -79.1235848
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Mick & Angelo's Kitchen + Bar",
+    "languageCode": "en"
+   },
+   "primaryType": "restaurant",
+   "near_school": "Westlane Secondary School",
+   "asked_types": [
+    "fast_food_restaurant",
+    "pizza_restaurant",
+    "hamburger_restaurant",
+    "sandwich_shop",
+    "meal_takeaway"
+   ]
+  },
+  {
+   "id": "ChIJq6rjFvFE04kRzjDTZyKk0wA",
+   "formattedAddress": "8444 Lundy's Ln, Niagara Falls, ON L2H 1H4, Canada",
+   "location": {
+    "latitude": 43.0884234,
+    "longitude": -79.1398907
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Boston Pizza",
+    "languageCode": "en"
+   },
+   "primaryType": "pizza_restaurant",
+   "near_school": "Westlane Secondary School",
+   "asked_types": [
+    "fast_food_restaurant",
+    "pizza_restaurant",
+    "hamburger_restaurant",
+    "sandwich_shop",
+    "meal_takeaway"
+   ]
+  },
+  {
+   "id": "ChIJDT5LFAVF04kR-91-DPLKWeE",
+   "formattedAddress": "7558 Lundy's Ln, Niagara Falls, ON L2H 1G8, Canada",
+   "location": {
+    "latitude": 43.088920699999996,
+    "longitude": -79.122587
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Shawarma & Grill Box",
+    "languageCode": "en"
+   },
+   "primaryType": "meal_takeaway",
+   "near_school": "Westlane Secondary School",
+   "asked_types": [
+    "fast_food_restaurant",
+    "pizza_restaurant",
+    "hamburger_restaurant",
+    "sandwich_shop",
+    "meal_takeaway"
+   ]
+  },
+  {
+   "id": "ChIJBWqYUIxF04kRzke4DpBk2lo",
+   "formattedAddress": "5535 Kalar Rd, Niagara Falls, ON L2H 3K9, Canada",
+   "location": {
+    "latitude": 43.0935443,
+    "longitude": -79.1368135
+   },
+   "businessStatus": "CLOSED_TEMPORARILY",
+   "displayName": {
+    "text": "Far Out Cafe",
+    "languageCode": "en"
+   },
+   "primaryType": "cafe",
+   "near_school": "Westlane Secondary School",
+   "asked_types": [
+    "fast_food_restaurant",
+    "pizza_restaurant",
+    "hamburger_restaurant",
+    "sandwich_shop",
+    "meal_takeaway"
+   ]
+  },
+  {
+   "id": "ChIJP-ejPsJF04kRPW1189sCSpA",
+   "formattedAddress": "5535 Kalar Rd, Niagara Falls, ON L2H 3K9, Canada",
+   "location": {
+    "latitude": 43.0935443,
+    "longitude": -79.1368135
+   },
+   "businessStatus": "CLOSED_TEMPORARILY",
+   "displayName": {
+    "text": "Pizza Formaggio",
+    "languageCode": "en"
+   },
+   "primaryType": "pizza_restaurant",
+   "near_school": "Westlane Secondary School",
+   "asked_types": [
+    "fast_food_restaurant",
+    "pizza_restaurant",
+    "hamburger_restaurant",
+    "sandwich_shop",
+    "meal_takeaway"
+   ]
+  },
+  {
+   "id": "ChIJf-oHAPNE04kRoBAN3h4DpE0",
+   "formattedAddress": "8040 Lundy's Ln, Niagara Falls, ON L2H 0L4, Canada",
+   "location": {
+    "latitude": 43.0883821,
+    "longitude": -79.1319922
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "La Farina Bakery",
+    "languageCode": "en"
+   },
+   "primaryType": "bakery",
+   "near_school": "Westlane Secondary School",
+   "asked_types": [
+    "cafe",
+    "coffee_shop",
+    "bakery",
+    "ice_cream_shop"
+   ]
+  },
+  {
+   "id": "ChIJS3M8lAxF04kRuZ1h-JUaNv8",
+   "formattedAddress": "7939 Lundy's Ln, Niagara Falls, ON L2H 1H1, Canada",
+   "location": {
+    "latitude": 43.089303699999995,
+    "longitude": -79.1302537
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Basant Ice cream",
+    "languageCode": "en"
+   },
+   "primaryType": "ice_cream_shop",
+   "near_school": "Westlane Secondary School",
+   "asked_types": [
+    "cafe",
+    "coffee_shop",
+    "bakery",
+    "ice_cream_shop"
+   ]
+  },
+  {
+   "id": "ChIJk2Xok4ZF04kRq-zRxaWJL_A",
+   "formattedAddress": "8209 Lundy's Ln, Niagara Falls, ON L2H 1H3, Canada",
+   "location": {
+    "latitude": 43.0892883,
+    "longitude": -79.1356067
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Mo'Cha Bubble Tea - Niagara Falls",
+    "languageCode": "en"
+   },
+   "primaryType": "cafe",
+   "near_school": "Westlane Secondary School",
+   "asked_types": [
+    "cafe",
+    "coffee_shop",
+    "bakery",
+    "ice_cream_shop"
+   ]
+  },
+  {
+   "id": "ChIJPU5lnYhF04kRCNVhx1kFLAQ",
+   "formattedAddress": "5931 Kalar Rd, Niagara Falls, ON L2H 0L4, Canada",
+   "location": {
+    "latitude": 43.08875,
+    "longitude": -79.1362
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Starbucks Coffee Company",
+    "languageCode": "en"
+   },
+   "primaryType": "coffee_shop",
+   "near_school": "Westlane Secondary School",
+   "asked_types": [
+    "cafe",
+    "coffee_shop",
+    "bakery",
+    "ice_cream_shop"
+   ]
+  },
+  {
+   "id": "ChIJYbi0V9hF04kRyU_zikHlDU0",
+   "formattedAddress": "Kelsey Cres, Niagara Falls, ON L2H 0E6, Canada",
+   "location": {
+    "latitude": 43.0843887,
+    "longitude": -79.1392418
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Cake shop",
+    "languageCode": "en"
+   },
+   "primaryType": "cake_shop",
+   "near_school": "Westlane Secondary School",
+   "asked_types": [
+    "cafe",
+    "coffee_shop",
+    "bakery",
+    "ice_cream_shop"
+   ]
+  },
+  {
+   "id": "ChIJF2xvXgBF04kRLdBWWHYKUcA",
+   "formattedAddress": "7940 Lundy's Ln, Niagara Falls, ON L2H 1H3, Canada",
+   "location": {
+    "latitude": 43.0886042,
+    "longitude": -79.1305931
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Chengdu Noodles",
+    "languageCode": "en"
+   },
+   "primaryType": "chinese_noodle_restaurant",
+   "near_school": "Westlane Secondary School",
+   "asked_types": [
+    "restaurant"
+   ]
+  },
+  {
+   "id": "ChIJh1GxvUxF04kRhsa3wBKNiEA",
+   "formattedAddress": "8100 Lundy's Ln, Niagara Falls, ON L2H 0L4, Canada",
+   "location": {
+    "latitude": 43.0882898,
+    "longitude": -79.1333799
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Purplemint Kitchen",
+    "languageCode": "en"
+   },
+   "primaryType": "indian_restaurant",
+   "near_school": "Westlane Secondary School",
+   "asked_types": [
+    "restaurant"
+   ]
+  },
+  {
+   "id": "ChIJj7jTZgBF04kRJ-QKJgLbCIA",
+   "formattedAddress": "8100 Lundy's Ln, Niagara Falls, ON L2H 0L4, Canada",
+   "location": {
+    "latitude": 43.0883104,
+    "longitude": -79.1334072
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Buffet 5 continent",
+    "languageCode": "es"
+   },
+   "primaryType": "restaurant",
+   "near_school": "Westlane Secondary School",
+   "asked_types": [
+    "restaurant"
+   ]
+  },
+  {
+   "id": "ChIJk2joc6tF04kRoQ2f3CVEGm8",
+   "formattedAddress": "7925 Lundy's Ln, Niagara Falls, ON L2H 1H3, Canada",
+   "location": {
+    "latitude": 43.0892105,
+    "longitude": -79.1298788
+   },
+   "businessStatus": "CLOSED_TEMPORARILY",
+   "displayName": {
+    "text": "Amritsari Restaurant ( Tiffin Service )",
+    "languageCode": "en"
+   },
+   "primaryType": "restaurant",
+   "near_school": "Westlane Secondary School",
+   "asked_types": [
+    "restaurant"
+   ]
+  },
+  {
+   "id": "ChIJ80Dw2vJE04kRAJd_1AXQPww",
+   "formattedAddress": "8123 Lundy's Ln, Niagara Falls, ON L2H 1H3, Canada",
+   "location": {
+    "latitude": 43.089348699999995,
+    "longitude": -79.13307979999999
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Scoops Restaurant Breakfast and Lunch",
+    "languageCode": "en"
+   },
+   "primaryType": "breakfast_restaurant",
+   "near_school": "Westlane Secondary School",
+   "asked_types": [
+    "restaurant"
+   ]
+  },
+  {
+   "id": "ChIJe0Cf1_JE04kRjUrdefQ4rUQ",
+   "formattedAddress": "8123 Lundy's Ln, Niagara Falls, ON L2H 1H3, Canada",
+   "location": {
+    "latitude": 43.0893589,
+    "longitude": -79.1336305
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Mai Thai Cuisine",
+    "languageCode": "en"
+   },
+   "primaryType": "thai_restaurant",
+   "near_school": "Westlane Secondary School",
+   "asked_types": [
+    "restaurant"
+   ]
+  },
+  {
+   "id": "ChIJf-oHAPNE04kRRpoTujlhBpw",
+   "formattedAddress": "8189 Lundy's Ln, Niagara Falls, ON L2H 1H3, Canada",
+   "location": {
+    "latitude": 43.089235699999996,
+    "longitude": -79.13486250000001
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Chip n Charlie's Eatery & Bar",
+    "languageCode": "en"
+   },
+   "primaryType": "sports_bar",
+   "near_school": "Westlane Secondary School",
+   "asked_types": [
+    "restaurant"
+   ]
+  },
+  {
+   "id": "ChIJRwXFTk9F04kRs5xRAmQrhuI",
+   "formattedAddress": "7800 Lundy's Ln, Niagara Falls, ON L2H 1H1, Canada",
+   "location": {
+    "latitude": 43.0887424,
+    "longitude": -79.12744479999999
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "ADDA KITCHEN",
+    "languageCode": "en"
+   },
+   "primaryType": "bar_and_grill",
+   "near_school": "Westlane Secondary School",
+   "asked_types": [
+    "restaurant"
+   ]
+  },
+  {
+   "id": "ChIJvXy27sRD04kRmjS2o3fjMW0",
+   "formattedAddress": "7800 Lundy's Ln, Niagara Falls, ON L2H 1H1, Canada",
+   "location": {
+    "latitude": 43.0887424,
+    "longitude": -79.12744479999999
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Adda Sports Bar",
+    "languageCode": "en"
+   },
+   "primaryType": "bar_and_grill",
+   "near_school": "Westlane Secondary School",
+   "asked_types": [
+    "restaurant"
+   ]
+  },
+  {
+   "id": "ChIJPSESuI1E04kR-O2-BA8lqtc",
+   "formattedAddress": "7805 Lundy's Ln, Niagara Falls, ON L2H 1H3, Canada",
+   "location": {
+    "latitude": 43.0894444,
+    "longitude": -79.12777779999999
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Strada West",
+    "languageCode": "en"
+   },
+   "primaryType": "italian_restaurant",
+   "near_school": "Westlane Secondary School",
+   "asked_types": [
+    "restaurant"
+   ]
+  },
+  {
+   "id": "ChIJ6dxMUhlF04kR515pTPFeg8c",
+   "formattedAddress": "7939 Lundy's Ln, Niagara Falls, ON L2H 1H3, Canada",
+   "location": {
+    "latitude": 43.089172,
+    "longitude": -79.13007000000002
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Petro-Canada & Car Wash",
+    "languageCode": "en"
+   },
+   "primaryType": "gas_station",
+   "near_school": "Westlane Secondary School",
+   "asked_types": [
+    "convenience_store",
+    "grocery_store",
+    "supermarket"
+   ]
+  },
+  {
+   "id": "ChIJ9wMWZgBF04kR2F9AAJTzTxw",
+   "formattedAddress": "7924 Spring Blossom Dr, Niagara Falls, ON L2H 3M2, Canada",
+   "location": {
+    "latitude": 43.0899654,
+    "longitude": -79.129436
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Food store",
+    "languageCode": "en"
+   },
+   "primaryType": "grocery_store",
+   "near_school": "Westlane Secondary School",
+   "asked_types": [
+    "convenience_store",
+    "grocery_store",
+    "supermarket"
+   ]
+  },
+  {
+   "id": "ChIJQwkcKY1E04kRNj-CWZgaCEY",
+   "formattedAddress": "8214 Lundy's Ln, Niagara Falls, ON L2H 0L4, Canada",
+   "location": {
+    "latitude": 43.0883189,
+    "longitude": -79.135818
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Avondale Food Stores",
+    "languageCode": "en"
+   },
+   "primaryType": "convenience_store",
+   "near_school": "Westlane Secondary School",
+   "asked_types": [
+    "convenience_store",
+    "grocery_store",
+    "supermarket"
+   ]
+  },
+  {
+   "id": "ChIJh1tnKY1E04kR9u83mysBuiU",
+   "formattedAddress": "8209 Lundy's Ln, Niagara Falls, ON L2H 1H3, Canada",
+   "location": {
+    "latitude": 43.0892883,
+    "longitude": -79.1356067
+   },
+   "businessStatus": "CLOSED_TEMPORARILY",
+   "displayName": {
+    "text": "Big Bee Convenience & Mobil Gas Station",
+    "languageCode": "en"
+   },
+   "primaryType": "convenience_store",
+   "near_school": "Westlane Secondary School",
+   "asked_types": [
+    "convenience_store",
+    "grocery_store",
+    "supermarket"
+   ]
+  },
+  {
+   "id": "ChIJTctruPNE04kRHY0m83vTi_U",
+   "formattedAddress": "5931 Kalar Rd, Niagara Falls, ON L2H 0L4, Canada",
+   "location": {
+    "latitude": 43.08788,
+    "longitude": -79.13739
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "FreshCo",
+    "languageCode": "en"
+   },
+   "primaryType": "supermarket",
+   "near_school": "Westlane Secondary School",
+   "asked_types": [
+    "convenience_store",
+    "grocery_store",
+    "supermarket"
+   ]
+  },
+  {
+   "id": "ChIJbVKPyY9E04kRmSiV0o-Di1o",
+   "formattedAddress": "7637 Lundy's Ln Unit 5, Niagara Falls, ON L2H 1H2, Canada",
+   "location": {
+    "latitude": 43.0894775,
+    "longitude": -79.123773
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Avondale Food Stores",
+    "languageCode": "en"
+   },
+   "primaryType": "convenience_store",
+   "near_school": "Westlane Secondary School",
+   "asked_types": [
+    "convenience_store",
+    "grocery_store",
+    "supermarket"
+   ]
+  },
+  {
+   "id": "ChIJU3K_XLFF04kRg2DZLdKLvi8",
+   "formattedAddress": "7572 Lundy's Ln, Niagara Falls, ON L2H 1G8, Canada",
+   "location": {
+    "latitude": 43.0887232,
+    "longitude": -79.1229674
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "BOMBAY MART",
+    "languageCode": "en"
+   },
+   "primaryType": "asian_grocery_store",
+   "near_school": "Westlane Secondary School",
+   "asked_types": [
+    "convenience_store",
+    "grocery_store",
+    "supermarket"
+   ]
+  },
+  {
+   "id": "ChIJPbTLwU5E04kR8lc64wr20mg",
+   "formattedAddress": "8913 McLeod Rd, Niagara Falls, ON L2H 3N5, Canada",
+   "location": {
+    "latitude": 43.0697523,
+    "longitude": -79.147606
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Chip Mobile Fresh Cut Fries",
+    "languageCode": "en"
+   },
+   "primaryType": "snack_bar",
+   "near_school": "Saint Michael Catholic High School",
+   "asked_types": [
+    "fast_food_restaurant",
+    "pizza_restaurant",
+    "hamburger_restaurant",
+    "sandwich_shop",
+    "meal_takeaway"
+   ]
+  },
+  {
+   "id": "ChIJTVr1C0NE04kRBV5-cQpEYV8",
+   "formattedAddress": "7107 Kalar Rd #7, Niagara Falls, ON L2H 3K1, Canada",
+   "location": {
+    "latitude": 43.0702504,
+    "longitude": -79.1362582
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Tim Hortons",
+    "languageCode": "en"
+   },
+   "primaryType": "coffee_shop",
+   "near_school": "Saint Michael Catholic High School",
+   "asked_types": [
+    "fast_food_restaurant",
+    "pizza_restaurant",
+    "hamburger_restaurant",
+    "sandwich_shop",
+    "meal_takeaway"
+   ]
+  },
+  {
+   "id": "ChIJD-S-G0NE04kRqeYM_iYTTjQ",
+   "formattedAddress": "7107 Kalar Rd, Niagara Falls, ON L2H 3K1, Canada",
+   "location": {
+    "latitude": 43.0703993,
+    "longitude": -79.1361574
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "D'Vinci's Pizza",
+    "languageCode": "en"
+   },
+   "primaryType": "pizza_restaurant",
+   "near_school": "Saint Michael Catholic High School",
+   "asked_types": [
+    "fast_food_restaurant",
+    "pizza_restaurant",
+    "hamburger_restaurant",
+    "sandwich_shop",
+    "meal_takeaway"
+   ]
+  },
+  {
+   "id": "ChIJlWjKJu9F04kR3vElOHAizmg",
+   "formattedAddress": "8943 McLeod Rd, Niagara Falls, ON L2H 0Z3, Canada",
+   "location": {
+    "latitude": 43.0700028,
+    "longitude": -79.1477975
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Niagara Lunch Truck",
+    "languageCode": "en"
+   },
+   "primaryType": "restaurant",
+   "near_school": "Saint Michael Catholic High School",
+   "asked_types": [
+    "restaurant"
+   ]
+  },
+  {
+   "id": "ChIJFwJ7VhtF04kRx03OEURNHx0",
+   "formattedAddress": "8240 McLeod Rd #2, Niagara Falls, ON L2H 2T6, Canada",
+   "location": {
+    "latitude": 43.0696775,
+    "longitude": -79.1347883
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Charm’s Jerk Inc.",
+    "languageCode": "en"
+   },
+   "primaryType": "restaurant",
+   "near_school": "Saint Michael Catholic High School",
+   "asked_types": [
+    "restaurant"
+   ]
+  },
+  {
+   "id": "ChIJh_2TVUJE04kR93zcM2FpaUE",
+   "formattedAddress": "8240 McLeod Rd, Niagara Falls, ON L2H 0Y7, Canada",
+   "location": {
+    "latitude": 43.06966080000001,
+    "longitude": -79.1348678
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Afro Caribbean Variety Food Market",
+    "languageCode": "en"
+   },
+   "primaryType": "store",
+   "near_school": "Saint Michael Catholic High School",
+   "asked_types": [
+    "convenience_store",
+    "grocery_store",
+    "supermarket"
+   ]
+  },
+  {
+   "id": "ChIJdRBEZKpE04kRzaCraazfJVw",
+   "formattedAddress": "6824 Thorold Stone Rd, Niagara Falls, ON L2J 1B4, Canada",
+   "location": {
+    "latitude": 43.114610899999995,
+    "longitude": -79.11055999999999
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Substantial Sandwiches & Treats",
+    "languageCode": "en"
+   },
+   "primaryType": "sandwich_shop",
+   "near_school": "Saint Paul Catholic High School",
+   "asked_types": [
+    "fast_food_restaurant",
+    "pizza_restaurant",
+    "hamburger_restaurant",
+    "sandwich_shop",
+    "meal_takeaway"
+   ]
+  },
+  {
+   "id": "ChIJncF4Z6pE04kRfaohFdYJxCk",
+   "formattedAddress": "6850 Thorold Stone Rd, Niagara Falls, ON L2J 1B4, Canada",
+   "location": {
+    "latitude": 43.114598,
+    "longitude": -79.1108812
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Twice The Deal Pizza",
+    "languageCode": "en"
+   },
+   "primaryType": "pizza_restaurant",
+   "near_school": "Saint Paul Catholic High School",
+   "asked_types": [
+    "fast_food_restaurant",
+    "pizza_restaurant",
+    "hamburger_restaurant",
+    "sandwich_shop",
+    "meal_takeaway"
+   ]
+  },
+  {
+   "id": "ChIJa2IG-KpE04kR8b59KWObjko",
+   "formattedAddress": "4025 Dorchester Rd, Niagara Falls, ON L2E 7K8, Canada",
+   "location": {
+    "latitude": 43.1146159,
+    "longitude": -79.1123691
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "7-Eleven",
+    "languageCode": "en"
+   },
+   "primaryType": "convenience_store",
+   "near_school": "Saint Paul Catholic High School",
+   "asked_types": [
+    "fast_food_restaurant",
+    "pizza_restaurant",
+    "hamburger_restaurant",
+    "sandwich_shop",
+    "meal_takeaway"
+   ]
+  },
+  {
+   "id": "ChIJZft4T6pE04kR817G0fNIdaY",
+   "formattedAddress": "4025 Dorchester Rd Unit A 16, Niagara Falls, ON L2E 6N1, Canada",
+   "location": {
+    "latitude": 43.1146262,
+    "longitude": -79.11287469999999
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Subway",
+    "languageCode": "en"
+   },
+   "primaryType": "sandwich_shop",
+   "near_school": "Saint Paul Catholic High School",
+   "asked_types": [
+    "fast_food_restaurant",
+    "pizza_restaurant",
+    "hamburger_restaurant",
+    "sandwich_shop",
+    "meal_takeaway"
+   ]
+  },
+  {
+   "id": "ChIJq6pqS6pE04kR2UkNwGSiulQ",
+   "formattedAddress": "4025 Dorchester Rd, Niagara Falls, ON L2E 6N1, Canada",
+   "location": {
+    "latitude": 43.114283,
+    "longitude": -79.1128672
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Nino Pizza Niagara Falls",
+    "languageCode": "en"
+   },
+   "primaryType": "pizza_restaurant",
+   "near_school": "Saint Paul Catholic High School",
+   "asked_types": [
+    "fast_food_restaurant",
+    "pizza_restaurant",
+    "hamburger_restaurant",
+    "sandwich_shop",
+    "meal_takeaway"
+   ]
+  },
+  {
+   "id": "ChIJB9IPtKtE04kRUwK8OQMcWak",
+   "formattedAddress": "4025 Dorchester Rd, Niagara Falls, ON L2E 7K8, Canada",
+   "location": {
+    "latitude": 43.114016299999996,
+    "longitude": -79.1122512
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Williams Fresh Cafe",
+    "languageCode": "en"
+   },
+   "primaryType": "cafe",
+   "near_school": "Saint Paul Catholic High School",
+   "asked_types": [
+    "cafe",
+    "coffee_shop",
+    "bakery",
+    "ice_cream_shop"
+   ]
+  },
+  {
+   "id": "ChIJKSk43fcdmI4RFWzpGErffRI",
+   "formattedAddress": "6314 Thorold Stone Rd, Niagara Falls, ON L2J 1A8, Canada",
+   "location": {
+    "latitude": 43.115142399999996,
+    "longitude": -79.1009507
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Bella Cakes Niagara",
+    "languageCode": "en"
+   },
+   "primaryType": "bakery",
+   "near_school": "Saint Paul Catholic High School",
+   "asked_types": [
+    "cafe",
+    "coffee_shop",
+    "bakery",
+    "ice_cream_shop"
+   ]
+  },
+  {
+   "id": "ChIJWfvTDqNF04kRmd7RyyyZC0Q",
+   "formattedAddress": "6788 Thorold Stone Rd, Niagara Falls, ON L2J 1B4, Canada",
+   "location": {
+    "latitude": 43.11463,
+    "longitude": -79.10974
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Chucks Roadhouse Bar and Grill",
+    "languageCode": "en"
+   },
+   "primaryType": "restaurant",
+   "near_school": "Saint Paul Catholic High School",
+   "asked_types": [
+    "restaurant"
+   ]
+  },
+  {
+   "id": "ChIJCT3OnIBF04kRWogZeI3bdNM",
+   "formattedAddress": "6850 Thorold Stone Rd, Niagara Falls, ON L2J 1B4, Canada",
+   "location": {
+    "latitude": 43.1145707,
+    "longitude": -79.110883
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Hijabeez Shawarma Wraps & Platters.",
+    "languageCode": "en"
+   },
+   "primaryType": "shawarma_restaurant",
+   "near_school": "Saint Paul Catholic High School",
+   "asked_types": [
+    "restaurant"
+   ]
+  },
+  {
+   "id": "ChIJq3wsKRdF04kRRMyIkebdark",
+   "formattedAddress": "4025 Dorchester Rd, Niagara Falls, ON L2E 7A6, Canada",
+   "location": {
+    "latitude": 43.1147117,
+    "longitude": -79.1126632
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Pho My Tan Ky Restaurant",
+    "languageCode": "en"
+   },
+   "primaryType": "vietnamese_restaurant",
+   "near_school": "Saint Paul Catholic High School",
+   "asked_types": [
+    "restaurant"
+   ]
+  },
+  {
+   "id": "ChIJ1XvRAnFF04kRebKPmETG_F4",
+   "formattedAddress": "4025 Dorchester Rd, Niagara Falls, ON L2E 7K8, Canada",
+   "location": {
+    "latitude": 43.114433899999995,
+    "longitude": -79.1122395
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "The Recipe Restaurant",
+    "languageCode": "en"
+   },
+   "primaryType": "restaurant",
+   "near_school": "Saint Paul Catholic High School",
+   "asked_types": [
+    "restaurant"
+   ]
+  },
+  {
+   "id": "ChIJ5VgVhzVD04kRaRVDB2bb57s",
+   "formattedAddress": "6535 Thorold Stone Rd, Niagara Falls, ON L2J 1B2, Canada",
+   "location": {
+    "latitude": 43.1154684,
+    "longitude": -79.1052272
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Jal Mahal",
+    "languageCode": "en"
+   },
+   "primaryType": "indian_restaurant",
+   "near_school": "Saint Paul Catholic High School",
+   "asked_types": [
+    "restaurant"
+   ]
+  },
+  {
+   "id": "ChIJLfZjilRD04kR9qQWt7UEl3o",
+   "formattedAddress": "6536 Thorold Stone Rd, Niagara Falls, ON L2J 1B3, Canada",
+   "location": {
+    "latitude": 43.1149819,
+    "longitude": -79.10522639999999
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Far East Restaurant | Chinese & Canadian",
+    "languageCode": "en"
+   },
+   "primaryType": "chinese_restaurant",
+   "near_school": "Saint Paul Catholic High School",
+   "asked_types": [
+    "restaurant"
+   ]
+  },
+  {
+   "id": "ChIJj-wgW6pE04kRiIpsDKjFb3M",
+   "formattedAddress": "6876 Thorold Stone Rd, Niagara Falls, ON L2J 1B4, Canada",
+   "location": {
+    "latitude": 43.1147444,
+    "longitude": -79.1114695
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Petro-Canada",
+    "languageCode": "en"
+   },
+   "primaryType": "gas_station",
+   "near_school": "Saint Paul Catholic High School",
+   "asked_types": [
+    "convenience_store",
+    "grocery_store",
+    "supermarket"
+   ]
+  },
+  {
+   "id": "ChIJN5F2OtFD04kReyKMeqXdG5I",
+   "formattedAddress": "6850 Thorold Stone Rd #1, Niagara Falls, ON L2J 1B4, Canada",
+   "location": {
+    "latitude": 43.114598,
+    "longitude": -79.1108812
+   },
+   "businessStatus": "OPERATIONAL",
+   "displayName": {
+    "text": "Polonia European Market & Deli",
+    "languageCode": "en"
+   },
+   "primaryType": "supermarket",
+   "near_school": "Saint Paul Catholic High School",
+   "asked_types": [
+    "convenience_store",
+    "grocery_store",
+    "supermarket"
+   ]
+  }
+ ]
+}
