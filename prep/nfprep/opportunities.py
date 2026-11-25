@@ -143,7 +143,8 @@ def main(n_scen: int = 5) -> dict:
                             "--businesses", str(bp)], check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
             rev = {int(r["business"]): float(r["revenue"]) for r in csv.DictReader(open(bp))}
         for k, m in enumerate(menu):
-            ids = [i for i in range(len(b["node"])) if b["sim_category"][i] == m["sim_category"] and not b["external"][i] and not b["closed_from"][i]]
+            ids = [i for i in range(len(b["node"])) if b["sim_category"][i] == m["sim_category"] and not b["external"][i] and not b["closed_from"][i]
+                   and b["format_weight"][i] >= 0.05]          # the same businesses the newcomer was sized on
             counts[k] = len(ids)
             pct = m["_pct"]
             v = [rev.get(i, 0.0) for i in ids]
