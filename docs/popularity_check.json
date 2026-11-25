@@ -9,143 +9,27 @@
   {
    "accommodation": {
     "rated": 89,
-    "tourist_review_weight": 0.25,
-    "rank_match": 0.644,
-    "log_sd": 1.37
-   },
-   "apparel": {
-    "rated": 18,
-    "tourist_review_weight": 0.25,
-    "rank_match": 0.185,
-    "log_sd": 0.92
-   },
-   "attraction": {
-    "rated": 26,
-    "tourist_review_weight": 24,
-    "rank_match": 0.352,
-    "log_sd": 2.31
-   },
-   "auto_service": {
-    "rated": 14,
-    "tourist_review_weight": 0.25,
-    "rank_match": 0.618,
-    "log_sd": 0.87
-   },
-   "bank": {
-    "rated": 14,
-    "tourist_review_weight": 0.25,
-    "rank_match": 0.178,
-    "log_sd": 1.0
-   },
-   "bar_pub": {
-    "rated": 12,
-    "tourist_review_weight": 0.25,
-    "rank_match": 0.182,
-    "log_sd": 1.88
-   },
-   "cafe": {
-    "rated": 39,
-    "tourist_review_weight": 0.25,
-    "rank_match": -0.13,
-    "log_sd": 2.51
-   },
-   "fast_food": {
-    "rated": 79,
-    "tourist_review_weight": 0.25,
-    "rank_match": -0.022,
-    "log_sd": 1.3
-   },
-   "fuel": {
-    "rated": 25,
-    "tourist_review_weight": 0.25,
-    "rank_match": 0.336,
-    "log_sd": 1.48
-   },
-   "general_merchandise": {
-    "rated": 19,
-    "tourist_review_weight": 3,
-    "rank_match": 0.447,
-    "log_sd": 1.88
-   },
-   "grocery_food": {
-    "rated": 50,
-    "tourist_review_weight": 0.25,
-    "rank_match": 0.423,
-    "log_sd": 1.71
-   },
-   "health": {
-    "rated": 12,
-    "tourist_review_weight": 0.25,
-    "rank_match": 0.399,
-    "log_sd": 1.24
-   },
-   "home_electronics": {
-    "rated": 16,
-    "tourist_review_weight": 0.25,
-    "rank_match": 0.535,
-    "log_sd": 1.63
-   },
-   "leisure_paid": {
-    "rated": 14,
-    "tourist_review_weight": 0.25,
-    "rank_match": -0.081,
-    "log_sd": 2.09
-   },
-   "office": {
-    "rated": 16,
-    "tourist_review_weight": 0.25,
-    "rank_match": 0.097,
-    "log_sd": 0.84
-   },
-   "parking": {
-    "rated": 16,
-    "tourist_review_weight": 1.5,
-    "rank_match": 0.179,
-    "log_sd": 2.44
-   },
-   "personal_services": {
-    "rated": 27,
-    "tourist_review_weight": 0.25,
-    "rank_match": -0.283,
-    "log_sd": 1.44
-   },
-   "pharmacy": {
-    "rated": 13,
-    "tourist_review_weight": 12,
-    "rank_match": 0.412,
+    "tourist_review_weight": 1,
+    "rank_match": 0.716,
     "log_sd": 1.27
    },
-   "restaurant": {
-    "rated": 93,
-    "tourist_review_weight": 0.25,
-    "rank_match": 0.243,
-    "log_sd": 1.25
-   }
-  },
-  {
-   "accommodation": {
-    "rated": 89,
-    "tourist_review_weight": 0.25,
-    "rank_match": 0.644,
-    "log_sd": 1.37
-   },
    "apparel": {
     "rated": 18,
     "tourist_review_weight": 0.25,
-    "rank_match": 0.579,
-    "log_sd": 0.63
+    "rank_match": 0.106,
+    "log_sd": 1.16
    },
    "attraction": {
     "rated": 26,
     "tourist_review_weight": 24,
-    "rank_match": 0.588,
-    "log_sd": 2.02
+    "rank_match": 0.329,
+    "log_sd": 2.27
    },
    "auto_service": {
     "rated": 14,
     "tourist_review_weight": 0.25,
-    "rank_match": 0.921,
-    "log_sd": 0.58
+    "rank_match": 0.341,
+    "log_sd": 1.01
    },
    "bank": {
     "rated": 14,
@@ -156,56 +40,56 @@
    "bar_pub": {
     "rated": 12,
     "tourist_review_weight": 0.25,
-    "rank_match": 0.42,
-    "log_sd": 1.64
+    "rank_match": -0.056,
+    "log_sd": 1.8
    },
    "cafe": {
     "rated": 39,
     "tourist_review_weight": 0.25,
-    "rank_match": -0.017,
-    "log_sd": 2.48
+    "rank_match": 0.2,
+    "log_sd": 1.67
    },
    "fast_food": {
     "rated": 79,
     "tourist_review_weight": 0.25,
-    "rank_match": 0.068,
-    "log_sd": 1.18
+    "rank_match": 0.062,
+    "log_sd": 1.2
    },
    "fuel": {
     "rated": 25,
     "tourist_review_weight": 0.25,
-    "rank_match": 0.409,
-    "log_sd": 1.41
+    "rank_match": 0.471,
+    "log_sd": 1.46
    },
    "general_merchandise": {
     "rated": 19,
-    "tourist_review_weight": 3,
-    "rank_match": 0.581,
-    "log_sd": 1.71
+    "tourist_review_weight": 6,
+    "rank_match": 0.481,
+    "log_sd": 1.62
    },
    "grocery_food": {
     "rated": 50,
     "tourist_review_weight": 0.5,
-    "rank_match": 0.503,
-    "log_sd": 1.54
+    "rank_match": 0.558,
+    "log_sd": 1.58
    },
    "health": {
     "rated": 12,
     "tourist_review_weight": 0.25,
-    "rank_match": 0.734,
-    "log_sd": 0.92
+    "rank_match": 0.252,
+    "log_sd": 1.26
    },
    "home_electronics": {
     "rated": 16,
     "tourist_review_weight": 0.25,
-    "rank_match": 0.547,
-    "log_sd": 1.32
+    "rank_match": 0.518,
+    "log_sd": 1.7
    },
    "leisure_paid": {
     "rated": 14,
     "tourist_review_weight": 0.25,
-    "rank_match": 0.288,
-    "log_sd": 1.84
+    "rank_match": 0.134,
+    "log_sd": 1.86
    },
    "office": {
     "rated": 16,
@@ -215,53 +99,53 @@
    },
    "parking": {
     "rated": 16,
-    "tourist_review_weight": 4,
-    "rank_match": 0.453,
-    "log_sd": 2.12
+    "tourist_review_weight": 2,
+    "rank_match": -0.1,
+    "log_sd": 2.66
    },
    "personal_services": {
     "rated": 27,
     "tourist_review_weight": 0.25,
-    "rank_match": 0.615,
-    "log_sd": 1.18
+    "rank_match": -0.165,
+    "log_sd": 1.44
    },
    "pharmacy": {
     "rated": 13,
-    "tourist_review_weight": 12,
-    "rank_match": 0.484,
-    "log_sd": 1.14
+    "tourist_review_weight": 8,
+    "rank_match": 0.593,
+    "log_sd": 1.12
    },
    "restaurant": {
     "rated": 93,
     "tourist_review_weight": 0.25,
-    "rank_match": 0.518,
-    "log_sd": 1.05
+    "rank_match": 0.288,
+    "log_sd": 1.24
    }
   },
   {
    "accommodation": {
     "rated": 89,
-    "tourist_review_weight": 0.25,
-    "rank_match": 0.644,
-    "log_sd": 1.37
+    "tourist_review_weight": 1,
+    "rank_match": 0.716,
+    "log_sd": 1.27
    },
    "apparel": {
     "rated": 18,
     "tourist_review_weight": 0.25,
-    "rank_match": 0.903,
-    "log_sd": 0.39
+    "rank_match": 0.441,
+    "log_sd": 0.9
    },
    "attraction": {
     "rated": 26,
-    "tourist_review_weight": 1.5,
-    "rank_match": 0.716,
-    "log_sd": 1.74
+    "tourist_review_weight": 0.25,
+    "rank_match": 0.678,
+    "log_sd": 1.99
    },
    "auto_service": {
     "rated": 14,
     "tourist_review_weight": 0.25,
-    "rank_match": 0.974,
-    "log_sd": 0.35
+    "rank_match": 0.859,
+    "log_sd": 0.7
    },
    "bank": {
     "rated": 14,
@@ -271,57 +155,57 @@
    },
    "bar_pub": {
     "rated": 12,
-    "tourist_review_weight": 0.25,
-    "rank_match": 0.615,
-    "log_sd": 1.43
+    "tourist_review_weight": 0.5,
+    "rank_match": 0.371,
+    "log_sd": 1.55
    },
    "cafe": {
     "rated": 39,
     "tourist_review_weight": 0.25,
-    "rank_match": 0.089,
-    "log_sd": 2.46
+    "rank_match": 0.285,
+    "log_sd": 1.63
    },
    "fast_food": {
     "rated": 79,
     "tourist_review_weight": 0.25,
-    "rank_match": 0.189,
+    "rank_match": 0.2,
     "log_sd": 1.08
    },
    "fuel": {
     "rated": 25,
     "tourist_review_weight": 0.25,
-    "rank_match": 0.435,
-    "log_sd": 1.37
+    "rank_match": 0.511,
+    "log_sd": 1.42
    },
    "general_merchandise": {
     "rated": 19,
-    "tourist_review_weight": 3,
-    "rank_match": 0.588,
-    "log_sd": 1.57
+    "tourist_review_weight": 6,
+    "rank_match": 0.535,
+    "log_sd": 1.42
    },
    "grocery_food": {
     "rated": 50,
     "tourist_review_weight": 0.5,
-    "rank_match": 0.6,
-    "log_sd": 1.4
+    "rank_match": 0.667,
+    "log_sd": 1.39
    },
    "health": {
     "rated": 12,
     "tourist_review_weight": 0.25,
-    "rank_match": 0.902,
-    "log_sd": 0.66
+    "rank_match": 0.727,
+    "log_sd": 0.95
    },
    "home_electronics": {
     "rated": 16,
     "tourist_review_weight": 0.25,
-    "rank_match": 0.568,
-    "log_sd": 1.03
+    "rank_match": 0.518,
+    "log_sd": 1.37
    },
    "leisure_paid": {
     "rated": 14,
     "tourist_review_weight": 0.25,
-    "rank_match": 0.437,
-    "log_sd": 1.61
+    "rank_match": 0.349,
+    "log_sd": 1.54
    },
    "office": {
     "rated": 16,
@@ -331,47 +215,279 @@
    },
    "parking": {
     "rated": 16,
-    "tourist_review_weight": 12,
-    "rank_match": 0.626,
-    "log_sd": 1.83
+    "tourist_review_weight": 2,
+    "rank_match": 0.4,
+    "log_sd": 2.35
    },
    "personal_services": {
     "rated": 27,
     "tourist_review_weight": 0.25,
-    "rank_match": 0.766,
-    "log_sd": 0.96
+    "rank_match": 0.612,
+    "log_sd": 1.2
    },
    "pharmacy": {
     "rated": 13,
-    "tourist_review_weight": 16,
-    "rank_match": 0.61,
-    "log_sd": 1.03
+    "tourist_review_weight": 8,
+    "rank_match": 0.736,
+    "log_sd": 1.02
    },
    "restaurant": {
     "rated": 93,
-    "tourist_review_weight": 0.25,
-    "rank_match": 0.692,
-    "log_sd": 0.89
+    "tourist_review_weight": 1,
+    "rank_match": 0.525,
+    "log_sd": 1.03
    }
   },
   {
    "accommodation": {
     "rated": 89,
-    "tourist_review_weight": 0.25,
-    "rank_match": 0.644,
-    "log_sd": 1.37
+    "tourist_review_weight": 1,
+    "rank_match": 0.716,
+    "log_sd": 1.27
    },
    "apparel": {
     "rated": 18,
     "tourist_review_weight": 0.25,
-    "rank_match": 0.973,
-    "log_sd": 0.21
+    "rank_match": 0.653,
+    "log_sd": 0.68
    },
    "attraction": {
     "rated": 26,
     "tourist_review_weight": 0.25,
-    "rank_match": 0.788,
-    "log_sd": 1.47
+    "rank_match": 0.755,
+    "log_sd": 1.71
+   },
+   "auto_service": {
+    "rated": 14,
+    "tourist_review_weight": 0.25,
+    "rank_match": 0.952,
+    "log_sd": 0.45
+   },
+   "bank": {
+    "rated": 14,
+    "tourist_review_weight": 0.25,
+    "rank_match": 0.178,
+    "log_sd": 1.0
+   },
+   "bar_pub": {
+    "rated": 12,
+    "tourist_review_weight": 1,
+    "rank_match": 0.643,
+    "log_sd": 1.31
+   },
+   "cafe": {
+    "rated": 39,
+    "tourist_review_weight": 0.25,
+    "rank_match": 0.35,
+    "log_sd": 2.37
+   },
+   "fast_food": {
+    "rated": 79,
+    "tourist_review_weight": 0.25,
+    "rank_match": 0.329,
+    "log_sd": 0.98
+   },
+   "fuel": {
+    "rated": 25,
+    "tourist_review_weight": 0.25,
+    "rank_match": 0.577,
+    "log_sd": 1.39
+   },
+   "general_merchandise": {
+    "rated": 19,
+    "tourist_review_weight": 6,
+    "rank_match": 0.598,
+    "log_sd": 1.24
+   },
+   "grocery_food": {
+    "rated": 50,
+    "tourist_review_weight": 0.5,
+    "rank_match": 0.749,
+    "log_sd": 1.23
+   },
+   "health": {
+    "rated": 12,
+    "tourist_review_weight": 0.25,
+    "rank_match": 0.881,
+    "log_sd": 0.68
+   },
+   "home_electronics": {
+    "rated": 16,
+    "tourist_review_weight": 0.25,
+    "rank_match": 0.518,
+    "log_sd": 1.07
+   },
+   "leisure_paid": {
+    "rated": 14,
+    "tourist_review_weight": 0.25,
+    "rank_match": 0.56,
+    "log_sd": 1.25
+   },
+   "office": {
+    "rated": 16,
+    "tourist_review_weight": 0.25,
+    "rank_match": 0.097,
+    "log_sd": 0.84
+   },
+   "parking": {
+    "rated": 16,
+    "tourist_review_weight": 8,
+    "rank_match": 0.521,
+    "log_sd": 2.07
+   },
+   "personal_services": {
+    "rated": 27,
+    "tourist_review_weight": 0.25,
+    "rank_match": 0.808,
+    "log_sd": 1.02
+   },
+   "pharmacy": {
+    "rated": 13,
+    "tourist_review_weight": 8,
+    "rank_match": 0.742,
+    "log_sd": 0.94
+   },
+   "restaurant": {
+    "rated": 93,
+    "tourist_review_weight": 6,
+    "rank_match": 0.697,
+    "log_sd": 0.85
+   }
+  },
+  {
+   "accommodation": {
+    "rated": 89,
+    "tourist_review_weight": 1,
+    "rank_match": 0.716,
+    "log_sd": 1.27
+   },
+   "apparel": {
+    "rated": 18,
+    "tourist_review_weight": 0.25,
+    "rank_match": 0.769,
+    "log_sd": 0.51
+   },
+   "attraction": {
+    "rated": 26,
+    "tourist_review_weight": 0.25,
+    "rank_match": 0.822,
+    "log_sd": 1.45
+   },
+   "auto_service": {
+    "rated": 14,
+    "tourist_review_weight": 0.25,
+    "rank_match": 0.987,
+    "log_sd": 0.26
+   },
+   "bank": {
+    "rated": 14,
+    "tourist_review_weight": 0.25,
+    "rank_match": 0.178,
+    "log_sd": 1.0
+   },
+   "bar_pub": {
+    "rated": 12,
+    "tourist_review_weight": 1.5,
+    "rank_match": 0.818,
+    "log_sd": 1.11
+   },
+   "cafe": {
+    "rated": 39,
+    "tourist_review_weight": 0.25,
+    "rank_match": 0.424,
+    "log_sd": 2.38
+   },
+   "fast_food": {
+    "rated": 79,
+    "tourist_review_weight": 0.25,
+    "rank_match": 0.446,
+    "log_sd": 0.92
+   },
+   "fuel": {
+    "rated": 25,
+    "tourist_review_weight": 0.25,
+    "rank_match": 0.602,
+    "log_sd": 1.38
+   },
+   "general_merchandise": {
+    "rated": 19,
+    "tourist_review_weight": 6,
+    "rank_match": 0.672,
+    "log_sd": 1.07
+   },
+   "grocery_food": {
+    "rated": 50,
+    "tourist_review_weight": 0.5,
+    "rank_match": 0.804,
+    "log_sd": 1.09
+   },
+   "health": {
+    "rated": 12,
+    "tourist_review_weight": 0.25,
+    "rank_match": 0.916,
+    "log_sd": 0.46
+   },
+   "home_electronics": {
+    "rated": 16,
+    "tourist_review_weight": 0.25,
+    "rank_match": 0.626,
+    "log_sd": 0.8
+   },
+   "leisure_paid": {
+    "rated": 14,
+    "tourist_review_weight": 0.25,
+    "rank_match": 0.767,
+    "log_sd": 0.99
+   },
+   "office": {
+    "rated": 16,
+    "tourist_review_weight": 0.25,
+    "rank_match": 0.097,
+    "log_sd": 0.84
+   },
+   "parking": {
+    "rated": 16,
+    "tourist_review_weight": 6,
+    "rank_match": 0.629,
+    "log_sd": 1.8
+   },
+   "personal_services": {
+    "rated": 27,
+    "tourist_review_weight": 0.25,
+    "rank_match": 0.863,
+    "log_sd": 0.9
+   },
+   "pharmacy": {
+    "rated": 13,
+    "tourist_review_weight": 12,
+    "rank_match": 0.753,
+    "log_sd": 0.88
+   },
+   "restaurant": {
+    "rated": 93,
+    "tourist_review_weight": 24,
+    "rank_match": 0.806,
+    "log_sd": 0.72
+   }
+  },
+  {
+   "accommodation": {
+    "rated": 89,
+    "tourist_review_weight": 1,
+    "rank_match": 0.716,
+    "log_sd": 1.27
+   },
+   "apparel": {
+    "rated": 18,
+    "tourist_review_weight": 0.25,
+    "rank_match": 0.833,
+    "log_sd": 0.44
+   },
+   "attraction": {
+    "rated": 26,
+    "tourist_review_weight": 0.25,
+    "rank_match": 0.854,
+    "log_sd": 1.34
    },
    "auto_service": {
     "rated": 14,
@@ -387,173 +503,57 @@
    },
    "bar_pub": {
     "rated": 12,
-    "tourist_review_weight": 0.25,
-    "rank_match": 0.776,
-    "log_sd": 1.24
+    "tourist_review_weight": 1,
+    "rank_match": 0.86,
+    "log_sd": 1.02
    },
    "cafe": {
     "rated": 39,
     "tourist_review_weight": 0.25,
-    "rank_match": 0.152,
-    "log_sd": 2.46
+    "rank_match": 0.434,
+    "log_sd": 2.38
    },
    "fast_food": {
     "rated": 79,
-    "tourist_review_weight": 0.25,
-    "rank_match": 0.301,
-    "log_sd": 1.01
-   },
-   "fuel": {
-    "rated": 25,
-    "tourist_review_weight": 0.25,
-    "rank_match": 0.483,
-    "log_sd": 1.35
-   },
-   "general_merchandise": {
-    "rated": 19,
-    "tourist_review_weight": 3,
-    "rank_match": 0.63,
-    "log_sd": 1.46
-   },
-   "grocery_food": {
-    "rated": 50,
-    "tourist_review_weight": 0.5,
-    "rank_match": 0.687,
-    "log_sd": 1.27
-   },
-   "health": {
-    "rated": 12,
-    "tourist_review_weight": 0.25,
-    "rank_match": 0.916,
-    "log_sd": 0.47
-   },
-   "home_electronics": {
-    "rated": 16,
-    "tourist_review_weight": 0.25,
-    "rank_match": 0.609,
-    "log_sd": 0.75
-   },
-   "leisure_paid": {
-    "rated": 14,
-    "tourist_review_weight": 0.25,
-    "rank_match": 0.547,
-    "log_sd": 1.41
-   },
-   "office": {
-    "rated": 16,
-    "tourist_review_weight": 0.25,
-    "rank_match": 0.097,
-    "log_sd": 0.84
-   },
-   "parking": {
-    "rated": 16,
-    "tourist_review_weight": 8,
-    "rank_match": 0.818,
-    "log_sd": 1.55
-   },
-   "personal_services": {
-    "rated": 27,
-    "tourist_review_weight": 0.25,
-    "rank_match": 0.81,
-    "log_sd": 0.8
-   },
-   "pharmacy": {
-    "rated": 13,
-    "tourist_review_weight": 16,
-    "rank_match": 0.67,
-    "log_sd": 0.95
-   },
-   "restaurant": {
-    "rated": 93,
-    "tourist_review_weight": 0.5,
-    "rank_match": 0.782,
-    "log_sd": 0.78
-   }
-  },
-  {
-   "accommodation": {
-    "rated": 89,
-    "tourist_review_weight": 0.25,
-    "rank_match": 0.644,
-    "log_sd": 1.37
-   },
-   "apparel": {
-    "rated": 18,
-    "tourist_review_weight": 0.25,
-    "rank_match": 0.994,
-    "log_sd": 0.13
-   },
-   "attraction": {
-    "rated": 26,
-    "tourist_review_weight": 0.25,
-    "rank_match": 0.863,
-    "log_sd": 1.35
-   },
-   "auto_service": {
-    "rated": 14,
-    "tourist_review_weight": 0.25,
-    "rank_match": 0.996,
-    "log_sd": 0.1
-   },
-   "bank": {
-    "rated": 14,
-    "tourist_review_weight": 0.25,
-    "rank_match": 0.178,
-    "log_sd": 1.0
-   },
-   "bar_pub": {
-    "rated": 12,
-    "tourist_review_weight": 0.25,
-    "rank_match": 0.818,
-    "log_sd": 1.15
-   },
-   "cafe": {
-    "rated": 39,
-    "tourist_review_weight": 0.25,
-    "rank_match": 0.194,
-    "log_sd": 2.45
-   },
-   "fast_food": {
-    "rated": 79,
-    "tourist_review_weight": 0.25,
-    "rank_match": 0.353,
-    "log_sd": 0.99
-   },
-   "fuel": {
-    "rated": 25,
     "tourist_review_weight": 0.25,
     "rank_match": 0.498,
-    "log_sd": 1.35
+    "log_sd": 0.9
+   },
+   "fuel": {
+    "rated": 25,
+    "tourist_review_weight": 0.25,
+    "rank_match": 0.621,
+    "log_sd": 1.38
    },
    "general_merchandise": {
     "rated": 19,
-    "tourist_review_weight": 3,
-    "rank_match": 0.647,
-    "log_sd": 1.41
+    "tourist_review_weight": 6,
+    "rank_match": 0.737,
+    "log_sd": 1.0
    },
    "grocery_food": {
     "rated": 50,
     "tourist_review_weight": 0.25,
-    "rank_match": 0.727,
-    "log_sd": 1.23
+    "rank_match": 0.818,
+    "log_sd": 1.25
    },
    "health": {
     "rated": 12,
     "tourist_review_weight": 0.25,
     "rank_match": 0.93,
-    "log_sd": 0.41
+    "log_sd": 0.37
    },
    "home_electronics": {
     "rated": 16,
     "tourist_review_weight": 0.25,
-    "rank_match": 0.674,
-    "log_sd": 0.63
+    "rank_match": 0.7,
+    "log_sd": 0.68
    },
    "leisure_paid": {
     "rated": 14,
     "tourist_review_weight": 0.25,
-    "rank_match": 0.679,
-    "log_sd": 1.32
+    "rank_match": 0.837,
+    "log_sd": 0.88
    },
    "office": {
     "rated": 16,
@@ -563,31 +563,31 @@
    },
    "parking": {
     "rated": 16,
-    "tourist_review_weight": 4,
-    "rank_match": 0.821,
-    "log_sd": 1.43
+    "tourist_review_weight": 6,
+    "rank_match": 0.638,
+    "log_sd": 1.69
    },
    "personal_services": {
     "rated": 27,
     "tourist_review_weight": 0.25,
-    "rank_match": 0.837,
-    "log_sd": 0.73
+    "rank_match": 0.875,
+    "log_sd": 0.85
    },
    "pharmacy": {
     "rated": 13,
-    "tourist_review_weight": 16,
-    "rank_match": 0.692,
-    "log_sd": 0.91
+    "tourist_review_weight": 12,
+    "rank_match": 0.753,
+    "log_sd": 0.85
    },
    "restaurant": {
     "rated": 93,
-    "tourist_review_weight": 0.5,
-    "rank_match": 0.808,
-    "log_sd": 0.73
+    "tourist_review_weight": 24,
+    "rank_match": 0.837,
+    "log_sd": 0.67
    }
   }
  ],
- "rating_vs_pull_change_corr": 0.142,
+ "rating_vs_pull_change_corr": 0.076,
  "still_unexplained": [
   {
    "name": "Tim Hortons",
@@ -595,8 +595,8 @@
    "kind": "cafe",
    "reviews": 1125,
    "rating": 3.9,
-   "pull_change": 2.14,
-   "reviews_vs_model": 891790.79,
+   "pull_change": 4.26,
+   "reviews_vs_model": 883849.51,
    "tourist_share_model": 0.0
   },
   {
@@ -606,38 +606,8 @@
    "reviews": 245,
    "rating": 4.6,
    "pull_change": 1.0,
-   "reviews_vs_model": 219.79,
+   "reviews_vs_model": 299.36,
    "tourist_share_model": 0.18
-  },
-  {
-   "name": "Canadian Niagara Hotels",
-   "address": "5685 Falls Avenue",
-   "kind": "accommodation",
-   "reviews": 27,
-   "rating": 3.6,
-   "pull_change": 0.25,
-   "reviews_vs_model": 0.01,
-   "tourist_share_model": 1.0
-  },
-  {
-   "name": "Pizza Pizza",
-   "address": "5619 Stanley Av",
-   "kind": "fast_food",
-   "reviews": 8,
-   "rating": 2.9,
-   "pull_change": 0.24,
-   "reviews_vs_model": 0.01,
-   "tourist_share_model": 0.94
-  },
-  {
-   "name": "Great Wolf Lodge",
-   "address": "3950 victoria Avenue",
-   "kind": "parking",
-   "reviews": 14877,
-   "rating": 4.4,
-   "pull_change": 4.0,
-   "reviews_vs_model": 63.65,
-   "tourist_share_model": 1.0
   },
   {
    "name": "Bulk Barn",
@@ -646,97 +616,47 @@
    "reviews": 56,
    "rating": 4.3,
    "pull_change": 5.52,
-   "reviews_vs_model": 51.91,
+   "reviews_vs_model": 274.43,
    "tourist_share_model": 0.0
   },
   {
-   "name": "Duck Tank",
-   "address": "4967 Clifton Hl",
-   "kind": "leisure_paid",
+   "name": "Pizza Pizza",
+   "address": "5619 Stanley Av",
+   "kind": "fast_food",
    "reviews": 8,
-   "rating": 3.3,
-   "pull_change": 0.25,
-   "reviews_vs_model": 0.02,
-   "tourist_share_model": 0.89
-  },
-  {
-   "name": "1904 Bar",
-   "address": "6080 Fallsview Bv",
-   "kind": "bar_pub",
-   "reviews": 8,
-   "rating": 4.8,
-   "pull_change": 0.25,
-   "reviews_vs_model": 0.03,
+   "rating": 2.9,
+   "pull_change": 0.22,
+   "reviews_vs_model": 0.01,
    "tourist_share_model": 0.92
   },
   {
-   "name": "Starbucks",
-   "address": "6700 Fallsview Bv",
-   "kind": "cafe",
-   "reviews": 86,
-   "rating": 2.7,
-   "pull_change": 0.76,
-   "reviews_vs_model": 0.03,
-   "tourist_share_model": 0.94
-  },
-  {
-   "name": "Giant Tiger",
-   "address": "7555 Montrose Rd",
-   "kind": "general_merchandise",
-   "reviews": 287,
-   "rating": 4.1,
-   "pull_change": 1.0,
-   "reviews_vs_model": 0.04,
-   "tourist_share_model": 0.03
-  },
-  {
-   "name": "Pizza Hut",
-   "address": "5905 Victoria Av",
-   "kind": "restaurant",
-   "reviews": 131,
-   "rating": 2.8,
-   "pull_change": 1.0,
-   "reviews_vs_model": 0.04,
-   "tourist_share_model": 0.98
-  },
-  {
-   "name": "Dollarama",
-   "address": "7190 Morrison Street",
-   "kind": "general_merchandise",
-   "reviews": 578,
-   "rating": 4.2,
-   "pull_change": 1.36,
-   "reviews_vs_model": 23.85,
-   "tourist_share_model": 0.01
-  },
-  {
-   "name": "Falls Manor Motel",
-   "address": "7104 Lundy's Ln",
-   "kind": "accommodation",
-   "reviews": 2228,
-   "rating": 4.5,
+   "name": "Great Wolf Lodge",
+   "address": "3950 victoria Avenue",
+   "kind": "parking",
+   "reviews": 14877,
+   "rating": 4.4,
    "pull_change": 4.0,
-   "reviews_vs_model": 20.81,
+   "reviews_vs_model": 62.2,
    "tourist_share_model": 1.0
   },
   {
-   "name": "Falls Manor Resort",
-   "address": "7104 Lundys Lane",
+   "name": "Canadian Niagara Hotels",
+   "address": "5685 Falls Avenue",
    "kind": "accommodation",
-   "reviews": 2228,
-   "rating": 4.5,
-   "pull_change": 4.0,
-   "reviews_vs_model": 20.81,
-   "tourist_share_model": 1.0
-  },
-  {
-   "name": "Cannery Lofts Niagara",
-   "address": "5686 Lewis Avenue",
-   "kind": "accommodation",
-   "reviews": 320,
-   "rating": 4.6,
+   "reviews": 27,
+   "rating": 3.6,
    "pull_change": 0.25,
-   "reviews_vs_model": 0.05,
+   "reviews_vs_model": 0.02,
+   "tourist_share_model": 1.0
+  },
+  {
+   "name": "Easy Parking Niagara Falls – Fallsview Boulevard",
+   "address": "6170 Fallsview Boulevard",
+   "kind": "parking",
+   "reviews": 8,
+   "rating": 3.1,
+   "pull_change": 0.25,
+   "reviews_vs_model": 0.02,
    "tourist_share_model": 1.0
   },
   {
@@ -746,8 +666,58 @@
    "reviews": 189,
    "rating": 4.3,
    "pull_change": 1.0,
-   "reviews_vs_model": 18.29,
+   "reviews_vs_model": 35.62,
    "tourist_share_model": 0.0
+  },
+  {
+   "name": "1904 Bar",
+   "address": "6080 Fallsview Bv",
+   "kind": "bar_pub",
+   "reviews": 8,
+   "rating": 4.8,
+   "pull_change": 0.25,
+   "reviews_vs_model": 0.04,
+   "tourist_share_model": 0.88
+  },
+  {
+   "name": "Falls Manor Motel",
+   "address": "7104 Lundy's Ln",
+   "kind": "accommodation",
+   "reviews": 2228,
+   "rating": 4.5,
+   "pull_change": 4.0,
+   "reviews_vs_model": 20.73,
+   "tourist_share_model": 1.0
+  },
+  {
+   "name": "Falls Manor Resort",
+   "address": "7104 Lundys Lane",
+   "kind": "accommodation",
+   "reviews": 2228,
+   "rating": 4.5,
+   "pull_change": 4.0,
+   "reviews_vs_model": 20.73,
+   "tourist_share_model": 1.0
+  },
+  {
+   "name": "Pizza Hut",
+   "address": "5905 Victoria Av",
+   "kind": "restaurant",
+   "reviews": 131,
+   "rating": 2.8,
+   "pull_change": 1.0,
+   "reviews_vs_model": 0.05,
+   "tourist_share_model": 0.97
+  },
+  {
+   "name": "Comfort Hotel",
+   "address": "5700 Stanley Avenue",
+   "kind": "accommodation",
+   "reviews": 1118,
+   "rating": 3.4,
+   "pull_change": 0.25,
+   "reviews_vs_model": 0.06,
+   "tourist_share_model": 1.0
   },
   {
    "name": "The Craig House",
@@ -760,24 +730,24 @@
    "tourist_share_model": 1.0
   },
   {
-   "name": "Carnival Chaos Hyper Ride",
-   "address": "5771 Victoria Av",
+   "name": "Incline Railway",
+   "address": "Niagara River Py",
    "kind": "attraction",
-   "reviews": 93,
-   "rating": 4.1,
+   "reviews": 7,
+   "rating": 4.3,
    "pull_change": 0.25,
    "reviews_vs_model": 0.06,
-   "tourist_share_model": 0.95
+   "tourist_share_model": 0.94
   },
   {
    "name": "Starbucks",
-   "address": "6361 Fallsview Bv",
+   "address": "6700 Fallsview Bv",
    "kind": "cafe",
-   "reviews": 118,
-   "rating": 3.7,
-   "pull_change": 0.76,
+   "reviews": 86,
+   "rating": 2.7,
+   "pull_change": 0.41,
    "reviews_vs_model": 0.06,
-   "tourist_share_model": 0.99
+   "tourist_share_model": 0.92
   },
   {
    "name": "Bulk Barn",
@@ -787,46 +757,16 @@
    "rating": 4.3,
    "pull_change": 0.43,
    "reviews_vs_model": 0.06,
-   "tourist_share_model": 0.26
+   "tourist_share_model": 0.23
   },
   {
-   "name": "Sterling Inn",
-   "address": "5191 Magdalen Street",
-   "kind": "accommodation",
-   "reviews": 2445,
-   "rating": 4.6,
+   "name": "Oakes Hotel Parking",
+   "address": "6546 Fallsview Bv",
+   "kind": "parking",
+   "reviews": 5201,
+   "rating": 3.4,
    "pull_change": 4.0,
-   "reviews_vs_model": 16.53,
-   "tourist_share_model": 1.0
-  },
-  {
-   "name": "Incline Railway",
-   "address": "Niagara River Py",
-   "kind": "attraction",
-   "reviews": 7,
-   "rating": 4.3,
-   "pull_change": 0.25,
-   "reviews_vs_model": 0.07,
-   "tourist_share_model": 0.94
-  },
-  {
-   "name": "Starbucks",
-   "address": "5685 Falls Avenue",
-   "kind": "cafe",
-   "reviews": 219,
-   "rating": 2.5,
-   "pull_change": 0.76,
-   "reviews_vs_model": 0.07,
-   "tourist_share_model": 0.95
-  },
-  {
-   "name": "Niagara Lodge & Suites",
-   "address": "7720 Lundys Lane",
-   "kind": "accommodation",
-   "reviews": 1408,
-   "rating": 2.5,
-   "pull_change": 4.0,
-   "reviews_vs_model": 12.82,
+   "reviews_vs_model": 14.66,
    "tourist_share_model": 1.0
   },
   {
@@ -836,8 +776,18 @@
    "reviews": 8,
    "rating": 4.4,
    "pull_change": 0.25,
-   "reviews_vs_model": 0.08,
-   "tourist_share_model": 0.91
+   "reviews_vs_model": 0.07,
+   "tourist_share_model": 0.92
+  },
+  {
+   "name": "Niagara Lodge & Suites",
+   "address": "7720 Lundys Lane",
+   "kind": "accommodation",
+   "reviews": 1408,
+   "rating": 2.5,
+   "pull_change": 4.0,
+   "reviews_vs_model": 12.74,
+   "tourist_share_model": 1.0
   },
   {
    "name": "FirstOntario Credit Union",
@@ -857,37 +807,7 @@
    "rating": 3.8,
    "pull_change": 0.25,
    "reviews_vs_model": 0.08,
-   "tourist_share_model": 0.91
-  },
-  {
-   "name": "Skywheel",
-   "address": "4960 Clifton Hl",
-   "kind": "attraction",
-   "reviews": 18865,
-   "rating": 4.6,
-   "pull_change": 4.0,
-   "reviews_vs_model": 11.81,
-   "tourist_share_model": 0.95
-  },
-  {
-   "name": "Giant Tiger",
-   "address": "6161 Thorold Stone Rd",
-   "kind": "general_merchandise",
-   "reviews": 756,
-   "rating": 4.2,
-   "pull_change": 1.0,
-   "reviews_vs_model": 0.09,
-   "tourist_share_model": 0.06
-  },
-  {
-   "name": "Easy Parking Niagara Falls – Fallsview Boulevard",
-   "address": "6170 Fallsview Boulevard",
-   "kind": "parking",
-   "reviews": 8,
-   "rating": 3.1,
-   "pull_change": 0.25,
-   "reviews_vs_model": 0.09,
-   "tourist_share_model": 1.0
+   "tourist_share_model": 0.88
   },
   {
    "name": "Falls Deli",
@@ -896,18 +816,28 @@
    "reviews": 96,
    "rating": 3.3,
    "pull_change": 0.25,
-   "reviews_vs_model": 0.09,
-   "tourist_share_model": 0.91
+   "reviews_vs_model": 0.08,
+   "tourist_share_model": 0.88
   },
   {
-   "name": "Bittersweet Symphony",
-   "address": "6240 Thorold Stone Rd",
-   "kind": "grocery_food",
-   "reviews": 947,
-   "rating": 4.8,
+   "name": "Skywheel",
+   "address": "4960 Clifton Hl",
+   "kind": "attraction",
+   "reviews": 18865,
+   "rating": 4.6,
    "pull_change": 4.0,
-   "reviews_vs_model": 10.7,
-   "tourist_share_model": 0.25
+   "reviews_vs_model": 11.82,
+   "tourist_share_model": 0.95
+  },
+  {
+   "name": "Duck Tank",
+   "address": "4967 Clifton Hl",
+   "kind": "leisure_paid",
+   "reviews": 8,
+   "rating": 3.3,
+   "pull_change": 0.25,
+   "reviews_vs_model": 0.09,
+   "tourist_share_model": 0.86
   },
   {
    "name": "Niagara Falls Supercharger",
@@ -916,18 +846,18 @@
    "reviews": 23,
    "rating": 4.7,
    "pull_change": 1.0,
-   "reviews_vs_model": 10.5,
-   "tourist_share_model": 0.56
+   "reviews_vs_model": 10.74,
+   "tourist_share_model": 0.52
   },
   {
-   "name": "Olympia Motel",
-   "address": "5099 Centre St",
-   "kind": "accommodation",
-   "reviews": 313,
-   "rating": 3.0,
-   "pull_change": 0.25,
-   "reviews_vs_model": 0.1,
-   "tourist_share_model": 1.0
+   "name": "The Niagara SkyWheel",
+   "address": "4950 Clifton Hill",
+   "kind": "attraction",
+   "reviews": 18865,
+   "rating": 4.6,
+   "pull_change": 4.0,
+   "reviews_vs_model": 10.52,
+   "tourist_share_model": 0.95
   },
   {
    "name": "Maple Haven",
@@ -940,34 +870,34 @@
    "tourist_share_model": 1.0
   },
   {
-   "name": "Subway",
-   "address": "4025 Dorchester Rd",
-   "kind": "fast_food",
-   "reviews": 143,
+   "name": "Starbucks",
+   "address": "6361 Fallsview Bv",
+   "kind": "cafe",
+   "reviews": 118,
    "rating": 3.7,
-   "pull_change": 1.0,
-   "reviews_vs_model": 0.1,
-   "tourist_share_model": 0.56
+   "pull_change": 0.41,
+   "reviews_vs_model": 0.11,
+   "tourist_share_model": 0.99
   },
   {
-   "name": "Bulk Barn",
-   "address": "3714 Portage Rd",
-   "kind": "grocery_food",
-   "reviews": 80,
-   "rating": 4.4,
-   "pull_change": 0.43,
-   "reviews_vs_model": 0.1,
-   "tourist_share_model": 0.35
-  },
-  {
-   "name": "The Niagara SkyWheel",
-   "address": "4950 Clifton Hill",
-   "kind": "attraction",
-   "reviews": 18865,
-   "rating": 4.6,
+   "name": "The Falls Hotel",
+   "address": "5657 Victoria Av",
+   "kind": "accommodation",
+   "reviews": 1340,
+   "rating": 3.2,
    "pull_change": 4.0,
-   "reviews_vs_model": 9.9,
-   "tourist_share_model": 0.95
+   "reviews_vs_model": 9.02,
+   "tourist_share_model": 1.0
+  },
+  {
+   "name": "Bittersweet Symphony",
+   "address": "6240 Thorold Stone Rd",
+   "kind": "grocery_food",
+   "reviews": 947,
+   "rating": 4.8,
+   "pull_change": 4.0,
+   "reviews_vs_model": 9.01,
+   "tourist_share_model": 0.25
   },
   {
    "name": "Skyline Hotel",
@@ -976,18 +906,8 @@
    "reviews": 3801,
    "rating": 3.5,
    "pull_change": 4.0,
-   "reviews_vs_model": 9.76,
+   "reviews_vs_model": 8.71,
    "tourist_share_model": 1.0
-  },
-  {
-   "name": "Avondale Food Stores",
-   "address": "3969 Montrose Rd",
-   "kind": "grocery_food",
-   "reviews": 7,
-   "rating": 3.3,
-   "pull_change": 1.0,
-   "reviews_vs_model": 0.11,
-   "tourist_share_model": 0.07
   },
   {
    "name": "Mandarin",
@@ -996,48 +916,38 @@
    "reviews": 33745,
    "rating": 4.9,
    "pull_change": 4.0,
-   "reviews_vs_model": 8.97,
-   "tourist_share_model": 0.88
-  },
-  {
-   "name": "Rainbow Motor Inn",
-   "address": "5581 Murray Street",
-   "kind": "accommodation",
-   "reviews": 379,
-   "rating": 2.4,
-   "pull_change": 4.0,
-   "reviews_vs_model": 8.96,
-   "tourist_share_model": 1.0
-  },
-  {
-   "name": "Fallsview Indoor Waterpark",
-   "address": "5685 Falls Avenue",
-   "kind": "leisure_paid",
-   "reviews": 5014,
-   "rating": 3.9,
-   "pull_change": 4.0,
-   "reviews_vs_model": 8.84,
+   "reviews_vs_model": 8.44,
    "tourist_share_model": 0.86
   },
   {
-   "name": "Howard Johnson",
-   "address": "5905 Victoria Avenue",
+   "name": "Blue Moon Motel",
+   "address": "8445 Lundys Lane",
    "kind": "accommodation",
-   "reviews": 3308,
-   "rating": 3.9,
-   "pull_change": 4.0,
-   "reviews_vs_model": 8.36,
+   "reviews": 457,
+   "rating": 4.4,
+   "pull_change": 0.25,
+   "reviews_vs_model": 0.12,
    "tourist_share_model": 1.0
   },
   {
-   "name": "Avondale Food Stores",
-   "address": "8214 Lundys Lane",
+   "name": "Bulk Barn",
+   "address": "3714 Portage Rd",
    "kind": "grocery_food",
-   "reviews": 9,
-   "rating": 3.7,
-   "pull_change": 1.0,
+   "reviews": 80,
+   "rating": 4.4,
+   "pull_change": 0.43,
    "reviews_vs_model": 0.12,
-   "tourist_share_model": 0.15
+   "tourist_share_model": 0.37
+  },
+  {
+   "name": "Dollarama",
+   "address": "7190 Morrison Street",
+   "kind": "general_merchandise",
+   "reviews": 578,
+   "rating": 4.2,
+   "pull_change": 3.99,
+   "reviews_vs_model": 8.09,
+   "tourist_share_model": 0.01
   },
   {
    "name": "Service Ontario",
@@ -1050,74 +960,64 @@
    "tourist_share_model": 0.0
   },
   {
-   "name": "Niagara Falls Courtside Inn",
-   "address": "5640 Stanley Avenue",
+   "name": "Sterling Inn",
+   "address": "5191 Magdalen Street",
    "kind": "accommodation",
-   "reviews": 346,
-   "rating": 2.6,
-   "pull_change": 0.25,
-   "reviews_vs_model": 0.13,
+   "reviews": 2445,
+   "rating": 4.6,
+   "pull_change": 4.0,
+   "reviews_vs_model": 7.54,
    "tourist_share_model": 1.0
   },
   {
-   "name": "Comfort Hotel",
-   "address": "5700 Stanley Avenue",
-   "kind": "accommodation",
-   "reviews": 1118,
-   "rating": 3.4,
+   "name": "Gizmos Wax Hands",
+   "address": "4950 Clifton Hill",
+   "kind": "attraction",
+   "reviews": 33,
+   "rating": 3.8,
    "pull_change": 0.25,
    "reviews_vs_model": 0.14,
-   "tourist_share_model": 1.0
+   "tourist_share_model": 0.95
+  },
+  {
+   "name": "Lapennaco Liquidation Super Centre",
+   "address": "5515 Stanley Av",
+   "kind": "general_merchandise",
+   "reviews": 332,
+   "rating": 3.7,
+   "pull_change": 0.25,
+   "reviews_vs_model": 0.14,
+   "tourist_share_model": 0.05
+  },
+  {
+   "name": "Maple Leaf Place",
+   "address": "4199 River Rd",
+   "kind": "general_merchandise",
+   "reviews": 3964,
+   "rating": 4.2,
+   "pull_change": 4.0,
+   "reviews_vs_model": 7.01,
+   "tourist_share_model": 0.06
+  },
+  {
+   "name": "Flying Saucer Restaurant",
+   "address": "6768 Lundys Lane",
+   "kind": "restaurant",
+   "reviews": 10029,
+   "rating": 4.4,
+   "pull_change": 4.0,
+   "reviews_vs_model": 6.69,
+   "tourist_share_model": 0.89
   },
   {
    "name": "Starbucks",
-   "address": "5931 Kalar Road",
+   "address": "5685 Falls Avenue",
    "kind": "cafe",
-   "reviews": 255,
-   "rating": 3.5,
-   "pull_change": 0.76,
-   "reviews_vs_model": 0.14,
-   "tourist_share_model": 0.87
-  },
-  {
-   "name": "Butterfly Conservatory",
-   "address": "2565 Niagara Parkway",
-   "kind": "attraction",
-   "reviews": 12731,
-   "rating": 4.7,
-   "pull_change": 4.0,
-   "reviews_vs_model": 6.9,
+   "reviews": 219,
+   "rating": 2.5,
+   "pull_change": 0.41,
+   "reviews_vs_model": 0.15,
    "tourist_share_model": 0.93
-  },
-  {
-   "name": "Kings Inn",
-   "address": "5525 Ferry Street",
-   "kind": "accommodation",
-   "reviews": 736,
-   "rating": 4.2,
-   "pull_change": 4.0,
-   "reviews_vs_model": 6.87,
-   "tourist_share_model": 1.0
-  },
-  {
-   "name": "Casino Niagara",
-   "address": "5685 Falls Av",
-   "kind": "parking",
-   "reviews": 9790,
-   "rating": 4.1,
-   "pull_change": 4.0,
-   "reviews_vs_model": 6.85,
-   "tourist_share_model": 1.0
-  },
-  {
-   "name": "Shelby's Legendary Shwarma",
-   "address": "6240 McLeod Rd",
-   "kind": "restaurant",
-   "reviews": 7877,
-   "rating": 4.8,
-   "pull_change": 4.0,
-   "reviews_vs_model": 6.67,
-   "tourist_share_model": 0.9
   },
   {
    "name": "Canadian Tire",
@@ -1127,27 +1027,7 @@
    "rating": 3.9,
    "pull_change": 1.0,
    "reviews_vs_model": 0.15,
-   "tourist_share_model": 0.48
-  },
-  {
-   "name": "Lococo's",
-   "address": "4167 Victoria Avenue",
-   "kind": "grocery_food",
-   "reviews": 1089,
-   "rating": 4.6,
-   "pull_change": 4.0,
-   "reviews_vs_model": 6.63,
-   "tourist_share_model": 0.3
-  },
-  {
-   "name": "Flying Saucer Restaurant",
-   "address": "6768 Lundys Lane",
-   "kind": "restaurant",
-   "reviews": 10029,
-   "rating": 4.4,
-   "pull_change": 4.0,
-   "reviews_vs_model": 6.63,
-   "tourist_share_model": 0.91
+   "tourist_share_model": 0.47
   },
   {
    "name": "Falcon Inn",
@@ -1156,28 +1036,28 @@
    "reviews": 421,
    "rating": 2.8,
    "pull_change": 4.0,
-   "reviews_vs_model": 6.59,
+   "reviews_vs_model": 6.47,
    "tourist_share_model": 1.0
   },
   {
-   "name": "Portage Bakery",
-   "address": "5845 Gladstone Av",
-   "kind": "grocery_food",
-   "reviews": 961,
-   "rating": 4.6,
-   "pull_change": 4.0,
-   "reviews_vs_model": 6.5,
-   "tourist_share_model": 0.39
+   "name": "Popeyes",
+   "address": "6734 Lundy's Ln",
+   "kind": "fast_food",
+   "reviews": 1830,
+   "rating": 3.9,
+   "pull_change": 1.21,
+   "reviews_vs_model": 6.28,
+   "tourist_share_model": 0.67
   },
   {
-   "name": "Dosa Boyz",
-   "address": "5717 Lewis Avenue",
-   "kind": "restaurant",
-   "reviews": 10864,
-   "rating": 4.8,
-   "pull_change": 4.0,
-   "reviews_vs_model": 6.25,
-   "tourist_share_model": 0.92
+   "name": "Fairfield Niagara Falls, Canada",
+   "address": "5257 Ferry Street",
+   "kind": "accommodation",
+   "reviews": 762,
+   "rating": 4.1,
+   "pull_change": 0.25,
+   "reviews_vs_model": 0.16,
+   "tourist_share_model": 1.0
   },
   {
    "name": "Vittoria Hotel & Suites",
@@ -1185,8 +1065,128 @@
    "kind": "accommodation",
    "reviews": 2791,
    "rating": 4.2,
+   "pull_change": 0.25,
+   "reviews_vs_model": 0.16,
+   "tourist_share_model": 1.0
+  },
+  {
+   "name": "Table Rock Market",
+   "address": "6650 Niagara River Py",
+   "kind": "fast_food",
+   "reviews": 160,
+   "rating": 2.4,
+   "pull_change": 0.25,
+   "reviews_vs_model": 0.16,
+   "tourist_share_model": 0.86
+  },
+  {
+   "name": "Pharmasave",
+   "address": "8279 Lundy's Ln",
+   "kind": "pharmacy",
+   "reviews": 50,
+   "rating": 4.7,
+   "pull_change": 1.0,
+   "reviews_vs_model": 6.25,
+   "tourist_share_model": 0.05
+  },
+  {
+   "name": "Subway",
+   "address": "4025 Dorchester Rd",
+   "kind": "fast_food",
+   "reviews": 143,
+   "rating": 3.7,
+   "pull_change": 0.63,
+   "reviews_vs_model": 0.17,
+   "tourist_share_model": 0.48
+  },
+  {
+   "name": "Food Basics",
+   "address": "3770 Montrose Road",
+   "kind": "grocery_food",
+   "reviews": 1164,
+   "rating": 4.2,
+   "pull_change": 1.0,
+   "reviews_vs_model": 0.17,
+   "tourist_share_model": 0.2
+  },
+  {
+   "name": "Great Wolf Lodge",
+   "address": "3950 Victoria Avenue",
+   "kind": "attraction",
+   "reviews": 14877,
+   "rating": 4.4,
    "pull_change": 4.0,
-   "reviews_vs_model": 5.91,
+   "reviews_vs_model": 5.67,
+   "tourist_share_model": 0.93
+  },
+  {
+   "name": "Courtyard by Marriott Niagara Falls",
+   "address": "5950 Victoria Avenue",
+   "kind": "accommodation",
+   "reviews": 2872,
+   "rating": 4.2,
+   "pull_change": 0.25,
+   "reviews_vs_model": 0.18,
+   "tourist_share_model": 1.0
+  },
+  {
+   "name": "Havana",
+   "address": "6380 Fallsview Bv",
+   "kind": "apparel",
+   "reviews": 37,
+   "rating": 2.7,
+   "pull_change": 0.25,
+   "reviews_vs_model": 0.18,
+   "tourist_share_model": 0.55
+  },
+  {
+   "name": "Advance Inn",
+   "address": "6019 Lundy's Ln",
+   "kind": "accommodation",
+   "reviews": 360,
+   "rating": 3.5,
+   "pull_change": 4.0,
+   "reviews_vs_model": 5.54,
+   "tourist_share_model": 1.0
+  },
+  {
+   "name": "Rainbow Motor Inn",
+   "address": "5581 Murray Street",
+   "kind": "accommodation",
+   "reviews": 379,
+   "rating": 2.4,
+   "pull_change": 4.0,
+   "reviews_vs_model": 5.32,
+   "tourist_share_model": 1.0
+  },
+  {
+   "name": "Tim Hortons",
+   "address": "7311 Pin Oak Dr",
+   "kind": "cafe",
+   "reviews": 1052,
+   "rating": 4.0,
+   "pull_change": 4.26,
+   "reviews_vs_model": 5.31,
+   "tourist_share_model": 0.89
+  },
+  {
+   "name": "McDonald's",
+   "address": "5486 Stanley Avenue",
+   "kind": "fast_food",
+   "reviews": 5241,
+   "rating": 3.5,
+   "pull_change": 1.12,
+   "reviews_vs_model": 5.3,
+   "tourist_share_model": 0.94
+  },
+  {
+   "name": "Accommodations Niagara",
+   "address": "5069 River Road",
+   "kind": "accommodation",
+   "reviews": 22,
+   "rating": 4.2,
+   "pull_change": 0.25,
+   "reviews_vs_model": 0.19,
    "tourist_share_model": 1.0
   }
  ]

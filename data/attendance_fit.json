@@ -4,41 +4,41 @@
   "last_run": {
    "Butterfly Conservatory": {
     "published": 303791.0,
-    "simulated_before": 303141.0
+    "simulated_before": 302751.0
    },
    "Floral Showhouse": {
     "published": 63488.0,
-    "simulated_before": 62571.0
+    "simulated_before": 63306.0
    },
    "Journey Behind the Falls": {
     "published": 917075.0,
-    "simulated_before": 917483.0
+    "simulated_before": 916934.0
    },
    "Niagara Parks Power Station": {
     "published": 334206.0,
-    "simulated_before": 333192.0
+    "simulated_before": 333912.0
    },
    "Niagara\u2019s Fury": {
     "published": 125476.0,
-    "simulated_before": 125081.0
+    "simulated_before": 126343.0
    },
    "Whirlpool Aero Car": {
     "published": 190481.0,
-    "simulated_before": 190466.0
+    "simulated_before": 190395.0
    },
    "White Water Walk": {
     "published": 211930.0,
-    "simulated_before": 212771.0
+    "simulated_before": 213135.0
    }
   }
  },
  "factor": {
-  "Butterfly Conservatory": 0.9871,
-  "Floral Showhouse": 1.0113,
-  "Journey Behind the Falls": 1.0002,
-  "Niagara Parks Power Station": 1.001,
-  "Niagara\u2019s Fury": 1.0099,
-  "Whirlpool Aero Car": 0.9985,
-  "White Water Walk": 0.9958
+  "Butterfly Conservatory": 0.9911,
+  "Floral Showhouse": 0.9979,
+  "Journey Behind the Falls": 0.9972,
+  "Niagara Parks Power Station": 1.0056,
+  "Niagara\u2019s Fury": 0.9955,
+  "Whirlpool Aero Car": 0.9878,
+  "White Water Walk": 0.9982
  }
 }

@@ -36,9 +36,9 @@
    "nfbc_cars_two_way_per_day": 13041,
    "queenston_cars_from_405_count": 7700,
    "model_visitor_vehicles_at_bridges": {
-    "4209": 776,
-    "2154": 5634,
-    "3104": 5181
+    "4209": 748,
+    "2154": 5174,
+    "3104": 4660
    }
   },
   "trucks": {
@@ -47,36 +47,36 @@
   },
   "qew_through_cars": {
    "south_edge_count": 31300,
-   "already_there": 8384,
-   "added": 22916
+   "already_there": 8307,
+   "added": 22993
   }
  },
  "spending_trips_only": {
   "sections_tested": 77,
-  "correlation_all": 0.842,
-  "correlation_regional_roads": 0.638,
-  "median_share_explained_regional_pct": 34.5,
-  "correlation_highways": 0.856,
-  "median_share_explained_highways_pct": 34.9,
-  "typical_error_factor": 6.09
+  "correlation_all": 0.836,
+  "correlation_regional_roads": 0.625,
+  "median_share_explained_regional_pct": 34.8,
+  "correlation_highways": 0.858,
+  "median_share_explained_highways_pct": 34.4,
+  "typical_error_factor": 5.95
  },
  "with_commuting_and_through_traffic": {
   "sections_tested": 77,
-  "correlation_all": 0.845,
-  "correlation_regional_roads": 0.732,
-  "median_share_explained_regional_pct": 82.4,
-  "correlation_highways": 0.785,
-  "median_share_explained_highways_pct": 78.5,
-  "typical_error_factor": 4.15
+  "correlation_all": 0.842,
+  "correlation_regional_roads": 0.728,
+  "median_share_explained_regional_pct": 82.9,
+  "correlation_highways": 0.782,
+  "median_share_explained_highways_pct": 76.9,
+  "typical_error_factor": 4.14
  },
  "against_2025_regional_counts": {
   "sections_tested": 77,
-  "correlation_all": 0.851,
-  "correlation_regional_roads": 0.749,
-  "median_share_explained_regional_pct": 78.8,
-  "correlation_highways": 0.785,
-  "median_share_explained_highways_pct": 78.5,
-  "typical_error_factor": 4.3
+  "correlation_all": 0.849,
+  "correlation_regional_roads": 0.745,
+  "median_share_explained_regional_pct": 79.2,
+  "correlation_highways": 0.782,
+  "median_share_explained_highways_pct": 76.9,
+  "typical_error_factor": 4.27
  },
  "sections": [
   {
@@ -84,7 +84,7 @@
    "section": 48610,
    "where": "",
    "counted_aadt_2019": 8050,
-   "simulated_per_day": 126,
+   "simulated_per_day": 127,
    "share_explained_pct": 1.6
   },
   {
@@ -92,79 +92,79 @@
    "section": 49806,
    "where": "",
    "counted_aadt_2019": 18300,
-   "simulated_per_day": 28225,
-   "share_explained_pct": 154.2
+   "simulated_per_day": 28244,
+   "share_explained_pct": 154.3
   },
   {
    "highway": "420",
    "section": 49810,
    "where": "",
    "counted_aadt_2019": 33000,
-   "simulated_per_day": 37284,
-   "share_explained_pct": 113.0
+   "simulated_per_day": 37417,
+   "share_explained_pct": 113.4
   },
   {
    "highway": "420",
    "section": 49803,
    "where": "",
    "counted_aadt_2019": 51100,
-   "simulated_per_day": 24574,
-   "share_explained_pct": 48.1
+   "simulated_per_day": 24458,
+   "share_explained_pct": 47.9
   },
   {
    "highway": "420",
    "section": 49800,
    "where": "",
    "counted_aadt_2019": 44900,
-   "simulated_per_day": 44811,
-   "share_explained_pct": 99.8
+   "simulated_per_day": 44722,
+   "share_explained_pct": 99.6
   },
   {
    "highway": "QEW",
    "section": 10043,
    "where": "",
    "counted_aadt_2019": 70700,
-   "simulated_per_day": 45409,
-   "share_explained_pct": 64.2
+   "simulated_per_day": 44589,
+   "share_explained_pct": 63.1
   },
   {
    "highway": "QEW",
    "section": 10040,
    "where": "",
    "counted_aadt_2019": 74000,
-   "simulated_per_day": 53822,
-   "share_explained_pct": 72.7
+   "simulated_per_day": 53381,
+   "share_explained_pct": 72.1
   },
   {
    "highway": "QEW",
    "section": 10032,
    "where": "",
    "counted_aadt_2019": 47500,
-   "simulated_per_day": 39980,
-   "share_explained_pct": 84.2
+   "simulated_per_day": 38860,
+   "share_explained_pct": 81.8
   },
   {
    "highway": "QEW",
    "section": 10030,
    "where": "",
    "counted_aadt_2019": 34400,
-   "simulated_per_day": 39374,
-   "share_explained_pct": 114.5
+   "simulated_per_day": 38379,
+   "share_explained_pct": 111.6
   },
   {
    "highway": "QEW",
    "section": 10022,
    "where": "",
    "counted_aadt_2019": 22400,
-   "simulated_per_day": 3156,
-   "share_explained_pct": 14.1
+   "simulated_per_day": 3108,
+   "share_explained_pct": 13.9
   },
   {
    "highway": "RR70",
    "section": 610131,
    "where": "REG. RD. 89 (Glendale Ave.) to REG. RD. 101 (Mountain Rd.)",
    "counted_aadt_2019": 9000,
-   "simulated_per_day": 285,
+   "simulated_per_day": 287,
    "share_explained_pct": 3.2
   },
   {
@@ -180,103 +180,103 @@
    "section": 610135,
    "where": "REG. RD. 70 (Taylor Rd.) to REG. RD. 98 (Kalar Rd.)",
    "counted_aadt_2019": 5900,
-   "simulated_per_day": 11562,
-   "share_explained_pct": 196.0
+   "simulated_per_day": 11586,
+   "share_explained_pct": 196.4
   },
   {
    "highway": "RR57",
    "section": 610136,
    "where": "REG. RD. 98 (Montrose Rd.) to Q.E.W.",
    "counted_aadt_2019": 29400,
-   "simulated_per_day": 21225,
-   "share_explained_pct": 72.2
+   "simulated_per_day": 21210,
+   "share_explained_pct": 72.1
   },
   {
    "highway": "RR57",
    "section": 610137,
    "where": "REG. RD. 70 (Thorold Townline Rd.) to Kalar Road",
    "counted_aadt_2019": 19700,
-   "simulated_per_day": 11074,
-   "share_explained_pct": 56.2
+   "simulated_per_day": 10902,
+   "share_explained_pct": 55.3
   },
   {
    "highway": "RR98",
    "section": 610138,
    "where": "King's Hwy 420 to REG. RD. 20 (Lundy's Lane)",
    "counted_aadt_2019": 12400,
-   "simulated_per_day": 21228,
-   "share_explained_pct": 171.2
+   "simulated_per_day": 21439,
+   "share_explained_pct": 172.9
   },
   {
    "highway": "RR70",
    "section": 610142,
    "where": "REG. RD. 57 (Thorold Stone Rd.) to Beaverdams Road",
    "counted_aadt_2019": 4400,
-   "simulated_per_day": 2519,
-   "share_explained_pct": 57.2
+   "simulated_per_day": 2489,
+   "share_explained_pct": 56.6
   },
   {
    "highway": "RR20",
    "section": 610154,
    "where": "REG. RD. 70 (Thorold Townline Rd.) to Kalar Road",
    "counted_aadt_2019": 14600,
-   "simulated_per_day": 4367,
-   "share_explained_pct": 29.9
+   "simulated_per_day": 4408,
+   "share_explained_pct": 30.2
   },
   {
    "highway": "RR98",
    "section": 610156,
    "where": "REG. RD. 20 (Lundy's Lane) to McLeod Road",
    "counted_aadt_2019": 9200,
-   "simulated_per_day": 8468,
-   "share_explained_pct": 92.0
+   "simulated_per_day": 8535,
+   "share_explained_pct": 92.8
   },
   {
    "highway": "RR49",
    "section": 610157,
    "where": "REG. RD. 98 (Montrose Rd.) to Oakwood Drive",
    "counted_aadt_2019": 22600,
-   "simulated_per_day": 17007,
-   "share_explained_pct": 75.3
+   "simulated_per_day": 16300,
+   "share_explained_pct": 72.1
   },
   {
    "highway": "RR63",
    "section": 610158,
    "where": "REG. RD. 70 (Thorold Townline Rd.) to REG. RD. 98 (Montrose Rd.)",
    "counted_aadt_2019": 2300,
-   "simulated_per_day": 637,
-   "share_explained_pct": 27.7
+   "simulated_per_day": 684,
+   "share_explained_pct": 29.7
   },
   {
    "highway": "RR98",
    "section": 610164,
    "where": "REG. RD. 63 (Chippawa Creek Rd.) to REG. RD. 47 (Lyons Creek Rd.)",
    "counted_aadt_2019": 6400,
-   "simulated_per_day": 1538,
-   "share_explained_pct": 24.0
+   "simulated_per_day": 1864,
+   "share_explained_pct": 29.1
   },
   {
    "highway": "RR47",
    "section": 610167,
    "where": "REG. RD. 98 (Montrose Rd.) to REG. RD. 102 (Stanley Ave.)",
    "counted_aadt_2019": 9000,
-   "simulated_per_day": 18606,
-   "share_explained_pct": 206.7
+   "simulated_per_day": 18733,
+   "share_explained_pct": 208.1
   },
   {
    "highway": "RR116",
    "section": 610168,
    "where": "REG. RD. 47 (Lyons Creek Rd.) to Weinbrenner Road",
    "counted_aadt_2019": 4800,
-   "simulated_per_day": 3162,
-   "share_explained_pct": 65.9
+   "simulated_per_day": 3221,
+   "share_explained_pct": 67.1
   },
   {
    "highway": "RR116",
    "section": 610171,
    "where": "Q.E.W. (int. # 116QEW includes prov.Roads) to REG. RD. 25 (Netherby Rd.)",
    "counted_aadt_2019": 8900,
-   "simulated_per_day": 269,
+   "simulated_per_day": 267,
    "share_explained_pct": 3.0
   },
   {
@@ -284,8 +284,8 @@
    "section": 610177,
    "where": "REG. RD. 27 (Schisler Rd.) to REG. RD. 25 (Netherby Rd.)",
    "counted_aadt_2019": 4100,
-   "simulated_per_day": 394,
-   "share_explained_pct": 9.6
+   "simulated_per_day": 388,
+   "share_explained_pct": 9.5
   },
   {
    "highway": "RR27",
@@ -300,7 +300,7 @@
    "section": 610187,
    "where": "REG. RD. 525 (Townline Tunnel Rd.) to REG. RD. 98 (Montrose Rd.)",
    "counted_aadt_2019": 6900,
-   "simulated_per_day": 72,
+   "simulated_per_day": 70,
    "share_explained_pct": 1.0
   },
   {
@@ -308,239 +308,239 @@
    "section": 610273,
    "where": "Q.E.W. (int. # 101QEN) to Dorchester Road",
    "counted_aadt_2019": 12700,
-   "simulated_per_day": 6530,
-   "share_explained_pct": 51.4
+   "simulated_per_day": 6670,
+   "share_explained_pct": 52.5
   },
   {
    "highway": "RR101",
    "section": 610274,
    "where": "Dorchester Road to REG. RD. 100 (St. Paul Ave.)",
    "counted_aadt_2019": 10300,
-   "simulated_per_day": 4701,
-   "share_explained_pct": 45.6
+   "simulated_per_day": 4823,
+   "share_explained_pct": 46.8
   },
   {
    "highway": "RR100",
    "section": 610275,
    "where": "REG. RD. 61 (Niagara Townline Rd.) to REG. RD. 101 (Mountain Rd.)",
    "counted_aadt_2019": 10800,
-   "simulated_per_day": 700,
-   "share_explained_pct": 6.5
+   "simulated_per_day": 712,
+   "share_explained_pct": 6.6
   },
   {
    "highway": "RR101",
    "section": 610276,
    "where": "REG. RD. 100 (St. Paul Ave.) to REG. RD. 101 (Portage Rd.)",
    "counted_aadt_2019": 2700,
-   "simulated_per_day": 3237,
-   "share_explained_pct": 119.9
+   "simulated_per_day": 3276,
+   "share_explained_pct": 121.3
   },
   {
    "highway": "RR101",
    "section": 610277,
    "where": "REG. RD. 101 (Mountain Rd.) to REG. RD. 102 (Stanley Ave.)",
    "counted_aadt_2019": 3400,
-   "simulated_per_day": 2801,
-   "share_explained_pct": 82.4
+   "simulated_per_day": 2817,
+   "share_explained_pct": 82.9
   },
   {
    "highway": "RR102",
    "section": 610278,
    "where": "REG. RD. 61 (Niagara Townline Rd.) to REG. RD. 101 (Portage Rd.)",
    "counted_aadt_2019": 8200,
-   "simulated_per_day": 826,
-   "share_explained_pct": 10.1
+   "simulated_per_day": 844,
+   "share_explained_pct": 10.3
   },
   {
    "highway": "RR102",
    "section": 610282,
    "where": "Church's Lane to REG. RD. 57 (Thorold Stone Rd.)",
    "counted_aadt_2019": 5600,
-   "simulated_per_day": 14507,
-   "share_explained_pct": 259.1
+   "simulated_per_day": 14596,
+   "share_explained_pct": 260.6
   },
   {
    "highway": "RR57",
    "section": 610283,
    "where": "Q.E.W. to Dorchester Road",
    "counted_aadt_2019": 31300,
-   "simulated_per_day": 26783,
-   "share_explained_pct": 85.6
+   "simulated_per_day": 26564,
+   "share_explained_pct": 84.9
   },
   {
    "highway": "RR57",
    "section": 610284,
    "where": "Dorchester Road to Drummond Road",
    "counted_aadt_2019": 20400,
-   "simulated_per_day": 29489,
-   "share_explained_pct": 144.6
+   "simulated_per_day": 28888,
+   "share_explained_pct": 141.6
   },
   {
    "highway": "RR57",
    "section": 610287,
    "where": "Drummond Road to REG. RD. 102 (Stanley Ave.)",
    "counted_aadt_2019": 17500,
-   "simulated_per_day": 17154,
-   "share_explained_pct": 98.0
+   "simulated_per_day": 16784,
+   "share_explained_pct": 95.9
   },
   {
    "highway": "RR102",
    "section": 610288,
    "where": "REG. RD. 57 (Thorold Stone Rd.) to REG. RD. 43 (Bridge St.)",
    "counted_aadt_2019": 13700,
-   "simulated_per_day": 12042,
-   "share_explained_pct": 87.9
+   "simulated_per_day": 11645,
+   "share_explained_pct": 85.0
   },
   {
    "highway": "RR43",
    "section": 610289,
    "where": "REG. RD. 102 (Stanley Ave.) to Victoria Avenue",
    "counted_aadt_2019": 8800,
-   "simulated_per_day": 10522,
-   "share_explained_pct": 119.6
+   "simulated_per_day": 10544,
+   "share_explained_pct": 119.8
   },
   {
    "highway": "RR43",
    "section": 610292,
    "where": "Victoria Avenue to River Road",
    "counted_aadt_2019": 2300,
-   "simulated_per_day": 2364,
-   "share_explained_pct": 102.8
+   "simulated_per_day": 2318,
+   "share_explained_pct": 100.8
   },
   {
    "highway": "RR102",
    "section": 610304,
    "where": "Morrison Street to REG. RD. 420 (Falls Ave.)",
    "counted_aadt_2019": 16300,
-   "simulated_per_day": 19485,
-   "share_explained_pct": 119.5
+   "simulated_per_day": 19261,
+   "share_explained_pct": 118.2
   },
   {
    "highway": "RR102",
    "section": 610305,
    "where": "REG. RD. 43 (Bridge St.) to Morrison Street",
    "counted_aadt_2019": 10900,
-   "simulated_per_day": 17270,
-   "share_explained_pct": 158.4
+   "simulated_per_day": 16959,
+   "share_explained_pct": 155.6
   },
   {
    "highway": "RR20",
    "section": 610306,
    "where": "REG. RD. 98 (Montrose Rd.) to Dorchester Road",
    "counted_aadt_2019": 23000,
-   "simulated_per_day": 11333,
-   "share_explained_pct": 49.3
+   "simulated_per_day": 12148,
+   "share_explained_pct": 52.8
   },
   {
    "highway": "RR20",
    "section": 610310,
    "where": "Dorchester Road to Drummond Road",
    "counted_aadt_2019": 22300,
-   "simulated_per_day": 19438,
-   "share_explained_pct": 87.2
+   "simulated_per_day": 20832,
+   "share_explained_pct": 93.4
   },
   {
    "highway": "RR20",
    "section": 610312,
    "where": "Drummond Road to Main Street",
    "counted_aadt_2019": 18000,
-   "simulated_per_day": 26482,
-   "share_explained_pct": 147.1
+   "simulated_per_day": 27080,
+   "share_explained_pct": 150.4
   },
   {
    "highway": "RR20",
    "section": 610313,
    "where": "Main Street to REG. RD. 102 (Stanley Ave.)",
    "counted_aadt_2019": 12700,
-   "simulated_per_day": 15517,
-   "share_explained_pct": 122.2
+   "simulated_per_day": 15649,
+   "share_explained_pct": 123.2
   },
   {
    "highway": "RR102",
    "section": 610314,
    "where": "REG. RD. 420 (Falls Ave.) to REG. RD. 20 (Ferry St.)",
    "counted_aadt_2019": 20500,
-   "simulated_per_day": 25828,
-   "share_explained_pct": 126.0
+   "simulated_per_day": 25260,
+   "share_explained_pct": 123.2
   },
   {
    "highway": "RR102",
    "section": 610318,
    "where": "REG. RD. 20 (Ferry St.) to Robinson Street",
    "counted_aadt_2019": 18900,
-   "simulated_per_day": 14583,
-   "share_explained_pct": 77.2
+   "simulated_per_day": 14565,
+   "share_explained_pct": 77.1
   },
   {
    "highway": "RR102",
    "section": 610319,
    "where": "Murray Street to Dunn Street",
    "counted_aadt_2019": 11400,
-   "simulated_per_day": 14851,
-   "share_explained_pct": 130.3
+   "simulated_per_day": 14553,
+   "share_explained_pct": 127.7
   },
   {
    "highway": "RR49",
    "section": 610324,
    "where": "Oakwood Drive to Dorchester Road",
    "counted_aadt_2019": 26800,
-   "simulated_per_day": 16923,
-   "share_explained_pct": 63.1
+   "simulated_per_day": 16628,
+   "share_explained_pct": 62.0
   },
   {
    "highway": "RR49",
    "section": 610325,
    "where": "Dorchester Road to Drummond Road",
    "counted_aadt_2019": 18600,
-   "simulated_per_day": 19430,
-   "share_explained_pct": 104.5
+   "simulated_per_day": 19347,
+   "share_explained_pct": 104.0
   },
   {
    "highway": "RR49",
    "section": 610326,
    "where": "Drummond Road to REG. RD. 102 (Stanley Ave.)",
    "counted_aadt_2019": 13900,
-   "simulated_per_day": 13019,
-   "share_explained_pct": 93.7
+   "simulated_per_day": 13112,
+   "share_explained_pct": 94.3
   },
   {
    "highway": "RR102",
    "section": 610327,
    "where": "Dunn Street to REG. RD. 49 (Marineland Pkwy.)",
    "counted_aadt_2019": 8500,
-   "simulated_per_day": 9346,
-   "share_explained_pct": 110.0
+   "simulated_per_day": 9177,
+   "share_explained_pct": 108.0
   },
   {
    "highway": "RR102",
    "section": 610478,
    "where": "REG. RD. 49 (Marineland Pkwy.) to Chippawa Parkway",
    "counted_aadt_2019": 4300,
-   "simulated_per_day": 7826,
-   "share_explained_pct": 182.0
+   "simulated_per_day": 7845,
+   "share_explained_pct": 182.4
   },
   {
    "highway": "RR101",
    "section": 610503,
    "where": "REG. RD. 98 (Kalar Rd.) to Q.E.W. (int. # 101QEN)",
    "counted_aadt_2019": 12100,
-   "simulated_per_day": 26412,
-   "share_explained_pct": 218.3
+   "simulated_per_day": 26182,
+   "share_explained_pct": 216.4
   },
   {
    "highway": "RR98",
    "section": 610504,
    "where": "Cardinal Drive to REG. RD. 57 (Thorold Stone Rd.)",
    "counted_aadt_2019": 3300,
-   "simulated_per_day": 6451,
-   "share_explained_pct": 195.5
+   "simulated_per_day": 6690,
+   "share_explained_pct": 202.7
   },
   {
    "highway": "RR98",
    "section": 610506,
    "where": "REG. RD. 47 (Lyons Creek Rd.) to REG. RD. 27 (Schisler Rd.)",
    "counted_aadt_2019": 9900,
-   "simulated_per_day": 1135,
+   "simulated_per_day": 1134,
    "share_explained_pct": 11.5
   },
   {
@@ -548,32 +548,32 @@
    "section": 610534,
    "where": "REG. RD. 101 (Portage Rd.) to Church's Lane",
    "counted_aadt_2019": 8300,
-   "simulated_per_day": 4759,
-   "share_explained_pct": 57.3
+   "simulated_per_day": 4813,
+   "share_explained_pct": 58.0
   },
   {
    "highway": "RR98",
    "section": 610557,
    "where": "REG. RD. 57 (Thorold Stone Rd.) to Morrison Street (int. # 098MRR)",
    "counted_aadt_2019": 15400,
-   "simulated_per_day": 7614,
-   "share_explained_pct": 49.4
+   "simulated_per_day": 7584,
+   "share_explained_pct": 49.2
   },
   {
    "highway": "RR98",
    "section": 610579,
    "where": "Canadian Drive to REG. RD. 63 (Chippawa Creek Rd.)",
    "counted_aadt_2019": 6700,
-   "simulated_per_day": 2835,
-   "share_explained_pct": 42.3
+   "simulated_per_day": 3961,
+   "share_explained_pct": 59.1
   },
   {
    "highway": "RR102",
    "section": 610584,
    "where": "Chippawa Parkway to REG. RD. 47 (Lyons Creek Rd.)",
    "counted_aadt_2019": 5100,
-   "simulated_per_day": 5240,
-   "share_explained_pct": 102.7
+   "simulated_per_day": 5349,
+   "share_explained_pct": 104.9
   },
   {
    "highway": "RR61",
@@ -588,112 +588,112 @@
    "section": 610590,
    "where": "Kalar Road to REG. RD. 98 (Montrose Rd.)",
    "counted_aadt_2019": 22700,
-   "simulated_per_day": 13098,
-   "share_explained_pct": 57.7
+   "simulated_per_day": 12878,
+   "share_explained_pct": 56.7
   },
   {
    "highway": "RR20",
    "section": 610591,
    "where": "Kalar Road to REG. RD. 98 (Montrose Rd.)",
    "counted_aadt_2019": 23400,
-   "simulated_per_day": 24943,
-   "share_explained_pct": 106.6
+   "simulated_per_day": 24653,
+   "share_explained_pct": 105.4
   },
   {
    "highway": "RR47",
    "section": 610592,
    "where": "REG. RD. 102 (Stanley Ave.) to REG. RD. 116 (Sodom Rd.)",
    "counted_aadt_2019": 5800,
-   "simulated_per_day": 4445,
-   "share_explained_pct": 76.6
+   "simulated_per_day": 4498,
+   "share_explained_pct": 77.6
   },
   {
    "highway": "RR116",
    "section": 610593,
    "where": "Weinbrenner Road to Q.E.W. (int. # 116QEW)",
    "counted_aadt_2019": 2900,
-   "simulated_per_day": 1207,
-   "share_explained_pct": 41.6
+   "simulated_per_day": 1203,
+   "share_explained_pct": 41.5
   },
   {
    "highway": "RR102",
    "section": 610599,
    "where": "Robinson Street to Murray Street",
    "counted_aadt_2019": 15000,
-   "simulated_per_day": 15100,
-   "share_explained_pct": 100.7
+   "simulated_per_day": 14845,
+   "share_explained_pct": 99.0
   },
   {
    "highway": "RR49",
    "section": 610701,
    "where": "REG. RD. 102 (Stanley Ave. N.) to REG. RD. 102 (Stanley Ave. S.)",
    "counted_aadt_2019": 11600,
-   "simulated_per_day": 7538,
-   "share_explained_pct": 65.0
+   "simulated_per_day": 7549,
+   "share_explained_pct": 65.1
   },
   {
    "highway": "RR98",
    "section": 610703,
    "where": "McLeod Road to REG. RD. 98 (Niagara Sq. Dr.)",
    "counted_aadt_2019": 4800,
-   "simulated_per_day": 6686,
-   "share_explained_pct": 139.3
+   "simulated_per_day": 7015,
+   "share_explained_pct": 146.2
   },
   {
    "highway": "RR98",
    "section": 610704,
    "where": "REG. RD. 98 (Niagara Square Dr.) to Canadian Drive",
    "counted_aadt_2019": 5400,
-   "simulated_per_day": 5285,
-   "share_explained_pct": 97.9
+   "simulated_per_day": 7593,
+   "share_explained_pct": 140.6
   },
   {
    "highway": "RR70",
    "section": 619942,
    "where": "Thorold Townline Road to REG. RD. 57 (Thorold Stone Rd.)",
    "counted_aadt_2019": 8100,
-   "simulated_per_day": 3942,
-   "share_explained_pct": 48.7
+   "simulated_per_day": 3916,
+   "share_explained_pct": 48.4
   },
   {
    "highway": "RR98",
    "section": 619948,
    "where": "Morrison Street (int. # 098MRR) to King's Hwy 420",
    "counted_aadt_2019": 13200,
-   "simulated_per_day": 14264,
-   "share_explained_pct": 108.1
+   "simulated_per_day": 13975,
+   "share_explained_pct": 105.9
   },
   {
    "highway": "RR98",
    "section": 619949,
    "where": "REG. RD. 98 (Kalar Rd.) to Cardinal Drive",
    "counted_aadt_2019": 5400,
-   "simulated_per_day": 1183,
-   "share_explained_pct": 21.9
+   "simulated_per_day": 1192,
+   "share_explained_pct": 22.1
   },
   {
    "highway": "RR70",
    "section": 699327,
    "where": "REG. RD. 101 (Mountain Rd.) to Beechwood Road",
    "counted_aadt_2019": 8100,
-   "simulated_per_day": 1767,
-   "share_explained_pct": 21.8
+   "simulated_per_day": 1784,
+   "share_explained_pct": 22.0
   },
   {
    "highway": "RR420",
    "section": 699329,
    "where": "Victoria Avenue to Casino Niagara (IPS)",
    "counted_aadt_2019": 4600,
-   "simulated_per_day": 7503,
-   "share_explained_pct": 163.1
+   "simulated_per_day": 7681,
+   "share_explained_pct": 167.0
   },
   {
    "highway": "RR420",
    "section": 699331,
    "where": "REG. RD 102 (Stanley Ave.) to Victoria Ave. (Ramps)",
    "counted_aadt_2019": 8500,
-   "simulated_per_day": 17048,
-   "share_explained_pct": 200.6
+   "simulated_per_day": 17204,
+   "share_explained_pct": 202.4
   }
  ],
  "route_spreading_tried": {

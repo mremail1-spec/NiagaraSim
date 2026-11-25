@@ -27,6 +27,8 @@ def main():
             seen.add(f["kind"]); top.append(f)
     lease = [f for f in o["opportunities"] if f["for_lease"]][:12]
     gaps = {p["name"]: p for p in json.loads((D / "lunch_gaps.json").read_text())["places"]}
+    from nfprep.daytime import places
+    closed = {p["name"] for p in places() if p.get("cafeteria_closed")}
     schools = []
     for s in HIGH:
         v = o["near_schools"].get(s)
@@ -38,7 +40,7 @@ def main():
             if r["kind"] in FOOD and (r["kind"] not in rows or r["vs_yardstick_worst"] > rows[r["kind"]]["vs_yardstick_worst"]):
                 rows[r["kind"]] = r
         schools.append({"school": s, "students": v["students"], "money": g.get("own_money_per_year"), "food_places": g.get("food_places_in_walk"),
-                        "cafeteria_closed": g.get("cafeteria_closed", False), "kinds": [rows[k] for k in FOOD if k in rows]})
+                        "cafeteria_closed": s in closed, "kinds": [rows[k] for k in FOOD if k in rows]})
     cb = json.loads((D / "chain_backtest.json").read_text())
     fc = json.loads((D / "forecast_consistency.json").read_text())["by_kind"]
     chains = [{"chain": k, "kind": v["category"], "branches": v["branches"], "published": v["published"], "quality": v["quality"],
