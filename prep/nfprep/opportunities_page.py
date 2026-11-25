@@ -44,7 +44,19 @@ def main():
     chains = [{"chain": k, "kind": v["category"], "branches": v["branches"], "published": v["published"], "quality": v["quality"],
                "newcomer_forecast": v["median_forecast"], "ratio": v["median_vs_published"],
                "near_school": [b for b in v["branches_detail"] if b["metres"] <= 800]} for k, v in cb.items()]
-    doc = {"meta": o["_meta"], "kinds": kinds, "top": top[:12], "lease": lease, "total": o["opportunities_total"],
+    # the chains' check per kind: a typical newcomer at the chains' own addresses against their published sales
+    import numpy as np
+    KIND_CAT = {"Fast food": "fast_food", "Cafe": "cafe", "Restaurant": "restaurant", "Grocery or convenience store": "grocery_food"}
+    chain_factor = {}
+    for k, cat in KIND_CAT.items():
+        r = [c["ratio"] for c in chains if c["kind"] == cat]
+        chain_factor[k] = round(float(np.median(r)), 2) if r else None
+    for s_ in schools:
+        for r in s_["kinds"]:
+            f = chain_factor.get(r["kind"])
+            r["chain_factor"] = f
+            r["after_chain_check"] = round(r["vs_yardstick_worst"] / max(f, 1.0), 2) if f else None
+    doc = {"chain_factor": chain_factor, "meta": o["_meta"], "kinds": kinds, "top": top[:12], "lease": lease, "total": o["opportunities_total"],
            "forecast_error": json.loads((ROOT / "data/forecast_error.json").read_text()),
            "schools": schools, "chains": chains, "consistency": fc}
     (D / "pages/opportunities_data.json").write_text(json.dumps(doc, indent=1))

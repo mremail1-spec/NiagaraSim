@@ -70,6 +70,19 @@ ul { margin: 0; padding-left: 18px; display: grid; gap: 6px; max-width: 70ch; }
   </section>
 
   <section>
+    <h2>Next to the high schools</h2>
+    <p class="note">The best spot within 800 m of each high school for each kind of food business, in the least favourable scenario, against existing businesses of the same kind and size in the same part of the city. Students go out for lunch even where the school has a cafeteria; Westlane's cafeteria is closed for construction (seen in November 2026), so its students spend more nearby. <b>After the chain check</b> divides by how much the model over-forecasts that kind at chains' own addresses (next section); a spot still at 1.3× or more there holds up against the chains' published sales.</p>
+    <div class="fig tablewrap"><table id="schools"></table></div>
+  </section>
+
+  <section>
+    <h2>Checked against the chains' published sales</h2>
+    <p class="note">Each chain branch taken out of the model in turn, and a newcomer forecast at its exact address, with the chain's average store size and the pull of a typical independent of its kind. If the forecast method is fair, the newcomer should land near the chain's published sales per store; above 1 means the model is generous to newcomers of that kind.</p>
+    <div class="fig tablewrap"><table id="chains"></table></div>
+    <p class="note" id="consist"></p>
+  </section>
+
+  <section>
     <h2>Spaces listed for lease that fit</h2>
     <div class="fig tablewrap"><table id="lease"></table></div>
   </section>
@@ -106,6 +119,13 @@ function draw(D) {
     D.top.map(o => `<tr><td>${o.kind}</td><td>${o.where}${o.for_lease ? " <b>(for lease)</b>" : ""}</td><td class="r">${o.vs_median_competitor_worst}×</td><td class="r">${k$(o.forecast_sales_default)}</td><td class="r">${o.margin_after_street_rent_pct}%</td><td class="r">$${o.rent_psf}</td></tr>`).join("");
   $("lease").innerHTML = "<tr><th>Space</th><th>Kind</th><th class='r'>vs median, worst case</th><th class='r'>Forecast sales</th><th class='r'>Margin</th></tr>" +
     D.lease.map(o => `<tr><td>${o.where}</td><td>${o.kind}</td><td class="r">${o.vs_median_competitor_worst}×</td><td class="r">${k$(o.forecast_sales_default)}</td><td class="r">${o.margin_after_street_rent_pct}%</td></tr>`).join("");
+  const pass = (v, ok) => `<span class="pill ${ok ? "yes" : "no"}">${v}×</span>`;
+  $("schools").innerHTML = "<tr><th>School</th><th>Kind</th><th>Best spot</th><th class='r'>Distance</th><th class='r'>vs similar, worst case</th><th class='r'>After chain check</th><th class='r'>Forecast sales</th></tr>" +
+    D.schools.map(s => s.kinds.map((r, j) => `<tr>${j === 0 ? `<td rowspan="${s.kinds.length}"><b>${s.school.replace(" Secondary School", "").replace(" Catholic High School", "")}</b><small style="display:block;color:var(--ink-3)">${s.students.toLocaleString()} students · ${k$(s.money)}/yr lunch money${s.cafeteria_closed ? " · cafeteria closed" : ""} · ${s.food_places} food places in walk</small></td>` : ""}<td>${r.kind} <small style="color:var(--ink-3)">${r.format}</small></td><td>${r.where}</td><td class="r">${r.metres} m</td><td class="r">${pass(r.vs_yardstick_worst, r.passes)}</td><td class="r">${r.after_chain_check == null ? "<span style='color:var(--ink-3)'>no chain</span>" : pass(r.after_chain_check, r.passes && r.after_chain_check >= 1.3)}</td><td class="r">${k$(r.forecast_sales_default)}</td></tr>`).join("")).join("");
+  $("chains").innerHTML = "<tr><th>Chain</th><th>Kind</th><th class='r'>Branches</th><th class='r'>Published per store</th><th class='r'>Newcomer forecast</th><th class='r'>Ratio</th><th>Source</th></tr>" +
+    D.chains.map(c => `<tr><td>${c.chain}</td><td>${c.kind.replace("_", " ")}</td><td class="r">${c.branches}</td><td class="r">${k$(c.published)}</td><td class="r">${k$(c.newcomer_forecast)}</td><td class="r"><b>${c.ratio}×</b></td><td><small>${c.quality}</small></td></tr>`).join("");
+  const cs = Object.entries(D.consistency).map(([k, v]) => `${k.replace("_", " ")} ${v.forecast_over_model_median}×`).join(", ");
+  $("consist").textContent = "The forecast also agrees with the model itself: a newcomer given an existing business's own size and pull at its own address forecasts that business's sales (median, 20 businesses of each kind): " + cs + ". So the gaps above come from the chains themselves: they sell less per store than a typical business of their size would in the model, or the model is generous to that kind.";
   const tip = $("tip");
   document.addEventListener("pointermove", e => {
     const t = e.target.closest("[data-tip]");
