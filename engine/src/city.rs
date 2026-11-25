@@ -451,6 +451,15 @@ pub struct Params {
     /// not lunch stops on foot: students buy at Tim Hortons and Little Caesars, not at FreshCo (owner).
     #[serde(default = "lunch_max_format")]
     pub lunch_max_format: f64,
+    /// Walks are measured as the straight line times this detour factor, not along the driving network:
+    /// students cut across parking lots and sidewalks the road graph does not have (Little Caesars is
+    /// 220 m from Westlane in a straight line but 950 m by road).
+    #[serde(default = "walk_detour")]
+    pub walk_detour: f64,
+}
+
+fn walk_detour() -> f64 {
+    1.3
 }
 
 fn lunch_max_format() -> f64 {

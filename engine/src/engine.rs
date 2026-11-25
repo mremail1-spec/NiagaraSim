@@ -351,6 +351,14 @@ impl Engine {
     }
 
     /// Walking pull at `km` within a catchment: nearer places draw more (SEED: halves by 400 m).
+    /// Walking distance from a road node to a point: straight line times the walking detour factor.
+    pub fn walk_km(&self, node: usize, lat: f64, lon: f64) -> f64 {
+        let (la, lo) = (self.city.nodes.lat[node].to_radians(), self.city.nodes.lon[node].to_radians());
+        let (lb, lob) = (lat.to_radians(), lon.to_radians());
+        let h = ((lb - la) / 2.0).sin().powi(2) + la.cos() * lb.cos() * ((lob - lo) / 2.0).sin().powi(2);
+        2.0 * 6371.0 * h.sqrt().asin() * self.city.params.walk_detour
+    }
+
     pub fn walk_factor(km: f64, walk: f64) -> f64 {
         if km > walk { 0.0 } else { 1.0 / (1.0 + (km / 0.4).powi(2)) }
     }
@@ -361,7 +369,7 @@ impl Engine {
         for (i, &b) in self.cat_business[c].iter().enumerate() {
             if walk > 0.0 {
                 let big = self.city.businesses.format_weight[b as usize] > self.city.params.lunch_max_format;
-                out.push(if big { 0.0 } else { self.cat_pull[c][i].powf(self.city.params.lunch_pull_power) * Self::walk_factor(self.trip_km(node, b as usize), walk) });
+                out.push(if big { 0.0 } else { self.cat_pull[c][i].powf(self.city.params.lunch_pull_power) * Self::walk_factor(self.walk_km(node, self.city.businesses.lat[b as usize], self.city.businesses.lon[b as usize]), walk) });
                 continue;
             }
             let t = self.trip_minutes(node, b as usize);

@@ -134,7 +134,7 @@ impl Engine {
     /// What a new business of kind `sim_category` and scale `size` (typical yearly revenue of a
     /// business its size) would earn at road node `node`, and who it would take the trade from.
     pub fn forecast(&self, node: u32, sim_category: u32, size: f64, format_weight: f64) -> Forecast {
-        let (minutes, kms, _) = self.routes_to(node);
+        let (minutes, _, _) = self.routes_to(node);
         let n_biz = self.city.businesses.node.len();
         let (nlat, nlon) = (self.city.nodes.lat[node as usize], self.city.nodes.lon[node as usize]);
         let safe_res = self.city.safety_factor_at(nlat, nlon, sim_category, false);
@@ -175,7 +175,7 @@ impl Engine {
                 }
                 let mine = if reach_on_foot {
                     if format_weight > self.city.params.lunch_max_format { 0.0 } else {
-                        (served * scale).powf(self.city.params.lunch_pull_power) * Self::walk_factor(kms[home as usize] as f64, walk) }
+                        (served * scale).powf(self.city.params.lunch_pull_power) * Self::walk_factor(self.walk_km(home as usize, nlat, nlon), walk) }
                 } else {
                     served * scale / (minutes[home as usize] as f64).max(floor).powf(cb)
                 };
