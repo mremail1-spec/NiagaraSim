@@ -55,18 +55,20 @@ fn main() {
     }
     if args[1] == "forecast" {
         // nfsim forecast <city.json> --sites sites.json --out out.json
-        // sites: [[lat, lon, sim_category, size], ...] -> [[resident, tourist], ...] yearly revenue
-        let sites: Vec<(f64, f64, u32, f64)> = serde_json::from_str(&std::fs::read_to_string(arg(&args, "--sites").expect("--sites FILE")).unwrap())
-            .expect("sites: [[lat, lon, category, size], ...]");
+        // sites: [[lat, lon, sim_category, size, format_weight?], ...] -> [[resident, tourist], ...] yearly revenue
+        let sites: Vec<Vec<f64>> = serde_json::from_str(&std::fs::read_to_string(arg(&args, "--sites").expect("--sites FILE")).unwrap())
+            .expect("sites: [[lat, lon, category, size, format_weight?], ...]");
         let (nl, no) = (&engine.city.nodes.lat, &engine.city.nodes.lon);
-        let out: Vec<[f64; 2]> = sites.iter().map(|&(la, lo, c, size)| {
+        let out: Vec<[f64; 2]> = sites.iter().map(|r| {
+            let (la, lo, c, size) = (r[0], r[1], r[2] as u32, r[3]);
+            let fw = r.get(4).copied().unwrap_or(1.0);
             let k = la.to_radians().cos();
             let node = (0..nl.len()).min_by(|&a, &b| {
                 let da = (nl[a] - la).powi(2) + ((no[a] - lo) * k).powi(2);
                 let db = (nl[b] - la).powi(2) + ((no[b] - lo) * k).powi(2);
                 da.partial_cmp(&db).unwrap()
             }).unwrap() as u32;
-            let f = engine.forecast(node, c, size, 1.0);
+            let f = engine.forecast(node, c, size, fw);
             [f.resident.round(), f.tourist.round()]
         }).collect();
         std::fs::write(arg(&args, "--out").expect("--out FILE"), serde_json::to_string(&out).unwrap()).unwrap();

@@ -1,0 +1,55 @@
+{
+ "_meta": {
+  "what": "Does the newcomer forecast agree with the model's own sales for the same business?"
+ },
+ "by_kind": {
+  "fast_food": {
+   "sampled": 20,
+   "forecast_over_model_median": 1.0,
+   "p25": 1.0,
+   "p75": 1.0
+  },
+  "cafe": {
+   "sampled": 20,
+   "forecast_over_model_median": 0.97,
+   "p25": 0.45,
+   "p75": 1.02
+  },
+  "restaurant": {
+   "sampled": 20,
+   "forecast_over_model_median": 1.0,
+   "p25": 1.0,
+   "p75": 1.0
+  },
+  "grocery_food": {
+   "sampled": 20,
+   "forecast_over_model_median": 1.0,
+   "p25": 1.0,
+   "p75": 1.0
+  },
+  "pharmacy": {
+   "sampled": 20,
+   "forecast_over_model_median": 1.0,
+   "p25": 1.0,
+   "p75": 1.01
+  },
+  "general_merchandise": {
+   "sampled": 20,
+   "forecast_over_model_median": 1.0,
+   "p25": 0.9,
+   "p75": 1.04
+  },
+  "personal_services": {
+   "sampled": 20,
+   "forecast_over_model_median": 1.0,
+   "p25": 1.0,
+   "p75": 1.0
+  },
+  "fuel": {
+   "sampled": 20,
+   "forecast_over_model_median": 1.0,
+   "p25": 0.99,
+   "p75": 1.08
+  }
+ }
+}

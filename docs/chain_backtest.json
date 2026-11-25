@@ -1,0 +1,428 @@
+{
+ "Pizza Pizza": {
+  "category": "fast_food",
+  "published": 789000,
+  "quality": "company filing",
+  "branches": 4,
+  "median_forecast": 2184762,
+  "median_vs_published": 2.77,
+  "branches_detail": [
+   {
+    "address": "6225 Lundy's Ln",
+    "school": "Stamford Collegiate",
+    "metres": 112,
+    "forecast": 2819620,
+    "vs_published": 3.57,
+    "core": false
+   },
+   {
+    "address": "3643-3739 Portage Rd",
+    "school": "A N Myer Secondary School",
+    "metres": 311,
+    "forecast": 1437707,
+    "vs_published": 1.82,
+    "core": false
+   },
+   {
+    "address": "5619 Stanley Av",
+    "school": "Stamford Collegiate",
+    "metres": 1070,
+    "forecast": 2605115,
+    "vs_published": 3.3,
+    "core": true
+   },
+   {
+    "address": "4945 Clifton Hl",
+    "school": "Stamford Collegiate",
+    "metres": 1936,
+    "forecast": 1764410,
+    "vs_published": 2.24,
+    "core": true
+   }
+  ]
+ },
+ "The Keg": {
+  "category": "restaurant",
+  "published": 7176000,
+  "quality": "company filing",
+  "branches": 1,
+  "median_forecast": 6099138,
+  "median_vs_published": 0.85,
+  "branches_detail": [
+   {
+    "address": "5950 Victoria Av",
+    "school": "Stamford Collegiate",
+    "metres": 1495,
+    "forecast": 6099138,
+    "vs_published": 0.85,
+    "core": true
+   }
+  ]
+ },
+ "Boston Pizza": {
+  "category": "restaurant",
+  "published": 2505000,
+  "quality": "filing sales / analyst count",
+  "branches": 3,
+  "median_forecast": 2915980,
+  "median_vs_published": 1.16,
+  "branches_detail": [
+   {
+    "address": "8444 Lundy's Ln",
+    "school": "Westlane Secondary School",
+    "metres": 682,
+    "forecast": 2632623,
+    "vs_published": 1.05,
+    "core": false
+   },
+   {
+    "address": "6962 Optimist Ln",
+    "school": "Saint Paul Catholic High School",
+    "metres": 1410,
+    "forecast": 2915980,
+    "vs_published": 1.16,
+    "core": false
+   },
+   {
+    "address": "4950 Clifton Hill",
+    "school": "Stamford Collegiate",
+    "metres": 1910,
+    "forecast": 3494082,
+    "vs_published": 1.39,
+    "core": true
+   }
+  ]
+ },
+ "Tim Hortons": {
+  "category": "cafe",
+  "published": 1117000,
+  "quality": "franchise disclosure, second-hand, median not mean",
+  "branches": 15,
+  "median_forecast": 1993605,
+  "median_vs_published": 1.78,
+  "branches_detail": [
+   {
+    "address": "6192 Lundy's Ln",
+    "school": "Stamford Collegiate",
+    "metres": 189,
+    "forecast": 2185419,
+    "vs_published": 1.96,
+    "core": false
+   },
+   {
+    "address": "8159 Lundy's Ln",
+    "school": "Westlane Secondary School",
+    "metres": 297,
+    "forecast": 1874463,
+    "vs_published": 1.68,
+    "core": false
+   },
+   {
+    "address": "5470 Drummond Rd",
+    "school": "Stamford Collegiate",
+    "metres": 475,
+    "forecast": 2274203,
+    "vs_published": 2.04,
+    "core": false
+   },
+   {
+    "address": "6161 Thorold Stone Road",
+    "school": "A N Myer Secondary School",
+    "metres": 814,
+    "forecast": 1993605,
+    "vs_published": 1.78,
+    "core": false
+   },
+   {
+    "address": "5687 Stanley Av",
+    "school": "Stamford Collegiate",
+    "metres": 1022,
+    "forecast": 2464629,
+    "vs_published": 2.21,
+    "core": true
+   },
+   {
+    "address": "7311 Pin Oak Dr",
+    "school": "Saint Michael Catholic High School",
+    "metres": 1119,
+    "forecast": 1754562,
+    "vs_published": 1.57,
+    "core": false
+   },
+   {
+    "address": "3930 Montrose Rd",
+    "school": "Saint Paul Catholic High School",
+    "metres": 1132,
+    "forecast": 1793844,
+    "vs_published": 1.61,
+    "core": false
+   },
+   {
+    "address": "5233 Stanley Av",
+    "school": "Stamford Collegiate",
+    "metres": 1319,
+    "forecast": 2539599,
+    "vs_published": 2.27,
+    "core": false
+   },
+   {
+    "address": "5551 Murray Street",
+    "school": "Stamford Collegiate",
+    "metres": 1325,
+    "forecast": 2442459,
+    "vs_published": 2.19,
+    "core": true
+   },
+   {
+    "address": "6907 Morrison St",
+    "school": "Saint Paul Catholic High School",
+    "metres": 1447,
+    "forecast": 1951792,
+    "vs_published": 1.75,
+    "core": false
+   },
+   {
+    "address": "6380 Fallsview Bv",
+    "school": "Stamford Collegiate",
+    "metres": 1769,
+    "forecast": 2225507,
+    "vs_published": 1.99,
+    "core": true
+   },
+   {
+    "address": "7307 Oakwood Dr",
+    "school": "Saint Michael Catholic High School",
+    "metres": 2041,
+    "forecast": 1813528,
+    "vs_published": 1.62,
+    "core": false
+   },
+   {
+    "address": "4835 Victoria Av",
+    "school": "Stamford Collegiate",
+    "metres": 2481,
+    "forecast": 2081187,
+    "vs_published": 1.86,
+    "core": false
+   },
+   {
+    "address": "6948 McLeod Rd",
+    "school": "Stamford Collegiate",
+    "metres": 2512,
+    "forecast": 1826847,
+    "vs_published": 1.64,
+    "core": false
+   },
+   {
+    "address": "8089 Portage Road",
+    "school": "Stamford Collegiate",
+    "metres": 5023,
+    "forecast": 1719221,
+    "vs_published": 1.54,
+    "core": false
+   }
+  ]
+ },
+ "A&W": {
+  "category": "fast_food",
+  "published": 1670000,
+  "quality": "estimate from system sales and approximate count",
+  "branches": 2,
+  "median_forecast": 2743950,
+  "median_vs_published": 1.64,
+  "branches_detail": [
+   {
+    "address": "7665 Thorold Stone Rd",
+    "school": "Saint Paul Catholic High School",
+    "metres": 1293,
+    "forecast": 2266972,
+    "vs_published": 1.36,
+    "core": false
+   },
+   {
+    "address": "6980-7000 McLeod Rd",
+    "school": "Stamford Collegiate",
+    "metres": 2510,
+    "forecast": 3220929,
+    "vs_published": 1.93,
+    "core": false
+   }
+  ]
+ },
+ "LCBO": {
+  "category": "liquor",
+  "published": 8630000,
+  "quality": "2022-23 retail sales over store count",
+  "branches": 4,
+  "median_forecast": 3939671,
+  "median_vs_published": 0.46,
+  "branches_detail": [
+   {
+    "address": "3714 Portage Rd",
+    "school": "A N Myer Secondary School",
+    "metres": 520,
+    "forecast": 4115580,
+    "vs_published": 0.48,
+    "core": false
+   },
+   {
+    "address": "5389 Ferry Street",
+    "school": "Stamford Collegiate",
+    "metres": 1222,
+    "forecast": 4303699,
+    "vs_published": 0.5,
+    "core": true
+   },
+   {
+    "address": "7481 Oakwood Dr",
+    "school": "Saint Michael Catholic High School",
+    "metres": 1856,
+    "forecast": 3763762,
+    "vs_published": 0.44,
+    "core": false
+   },
+   {
+    "address": "4694 Victoria Avenue",
+    "school": "Stamford Collegiate",
+    "metres": 2689,
+    "forecast": 3174021,
+    "vs_published": 0.37,
+    "core": false
+   }
+  ]
+ },
+ "Dollarama": {
+  "category": "general_merchandise",
+  "published": 3970000,
+  "quality": "company filing",
+  "branches": 8,
+  "median_forecast": 6871033,
+  "median_vs_published": 1.73,
+  "branches_detail": [
+   {
+    "address": "3551 Portage Road",
+    "school": "A N Myer Secondary School",
+    "metres": 137,
+    "forecast": 7425284,
+    "vs_published": 1.87,
+    "core": false
+   },
+   {
+    "address": "6240 Lundy's Ln",
+    "school": "Stamford Collegiate",
+    "metres": 192,
+    "forecast": 8177758,
+    "vs_published": 2.06,
+    "core": false
+   },
+   {
+    "address": "3770 Montrose Road",
+    "school": "Saint Paul Catholic High School",
+    "metres": 1050,
+    "forecast": 7645576,
+    "vs_published": 1.93,
+    "core": false
+   },
+   {
+    "address": "6767-6847 Morrison St",
+    "school": "Saint Paul Catholic High School",
+    "metres": 1411,
+    "forecast": 7656266,
+    "vs_published": 1.93,
+    "core": false
+   },
+   {
+    "address": "7555 Montrose Road",
+    "school": "Saint Michael Catholic High School",
+    "metres": 1495,
+    "forecast": 6288834,
+    "vs_published": 1.58,
+    "core": false
+   },
+   {
+    "address": "7190 Morrison Street",
+    "school": "Saint Paul Catholic High School",
+    "metres": 1612,
+    "forecast": 6316782,
+    "vs_published": 1.59,
+    "core": false
+   },
+   {
+    "address": "7481 Oakwood Dr",
+    "school": "Saint Michael Catholic High School",
+    "metres": 2039,
+    "forecast": 6111933,
+    "vs_published": 1.54,
+    "core": false
+   },
+   {
+    "address": "5175 Victoria Av",
+    "school": "Stamford Collegiate",
+    "metres": 2189,
+    "forecast": 5447499,
+    "vs_published": 1.37,
+    "core": false
+   }
+  ]
+ },
+ "Shoppers Drug Mart": {
+  "category": "pharmacy",
+  "published": 12950000,
+  "quality": "company filing",
+  "branches": 4,
+  "median_forecast": 11102764,
+  "median_vs_published": 0.86,
+  "branches_detail": [
+   {
+    "address": "3643-3739 Portage Rd",
+    "school": "A N Myer Secondary School",
+    "metres": 368,
+    "forecast": 9086900,
+    "vs_published": 0.7,
+    "core": false
+   },
+   {
+    "address": "6565 Lundys Lane",
+    "school": "Stamford Collegiate",
+    "metres": 518,
+    "forecast": 26714132,
+    "vs_published": 2.06,
+    "core": false
+   },
+   {
+    "address": "5125 Montrose Road",
+    "school": "Westlane Secondary School",
+    "metres": 1499,
+    "forecast": 13118628,
+    "vs_published": 1.01,
+    "core": false
+   },
+   {
+    "address": "5175 Victoria Avenue",
+    "school": "Stamford Collegiate",
+    "metres": 2180,
+    "forecast": 7453680,
+    "vs_published": 0.58,
+    "core": false
+   }
+  ]
+ },
+ "Canadian Tire": {
+  "category": "general_merchandise",
+  "published": 24800000,
+  "quality": "company filing",
+  "branches": 1,
+  "median_forecast": 19041780,
+  "median_vs_published": 0.77,
+  "branches_detail": [
+   {
+    "address": "7190 Morrison Street",
+    "school": "Saint Paul Catholic High School",
+    "metres": 1814,
+    "forecast": 19041780,
+    "vs_published": 0.77,
+    "core": false
+   }
+  ]
+ }
+}

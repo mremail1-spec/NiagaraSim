@@ -72,7 +72,7 @@ def sites(city: dict) -> list[dict]:
 def forecast(city_path: Path, beta: float, site_list: list[dict], menu: list[dict]) -> np.ndarray:
     """[site, kind] -> (resident, tourist) yearly sales for a newcomer the size of the median existing
     business of its kind (so the comparison is about the spot, not about being bigger or smaller)."""
-    rows = [[s["lat"], s["lon"], m["sim_category"], m["_size"]] for s in site_list for m in menu]
+    rows = [[s["lat"], s["lon"], m["sim_category"], m["_size"], m["_fw"]] for s in site_list for m in menu]
     with tempfile.TemporaryDirectory() as d:
         sp, op = Path(d) / "sites.json", Path(d) / "out.json"
         sp.write_text(json.dumps(rows))
@@ -89,10 +89,18 @@ def main(n_scen: int = 5) -> dict:
     bz = city["businesses"]
     kinds = []
     for m in menu:
-        sz = [bz["revenue_prior"][i] for i in range(len(bz["node"])) if bz["sim_category"][i] == m["sim_category"]
-              and not bz["external"][i] and not bz["closed_from"][i] and bz["revenue_prior"][i] > 0]
+        same = [i for i in range(len(bz["node"])) if bz["sim_category"][i] == m["sim_category"]
+                and not bz["external"][i] and not bz["closed_from"][i] and bz["revenue_prior"][i] > 0
+                and bz["format_weight"][i] >= 0.05]          # not EV chargers, lockers and the like
+        sz = [bz["revenue_prior"][i] for i in same]
         for fmt, pct in FORMATS:
-            kinds.append(dict(m, _size=float(np.percentile(sz, pct)) if sz else m["sizes"]["typical"], _format=fmt, _pct=pct))
+            size = float(np.percentile(sz, pct)) if sz else m["sizes"]["typical"]
+            # the newcomer pulls like existing businesses of its kind and about its size (a small grocery is a
+            # convenience store, not a supermarket); checked in docs/forecast_consistency.json
+            lo, hi = (np.percentile(sz, max(pct - 15, 0)), np.percentile(sz, min(pct + 15, 100))) if sz else (0, 0)
+            band = [bz["format_weight"][i] for i in same if lo <= bz["revenue_prior"][i] <= hi]
+            fw = float(np.median(band)) if band else 1.0
+            kinds.append(dict(m, _size=size, _fw=fw, _format=fmt, _pct=pct))
     menu = kinds
     site_list = sites(city)
     cal = json.loads((DATA_DIR / "calibrated_multipliers.json").read_text())
@@ -151,7 +159,7 @@ def main(n_scen: int = 5) -> dict:
     robust = (rel.min(axis=0) >= BEAT) & (margin > 0)
     found = []
     for i, k in zip(*np.where(robust)):
-        found.append({"kind": menu[k]["label"], "format": menu[k]["_format"], "size": round(menu[k]["_size"]),
+        found.append({"kind": menu[k]["label"], "format": menu[k]["_format"], "size": round(menu[k]["_size"]), "pull": round(menu[k]["_fw"], 2),
                       "area": "Tourist Core" if site_core[i] else "residential city", "where": site_list[i]["where"], "for_lease": site_list[i]["for_lease"],
                       "lat": round(site_list[i]["lat"], 5), "lon": round(site_list[i]["lon"], 5),
                       "vs_median_competitor_worst": round(float(rel[:, i, k].min()), 2), "vs_median_competitor_default": round(float(rel[0, i, k]), 2),
