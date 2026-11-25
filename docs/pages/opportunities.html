@@ -54,7 +54,7 @@ ul { margin: 0; padding-left: 18px; display: grid; gap: 6px; max-width: 70ch; }
   <header style="display:grid;gap:12px">
     <div class="eyebrow">Niagara Falls simulation · forecast for a new business today · default plus 5 scenarios</div>
     <h1>Where a new business could still work</h1>
-    <p class="lede">Every kind of business, tested at <span class="num" id="nSites"></span> spots across the city and in every space listed for lease. The tourist trade is full: no restaurant, cafe, bar, souvenir shop or attraction finds a spot that clearly beats the ones already there. The openings are in everyday shopping for residents: groceries, pharmacies and specialty shops in the middle of the city.</p>
+    <p class="lede">Every kind of business, tested at <span class="num" id="nSites"></span> spots across the city and in every space listed for lease, in a small and a typical size. The tourist trade is full: no bar, attraction or entertainment venue finds a spot that clearly beats the ones already there. The openings are in everyday trade in the middle of the city: cafes, pharmacies, groceries, quick food near the high schools. Checked against the chains' published sales, the food openings are less certain than they look.</p>
   </header>
 
   <section>
@@ -66,7 +66,7 @@ ul { margin: 0; padding-left: 18px; display: grid; gap: 6px; max-width: 70ch; }
   <section>
     <h2>The strongest spots</h2>
     <div class="fig tablewrap"><table id="top"></table></div>
-    <p class="note">Forecast first-year sales in the default scenario, for a newcomer the size of the median business of its kind. Margin: the industry's normal profit margin after the rent on that street (asking rents from lease listings and rents tenants pay).</p>
+    <p class="note">The strongest spot of each kind. Forecast first-year sales in the default scenario, for a newcomer the size of the smaller quarter (small) or the median (typical) of existing businesses of its kind, pulling customers like them. Margin: the industry's normal profit margin after the rent on that street (asking rents from lease listings and rents tenants pay).</p>
   </section>
 
   <section>
@@ -92,6 +92,7 @@ ul { margin: 0; padding-left: 18px; display: grid; gap: 6px; max-width: 70ch; }
     <ul class="note">
       <li>A single forecast can be off by about ×<span class="num" id="err"></span> either way: that is how far the model misses a chain when the chain is left out of its fitting. Comparing spots and kinds is more reliable than the dollar figures.</li>
       <li>Groceries clear the sales test but keep thin margins (about 1–2% after rent). A pharmacy keeps about 7%.</li>
+      <li>"After chain check" is a stress test, not a correction: it assumes a newcomer does as poorly against the model as the chains do, while the businesses already there stay as modelled. Fast food and cafes next to the schools pass the plain test but not this one; a sit-down restaurant near Stamford passes both. Grocery and convenience stores have no chain in the published data to check against.</li>
       <li>The model knows the businesses on the map, the City's licences and the Region's employment survey, and leaves out those now closed. A competitor that opened recently and is on none of them is not counted.</li>
       <li>Every scenario matches the chains' published sales per store, Niagara Parks' revenue, hotel occupancy, road traffic counts and Statistics Canada's sales by type of store.</li>
     </ul>
