@@ -174,7 +174,8 @@ impl Engine {
                     total = self.weights(home as usize, c, self.beta, &mut w);
                 }
                 let mine = if reach_on_foot {
-                    (served * scale).powf(self.city.params.lunch_pull_power) * Self::walk_factor(kms[home as usize] as f64, walk)
+                    if format_weight > self.city.params.lunch_max_format { 0.0 } else {
+                        (served * scale).powf(self.city.params.lunch_pull_power) * Self::walk_factor(kms[home as usize] as f64, walk) }
                 } else {
                     served * scale / (minutes[home as usize] as f64).max(floor).powf(cb)
                 };

@@ -447,6 +447,14 @@ pub struct Params {
     /// raised to this power within walking catchments (SEED; owner's observations, data/lunch_observations.json).
     #[serde(default = "lunch_pull_power")]
     pub lunch_pull_power: f64,
+    /// Big-format stores (supermarkets, warehouse and department stores: format weight above this) are
+    /// not lunch stops on foot: students buy at Tim Hortons and Little Caesars, not at FreshCo (owner).
+    #[serde(default = "lunch_max_format")]
+    pub lunch_max_format: f64,
+}
+
+fn lunch_max_format() -> f64 {
+    3.0
 }
 
 fn lunch_pull_power() -> f64 {

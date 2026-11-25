@@ -204,6 +204,25 @@ def food_kind(licence: str, name: str) -> tuple[str, str]:
     return "grocery_food", "convenience"            # food premises: grocers, convenience and specialty food stores
 
 
+def google_food_kind(t: str) -> tuple[str | None, str]:
+    """Kind of business for a Google place type."""
+    if any(w in t for w in ("bakery", "cake")):
+        return "grocery_food", "bakery"
+    if "supermarket" in t or t == "grocery_store":
+        return "grocery_food", "supermarket"
+    if any(w in t for w in ("grocery", "market", "convenience", "deli")):
+        return "grocery_food", "convenience"
+    if any(w in t for w in ("cafe", "coffee", "tea", "ice_cream", "dessert", "juice", "donut")):
+        return "cafe", ""
+    if "bar" in t and "snack" not in t:
+        return "bar_pub", ""
+    if any(w in t for w in ("fast_food", "pizza", "hamburger", "sandwich", "takeaway", "chicken", "shawarma", "burrito", "fish_and_chips", "snack")):
+        return "fast_food", ""
+    if "restaurant" in t:
+        return "restaurant", ""
+    return None, ""
+
+
 def _listed_by_name(rows: list[dict], name: str, lat: float, lon: float) -> bool:
     """A business of the same name within 150 m."""
     from .backtest import same_business
@@ -318,6 +337,21 @@ def build_businesses(pack: Pack, seed: int = 1) -> list[dict]:
         cat, tag = food_kind(t, name)
         add("licence:" + t, name, cat, lat_c, lon_c, tag=tag)
         rows[-1]["address_hint"] = nice_case(l["address"])
+
+    # Food places Google lists within walking reach of the high schools (nfprep.food_sweep) that neither
+    # the map nor the City's licences have: plaza tenants such as Little Caesars at 8123 Lundy's Ln.
+    sweep = DATA_DIR / "google_nearby_food.json"
+    for p in (json.loads(sweep.read_text())["places"] if sweep.exists() else []):
+        name = p["displayName"]["text"]
+        la, lo = p["location"]["latitude"], p["location"]["longitude"]
+        street = p.get("formattedAddress", "").split(",")[0]
+        if p.get("businessStatus") != "OPERATIONAL" or not street[:1].isdigit() or not in_city(la, lo):
+            continue
+        cat, tag = google_food_kind(p.get("primaryType") or "")
+        if not cat or _listed_by_name(rows, name, la, lo):
+            continue
+        add("google:nearby", name, cat, la, lo, tag=tag)
+        rows[-1]["address_hint"] = street
 
     # free sights: viewpoints and free gardens and spots on the map, plus big free parks it lacks
     free = json.loads((DATA_DIR / "free_sights.json").read_text())

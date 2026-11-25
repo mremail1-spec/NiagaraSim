@@ -15,6 +15,7 @@ step distance_fit python3 -m nfprep.distance_fit
 step calibrate python3 -m nfprep.calibrate
 step build2 python3 -m nfprep.build 2025 1
 step default_scenario python3 -m nfprep.default_scenario apply
+step popularity python3 -m nfprep.popularity
 step attendance_fit python3 -m nfprep.attendance_fit
 step forecast_error python3 -m nfprep.default_scenario forecast_error
 step traffic_final bash -c "python3 -m nfprep.passby ../build/city_2025/city.json && python3 -m nfprep.traffic_layers"

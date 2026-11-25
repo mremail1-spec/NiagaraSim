@@ -4,8 +4,31 @@
   "source": "project owner, first-hand observation"
  },
  "observations": [
-  {"school": "Westlane Secondary School", "match": "Tim Hortons", "what": "Tim Hortons next to Westlane (8159 Lundy's Ln) is full of students at lunch"},
-  {"school": "A N Myer Secondary School", "match": "We The Finest", "what": "A N Myer students largely eat at We The Finest Burger Company (3643 Portage Rd)"},
-  {"school": "A N Myer Secondary School", "match": "Cookies and More", "what": "A N Myer students buy from Cookies and More Bakery near the school (3641 Portage Rd)"}
+  {
+   "school": "Westlane Secondary School",
+   "match": "Tim Hortons",
+   "what": "Tim Hortons next to Westlane (8159 Lundy's Ln) is full of students at lunch"
+  },
+  {
+   "school": "A N Myer Secondary School",
+   "match": "We The Finest",
+   "what": "A N Myer students largely eat at We The Finest Burger Company (3643 Portage Rd)"
+  },
+  {
+   "school": "A N Myer Secondary School",
+   "match": "Cookies and More",
+   "what": "A N Myer students buy from Cookies and More Bakery near the school (3641 Portage Rd)"
+  },
+  {
+   "school": "Westlane Secondary School",
+   "match": "Little Caesars",
+   "what": "Westlane students buy from Little Caesars Pizza (8123 Lundy's Ln)"
+  },
+  {
+   "school": "Westlane Secondary School",
+   "match": "FreshCo",
+   "what": "Westlane students do not buy much from FreshCo (5931 Kalar Rd)",
+   "expect": "low"
+  }
  ]
 }
