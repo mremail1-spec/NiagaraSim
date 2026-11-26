@@ -123,7 +123,8 @@ def main():
             skipped.append(f"spec {sp.get('name')}: building {sp['building']} not found")
             continue
         out.setdefault(sp["building"], {"walls": {}})["spec"] = {k: v for k, v in sp.items() if k not in ("building", "from")}
-    doc = {"_meta": {"what": "Wall photos and models for the 3D city (built by prep/nfprep/facades.py)", "credits": credits}, "buildings": out}
+    places = json.loads((DATA / "building_specs.json").read_text()).get("places", [])
+    doc = {"_meta": {"what": "Wall photos and models for the 3D city (built by prep/nfprep/facades.py)", "credits": credits}, "buildings": out, "places": places}
     (WORLD / "appearance.json").write_text(json.dumps(doc, indent=1))
     print(f"appearance.json: {sum('spec' in v for v in out.values())} buildings from specs, {sum(len(v['walls']) for v in out.values())} photo walls, {sum('model' in v for v in out.values())} models")
     for s in skipped:

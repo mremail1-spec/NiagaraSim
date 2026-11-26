@@ -6,7 +6,8 @@
   "wall_materials": "block, brick, siding, stucco, stone",
   "items": "window, door, sign, awning, storefront {x,w,y,top,bay,frame}, box {x,w,y,h,depth,out_m,color,text,fg}, tower {x,w,h,depth,roof_h,roof_color,color,logo}, canopy {x,w,y,depth,drop,back,color,fascia,posts}, pediment {x,w,y,h,out_m,back,color,roof_color,text}; site: pylon {lat,lon,facing_deg,w,h,frame,top,title,panels:[{text,bg,fg}]}",
   "status": "draft = estimated from one photo, to check against the owner's own photos; checked = matched to the owner's photos",
-  "photos": "data/photos/index.json lists the owner's photos each spec was drawn from"
+  "photos": "data/photos/index.json lists the owner's photos each spec was drawn from",
+  "band": "band {top_m,out_m,in_m,color}: a sloped shingle band around a flat roof (roof.height_m), following every wall"
  },
  "buildings": [
   {
@@ -1108,6 +1109,490 @@
      }
     ]
    }
+  },
+  {
+   "building": "16856b64e0",
+   "name": "Main Street Convenience and Niagara Medicinal Herbs, 6119 Main St",
+   "status": "draft",
+   "from": "owner photos IMG_1831, IMG_1830 (2026-11): brick, brown shingle mansard band, the herbs unit stepping forward of the convenience store. Fronts taken as the west walls 0 (herbs) and 2 (convenience).",
+   "eave_m": 3.1,
+   "fascia": false,
+   "roof": {
+    "type": "flat",
+    "height_m": 4.8
+   },
+   "walls": {
+    "material": "brick",
+    "color": "#9a5a46"
+   },
+   "trim": "#5a4637",
+   "facades": {
+    "0": [
+     {
+      "type": "storefront",
+      "x": 0.4,
+      "w": 6.4,
+      "y": 0.6,
+      "top": 2.8,
+      "bay": 1.1,
+      "frame": "#2a2c2e"
+     },
+     {
+      "type": "door",
+      "x": 7.2,
+      "w": 0.95,
+      "h": 2.2,
+      "color": "#2a2c2e",
+      "glass": true
+     },
+     {
+      "type": "sign",
+      "x": 1.0,
+      "y": 3.45,
+      "w": 5.4,
+      "h": 1.0,
+      "text": "NIAGARA MEDICINAL HERBS & WELLNESS CONSULTING",
+      "bg": "#e9edf0",
+      "fg": "#2f8fbf",
+      "out_m": 0.75
+     }
+    ],
+    "2": [
+     {
+      "type": "box",
+      "x": 0,
+      "w": 0.6,
+      "y": 0,
+      "h": 3.1,
+      "depth": 0.6,
+      "color": "#9a5a46"
+     },
+     {
+      "type": "storefront",
+      "x": 1.6,
+      "w": 10.2,
+      "y": 0.45,
+      "top": 2.8,
+      "bay": 1.02,
+      "frame": "#5a4637"
+     },
+     {
+      "type": "sign",
+      "x": 3.6,
+      "y": 3.45,
+      "w": 6.0,
+      "h": 1.1,
+      "text": "MAIN STREET CONVENIENCE",
+      "bg": "#f2d21b",
+      "fg": "#1d5a3a",
+      "out_m": 0.75
+     }
+    ]
+   },
+   "band": {
+    "top_m": 4.8,
+    "out_m": 0.5,
+    "in_m": 0.4,
+    "color": "#5a3f33"
+   }
+  },
+  {
+   "building": "5f317ac1ff",
+   "name": "Table Rock Centre, 6650 Niagara Parkway",
+   "status": "draft",
+   "from": "owner photos IMG_1826, IMG_1825, IMG_1822 (2026-11): light stone walls, steep dark standing-seam roof with flared eaves, a stone tower with tall windows. The City's 4.4 m height is far too low; eave set at 7 m with the roof rising about 5 m more.",
+   "eave_m": 7.0,
+   "fascia": false,
+   "roof": {
+    "type": "flat"
+   },
+   "walls": {
+    "material": "stone",
+    "color": "#cbc3b3"
+   },
+   "trim": "#e3ddd0",
+   "facades": {
+    "0": [
+     {
+      "type": "window",
+      "x": 1.0,
+      "y": 3.6,
+      "w": 2.0,
+      "h": 2.4,
+      "grid": [
+       2,
+       3
+      ],
+      "frame": "#e3ddd0"
+     },
+     {
+      "type": "canopy",
+      "x": -0.4,
+      "w": null,
+      "y": 7.0,
+      "depth": 0.8,
+      "drop": 1.0,
+      "back": 5,
+      "color": "#4b5357",
+      "fascia": "#3b3f42"
+     }
+    ],
+    "2": [
+     {
+      "type": "window",
+      "x": 1.0,
+      "y": 3.6,
+      "w": 2.0,
+      "h": 2.4,
+      "grid": [
+       2,
+       3
+      ],
+      "frame": "#e3ddd0"
+     },
+     {
+      "type": "canopy",
+      "x": -0.4,
+      "w": null,
+      "y": 7.0,
+      "depth": 0.8,
+      "drop": 1.0,
+      "back": 5,
+      "color": "#4b5357",
+      "fascia": "#3b3f42"
+     }
+    ],
+    "6": [
+     {
+      "type": "window",
+      "x": 1.0,
+      "y": 3.6,
+      "w": 2.0,
+      "h": 2.4,
+      "grid": [
+       2,
+       3
+      ],
+      "frame": "#e3ddd0"
+     },
+     {
+      "type": "canopy",
+      "x": -0.4,
+      "w": null,
+      "y": 7.0,
+      "depth": 0.8,
+      "drop": 1.0,
+      "back": 5,
+      "color": "#4b5357",
+      "fascia": "#3b3f42"
+     }
+    ],
+    "14": [
+     {
+      "type": "window",
+      "x": 1.0,
+      "y": 3.6,
+      "w": 2.0,
+      "h": 2.4,
+      "grid": [
+       2,
+       3
+      ],
+      "frame": "#e3ddd0"
+     },
+     {
+      "type": "canopy",
+      "x": -0.4,
+      "w": null,
+      "y": 7.0,
+      "depth": 0.8,
+      "drop": 1.0,
+      "back": 5,
+      "color": "#4b5357",
+      "fascia": "#3b3f42"
+     }
+    ],
+    "16": [
+     {
+      "type": "window",
+      "x": 1.0,
+      "y": 3.6,
+      "w": 2.0,
+      "h": 2.4,
+      "grid": [
+       2,
+       3
+      ],
+      "frame": "#e3ddd0"
+     },
+     {
+      "type": "canopy",
+      "x": -0.4,
+      "w": null,
+      "y": 7.0,
+      "depth": 0.8,
+      "drop": 1.0,
+      "back": 5,
+      "color": "#4b5357",
+      "fascia": "#3b3f42"
+     }
+    ],
+    "26": [
+     {
+      "type": "window",
+      "x": 1.0,
+      "y": 3.6,
+      "w": 2.0,
+      "h": 2.4,
+      "grid": [
+       2,
+       3
+      ],
+      "frame": "#e3ddd0"
+     },
+     {
+      "type": "canopy",
+      "x": -0.4,
+      "w": null,
+      "y": 7.0,
+      "depth": 0.8,
+      "drop": 1.0,
+      "back": 5,
+      "color": "#4b5357",
+      "fascia": "#3b3f42"
+     },
+     {
+      "type": "tower",
+      "x": 9,
+      "w": 6.5,
+      "h": 13,
+      "depth": 6.5,
+      "roof_h": 4.5,
+      "roof_color": "#4b5357",
+      "color": "#cbc3b3"
+     },
+     {
+      "type": "sign",
+      "x": 2,
+      "y": 1.5,
+      "w": 2.6,
+      "h": 3.6,
+      "text": "TABLE ROCK",
+      "bg": "#2b3034",
+      "fg": "#e9e4d8",
+      "out_m": 0.1
+     }
+    ],
+    "27": [
+     {
+      "type": "window",
+      "x": 1.0,
+      "y": 3.6,
+      "w": 2.0,
+      "h": 2.4,
+      "grid": [
+       2,
+       3
+      ],
+      "frame": "#e3ddd0"
+     },
+     {
+      "type": "canopy",
+      "x": -0.4,
+      "w": null,
+      "y": 7.0,
+      "depth": 0.8,
+      "drop": 1.0,
+      "back": 5,
+      "color": "#4b5357",
+      "fascia": "#3b3f42"
+     }
+    ],
+    "45": [
+     {
+      "type": "window",
+      "x": 1.0,
+      "y": 3.6,
+      "w": 2.0,
+      "h": 2.4,
+      "grid": [
+       2,
+       3
+      ],
+      "frame": "#e3ddd0"
+     },
+     {
+      "type": "canopy",
+      "x": -0.4,
+      "w": null,
+      "y": 7.0,
+      "depth": 0.8,
+      "drop": 1.0,
+      "back": 5,
+      "color": "#4b5357",
+      "fascia": "#3b3f42"
+     }
+    ],
+    "50": [
+     {
+      "type": "window",
+      "x": 1.0,
+      "y": 3.6,
+      "w": 2.0,
+      "h": 2.4,
+      "grid": [
+       2,
+       3
+      ],
+      "frame": "#e3ddd0"
+     },
+     {
+      "type": "canopy",
+      "x": -0.4,
+      "w": null,
+      "y": 7.0,
+      "depth": 0.8,
+      "drop": 1.0,
+      "back": 5,
+      "color": "#4b5357",
+      "fascia": "#3b3f42"
+     }
+    ],
+    "60": [
+     {
+      "type": "window",
+      "x": 1.0,
+      "y": 3.6,
+      "w": 2.0,
+      "h": 2.4,
+      "grid": [
+       2,
+       3
+      ],
+      "frame": "#e3ddd0"
+     },
+     {
+      "type": "canopy",
+      "x": -0.4,
+      "w": null,
+      "y": 7.0,
+      "depth": 0.8,
+      "drop": 1.0,
+      "back": 5,
+      "color": "#4b5357",
+      "fascia": "#3b3f42"
+     }
+    ],
+    "64": [
+     {
+      "type": "window",
+      "x": 1.0,
+      "y": 3.6,
+      "w": 2.0,
+      "h": 2.4,
+      "grid": [
+       2,
+       3
+      ],
+      "frame": "#e3ddd0"
+     },
+     {
+      "type": "canopy",
+      "x": -0.4,
+      "w": null,
+      "y": 7.0,
+      "depth": 0.8,
+      "drop": 1.0,
+      "back": 5,
+      "color": "#4b5357",
+      "fascia": "#3b3f42"
+     }
+    ],
+    "65": [
+     {
+      "type": "window",
+      "x": 1.0,
+      "y": 3.6,
+      "w": 2.0,
+      "h": 2.4,
+      "grid": [
+       2,
+       3
+      ],
+      "frame": "#e3ddd0"
+     },
+     {
+      "type": "canopy",
+      "x": -0.4,
+      "w": null,
+      "y": 7.0,
+      "depth": 0.8,
+      "drop": 1.0,
+      "back": 5,
+      "color": "#4b5357",
+      "fascia": "#3b3f42"
+     }
+    ],
+    "66": [
+     {
+      "type": "window",
+      "x": 1.0,
+      "y": 3.6,
+      "w": 2.0,
+      "h": 2.4,
+      "grid": [
+       2,
+       3
+      ],
+      "frame": "#e3ddd0"
+     },
+     {
+      "type": "canopy",
+      "x": -0.4,
+      "w": null,
+      "y": 7.0,
+      "depth": 0.8,
+      "drop": 1.0,
+      "back": 5,
+      "color": "#4b5357",
+      "fascia": "#3b3f42"
+     }
+    ]
+   }
+  }
+ ],
+ "places": [
+  {
+   "type": "statue",
+   "name": "Nikola Tesla monument",
+   "lat": 43.0806,
+   "lon": -79.0792,
+   "facing_deg": 90,
+   "color": "#6f9488",
+   "h": 2.4,
+   "located": "approximate, from the owner's photos (Nikola Tesla Plaza, Queen Victoria Park, below the escarpment by the Parkway path): to confirm",
+   "from": "owner photos IMG_1828, IMG_1827"
+  },
+  {
+   "type": "rock_sign",
+   "name": "Nikola Tesla Plaza sign",
+   "lat": 43.08072,
+   "lon": -79.07905,
+   "facing_deg": 90,
+   "text": "NIKOLA TESLA PLAZA",
+   "located": "approximate, next to the statue",
+   "from": "owner photo IMG_1827"
+  },
+  {
+   "type": "letters",
+   "name": "LOVE sign",
+   "lat": 43.0826,
+   "lon": -79.0784,
+   "facing_deg": 80,
+   "text": "LOVE",
+   "h": 2.0,
+   "located": "approximate, from the owner's photo looking north from Table Rock: on the lawn west of the Parkway below the Skylon",
+   "from": "owner photo IMG_1822"
   }
  ]
 }

@@ -124,6 +124,58 @@
    "light": "dusk",
    "shows": "A brick convenience store with a brown hip roof (location not given)",
    "buildings": []
+  },
+  {
+   "file": "2026-11/IMG_1831.jpg",
+   "light": "dusk",
+   "shows": "Main Street Convenience, 6119 Main St: brick, brown shingle mansard band, yellow sign",
+   "buildings": [
+    "16856b64e0"
+   ]
+  },
+  {
+   "file": "2026-11/IMG_1830.jpg",
+   "light": "dusk",
+   "shows": "Niagara Medicinal Herbs & Wellness Consulting next to Main Street Convenience, 6119 Main St",
+   "buildings": [
+    "16856b64e0"
+   ]
+  },
+  {
+   "file": "2026-11/IMG_1828.jpg",
+   "light": "day",
+   "shows": "Nikola Tesla monument, Queen Victoria Park",
+   "buildings": []
+  },
+  {
+   "file": "2026-11/IMG_1827.jpg",
+   "light": "day",
+   "shows": "Nikola Tesla Plaza rock sign and path by the Niagara Parkway",
+   "buildings": []
+  },
+  {
+   "file": "2026-11/IMG_1826.jpg",
+   "light": "day",
+   "shows": "American Falls and Rainbow Bridge from Table Rock; Table Rock Centre at right",
+   "buildings": [
+    "5f317ac1ff"
+   ]
+  },
+  {
+   "file": "2026-11/IMG_1825.jpg",
+   "light": "day",
+   "shows": "Table Rock Centre: stone walls, dark standing-seam roof, tower",
+   "buildings": [
+    "5f317ac1ff"
+   ]
+  },
+  {
+   "file": "2026-11/IMG_1822.jpg",
+   "light": "day",
+   "shows": "Looking north from the Table Rock terrace: Niagara Parkway below the escarpment, Skylon Tower, LOVE sign",
+   "buildings": [
+    "5f317ac1ff"
+   ]
   }
  ]
 }
