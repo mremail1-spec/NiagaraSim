@@ -47,6 +47,11 @@ function getArrayF64FromWasm0(ptr, len) {
     return getFloat64ArrayMemory0().subarray(ptr / 8, ptr / 8 + len);
 }
 
+function getArrayU8FromWasm0(ptr, len) {
+    ptr = ptr >>> 0;
+    return getUint8ArrayMemory0().subarray(ptr / 1, ptr / 1 + len);
+}
+
 let WASM_VECTOR_LEN = 0;
 
 const cachedTextEncoder = (typeof TextEncoder !== 'undefined' ? new TextEncoder('utf-8') : { encode: () => { throw Error('TextEncoder not available') } } );
@@ -107,11 +112,6 @@ function takeFromExternrefTable0(idx) {
     const value = wasm.__wbindgen_export_2.get(idx);
     wasm.__externref_table_dealloc(idx);
     return value;
-}
-
-function getArrayU8FromWasm0(ptr, len) {
-    ptr = ptr >>> 0;
-    return getUint8ArrayMemory0().subarray(ptr / 1, ptr / 1 + len);
 }
 
 let cachedUint32ArrayMemory0 = null;
@@ -177,6 +177,16 @@ export class Scanner {
         return v1;
     }
     /**
+     * One byte per frame: 1 when the frame has a solved camera pose.
+     * @returns {Uint8Array}
+     */
+    registered() {
+        const ret = wasm.scanner_registered(this.__wbg_ptr);
+        var v1 = getArrayU8FromWasm0(ret[0], ret[1]).slice();
+        wasm.__wbindgen_free(ret[0], ret[1] * 1, 1);
+        return v1;
+    }
+    /**
      * Tunables: max_features, match_window, fov_deg, dense_size, dense_depths,
      * dense_sources, dense_views, min_zncc, mesh_res, voxel.
      * @param {string} key
@@ -189,6 +199,14 @@ export class Scanner {
         if (ret[1]) {
             throw takeFromExternrefTable0(ret[0]);
         }
+    }
+    /**
+     * Mark the object: a pixel in the first frame.
+     * @param {number} u
+     * @param {number} v
+     */
+    set_target(u, v) {
+        wasm.scanner_set_target(this.__wbg_ptr, u, v);
     }
     /**
      * @returns {number}
@@ -232,6 +250,12 @@ export class Scanner {
         var v1 = getArrayF32FromWasm0(ret[0], ret[1]).slice();
         wasm.__wbindgen_free(ret[0], ret[1] * 4, 4);
         return v1;
+    }
+    /**
+     * @param {number} i
+     */
+    remove_frame(i) {
+        wasm.scanner_remove_frame(this.__wbg_ptr, i);
     }
     /**
      * @param {Function} cb
@@ -295,6 +319,26 @@ export class Scanner {
         this.__wbg_ptr = ret >>> 0;
         ScannerFinalization.register(this, this.__wbg_ptr, this);
         return this;
+    }
+    /**
+     * Object centre in model coordinates (empty before a solution).
+     * @returns {Float32Array}
+     */
+    target() {
+        const ret = wasm.scanner_target(this.__wbg_ptr);
+        var v1 = getArrayF32FromWasm0(ret[0], ret[1]).slice();
+        wasm.__wbindgen_free(ret[0], ret[1] * 4, 4);
+        return v1;
+    }
+    /**
+     * Guided capture: process frames added since the last call and re-solve
+     * poses. Returns how many frames are registered (0 = no solution yet).
+     * @param {Function} cb
+     * @returns {number}
+     */
+    update(cb) {
+        const ret = wasm.scanner_update(this.__wbg_ptr, cb);
+        return ret >>> 0;
     }
     /**
      * Per registered camera: [frame index, centre xyz, rotation (world->camera) row-major 9].

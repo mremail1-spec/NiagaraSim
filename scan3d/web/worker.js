@@ -3,7 +3,47 @@ import init, { Scanner } from './pkg/scan3d.js';
 
 const ready = init();
 
+// ---- guided capture: one persistent scanner, re-solved after every change ----
+let g = null;
+let chain = Promise.resolve();
+const opts = (s, options = {}) => { for (const [k, v] of Object.entries(options)) s.set_option(k, v); };
+
+async function guided(m) {
+  await ready;
+  const post = (msg, transfer = []) => self.postMessage(msg, transfer);
+  const logcb = (p, msg) => { if (msg) post({ type: 'log', msg }); };
+  try {
+    if (m.cmd === 'reset') { g?.free(); g = new Scanner(); opts(g, m.options); return; }
+    if (!g) { g = new Scanner(); opts(g, m.options); }
+    if (m.cmd === 'add') g.add_frame(new Uint8Array(m.frame), m.w, m.h);
+    if (m.cmd === 'remove') g.remove_frame(m.i);
+    if (m.cmd === 'target') g.set_target(m.u, m.v);
+    if ((m.cmd === 'add' && m.solve !== false) || m.cmd === 'remove' || m.cmd === 'target') {
+      const t0 = performance.now();
+      const solved = g.frame_count() ? g.update(() => {}) : 0;
+      const pos = g.sparse_positions(), col = g.sparse_colors(), cams = g.cameras(), mask = g.registered();
+      post({ type: 'guide', seq: m.seq, n: g.frame_count(), solved, mask, cams, target: Array.from(g.target()),
+        intr: Array.from(g.intrinsics()), pos, col, ms: performance.now() - t0 }, [pos.buffer, col.buffer, cams.buffer]);
+    }
+    if (m.cmd === 'finish') {
+      opts(g, m.options);
+      const stage = (name) => (p, msg) => post({ type: 'progress', stage: name, p, msg });
+      const t0 = performance.now();
+      g.run_dense(stage('dense'));
+      { const pos = g.dense_positions(), col = g.dense_colors(), nrm = g.dense_normals();
+        post({ type: 'dense', pos, col, nrm }, [pos.buffer, col.buffer, nrm.buffer]); }
+      g.run_mesh(stage('mesh'));
+      { const pos = g.mesh_positions(), col = g.mesh_colors(), nrm = g.mesh_normals(), idx = g.mesh_indices();
+        post({ type: 'mesh', pos, col, nrm, idx }, [pos.buffer, col.buffer, nrm.buffer, idx.buffer]); }
+      post({ type: 'done', seconds: (performance.now() - t0) / 1000 });
+    }
+  } catch (err) {
+    post({ type: 'error', msg: String(err && err.message ? err.message : err) });
+  }
+}
+
 self.onmessage = async (e) => {
+  if (e.data.cmd) { chain = chain.then(() => guided(e.data)); return; }
   const { frames, w, h, options } = e.data;
   await ready;
   const s = new Scanner();

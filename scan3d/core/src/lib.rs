@@ -90,6 +90,31 @@ impl Scanner {
         self.p.mesh(&mut Self::report(cb)).map(|n| n as u32).map_err(|e| JsValue::from_str(&e))
     }
 
+    /// Guided capture: process frames added since the last call and re-solve
+    /// poses. Returns how many frames are registered (0 = no solution yet).
+    pub fn update(&mut self, cb: &js_sys::Function) -> u32 {
+        self.p.update(&mut Self::report(cb)) as u32
+    }
+    pub fn remove_frame(&mut self, i: u32) {
+        self.p.remove_frame(i as usize);
+    }
+    /// Mark the object: a pixel in the first frame.
+    pub fn set_target(&mut self, u: f64, v: f64) {
+        self.p.target_uv = Some((u, v));
+    }
+    /// Object centre in model coordinates (empty before a solution).
+    pub fn target(&self) -> Vec<f32> {
+        self.p.target_point().map_or(vec![], |t| vec![t.x as f32, t.y as f32, t.z as f32])
+    }
+    /// One byte per frame: 1 when the frame has a solved camera pose.
+    pub fn registered(&self) -> Vec<u8> {
+        let n = self.p.rgba.len();
+        match &self.p.rec {
+            Some(r) => (0..n).map(|i| r.poses.get(i).map_or(0, |p| p.is_some() as u8)).collect(),
+            None => vec![0; n],
+        }
+    }
+
     pub fn sparse_positions(&self) -> Vec<f32> {
         self.p.rec.as_ref().map_or(vec![], |r| r.points.iter().flat_map(|p| [p.x.x as f32, p.x.y as f32, p.x.z as f32]).collect())
     }
