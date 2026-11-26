@@ -59,14 +59,17 @@ export function guide(s) {
     return out;
   }
 
-  const lastIdx = s.n - 1;
-  const lastCam = cams.find((c) => c.idx === lastIdx);
-  if (!lastCam) {
+  // Two unplaced frames in a row means the user has drifted off; one is often
+  // just not solved yet, so steer from the latest placed camera instead.
+  const unplaced = (i) => i >= 0 && !s.mask[i];
+  if (s.n >= 3 && unplaced(s.n - 1) && unplaced(s.n - 2)) {
     out.arrow = 'back';
-    out.title = 'That photo did not fit. Go back a little';
-    out.detail = 'It did not overlap enough with the others. Return toward where you took the previous photo, take a smaller step, and keep the object centred. You can also undo it.';
+    out.title = 'Those photos did not fit. Go back a little';
+    out.detail = 'The last photos did not overlap enough with the others. Return toward where the previous good photo was taken, take smaller steps, and keep the object centred.';
     return out;
   }
+  const lastCam = cams[cams.length - 1];
+  const lastIdx = lastCam.idx;
   // Direction of travel from the last two registered photos.
   const prev = cams.filter((c) => c.idx < lastIdx).pop();
   let dir = 1, stepDeg = null;

@@ -32,6 +32,27 @@
   .hud { position: absolute; left: 12px; right: 12px; top: 12px; display: flex; gap: 8px; flex-wrap: wrap; pointer-events: none; }
   .pill { background: rgba(0,0,0,.6); border-radius: 999px; padding: 4px 10px; font-size: 13px; }
   .pill.ok { color: var(--ok); } .pill.warn { color: var(--warn); }
+  .cue { position: absolute; left: 50%; bottom: 16px; transform: translateX(-50%); width: min(560px, calc(100% - 32px));
+    display: flex; gap: 12px; align-items: center; background: rgba(10,12,16,.78); border-radius: 14px; padding: 12px 14px; pointer-events: none; }
+  .cue svg { flex: none; color: var(--accent); }
+  .cue.busy svg { opacity: .6; }
+  .cue-text { display: flex; flex-direction: column; gap: 3px; min-width: 0; flex: 1; }
+  .cue-text strong { font-size: 17px; line-height: 1.25; }
+  .cue-text span { color: var(--muted); font-size: 13px; }
+  .meter { height: 5px; background: rgba(255,255,255,.15); border-radius: 3px; overflow: hidden; margin-top: 4px; }
+  .meter i { display: block; height: 100%; width: 0; background: var(--accent); transition: width .1s; }
+  .meter i.ready { background: var(--ok); }
+  .ringbox { position: absolute; right: 12px; top: 48px; background: rgba(10,12,16,.7); border-radius: 12px; padding: 6px; pointer-events: none; }
+  .ringbox .seg { fill: rgba(255,255,255,.18); }
+  .ringbox .seg.on { fill: var(--ok); }
+  .ringbox .seg.hi.on { fill: var(--accent); }
+  .ringbox .cam { fill: var(--text); }
+  .ringbox .cam.last { fill: var(--accent); }
+  .ringbox .obj { fill: var(--muted); }
+  .tapdot { position: absolute; width: 26px; height: 26px; margin: -13px 0 0 -13px; border: 3px solid var(--accent); border-radius: 50%; }
+  .tapmark { position: absolute; inset: 0; pointer-events: none; }
+  .stage video { cursor: crosshair; }
+  @media (prefers-reduced-motion: reduce) { .meter i { transition: none; } }
   .empty { color: var(--muted); text-align: center; padding: 24px; max-width: 440px; }
   .empty h2 { color: var(--text); font-size: 18px; }
   .controls { display: flex; gap: 8px; padding: 10px 16px; flex-wrap: wrap; align-items: center; border-top: 1px solid var(--line); background: var(--panel); }
@@ -41,6 +62,7 @@
   .shutter.auto::after { background: var(--accent); }
   .strip { display: flex; gap: 4px; overflow-x: auto; padding: 8px 16px; min-height: 64px; background: var(--panel); }
   .strip img { height: 48px; border-radius: 4px; cursor: pointer; flex: none; }
+  .strip img.bad { outline: 2px solid var(--warn); outline-offset: -2px; opacity: .7; }
   #model { flex-direction: row; }
   #view { flex: 1; min-width: 0; width: 100%; height: 100%; display: block; touch-action: none; background: var(--viewer-bg); }
   aside { width: 320px; flex: none; border-left: 1px solid var(--line); background: var(--panel); padding: 14px 16px; overflow-y: auto; }
@@ -83,9 +105,17 @@
       <video id="video" playsinline muted hidden></video>
       <div class="empty" id="intro">
         <h2>Scan an object or a space</h2>
-        <p>Start the camera and walk slowly around the subject, keeping it in view. Frames are captured automatically when the view has changed enough and the image is sharp. 30–80 frames work well.</p>
+        <p>Start the camera, then tap the object on screen. Arrows over the video tell you which way to walk; frames are captured automatically when you have moved enough and the image is sharp. It tells you when every side has been covered.</p>
         <p>Or import photos or a video you already have.</p>
       </div>
+      <div class="cue" id="cue" hidden aria-live="polite">
+        <svg id="arrow" viewBox="0 0 48 48" width="56" height="56" aria-hidden="true"></svg>
+        <div class="cue-text"><strong id="gTitle"></strong><span id="gDetail"></span>
+          <div class="meter" title="Movement since the last photo"><i id="meter"></i></div>
+        </div>
+      </div>
+      <div class="ringbox" id="ringbox" hidden></div>
+      <div class="tapmark" id="tapmark" hidden><div class="tapdot" id="tapdot"></div></div>
       <div class="hud" id="hud" hidden>
         <span class="pill" id="hudCount">0 frames</span>
         <span class="pill" id="hudSharp">sharpness –</span>

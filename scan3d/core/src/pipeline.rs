@@ -6,7 +6,7 @@ use crate::geometry::{fundamental_ransac, Intrinsics};
 use crate::image::Gray;
 use crate::mesh::{build_mesh, Mesh};
 use crate::mvs::{compute_depth_maps, filter_depth_maps, fuse, Cloud, DenseOptions, DepthMap};
-use crate::sfm::{reconstruct, PairMatch, Reconstruction};
+use crate::sfm::{reconstruct_from, PairMatch, Reconstruction};
 
 pub type Report<'a> = &'a mut dyn FnMut(f32, &str);
 
@@ -42,6 +42,8 @@ pub struct Pipeline {
     pub matched_upto: usize,
     /// pixel in frame 0 that marks the object being scanned
     pub target_uv: Option<(f64, f64)>,
+    /// starting pair of the last successful solve (reused while capturing)
+    pub init_pair: Option<(usize, usize)>,
 }
 
 impl Pipeline {
@@ -172,6 +174,7 @@ impl Pipeline {
         if i == 0 {
             self.target_uv = None;
         }
+        self.init_pair = None;
         self.rec = None;
         self.cloud = None;
         self.mesh = None;
@@ -214,7 +217,7 @@ impl Pipeline {
         let f = self.focal_guess();
         let intr = Intrinsics { f, cx: self.w as f64 / 2.0 - 0.5, cy: self.h as f64 / 2.0 - 0.5, k1: 0.0 };
         let thr = 4.0 * self.px_scale();
-        let rec = reconstruct(&self.feats, &self.pairs, intr, thr, &mut *rep);
+        let rec = reconstruct_from(&self.feats, &self.pairs, intr, thr, self.init_pair, &mut *rep);
         let Some(mut rec) = rec else {
             return Err("could not initialise: need more overlap / texture / parallax between photos".into());
         };
@@ -224,6 +227,7 @@ impl Pipeline {
             let c = crate::image::sample_rgb(&self.rgba[img], self.w, self.h, k.x, k.y);
             p.color = [c[0] as u8, c[1] as u8, c[2] as u8];
         }
+        self.init_pair = rec.init_pair;
         let n = rec.registered();
         rep(1.0, &format!("sfm: {} / {} cameras registered, {} sparse points", n, self.rgba.len(), rec.points.len()));
         self.rec = Some(rec);

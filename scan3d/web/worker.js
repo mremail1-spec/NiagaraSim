@@ -6,6 +6,7 @@ const ready = init();
 // ---- guided capture: one persistent scanner, re-solved after every change ----
 let g = null;
 let chain = Promise.resolve();
+let pending = 0; // guided messages received but not yet handled
 const opts = (s, options = {}) => { for (const [k, v] of Object.entries(options)) s.set_option(k, v); };
 
 async function guided(m) {
@@ -18,7 +19,11 @@ async function guided(m) {
     if (m.cmd === 'add') g.add_frame(new Uint8Array(m.frame), m.w, m.h);
     if (m.cmd === 'remove') g.remove_frame(m.i);
     if (m.cmd === 'target') g.set_target(m.u, m.v);
-    if ((m.cmd === 'add' && m.solve !== false) || m.cmd === 'remove' || m.cmd === 'target') {
+    // Let queued messages arrive, then skip this solve if newer frames are waiting:
+    // the next one re-solves everything anyway.
+    await new Promise((r) => setTimeout(r, 0));
+    const newer = pending > 0;
+    if (!newer && ((m.cmd === 'add' && m.solve !== false) || m.cmd === 'remove' || m.cmd === 'target')) {
       const t0 = performance.now();
       const solved = g.frame_count() ? g.update(() => {}) : 0;
       const pos = g.sparse_positions(), col = g.sparse_colors(), cams = g.cameras(), mask = g.registered();
@@ -29,6 +34,14 @@ async function guided(m) {
       opts(g, m.options);
       const stage = (name) => (p, msg) => post({ type: 'progress', stage: name, p, msg });
       const t0 = performance.now();
+      // Final pose solve over every frame (live guidance may have skipped solves).
+      g.update((p, msg) => { if (msg && /^sfm:|final BA/.test(msg)) post({ type: 'progress', stage: 'sfm', p: 1, msg }); });
+      {
+        const pos = g.sparse_positions(), col = g.sparse_colors(), cams = g.cameras();
+        post({ type: 'guide', seq: m.seq, n: g.frame_count(), solved: Array.from(g.registered()).reduce((a, b) => a + b, 0),
+          mask: g.registered(), cams, target: Array.from(g.target()), intr: Array.from(g.intrinsics()), pos, col, ms: 0, final: true },
+          [pos.buffer, col.buffer, cams.buffer]);
+      }
       g.run_dense(stage('dense'));
       { const pos = g.dense_positions(), col = g.dense_colors(), nrm = g.dense_normals();
         post({ type: 'dense', pos, col, nrm }, [pos.buffer, col.buffer, nrm.buffer]); }
@@ -43,7 +56,11 @@ async function guided(m) {
 }
 
 self.onmessage = async (e) => {
-  if (e.data.cmd) { chain = chain.then(() => guided(e.data)); return; }
+  if (e.data.cmd) {
+    pending++;
+    chain = chain.then(() => { pending--; return guided(e.data); });
+    return;
+  }
   const { frames, w, h, options } = e.data;
   await ready;
   const s = new Scanner();

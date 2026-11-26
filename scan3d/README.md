@@ -18,10 +18,12 @@ cd web && python3 -m http.server 8000
 Browsers only allow camera access on **https** or **localhost**. To use a phone, serve `web/`
 over HTTPS (any static host, or a local HTTPS tunnel).
 
-1. **Capture**: press *Start camera* and walk slowly around the subject. Auto-capture takes a
-   frame whenever the view has changed enough and the image is sharp. It also warns when you
-   move too fast or the image is blurry. Aim for 30–80 frames and include higher and lower
-   angles. You can also *Import* photos or a video.
+1. **Capture**: press *Start camera* and tap the object on screen. Arrows over the live video
+   tell you which way to walk. They come from the engine re-solving every camera position in
+   the background as frames arrive. A coverage ring shows which sides are done; after the first
+   lap it asks you to raise the phone and go round again looking down, and it says when coverage
+   is complete. Frames are captured automatically when you have moved enough (the meter under
+   the arrow) and the image is sharp. You can also *Import* photos or a video.
 2. **Build 3D model**: the stages run in a Web Worker. The sparse cloud and camera frusta
    appear first, then the dense cloud, then the mesh.
 3. **Export** as `.glb` (web, AR, Blender), `.obj` or `.ply` with vertex colours, or the dense

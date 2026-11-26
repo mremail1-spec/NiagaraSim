@@ -261,6 +261,121 @@ pub fn pose_from_essential(e: &M3, n1: &[[f64; 2]], n2: &[[f64; 2]]) -> Option<(
     best
 }
 
+/// Real roots of a quartic c4 x^4 + c3 x^3 + c2 x^2 + c1 x + c0 (Durand–Kerner + Newton polish).
+fn quartic_roots(c: [f64; 5]) -> Vec<f64> {
+    if c[0].abs() < 1e-14 {
+        return vec![];
+    }
+    let a: Vec<f64> = c.iter().map(|v| v / c[0]).collect();
+    type C = (f64, f64);
+    let mul = |x: C, y: C| (x.0 * y.0 - x.1 * y.1, x.0 * y.1 + x.1 * y.0);
+    let sub = |x: C, y: C| (x.0 - y.0, x.1 - y.1);
+    let div = |x: C, y: C| { let d = y.0 * y.0 + y.1 * y.1; ((x.0 * y.0 + x.1 * y.1) / d, (x.1 * y.0 - x.0 * y.1) / d) };
+    let f = |z: C| { let mut r = (1.0, 0.0); for k in 1..5 { r = mul(r, z); r.0 += a[k]; } r };
+    let scale = 1.0 + a[1..].iter().fold(0.0f64, |m, v| m.max(v.abs()));
+    let mut z: Vec<C> = (0..4).map(|k| { let t = 0.4 + 0.9 * k as f64; (scale * 0.5 * t.cos(), scale * 0.5 * t.sin()) }).collect();
+    for _ in 0..200 {
+        let mut moved = 0.0f64;
+        for i in 0..4 {
+            let mut den = (1.0, 0.0);
+            for j in 0..4 {
+                if i != j {
+                    den = mul(den, sub(z[i], z[j]));
+                }
+            }
+            if den.0 == 0.0 && den.1 == 0.0 {
+                den = (1e-12, 0.0);
+            }
+            let step = div(f(z[i]), den);
+            z[i] = sub(z[i], step);
+            moved = moved.max(step.0.abs() + step.1.abs());
+        }
+        if moved < 1e-14 {
+            break;
+        }
+    }
+    let p = |x: f64| (((x + a[1]) * x + a[2]) * x + a[3]) * x + a[4];
+    let dp = |x: f64| ((4.0 * x + 3.0 * a[1]) * x + 2.0 * a[2]) * x + a[3];
+    z.iter()
+        .filter(|r| r.1.abs() < 1e-6 * (1.0 + r.0.abs()))
+        .map(|r| {
+            let mut x = r.0;
+            for _ in 0..3 {
+                let d = dp(x);
+                if d.abs() > 1e-14 { x -= p(x) / d; }
+            }
+            x
+        })
+        .collect()
+}
+
+/// Rigid transform (R, t) with dst ≈ R src + t (Kabsch).
+fn kabsch(src: &[V3], dst: &[V3]) -> Option<Pose> {
+    let n = src.len() as f64;
+    let ms = src.iter().fold(V3::zeros(), |a, b| a + b) / n;
+    let md = dst.iter().fold(V3::zeros(), |a, b| a + b) / n;
+    let mut h = M3::zeros();
+    for (s, d) in src.iter().zip(dst) {
+        h += (d - md) * (s - ms).transpose();
+    }
+    let svd = h.svd(true, true);
+    let (u, vt) = (svd.u?, svd.v_t?);
+    let mut dm = M3::identity();
+    if (u * vt).determinant() < 0.0 {
+        dm[(2, 2)] = -1.0;
+    }
+    let r = u * dm * vt;
+    Some(Pose { r, t: md - r * ms })
+}
+
+/// Minimal absolute pose from three 3D points and their normalised image
+/// coordinates (Grunert's solution). Up to four candidate poses.
+pub fn p3p(xw: [&V3; 3], ns: [[f64; 2]; 3]) -> Vec<Pose> {
+    let j: Vec<V3> = ns.iter().map(|n| V3::new(n[0], n[1], 1.0).normalize()).collect();
+    let a2 = (xw[1] - xw[2]).norm_squared();
+    let b2 = (xw[0] - xw[2]).norm_squared();
+    let c2 = (xw[0] - xw[1]).norm_squared();
+    if a2 < 1e-18 || b2 < 1e-18 || c2 < 1e-18 {
+        return vec![];
+    }
+    let ca = j[1].dot(&j[2]);
+    let cb = j[0].dot(&j[2]);
+    let cg = j[0].dot(&j[1]);
+    let amc = (a2 - c2) / b2;
+    let apc = (a2 + c2) / b2;
+    let c4 = (amc - 1.0).powi(2) - 4.0 * c2 / b2 * ca * ca;
+    let c3 = 4.0 * (amc * (1.0 - amc) * cb - (1.0 - apc) * ca * cg + 2.0 * c2 / b2 * ca * ca * cb);
+    let c2c = 2.0 * (amc * amc - 1.0 + 2.0 * amc * amc * cb * cb + 2.0 * ((b2 - c2) / b2) * ca * ca
+        - 4.0 * apc * ca * cb * cg + 2.0 * ((b2 - a2) / b2) * cg * cg);
+    let c1 = 4.0 * (-amc * (1.0 + amc) * cb + 2.0 * a2 / b2 * cg * cg * cb - (1.0 - apc) * ca * cg);
+    let c0 = (1.0 + amc).powi(2) - 4.0 * a2 / b2 * cg * cg;
+    let mut out = Vec::new();
+    for v in quartic_roots([c4, c3, c2c, c1, c0]) {
+        if v <= 0.0 {
+            continue;
+        }
+        let den = 2.0 * (cg - v * ca);
+        if den.abs() < 1e-12 {
+            continue;
+        }
+        let u = ((-1.0 + amc) * v * v - 2.0 * amc * cb * v + 1.0 + amc) / den;
+        if u <= 0.0 {
+            continue;
+        }
+        let s1sq = b2 / (1.0 + v * v - 2.0 * v * cb);
+        if s1sq <= 0.0 {
+            continue;
+        }
+        let s1 = s1sq.sqrt();
+        let pc = [j[0] * s1, j[1] * (u * s1), j[2] * (v * s1)];
+        if let Some(p) = kabsch(&[*xw[0], *xw[1], *xw[2]], &pc) {
+            out.push(p);
+        }
+    }
+    out
+}
+
+#[allow(dead_code)]
 fn pnp_dlt(xs: &[V3], ns: &[[f64; 2]], idx: &[usize]) -> Option<Pose> {
     let n = idx.len() as f64;
     let c = idx.iter().fold(V3::zeros(), |a, &i| a + xs[i]) / n;
@@ -322,12 +437,13 @@ pub fn pnp_ransac(xs: &[V3], uv: &[[f64; 2]], k: &Intrinsics, thr_px: f64, seed:
     let mut it = 0;
     while it < iters {
         it += 1;
-        let idx = rng.sample(n, 6);
-        let Some(p) = pnp_dlt(xs, &ns, &idx) else { continue };
-        let cnt = (0..n).filter(|&i| err(&p, i) < thr2).count();
-        if best.as_ref().map_or(true, |b| cnt > b.1) {
-            best = Some((p, cnt));
-            iters = ransac_iters(cnt as f64 / n as f64, 6, 1000);
+        let idx = rng.sample(n, 3);
+        for p in p3p([&xs[idx[0]], &xs[idx[1]], &xs[idx[2]]], [ns[idx[0]], ns[idx[1]], ns[idx[2]]]) {
+            let cnt = (0..n).filter(|&i| err(&p, i) < thr2).count();
+            if best.as_ref().map_or(true, |b| cnt > b.1) {
+                best = Some((p, cnt));
+                iters = ransac_iters(cnt as f64 / n as f64, 3, 1000);
+            }
         }
     }
     let (mut pose, _) = best?;
@@ -437,4 +553,192 @@ pub fn refine_pose(pose: &Pose, xs: &[V3], uv: &[[f64; 2]], idx: &[usize], k: &I
         }
     }
     p
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    #[test]
+    fn p3p_recovers_pose() {
+        let mut rng = Rng::new(7);
+        let mut r01 = || (rng.next_u64() % 10000) as f64 / 10000.0;
+        for trial in 0..200 {
+            let truth = Pose { r: exp_so3(&V3::new(r01() - 0.5, r01() - 0.5, r01() - 0.5)), t: V3::new(r01() - 0.5, r01() - 0.5, 4.0 + r01()) };
+            // planar-ish and general configurations
+            let pts: Vec<V3> = (0..3).map(|_| V3::new(2.0 * r01() - 1.0, if trial % 2 == 0 { 0.0 } else { 2.0 * r01() - 1.0 }, 2.0 * r01() - 1.0)).collect();
+            let ns: Vec<[f64; 2]> = pts.iter().map(|x| { let c = truth.to_cam(x); [c.x / c.z, c.y / c.z] }).collect();
+            let sols = p3p([&pts[0], &pts[1], &pts[2]], [ns[0], ns[1], ns[2]]);
+            let best = sols.iter().map(|p| (p.r - truth.r).norm() + (p.t - truth.t).norm()).fold(f64::MAX, f64::min);
+            assert!(best < 1e-5, "trial {trial}: {} solutions, best error {best}", sols.len());
+        }
+    }
+}
+
+fn homography_4pt(p1: &[[f64; 2]], p2: &[[f64; 2]], idx: &[usize]) -> Option<M3> {
+    let mut ata = SMatrix::<f64, 9, 9>::zeros();
+    for &i in idx {
+        let (x1, y1, x2, y2) = (p1[i][0], p1[i][1], p2[i][0], p2[i][1]);
+        let a = SMatrix::<f64, 9, 1>::from_column_slice(&[-x1, -y1, -1.0, 0.0, 0.0, 0.0, x2 * x1, x2 * y1, x2]);
+        let b = SMatrix::<f64, 9, 1>::from_column_slice(&[0.0, 0.0, 0.0, -x1, -y1, -1.0, y2 * x1, y2 * y1, y2]);
+        ata += a * a.transpose() + b * b.transpose();
+    }
+    let eig = ata.symmetric_eigen();
+    let mut k = 0;
+    for i in 1..9 {
+        if eig.eigenvalues[i] < eig.eigenvalues[k] {
+            k = i;
+        }
+    }
+    let v = eig.eigenvectors.column(k);
+    let h = M3::new(v[0], v[1], v[2], v[3], v[4], v[5], v[6], v[7], v[8]);
+    (h.norm() > 1e-12).then_some(h)
+}
+
+#[inline]
+fn h_err(h: &M3, a: &[f64; 2], b: &[f64; 2]) -> f64 {
+    let q = h * V3::new(a[0], a[1], 1.0);
+    if q.z.abs() < 1e-12 {
+        return f64::MAX;
+    }
+    (q.x / q.z - b[0]).powi(2) + (q.y / q.z - b[1]).powi(2)
+}
+
+/// Robust homography between normalised coordinates; returns (H, inlier count).
+pub fn homography_ransac(p1: &[[f64; 2]], p2: &[[f64; 2]], thr: f64, seed: u64) -> Option<(M3, usize)> {
+    let n = p1.len();
+    if n < 8 {
+        return None;
+    }
+    let thr2 = thr * thr;
+    let mut rng = Rng::new(seed);
+    let mut best: Option<(M3, usize)> = None;
+    let mut iters = 1000;
+    let mut it = 0;
+    while it < iters {
+        it += 1;
+        let idx = rng.sample(n, 4);
+        let Some(h) = homography_4pt(p1, p2, &idx) else { continue };
+        let cnt = (0..n).filter(|&i| h_err(&h, &p1[i], &p2[i]) < thr2).count();
+        if best.as_ref().map_or(true, |b| cnt > b.1) {
+            best = Some((h, cnt));
+            iters = ransac_iters(cnt as f64 / n as f64, 4, 1000);
+        }
+    }
+    let (mut h, _) = best?;
+    let inl: Vec<usize> = (0..n).filter(|&i| h_err(&h, &p1[i], &p2[i]) < thr2).collect();
+    if inl.len() >= 8 {
+        if let Some(h2) = homography_4pt(p1, p2, &inl) {
+            h = h2;
+        }
+    }
+    let cnt = (0..n).filter(|&i| h_err(&h, &p1[i], &p2[i]) < thr2).count();
+    Some((h, cnt))
+}
+
+/// Motion hypotheses from a homography in normalised coordinates
+/// (Faugeras' decomposition, as used in ORB-SLAM).
+pub fn decompose_homography(h: &M3) -> Vec<Pose> {
+    let svd = h.svd(true, true);
+    let (Some(u), Some(vt)) = (svd.u, svd.v_t) else { return vec![] };
+    let s = u.determinant() * vt.determinant();
+    let (d1, d2, d3) = (svd.singular_values[0], svd.singular_values[1], svd.singular_values[2]);
+    if d1 / d2 < 1.00001 || d2 / d3 < 1.00001 {
+        return vec![];
+    }
+    let x1 = ((d1 * d1 - d2 * d2) / (d1 * d1 - d3 * d3)).sqrt();
+    let x3 = ((d2 * d2 - d3 * d3) / (d1 * d1 - d3 * d3)).sqrt();
+    let x1s = [x1, x1, -x1, -x1];
+    let x3s = [x3, -x3, x3, -x3];
+    let mut out = Vec::new();
+    // d' = d2
+    let aux = ((d1 * d1 - d2 * d2) * (d2 * d2 - d3 * d3)).sqrt() / ((d1 + d3) * d2);
+    let ct = (d2 * d2 + d1 * d3) / ((d1 + d3) * d2);
+    let st = [aux, -aux, -aux, aux];
+    for i in 0..4 {
+        let rp = M3::new(ct, 0.0, -st[i], 0.0, 1.0, 0.0, st[i], 0.0, ct);
+        let r = u * rp * vt * s;
+        let tp = V3::new(x1s[i], 0.0, -x3s[i]) * (d1 - d3);
+        let t = (u * tp).normalize();
+        out.push(Pose { r, t });
+    }
+    // d' = -d2
+    let aux = ((d1 * d1 - d2 * d2) * (d2 * d2 - d3 * d3)).sqrt() / ((d1 - d3) * d2);
+    let cp = (d1 * d3 - d2 * d2) / ((d1 - d3) * d2);
+    let sp = [aux, -aux, -aux, aux];
+    for i in 0..4 {
+        let rp = M3::new(cp, 0.0, sp[i], 0.0, -1.0, 0.0, sp[i], 0.0, -cp);
+        let r = u * rp * vt * s;
+        let tp = V3::new(x1s[i], 0.0, x3s[i]) * (d1 + d3);
+        let t = (u * tp).normalize();
+        out.push(Pose { r, t });
+    }
+    out.retain(|p| p.r.determinant() > 0.0);
+    out
+}
+
+/// Number of matches a relative pose explains: triangulated in front of both
+/// cameras with small reprojection error (normalised units).
+pub fn count_good(pose: &Pose, n1: &[[f64; 2]], n2: &[[f64; 2]], thr: f64) -> usize {
+    let p0 = Pose::identity();
+    let thr2 = thr * thr;
+    (0..n1.len())
+        .filter(|&i| {
+            let Some(x) = triangulate(&[(&p0, n1[i]), (pose, n2[i])]) else { return false };
+            let c2 = pose.to_cam(&x);
+            if x.z <= 0.0 || c2.z <= 0.0 {
+                return false;
+            }
+            let e1 = (x.x / x.z - n1[i][0]).powi(2) + (x.y / x.z - n1[i][1]).powi(2);
+            let e2 = (c2.x / c2.z - n2[i][0]).powi(2) + (c2.y / c2.z - n2[i][1]).powi(2);
+            e1 < thr2 && e2 < thr2
+        })
+        .count()
+}
+
+/// Robust relative pose of camera 2 w.r.t. camera 1 from normalised matches.
+/// Considers both the essential-matrix and the homography (planar scene)
+/// models and keeps the candidate that explains the most matches.
+pub fn relative_pose(n1: &[[f64; 2]], n2: &[[f64; 2]], thr: f64, seed: u64) -> Option<(Pose, usize)> {
+    let mut cands: Vec<Pose> = Vec::new();
+    if let Some((e, mask)) = fundamental_ransac(n1, n2, thr, seed) {
+        if let Some((u, vt)) = { let s = e.svd(true, true); s.u.zip(s.v_t) } {
+            let e = u * M3::from_diagonal(&V3::new(1.0, 1.0, 0.0)) * vt;
+            let in1: Vec<[f64; 2]> = (0..n1.len()).filter(|&i| mask[i]).map(|i| n1[i]).collect();
+            let in2: Vec<[f64; 2]> = (0..n2.len()).filter(|&i| mask[i]).map(|i| n2[i]).collect();
+            if let Some((p, _)) = pose_from_essential(&e, &in1, &in2) {
+                cands.push(p);
+            }
+        }
+    }
+    if let Some((h, _)) = homography_ransac(n1, n2, thr, seed ^ 0x5bd1) {
+        cands.extend(decompose_homography(&h));
+    }
+    let mut best: Option<(Pose, usize)> = None;
+    for c in cands {
+        // polish the candidate on the matches it explains
+        let good = count_good(&c, n1, n2, 2.0 * thr);
+        if best.as_ref().map_or(true, |b| good > b.1) {
+            best = Some((c, good));
+        }
+    }
+    best
+}
+
+#[cfg(test)]
+mod tests_h {
+    use super::*;
+    #[test]
+    fn relative_pose_on_planar_scene() {
+        let mut rng = Rng::new(11);
+        let mut r01 = || (rng.next_u64() % 100000) as f64 / 100000.0;
+        let truth = Pose { r: exp_so3(&V3::new(0.1, 0.35, -0.05)), t: V3::new(-0.6, 0.05, 0.1).normalize() };
+        // points on the plane y = 1 (a floor seen by a camera looking forward/down)
+        let pts: Vec<V3> = (0..200).map(|_| V3::new(4.0 * r01() - 2.0, 1.0, 3.0 + 4.0 * r01())).collect();
+        let n1: Vec<[f64; 2]> = pts.iter().map(|x| [x.x / x.z, x.y / x.z]).collect();
+        let n2: Vec<[f64; 2]> = pts.iter().map(|x| { let c = truth.to_cam(x); [c.x / c.z, c.y / c.z] }).collect();
+        let (p, good) = relative_pose(&n1, &n2, 0.002, 3).expect("pose");
+        let err_r = (p.r - truth.r).norm();
+        let err_t = (p.t.normalize() - truth.t).norm();
+        assert!(good > 190 && err_r < 1e-3 && err_t < 1e-3, "good {good} err_r {err_r} err_t {err_t}");
+    }
 }
