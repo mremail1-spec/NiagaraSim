@@ -1,0 +1,114 @@
+{
+ "_meta": {
+  "what": "Heights of Niagara Falls towers of 50 m or more, with location and floors.",
+  "source": "Wikipedia, List of tallest buildings in Niagara Falls, Ontario (figures cited to The Skyscraper Center and SkyscraperPage), retrieved 2026-11-26, CC BY-SA 4.0",
+  "used_for": "3D city: the City's 2018 footprint heights stop near 41 m"
+ },
+ "towers": [
+  {
+   "name": "Hilton Niagara Falls Tower 2",
+   "lat": 43.08316,
+   "lon": -79.083237,
+   "height_m": 177.1,
+   "floors": 53
+  },
+  {
+   "name": "Skylon Tower",
+   "lat": 43.085178,
+   "lon": -79.079597,
+   "height_m": 158.5,
+   "floors": null
+  },
+  {
+   "name": "Embassy Suites Hotel Niagara Falls",
+   "lat": 43.079464,
+   "lon": -79.082092,
+   "height_m": 118.0,
+   "floors": 36
+  },
+  {
+   "name": "Niagara Fallsview Casino Resort",
+   "lat": 43.082172,
+   "lon": -79.080612,
+   "height_m": 111.0,
+   "floors": 32
+  },
+  {
+   "name": "Casino Tower",
+   "lat": 43.091759,
+   "lon": -79.072304,
+   "height_m": 108.2,
+   "floors": null
+  },
+  {
+   "name": "Marriott Fallsview Hotel",
+   "lat": 43.07738498,
+   "lon": -79.0827426,
+   "height_m": 107.9,
+   "floors": 31
+  },
+  {
+   "name": "Hilton Niagara Falls South",
+   "lat": 43.082485,
+   "lon": -79.083183,
+   "height_m": 103.0,
+   "floors": 30
+  },
+  {
+   "name": "Tower Hotel",
+   "lat": 43.079047,
+   "lon": -79.0821064,
+   "height_m": 99.0,
+   "floors": 30
+  },
+  {
+   "name": "Sky Screamer",
+   "lat": 43.062036,
+   "lon": -79.0757062,
+   "height_m": 91.4,
+   "floors": null
+  },
+  {
+   "name": "Sheraton on the Falls",
+   "lat": 43.090866,
+   "lon": -79.072784,
+   "height_m": 83.2,
+   "floors": 22
+  },
+  {
+   "name": "Oakes Hotel Overlooking The Falls",
+   "lat": 43.080128,
+   "lon": -79.081863,
+   "height_m": 63.4,
+   "floors": 21
+  },
+  {
+   "name": "Double Tree Resort Lodge and Spa",
+   "lat": 43.087219,
+   "lon": -79.084038,
+   "height_m": 63.4,
+   "floors": 18
+  },
+  {
+   "name": "Marriott Niagara Falls Fallsview Hotel & Spa",
+   "lat": 43.078522,
+   "lon": -79.081993,
+   "height_m": 60.0,
+   "floors": 20
+  },
+  {
+   "name": "Four Points by Sheraton",
+   "lat": 43.081654,
+   "lon": -79.083244,
+   "height_m": 51.0,
+   "floors": 17
+  },
+  {
+   "name": "Rainbow Tower",
+   "lat": 43.0918357,
+   "lon": -79.069894,
+   "height_m": 50.3,
+   "floors": null
+  }
+ ]
+}

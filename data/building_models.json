@@ -1,0 +1,7 @@
+{
+ "_meta": {
+  "what": "Full 3D models (glTF .glb) that replace a building's extruded outline in the 3D city. Built into web/world by prep/nfprep/facades.py.",
+  "fields": "building (id shown in the game), file (in data/models/), scale, rotate_deg (about the vertical axis), offset_m [east, up, south] from the footprint centre, source, licence"
+ },
+ "models": []
+}

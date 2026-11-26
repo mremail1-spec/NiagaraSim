@@ -1,0 +1,1149 @@
+<meta charset="utf-8">
+<title>Walk Niagara Falls</title>
+<link rel="artifact-thumbnail" href="thumb.jpg">
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&display=swap">
+<style>
+/* One full-screen 3D view; HUD panels sit on the corners like road signage: condensed type, solid plates. */
+:root {
+  --ink: #0f1a17;            /* panel ground */
+  --ink-2: #1b2a26;          /* raised rows */
+  --paper: #eef3ef;          /* panel text */
+  --muted: #9fb3ab;          /* secondary text */
+  --sign: #0b6b4f;           /* Ontario road-sign green, the accent */
+  --signal: #f2c230;         /* centre-line yellow for highlights */
+  --danger: #e0644f;
+  --sky: #b9d3e6;
+  --display: "Barlow Condensed", "Arial Narrow", "Roboto Condensed", sans-serif;
+  --body: "Barlow", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color-scheme: dark;
+}
+html, body { height: 100%; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--ink); color: var(--paper); font-family: var(--body); overflow: hidden; touch-action: none; -webkit-user-select: none; user-select: none; }
+#view { position: fixed; inset: 0; display: block; width: 100%; height: 100%; outline: none; }
+.hud { position: fixed; z-index: 5; font-family: var(--body); }
+.plate { background: color-mix(in srgb, var(--ink) 88%, transparent); border: 1px solid color-mix(in srgb, var(--paper) 14%, transparent); border-radius: 6px; }
+#where { top: calc(env(safe-area-inset-top, 0px) + 12px); left: max(12px, env(safe-area-inset-left, 0px)); padding: 8px 12px; max-width: min(60vw, 420px); }
+#where .street { font-family: var(--display); font-weight: 700; font-size: 22px; letter-spacing: .02em; line-height: 1.05; background: var(--sign); color: #fff; padding: 3px 10px; border-radius: 4px; display: inline-block; border: 2px solid #fff; }
+#where .sub { font-size: 12px; color: var(--muted); margin-top: 6px; font-variant-numeric: tabular-nums; }
+#mapbox { top: calc(env(safe-area-inset-top, 0px) + 12px); right: max(12px, env(safe-area-inset-right, 0px)); width: 168px; height: 168px; padding: 0; overflow: hidden; border-radius: 50%; border: 2px solid color-mix(in srgb, var(--paper) 40%, transparent); background: #1d2b27; }
+#mini { width: 100%; height: 100%; display: block; }
+#card { left: max(12px, env(safe-area-inset-left, 0px)); bottom: calc(env(safe-area-inset-bottom, 0px) + 12px); width: min(380px, calc(100vw - 24px)); max-height: 46vh; overflow: auto; padding: 12px 14px; }
+#card h2 { font-family: var(--display); font-weight: 700; font-size: 20px; margin: 0 0 2px; letter-spacing: .02em; text-wrap: balance; }
+#card .meta { font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+#card ul { list-style: none; margin: 10px 0 0; padding: 0; display: grid; gap: 6px; }
+#card li { background: var(--ink-2); border-radius: 4px; padding: 7px 9px; }
+#card li .n { font-weight: 600; font-size: 14px; }
+#card li .k { font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+#card .row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-top: 10px; }
+#card .id { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; color: var(--signal); }
+button, .btn { font: 600 13px/1 var(--body); color: var(--paper); background: var(--ink-2); border: 1px solid color-mix(in srgb, var(--paper) 22%, transparent); border-radius: 4px; padding: 8px 10px; cursor: pointer; }
+button:hover { border-color: var(--signal); }
+button:focus-visible { outline: 2px solid var(--signal); outline-offset: 2px; }
+button.primary { background: var(--sign); border-color: #fff; color: #fff; }
+#tools { right: max(12px, env(safe-area-inset-right, 0px)); top: calc(env(safe-area-inset-top, 0px) + 192px); display: flex; flex-direction: column; gap: 6px; align-items: flex-end; }
+#speed { right: max(12px, env(safe-area-inset-right, 0px)); bottom: calc(env(safe-area-inset-bottom, 0px) + 12px); padding: 8px 12px; font-family: var(--display); font-size: 30px; font-weight: 700; font-variant-numeric: tabular-nums; }
+#speed small { font-size: 13px; color: var(--muted); font-weight: 600; margin-left: 4px; }
+#help { inset: 0; display: grid; place-items: center; background: color-mix(in srgb, var(--ink) 55%, transparent); padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+#help .plate { padding: 18px 20px; max-width: 520px; width: 100%; }
+#help h1 { font-family: var(--display); font-size: 34px; margin: 0; letter-spacing: .01em; line-height: 1; }
+#help h1 span { display: inline-block; background: var(--sign); color: #fff; padding: 2px 10px; border: 2px solid #fff; border-radius: 5px; }
+#help p { color: var(--muted); font-size: 14px; line-height: 1.45; margin: 10px 0; max-width: 62ch; }
+#help dl { display: grid; grid-template-columns: max-content 1fr; gap: 5px 14px; font-size: 14px; margin: 12px 0 16px; }
+#help dt { font-family: var(--display); font-weight: 700; color: var(--signal); letter-spacing: .03em; }
+#help dd { margin: 0; }
+#loading { inset: 0; display: grid; place-items: center; background: var(--ink); font-family: var(--display); font-size: 24px; letter-spacing: .04em; z-index: 20; }
+#loading .bar { width: 220px; height: 6px; background: var(--ink-2); border-radius: 3px; margin-top: 12px; overflow: hidden; }
+#loading .bar i { display: block; height: 100%; width: 10%; background: var(--signal); transition: width .2s; }
+#bigmap { position: fixed; inset: 0; z-index: 12; background: color-mix(in srgb, var(--ink) 92%, transparent); display: grid; grid-template-rows: auto 1fr; padding: calc(env(safe-area-inset-top, 0px) + 10px) max(12px, env(safe-area-inset-right, 0px)) calc(env(safe-area-inset-bottom, 0px) + 10px) max(12px, env(safe-area-inset-left, 0px)); gap: 8px; }
+#bigmap header { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+#bigmap header b { font-family: var(--display); font-size: 22px; margin-right: auto; }
+#bigcanvas { width: 100%; height: 100%; min-height: 0; border-radius: 6px; background: #1d2b27; cursor: crosshair; }
+#photo { position: fixed; inset: 0; z-index: 14; background: color-mix(in srgb, var(--ink) 94%, transparent); display: grid; grid-template-rows: auto 1fr auto; gap: 8px; padding: calc(env(safe-area-inset-top, 0px) + 10px) max(12px, env(safe-area-inset-right, 0px)) calc(env(safe-area-inset-bottom, 0px) + 10px) max(12px, env(safe-area-inset-left, 0px)); }
+#photo header { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+#photo header b { font-family: var(--display); font-size: 22px; margin-right: auto; }
+#photo .stage { position: relative; min-height: 0; display: grid; place-items: center; background: #0a110f; border-radius: 6px; overflow: hidden; }
+#photo canvas { max-width: 100%; max-height: 100%; touch-action: none; }
+#photo footer { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; font-size: 13px; color: var(--muted); }
+#photo footer label { display: flex; gap: 6px; align-items: center; }
+#photo input[type=number] { width: 64px; font: inherit; color: var(--paper); background: var(--ink-2); border: 1px solid color-mix(in srgb, var(--paper) 22%, transparent); border-radius: 4px; padding: 6px; }
+#photo .msg { flex-basis: 100%; color: var(--paper); }
+.labels { position: fixed; inset: 0; pointer-events: none; z-index: 3; overflow: hidden; }
+.lbl { position: absolute; transform: translate(-50%, -100%); font: 600 12px/1.1 var(--body); background: color-mix(in srgb, var(--ink) 82%, transparent); color: var(--paper); padding: 3px 6px; border-radius: 3px; white-space: nowrap; border-left: 3px solid var(--signal); }
+#touch { position: fixed; inset: 0; z-index: 4; pointer-events: none; }
+#stick { position: absolute; left: max(18px, env(safe-area-inset-left, 0px)); bottom: calc(env(safe-area-inset-bottom, 0px) + 18px); width: 120px; height: 120px; border-radius: 50%; border: 2px solid color-mix(in srgb, var(--paper) 35%, transparent); pointer-events: auto; background: color-mix(in srgb, var(--ink) 30%, transparent); }
+#knob { position: absolute; left: 40px; top: 40px; width: 40px; height: 40px; border-radius: 50%; background: color-mix(in srgb, var(--paper) 60%, transparent); }
+#tbtns { position: absolute; right: max(14px, env(safe-area-inset-right, 0px)); bottom: calc(env(safe-area-inset-bottom, 0px) + 80px); display: grid; grid-template-columns: repeat(2, 64px); gap: 8px; pointer-events: auto; }
+#tbtns button { height: 52px; font-family: var(--display); font-size: 16px; }
+@media (max-width: 640px) {
+  #mapbox { width: 120px; height: 120px; }
+  #tools { top: calc(env(safe-area-inset-top, 0px) + 140px); }
+  #where .street { font-size: 18px; }
+  #card { bottom: calc(env(safe-area-inset-bottom, 0px) + 150px); max-height: 34vh; }
+}
+@media (prefers-reduced-motion: reduce) { #loading .bar i { transition: none; } }
+</style>
+
+<canvas id="view" tabindex="0" aria-label="3D view of Niagara Falls"></canvas>
+<div class="labels" id="labels"></div>
+
+<div class="hud plate" id="where"><div class="street" id="street">Niagara Falls</div><div class="sub" id="whereSub">Loading the city…</div></div>
+<div class="hud plate" id="mapbox"><canvas id="mini" width="336" height="336" aria-label="Minimap"></canvas></div>
+<div class="hud" id="tools">
+  <button id="btnMap" title="City map (M)">Map</button>
+  <button id="btnHelp" title="Controls (H)">Controls</button>
+</div>
+<div class="hud plate" id="card" hidden></div>
+<div class="hud plate" id="speed" hidden><span id="kmh">0</span><small>km/h</small></div>
+
+<div id="touch" hidden>
+  <div id="stick"><div id="knob"></div></div>
+  <div id="tbtns"><button id="tRun">Run</button><button id="tJump">Jump</button><button id="tCar">Car</button><button id="tInfo">Info</button></div>
+</div>
+
+<div class="hud" id="help" hidden>
+  <div class="plate">
+    <h1><span>Walk Niagara Falls</span></h1>
+    <p>The City's 42,000 building outlines, real streets, sidewalks, the river and 31,000 inventoried trees. Cars and people appear in the numbers the simulation predicts for each street. Walk up to a building to see its businesses and their model sales.</p>
+    <dl>
+      <dt>W A S D</dt><dd>Walk (arrow keys work too)</dd>
+      <dt>Mouse</dt><dd>Click the view, then move the mouse to look. Wheel zooms</dd>
+      <dt>Shift</dt><dd>Run</dd>
+      <dt>Space</dt><dd>Jump, or brake in a car</dd>
+      <dt>E</dt><dd>Get into the nearest car, or out</dd>
+      <dt>M</dt><dd>City map: click a spot to go there</dd>
+      <dt>P</dt><dd>Add your photo to the wall in front of you</dd>
+    </dl>
+    <p>On a phone: the left circle walks, drag anywhere else to look.</p>
+    <div class="row" style="display:flex;gap:8px;flex-wrap:wrap"><button class="primary" id="btnStart">Start walking</button></div>
+  </div>
+</div>
+
+<div id="bigmap" hidden>
+  <header><b>City map</b><span id="jumpList" style="display:flex;gap:6px;flex-wrap:wrap"></span><button id="btnMapClose">Close</button></header>
+  <canvas id="bigcanvas" aria-label="City map, click to travel"></canvas>
+</div>
+
+<div id="photo" hidden>
+  <header><b id="photoTitle">Photo of a wall</b>
+    <label class="btn" for="photoFile">Choose photo</label><input id="photoFile" type="file" accept="image/*" capture="environment" hidden>
+    <button id="photoCancel">Close</button></header>
+  <div class="stage"><canvas id="photoCanvas" width="10" height="10"></canvas></div>
+  <footer>
+    <span>Drag the four yellow corners onto the wall's corners: top-left, top-right, bottom-right, bottom-left.</span>
+    <label>Bottom <input id="photoBottom" type="number" min="0" step="0.5" value="0"> m</label>
+    <label>Top <input id="photoTop" type="number" min="1" step="0.5" value="0"> m</label>
+    <button id="photoPreview">Preview on wall</button>
+    <button id="photoSave" class="primary" disabled>Save photo</button>
+    <span class="msg" id="photoMsg"></span>
+  </footer>
+</div>
+
+<div class="hud" id="loading"><div><div>Building Niagara Falls</div><div class="bar"><i id="loadbar"></i></div></div></div>
+
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+} }
+</script>
+<script type="module">
+import * as THREE from "three";
+import { mergeGeometries } from "three/addons/utils/BufferGeometryUtils.js";
+
+// ---------------------------------------------------------------- constants
+const CHUNK = 200;              // metres per streaming chunk
+const LOAD_R = 900;             // build chunks within this distance
+const DROP_R = 1250;            // dispose chunks beyond this
+const TALL = 22;                // buildings this tall live in the always-on skyline
+const KINDS_LABEL = { accommodation: "Hotel", restaurant: "Restaurant", fast_food: "Fast food", cafe: "Cafe", bar_pub: "Bar", grocery_food: "Grocery", attraction: "Attraction", souvenir_gift: "Souvenirs", casino: "Casino", fuel: "Gas station", pharmacy: "Pharmacy", apparel: "Clothing", general_merchandise: "Store", leisure_paid: "Leisure", entertainment: "Entertainment", nightlife: "Nightlife", health: "Health", bank: "Bank", office: "Office", parking: "Parking", personal_services: "Services", auto_service: "Auto service", auto_dealer: "Car dealer", home_electronics: "Home and electronics", liquor: "Liquor", tobacco_cannabis: "Cannabis", tobacconist: "Tobacco", free_sight: "Free sight", childcare: "Childcare", craft: "Craft", services: "Services", retail_other: "Store", pet: "Pet store", atm: "ATM", car_rental: "Car rental" };
+const JUMPS = [
+  ["Clifton Hill", 43.0918, -79.0752], ["Horseshoe Falls", 43.0797, -79.0781], ["Fallsview", 43.0815, -79.0835],
+  ["Queen Street", 43.1047, -79.0640], ["Lundy's Lane at Westlane", 43.0884, -79.1305], ["Portage Rd at A N Myer", 43.1205, -79.1012],
+  ["Stamford Collegiate", 43.0893, -79.0962],
+];
+
+// ---------------------------------------------------------------- state
+const $ = (id) => document.getElementById(id);
+let W = null, origin = null;
+const renderer = new THREE.WebGLRenderer({ canvas: $("view"), antialias: true, powerPreference: "high-performance" });
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+const scene = new THREE.Scene();
+const SKY = new THREE.Color("#b9d3e6");
+scene.background = SKY;
+scene.fog = new THREE.Fog(SKY, 450, 1400);
+const camera = new THREE.PerspectiveCamera(62, 1, 0.3, 3000);
+scene.add(new THREE.HemisphereLight("#dfeaf5", "#5b6b4a", 1.15));
+const sun = new THREE.DirectionalLight("#fff3dd", 2.1);
+sun.castShadow = true;
+sun.shadow.mapSize.set(2048, 2048);
+Object.assign(sun.shadow.camera, { left: -110, right: 110, top: 110, bottom: -110, near: 1, far: 600 });
+sun.shadow.bias = -0.0004;
+scene.add(sun, sun.target);
+const SUN_DIR = new THREE.Vector3(-0.55, 0.62, 0.56).normalize();
+
+// ---------------------------------------------------------------- textures (drawn, no downloads)
+function canvasTex(w, h, draw, repeat = true) {
+  const c = document.createElement("canvas"); c.width = w; c.height = h;
+  draw(c.getContext("2d"), w, h);
+  const t = new THREE.CanvasTexture(c);
+  t.colorSpace = THREE.SRGBColorSpace;
+  if (repeat) t.wrapS = t.wrapT = THREE.RepeatWrapping;
+  t.anisotropy = renderer.capabilities.getMaxAnisotropy();
+  return t;
+}
+// one bay of wall per texture: 4 m wide, 3.2 m a floor
+const wallTex = {
+  house: canvasTex(128, 128, (g, w, h) => {
+    g.fillStyle = "#e9e4da"; g.fillRect(0, 0, w, h);
+    g.strokeStyle = "rgba(0,0,0,.08)"; for (let y = 4; y < h; y += 8) { g.beginPath(); g.moveTo(0, y); g.lineTo(w, y); g.stroke(); }
+    g.fillStyle = "#f7f5f0"; g.fillRect(38, 34, 52, 50);
+    g.fillStyle = "#43535c"; g.fillRect(42, 38, 44, 42);
+    g.fillStyle = "rgba(255,255,255,.25)"; g.fillRect(42, 38, 44, 8);
+  }),
+  shop: canvasTex(128, 128, (g, w, h) => {
+    g.fillStyle = "#d9d2c7"; g.fillRect(0, 0, w, h);
+    g.fillStyle = "#2f3e46"; g.fillRect(8, 30, 112, 86);
+    g.fillStyle = "rgba(190,220,235,.35)"; g.fillRect(8, 30, 112, 20);
+    g.fillStyle = "#d9d2c7"; g.fillRect(62, 30, 4, 86);
+  }),
+  block: canvasTex(128, 128, (g, w, h) => {
+    g.fillStyle = "#cfc6b8"; g.fillRect(0, 0, w, h);
+    g.fillStyle = "#38464e"; g.fillRect(14, 34, 40, 56); g.fillRect(74, 34, 40, 56);
+    g.fillStyle = "rgba(255,255,255,.18)"; g.fillRect(14, 34, 40, 10); g.fillRect(74, 34, 40, 10);
+  }),
+  tower: canvasTex(128, 128, (g, w, h) => {
+    const gr = g.createLinearGradient(0, 0, w, h); gr.addColorStop(0, "#6f8fa3"); gr.addColorStop(1, "#3d5868");
+    g.fillStyle = gr; g.fillRect(0, 0, w, h);
+    g.fillStyle = "#d8dde0"; for (let x = 0; x < w; x += 32) g.fillRect(x, 0, 3, h); g.fillRect(0, 0, w, 8);
+  }),
+};
+const roadTex = canvasTex(64, 256, (g, w, h) => {
+  g.fillStyle = "#4a4d50"; g.fillRect(0, 0, w, h);
+  for (let i = 0; i < 900; i++) { g.fillStyle = `rgba(${Math.random() < .5 ? "0,0,0" : "255,255,255"},.05)`; g.fillRect(Math.random() * w, Math.random() * h, 1, 1); }
+  g.fillStyle = "#e9e9e2"; g.fillRect(2, 0, 2, h); g.fillRect(w - 4, 0, 2, h);
+  g.fillStyle = "#e6b422"; g.fillRect(w / 2 - 1.5, 0, 3, h * 0.55);
+});
+const roadTexOne = canvasTex(64, 256, (g, w, h) => {
+  g.fillStyle = "#4a4d50"; g.fillRect(0, 0, w, h);
+  g.fillStyle = "#e9e9e2"; g.fillRect(2, 0, 2, h); g.fillRect(w - 4, 0, 2, h); g.fillRect(w / 2 - 1, 0, 2, h * 0.4);
+});
+const grassTex = canvasTex(256, 256, (g, w, h) => {
+  g.fillStyle = "#6f8a55"; g.fillRect(0, 0, w, h);
+  for (let i = 0; i < 5000; i++) { const s = Math.random(); g.fillStyle = `rgba(${s < .5 ? "40,60,25" : "160,180,110"},${0.08 + Math.random() * .08})`; g.fillRect(Math.random() * w, Math.random() * h, 2, 2); }
+});
+grassTex.repeat.set(1, 1);
+
+const M = {
+  walls: Object.fromEntries(Object.entries(wallTex).map(([k, t]) => [k, new THREE.MeshLambertMaterial({ map: t, vertexColors: true })])),
+  roof: new THREE.MeshLambertMaterial({ color: "#8a8780", vertexColors: true }),
+  road: new THREE.MeshLambertMaterial({ map: roadTex, side: THREE.DoubleSide, polygonOffset: true, polygonOffsetFactor: -2, polygonOffsetUnits: -2 }),
+  roadOne: new THREE.MeshLambertMaterial({ map: roadTexOne, side: THREE.DoubleSide, polygonOffset: true, polygonOffsetFactor: -2, polygonOffsetUnits: -2 }),
+  joint: new THREE.MeshLambertMaterial({ color: "#4a4d50", side: THREE.DoubleSide, polygonOffset: true, polygonOffsetFactor: -1, polygonOffsetUnits: -1 }),
+  walk: new THREE.MeshLambertMaterial({ color: "#c9c6bd", side: THREE.DoubleSide, polygonOffset: true, polygonOffsetFactor: -3, polygonOffsetUnits: -3 }),
+  park: new THREE.MeshLambertMaterial({ color: "#5f8f45", side: THREE.DoubleSide, polygonOffset: true, polygonOffsetFactor: -1, polygonOffsetUnits: -1 }),
+  water: new THREE.MeshPhongMaterial({ color: "#2f6f8f", specular: "#cfe6f2", shininess: 60, side: THREE.DoubleSide, polygonOffset: true, polygonOffsetFactor: -1, polygonOffsetUnits: -1 }),
+  island: new THREE.MeshLambertMaterial({ color: "#6a8a50", side: THREE.DoubleSide, polygonOffset: true, polygonOffsetFactor: -2, polygonOffsetUnits: -2 }),
+  creek: new THREE.MeshPhongMaterial({ color: "#3b7c99", side: THREE.DoubleSide, polygonOffset: true, polygonOffsetFactor: -2, polygonOffsetUnits: -2 }),
+  trunk: new THREE.MeshLambertMaterial({ color: "#5a4632" }),
+  leaf: new THREE.MeshLambertMaterial({ color: "#ffffff" }),
+};
+
+// ---------------------------------------------------------------- decoding
+const P = (x, y) => [x / 10, -y / 10];           // decimetres east/north -> three.js x, z (metres)
+function undelta(d) { const out = []; let x = 0, y = 0; for (let i = 0; i < d.length; i += 2) { x += d[i]; y += d[i + 1]; out.push(P(x, y)); } return out; }
+const llToXZ = (lat, lon) => {
+  const kx = 111320 * Math.cos(origin.lat * Math.PI / 180), ky = 110540;
+  return [(lon - origin.lon) * kx, -(lat - origin.lat) * ky];
+};
+const xzToLL = (x, z) => {
+  const kx = 111320 * Math.cos(origin.lat * Math.PI / 180), ky = 110540;
+  return [origin.lat + (-z) / ky, origin.lon + x / kx];
+};
+const key = (cx, cz) => cx * 100003 + cz;
+const chunkOf = (x, z) => [Math.floor(x / CHUNK), Math.floor(z / CHUNK)];
+
+const B = [];                  // buildings: {id, h, ring:[[x,z]..], biz:[...], hs, tn, style, cx, cz, color}
+const roads = [];              // {pts, cum, len, w, c, n, o, br, v}
+const walks = [];              // {pts, cum, len, wk}
+const chunkLists = new Map();  // key -> {b:[], r:[[road, segIdx]], s:[[walk, segIdx]], t:[treeIdx]}
+const colGrid = new Map();     // 16 m cells -> [ax, az, bx, bz, buildingIdx, wallIdx]
+const roadGrid = new Map();    // 40 m cells -> [roadIdx, segIdx]
+const COL = 16, RG = 40;
+
+function list(k) { let l = chunkLists.get(k); if (!l) chunkLists.set(k, l = { b: [], r: [], s: [], t: [] }); return l; }
+function cum(pts) { const c = [0]; for (let i = 1; i < pts.length; i++) c.push(c[i - 1] + Math.hypot(pts[i][0] - pts[i - 1][0], pts[i][1] - pts[i - 1][1])); return c; }
+function styleOf(b) {
+  if (b.hs || b.h >= 30) return "tower";
+  const kinds = (b.biz || []).map((i) => W.biz[i].k);
+  if (kinds.includes("accommodation") && b.h > 12) return "tower";
+  if (kinds.length) return b.h > 10 ? "block" : "shop";
+  return b.h <= 9 && b.area < 400 ? "house" : "block";
+}
+const STYLE_TINT = { house: ["#ffffff", "#f3e3d3", "#e3ecf1", "#efe9d8", "#e8d5c4", "#dfe6da"], shop: ["#ffffff", "#efe3d1", "#e4d8d1", "#dfe3e6"], block: ["#ffffff", "#e9dccb", "#d9d0c4", "#e6e1d9", "#cfc1b0"], tower: ["#ffffff", "#e2eef6", "#d6e2ea", "#f1ece2"] };
+function hash01(s) { let h = 2166136261; for (let i = 0; i < s.length; i++) h = Math.imul(h ^ s.charCodeAt(i), 16777619); return ((h >>> 0) % 10000) / 10000; }
+
+function index() {
+  origin = W._meta.origin;
+  for (const [bi, b] of W.buildings.entries()) {
+    const ring = undelta(b.r);
+    let a = 0, cx = 0, cz = 0;
+    for (let i = 0; i < ring.length; i++) { const [x1, z1] = ring[i], [x2, z2] = ring[(i + 1) % ring.length]; const cr = x1 * z2 - x2 * z1; a += cr; cx += (x1 + x2) * cr; cz += (z1 + z2) * cr; }
+    a /= 2; if (Math.abs(a) < 1e-6) { cx = ring[0][0]; cz = ring[0][1]; } else { cx /= 6 * a; cz /= 6 * a; }
+    const o = { i: bi, id: b.id, h: b.h, ring, biz: b.b || [], hs: b.hs, tn: b.tn, cx, cz, area: Math.abs(a) };
+    o.style = styleOf(o);
+    const pal = STYLE_TINT[o.style]; o.color = new THREE.Color(pal[Math.floor(hash01(b.id) * pal.length)]);
+    B.push(o);
+    if (o.h < TALL) { const [kx, kz] = chunkOf(cx, cz); list(key(kx, kz)).b.push(bi); }
+    for (let k = 0; k < ring.length; k++) {
+      const [ax, az] = ring[k], [bx, bz] = ring[(k + 1) % ring.length];
+      const x0 = Math.floor(Math.min(ax, bx) / COL), x1 = Math.floor(Math.max(ax, bx) / COL), z0 = Math.floor(Math.min(az, bz) / COL), z1 = Math.floor(Math.max(az, bz) / COL);
+      for (let gx = x0; gx <= x1; gx++) for (let gz = z0; gz <= z1; gz++) { const kk = key(gx, gz); let l = colGrid.get(kk); if (!l) colGrid.set(kk, l = []); l.push([ax, az, bx, bz, bi, k]); }
+    }
+  }
+  for (const [ri, r] of W.roads.entries()) {
+    const pts = undelta(r.p), c = cum(pts);
+    roads.push({ pts, cum: c, len: c[c.length - 1], w: r.w, c: r.c, n: r.n, o: r.o, br: r.br, v: r.v });
+    for (let s = 0; s < pts.length - 1; s++) {
+      const mx = (pts[s][0] + pts[s + 1][0]) / 2, mz = (pts[s][1] + pts[s + 1][1]) / 2;
+      const [kx, kz] = chunkOf(mx, mz); list(key(kx, kz)).r.push([ri, s]);
+      const g = key(Math.floor(mx / RG), Math.floor(mz / RG)); let l = roadGrid.get(g); if (!l) roadGrid.set(g, l = []); l.push([ri, s]);
+    }
+  }
+  for (const [wi, w] of W.walks.entries()) {
+    const pts = undelta(w.p), c = cum(pts);
+    walks.push({ pts, cum: c, len: c[c.length - 1], wk: w.wk });
+    for (let s = 0; s < pts.length - 1; s++) { const [kx, kz] = chunkOf((pts[s][0] + pts[s + 1][0]) / 2, (pts[s][1] + pts[s + 1][1]) / 2); list(key(kx, kz)).s.push([wi, s]); }
+  }
+  const T = W.trees;
+  for (let i = 0; i < T.length; i += 4) { const [x, z] = P(T[i], T[i + 1]); const [kx, kz] = chunkOf(x, z); list(key(kx, kz)).t.push(i); }
+  buildGraph(roads, roadEnds); buildGraph(walks, walkEnds);
+}
+
+// endpoints shared by lines (within ~1.5 m) so cars and people can turn onto the next street
+const roadEnds = new Map(), walkEnds = new Map();
+const endKey = (p) => `${Math.round(p[0] / 1.5)},${Math.round(p[1] / 1.5)}`;
+function buildGraph(lines, map) {
+  lines.forEach((l, i) => {
+    for (const [end, p] of [[0, l.pts[0]], [1, l.pts[l.pts.length - 1]]]) { const k = endKey(p); let a = map.get(k); if (!a) map.set(k, a = []); a.push([i, end]); }
+  });
+}
+
+// ---------------------------------------------------------------- appearance: photos and models
+// baked: appearance.json from the repo build (data/building_photos.json -> prep/nfprep/facades.py)
+// live: photos added in this page (db "facades" + assets), shown at once for everyone who opens it
+const appearance = { walls: new Map(), models: new Map() };   // "bid:wall" -> {src, v0, v1}
+const texCache = new Map();
+function wallKey(bid, k) { return bid + ":" + k; }
+function wallPhoto(b, k) { return appearance.walls.get(wallKey(b.id, k)); }
+
+// ---------------------------------------------------------------- chunk building
+const chunks = new Map();   // key -> {group, built}
+const skyline = new THREE.Group(); scene.add(skyline);
+function pushWall(arr, b, k, h, skip) {
+  const [ax, az] = b.ring[k], [bx, bz] = b.ring[(k + 1) % b.ring.length];
+  if (skip) return;
+  const len = Math.hypot(bx - ax, bz - az); if (len < 0.05) return;
+  const u0 = arr.u, u1 = arr.u + len / 4;
+  arr.pos.push(ax, 0, az, bx, 0, bz, bx, h, bz, ax, 0, az, bx, h, bz, ax, h, az);
+  const v = h / 3.2;
+  arr.uv.push(u0, 0, u1, 0, u1, v, u0, 0, u1, v, u0, v);
+  const nx = (bz - az) / len, nz = -(bx - ax) / len;   // outward for this winding
+  for (let i = 0; i < 6; i++) { arr.nrm.push(-nx, 0, -nz); arr.col.push(b.color.r, b.color.g, b.color.b); }
+  arr.u = u1;
+}
+function wallGeom(arr) {
+  if (!arr.pos.length) return null;
+  const g = new THREE.BufferGeometry();
+  g.setAttribute("position", new THREE.Float32BufferAttribute(arr.pos, 3));
+  g.setAttribute("normal", new THREE.Float32BufferAttribute(arr.nrm, 3));
+  g.setAttribute("uv", new THREE.Float32BufferAttribute(arr.uv, 2));
+  g.setAttribute("color", new THREE.Float32BufferAttribute(arr.col, 3));
+  return g;
+}
+function roofGeom(b) {
+  const contour = b.ring.map(([x, z]) => new THREE.Vector2(x, z));
+  let tris;
+  try { tris = THREE.ShapeUtils.triangulateShape(contour, []); } catch { return null; }
+  const pos = [], col = [];
+  const shade = 0.55 + hash01(b.id + "r") * 0.25;
+  for (const t of tris) {
+    const [a, c, d] = t.map((i) => b.ring[i]);
+    const cross = (c[0] - a[0]) * (d[1] - a[1]) - (c[1] - a[1]) * (d[0] - a[0]);
+    const tri = cross < 0 ? [a, c, d] : [a, d, c];
+    for (const p of tri) { pos.push(p[0], b.h, p[1]); col.push(shade, shade, shade * 0.97); }
+  }
+  const g = new THREE.BufferGeometry();
+  g.setAttribute("position", new THREE.Float32BufferAttribute(pos, 3));
+  g.setAttribute("color", new THREE.Float32BufferAttribute(col, 3));
+  g.computeVertexNormals();
+  return g;
+}
+function buildingMeshes(ids, group) {
+  const arrs = {}, roofs = [];
+  for (const bi of ids) {
+    const b = B[bi];
+    if (appearance.models.has(b.id)) { placeModel(b, group); continue; }
+    const arr = arrs[b.style] || (arrs[b.style] = { pos: [], nrm: [], uv: [], col: [], u: 0 });
+    arr.u = hash01(b.id) * 4;
+    for (let k = 0; k < b.ring.length; k++) {
+      const ph = wallPhoto(b, k);
+      pushWall(arr, b, k, b.h, !!ph);
+      if (ph) group.add(photoWallMesh(b, k, ph));
+    }
+    const r = roofGeom(b); if (r) roofs.push(r);
+  }
+  for (const [style, arr] of Object.entries(arrs)) {
+    const g = wallGeom(arr); if (!g) continue;
+    const m = new THREE.Mesh(g, M.walls[style]); m.castShadow = m.receiveShadow = true; group.add(m);
+  }
+  if (roofs.length) { const m = new THREE.Mesh(mergeGeometries(roofs), M.roof); m.castShadow = m.receiveShadow = true; group.add(m); }
+}
+function photoWallMesh(b, k, ph) {
+  const [ax, az] = b.ring[k], [bx, bz] = b.ring[(k + 1) % b.ring.length];
+  const len = Math.hypot(bx - ax, bz - az), nx = (bz - az) / len, nz = -(bx - ax) / len;
+  const out = 0.04, y0 = ph.v0 ?? 0, y1 = Math.min(b.h, ph.v1 || b.h);
+  const g = new THREE.BufferGeometry();
+  const A = [ax - nx * out, az - nz * out], C = [bx - nx * out, bz - nz * out];
+  g.setAttribute("position", new THREE.Float32BufferAttribute([A[0], y0, A[1], C[0], y0, C[1], C[0], y1, C[1], A[0], y0, A[1], C[0], y1, C[1], A[0], y1, A[1]], 3));
+  g.setAttribute("uv", new THREE.Float32BufferAttribute([0, 0, 1, 0, 1, 1, 0, 0, 1, 1, 0, 1], 2));
+  g.computeVertexNormals();
+  const tex = ph.texture || loadTex(ph.src);
+  const m = new THREE.Mesh(g, new THREE.MeshLambertMaterial({ map: tex }));
+  m.receiveShadow = true;
+  const group = new THREE.Group(); group.add(m);
+  // the rest of the wall above and below the photo keeps the drawn facade
+  const rest = { pos: [], nrm: [], uv: [], col: [], u: 0 };
+  if (y0 > 0.05) pushBand(rest, b, k, 0, y0);
+  if (y1 < b.h - 0.05) pushBand(rest, b, k, y1, b.h);
+  const rg = wallGeom(rest); if (rg) { const rm = new THREE.Mesh(rg, M.walls[b.style]); rm.castShadow = true; group.add(rm); }
+  return group;
+}
+function pushBand(arr, b, k, y0, y1) {
+  const [ax, az] = b.ring[k], [bx, bz] = b.ring[(k + 1) % b.ring.length];
+  const len = Math.hypot(bx - ax, bz - az), nx = (bz - az) / len, nz = -(bx - ax) / len;
+  arr.pos.push(ax, y0, az, bx, y0, bz, bx, y1, bz, ax, y0, az, bx, y1, bz, ax, y1, az);
+  arr.uv.push(0, y0 / 3.2, len / 4, y0 / 3.2, len / 4, y1 / 3.2, 0, y0 / 3.2, len / 4, y1 / 3.2, 0, y1 / 3.2);
+  for (let i = 0; i < 6; i++) { arr.nrm.push(-nx, 0, -nz); arr.col.push(b.color.r, b.color.g, b.color.b); }
+}
+function loadTex(src) {
+  if (texCache.has(src)) return texCache.get(src);
+  const t = new THREE.TextureLoader().load(src); t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = renderer.capabilities.getMaxAnisotropy();
+  texCache.set(src, t); return t;
+}
+let GLTFLoader = null;
+async function placeModel(b, group) {
+  const m = appearance.models.get(b.id);
+  if (!GLTFLoader) GLTFLoader = (await import("three/addons/loaders/GLTFLoader.js")).GLTFLoader;
+  new GLTFLoader().load(m.src, (gltf) => {
+    const o = gltf.scene; o.position.set(b.cx + (m.offset?.[0] || 0), m.offset?.[1] || 0, b.cz + (m.offset?.[2] || 0));
+    o.rotation.y = (m.rotate_deg || 0) * Math.PI / 180; o.scale.setScalar(m.scale || 1);
+    o.traverse((c) => { if (c.isMesh) c.castShadow = c.receiveShadow = true; });
+    group.add(o);
+  });
+}
+
+function ribbon(pts, w, y, uvAlong, out) {
+  // flat strip along a polyline; uv.x across (0..1), uv.y along (metres / uvAlong)
+  const c = cum(pts);
+  for (let i = 0; i < pts.length - 1; i++) {
+    const [ax, az] = pts[i], [bx, bz] = pts[i + 1];
+    const L = Math.hypot(bx - ax, bz - az); if (L < 0.01) continue;
+    const px = -(bz - az) / L * w / 2, pz = (bx - ax) / L * w / 2;
+    const v0 = c[i] / uvAlong, v1 = c[i + 1] / uvAlong;
+    out.pos.push(ax + px, y, az + pz, bx + px, y, bz + pz, bx - px, y, bz - pz, ax + px, y, az + pz, bx - px, y, bz - pz, ax - px, y, az - pz);
+    out.uv.push(0, v0, 0, v1, 1, v1, 0, v0, 1, v1, 1, v0);
+  }
+}
+function flatGeom(o) {
+  if (!o.pos.length) return null;
+  const g = new THREE.BufferGeometry();
+  g.setAttribute("position", new THREE.Float32BufferAttribute(o.pos, 3));
+  if (o.uv.length) g.setAttribute("uv", new THREE.Float32BufferAttribute(o.uv, 2));
+  const n = new Float32Array(o.pos.length); for (let i = 1; i < n.length; i += 3) n[i] = 1;
+  g.setAttribute("normal", new THREE.BufferAttribute(n, 3));
+  return g;
+}
+function disc(x, z, r, y, out) { const n = 12; for (let i = 0; i < n; i++) { const a0 = i / n * Math.PI * 2, a1 = (i + 1) / n * Math.PI * 2; out.pos.push(x, y, z, x + Math.cos(a0) * r, y, z + Math.sin(a0) * r, x + Math.cos(a1) * r, y, z + Math.sin(a1) * r); } }
+
+const trunkGeo = new THREE.CylinderGeometry(0.18, 0.25, 1, 6).translate(0, 0.5, 0);
+const crownGeo = new THREE.IcosahedronGeometry(1, 1);
+const coneGeo = new THREE.ConeGeometry(1, 1, 8).translate(0, 0.5, 0);
+
+function buildChunk(k, kx, kz) {
+  const L = chunkLists.get(k); const group = new THREE.Group();
+  if (L) {
+    buildingMeshes(L.b, group);
+    const two = { pos: [], uv: [] }, one = { pos: [], uv: [] }, joints = { pos: [], uv: [] };
+    const seen = new Set();
+    for (const [ri, s] of L.r) {
+      const r = roads[ri], seg = [r.pts[s], r.pts[s + 1]];
+      const y = 0.06 + (4 - r.c) * 0.01 + (r.br ? 0.4 : 0);
+      ribbon(seg, r.w, y, 14, r.o || r.c <= 1 ? one : two);
+      for (const p of seg) { const kk = `${p[0].toFixed(1)},${p[1].toFixed(1)}`; if (!seen.has(kk)) { seen.add(kk); disc(p[0], p[1], r.w / 2, y - 0.004, joints); } }
+    }
+    for (const [o, mat] of [[two, M.road], [one, M.roadOne], [joints, M.joint]]) { const g = flatGeom(o); if (g) { const m = new THREE.Mesh(g, mat); m.receiveShadow = true; group.add(m); } }
+    const sw = { pos: [], uv: [] };
+    for (const [wi, s] of L.s) ribbon([walks[wi].pts[s], walks[wi].pts[s + 1]], 1.8, 0.16, 4, sw);
+    const sg = flatGeom(sw); if (sg) { const m = new THREE.Mesh(sg, M.walk); m.receiveShadow = true; group.add(m); }
+    if (L.t.length) {
+      const T = W.trees, n = L.t.length;
+      const trunks = new THREE.InstancedMesh(trunkGeo, M.trunk, n);
+      const leaves = new THREE.InstancedMesh(crownGeo, M.leaf, n), cones = new THREE.InstancedMesh(coneGeo, M.leaf, n);
+      let nl = 0, nc = 0; const mtx = new THREE.Matrix4(), col = new THREE.Color();
+      L.t.forEach((ti, j) => {
+        const [x, z] = P(T[ti], T[ti + 1]); const h = T[ti + 2], con = T[ti + 3];
+        const trunkH = con ? h * 0.25 : h * 0.38;
+        mtx.compose(new THREE.Vector3(x, 0, z), new THREE.Quaternion(), new THREE.Vector3(1 + h / 25, trunkH, 1 + h / 25)); trunks.setMatrixAt(j, mtx);
+        const jitter = hash01(String(ti));
+        if (con) {
+          mtx.compose(new THREE.Vector3(x, trunkH * 0.6, z), new THREE.Quaternion(), new THREE.Vector3(h * 0.22, h * 0.85, h * 0.22));
+          cones.setMatrixAt(nc, mtx); cones.setColorAt(nc++, col.setHSL(0.33 + jitter * 0.04, 0.35, 0.24 + jitter * 0.06));
+        } else {
+          const r = Math.max(1.2, h * 0.32);
+          mtx.compose(new THREE.Vector3(x, trunkH + r * 0.75, z), new THREE.Quaternion().setFromEuler(new THREE.Euler(0, jitter * 6, 0)), new THREE.Vector3(r, r * 0.9, r));
+          leaves.setMatrixAt(nl, mtx); leaves.setColorAt(nl++, col.setHSL(0.24 + jitter * 0.08, 0.38, 0.30 + jitter * 0.1));
+        }
+      });
+      leaves.count = nl; cones.count = nc;
+      for (const m of [trunks, leaves, cones]) { m.castShadow = true; m.receiveShadow = true; group.add(m); }
+    }
+  }
+  scene.add(group);
+  chunks.set(k, { group, kx, kz });
+}
+function disposeGroup(g) { g.traverse((o) => { if (o.geometry && o.geometry !== trunkGeo && o.geometry !== crownGeo && o.geometry !== coneGeo) o.geometry.dispose(); if (o.material && o.material.map && o.material.map.isCanvasTexture === undefined && ![...Object.values(M.walls)].includes(o.material)) { /* photo materials are cached by texture */ } }); }
+function updateChunks(px, pz, budget = 2) {
+  const [cx, cz] = chunkOf(px, pz), R = Math.ceil(LOAD_R / CHUNK);
+  const want = [];
+  for (let dx = -R; dx <= R; dx++) for (let dz = -R; dz <= R; dz++) {
+    const kx = cx + dx, kz = cz + dz, d = Math.hypot((kx + .5) * CHUNK - px, (kz + .5) * CHUNK - pz);
+    if (d < LOAD_R && !chunks.has(key(kx, kz))) want.push([d, kx, kz]);
+  }
+  want.sort((a, b) => a[0] - b[0]);
+  for (const [, kx, kz] of want.slice(0, budget)) buildChunk(key(kx, kz), kx, kz);
+  for (const [k, c] of chunks) {
+    if (Math.hypot((c.kx + .5) * CHUNK - px, (c.kz + .5) * CHUNK - pz) > DROP_R) { scene.remove(c.group); disposeGroup(c.group); chunks.delete(k); }
+  }
+  return want.length;
+}
+function rebuildChunkOf(b) {
+  if (b.h >= TALL) { buildSkyline(); return; }
+  const [kx, kz] = chunkOf(b.cx, b.cz), k = key(kx, kz), c = chunks.get(k);
+  if (c) { scene.remove(c.group); disposeGroup(c.group); chunks.delete(k); buildChunk(k, kx, kz); }
+}
+function buildSkyline() {
+  for (const o of [...skyline.children]) { skyline.remove(o); disposeGroup(o); }
+  const g = new THREE.Group(); buildingMeshes(B.filter((b) => b.h >= TALL).map((b) => b.i), g); skyline.add(g);
+  for (const lm of W.landmarks) skyline.add(landmark(lm));
+}
+function landmark(lm) {
+  const [x, z] = P(lm.x[0], lm.x[1]); const g = new THREE.Group(); g.position.set(x, 0, z);
+  const conc = new THREE.MeshLambertMaterial({ color: "#d9d4c8" }), glass = new THREE.MeshPhongMaterial({ color: "#5f7f93", shininess: 80 }), yellow = new THREE.MeshLambertMaterial({ color: "#f2c230" });
+  if (lm.style === "carillon") {
+    const t = new THREE.Mesh(new THREE.BoxGeometry(9, lm.h - 6, 9).translate(0, (lm.h - 6) / 2, 0), new THREE.MeshLambertMaterial({ color: "#b7ab95" }));
+    const roof = new THREE.Mesh(new THREE.ConeGeometry(7, 6, 4).rotateY(Math.PI / 4).translate(0, lm.h - 3, 0), new THREE.MeshLambertMaterial({ color: "#59705f" }));
+    g.add(t, roof);
+  } else {
+    const podY = lm.h * 0.86;
+    g.add(new THREE.Mesh(new THREE.CylinderGeometry(5, 6.5, podY, 16).translate(0, podY / 2, 0), conc));
+    g.add(new THREE.Mesh(new THREE.CylinderGeometry(16, 13, 9, 24).translate(0, podY + 2, 0), glass));
+    g.add(new THREE.Mesh(new THREE.CylinderGeometry(15, 15, 2.5, 24).translate(0, podY + 7.6, 0), conc));
+    g.add(new THREE.Mesh(new THREE.CylinderGeometry(1, 1, lm.h - podY - 8, 8).translate(0, podY + 8 + (lm.h - podY - 8) / 2, 0), conc));
+    for (const a of [0, 2.1, 4.2]) { const e = new THREE.Mesh(new THREE.BoxGeometry(1.4, podY - 4, 1.4).translate(0, (podY - 4) / 2, 0), yellow); e.position.set(Math.cos(a) * 6.2, 0, Math.sin(a) * 6.2); g.add(e); }
+  }
+  g.traverse((o) => { if (o.isMesh) o.castShadow = true; });
+  return g;
+}
+
+function buildGlobal() {
+  // ground
+  const ground = new THREE.Mesh(new THREE.PlaneGeometry(40000, 40000).rotateX(-Math.PI / 2), new THREE.MeshLambertMaterial({ map: grassTex }));
+  ground.material.map.repeat.set(2000, 2000); ground.receiveShadow = true; scene.add(ground);
+  const shapeMesh = (rings, y, mat) => {
+    const outer = undelta(rings[0]).map(([x, z]) => new THREE.Vector2(x, z));
+    const holes = rings.slice(1).map((r) => undelta(r).map(([x, z]) => new THREE.Vector2(x, z)));
+    let tris; try { tris = THREE.ShapeUtils.triangulateShape(outer, holes); } catch { return null; }
+    const all = outer.concat(...holes), pos = [];
+    for (const t of tris) for (const i of t) pos.push(all[i].x, y, all[i].y);
+    const m = new THREE.Mesh(flatGeom({ pos, uv: [] }), mat); m.receiveShadow = true; return m;
+  };
+  for (const w of W.water) { const m = shapeMesh(w.r, w.land ? 0.05 : 0.03, w.land ? M.island : M.water); if (m) scene.add(m); }
+  for (const p of W.parks) { const m = shapeMesh(p.r, 0.02, M.park); if (m) scene.add(m); }
+  const cr = { pos: [], uv: [] }; for (const c of W.creeks) ribbon(undelta(c), 3, 0.04, 10, cr);
+  const cg = flatGeom(cr); if (cg) scene.add(new THREE.Mesh(cg, M.creek));
+  buildSkyline();
+}
+
+// ---------------------------------------------------------------- characters and cars
+function personMesh(shirt, pants, skin = "#c99a7a") {
+  const g = new THREE.Group(), m = (c) => new THREE.MeshLambertMaterial({ color: c });
+  const torso = new THREE.Mesh(new THREE.BoxGeometry(0.46, 0.62, 0.26), m(shirt)); torso.position.y = 1.18;
+  const head = new THREE.Mesh(new THREE.BoxGeometry(0.24, 0.27, 0.25), m(skin)); head.position.y = 1.65;
+  const hair = new THREE.Mesh(new THREE.BoxGeometry(0.26, 0.08, 0.27), m("#2b2018")); hair.position.y = 1.8;
+  const limb = (w, h, c, x, y) => { const p = new THREE.Group(); p.position.set(x, y, 0); const l = new THREE.Mesh(new THREE.BoxGeometry(w, h, w), m(c)); l.position.y = -h / 2; p.add(l); return p; };
+  const armL = limb(0.13, 0.6, shirt, -0.3, 1.46), armR = limb(0.13, 0.6, shirt, 0.3, 1.46);
+  const legL = limb(0.17, 0.86, pants, -0.12, 0.87), legR = limb(0.17, 0.86, pants, 0.12, 0.87);
+  g.add(torso, head, hair, armL, armR, legL, legR);
+  g.userData.limbs = { armL, armR, legL, legR };
+  g.traverse((o) => { if (o.isMesh) o.castShadow = true; });
+  return g;
+}
+function animatePerson(p, phase, amount) {
+  const s = Math.sin(phase) * amount, L = p.userData.limbs;
+  L.legL.rotation.x = s; L.legR.rotation.x = -s; L.armL.rotation.x = -s * 0.8; L.armR.rotation.x = s * 0.8;
+}
+const CAR_COLORS = ["#c8ccd0", "#20252b", "#f4f4f2", "#7b1e22", "#1f3b63", "#5d6670", "#2e5b3c", "#b8862c", "#9aa4ad"];
+function carMesh(color) {
+  const g = new THREE.Group();
+  const body = new THREE.Mesh(new THREE.BoxGeometry(1.8, 0.7, 4.4), new THREE.MeshPhongMaterial({ color, shininess: 70 })); body.position.y = 0.65;
+  const cab = new THREE.Mesh(new THREE.BoxGeometry(1.6, 0.6, 2.3), new THREE.MeshPhongMaterial({ color: "#26323a", shininess: 90 })); cab.position.set(0, 1.25, -0.2);
+  g.add(body, cab);
+  const wg = new THREE.CylinderGeometry(0.34, 0.34, 0.24, 12).rotateZ(Math.PI / 2), wm = new THREE.MeshLambertMaterial({ color: "#151515" });
+  for (const [x, z] of [[-0.85, 1.4], [0.85, 1.4], [-0.85, -1.4], [0.85, -1.4]]) { const w = new THREE.Mesh(wg, wm); w.position.set(x, 0.34, z); g.add(w); }
+  const lights = new THREE.Mesh(new THREE.BoxGeometry(1.5, 0.15, 0.05), new THREE.MeshBasicMaterial({ color: "#ffe9b0" })); lights.position.set(0, 0.75, 2.21); g.add(lights);
+  const tails = new THREE.Mesh(new THREE.BoxGeometry(1.5, 0.15, 0.05), new THREE.MeshBasicMaterial({ color: "#a3161a" })); tails.position.set(0, 0.75, -2.21); g.add(tails);
+  g.traverse((o) => { if (o.isMesh) o.castShadow = true; });
+  return g;
+}
+
+const player = { x: 0, z: 0, y: 0, vy: 0, yaw: 0, heading: 0, speed: 0, phase: 0, car: null, mesh: personMesh("#0b6b4f", "#2b3442", "#b98a6a") };
+scene.add(player.mesh);
+const cam = { yaw: Math.PI, pitch: 0.32, dist: 7 };
+
+// ---------------------------------------------------------------- collision against building walls
+function collide(x, z, r) {
+  for (let it = 0; it < 2; it++) {
+    const gx = Math.floor(x / COL), gz = Math.floor(z / COL);
+    for (let dx = -1; dx <= 1; dx++) for (let dz = -1; dz <= 1; dz++) {
+      const l = colGrid.get(key(gx + dx, gz + dz)); if (!l) continue;
+      for (const [ax, az, bx, bz] of l) {
+        const ex = bx - ax, ez = bz - az, L2 = ex * ex + ez * ez; if (L2 < 1e-6) continue;
+        let t = ((x - ax) * ex + (z - az) * ez) / L2; t = Math.max(0, Math.min(1, t));
+        const qx = ax + ex * t, qz = az + ez * t, dX = x - qx, dZ = z - qz, d = Math.hypot(dX, dZ);
+        if (d < r && d > 1e-6) { x = qx + dX / d * r; z = qz + dZ / d * r; }
+      }
+    }
+  }
+  return [x, z];
+}
+function nearestWall(x, z, maxD = 14) {
+  let best = null, bd = maxD;
+  const gx = Math.floor(x / COL), gz = Math.floor(z / COL);
+  for (let dx = -1; dx <= 1; dx++) for (let dz = -1; dz <= 1; dz++) {
+    const l = colGrid.get(key(gx + dx, gz + dz)); if (!l) continue;
+    for (const [ax, az, bx, bz, bi, k] of l) {
+      const ex = bx - ax, ez = bz - az, L2 = ex * ex + ez * ez; if (L2 < 1e-6) continue;
+      let t = Math.max(0, Math.min(1, ((x - ax) * ex + (z - az) * ez) / L2));
+      const d = Math.hypot(x - (ax + ex * t), z - (az + ez * t));
+      if (d < bd) { bd = d; best = { bi, k, d }; }
+    }
+  }
+  return best;
+}
+function nearestRoad(x, z, maxD = 60) {
+  let best = null, bd = maxD;
+  const gx = Math.floor(x / RG), gz = Math.floor(z / RG);
+  for (let dx = -1; dx <= 1; dx++) for (let dz = -1; dz <= 1; dz++) {
+    const l = roadGrid.get(key(gx + dx, gz + dz)); if (!l) continue;
+    for (const [ri, s] of l) {
+      const r = roads[ri], [ax, az] = r.pts[s], [bx, bz] = r.pts[s + 1];
+      const ex = bx - ax, ez = bz - az, L2 = ex * ex + ez * ez; if (L2 < 1e-6) continue;
+      const t = Math.max(0, Math.min(1, ((x - ax) * ex + (z - az) * ez) / L2));
+      const d = Math.hypot(x - (ax + ex * t), z - (az + ez * t));
+      if (d < bd) { bd = d; best = { ri, s, t, d, x: ax + ex * t, z: az + ez * t }; }
+    }
+  }
+  return best;
+}
+
+// ---------------------------------------------------------------- traffic and crowds, in the model's numbers
+const cars = [], peds = [];
+const MAX_CARS = 140, MAX_PEDS = 160, SPAWN_R = 380, KEEP_R = 480;
+const CLASS_SPEED = [27, 14, 15, 13, 10];   // m/s by road class
+function along(line, s) {
+  const c = line.cum; let i = 0, lo = 0, hi = c.length - 1;
+  while (hi - lo > 1) { const m = (lo + hi) >> 1; if (c[m] <= s) lo = m; else hi = m; } i = lo;
+  const seg = Math.max(c[i + 1] - c[i], 1e-6), t = (s - c[i]) / seg;
+  const [ax, az] = line.pts[i], [bx, bz] = line.pts[i + 1];
+  return [ax + (bx - ax) * t, az + (bz - az) * t, bx - ax, bz - az];
+}
+let nearby = { roads: [], rw: 0, walks: [], ww: 0, carTarget: 0, pedTarget: 0, at: [1e9, 1e9] };
+function refreshNearby(px, pz) {
+  const R = Math.ceil(SPAWN_R / CHUNK), [cx, cz] = chunkOf(px, pz);
+  const rs = new Map(), ws = new Map();
+  for (let dx = -R; dx <= R; dx++) for (let dz = -R; dz <= R; dz++) {
+    const L = chunkLists.get(key(cx + dx, cz + dz)); if (!L) continue;
+    for (const [ri] of L.r) rs.set(ri, 1); for (const [wi] of L.s) ws.set(wi, 1);
+  }
+  nearby.roads = []; nearby.rw = 0; let carExp = 0;
+  for (const ri of rs.keys()) {
+    const r = roads[ri]; if (!r.v) continue;
+    const vis = Math.min(r.len, 2 * SPAWN_R);
+    // vehicles on a stretch at once = flow per second / speed x length; daytime flow is about 1.6x the daily average
+    const exp = (r.v / 86400) * 1.6 / CLASS_SPEED[r.c] * vis;
+    nearby.roads.push([ri, exp]); nearby.rw += exp; carExp += exp;
+  }
+  nearby.walks = []; nearby.ww = 0; let pedExp = 0;
+  for (const wi of ws.keys()) {
+    const w = walks[wi]; if (!w.wk) continue;
+    const exp = (w.wk / 86400) * 1.8 / 1.3 * Math.min(w.len, 2 * SPAWN_R);
+    nearby.walks.push([wi, exp]); nearby.ww += exp; pedExp += exp;
+  }
+  nearby.carTarget = Math.min(MAX_CARS, Math.round(carExp * 0.35));
+  nearby.pedTarget = Math.min(MAX_PEDS, Math.round(pedExp * 0.35));
+  nearby.at = [px, pz];
+}
+function pick(listW, total) { let r = Math.random() * total; for (const [i, w] of listW) { r -= w; if (r <= 0) return i; } return listW.length ? listW[listW.length - 1][0] : null; }
+function spawnCar() {
+  const ri = pick(nearby.roads, nearby.rw); if (ri == null) return;
+  const r = roads[ri]; if (r.len < 10) return;
+  const dir = r.o ? 1 : (Math.random() < 0.5 ? 1 : -1);
+  const s = Math.random() * r.len;
+  const [x, z] = along(r, s); if (Math.hypot(x - player.x, z - player.z) < 40) return;
+  const mesh = carMesh(CAR_COLORS[Math.floor(Math.random() * CAR_COLORS.length)]); scene.add(mesh);
+  cars.push({ ri, dir, s, v: CLASS_SPEED[r.c] * (0.75 + Math.random() * 0.3), mesh, lane: r.o ? 0 : Math.min(r.w / 4, 2.6) });
+}
+function spawnPed() {
+  const wi = pick(nearby.walks, nearby.ww); if (wi == null) return;
+  const w = walks[wi]; if (w.len < 5) return;
+  const s = Math.random() * w.len; const [x, z] = along(w, s);
+  if (Math.hypot(x - player.x, z - player.z) < 25) return;
+  const shirts = ["#a33b3b", "#2f5f8f", "#e0b04f", "#3f7a52", "#6c4f8f", "#e6e1d6", "#22272b", "#c76a3a"];
+  const mesh = personMesh(shirts[Math.floor(Math.random() * shirts.length)], Math.random() < .5 ? "#2b3442" : "#5b4a3a", ["#e2b896", "#c99a7a", "#8d5e43", "#5c3b29"][Math.floor(Math.random() * 4)]);
+  mesh.scale.setScalar(0.92 + Math.random() * 0.15); scene.add(mesh);
+  peds.push({ wi, dir: Math.random() < .5 ? 1 : -1, s, v: 1.1 + Math.random() * 0.5, mesh, phase: Math.random() * 6, off: (Math.random() - 0.5) * 1.2 });
+}
+function nextLine(lines, ends, li, atEnd, oneWayOk) {
+  const p = atEnd ? lines[li].pts[lines[li].pts.length - 1] : lines[li].pts[0];
+  const opts = (ends.get(endKey(p)) || []).filter(([j, e]) => j !== li && (!oneWayOk || !lines[j].o || e === 0));
+  if (!opts.length) return null;
+  const [j, e] = opts[Math.floor(Math.random() * opts.length)];
+  return { li: j, dir: e === 0 ? 1 : -1, s: e === 0 ? 0 : lines[j].len };
+}
+function stepCars(dt) {
+  for (let i = cars.length - 1; i >= 0; i--) {
+    const c = cars[i]; if (c === player.car) continue;
+    const r = roads[c.ri];
+    // slow for the player standing in the road and for the car ahead on the same street
+    const [x0, z0, ex, ez] = along(r, c.s); const L = Math.hypot(ex, ez) || 1; const fx = ex / L * c.dir, fz = ez / L * c.dir;
+    let want = CLASS_SPEED[r.c] * (0.8 + 0.2 * Math.sin(i));
+    const ahead = (tx, tz, gap) => { const dx = tx - x0, dz = tz - z0, f = dx * fx + dz * fz, side = Math.abs(dx * fz - dz * fx); return f > 0 && f < gap && side < 2.2; };
+    if (ahead(player.x, player.z, 12)) want = 0;
+    for (const o of cars) if (o !== c && o.ri === c.ri && o.dir === c.dir && (o.s - c.s) * c.dir > 0 && (o.s - c.s) * c.dir < 9) { want = Math.min(want, o.v * 0.9); }
+    c.v += Math.max(-8 * dt, Math.min(3 * dt, want - c.v));
+    c.s += c.v * dt * c.dir;
+    if (c.s > r.len || c.s < 0) {
+      const n = nextLine(roads, roadEnds, c.ri, c.s > r.len, true);
+      if (n) { c.ri = n.li; c.dir = n.dir; c.s = n.s; const nr = roads[n.li]; c.lane = nr.o ? 0 : Math.min(nr.w / 4, 2.6); }
+      else if (!r.o) { c.dir = -c.dir; c.s = Math.max(0, Math.min(r.len, c.s)); }
+      else { scene.remove(c.mesh); cars.splice(i, 1); continue; }
+    }
+    const rr = roads[c.ri];
+    const [x, z, dx, dz] = along(rr, Math.max(0, Math.min(rr.len, c.s))); const l = Math.hypot(dx, dz) || 1;
+    const tx = dx / l * c.dir, tz = dz / l * c.dir;
+    const y = rr.br ? 0.4 : 0;
+    c.mesh.position.set(x + -tz * c.lane, y, z + tx * c.lane);
+    c.mesh.rotation.y = Math.atan2(tx, tz);
+    if (Math.hypot(x - player.x, z - player.z) > KEEP_R) { scene.remove(c.mesh); cars.splice(i, 1); }
+  }
+}
+function stepPeds(dt) {
+  for (let i = peds.length - 1; i >= 0; i--) {
+    const p = peds[i], w = walks[p.wi];
+    p.s += p.v * dt * p.dir;
+    if (p.s > w.len || p.s < 0) {
+      const n = nextLine(walks, walkEnds, p.wi, p.s > w.len, false);
+      if (n) { p.wi = n.li; p.dir = n.dir; p.s = n.s; } else { p.dir = -p.dir; p.s = Math.max(0, Math.min(w.len, p.s)); }
+    }
+    const ww = walks[p.wi]; const [x, z, dx, dz] = along(ww, Math.max(0, Math.min(ww.len, p.s))); const l = Math.hypot(dx, dz) || 1;
+    const tx = dx / l * p.dir, tz = dz / l * p.dir;
+    p.mesh.position.set(x - tz * p.off, 0.16, z + tx * p.off); p.mesh.rotation.y = Math.atan2(tx, tz);
+    p.phase += dt * p.v * 5.5; animatePerson(p.mesh, p.phase, 0.5);
+    if (Math.hypot(x - player.x, z - player.z) > KEEP_R) { scene.remove(p.mesh); peds.splice(i, 1); }
+  }
+}
+
+// ---------------------------------------------------------------- input
+const keys = new Set();
+const touch = { x: 0, y: 0, run: false };
+addEventListener("keydown", (e) => {
+  if (e.target.tagName === "INPUT") return;
+  keys.add(e.code);
+  if (e.code === "KeyE") toggleCar();
+  if (e.code === "KeyM") toggleMap();
+  if (e.code === "KeyH") $("help").hidden = !$("help").hidden;
+  if (e.code === "KeyP") openPhoto();
+  if (e.code === "Escape") { $("bigmap").hidden = true; }
+  if (["Space", "ArrowUp", "ArrowDown"].includes(e.code)) e.preventDefault();
+});
+addEventListener("keyup", (e) => keys.delete(e.code));
+const view = $("view");
+view.addEventListener("click", () => { if (!isTouch && document.pointerLockElement !== view) view.requestPointerLock?.()?.catch?.(() => {}); });
+addEventListener("mousemove", (e) => {
+  if (document.pointerLockElement === view) { cam.yaw -= e.movementX * 0.0028; cam.pitch = Math.max(-0.2, Math.min(1.25, cam.pitch + e.movementY * 0.0022)); }
+});
+let drag = null;
+view.addEventListener("pointerdown", (e) => { if (document.pointerLockElement === view) return; drag = { id: e.pointerId, x: e.clientX, y: e.clientY }; view.setPointerCapture(e.pointerId); });
+view.addEventListener("pointermove", (e) => { if (!drag || drag.id !== e.pointerId) return; cam.yaw -= (e.clientX - drag.x) * 0.006; cam.pitch = Math.max(-0.2, Math.min(1.25, cam.pitch + (e.clientY - drag.y) * 0.005)); drag.x = e.clientX; drag.y = e.clientY; });
+view.addEventListener("pointerup", () => { drag = null; });
+view.addEventListener("wheel", (e) => { cam.dist = Math.max(2.5, Math.min(60, cam.dist * (1 + Math.sign(e.deltaY) * 0.12))); e.preventDefault(); }, { passive: false });
+const isTouch = matchMedia("(pointer: coarse)").matches;
+if (isTouch) {
+  $("touch").hidden = false;
+  const stick = $("stick"), knob = $("knob");
+  let sid = null;
+  const move = (e) => { const r = stick.getBoundingClientRect(); let dx = e.clientX - (r.left + r.width / 2), dy = e.clientY - (r.top + r.height / 2); const m = Math.hypot(dx, dy), R = r.width / 2; if (m > R) { dx *= R / m; dy *= R / m; } touch.x = dx / R; touch.y = dy / R; knob.style.transform = `translate(${dx}px, ${dy}px)`; };
+  stick.addEventListener("pointerdown", (e) => { sid = e.pointerId; stick.setPointerCapture(sid); move(e); e.stopPropagation(); });
+  stick.addEventListener("pointermove", (e) => { if (e.pointerId === sid) move(e); });
+  const end = () => { sid = null; touch.x = touch.y = 0; knob.style.transform = ""; };
+  stick.addEventListener("pointerup", end); stick.addEventListener("pointercancel", end);
+  $("tRun").addEventListener("click", () => { touch.run = !touch.run; $("tRun").classList.toggle("primary", touch.run); });
+  $("tJump").addEventListener("pointerdown", () => { keys.add("Space"); setTimeout(() => keys.delete("Space"), 150); });
+  $("tCar").addEventListener("click", toggleCar);
+  $("tInfo").addEventListener("click", () => { $("card").hidden = !$("card").hidden; cardPinnedHidden = $("card").hidden; });
+}
+let cardPinnedHidden = false;
+
+// ---------------------------------------------------------------- player update
+function toggleCar() {
+  if (player.car) {
+    const c = player.car, h = c.mesh.rotation.y;
+    let [x, z] = [c.mesh.position.x + Math.cos(h) * 2.4, c.mesh.position.z - Math.sin(h) * 2.4];   // driver's side (left)
+    [x, z] = collide(x, z, 0.4);
+    player.x = x; player.z = z; player.car = null; c.parked = true; player.mesh.visible = true;
+    // a parked car stays where it was left
+    cars.splice(cars.indexOf(c), 1); parked.push(c);
+    $("speed").hidden = true; cam.dist = 7; return;
+  }
+  let best = null, bd = 6;
+  for (const c of [...cars, ...parked]) { const d = Math.hypot(c.mesh.position.x - player.x, c.mesh.position.z - player.z); if (d < bd) { bd = d; best = c; } }
+  if (!best) { flash("No car within reach. Walk up to one and press E."); return; }
+  const pi = parked.indexOf(best); if (pi >= 0) { parked.splice(pi, 1); cars.push(best); }
+  player.car = best; best.v = best.parked ? 0 : best.v; best.heading = best.mesh.rotation.y; best.speed = best.v || 0;
+  player.mesh.visible = false; $("speed").hidden = false; cam.dist = 10;
+}
+const parked = [];
+function stepPlayer(dt) {
+  const fwd = (keys.has("KeyW") || keys.has("ArrowUp") ? 1 : 0) - (keys.has("KeyS") || keys.has("ArrowDown") ? 1 : 0) - touch.y;
+  const side = (keys.has("KeyD") || keys.has("ArrowRight") ? 1 : 0) - (keys.has("KeyA") || keys.has("ArrowLeft") ? 1 : 0) + touch.x;
+  if (player.car) {
+    const c = player.car;
+    const acc = fwd > 0.1 ? 7 : fwd < -0.1 ? (c.speed > 0.5 ? -14 : -4) : -c.speed * 0.6;
+    c.speed += acc * dt; if (keys.has("Space")) c.speed *= Math.pow(0.05, dt);
+    c.speed = Math.max(-8, Math.min(38, c.speed));
+    const steer = -side * Math.min(1, 6 / (Math.abs(c.speed) + 3)) * 1.6;
+    c.heading += steer * dt * Math.sign(c.speed) * Math.min(1, Math.abs(c.speed) / 3);
+    let x = c.mesh.position.x + Math.sin(c.heading) * c.speed * dt, z = c.mesh.position.z + Math.cos(c.heading) * c.speed * dt;
+    const before = [x, z];
+    // two circles along the body keep the car out of buildings
+    const fx = Math.sin(c.heading) * 1.3, fz = Math.cos(c.heading) * 1.3;
+    let [ax, az] = collide(x + fx, z + fz, 1.0); let [bx, bz] = collide(x - fx, z - fz, 1.0);
+    x = (ax + bx) / 2; z = (az + bz) / 2;
+    if (Math.hypot(x - before[0], z - before[1]) > 0.02) c.speed *= 0.6;
+    c.mesh.position.set(x, 0, z); c.mesh.rotation.y = c.heading;
+    player.x = x; player.z = z; player.speed = c.speed;
+    $("kmh").textContent = Math.round(Math.abs(c.speed) * 3.6);
+    return;
+  }
+  const run = keys.has("ShiftLeft") || keys.has("ShiftRight") || touch.run;
+  const mag = Math.min(1, Math.hypot(fwd, side));
+  const sp = (run ? 8 : 3.6) * mag;
+  if (mag > 0.05) {
+    const a = cam.yaw + Math.atan2(-side, fwd) + Math.PI;
+    const dx = Math.sin(a) * sp * dt, dz = Math.cos(a) * sp * dt;
+    [player.x, player.z] = collide(player.x + dx, player.z + dz, 0.38);
+    let d = a - player.heading; d = Math.atan2(Math.sin(d), Math.cos(d)); player.heading += d * Math.min(1, dt * 12);
+  }
+  if (keys.has("Space") && player.y <= 0.001) player.vy = 4.6;
+  player.vy -= 12 * dt; player.y = Math.max(0, player.y + player.vy * dt); if (player.y === 0) player.vy = Math.max(0, player.vy);
+  player.speed = sp; player.phase += dt * sp * 2.6;
+  animatePerson(player.mesh, player.phase, mag > 0.05 ? (run ? 0.9 : 0.55) : 0);
+  player.mesh.position.set(player.x, player.y + 0.16, player.z); player.mesh.rotation.y = player.heading;
+}
+function stepCamera() {
+  const tx = player.x, tz = player.z, ty = player.car ? 1.6 : 1.7 + player.y;
+  const yaw = cam.yaw, d = cam.dist;
+  const cx = tx + Math.sin(yaw) * Math.cos(cam.pitch) * d, cz = tz + Math.cos(yaw) * Math.cos(cam.pitch) * d, cy = ty + Math.sin(cam.pitch) * d;
+  camera.position.set(cx, Math.max(0.6, cy), cz); camera.lookAt(tx, ty, tz);
+  sun.position.set(tx + SUN_DIR.x * 300, SUN_DIR.y * 300, tz + SUN_DIR.z * 300); sun.target.position.set(tx, 0, tz);
+}
+
+// ---------------------------------------------------------------- HUD
+const fmtMoney = (v) => v >= 1e6 ? `$${(v / 1e6).toFixed(v >= 1e7 ? 0 : 1)}M` : v >= 1e3 ? `$${Math.round(v / 1e3)}k` : `$${Math.round(v)}`;
+const compass = (dx, dz) => { const a = (Math.atan2(dx, -dz) * 180 / Math.PI + 360) % 360; return ["north", "north-east", "east", "south-east", "south", "south-west", "west", "north-west"][Math.round(a / 45) % 8]; };
+let lastCardKey = "", focus = null;
+function esc(s) { return String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]); }
+function updateHUD() {
+  const r = nearestRoad(player.x, player.z, 80);
+  $("street").textContent = r && roads[r.ri].n ? roads[r.ri].n : "Niagara Falls";
+  const [lat, lon] = xzToLL(player.x, player.z);
+  const veh = r ? roads[r.ri].v : 0;
+  $("whereSub").textContent = `${lat.toFixed(5)}, ${lon.toFixed(5)} · ${veh ? `${veh.toLocaleString()} vehicles a day here (model)` : "side street"} · ${cars.length} cars, ${peds.length} people near you`;
+  const w = player.car ? null : nearestWall(player.x, player.z, 12);
+  focus = w ? { b: B[w.bi], k: w.k } : null;
+  const ck = focus ? focus.b.id + ":" + focus.k : "";
+  if (ck === lastCardKey) return; lastCardKey = ck;
+  const card = $("card");
+  if (!focus) { card.hidden = true; return; }
+  card.hidden = cardPinnedHidden;
+  const b = focus.b, [ax, az] = b.ring[focus.k], [bx, bz] = b.ring[(focus.k + 1) % b.ring.length];
+  const wl = Math.hypot(bx - ax, bz - az), faces = compass(-(bz - az), bx - ax);
+  const items = b.biz.map((i) => W.biz[i]).sort((a, c) => c.s - a.s);
+  const title = b.tn || (items[0] ? items[0].n : "Building");
+  const hsrc = b.hs === "published" ? "published height" : b.hs === "published-slab" ? "published height, approximate outline" : b.hs === "min" ? "City survey too low, shown at one storey" : "City 2018 survey";
+  card.innerHTML = `<h2>${esc(title)}</h2>
+    <div class="meta">${b.h.toFixed(1)} m tall (${hsrc}) · ${Math.round(b.area).toLocaleString()} m² footprint</div>
+    ${items.length ? `<ul>${items.slice(0, 8).map((x) => `<li><div class="n">${esc(x.n)}</div><div class="k">${esc(KINDS_LABEL[x.k] || x.k)} · ${esc(x.a || "")}<br>${x.s ? `Model sales ${fmtMoney(x.s)} a year · ${Math.round(x.t * 100)}% from tourists` : "No sales in the model"}${x.o != null ? ` · open ${x.o}–${x.c}` : ""}</div></li>`).join("")}</ul>${items.length > 8 ? `<div class="meta" style="margin-top:6px">and ${items.length - 8} more</div>` : ""}` : `<div class="meta" style="margin-top:6px">No business listed here.</div>`}
+    <div class="row"><span class="id">Building ${esc(b.id)} · wall ${focus.k} faces ${faces}, ${wl.toFixed(1)} m</span></div>
+    <div class="row"><button id="btnPhoto">${wallPhoto(b, focus.k) ? "Replace photo of this wall" : "Add photo of this wall"}</button><button id="btnCopy">Copy building id</button></div>`;
+  $("btnPhoto").onclick = openPhoto;
+  $("btnCopy").onclick = () => { navigator.clipboard?.writeText(b.id).then(() => flash("Copied " + b.id), () => flash(b.id)); };
+}
+let flashT = 0;
+function flash(msg) { $("whereSub").textContent = msg; flashT = performance.now() + 2500; }
+
+// minimap: roads and buildings around you, turned so the view direction is up
+const mini = $("mini"), mg = mini.getContext("2d");
+function drawMini() {
+  const S = mini.width, R = 220, sc = S / 2 / R;
+  mg.setTransform(1, 0, 0, 1, 0, 0); mg.fillStyle = "#1d2b27"; mg.fillRect(0, 0, S, S);
+  mg.setTransform(sc, 0, 0, sc, S / 2, S / 2); mg.rotate(cam.yaw); mg.translate(-player.x, -player.z);
+  const [cx, cz] = chunkOf(player.x, player.z), n = Math.ceil(R / CHUNK) + 1;
+  mg.fillStyle = "#3e4f49";
+  for (let dx = -n; dx <= n; dx++) for (let dz = -n; dz <= n; dz++) {
+    const L = chunkLists.get(key(cx + dx, cz + dz)); if (!L) continue;
+    for (const bi of L.b) { const ring = B[bi].ring; mg.beginPath(); mg.moveTo(ring[0][0], ring[0][1]); for (const p of ring) mg.lineTo(p[0], p[1]); mg.fill(); }
+  }
+  mg.lineCap = "round";
+  for (let dx = -n; dx <= n; dx++) for (let dz = -n; dz <= n; dz++) {
+    const L = chunkLists.get(key(cx + dx, cz + dz)); if (!L) continue;
+    for (const [ri, s] of L.r) { const r = roads[ri]; mg.strokeStyle = r.c <= 2 ? "#f2c230" : "#cfd6d2"; mg.lineWidth = Math.max(4, r.w); mg.beginPath(); mg.moveTo(...r.pts[s]); mg.lineTo(...r.pts[s + 1]); mg.stroke(); }
+  }
+  mg.setTransform(1, 0, 0, 1, 0, 0);
+  mg.fillStyle = "#e0644f"; mg.beginPath(); mg.moveTo(S / 2, S / 2 - 14); mg.lineTo(S / 2 + 9, S / 2 + 10); mg.lineTo(S / 2, S / 2 + 5); mg.lineTo(S / 2 - 9, S / 2 + 10); mg.closePath();
+  mg.save(); mg.translate(S / 2, S / 2); mg.rotate(Math.PI - (player.car ? player.car.heading : player.heading) + cam.yaw); mg.translate(-S / 2, -S / 2); mg.fill(); mg.restore();
+  // north tick
+  mg.fillStyle = "#fff"; mg.font = "bold 22px Barlow Condensed, sans-serif"; mg.textAlign = "center"; mg.textBaseline = "middle";
+  mg.fillText("N", S / 2 + Math.sin(cam.yaw) * (S / 2 - 18), S / 2 - Math.cos(cam.yaw) * (S / 2 - 18));
+}
+
+// floating business names nearby
+const labelsEl = $("labels"), labelPool = [];
+function updateLabels() {
+  const near = [];
+  const [cx, cz] = chunkOf(player.x, player.z);
+  for (let dx = -1; dx <= 1; dx++) for (let dz = -1; dz <= 1; dz++) {
+    const L = chunkLists.get(key(cx + dx, cz + dz)); if (!L) continue;
+    for (const bi of L.b) for (const i of B[bi].biz) { const z = W.biz[i]; const [x, zz] = P(z.x[0], z.x[1]); const d = Math.hypot(x - player.x, zz - player.z); if (d < 45) near.push([d, x, zz, z, B[bi]]); }
+  }
+  for (const bt of B) if (bt.h >= TALL && Math.hypot(bt.cx - player.x, bt.cz - player.z) < 60) for (const i of bt.biz) { const z = W.biz[i]; const [x, zz] = P(z.x[0], z.x[1]); near.push([Math.hypot(x - player.x, zz - player.z), x, zz, z, bt]); }
+  near.sort((a, b) => a[0] - b[0]);
+  const v = new THREE.Vector3(); let n = 0;
+  for (const [d, x, z, bz, bl] of near) {
+    if (n >= 10) break;
+    v.set(x, Math.min(bl.h, 4.5) + 0.6, z).project(camera);
+    if (v.z > 1 || Math.abs(v.x) > 1.05 || Math.abs(v.y) > 1.05) continue;
+    let el = labelPool[n]; if (!el) { el = document.createElement("div"); el.className = "lbl"; labelsEl.appendChild(el); labelPool.push(el); }
+    if (el.textContent !== bz.n) el.textContent = bz.n;
+    el.style.left = `${(v.x + 1) / 2 * innerWidth}px`; el.style.top = `${(1 - v.y) / 2 * innerHeight}px`; el.style.opacity = String(Math.max(0.35, 1 - d / 50)); el.hidden = false; n++;
+  }
+  for (let i = n; i < labelPool.length; i++) labelPool[i].hidden = true;
+}
+
+// big map with jump points
+let mapImg = null, mapBox = null;
+function drawCityMap() {
+  const c = $("bigcanvas"), r = c.getBoundingClientRect(); c.width = r.width * devicePixelRatio; c.height = r.height * devicePixelRatio;
+  const g = c.getContext("2d");
+  let x0 = 1e9, x1 = -1e9, z0 = 1e9, z1 = -1e9; for (const rd of roads) for (const [x, z] of rd.pts) { x0 = Math.min(x0, x); x1 = Math.max(x1, x); z0 = Math.min(z0, z); z1 = Math.max(z1, z); }
+  // centre on the city itself, not the far ends of the highways
+  const [ox, oz] = llToXZ(43.085, -79.105); const half = 9000;
+  x0 = ox - half; x1 = ox + half; z0 = oz - half * 0.9; z1 = oz + half * 0.9;
+  const s = Math.min(c.width / (x1 - x0), c.height / (z1 - z0)); const offx = (c.width - (x1 - x0) * s) / 2, offz = (c.height - (z1 - z0) * s) / 2;
+  mapBox = { x0, z0, s, offx, offz };
+  g.fillStyle = "#1d2b27"; g.fillRect(0, 0, c.width, c.height);
+  const T = (x, z) => [offx + (x - x0) * s, offz + (z - z0) * s];
+  g.fillStyle = "#2f6f8f";
+  for (const w of W.water) { if (w.land) continue; for (const ring of w.r) { const pts = undelta(ring); g.beginPath(); pts.forEach(([x, z], i) => { const [a, b] = T(x, z); i ? g.lineTo(a, b) : g.moveTo(a, b); }); g.fill(); } }
+  for (const rd of roads) { g.strokeStyle = rd.c <= 2 ? "#f2c230" : "#7f918a"; g.lineWidth = rd.c <= 2 ? 2 : 1; g.beginPath(); rd.pts.forEach(([x, z], i) => { const [a, b] = T(x, z); i ? g.lineTo(a, b) : g.moveTo(a, b); }); g.stroke(); }
+  mapImg = g.getImageData(0, 0, c.width, c.height);
+  drawMapMarker();
+}
+function drawMapMarker() {
+  if (!mapImg) return; const c = $("bigcanvas"), g = c.getContext("2d"); g.putImageData(mapImg, 0, 0);
+  const { x0, z0, s, offx, offz } = mapBox; const px = offx + (player.x - x0) * s, pz = offz + (player.z - z0) * s;
+  g.fillStyle = "#e0644f"; g.beginPath(); g.arc(px, pz, 7 * devicePixelRatio, 0, Math.PI * 2); g.fill(); g.strokeStyle = "#fff"; g.lineWidth = 2 * devicePixelRatio; g.stroke();
+}
+function toggleMap() { const m = $("bigmap"); m.hidden = !m.hidden; if (!m.hidden) { document.exitPointerLock?.(); drawCityMap(); } }
+$("btnMap").onclick = toggleMap; $("btnMapClose").onclick = toggleMap;
+$("bigcanvas").addEventListener("click", (e) => {
+  const c = $("bigcanvas"), r = c.getBoundingClientRect(), { x0, z0, s, offx, offz } = mapBox;
+  const x = x0 + ((e.clientX - r.left) * devicePixelRatio - offx) / s, z = z0 + ((e.clientY - r.top) * devicePixelRatio - offz) / s;
+  teleport(x, z); toggleMap();
+});
+function teleport(x, z) {
+  const r = nearestRoad(x, z, 600);
+  if (r) { const rd = roads[r.ri]; const [ax, az] = rd.pts[r.s], [bx, bz] = rd.pts[r.s + 1]; const L = Math.hypot(bx - ax, bz - az) || 1; x = r.x + (-(bz - az) / L) * (rd.w / 2 + 1.5); z = r.z + ((bx - ax) / L) * (rd.w / 2 + 1.5); cam.yaw = Math.atan2(bx - ax, bz - az) - Math.PI; }
+  if (player.car) toggleCar();
+  [player.x, player.z] = collide(x, z, 0.4);
+  for (const c of cars) scene.remove(c.mesh); cars.length = 0; for (const p of peds) scene.remove(p.mesh); peds.length = 0;
+  refreshNearby(player.x, player.z);
+}
+$("btnHelp").onclick = () => { $("help").hidden = !$("help").hidden; };
+$("btnStart").onclick = () => { $("help").hidden = true; view.focus(); if (!isTouch) view.requestPointerLock?.()?.catch?.(() => {}); };
+
+// ---------------------------------------------------------------- photo mode
+// You stand in front of a wall, choose a photo, drag four corners onto the wall's corners, preview it in place,
+// and save. The photo is re-encoded in the browser first (that drops its GPS and camera metadata).
+let assetsApi = null, dbApi = null;
+const ph = { img: null, corners: null, drag: -1, target: null, scale: 1, texCanvas: null };
+function openPhoto() {
+  if (!focus) { flash("Walk up to a building wall first."); return; }
+  document.exitPointerLock?.();
+  ph.target = { ...focus };
+  const b = focus.b, [ax, az] = b.ring[focus.k], [bx, bz] = b.ring[(focus.k + 1) % b.ring.length];
+  $("photoTitle").textContent = `Wall ${focus.k} of ${b.tn || (b.biz[0] != null ? W.biz[b.biz[0]].n : "building " + b.id)} (${Math.hypot(bx - ax, bz - az).toFixed(1)} m wide)`;
+  $("photoTop").value = b.h.toFixed(1); $("photoBottom").value = "0";
+  $("photoMsg").textContent = assetsApi ? "Saved photos show on this wall for everyone who opens the game." : "You can preview here. Saving needs edit access to this page.";
+  $("photoSave").disabled = true; $("photo").hidden = false;
+  drawPhoto();
+}
+$("photoCancel").onclick = () => { $("photo").hidden = true; };
+$("photoFile").onchange = async (e) => {
+  const f = e.target.files[0]; if (!f) return;
+  const bmp = await createImageBitmap(f, { imageOrientation: "from-image" }).catch(() => null);
+  if (!bmp) { $("photoMsg").textContent = "That file could not be opened as an image. Try a JPEG or PNG."; return; }
+  // keep at most 2048 px on the long side
+  const k = Math.min(1, 2048 / Math.max(bmp.width, bmp.height));
+  const c = document.createElement("canvas"); c.width = Math.round(bmp.width * k); c.height = Math.round(bmp.height * k);
+  c.getContext("2d").drawImage(bmp, 0, 0, c.width, c.height);
+  ph.img = c; ph.corners = [[.15, .15], [.85, .15], [.85, .85], [.15, .85]].map(([u, v]) => [u * c.width, v * c.height]);
+  $("photoSave").disabled = !assetsApi; drawPhoto();
+};
+function drawPhoto() {
+  const cv = $("photoCanvas"), stage = cv.parentElement.getBoundingClientRect();
+  if (!ph.img) { cv.width = 600; cv.height = 300; const g = cv.getContext("2d"); g.fillStyle = "#0a110f"; g.fillRect(0, 0, 600, 300); g.fillStyle = "#9fb3ab"; g.font = "18px Barlow, sans-serif"; g.textAlign = "center"; g.fillText("Choose a photo of this wall", 300, 150); return; }
+  const s = Math.min(stage.width / ph.img.width, stage.height / ph.img.height, 1); ph.scale = s;
+  cv.width = Math.round(ph.img.width * s); cv.height = Math.round(ph.img.height * s);
+  const g = cv.getContext("2d"); g.drawImage(ph.img, 0, 0, cv.width, cv.height);
+  g.strokeStyle = "#f2c230"; g.lineWidth = 2; g.beginPath(); ph.corners.forEach(([x, y], i) => i ? g.lineTo(x * s, y * s) : g.moveTo(x * s, y * s)); g.closePath(); g.stroke();
+  ph.corners.forEach(([x, y], i) => { g.fillStyle = "#f2c230"; g.beginPath(); g.arc(x * s, y * s, 9, 0, Math.PI * 2); g.fill(); g.fillStyle = "#0f1a17"; g.font = "bold 11px Barlow, sans-serif"; g.textAlign = "center"; g.textBaseline = "middle"; g.fillText(["TL", "TR", "BR", "BL"][i], x * s, y * s); });
+}
+const pc = $("photoCanvas");
+pc.addEventListener("pointerdown", (e) => { if (!ph.img) return; const r = pc.getBoundingClientRect(); const x = (e.clientX - r.left) / ph.scale, y = (e.clientY - r.top) / ph.scale; let best = -1, bd = 40 / ph.scale; ph.corners.forEach(([cx, cy], i) => { const d = Math.hypot(cx - x, cy - y); if (d < bd) { bd = d; best = i; } }); ph.drag = best; if (best >= 0) pc.setPointerCapture(e.pointerId); });
+pc.addEventListener("pointermove", (e) => { if (ph.drag < 0) return; const r = pc.getBoundingClientRect(); ph.corners[ph.drag] = [Math.max(0, Math.min(ph.img.width, (e.clientX - r.left) / ph.scale)), Math.max(0, Math.min(ph.img.height, (e.clientY - r.top) / ph.scale))]; drawPhoto(); });
+pc.addEventListener("pointerup", () => { ph.drag = -1; });
+// straighten the marked quad onto a rectangle the wall's shape (square-to-quad homography)
+function homography(q) {
+  const [[x0, y0], [x1, y1], [x2, y2], [x3, y3]] = q;
+  const dx1 = x1 - x2, dx2 = x3 - x2, dx3 = x0 - x1 + x2 - x3, dy1 = y1 - y2, dy2 = y3 - y2, dy3 = y0 - y1 + y2 - y3;
+  let g = 0, h = 0;
+  if (Math.abs(dx3) > 1e-9 || Math.abs(dy3) > 1e-9) { const den = dx1 * dy2 - dx2 * dy1; g = (dx3 * dy2 - dx2 * dy3) / den; h = (dx1 * dy3 - dx3 * dy1) / den; }
+  const a = x1 - x0 + g * x1, b = x3 - x0 + h * x3, c = x0, d = y1 - y0 + g * y1, e = y3 - y0 + h * y3, f = y0;
+  return (u, v) => { const w = g * u + h * v + 1; return [(a * u + b * v + c) / w, (d * u + e * v + f) / w]; };
+}
+function rectify(img, corners, wallW, wallH) {
+  const ppm = Math.min(64, 1024 / Math.max(wallW, wallH));
+  const W2 = Math.max(16, Math.round(wallW * ppm)), H2 = Math.max(16, Math.round(wallH * ppm));
+  const src = img.getContext("2d").getImageData(0, 0, img.width, img.height).data;
+  const out = document.createElement("canvas"); out.width = W2; out.height = H2;
+  const og = out.getContext("2d"), od = og.createImageData(W2, H2), H = homography(corners);
+  for (let y = 0; y < H2; y++) for (let x = 0; x < W2; x++) {
+    const [sx, sy] = H((x + .5) / W2, (y + .5) / H2); const ix = Math.max(0, Math.min(img.width - 1, sx | 0)), iy = Math.max(0, Math.min(img.height - 1, sy | 0));
+    const si = (iy * img.width + ix) * 4, di = (y * W2 + x) * 4; od.data[di] = src[si]; od.data[di + 1] = src[si + 1]; od.data[di + 2] = src[si + 2]; od.data[di + 3] = 255;
+  }
+  og.putImageData(od, 0, 0); return out;
+}
+function wallSpan() { const b = ph.target.b; const v0 = Math.max(0, +$("photoBottom").value || 0), v1 = Math.min(b.h, +$("photoTop").value || b.h); return [v0, Math.max(v0 + 0.5, v1)]; }
+$("photoPreview").onclick = () => {
+  if (!ph.img) { $("photoMsg").textContent = "Choose a photo first."; return; }
+  const { b, k } = ph.target, [ax, az] = b.ring[k], [bx, bz] = b.ring[(k + 1) % b.ring.length], [v0, v1] = wallSpan();
+  const rect = rectify(ph.img, ph.corners, Math.hypot(bx - ax, bz - az), v1 - v0);
+  const tex = new THREE.CanvasTexture(rect); tex.colorSpace = THREE.SRGBColorSpace;
+  appearance.walls.set(wallKey(b.id, k), { texture: tex, v0, v1, preview: true });
+  rebuildChunkOf(b); $("photo").hidden = true; flash("Preview on the wall. Press P to adjust or save.");
+};
+$("photoSave").onclick = async () => {
+  if (!assetsApi || !dbApi || !ph.img) return;
+  const { b, k } = ph.target, [v0, v1] = wallSpan(), [ax, az] = b.ring[k], [bx, bz] = b.ring[(k + 1) % b.ring.length];
+  $("photoSave").disabled = true; $("photoMsg").textContent = "Saving…";
+  try {
+    const blob = await new Promise((res) => ph.img.toBlob(res, "image/jpeg", 0.88));
+    const up = await assetsApi.upload(blob, { type: "image/jpeg" });
+    const [mlat, mlon] = xzToLL((ax + bx) / 2, (az + bz) / 2);
+    await dbApi.collection("facades").doc(`${b.id}_w${k}`).set({
+      building: b.id, wall: k, wall_mid: [+mlat.toFixed(6), +mlon.toFixed(6)], wall_len_m: +Math.hypot(bx - ax, bz - az).toFixed(2),
+      bottom_m: v0, top_m: v1, photo: up.id, photo_w: ph.img.width, photo_h: ph.img.height,
+      corners: ph.corners.map(([x, y]) => [+(x / ph.img.width).toFixed(4), +(y / ph.img.height).toFixed(4)]),
+      source: "owner", saved: new Date().toISOString(),
+    });
+    $("photoMsg").textContent = "Saved. It shows on this wall for everyone, and the next build bakes it into the city.";
+    applyLive({ building: b.id, wall: k, bottom_m: v0, top_m: v1, photo: up.id, corners: ph.corners.map(([x, y]) => [x / ph.img.width, y / ph.img.height]) }, ph.img);
+  } catch (err) { $("photoMsg").textContent = `Not saved (${err?.code || "error"}). ${err?.code === "quota_or_state" ? "The page's photo storage is full." : "Try again in a moment."}`; $("photoSave").disabled = false; }
+};
+async function applyLive(f, imgCanvas) {
+  const b = B.find((x) => x.id === f.building); if (!b || !b.ring[f.wall]) return;
+  let img = imgCanvas;
+  if (!img) {
+    const el = new Image(); el.crossOrigin = "anonymous"; el.src = "/_blob/" + f.photo;
+    try { await el.decode(); } catch { return; }
+    img = document.createElement("canvas"); img.width = el.naturalWidth; img.height = el.naturalHeight; img.getContext("2d").drawImage(el, 0, 0);
+  }
+  const [ax, az] = b.ring[f.wall], [bx, bz] = b.ring[(f.wall + 1) % b.ring.length];
+  const v0 = f.bottom_m || 0, v1 = Math.min(b.h, f.top_m || b.h);
+  const rect = rectify(img, f.corners.map(([u, v]) => [u * img.width, v * img.height]), Math.hypot(bx - ax, bz - az), v1 - v0);
+  const tex = new THREE.CanvasTexture(rect); tex.colorSpace = THREE.SRGBColorSpace;
+  appearance.walls.set(wallKey(b.id, f.wall), { texture: tex, v0, v1 });
+  rebuildChunkOf(b); lastCardKey = "";
+}
+async function connectLive() {
+  if (!window.claude?.use) return;
+  const [db, assets] = await Promise.all([window.claude.use("db").catch(() => null), window.claude.use("assets").catch(() => null)]);
+  dbApi = db; assetsApi = assets;
+  if (!db) return;
+  db.collection("facades").onSnapshot((snap) => { for (const ch of snap.docChanges()) if (ch.type !== "removed") applyLive(ch.doc.data()); }, () => {});
+}
+
+// ---------------------------------------------------------------- boot
+function resize() { renderer.setSize(innerWidth, innerHeight, false); camera.aspect = innerWidth / innerHeight; camera.updateProjectionMatrix(); }
+addEventListener("resize", resize); resize();
+
+async function boot() {
+  const bar = $("loadbar");
+  const res = await fetch("world.json");
+  if (!res.ok) throw new Error("world.json " + res.status);
+  bar.style.width = "40%";
+  W = await res.json(); bar.style.width = "70%";
+  try { const a = await fetch("appearance.json"); if (a.ok) { const A = await a.json(); for (const [bid, v] of Object.entries(A.buildings || {})) { for (const [k, w] of Object.entries(v.walls || {})) appearance.walls.set(wallKey(bid, +k), { src: w.tex, v0: w.bottom_m, v1: w.top_m }); if (v.model) appearance.models.set(bid, v.model); } } } catch {}
+  index(); bar.style.width = "85%";
+  buildGlobal();
+  const [sx, sz] = llToXZ(JUMPS[0][1], JUMPS[0][2]); teleport(sx, sz);
+  for (let i = 0; i < 40 && updateChunks(player.x, player.z, 4) > 0; i++);
+  bar.style.width = "100%";
+  $("loading").hidden = true; $("help").hidden = false;
+  const jl = $("jumpList");
+  for (const [name, lat, lon] of JUMPS) { const b = document.createElement("button"); b.textContent = name; b.onclick = () => { const [x, z] = llToXZ(lat, lon); teleport(x, z); toggleMap(); }; jl.appendChild(b); }
+  connectLive();
+  let last = performance.now(), hudT = 0, spawnT = 0;
+  function frame(now) {
+    const dt = Math.min(0.05, (now - last) / 1000); last = now;
+    if ($("photo").hidden && $("bigmap").hidden) { stepPlayer(dt); }
+    stepCars(dt); stepPeds(dt); stepCamera();
+    updateChunks(player.x, player.z, 1);
+    if (Math.hypot(player.x - nearby.at[0], player.z - nearby.at[1]) > 80) refreshNearby(player.x, player.z);
+    if (now - spawnT > 150) { spawnT = now; if (cars.length - (player.car ? 1 : 0) < nearby.carTarget) spawnCar(); if (peds.length < nearby.pedTarget) spawnPed(); }
+    if (now - hudT > 250) { hudT = now; if (now > flashT) updateHUD(); drawMini(); }
+    updateLabels();
+    renderer.render(scene, camera);
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+}
+boot().catch((e) => { $("loading").innerHTML = `<div style="max-width:420px;padding:16px;font-family:var(--body);font-size:15px">The city did not load (${esc(e.message)}). Reload the page to try again.</div>`; });
+</script>

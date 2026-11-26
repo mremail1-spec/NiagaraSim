@@ -1,0 +1,11 @@
+{
+ "_meta": {
+  "what": "Photos straightened onto building walls in the 3D city. One entry per wall. Built into web/world by prep/nfprep/facades.py.",
+  "how": "See data/photos/README.md. corners are the wall's top-left, top-right, bottom-right, bottom-left in the photo, as fractions of its width and height.",
+  "allowed_sources": {
+   "owner": "photos the project owner took",
+   "mapillary": "Mapillary street photos, CC BY-SA 4.0: needs credit and the image id"
+  }
+ },
+ "photos": []
+}
