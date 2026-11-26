@@ -38,6 +38,10 @@ body { margin: 0; background: var(--ink); color: var(--paper); font-family: var(
 #card li .n { font-weight: 600; font-size: 14px; }
 #card li .k { font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
 #card .row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-top: 10px; }
+#card .lotf { margin-top: 6px; display: grid; gap: 2px; }
+#card .lotf b { color: var(--paper); font-weight: 600; }
+#card .lotf a { color: var(--signal); }
+#card .lotf .src { font-size: 11px; opacity: .7; }
 #card .id { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; color: var(--signal); }
 button, .btn { font: 600 13px/1 var(--body); color: var(--paper); background: var(--ink-2); border: 1px solid color-mix(in srgb, var(--paper) 22%, transparent); border-radius: 4px; padding: 8px 10px; cursor: pointer; }
 button:hover { border-color: var(--signal); }
@@ -522,7 +526,7 @@ function addBuilding(b, bizOffset, sky) {
   let a = 0, cx = 0, cz = 0;
   for (let i = 0; i < ring.length; i++) { const [x1, z1] = ring[i], [x2, z2] = ring[(i + 1) % ring.length]; const cr = x1 * z2 - x2 * z1; a += cr; cx += (x1 + x2) * cr; cz += (z1 + z2) * cr; }
   a /= 2; if (Math.abs(a) < 1e-6) { cx = ring[0][0]; cz = ring[0][1]; } else { cx /= 6 * a; cz /= 6 * a; }
-  const o = { i: bi, id: b.id, h: b.h, ring, biz: (b.b || []).map((i) => i + bizOffset), hs: b.hs, tn: b.tn, pa: b.pa, pm: b.pm, cx, cz, area: Math.abs(a) };
+  const o = { i: bi, id: b.id, h: b.h, ring, biz: (b.b || []).map((i) => i + bizOffset), hs: b.hs, tn: b.tn, pa: b.pa, pm: b.pm, pp: b.pp, cx, cz, area: Math.abs(a) };
   o.style = styleOf(o);
   const r = hash01(b.id + "mat");
   o.wallSet = o.style === "house" ? (r < 0.45 ? "siding" : r < 0.8 ? "brick" : "stucco") : o.style === "shop" ? (r < 0.55 ? "brick" : "block") : (r < 0.5 ? "brick" : "stucco");
@@ -575,7 +579,20 @@ function addEnds(lines, map, i) {
   const l = lines[i];
   for (const [end, p] of [[0, l.pts[0]], [1, l.pts[l.pts.length - 1]]]) { const k = endKey(p); let a = map.get(k); if (!a) map.set(k, a = []); a.push([i, end]); }
 }
+// the City's facts on each property lot, by parcel id (zoning, Official Plan, heritage, permits...; see nfprep/lots.py)
+const PARCELS = new Map();
+// the City's street furniture by game chunk: light poles, signs, hydrants (see nfprep/street_furniture.py)
+const FURN = new Map();
 async function ingestTile(doc) {
+  for (const [k, v] of Object.entries(doc.parcels || {})) PARCELS.set(k, v);
+  for (const [kind, items] of Object.entries(doc.furn || {})) for (const it of items) {
+    const [x, z] = P(it[0], it[1]), k = key(...chunkOf(x, z));
+    let f = FURN.get(k); if (!f) FURN.set(k, f = { lights: [], signs: [], hydrants: [] });
+    if (kind === "signals") {
+      // a City traffic light, unless the roads already gave one here
+      if (![...sigByKey.values()].some((q) => Math.hypot(q.x - x, q.z - z) < 25)) sigByKey.set("city:" + it[0] + "," + it[1], { x, z, w: it[2] / 5, dirs: it[3].map((d) => d * Math.PI / 180), city: true });
+    } else f[kind].push([x, z, ...it.slice(2)]);
+  }
   // ground first: buildings and roads stand on it
   const g = await decodePacked(doc.ground);
   GT.set(tkey(doc.tile[0], doc.tile[1]), { x0: doc.x0, z0: doc.z0, cell: doc.cell, n: doc.n, data: g.data });
@@ -625,6 +642,7 @@ async function ingestTile(doc) {
     if (new Set(main.map(([i]) => roads[i].n)).size < 2) continue;
     const [i0, e0] = main[0], p = e0 ? roads[i0].pts[roads[i0].pts.length - 1] : roads[i0].pts[0];
     const w = Math.max(...main.map(([i]) => roads[i].w));
+    if ([...sigByKey.values()].some((q) => q.city && Math.hypot(q.x - p[0], q.z - p[1]) < 25)) continue;   // the City's own signal is here
     sigByKey.set(k, { x: p[0], z: p[1], w, dirs: main.map(([i, e]) => { const r = roads[i], q = e ? r.pts[r.pts.length - 2] : r.pts[1]; return Math.atan2(q[0] - p[0], q[1] - p[1]); }) });
   }
 }
@@ -1004,6 +1022,20 @@ function place(it) {
   } else if (it.type === "rock_sign") {
     const rock = new THREE.Mesh(new THREE.DodecahedronGeometry(1, 0), new THREE.MeshStandardMaterial({ color: "#7a746a" })); rock.scale.set(1.5, 0.75, 0.55); rock.position.y = 0.6; g.add(rock);
     const t = new THREE.Mesh(new THREE.PlaneGeometry(2.2, 0.8), new THREE.MeshBasicMaterial({ map: textTex(it.text, "#6f695f", "#cfe3d8", 2.2, 0.8) })); t.position.set(0, 0.7, 0.5); g.add(t);
+  } else if (it.type === "monument") {
+    // a stone obelisk on a stepped base
+    const stone = new THREE.MeshStandardMaterial({ color: "#b8b2a6", roughness: 0.8 }), h = Math.max(2.5, it.h ?? 3.5);
+    const b1 = new THREE.Mesh(new THREE.BoxGeometry(2.2, 0.35, 2.2), stone); b1.position.y = 0.175; g.add(b1);
+    const b2 = new THREE.Mesh(new THREE.BoxGeometry(1.5, 0.45, 1.5), stone); b2.position.y = 0.575; g.add(b2);
+    const sh = new THREE.Mesh(new THREE.CylinderGeometry(0.32, 0.5, h - 1.2, 4, 1).rotateY(Math.PI / 4), stone); sh.position.y = 0.8 + (h - 1.2) / 2; g.add(sh);
+    const tip = new THREE.Mesh(new THREE.ConeGeometry(0.45, 0.4, 4).rotateY(Math.PI / 4), stone); tip.position.y = 0.8 + (h - 1.2) + 0.2; g.add(tip);
+  } else if (it.type === "cairn") {
+    const stone = new THREE.MeshStandardMaterial({ color: "#8c8579", roughness: 0.95, flatShading: true });
+    for (let i = 0; i < 9; i++) { const r = 0.55 - i * 0.045, a = i * 2.4; const m = new THREE.Mesh(new THREE.DodecahedronGeometry(r, 0), stone); m.position.set(Math.cos(a) * 0.18, 0.3 + i * 0.22, Math.sin(a) * 0.18); m.rotation.set(i, i * 2, 0); g.add(m); }
+  } else if (it.type === "sculpture") {
+    const metal = new THREE.MeshStandardMaterial({ color: "#c9ccd0", roughness: 0.25, metalness: 0.9 }), h = Math.max(1.5, it.h ?? 3);
+    const base = new THREE.Mesh(new THREE.BoxGeometry(1.4, 0.5, 1.4), new THREE.MeshStandardMaterial({ color: "#9a958c" })); base.position.y = 0.25; g.add(base);
+    const k = new THREE.Mesh(new THREE.TorusKnotGeometry(h * 0.22, h * 0.05, 96, 12), metal); k.position.y = 0.5 + h * 0.45; g.add(k);
   } else if (it.type === "letters") {
     const h = it.h ?? 2, w = h * 0.75 * it.text.length;
     const front = new THREE.MeshBasicMaterial({ map: textTex(it.text, "#f4f4f2", "#1f2226", w, h) }), side = new THREE.MeshStandardMaterial({ color: "#e9e6de" });
@@ -1115,6 +1147,66 @@ const lightGeo = mergeGeometries([
   new THREE.BoxGeometry(2.4, 0.1, 0.1).translate(1.2, 8.9, 0),
   new THREE.BoxGeometry(0.7, 0.14, 0.32).translate(2.5, 8.85, 0),
 ]);
+// the City's street furniture in one chunk: light poles (height and material from the City), signs, hydrants
+const POLE_COLORS = ["#a7a39b", "#6b4f36", "#8d9399", "#2a2c2e"];   // concrete, wood, steel/aluminium, black aggregate
+const signPostGeo = new THREE.CylinderGeometry(0.035, 0.035, 2.4, 6).translate(0, 1.2, 0);
+const signFaceGeo = [
+  new THREE.CylinderGeometry(0.38, 0.38, 0.03, 8, 1).rotateY(Math.PI / 8).rotateX(Math.PI / 2).translate(0, 2.3, 0.04),    // stop: octagon
+  new THREE.CylinderGeometry(0.38, 0.38, 0.03, 8, 1).rotateY(Math.PI / 8).rotateX(Math.PI / 2).translate(0, 2.3, 0.04),    // all-way stop
+  new THREE.CylinderGeometry(0.5, 0.5, 0.03, 3, 1).rotateY(Math.PI / 2).rotateX(Math.PI / 2).translate(0, 2.25, 0.04),     // yield: point down
+];
+const tabGeo = new THREE.BoxGeometry(0.5, 0.17, 0.02).translate(0, 1.82, 0.04);
+const hydrantGeo = mergeGeometries([
+  new THREE.CylinderGeometry(0.14, 0.17, 0.62, 10).translate(0, 0.31, 0),
+  new THREE.SphereGeometry(0.15, 10, 6, 0, Math.PI * 2, 0, Math.PI / 2).translate(0, 0.62, 0),
+  new THREE.CylinderGeometry(0.06, 0.06, 0.42, 8).rotateZ(Math.PI / 2).translate(0, 0.42, 0),
+]);
+let SIGN_MATS = null;
+function signMats() {
+  if (SIGN_MATS) return SIGN_MATS;
+  const back = new THREE.MeshStandardMaterial({ color: "#9aa0a4", metalness: 0.5, roughness: 0.5 });
+  const face = (draw) => new THREE.MeshStandardMaterial({ map: canvasTex(128, 128, draw, false), roughness: 0.6 });
+  const stop = face((g, w, h) => { g.fillStyle = "#c8202a"; g.fillRect(0, 0, w, h); g.fillStyle = "#fff"; g.font = "bold 38px sans-serif"; g.textAlign = "center"; g.textBaseline = "middle"; g.fillText("STOP", w / 2, h / 2 + 2); });
+  const yieldF = face((g, w, h) => { g.fillStyle = "#c8202a"; g.fillRect(0, 0, w, h); g.fillStyle = "#fff"; g.beginPath(); g.moveTo(w * 0.5, h * 0.22); g.lineTo(w * 0.82, h * 0.72); g.lineTo(w * 0.18, h * 0.72); g.closePath(); g.fill(); });
+  // cylinder groups: side, top cap (front after the turn), bottom cap (back)
+  SIGN_MATS = { faces: [[back, stop, back], [back, stop, back], [back, yieldF, back]], post: back,
+    tab: new THREE.MeshBasicMaterial({ map: textTex("ALL WAY", "#ffffff", "#c8202a", 0.5, 0.17) }),
+    hydrant: new THREE.MeshStandardMaterial({ color: "#c8202a", roughness: 0.55 }), pole: new THREE.MeshStandardMaterial({ color: "#ffffff" }) };
+  return SIGN_MATS;
+}
+function cityFurniture(F, group) {
+  const S = signMats(), mtx = new THREE.Matrix4(), q = new THREE.Quaternion(), up = new THREE.Vector3(0, 1, 0), col = new THREE.Color();
+  if (F.lights.length) {
+    const im = new THREE.InstancedMesh(lightGeo, S.pole, F.lights.length);
+    F.lights.forEach(([x, z, hdm, ang, mat], i) => {
+      const s = hdm / 90; q.setFromAxisAngle(up, ang * Math.PI / 180);
+      im.setMatrixAt(i, mtx.compose(new THREE.Vector3(x, H(x, z), z), q, new THREE.Vector3(1, s, 1)));
+      im.setColorAt(i, col.set(POLE_COLORS[mat] || POLE_COLORS[0]));
+    });
+    im.castShadow = true; group.add(im);
+  }
+  if (F.signs.length) {
+    const posts = new THREE.InstancedMesh(signPostGeo, S.post, F.signs.length);
+    const byKind = [0, 1, 2].map((t) => F.signs.filter((sg) => sg[3] === t));
+    F.signs.forEach(([x, z, a], i) => { q.setFromAxisAngle(up, a * Math.PI / 180); posts.setMatrixAt(i, mtx.compose(new THREE.Vector3(x, H(x, z), z), q, new THREE.Vector3(1, 1, 1))); });
+    group.add(posts);
+    byKind.forEach((list, t) => {
+      if (!list.length) return;
+      const faces = new THREE.InstancedMesh(signFaceGeo[t], S.faces[t], list.length);
+      const tabs = t === 1 ? new THREE.InstancedMesh(tabGeo, S.tab, list.length) : null;
+      list.forEach(([x, z, a], i) => {
+        q.setFromAxisAngle(up, a * Math.PI / 180); mtx.compose(new THREE.Vector3(x, H(x, z), z), q, new THREE.Vector3(1, 1, 1));
+        faces.setMatrixAt(i, mtx); if (tabs) tabs.setMatrixAt(i, mtx);
+      });
+      faces.castShadow = true; group.add(faces); if (tabs) group.add(tabs);
+    });
+  }
+  if (F.hydrants.length) {
+    const im = new THREE.InstancedMesh(hydrantGeo, S.hydrant, F.hydrants.length);
+    F.hydrants.forEach(([x, z], i) => im.setMatrixAt(i, mtx.compose(new THREE.Vector3(x, H(x, z), z), q.identity(), new THREE.Vector3(1, 1, 1))));
+    im.castShadow = true; group.add(im);
+  }
+}
 // a signal mast: 7 m pole and an arm over the road (+x) carrying two yellow signal heads
 const mastGeo = new THREE.CylinderGeometry(0.14, 0.18, 7, 8).translate(0, 3.5, 0), armGeo = new THREE.BoxGeometry(1, 0.16, 0.16).translate(0.5, 6.6, 0);
 const headGeo = new THREE.BoxGeometry(0.36, 1.05, 0.3).translate(0, -0.55, 0);
@@ -1179,12 +1271,14 @@ function buildChunk(k, kx, kz) {
       }
       const g = flatGeom(o); const m = new THREE.Mesh(g, M.lot); m.receiveShadow = true; group.add(m);
     }
-    // streetlights every ~40 m along main roads, alternating sides; concrete barriers on bridges
+    // street lights: the City's own poles where it has them; else one every ~40 m along main roads, alternating sides.
+    // Concrete barriers on bridges.
+    const F = FURN.get(k), real = F && F.lights.length > 0;
     const lights = [], barriers = [];
     for (const [ri, s] of L.r) {
       const r = roads[ri], [ax, az] = r.pts[s], [bx, bz] = r.pts[s + 1], len = Math.hypot(bx - ax, bz - az); if (len < 1) continue;
       const ux = (bx - ax) / len, uz = (bz - az) / len, nx = -uz, nz = ux;
-      if (r.c >= 1 && r.c <= 3) {
+      if (!real && r.c >= 1 && r.c <= 3) {
         const phase = (hash01(ri + ":" + s) * 40);
         for (let d = phase, n = 0; d < len; d += 40, n++) {
           const side = (Math.floor((r.cum[s] + d) / 40) % 2) ? 1 : -1, off = r.w / 2 + 1.3;
@@ -1203,6 +1297,7 @@ function buildChunk(k, kx, kz) {
       lights.forEach(([x, z, rot, y], i) => { q.setFromAxisAngle(up, rot); im.setMatrixAt(i, mtx.compose(new THREE.Vector3(x, y, z), q, one)); });
       im.castShadow = true; group.add(im);
     }
+    if (F) cityFurniture(F, group);
     if (barriers.length) { const m = new THREE.Mesh(mergeGeometries(barriers), M.concrete); m.castShadow = m.receiveShadow = true; group.add(m); }
     // traffic signals: two masts at opposite corners, arms reaching over the intersection
     for (const sg of [...sigByKey.values()].filter((q) => Math.floor(q.x / CHUNK) === kx && Math.floor(q.z / CHUNK) === kz)) {
@@ -1248,7 +1343,7 @@ function buildChunk(k, kx, kz) {
   scene.add(group);
   chunks.set(k, { group, kx, kz });
 }
-function disposeGroup(g) { g.traverse((o) => { if (o.geometry && ![trunkGeo, crownGeo, coneGeo, lightGeo, mastGeo, armGeo, headGeo].includes(o.geometry)) o.geometry.dispose(); if (o.material && o.material.map && o.material.map.isCanvasTexture === undefined && ![...Object.values(M.walls)].includes(o.material)) { /* photo materials are cached by texture */ } }); }
+function disposeGroup(g) { g.traverse((o) => { if (o.geometry && ![trunkGeo, crownGeo, coneGeo, lightGeo, mastGeo, armGeo, headGeo, signPostGeo, ...signFaceGeo, tabGeo, hydrantGeo].includes(o.geometry)) o.geometry.dispose(); if (o.material && o.material.map && o.material.map.isCanvasTexture === undefined && ![...Object.values(M.walls)].includes(o.material)) { /* photo materials are cached by texture */ } }); }
 function updateChunks(px, pz, budget = 2) {
   streamAround(px, pz);
   const [cx, cz] = chunkOf(px, pz), R = Math.ceil(LOAD_R / CHUNK);
@@ -1761,12 +1856,28 @@ function updateHUD() {
   const hsrc = b.hs === "published" ? "published height" : b.hs === "published-slab" ? "published height, approximate outline" : b.hs === "min" ? "City survey too low, shown at one storey" : "City 2018 survey";
   card.innerHTML = `<h2>${esc(title)}</h2>
     <div class="meta">${b.h.toFixed(1)} m tall (${hsrc}) · ${Math.round(b.area).toLocaleString()} m² footprint</div>
-    ${b.pa ? `<div class="meta">Lot: ${esc(b.pa)}${b.pm ? ` · ${b.pm.toLocaleString()} m²` : ""} (City property parcels)</div>` : ""}
+    ${b.pa ? `<div class="meta">Lot: ${esc(b.pa)}${b.pm ? ` · ${b.pm.toLocaleString()} m²` : ""}</div>` : ""}
+    ${lotFacts(PARCELS.get(String(b.pp)))}
     ${items.length ? `<ul>${items.slice(0, 8).map((x) => `<li><div class="n">${esc(x.n)}</div><div class="k">${esc(KINDS_LABEL[x.k] || x.k)} · ${esc(x.a || "")}<br>${x.s ? `Model sales ${fmtMoney(x.s)} a year · ${Math.round(x.t * 100)}% from tourists` : "No sales in the model"}${x.o != null ? ` · open ${x.o}–${x.c}` : ""}</div></li>`).join("")}</ul>${items.length > 8 ? `<div class="meta" style="margin-top:6px">and ${items.length - 8} more</div>` : ""}` : `<div class="meta" style="margin-top:6px">No business listed here.</div>`}
     <div class="row"><span class="id">Building ${esc(b.id)} · wall ${focus.k} faces ${faces}, ${wl.toFixed(1)} m${appearance.specs.has(b.id) ? " · modelled from photos" : ""}</span></div>
     <div class="row"><button id="btnPhoto">Send photos for the 3D model${refsByBuilding.get(b.id) ? ` (${refsByBuilding.get(b.id)} sent)` : ""}</button><button id="btnCopy">Copy building id</button></div>`;
   $("btnPhoto").onclick = openPhoto;
   $("btnCopy").onclick = () => { navigator.clipboard?.writeText(b.id).then(() => flash("Copied " + b.id), () => flash(b.id)); };
+}
+// the lot's City facts as short lines under the building's heading
+function lotFacts(f) {
+  if (!f) return "";
+  const L = [];
+  if (f.her) L.push(`<b>${esc(f.her[0])} heritage property</b>${f.her[1] ? `: ${esc(f.her[1])}` : ""}`);
+  if (f.city) L.push(`City of Niagara Falls property: ${esc(f.city[1] || f.city[0])}${f.city[1] && f.city[0] ? ` (${esc(f.city[0])})` : ""}`);
+  if (f.condo) L.push(`Condominium${f.condo[0] ? ` ${esc(f.condo[0])}` : ""}${f.condo[1] ? `: ${f.condo[1]} units` : ""}`);
+  else if (f.n) L.push(`${f.n} addresses on this lot`);
+  if (f.z) L.push(`Zoned ${esc(f.z)} (${esc(f.zt)})${f.op ? ` · Official Plan: ${esc(f.op)}` : ""}${f.env ? ` · ${esc(f.env)}` : ""}`);
+  else if (f.op) L.push(`Official Plan: ${esc(f.op)}`);
+  if (f.bia) L.push(`${esc(f.bia)} Business Improvement Area`);
+  if (f.bp) L.push(`${f.bp[0]} building permit${f.bp[0] > 1 ? "s" : ""} 2015–2023; latest ${f.bp[1]}: ${esc(f.bp[2])}${f.bp[3] ? `, ${esc(f.bp[3])}` : ""}`);
+  if (f.da) L.push(`<b>Planning application ${esc(f.da[0] || "")}</b>: ${esc(f.da[1])}${f.da[3] ? ` — ${esc(f.da[3])}` : ""}${f.da[2] && /^https:\/\//.test(f.da[2]) ? ` <a href="${esc(f.da[2])}" target="_blank" rel="noopener">details</a>` : ""}`);
+  return `<div class="meta lotf">${L.map((x) => `<div>${x}</div>`).join("")}<div class="src">City of Niagara Falls open data (government)</div></div>`;
 }
 let flashT = 0;
 function flash(msg) { $("whereSub").textContent = msg; flashT = performance.now() + 2500; }
@@ -2009,6 +2120,14 @@ async function boot() {
   player.x = sx; player.z = sz;
   await whenLoaded(sx, sz, 700); bar.style.width = "85%";
   for (const it of appearance.places) scene.add(place(it));
+  // the City's outdoor public art: plaques as an engraved stone, monuments, cairns and sculptures (see place())
+  const modelled = appearance.places.map((p) => llToXZ(p.lat, p.lon));
+  for (const a of IDX.art || []) {
+    const [ax, az] = llToXZ(a.lat, a.lon);
+    if (modelled.some(([x, z]) => Math.hypot(x - ax, z - az) < 15)) continue;      // already modelled from the owner's photos
+    const art = a.type === "plaque" ? { type: "rock_sign", text: a.name.length > 34 ? a.name.slice(0, 32) + "…" : a.name } : { type: a.type, h: a.h };
+    scene.add(place({ ...art, name: a.name, lat: a.lat, lon: a.lon, facing_deg: 0 }));
+  }
   await teleport(sx, sz);
   for (let i = 0; i < 40 && updateChunks(player.x, player.z, 4) > 0; i++);
   bar.style.width = "100%";

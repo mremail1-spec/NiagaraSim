@@ -4,10 +4,11 @@ The simulation keeps the whole city; the game only downloads what is around you.
 (web/world/world.json, terrain.png, terrain_fine.png) and writes:
 
 - web/world/tiles/<ix>_<iz>.json: one 1.6 km tile: its buildings, businesses (with the model's sales), roads,
-  sidewalks, creeks, trees and parking lots, plus its ground heights at 10 m and the 2.5 m cliff detail, as PNGs
+  sidewalks, creeks, trees and parking lots, the City's facts on its buildings' lots (parcels, see nfprep.lots), plus its ground heights at 10 m and the 2.5 m cliff detail, as PNGs
   inside the file. Tiles are squares in game coordinates (x east, z south, metres from the origin).
 - web/world/index.json: what is seen from far away and needed before any tile: the origin, the tile list, the
-  whole ground at 40 m, the skyline (towers 22 m and up), landmarks, the places where mist rises at the Falls.
+  whole ground at 40 m, the skyline (towers 22 m and up), landmarks, the places where mist rises at the Falls,
+  the City's public art.
 - web/world/citymap.png: the city map (roads and water) for the in-game map.
 
 Run from prep/ after nfprep.world3d and nfprep.terrain: python3 -m nfprep.world_tiles
@@ -74,7 +75,8 @@ def main():
     zmin, zmax = -(T["y0"] + (ny - 1) * CELL), -T["y0"]
     ix0, iz0 = tile_of(xmin, zmin)
     ix1, iz1 = tile_of(xmax, zmax)
-    tiles = defaultdict(lambda: {"buildings": [], "biz": [], "roads": [], "walks": [], "creeks": [], "trees": [], "lots": []})
+    tiles = defaultdict(lambda: {"buildings": [], "biz": [], "roads": [], "walks": [], "creeks": [], "trees": [], "lots": [], "parcels": {}})
+    facts = W.get("parcels", {})
 
     # businesses go with their building; remember each one's new place
     biz = W["biz"]
@@ -93,6 +95,9 @@ def main():
         if local:
             nb["b"] = local
         t["buildings"].append(nb)
+        pk = str(b.get("pp"))
+        if pk in facts:
+            t["parcels"][pk] = facts[pk]
     for i, z in enumerate(biz):
         if i not in biz_home:
             tiles[tile_of(z["x"][0] / 10, -z["x"][1] / 10)]["biz"].append(z)
@@ -116,6 +121,15 @@ def main():
     for lot in W.get("lots", []):
         pts = undelta(lot["r"])
         tiles[tile_of(sum(p[0] for p in pts) / 40, -sum(p[1] for p in pts) / 40)]["lots"].append(lot)
+
+    # street furniture from the City's open data: light poles, signs, signals, hydrants (nfprep.street_furniture)
+    from nfprep.street_furniture import build as build_furniture
+    from nfprep.world3d import xy
+    furn, art = build_furniture(W, xy)
+    for kind, items in furn.items():
+        for it in items:
+            t = tiles[tile_of(it[0] / 10, -it[1] / 10)]
+            t.setdefault("furn", {}).setdefault(kind, []).append(it)
 
     # fine cliff detail: 200 m chunks keyed by game chunk (x // 200, z // 200)
     F = T.get("fine")
@@ -206,12 +220,13 @@ def main():
         "terrain": {k: T[k] for k in ("base_m", "zero_m", "kinds", "source")},
         "far": {"x0": float(xmin), "z0": float(zmin), "cell": FAR_CELL, "nx": len(fxs), "nz": len(fzs), "image": png_data_url(far)},
         "map": {"file": "citymap.png", "x0": float(xmin), "z0": float(zmin), "scale": sx},
-        "skyline": skyline, "landmarks": W["landmarks"], "mist": sites,
+        "skyline": skyline, "landmarks": W["landmarks"], "mist": sites, "art": art,
     }
     (WORLD / "index.json").write_text(json.dumps(index, separators=(",", ":")))
     sizes = sorted(v["kb"] for v in index_tiles.values())
     print(f"{len(index_tiles)} tiles, {total / 1e6:.1f} MB in all; median {sizes[len(sizes) // 2]} KB, largest {sizes[-1]} KB; "
-          f"index.json {(WORLD / 'index.json').stat().st_size / 1e3:.0f} KB; {len(skyline)} skyline towers; {len(sites)} mist sites")
+          f"index.json {(WORLD / 'index.json').stat().st_size / 1e3:.0f} KB; {len(skyline)} skyline towers; {len(sites)} mist sites; "
+          + ", ".join(f"{len(v)} {k}" for k, v in furn.items()) + f", {len(art)} public art")
 
 
 if __name__ == "__main__":

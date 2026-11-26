@@ -410,13 +410,19 @@ def main():
         if pc:
             bl["parcel"] = {"a": nice_case(pc[0]), "m2": round(pc[1] or 0), "p": pc[2]}
     on_lot = sum(1 for bl in blds if bl.get("parcel"))
+    from nfprep.lots import parcel_facts
+    where = {}
+    for bl in blds:
+        if bl.get("parcel") and bl["parcel"]["p"] not in where:
+            where[bl["parcel"]["p"]] = (bl["lon"], bl["lat"])
+    facts = parcel_facts(where)
     world = {
         "_meta": {
             "what": "Niagara Falls in 3D for the walk-around game: decimetres east/north of the origin, each line or ring "
                     "delta-encoded (first point absolute).",
             "origin": {"lat": LAT0, "lon": LON0},
             "sources": [
-                "City of Niagara Falls open data (government): building footprints 2018, sidewalks, rivers, creeks, parks, tree inventory, property parcels (pa address, pm lot m², pp parcel id)",
+                "City of Niagara Falls open data (government): building footprints 2018, sidewalks, rivers, creeks, parks, tree inventory, property parcels (pa address, pm lot m², pp parcel id) and, per parcel id under parcels, zoning, Official Plan, heritage, condominiums, City property, building permits 2015-2023, planning applications",
                 "OpenStreetMap contributors (ODbL): roads",
                 "The simulation: businesses, yearly sales, tourist share, vehicles and walkers per day",
                 "Estimated: parking lots in front of stores and plazas, from the outline and the nearest road",
@@ -429,6 +435,7 @@ def main():
                        **({"b": [pos[k] for k in bl["biz"] if k in pos]} if bl["biz"] else {}),
                        **({"hs": bl["hsrc"]} if bl["hsrc"] != "city" else {}), **({"tn": bl["tname"]} if bl.get("tname") else {}),
                        **({"pa": bl["parcel"]["a"], "pm": bl["parcel"]["m2"], "pp": bl["parcel"]["p"]} if bl.get("parcel") else {})} for bl in blds],
+        "parcels": {str(k): v for k, v in facts.items()},
         "roads": roads, "walks": walks, "lots": lots, "water": water, "parks": parks, "creeks": creeks, "trees": trees, "biz": biz,
         "landmarks": [{"kind": "tower", "name": t["name"], "x": xy(t["lat"], t["lon"]), "h": t["height_m"],
                        "style": "carillon" if t["name"] == "Rainbow Tower" else "pod"}
@@ -446,7 +453,7 @@ def main():
     size = (OUT / "world.json").stat().st_size
     print(f"world.json {size / 1e6:.1f} MB: {len(blds)} buildings ({raised} towers at published height), {len(roads)} roads, "
           f"{len(walks)} sidewalks, {len(lots)} parking lots (estimated), {len(water)} water/land, {len(parks)} parks, {len(trees) // 4} trees, "
-          f"{len(biz)} businesses ({len(unplaced)} without a building); {on_lot} buildings on a property parcel")
+          f"{len(biz)} businesses ({len(unplaced)} without a building); {on_lot} buildings on a property parcel, {len(facts)} lots with City facts")
 
 
 if __name__ == "__main__":
