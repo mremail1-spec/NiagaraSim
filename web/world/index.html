@@ -540,8 +540,31 @@ function addBuilding(b, bizOffset, sky) {
   }
   return o;
 }
+// fetch with retries: a dropped connection or a busy host should not stop the city loading
+async function getFile(url, tries = 5) {
+  let err;
+  for (let i = 0; i < tries; i++) {
+    try { const r = await fetch(url, { cache: i ? "reload" : "default" }); if (r.ok) return r; err = new Error(`${url} ${r.status}`); if (r.status === 404) break; }
+    catch (e) { err = new Error(`${url}: ${e.message}`); }
+    await new Promise((res) => setTimeout(res, 400 * 2 ** i));
+  }
+  throw err;
+}
+// a picture as a Blob; pictures stored inside the data (data: URLs) are decoded here, never fetched,
+// since the page's host may not allow fetching data: URLs
+async function blobOf(url) {
+  if (url.startsWith("data:")) {
+    const comma = url.indexOf(","), head = url.slice(5, comma), body = url.slice(comma + 1);
+    const type = head.split(";")[0] || "application/octet-stream";
+    if (!head.includes(";base64")) return new Blob([decodeURIComponent(body)], { type });
+    const bin = atob(body), bytes = new Uint8Array(bin.length);
+    for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+    return new Blob([bytes], { type });
+  }
+  return (await getFile(url)).blob();
+}
 async function decodePacked(url) {
-  const bmp = await createImageBitmap(await (await fetch(url)).blob(), { colorSpaceConversion: "none", premultiplyAlpha: "none" });
+  const bmp = await createImageBitmap(await blobOf(url), { colorSpaceConversion: "none", premultiplyAlpha: "none" });
   const cv = document.createElement("canvas"); cv.width = bmp.width; cv.height = bmp.height;
   const cx = cv.getContext("2d", { willReadFrequently: true }); cx.drawImage(bmp, 0, 0);
   const px = cx.getImageData(0, 0, bmp.width, bmp.height).data, data = new Uint16Array(bmp.width * bmp.height);
@@ -624,11 +647,10 @@ async function pumpTiles() {
     tileQueue.sort((a, b) => Math.hypot((a[0] + .5) * TILE - player.x, (a[1] + .5) * TILE - player.z) - Math.hypot((b[0] + .5) * TILE - player.x, (b[1] + .5) * TILE - player.z));
     const [ix, iz] = tileQueue.shift();
     try {
-      const r = await fetch(IDX.tiles[`${ix},${iz}`].file);
-      if (!r.ok) throw new Error(r.status);
+      const r = await getFile(IDX.tiles[`${ix},${iz}`].file);
       await ingestTile(await r.json());
       tileState.set(tkey(ix, iz), "ready");
-    } catch (e) { tileState.delete(tkey(ix, iz)); console.warn("tile", ix, iz, e); }
+    } catch (e) { tileState.set(tkey(ix, iz), "failed"); console.warn("tile", ix, iz, e); setTimeout(() => { if (tileState.get(tkey(ix, iz)) === "failed") { tileState.delete(tkey(ix, iz)); wantTile(ix, iz); } }, 5000); }
   }
   tileBusy = false;
 }
@@ -1973,15 +1995,14 @@ addEventListener("resize", resize); resize();
 async function boot() {
   const bar = $("loadbar");
   // the index: what is seen from far away; the city itself streams in by tile around you
-  const res = await fetch("index.json");
-  if (!res.ok) throw new Error("index.json " + res.status);
+  const res = await getFile("index.json");
   IDX = await res.json(); origin = IDX._meta.origin; TER = IDX.terrain; bar.style.width = "30%";
   { const f = await decodePacked(IDX.far.image); FAR = { ...IDX.far, data: f.data }; }
   mapPic = new Image(); mapPic.src = IDX.map.file;
   TOWERS = IDX.skyline.map((b) => addBuilding(b, 0, true));
   bar.style.width = "45%";
   bar.style.width = "70%";
-  try { const a = await fetch("appearance.json"); if (a.ok) { const A = await a.json(); for (const [bid, v] of Object.entries(A.buildings || {})) { for (const [k, w] of Object.entries(v.walls || {})) appearance.walls.set(wallKey(bid, +k), { src: w.tex, v0: w.bottom_m, v1: w.top_m }); if (v.model) appearance.models.set(bid, v.model); if (v.spec) appearance.specs.set(bid, v.spec); } appearance.places = A.places || []; } } catch {}
+  try { const a = await getFile("appearance.json", 3); if (a.ok) { const A = await a.json(); for (const [bid, v] of Object.entries(A.buildings || {})) { for (const [k, w] of Object.entries(v.walls || {})) appearance.walls.set(wallKey(bid, +k), { src: w.tex, v0: w.bottom_m, v1: w.top_m }); if (v.model) appearance.models.set(bid, v.model); if (v.spec) appearance.specs.set(bid, v.spec); } appearance.places = A.places || []; } } catch {}
   buildGlobal();
   const [sx, sz] = llToXZ(JUMPS[0][1], JUMPS[0][2]);
   player.x = sx; player.z = sz;
@@ -2013,5 +2034,9 @@ async function boot() {
   }
   requestAnimationFrame(frame);
 }
-boot().catch((e) => { $("loading").innerHTML = `<div style="max-width:420px;padding:16px;font-family:var(--body);font-size:15px">The city did not load (${esc(e.message)}). Reload the page to try again.</div>`; });
+boot().catch((e) => {
+  console.error(e);
+  $("loading").innerHTML = `<div style="max-width:420px;padding:16px;font-family:var(--body);font-size:15px">The city did not load (${esc(e.message)}).<br><button id="retryLoad" style="margin-top:12px;font:inherit;padding:8px 16px;cursor:pointer">Try again</button></div>`;
+  $("retryLoad").onclick = () => location.reload();
+});
 </script>
