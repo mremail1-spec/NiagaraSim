@@ -1,0 +1,9443 @@
+{
+ "_meta": {
+  "source": "City of Niagara Falls open data, TES Midblocks (road segments): lanes, posted speed limit, road class, bike lane. Government data.",
+  "what": "Lanes and posted speed limit of every street, from the City of Niagara Falls Traffic Engineering road segments\n(data/city_open_data/world/road_segments.geojson; government data), for the traffic model."
+ },
+ "streets": {
+  "abbey circle": {
+   "km": 0.08,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "aberdeen street": {
+   "km": 0.07,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "acheson avenue": {
+   "km": 0.15,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "adams avenue": {
+   "km": 0.33,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "addison avenue": {
+   "km": 0.19,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "ailanthus avenue": {
+   "km": 0.89,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Collector"
+  },
+  "ainslie crescent": {
+   "km": 0.06,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "aintree drive": {
+   "km": 0.52,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "alderbrae court": {
+   "km": 0.05,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "alex avenue": {
+   "km": 0.58,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Collector"
+  },
+  "alexa common": {
+   "km": 0.47,
+   "bike_lane": false,
+   "class": "Local / Strata"
+  },
+  "alexander crescent": {
+   "km": 0.28,
+   "bike_lane": false
+  },
+  "alfred street": {
+   "km": 0.14,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "alina court": {
+   "km": 0.1,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "allendale avenue": {
+   "km": 0.94,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Collector"
+  },
+  "alpine drive": {
+   "km": 0.94,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Collector"
+  },
+  "althea street": {
+   "km": 0.33,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "amelia crescent": {
+   "km": 0.29,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "andrea drive": {
+   "km": 0.25,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "angela crescent": {
+   "km": 0.03,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "angie drive": {
+   "km": 1.06,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 0.71,
+   "class": "Collector"
+  },
+  "ann street": {
+   "km": 0.29,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "anne marie crescent": {
+   "km": 0.06,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "apollo crescent": {
+   "km": 0.02,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "appleford avenue": {
+   "km": 0.45,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "aquarius crescent": {
+   "km": 0.04,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "arad street": {
+   "km": 0.56,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "ares court": {
+   "km": 0.12,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "argyll crescent": {
+   "km": 0.35,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "arlington avenue": {
+   "km": 0.29,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "armelina crescent": {
+   "km": 0.19,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "armoury street": {
+   "km": 0.85,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "armstrong drive": {
+   "km": 0.54,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "arthur street": {
+   "km": 0.49,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "ascot circle": {
+   "km": 0.67,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "ash street": {
+   "km": 0.67,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "aspen court": {
+   "km": 0.3,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "atack court": {
+   "km": 0.1,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "atlas street": {
+   "km": 0.4,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "atlee street": {
+   "km": 0.37,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "avery boulevard": {
+   "km": 1.22,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "badger road": {
+   "km": 0.35,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Collector"
+  },
+  "bailey avenue": {
+   "km": 0.58,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "baker crescent": {
+   "km": 0.22,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "baker road": {
+   "km": 4.57,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 70,
+   "speed_kmh_share": 0.95,
+   "class": "Collector"
+  },
+  "baldwin avenue": {
+   "km": 0.46,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "balmoral avenue": {
+   "km": 0.44,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "bambi crescent": {
+   "km": 0.07,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "bampfield street": {
+   "km": 0.24,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "banker avenue": {
+   "km": 0.11,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "banting avenue": {
+   "km": 0.79,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "barbara drive": {
+   "km": 0.18,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "barker street": {
+   "km": 1.73,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Collector"
+  },
+  "barrett crescent": {
+   "km": 0.21,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "barron road": {
+   "km": 0.0,
+   "bike_lane": false
+  },
+  "barto crescent": {
+   "km": 0.06,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "barton crescent": {
+   "km": 0.04,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "basswood crescent": {
+   "km": 0.05,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "baxter avenue": {
+   "km": 0.41,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "baycrest common": {
+   "km": 0.06,
+   "bike_lane": false,
+   "class": "Local / Strata"
+  },
+  "beaver glen drive": {
+   "km": 0.35,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "beaver valley way": {
+   "km": 0.11,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "beaverdams road": {
+   "km": 4.64,
+   "bike_lane": true,
+   "lanes": 2,
+   "lanes_share": 0.27,
+   "speed_kmh": 50,
+   "speed_kmh_share": 0.27,
+   "class": "Collector"
+  },
+  "beaverton boulevard": {
+   "km": 0.56,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "beck road": {
+   "km": 3.91,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 70,
+   "speed_kmh_share": 0.83,
+   "class": "Collector"
+  },
+  "beechwood road": {
+   "km": 7.0,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 80,
+   "speed_kmh_share": 0.75,
+   "class": "Arterial"
+  },
+  "belaire avenue": {
+   "km": 0.52,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "belfast avenue": {
+   "km": 0.26,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "bell crescent": {
+   "km": 0.19,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "bellevue street": {
+   "km": 0.76,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "belmont avenue": {
+   "km": 0.68,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "bender street": {
+   "km": 0.28,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Collector"
+  },
+  "bentley common": {
+   "km": 0.18,
+   "bike_lane": false,
+   "class": "Local / Strata"
+  },
+  "bernadette crescent": {
+   "km": 0.49,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "betty avenue": {
+   "km": 0.15,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "biamonte crescent": {
+   "km": 0.19,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "biamonte parkway": {
+   "km": 0.47,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "biggar road": {
+   "km": 3.76,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 0.55,
+   "speed_kmh": 80,
+   "speed_kmh_share": 0.55,
+   "class": "Arterial"
+  },
+  "birchwood court": {
+   "km": 0.03,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "bishop avenue": {
+   "km": 0.57,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "black forest crescent": {
+   "km": 0.2,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Collector"
+  },
+  "black maple drive": {
+   "km": 0.23,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "blackburn parkway": {
+   "km": 0.75,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 60,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "blondin avenue": {
+   "km": 0.21,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Collector"
+  },
+  "blue ash lane": {
+   "km": 0.26,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "bond street": {
+   "km": 0.21,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "bonnie street": {
+   "km": 0.25,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "booth street": {
+   "km": 0.24,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "bossert road": {
+   "km": 4.62,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 0.68,
+   "class": "Arterial"
+  },
+  "bossert service road": {
+   "km": 0.99,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 60,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "braas road": {
+   "km": 0.05,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "bracken street": {
+   "km": 0.28,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "brady street": {
+   "km": 0.26,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "brant avenue": {
+   "km": 0.25,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "breadner crescent": {
+   "km": 0.37,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "brian crescent": {
+   "km": 0.73,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "briarwood avenue": {
+   "km": 0.58,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "bridge street": {
+   "km": 2.11,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 0.98,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Arterial"
+  },
+  "bridgewater street": {
+   "km": 1.32,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "bristol crescent": {
+   "km": 0.03,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "britannia crescent": {
+   "km": 0.3,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "brittany court": {
+   "km": 0.16,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "brock street": {
+   "km": 0.44,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "brookdale drive": {
+   "km": 0.71,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Collector"
+  },
+  "brookfield avenue": {
+   "km": 1.29,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "brooks crescent": {
+   "km": 0.18,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "brooks street": {
+   "km": 0.36,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "brookside drive": {
+   "km": 0.42,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "broughton avenue": {
+   "km": 0.32,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "brown road": {
+   "km": 4.3,
+   "bike_lane": true,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 60,
+   "speed_kmh_share": 1.0,
+   "class": "Arterial"
+  },
+  "bruce avenue": {
+   "km": 0.06,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "bryanne court": {
+   "km": 0.13,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "buchanan avenue": {
+   "km": 0.85,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Collector"
+  },
+  "buchner place": {
+   "km": 0.1,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "buckeye crescent": {
+   "km": 0.65,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "buckingham drive": {
+   "km": 0.56,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "buckley avenue": {
+   "km": 0.48,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "bukator drive": {
+   "km": 0.15,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "burbank crescent": {
+   "km": 0.25,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "burch place": {
+   "km": 0.06,
+   "bike_lane": false,
+   "lanes": 1,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "burdette drive": {
+   "km": 0.53,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "burdette drive east": {
+   "km": 0.23,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "burning springs hill": {
+   "km": 0.3,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 60,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "burwood avenue": {
+   "km": 0.18,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "butler place": {
+   "km": 0.15,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "butternut boulevard": {
+   "km": 0.87,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "buttrey street": {
+   "km": 1.04,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Collector"
+  },
+  "byng avenue": {
+   "km": 0.49,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "cabot drive": {
+   "km": 0.24,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "cadham street": {
+   "km": 0.42,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "calaguiro drive": {
+   "km": 0.61,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "caledonia street": {
+   "km": 0.93,
+   "bike_lane": true,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Collector"
+  },
+  "callan street": {
+   "km": 0.44,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "cambridge street": {
+   "km": 0.34,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "camelot crescent": {
+   "km": 0.06,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "cameron court": {
+   "km": 0.24,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "campbell avenue": {
+   "km": 0.17,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "camrose street": {
+   "km": 0.1,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "canadian drive": {
+   "km": 0.45,
+   "bike_lane": true,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Collector"
+  },
+  "canterbury crescent": {
+   "km": 0.17,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "cardinal drive": {
+   "km": 1.35,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Collector"
+  },
+  "carisa court": {
+   "km": 0.08,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "carl road": {
+   "km": 4.19,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 60,
+   "speed_kmh_share": 0.9,
+   "class": "Collector"
+  },
+  "carlton avenue": {
+   "km": 1.1,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "carman street": {
+   "km": 0.54,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "carmella place": {
+   "km": 0.1,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "carolyn avenue": {
+   "km": 0.49,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "caronpost road": {
+   "km": 0.37,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Collector"
+  },
+  "carroll avenue": {
+   "km": 0.36,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "cartier drive": {
+   "km": 0.28,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "casey street": {
+   "km": 0.88,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Collector"
+  },
+  "caswell street": {
+   "km": 0.14,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "catalina street": {
+   "km": 0.31,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Collector"
+  },
+  "cataract avenue": {
+   "km": 0.19,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "catharine crescent": {
+   "km": 0.23,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "cathedral drive": {
+   "km": 0.54,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "cattell drive": {
+   "km": 0.78,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Collector"
+  },
+  "cavendish drive": {
+   "km": 0.3,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "cedar street": {
+   "km": 0.22,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "centennial street": {
+   "km": 0.28,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "centre street": {
+   "km": 0.43,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 0.87,
+   "speed_kmh": 50,
+   "speed_kmh_share": 0.87,
+   "class": "Local / Street"
+  },
+  "champlain drive": {
+   "km": 0.46,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "charlotte street": {
+   "km": 0.02,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "charnwood avenue": {
+   "km": 1.34,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Collector"
+  },
+  "cheesman street": {
+   "km": 0.09,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "chelsea crescent": {
+   "km": 0.03,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "chemonda street": {
+   "km": 0.14,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "cherrygrove road": {
+   "km": 0.51,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "cherryhill drive": {
+   "km": 0.26,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "cherrywood road": {
+   "km": 0.33,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "chickory trail": {
+   "km": 0.41,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "chipman crescent": {
+   "km": 0.32,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "chippawa creek road": {
+   "km": 3.95,
+   "bike_lane": true,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 80,
+   "speed_kmh_share": 1.0,
+   "class": "Arterial"
+  },
+  "chippawa parkway": {
+   "km": 5.67,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 0.73,
+   "speed_kmh": 60,
+   "speed_kmh_share": 0.37,
+   "class": "Collector"
+  },
+  "chorozy street": {
+   "km": 0.57,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "christine court": {
+   "km": 0.24,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "christopher crescent": {
+   "km": 0.24,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "church's lane": {
+   "km": 1.24,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Collector"
+  },
+  "churchill street": {
+   "km": 0.89,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "cinnamon grove": {
+   "km": 0.38,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "citation road": {
+   "km": 0.5,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "clare crescent": {
+   "km": 0.52,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "clark avenue": {
+   "km": 0.35,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Collector"
+  },
+  "claude avenue": {
+   "km": 0.2,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "clendenning street": {
+   "km": 0.22,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "cleveland avenue": {
+   "km": 0.22,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "clifton hill": {
+   "km": 0.44,
+   "bike_lane": false,
+   "lanes": 3,
+   "lanes_share": 0.7,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Collector"
+  },
+  "close avenue": {
+   "km": 0.1,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "clubview lane": {
+   "km": 0.17,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Strata"
+  },
+  "coach drive": {
+   "km": 0.33,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "coholan street": {
+   "km": 0.69,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "colangelo drive": {
+   "km": 0.22,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 0.72,
+   "speed_kmh": 50,
+   "speed_kmh_share": 0.72,
+   "class": "Local / Street"
+  },
+  "colborne street": {
+   "km": 0.36,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "cole court": {
+   "km": 0.14,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "collard avenue": {
+   "km": 0.1,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "college crescent": {
+   "km": 0.27,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "collins drive": {
+   "km": 0.48,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "concord crescent": {
+   "km": 0.03,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "confederation avenue": {
+   "km": 0.11,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "connell avenue": {
+   "km": 0.17,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "connor crescent": {
+   "km": 0.21,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "cook street": {
+   "km": 0.44,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "cookman crescent": {
+   "km": 0.13,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "cooper drive": {
+   "km": 0.29,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "corry crescent": {
+   "km": 0.3,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "cortina crescent": {
+   "km": 0.14,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "corwin avenue": {
+   "km": 0.6,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "corwin crescent": {
+   "km": 1.12,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Collector"
+  },
+  "costabile drive": {
+   "km": 0.35,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "cottonwood drive": {
+   "km": 0.29,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "coulson crescent": {
+   "km": 0.22,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "courtney crescent": {
+   "km": 0.29,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "coventry road": {
+   "km": 0.16,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "cowan crescent": {
+   "km": 0.04,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "crawford place": {
+   "km": 0.13,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "crawford street": {
+   "km": 1.08,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "crescent road": {
+   "km": 0.09,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "crimson drive": {
+   "km": 0.69,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Collector"
+  },
+  "cropp street": {
+   "km": 0.55,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "crowland avenue": {
+   "km": 7.7,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 70,
+   "speed_kmh_share": 0.57,
+   "class": "Collector"
+  },
+  "crysler avenue": {
+   "km": 0.85,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "cullimore avenue": {
+   "km": 0.14,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "culp street": {
+   "km": 1.38,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "cumberland court": {
+   "km": 0.14,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "cummings lane": {
+   "km": 0.1,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "cummington square east": {
+   "km": 0.07,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Arterial"
+  },
+  "cummington square west": {
+   "km": 0.07,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Arterial"
+  },
+  "curlin crescent": {
+   "km": 0.31,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "class": "Local / Street"
+  },
+  "cuviello court": {
+   "km": 0.28,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "dalena place": {
+   "km": 0.08,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "daly street": {
+   "km": 0.1,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "darcy crescent": {
+   "km": 0.35,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "david avenue": {
+   "km": 0.4,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "dawlish avenue": {
+   "km": 0.35,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "dawn crescent": {
+   "km": 0.14,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "dawson street": {
+   "km": 0.57,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 0.8,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "dayman avenue": {
+   "km": 0.08,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "deerbrook street": {
+   "km": 0.24,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "deerfield crescent": {
+   "km": 0.04,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "delaware street": {
+   "km": 0.58,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "dell avenue": {
+   "km": 0.7,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "dell road": {
+   "km": 0.59,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Collector"
+  },
+  "dellpark drive": {
+   "km": 0.36,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "delta drive": {
+   "km": 0.75,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Collector"
+  },
+  "demetre crescent": {
+   "km": 0.1,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "dennis lane": {
+   "km": 0.11,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "depew avenue": {
+   "km": 0.19,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "desanka avenue": {
+   "km": 0.25,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "desson avenue": {
+   "km": 0.56,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "detenbeck road": {
+   "km": 2.9,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 0.67,
+   "speed_kmh": 50,
+   "speed_kmh_share": 0.96,
+   "class": "Collector"
+  },
+  "detroit avenue": {
+   "km": 0.16,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "devon drive": {
+   "km": 0.52,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "dewar avenue": {
+   "km": 0.16,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "dianne crescent": {
+   "km": 0.04,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "dianne street": {
+   "km": 0.1,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "dilalla crescent": {
+   "km": 0.21,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "dirdene street": {
+   "km": 0.56,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "division street": {
+   "km": 0.22,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "dixon street": {
+   "km": 1.06,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Collector"
+  },
+  "dock street": {
+   "km": 0.2,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "dockweed drive": {
+   "km": 0.28,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "dogwood crescent": {
+   "km": 0.63,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "dolphin street": {
+   "km": 0.26,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "domenic crescent": {
+   "km": 0.36,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "don murie street": {
+   "km": 1.15,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Collector"
+  },
+  "donlee drive": {
+   "km": 0.41,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "dorchester road": {
+   "km": 11.35,
+   "bike_lane": true,
+   "lanes": 2,
+   "lanes_share": 0.98,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Arterial"
+  },
+  "doreen drive": {
+   "km": 0.57,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "dores drive": {
+   "km": 0.16,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "douglas crescent": {
+   "km": 0.24,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "douglas street": {
+   "km": 0.11,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "dovewood drive": {
+   "km": 0.13,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "drake avenue": {
+   "km": 0.26,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "drummond road": {
+   "km": 5.77,
+   "bike_lane": true,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Arterial"
+  },
+  "dufferin isle drive": {
+   "km": 1.11,
+   "bike_lane": false,
+   "lanes": 1,
+   "lanes_share": 0.74,
+   "speed_kmh": 60,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "duke avenue": {
+   "km": 0.35,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "dumont street": {
+   "km": 0.31,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "dunn street": {
+   "km": 2.6,
+   "bike_lane": true,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Collector"
+  },
+  "durham street": {
+   "km": 0.09,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "durliat road": {
+   "km": 0.66,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "dyment crescent": {
+   "km": 0.12,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "dyson avenue": {
+   "km": 0.32,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "eagle ridge drive": {
+   "km": 0.36,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "eaglewood drive": {
+   "km": 0.33,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Strata"
+  },
+  "earl thomas avenue": {
+   "km": 0.33,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Collector"
+  },
+  "eastwood crescent": {
+   "km": 0.59,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "echo circle": {
+   "km": 0.04,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "eclipse way": {
+   "km": 0.31,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "edenwood court": {
+   "km": 0.14,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "edgeworth road": {
+   "km": 0.16,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "edward avenue": {
+   "km": 0.26,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "elberta avenue": {
+   "km": 0.37,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "elderberry drive": {
+   "km": 0.28,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "eldorado avenue": {
+   "km": 0.52,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "eleanor crescent": {
+   "km": 0.07,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "elgin street": {
+   "km": 0.3,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 0.63,
+   "speed_kmh": 50,
+   "speed_kmh_share": 0.63,
+   "class": "Local / Street"
+  },
+  "eli common": {
+   "km": 0.14,
+   "bike_lane": false,
+   "class": "Local / Strata"
+  },
+  "elizabeth street": {
+   "km": 0.17,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "ellen avenue": {
+   "km": 0.78,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Collector"
+  },
+  "ellis lane": {
+   "km": 0.13,
+   "bike_lane": false,
+   "lanes": 1,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "ellis street": {
+   "km": 0.49,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "ellsworth place": {
+   "km": 0.05,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "elm street": {
+   "km": 0.22,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "elmwood avenue": {
+   "km": 0.15,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "emerald avenue": {
+   "km": 0.57,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Collector"
+  },
+  "emerson common": {
+   "km": 0.27,
+   "bike_lane": false,
+   "class": "Local / Strata"
+  },
+  "emery street": {
+   "km": 0.51,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "emily boulevard": {
+   "km": 0.35,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "emma street": {
+   "km": 0.17,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "empire place": {
+   "km": 0.07,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "epsom court": {
+   "km": 0.14,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "epworth circle": {
+   "km": 0.59,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "erie avenue": {
+   "km": 0.5,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 0.8,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "ernest crescent": {
+   "km": 0.18,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "erwin crescent": {
+   "km": 0.18,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "ethel street": {
+   "km": 0.61,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "eton crescent": {
+   "km": 0.07,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "eva boulevard": {
+   "km": 0.11,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "fairfield place": {
+   "km": 0.06,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "fairlawn crescent": {
+   "km": 0.09,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "fairway road": {
+   "km": 0.27,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "falls avenue": {
+   "km": 2.05,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 40,
+   "speed_kmh_share": 0.58,
+   "class": "Arterial"
+  },
+  "fallsview boulevard": {
+   "km": 1.45,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Collector"
+  },
+  "fatima court": {
+   "km": 0.06,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "fausta boulevard": {
+   "km": 0.11,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "feren drive": {
+   "km": 0.23,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "ferguson street": {
+   "km": 0.88,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 0.92,
+   "speed_kmh": 50,
+   "speed_kmh_share": 0.92,
+   "class": "Collector"
+  },
+  "fern avenue": {
+   "km": 0.78,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "fernwood crescent": {
+   "km": 0.09,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "ferry street": {
+   "km": 1.01,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 0.79,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Arterial"
+  },
+  "fiddlehead lane": {
+   "km": 0.21,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "fieldstone avenue": {
+   "km": 0.46,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "fifth avenue": {
+   "km": 1.26,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "fingland street": {
+   "km": 0.44,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "finlay avenue": {
+   "km": 0.15,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "first avenue": {
+   "km": 0.53,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "fleming drive": {
+   "km": 0.16,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 0.78,
+   "speed_kmh": 50,
+   "speed_kmh_share": 0.78,
+   "class": "Local / Street"
+  },
+  "flora court": {
+   "km": 0.12,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "florence avenue": {
+   "km": 0.27,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "flynn court": {
+   "km": 0.06,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "foreman avenue": {
+   "km": 0.08,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "forest glen drive": {
+   "km": 0.26,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "forest ridge drive": {
+   "km": 0.14,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "forestview boulevard": {
+   "km": 1.07,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Collector"
+  },
+  "forsythe street": {
+   "km": 0.3,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Collector"
+  },
+  "four mile creek road": {
+   "km": 0.01,
+   "bike_lane": false
+  },
+  "fourth avenue": {
+   "km": 1.7,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "foxe drive": {
+   "km": 0.16,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "frances avenue": {
+   "km": 0.47,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "francesco avenue": {
+   "km": 0.2,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "franklin avenue": {
+   "km": 0.83,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "fraser hill": {
+   "km": 0.22,
+   "bike_lane": false,
+   "lanes": 1,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Strata"
+  },
+  "fraser street": {
+   "km": 0.22,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "frederica street": {
+   "km": 1.25,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 0.53,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Collector"
+  },
+  "fredonia drive": {
+   "km": 0.23,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "freeman street": {
+   "km": 1.11,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "frila lane": {
+   "km": 0.05,
+   "bike_lane": false,
+   "class": "Local / Street"
+  },
+  "front street": {
+   "km": 0.92,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "frontenac street": {
+   "km": 0.46,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "fruitbelt parkway": {
+   "km": 0.42,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "furlong avenue": {
+   "km": 0.43,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "gage court": {
+   "km": 0.11,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "gail avenue": {
+   "km": 0.26,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "gainsborough avenue": {
+   "km": 0.28,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "galaxy drive": {
+   "km": 0.34,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "gallinger street": {
+   "km": 0.11,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Arterial"
+  },
+  "galt crescent": {
+   "km": 0.13,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "garden street": {
+   "km": 0.23,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "garner road": {
+   "km": 11.34,
+   "bike_lane": true,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 60,
+   "speed_kmh_share": 0.62,
+   "class": "Arterial"
+  },
+  "general brock parkway": {
+   "km": 2.92,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 0.57,
+   "speed_kmh": 100,
+   "speed_kmh_share": 0.57,
+   "class": "Expressway / Highway"
+  },
+  "george street": {
+   "km": 0.17,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "giovina drive": {
+   "km": 0.25,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "gladstone avenue": {
+   "km": 0.39,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "glamis crescent": {
+   "km": 0.36,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "glavcic drive": {
+   "km": 0.6,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "glen drive": {
+   "km": 0.11,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "glenayr avenue": {
+   "km": 0.28,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "glendale place": {
+   "km": 0.05,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "glendoone street": {
+   "km": 0.24,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "glengary street": {
+   "km": 0.24,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "glengate street": {
+   "km": 0.59,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Collector"
+  },
+  "glengowan crescent": {
+   "km": 0.09,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "glenholme avenue": {
+   "km": 0.67,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "glenoaks avenue": {
+   "km": 0.18,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "glenview avenue": {
+   "km": 0.12,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "glenwood place": {
+   "km": 0.05,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "goldenrod trail": {
+   "km": 0.32,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "gonder road": {
+   "km": 2.13,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 0.99,
+   "speed_kmh": 50,
+   "speed_kmh_share": 0.99,
+   "class": "Collector"
+  },
+  "goodsir crescent": {
+   "km": 0.06,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "gore street": {
+   "km": 0.44,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "graham street": {
+   "km": 0.15,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "grand niagara drive": {
+   "km": 1.12,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Strata"
+  },
+  "grange common": {
+   "km": 0.06,
+   "bike_lane": false,
+   "class": "Local / Strata"
+  },
+  "grassy brook road": {
+   "km": 2.94,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 60,
+   "speed_kmh_share": 0.64,
+   "class": "Collector"
+  },
+  "green avenue": {
+   "km": 0.52,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "green boughs road": {
+   "km": 0.36,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "green vista gate": {
+   "km": 0.19,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Strata"
+  },
+  "greendale street": {
+   "km": 0.27,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "greenfield crescent": {
+   "km": 0.28,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "greenwood street": {
+   "km": 0.19,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "grey avenue": {
+   "km": 0.38,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "greystone mews": {
+   "km": 0.1,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "griffon street": {
+   "km": 0.19,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "grossi court": {
+   "km": 0.09,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "grouse lane": {
+   "km": 0.32,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "gunning drive": {
+   "km": 0.69,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "hackberry trail": {
+   "km": 0.66,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "hagar avenue": {
+   "km": 0.5,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "hamilton street": {
+   "km": 0.71,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 0.93,
+   "speed_kmh": 50,
+   "speed_kmh_share": 0.93,
+   "class": "Local / Street"
+  },
+  "hampton court": {
+   "km": 0.04,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "hanan avenue": {
+   "km": 0.4,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "hanniwell street": {
+   "km": 0.19,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "harleyford crescent": {
+   "km": 0.2,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "harlyn common": {
+   "km": 0.35,
+   "bike_lane": false,
+   "class": "Local / Strata"
+  },
+  "harmony avenue": {
+   "km": 0.32,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "harold street": {
+   "km": 0.24,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "harovics lane": {
+   "km": 0.35,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "harper drive": {
+   "km": 0.39,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "harriman street": {
+   "km": 0.56,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Collector"
+  },
+  "harte circle": {
+   "km": 0.15,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "harvard avenue": {
+   "km": 0.44,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Collector"
+  },
+  "harvest crescent": {
+   "km": 0.55,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 0.88,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "harvey street": {
+   "km": 0.15,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "hattie avenue": {
+   "km": 0.06,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "hawkins street": {
+   "km": 0.79,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "heartland forest road": {
+   "km": 0.97,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 60,
+   "speed_kmh_share": 1.0,
+   "class": "Arterial"
+  },
+  "heath lane": {
+   "km": 0.61,
+   "bike_lane": false,
+   "lanes": 1,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Strata"
+  },
+  "heather avenue": {
+   "km": 0.23,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "heikoop crescent": {
+   "km": 0.34,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "hemlock street": {
+   "km": 0.14,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "hendershot boulevard": {
+   "km": 0.89,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "henley avenue": {
+   "km": 0.21,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "hennepin crescent": {
+   "km": 0.39,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "heritage drive": {
+   "km": 0.58,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "heximer avenue": {
+   "km": 1.1,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "heywood avenue": {
+   "km": 0.16,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "hickory lane": {
+   "km": 0.08,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "hickson avenue": {
+   "km": 0.32,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "high street": {
+   "km": 1.13,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "highland avenue": {
+   "km": 0.63,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "highway 20": {
+   "km": 0.0,
+   "bike_lane": false
+  },
+  "highway 420": {
+   "km": 11.45,
+   "bike_lane": false,
+   "lanes": 1,
+   "lanes_share": 0.38,
+   "speed_kmh": 100,
+   "speed_kmh_share": 0.38,
+   "class": "Ramp"
+  },
+  "highway 58": {
+   "km": 0.0,
+   "bike_lane": false
+  },
+  "hillcrest crescent": {
+   "km": 0.54,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "hillsdale avenue": {
+   "km": 0.25,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "hiram street": {
+   "km": 0.29,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Collector"
+  },
+  "hodgson avenue": {
+   "km": 0.76,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "holloway bay road north": {
+   "km": 0.2,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 0.81,
+   "speed_kmh": 50,
+   "speed_kmh_share": 0.81,
+   "class": "Local / Street"
+  },
+  "homestead crescent": {
+   "km": 0.05,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "homewood avenue": {
+   "km": 1.04,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "hoptree road": {
+   "km": 0.12,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "houck drive": {
+   "km": 0.24,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "howe crescent": {
+   "km": 0.07,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "huggins street": {
+   "km": 0.94,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "hunter street": {
+   "km": 0.24,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "huron street": {
+   "km": 1.83,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 0.81,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "hutton avenue": {
+   "km": 0.08,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "hyatt crescent": {
+   "km": 0.04,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "imperial court": {
+   "km": 0.06,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "industrial street": {
+   "km": 0.32,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "inglis drive": {
+   "km": 0.14,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "inverness court": {
+   "km": 0.07,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "ironwood street": {
+   "km": 0.3,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "iroquois avenue": {
+   "km": 0.38,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 60,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "isaac street": {
+   "km": 0.1,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "ives gateway": {
+   "km": 0.11,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "jake crescent": {
+   "km": 0.11,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "janet crescent": {
+   "km": 0.04,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "january drive": {
+   "km": 0.69,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "jeffrey court": {
+   "km": 0.05,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "jennifer crescent": {
+   "km": 0.46,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "jepson street": {
+   "km": 1.42,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "jessie court": {
+   "km": 0.05,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "jewel common": {
+   "km": 0.23,
+   "bike_lane": false,
+   "class": "Local / Strata"
+  },
+  "jill drive": {
+   "km": 0.65,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "john daly way": {
+   "km": 0.2,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Strata"
+  },
+  "john street": {
+   "km": 0.24,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "johnson drive": {
+   "km": 0.37,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "jolley crescent": {
+   "km": 0.04,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "jonathan drive": {
+   "km": 0.18,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "jordan avenue": {
+   "km": 0.18,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "joseph court": {
+   "km": 0.21,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "joyce avenue": {
+   "km": 0.14,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "jubilee drive": {
+   "km": 1.05,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Collector"
+  },
+  "judith avenue": {
+   "km": 0.17,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 0.93,
+   "speed_kmh": 50,
+   "speed_kmh_share": 0.93,
+   "class": "Local / Street"
+  },
+  "julie drive": {
+   "km": 0.25,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "juneberry drive": {
+   "km": 0.16,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "jupiter boulevard": {
+   "km": 0.84,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "kalar road": {
+   "km": 8.47,
+   "bike_lane": true,
+   "lanes": 2,
+   "lanes_share": 0.81,
+   "speed_kmh": 50,
+   "speed_kmh_share": 0.82,
+   "class": "Arterial"
+  },
+  "kate avenue": {
+   "km": 0.14,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "kathleen crescent": {
+   "km": 0.17,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "kaumeyer street": {
+   "km": 0.09,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "keiffer street": {
+   "km": 0.27,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "keith street": {
+   "km": 0.69,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "keller street": {
+   "km": 0.17,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "kelly drive": {
+   "km": 0.66,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "kelsey crescent": {
+   "km": 0.62,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "kendale court": {
+   "km": 0.07,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "kennedy court": {
+   "km": 0.05,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "kensington court": {
+   "km": 0.14,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "kent avenue": {
+   "km": 0.99,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "kentucky court": {
+   "km": 0.1,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "kenwood court": {
+   "km": 0.04,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "ker street": {
+   "km": 0.52,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "kevin drive": {
+   "km": 0.24,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "kilman place": {
+   "km": 0.05,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "kincaid place": {
+   "km": 0.1,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "king road": {
+   "km": 3.81,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 70,
+   "speed_kmh_share": 0.91,
+   "class": "Arterial"
+  },
+  "kingston avenue": {
+   "km": 0.1,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "kingswood crescent": {
+   "km": 0.1,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "kinsmen court": {
+   "km": 0.61,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "kirkland drive": {
+   "km": 0.38,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "kister road": {
+   "km": 1.05,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Collector"
+  },
+  "kitchener street": {
+   "km": 1.51,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Collector"
+  },
+  "kiwanis crescent": {
+   "km": 0.16,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Strata"
+  },
+  "koabel road": {
+   "km": 1.03,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 70,
+   "speed_kmh_share": 1.0,
+   "class": "Arterial"
+  },
+  "kudlac street": {
+   "km": 0.52,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "kuhn crescent": {
+   "km": 0.13,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "laguna court": {
+   "km": 0.2,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "lakewood crescent": {
+   "km": 0.42,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "lalemant road": {
+   "km": 0.18,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "lamarsh street": {
+   "km": 0.08,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "lamont avenue": {
+   "km": 0.85,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "lapp road": {
+   "km": 0.83,
+   "bike_lane": false,
+   "lanes": 1,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Arterial"
+  },
+  "larry's lane": {
+   "km": 0.11,
+   "bike_lane": false,
+   "lanes": 1,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Strata"
+  },
+  "latina crescent": {
+   "km": 0.16,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "latshaw street": {
+   "km": 0.09,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "laura crescent": {
+   "km": 0.04,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "laura secord place": {
+   "km": 0.07,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "laurentian court": {
+   "km": 0.05,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "lavena court": {
+   "km": 0.04,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "law avenue": {
+   "km": 0.24,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "leader lane": {
+   "km": 0.66,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "leawood court": {
+   "km": 0.09,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "lee avenue": {
+   "km": 0.47,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "leeming street": {
+   "km": 0.89,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "legends way": {
+   "km": 2.89,
+   "bike_lane": false,
+   "lanes": 1,
+   "lanes_share": 1.0,
+   "speed_kmh": 60,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "legion street": {
+   "km": 0.1,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "lemon road": {
+   "km": 1.04,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Collector"
+  },
+  "leonard avenue": {
+   "km": 0.37,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "lepp avenue": {
+   "km": 0.18,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "level avenue": {
+   "km": 0.22,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "levine street": {
+   "km": 0.13,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "lewis avenue": {
+   "km": 0.56,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Collector"
+  },
+  "lexington court": {
+   "km": 0.12,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "lincoln street": {
+   "km": 2.1,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 60,
+   "speed_kmh_share": 1.0,
+   "class": "Collector"
+  },
+  "linden avenue": {
+   "km": 0.15,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "lindsay crescent": {
+   "km": 0.05,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "linwood crescent": {
+   "km": 0.07,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "lionshead avenue": {
+   "km": 0.7,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Strata"
+  },
+  "livingston street": {
+   "km": 0.15,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Collector"
+  },
+  "locus avenue": {
+   "km": 0.47,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "logan road": {
+   "km": 2.06,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 0.85,
+   "speed_kmh": 50,
+   "speed_kmh_share": 0.85,
+   "class": "Collector"
+  },
+  "london court": {
+   "km": 0.03,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "longhouse lane": {
+   "km": 0.12,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "longhurst avenue": {
+   "km": 0.36,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "loring crescent": {
+   "km": 0.11,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "lorne street": {
+   "km": 0.2,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "lovell place": {
+   "km": 0.05,
+   "bike_lane": false,
+   "lanes": 1,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Strata"
+  },
+  "lowell avenue": {
+   "km": 0.36,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "loyalist avenue": {
+   "km": 0.15,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "lucia drive": {
+   "km": 0.49,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "luna park court": {
+   "km": 0.04,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "lundy's lane": {
+   "km": 7.04,
+   "bike_lane": true,
+   "lanes": 4,
+   "lanes_share": 0.66,
+   "speed_kmh": 60,
+   "speed_kmh_share": 0.65,
+   "class": "Arterial"
+  },
+  "lynhurst drive": {
+   "km": 0.35,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "lyon's parkway": {
+   "km": 0.63,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "lyons creek road": {
+   "km": 8.63,
+   "bike_lane": true,
+   "lanes": 2,
+   "lanes_share": 0.98,
+   "speed_kmh": 50,
+   "speed_kmh_share": 0.35,
+   "class": "Arterial"
+  },
+  "macdonald avenue": {
+   "km": 0.32,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 0.82,
+   "speed_kmh": 50,
+   "speed_kmh_share": 0.82,
+   "class": "Local / Street"
+  },
+  "mackenzie drive": {
+   "km": 0.32,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 0.6,
+   "speed_kmh": 50,
+   "speed_kmh_share": 0.6,
+   "class": "Local / Street"
+  },
+  "macklem street": {
+   "km": 0.26,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "macpherson crescent": {
+   "km": 0.1,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "madison crescent": {
+   "km": 0.2,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "magdalen street": {
+   "km": 0.31,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "magnolia drive": {
+   "km": 0.3,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "main street": {
+   "km": 1.79,
+   "bike_lane": true,
+   "lanes": 2,
+   "lanes_share": 0.72,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Collector"
+  },
+  "main street chippawa": {
+   "km": 1.53,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Collector"
+  },
+  "maitland street": {
+   "km": 0.22,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "majestic trail": {
+   "km": 0.35,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "malibu drive": {
+   "km": 0.25,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "mann street": {
+   "km": 0.45,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "maple street": {
+   "km": 1.03,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "maplewood avenue": {
+   "km": 0.6,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "maranda street": {
+   "km": 0.52,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "marcel crescent": {
+   "km": 0.04,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "marco crescent": {
+   "km": 0.09,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "marcon street": {
+   "km": 0.37,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "margaret street": {
+   "km": 1.33,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "marieclaude avenue": {
+   "km": 0.18,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "marineland parkway": {
+   "km": 1.01,
+   "bike_lane": false,
+   "lanes": 4,
+   "lanes_share": 0.37,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Arterial"
+  },
+  "marinelli drive": {
+   "km": 0.21,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "marion avenue": {
+   "km": 0.3,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "marisa crescent": {
+   "km": 0.05,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "marland avenue": {
+   "km": 0.05,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "marlborough place": {
+   "km": 0.36,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "marpin court": {
+   "km": 0.23,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Collector"
+  },
+  "mars crescent": {
+   "km": 0.05,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "marshall road": {
+   "km": 6.84,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 70,
+   "speed_kmh_share": 1.0,
+   "class": "Collector"
+  },
+  "martin avenue": {
+   "km": 0.32,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "marvel drive": {
+   "km": 0.38,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "mary drive": {
+   "km": 0.24,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "matteo drive": {
+   "km": 0.3,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 0.81,
+   "speed_kmh": 50,
+   "speed_kmh_share": 0.81,
+   "class": "Local / Street"
+  },
+  "matthews drive": {
+   "km": 1.25,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Collector"
+  },
+  "maureen crescent": {
+   "km": 0.05,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "may avenue": {
+   "km": 0.24,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 0.56,
+   "speed_kmh": 50,
+   "speed_kmh_share": 0.56,
+   "class": "Local / Street"
+  },
+  "mayfair drive": {
+   "km": 0.38,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Collector"
+  },
+  "maywood street": {
+   "km": 0.28,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "mccartney drive": {
+   "km": 0.34,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "mcclive street": {
+   "km": 0.08,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "mccoll drive": {
+   "km": 0.35,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "mccredie road": {
+   "km": 1.07,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 0.08,
+   "speed_kmh": 50,
+   "speed_kmh_share": 0.08,
+   "class": "Local / Street"
+  },
+  "mcdougall crescent": {
+   "km": 0.25,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "mcgarry drive": {
+   "km": 1.06,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Collector"
+  },
+  "mcgill street": {
+   "km": 0.42,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "mcglashan crescent": {
+   "km": 0.22,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "mcgowan court": {
+   "km": 0.08,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "mcgrail avenue": {
+   "km": 0.66,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "mckenney road": {
+   "km": 7.7,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 0.87,
+   "speed_kmh": 70,
+   "speed_kmh_share": 0.59,
+   "class": "Collector"
+  },
+  "mckinless crescent": {
+   "km": 0.06,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "mclaren crescent": {
+   "km": 0.04,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "mcleod road": {
+   "km": 7.48,
+   "bike_lane": true,
+   "lanes": 2,
+   "lanes_share": 0.61,
+   "speed_kmh": 50,
+   "speed_kmh_share": 0.71,
+   "class": "Arterial"
+  },
+  "mcmicking street": {
+   "km": 1.02,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "mcmillan drive": {
+   "km": 0.45,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "mcrae street": {
+   "km": 1.02,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Collector"
+  },
+  "meadowvale drive": {
+   "km": 0.55,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "mears crescent": {
+   "km": 0.27,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "mechanic street": {
+   "km": 0.2,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "melrose drive": {
+   "km": 0.0,
+   "bike_lane": false
+  },
+  "menzie street": {
+   "km": 0.22,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "mercury avenue": {
+   "km": 0.28,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "merle crescent": {
+   "km": 0.06,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "merritt avenue": {
+   "km": 0.47,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "mewburn road": {
+   "km": 2.33,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 60,
+   "speed_kmh_share": 0.77,
+   "class": "Collector"
+  },
+  "michael street": {
+   "km": 0.46,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "michelle court": {
+   "km": 0.08,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "mildred court": {
+   "km": 0.04,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "miller road": {
+   "km": 2.7,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 60,
+   "speed_kmh_share": 0.84,
+   "class": "Collector"
+  },
+  "milomir street": {
+   "km": 0.45,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "misener road": {
+   "km": 5.62,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 0.88,
+   "speed_kmh": 50,
+   "speed_kmh_share": 0.51,
+   "class": "Collector"
+  },
+  "mitchell avenue": {
+   "km": 0.58,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "mitchell crescent": {
+   "km": 0.05,
+   "bike_lane": false
+  },
+  "monastery drive": {
+   "km": 0.35,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "monroe street": {
+   "km": 0.52,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "montcalm crescent": {
+   "km": 0.27,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "monterey avenue": {
+   "km": 0.38,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "montrose road": {
+   "km": 19.98,
+   "bike_lane": true,
+   "lanes": 2,
+   "lanes_share": 0.94,
+   "speed_kmh": 50,
+   "speed_kmh_share": 0.43,
+   "class": "Arterial"
+  },
+  "morden drive": {
+   "km": 0.51,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "moretta drive": {
+   "km": 0.32,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "morning glory court": {
+   "km": 0.15,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "morningstar road": {
+   "km": 1.95,
+   "bike_lane": false,
+   "lanes": 1,
+   "lanes_share": 0.53,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Collector"
+  },
+  "morris road": {
+   "km": 6.87,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 70,
+   "speed_kmh_share": 0.96,
+   "class": "Arterial"
+  },
+  "morrison street": {
+   "km": 4.43,
+   "bike_lane": true,
+   "lanes": 2,
+   "lanes_share": 0.75,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Collector"
+  },
+  "morse avenue": {
+   "km": 0.18,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "mouland avenue": {
+   "km": 0.34,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "mount carmel boulevard": {
+   "km": 1.21,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Collector"
+  },
+  "mount forest lane": {
+   "km": 0.15,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "mount olive crescent": {
+   "km": 0.38,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "mountain road": {
+   "km": 5.99,
+   "bike_lane": true,
+   "lanes": 2,
+   "lanes_share": 0.82,
+   "speed_kmh": 60,
+   "speed_kmh_share": 0.41,
+   "class": "Arterial"
+  },
+  "mountaincrest avenue": {
+   "km": 0.11,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "mountaingate drive": {
+   "km": 0.39,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 0.84,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "mountainside street": {
+   "km": 0.26,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "mountjoy court": {
+   "km": 0.16,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "muir avenue": {
+   "km": 0.23,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "mulberry drive": {
+   "km": 0.28,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "mulhern street": {
+   "km": 0.59,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "mullen court": {
+   "km": 0.13,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "mundare crescent": {
+   "km": 0.37,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "murray street": {
+   "km": 2.12,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 0.91,
+   "speed_kmh": 50,
+   "speed_kmh_share": 0.91,
+   "class": "Collector"
+  },
+  "nadia court": {
+   "km": 0.19,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "nancy drive": {
+   "km": 0.36,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "nasrullah crescent": {
+   "km": 0.06,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "nassau avenue": {
+   "km": 0.34,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "nathan crescent": {
+   "km": 0.13,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "nelson crescent": {
+   "km": 0.16,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "neptune crescent": {
+   "km": 0.08,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "nero crescent": {
+   "km": 0.03,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "netherby road": {
+   "km": 5.39,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 0.7,
+   "speed_kmh": 80,
+   "speed_kmh_share": 0.57,
+   "class": "Arterial"
+  },
+  "newgate road": {
+   "km": 0.12,
+   "bike_lane": false,
+   "class": "Local / Street"
+  },
+  "niagara river parkway": {
+   "km": 20.57,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 0.92,
+   "speed_kmh": 60,
+   "speed_kmh_share": 0.72,
+   "class": "Arterial"
+  },
+  "niagara square drive": {
+   "km": 0.29,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Arterial"
+  },
+  "niagara street": {
+   "km": 0.33,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "niagara townline road": {
+   "km": 0.84,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 0.24,
+   "speed_kmh": 60,
+   "speed_kmh_share": 0.24,
+   "class": "Arterial"
+  },
+  "nichols lane": {
+   "km": 0.87,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 60,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "nightshade street": {
+   "km": 0.08,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "niven street": {
+   "km": 0.2,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "noella crescent": {
+   "km": 0.17,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "north dorset place": {
+   "km": 0.2,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "north street": {
+   "km": 1.31,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Collector"
+  },
+  "northcastle drive": {
+   "km": 0.08,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "northgate avenue": {
+   "km": 0.08,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "northwood drive": {
+   "km": 0.34,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "norton street": {
+   "km": 0.41,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "notre dame court": {
+   "km": 0.11,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "o'neil street": {
+   "km": 1.02,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Collector"
+  },
+  "oakridge drive": {
+   "km": 0.48,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "oakwood drive": {
+   "km": 3.99,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 60,
+   "speed_kmh_share": 0.76,
+   "class": "Collector"
+  },
+  "odell court": {
+   "km": 0.36,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "odessa court": {
+   "km": 0.05,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "old thorold stone road": {
+   "km": 0.0,
+   "bike_lane": false
+  },
+  "olden avenue": {
+   "km": 0.94,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Collector"
+  },
+  "oldfield road": {
+   "km": 1.03,
+   "bike_lane": true,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Arterial"
+  },
+  "oliver street": {
+   "km": 0.51,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "oneida lane": {
+   "km": 0.11,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "ontario avenue": {
+   "km": 1.69,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Collector"
+  },
+  "optimist lane": {
+   "km": 0.44,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "orbit place": {
+   "km": 0.03,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "orchard avenue": {
+   "km": 0.82,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "orchard grove parkway": {
+   "km": 0.43,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "oriole drive": {
+   "km": 0.4,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "orlando drive": {
+   "km": 0.55,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "ort road": {
+   "km": 7.41,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 70,
+   "speed_kmh_share": 0.73,
+   "class": "Local / Street"
+  },
+  "osprey avenue": {
+   "km": 0.45,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "ottawa avenue": {
+   "km": 0.16,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "otter street": {
+   "km": 0.12,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "oxford street": {
+   "km": 0.61,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Collector"
+  },
+  "paddock trail drive": {
+   "km": 1.53,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Collector"
+  },
+  "paisley avenue": {
+   "km": 0.23,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "palis crescent": {
+   "km": 0.16,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "palmer avenue": {
+   "km": 1.09,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Collector"
+  },
+  "pamela drive": {
+   "km": 0.22,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "panama court": {
+   "km": 0.13,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "park street": {
+   "km": 1.11,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Collector"
+  },
+  "parkdale street": {
+   "km": 0.33,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "parklawn crescent": {
+   "km": 0.09,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "parkside road": {
+   "km": 2.13,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Collector"
+  },
+  "parkview crescent": {
+   "km": 0.28,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "parkway drive": {
+   "km": 0.42,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "parkwood court": {
+   "km": 0.03,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "parliament avenue": {
+   "km": 0.49,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "parsa street": {
+   "km": 0.33,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "patricia court": {
+   "km": 0.03,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "patten crescent": {
+   "km": 0.07,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "pattison lane": {
+   "km": 0.24,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "pauline drive": {
+   "km": 0.1,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "pawpaw lane": {
+   "km": 0.28,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "peach avenue": {
+   "km": 0.21,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "peer lane": {
+   "km": 0.13,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "peer street": {
+   "km": 0.48,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "pell street": {
+   "km": 0.18,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "pender street": {
+   "km": 0.31,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "perkins street": {
+   "km": 0.19,
+   "bike_lane": false,
+   "lanes": 1,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "peter street": {
+   "km": 0.3,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "petrie court": {
+   "km": 0.05,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "petrullo court": {
+   "km": 0.06,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "pettit avenue": {
+   "km": 1.7,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "pheasant lane": {
+   "km": 0.14,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "philip street": {
+   "km": 0.17,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "pin oak drive": {
+   "km": 0.65,
+   "bike_lane": true,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Collector"
+  },
+  "pine grove avenue": {
+   "km": 0.35,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "pinedale drive": {
+   "km": 0.43,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "pinellas park drive": {
+   "km": 0.28,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "pinestone road": {
+   "km": 0.32,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "pitton road": {
+   "km": 1.13,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Collector"
+  },
+  "piva avenue": {
+   "km": 0.24,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "pluto crescent": {
+   "km": 0.06,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "pope avenue": {
+   "km": 0.16,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "portage road": {
+   "km": 10.15,
+   "bike_lane": true,
+   "lanes": 2,
+   "lanes_share": 0.89,
+   "speed_kmh": 50,
+   "speed_kmh_share": 0.88,
+   "class": "Collector"
+  },
+  "post road": {
+   "km": 0.64,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "potter heights": {
+   "km": 0.14,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "powell avenue": {
+   "km": 0.12,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "preakness street": {
+   "km": 0.68,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Collector"
+  },
+  "president drive": {
+   "km": 0.35,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "preston avenue": {
+   "km": 0.22,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Collector"
+  },
+  "primrose lane": {
+   "km": 0.08,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "prince edward avenue": {
+   "km": 0.63,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "princess crescent": {
+   "km": 0.04,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "prior crescent": {
+   "km": 0.06,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "progress street": {
+   "km": 1.01,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Collector"
+  },
+  "prospect street": {
+   "km": 0.53,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "queen elizabeth way": {
+   "km": 46.49,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 0.4,
+   "speed_kmh": 100,
+   "speed_kmh_share": 0.42,
+   "class": "Expressway / Highway"
+  },
+  "queen street": {
+   "km": 1.03,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Collector"
+  },
+  "queensway crescent": {
+   "km": 0.04,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "queensway gardens": {
+   "km": 0.44,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "racey avenue": {
+   "km": 0.22,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "rainbow bridge": {
+   "km": 0.56,
+   "bike_lane": false,
+   "lanes": 1,
+   "lanes_share": 0.41,
+   "speed_kmh": 40,
+   "speed_kmh_share": 0.76,
+   "class": "Local / Street"
+  },
+  "rainbow crescent": {
+   "km": 0.12,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "ralph avenue": {
+   "km": 0.22,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "ramp": {
+   "km": 38.75,
+   "bike_lane": false,
+   "lanes": 1,
+   "lanes_share": 0.9,
+   "speed_kmh": 100,
+   "speed_kmh_share": 0.85,
+   "class": "Ramp"
+  },
+  "ramsey road": {
+   "km": 0.82,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Collector"
+  },
+  "randy drive": {
+   "km": 0.32,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "rapelje street": {
+   "km": 0.29,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "rapids view drive": {
+   "km": 0.23,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "ravine road": {
+   "km": 0.04,
+   "bike_lane": false,
+   "lanes": 1,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Strata"
+  },
+  "recine court": {
+   "km": 0.07,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "redbud lane": {
+   "km": 0.13,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "redhaven crescent": {
+   "km": 0.44,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "redmond heights": {
+   "km": 0.05,
+   "bike_lane": false,
+   "lanes": 1,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Strata"
+  },
+  "regan drive": {
+   "km": 0.58,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "regent court": {
+   "km": 0.08,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "reilly street": {
+   "km": 0.16,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "reixinger road": {
+   "km": 3.68,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 60,
+   "speed_kmh_share": 0.55,
+   "class": "Collector"
+  },
+  "rendall crescent": {
+   "km": 0.05,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "reta street": {
+   "km": 0.12,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "riall street": {
+   "km": 1.04,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Collector"
+  },
+  "rice crescent": {
+   "km": 0.1,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "richard crescent": {
+   "km": 0.28,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "richmond crescent": {
+   "km": 0.24,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "rideau street": {
+   "km": 0.3,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "ridge road": {
+   "km": 3.65,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 60,
+   "speed_kmh_share": 0.69,
+   "class": "Collector"
+  },
+  "ridgewood crescent": {
+   "km": 0.45,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "river lane": {
+   "km": 0.49,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "river road": {
+   "km": 4.0,
+   "bike_lane": true,
+   "lanes": 2,
+   "lanes_share": 0.91,
+   "speed_kmh": 50,
+   "speed_kmh_share": 0.83,
+   "class": "Arterial"
+  },
+  "robin avenue": {
+   "km": 0.17,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "robinson street": {
+   "km": 0.95,
+   "bike_lane": true,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Collector"
+  },
+  "rockcliffe estates": {
+   "km": 0.16,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "rockwood mews": {
+   "km": 0.09,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "rodney street": {
+   "km": 0.12,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "roger crescent": {
+   "km": 0.2,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "rolling acres crescent": {
+   "km": 0.21,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "rolling acres drive": {
+   "km": 0.74,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "ronnie crescent": {
+   "km": 0.37,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "roosevelt avenue": {
+   "km": 0.55,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "rosedale drive": {
+   "km": 0.42,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "roseland crescent": {
+   "km": 0.04,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "ross street": {
+   "km": 0.18,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "rosseau place": {
+   "km": 0.14,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "royal manor drive": {
+   "km": 1.54,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "russell street": {
+   "km": 1.01,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "ryerson crescent": {
+   "km": 0.63,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "rysdale street": {
+   "km": 0.45,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "sabine drive": {
+   "km": 0.38,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "saint luke street": {
+   "km": 0.05,
+   "bike_lane": false,
+   "lanes": 1,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "salisbury place": {
+   "km": 0.23,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "sam iorfida drive": {
+   "km": 0.83,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "sandhill drive": {
+   "km": 0.23,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "sandy court": {
+   "km": 0.1,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "sandy ridge common": {
+   "km": 0.24,
+   "bike_lane": false,
+   "class": "Local / Strata"
+  },
+  "sarah street": {
+   "km": 1.02,
+   "bike_lane": false,
+   "lanes": 1,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Collector"
+  },
+  "sassafras trail": {
+   "km": 0.32,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "sauer road": {
+   "km": 4.67,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 70,
+   "speed_kmh_share": 1.0,
+   "class": "Arterial"
+  },
+  "sauterne place": {
+   "km": 0.14,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "saw mill drive": {
+   "km": 0.2,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "schaubel road": {
+   "km": 1.15,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 0.99,
+   "speed_kmh": 50,
+   "speed_kmh_share": 0.99,
+   "class": "Collector"
+  },
+  "schihl road": {
+   "km": 0.33,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 0.91,
+   "speed_kmh": 60,
+   "speed_kmh_share": 0.91,
+   "class": "Arterial"
+  },
+  "schisler road": {
+   "km": 6.82,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 0.96,
+   "speed_kmh": 80,
+   "speed_kmh_share": 0.6,
+   "class": "Arterial"
+  },
+  "schneider road": {
+   "km": 1.18,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Collector"
+  },
+  "scholfield street": {
+   "km": 0.38,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "scott street": {
+   "km": 0.55,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "seabiscuit drive": {
+   "km": 0.28,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "sebastian crescent": {
+   "km": 0.34,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "second avenue": {
+   "km": 1.69,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "secord place": {
+   "km": 0.08,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "secretariat court": {
+   "km": 0.29,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "seneca street": {
+   "km": 0.15,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "shadbush lane": {
+   "km": 0.11,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "shagbark avenue": {
+   "km": 0.21,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "shane crescent": {
+   "km": 0.04,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "shannon drive": {
+   "km": 0.29,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "shapton crescent": {
+   "km": 0.35,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "sharon avenue": {
+   "km": 0.1,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "shaw street": {
+   "km": 0.13,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "sheldon street": {
+   "km": 0.74,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "sheppard crescent": {
+   "km": 0.08,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "sherk road": {
+   "km": 2.38,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 70,
+   "speed_kmh_share": 1.0,
+   "class": "Collector"
+  },
+  "sherri avenue": {
+   "km": 0.29,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "sherrilee crescent": {
+   "km": 0.41,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "class": "Local / Street"
+  },
+  "sherwood road": {
+   "km": 0.49,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "shirley avenue": {
+   "km": 0.5,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "shoveller drive": {
+   "km": 0.35,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "shuttleworth drive": {
+   "km": 0.47,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 0.84,
+   "class": "Local / Street"
+  },
+  "sidney street": {
+   "km": 0.16,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "siena court": {
+   "km": 0.02,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "silvan street": {
+   "km": 0.27,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "silverstar court": {
+   "km": 0.09,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "silverwood crescent": {
+   "km": 0.08,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "simcoe street": {
+   "km": 1.06,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "sinnicks avenue": {
+   "km": 1.34,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Collector"
+  },
+  "sixth avenue": {
+   "km": 1.35,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "skinner street": {
+   "km": 0.56,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "slater avenue": {
+   "km": 0.81,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "sodom road": {
+   "km": 9.42,
+   "bike_lane": true,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 80,
+   "speed_kmh_share": 0.87,
+   "class": "Arterial"
+  },
+  "solar crescent": {
+   "km": 0.07,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "solomon circle": {
+   "km": 0.04,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "somerville road": {
+   "km": 2.64,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Collector"
+  },
+  "sootheran drive": {
+   "km": 0.1,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "sophia avenue": {
+   "km": 0.2,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "sourgum avenue": {
+   "km": 0.33,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "south brookfield road": {
+   "km": 0.49,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "south green road": {
+   "km": 0.31,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 0.8,
+   "speed_kmh": 50,
+   "speed_kmh_share": 0.8,
+   "class": "Local / Street"
+  },
+  "south koabel road": {
+   "km": 0.31,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "south wood drive": {
+   "km": 0.37,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "southerland court": {
+   "km": 0.12,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "southgate avenue": {
+   "km": 0.22,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "southview avenue": {
+   "km": 0.37,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "spence street": {
+   "km": 0.36,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "splendour drive": {
+   "km": 0.45,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "spring blossom drive": {
+   "km": 0.74,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "spring street": {
+   "km": 0.76,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "springdale avenue": {
+   "km": 0.05,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "st andrew avenue": {
+   "km": 0.41,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "st anthony crescent": {
+   "km": 0.3,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "st augustine crescent": {
+   "km": 0.24,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "st clair avenue": {
+   "km": 0.74,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "st george avenue": {
+   "km": 0.82,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "st james avenue": {
+   "km": 0.75,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "st john street": {
+   "km": 0.52,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "st lawrence avenue": {
+   "km": 0.93,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "st marks avenue": {
+   "km": 0.11,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "st marys street": {
+   "km": 0.1,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "st michael avenue": {
+   "km": 1.78,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Collector"
+  },
+  "st patrick avenue": {
+   "km": 0.91,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "st paul avenue": {
+   "km": 2.7,
+   "bike_lane": true,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 0.55,
+   "class": "Arterial"
+  },
+  "st peter avenue": {
+   "km": 0.41,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "st thomas more drive": {
+   "km": 0.05,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "stacey drive": {
+   "km": 0.16,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "stamford green drive": {
+   "km": 1.09,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "stamford street": {
+   "km": 1.15,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "stanley avenue": {
+   "km": 14.74,
+   "bike_lane": true,
+   "lanes": 2,
+   "lanes_share": 0.81,
+   "speed_kmh": 50,
+   "speed_kmh_share": 0.45,
+   "class": "Arterial"
+  },
+  "stanton avenue": {
+   "km": 0.28,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "steele road": {
+   "km": 0.35,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "stevens street": {
+   "km": 0.46,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "stokes street": {
+   "km": 0.18,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "stone gate": {
+   "km": 0.07,
+   "bike_lane": false,
+   "lanes": 1,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "stonefield park": {
+   "km": 0.18,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "stonehaven avenue": {
+   "km": 0.24,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "strang drive": {
+   "km": 0.41,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "strathmore crescent": {
+   "km": 0.24,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "strohan street": {
+   "km": 0.24,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "stuart avenue": {
+   "km": 0.16,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "sumac court": {
+   "km": 0.05,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "summer street": {
+   "km": 0.67,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "sunhaven drive": {
+   "km": 0.37,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "sunnylea crescent": {
+   "km": 0.21,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "sunrise court": {
+   "km": 0.15,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "sunset avenue": {
+   "km": 0.09,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "sunshine common": {
+   "km": 0.5,
+   "bike_lane": false,
+   "class": "Local / Strata"
+  },
+  "susan crescent": {
+   "km": 0.02,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "sussex drive": {
+   "km": 0.19,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 0.83,
+   "speed_kmh": 50,
+   "speed_kmh_share": 0.83,
+   "class": "Local / Street"
+  },
+  "swan street": {
+   "km": 0.4,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "swart street": {
+   "km": 0.09,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "swayze drive": {
+   "km": 1.21,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Collector"
+  },
+  "sweet birch road": {
+   "km": 0.16,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "sweet chestnut drive": {
+   "km": 0.38,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "sycamore drive": {
+   "km": 0.15,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "sylvia place": {
+   "km": 0.21,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "symmes street": {
+   "km": 0.7,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "tad street": {
+   "km": 0.39,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "tallgrass avenue": {
+   "km": 1.07,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "tampa court": {
+   "km": 0.11,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "tapestry court": {
+   "km": 0.23,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "tara avenue": {
+   "km": 0.3,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "taylor road": {
+   "km": 4.0,
+   "bike_lane": true,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 70,
+   "speed_kmh_share": 0.92,
+   "class": "Arterial"
+  },
+  "taylor street": {
+   "km": 0.52,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "temperance avenue": {
+   "km": 0.41,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "terrace avenue": {
+   "km": 0.43,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "terravita drive": {
+   "km": 0.21,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "tesla court": {
+   "km": 0.04,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "thames crescent": {
+   "km": 0.07,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "theresa street": {
+   "km": 0.55,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "thibert street": {
+   "km": 0.07,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "third avenue": {
+   "km": 1.45,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "thistledown lane": {
+   "km": 0.12,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "thole place": {
+   "km": 0.06,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "thomas street": {
+   "km": 0.23,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "thompson road": {
+   "km": 0.46,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "thornhill crescent": {
+   "km": 0.02,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "thorold stone road": {
+   "km": 8.77,
+   "bike_lane": true,
+   "lanes": 4,
+   "lanes_share": 0.81,
+   "speed_kmh": 50,
+   "speed_kmh_share": 0.37,
+   "class": "Arterial"
+  },
+  "thorold townline road": {
+   "km": 7.65,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 0.82,
+   "speed_kmh": 60,
+   "speed_kmh_share": 0.43,
+   "class": "Arterial"
+  },
+  "thorton street": {
+   "km": 0.32,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "thundering waters boulevard": {
+   "km": 0.65,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 40,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Strata"
+  },
+  "timothy crescent": {
+   "km": 0.05,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "toby crescent": {
+   "km": 0.26,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "topaz crescent": {
+   "km": 0.11,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "trackview street": {
+   "km": 0.42,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "tramore crescent": {
+   "km": 0.35,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "trillium crescent": {
+   "km": 0.25,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "trinity court": {
+   "km": 0.06,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "tristar crescent": {
+   "km": 0.2,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "tulip tree drive": {
+   "km": 0.25,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "tupelo crescent": {
+   "km": 0.35,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "twidale avenue": {
+   "km": 0.15,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "university avenue": {
+   "km": 0.22,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "unnamed lane": {
+   "km": 0.81,
+   "bike_lane": false
+  },
+  "upper canada drive": {
+   "km": 0.37,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "upper rapids road": {
+   "km": 0.68,
+   "bike_lane": false,
+   "lanes": 1,
+   "lanes_share": 1.0,
+   "speed_kmh": 40,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "upper's lane": {
+   "km": 1.09,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 60,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "ussher street": {
+   "km": 0.38,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "valentina crescent": {
+   "km": 0.18,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "valerie court": {
+   "km": 0.02,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "valiant street": {
+   "km": 0.32,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "valley view crescent": {
+   "km": 0.07,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "valley way": {
+   "km": 3.11,
+   "bike_lane": true,
+   "lanes": 2,
+   "lanes_share": 0.93,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Collector"
+  },
+  "valour crescent": {
+   "km": 0.11,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "van alstyne place": {
+   "km": 0.06,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "varsity avenue": {
+   "km": 0.19,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "vegter court": {
+   "km": 0.04,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "venus crescent": {
+   "km": 0.13,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "victor drive": {
+   "km": 0.13,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "victoria avenue": {
+   "km": 3.58,
+   "bike_lane": true,
+   "lanes": 2,
+   "lanes_share": 0.87,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Arterial"
+  },
+  "village crescent": {
+   "km": 0.18,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "vincent street": {
+   "km": 0.15,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "vine street": {
+   "km": 0.73,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "vineyard common": {
+   "km": 0.1,
+   "bike_lane": false,
+   "class": "Local / Street"
+  },
+  "virginia street": {
+   "km": 0.14,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "viscount street": {
+   "km": 0.16,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "vivian court": {
+   "km": 0.05,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "walker court": {
+   "km": 0.15,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "wallace crescent": {
+   "km": 0.03,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "walnut street": {
+   "km": 0.32,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 0.82,
+   "speed_kmh": 50,
+   "speed_kmh_share": 0.82,
+   "class": "Local / Street"
+  },
+  "walter avenue": {
+   "km": 0.08,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "wanless street": {
+   "km": 0.24,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "warden avenue": {
+   "km": 0.72,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "warner road": {
+   "km": 1.78,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 60,
+   "speed_kmh_share": 0.74,
+   "class": "Local / Street"
+  },
+  "warren woods avenue": {
+   "km": 0.86,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Collector"
+  },
+  "waterloo drive": {
+   "km": 0.53,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "waters avenue": {
+   "km": 0.81,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "watson street": {
+   "km": 0.68,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Collector"
+  },
+  "wayne street": {
+   "km": 0.19,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "weaver road": {
+   "km": 4.29,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 60,
+   "speed_kmh_share": 1.0,
+   "class": "Arterial"
+  },
+  "wedgewood crescent": {
+   "km": 0.12,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "weinbrenner road": {
+   "km": 1.4,
+   "bike_lane": true,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Collector"
+  },
+  "welland street": {
+   "km": 1.07,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "wellington street": {
+   "km": 0.21,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "wendy drive": {
+   "km": 0.24,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "wentworth avenue": {
+   "km": 0.12,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "wesley place": {
+   "km": 0.08,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "westfield drive": {
+   "km": 0.59,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "westminster drive": {
+   "km": 0.56,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "westport drive": {
+   "km": 0.29,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "westwood street": {
+   "km": 0.7,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Collector"
+  },
+  "weyburn circle": {
+   "km": 0.04,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "whirlpool bridge access": {
+   "km": 0.18,
+   "bike_lane": false,
+   "lanes": 1,
+   "lanes_share": 1.0,
+   "speed_kmh": 20,
+   "speed_kmh_share": 1.0,
+   "class": "Ramp"
+  },
+  "whirlpool road": {
+   "km": 1.36,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 60,
+   "speed_kmh_share": 1.0,
+   "class": "Collector"
+  },
+  "white dove parkway": {
+   "km": 0.16,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "white oak avenue": {
+   "km": 0.59,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 0.64,
+   "class": "Local / Street"
+  },
+  "white pine crescent": {
+   "km": 0.3,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "whitman avenue": {
+   "km": 0.41,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "wiens boulevard": {
+   "km": 0.11,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "wildrose crescent": {
+   "km": 0.25,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "wilinger street": {
+   "km": 0.51,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "willey street": {
+   "km": 0.13,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "willguard court": {
+   "km": 0.06,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "william street": {
+   "km": 0.17,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "willick road": {
+   "km": 2.3,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 0.93,
+   "speed_kmh": 50,
+   "speed_kmh_share": 0.93,
+   "class": "Collector"
+  },
+  "willmott street": {
+   "km": 0.67,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "willodell road": {
+   "km": 6.56,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 0.98,
+   "speed_kmh": 70,
+   "speed_kmh_share": 0.87,
+   "class": "Collector"
+  },
+  "willoughby drive": {
+   "km": 9.31,
+   "bike_lane": true,
+   "lanes": 2,
+   "lanes_share": 0.97,
+   "speed_kmh": 50,
+   "speed_kmh_share": 0.66,
+   "class": "Collector"
+  },
+  "willow crescent": {
+   "km": 0.05,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "willow road": {
+   "km": 1.26,
+   "bike_lane": false,
+   "class": "Local / Street"
+  },
+  "wills street": {
+   "km": 0.47,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "wilson crescent": {
+   "km": 0.64,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "wiltshire boulevard": {
+   "km": 0.99,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "windermere road": {
+   "km": 0.63,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "windfield street": {
+   "km": 0.24,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "windgate drive": {
+   "km": 0.25,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "windsong drive": {
+   "km": 0.24,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "windsor crescent": {
+   "km": 0.41,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "winston street": {
+   "km": 0.56,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "woodbine street": {
+   "km": 1.36,
+   "bike_lane": true,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Collector"
+  },
+  "woodfield avenue": {
+   "km": 0.38,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "woodgate street": {
+   "km": 0.89,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Collector"
+  },
+  "woodington road": {
+   "km": 0.4,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "woodland boulevard": {
+   "km": 0.39,
+   "bike_lane": false,
+   "lanes": 1,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "woodside avenue": {
+   "km": 0.27,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "woodsview crescent": {
+   "km": 0.5,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "yale crescent": {
+   "km": 0.08,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "yokom road": {
+   "km": 3.83,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 70,
+   "speed_kmh_share": 0.89,
+   "class": "Collector"
+  },
+  "york drive": {
+   "km": 0.39,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "young road": {
+   "km": 3.71,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 60,
+   "speed_kmh_share": 0.68,
+   "class": "Collector"
+  },
+  "yvette crescent": {
+   "km": 0.14,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  },
+  "zimmerman avenue": {
+   "km": 0.51,
+   "bike_lane": false,
+   "lanes": 2,
+   "lanes_share": 1.0,
+   "speed_kmh": 50,
+   "speed_kmh_share": 1.0,
+   "class": "Local / Street"
+  }
+ }
+}

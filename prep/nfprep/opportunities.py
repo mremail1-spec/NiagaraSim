@@ -204,6 +204,8 @@ def main(n_scen: int = 5) -> dict:
                      "rule": f"a newcomer, small (25th percentile) or typical (median) for its kind, sells at least {BEAT}x what existing businesses of the same kind, format and area (Tourist Core or the residential city) sell, in every scenario, and keeps a profit margin after rent on that street",
                      "caution": "A single site's sales forecast can be off by up to about x3.6 either way (data/forecast_error.json); comparisons between spots and kinds are more reliable than the dollar figures."},
            "by_kind": by_kind, "opportunities": found, "opportunities_total": len(found)}
+    from .lots import annotate_opportunities          # the zoning at each spot (City by-laws, government data)
+    annotate_opportunities(doc)
     (ROOT / "docs" / "opportunities.json").write_text(json.dumps(doc, indent=1))
     for p in tmpdir.glob("*.json"):
         p.unlink()

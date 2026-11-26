@@ -135,3 +135,34 @@ def parcel_facts(pids_with_points):
         if b:
             out[pid]["bia"] = b
     return dict(out)
+
+
+# zones where a shop, grocery, pharmacy, restaurant or other storefront business is normally permitted
+STOREFRONT_ZONES = {"Commercial", "Tourist Commercial", "Resort Commercial", "Agri-Tourism"}
+
+
+def annotate_opportunities(doc):
+    """Add the zoning at each suggested spot (City zoning by-laws, government data): zone, zone_type, and
+    zone_ok = a storefront business is normally permitted there. A spot outside such a zone would need a
+    rezoning or minor variance, unless a site-specific provision allows it or the spot's point sits on the
+    lot next door; it is flagged, not dropped."""
+    zoning = _Areas(["zoning_79200", "zoning_willoughby", "zoning_crowland", "zoning_humberstone"], _zone)
+    n_off = 0
+    for o in doc.get("opportunities", []):
+        z = zoning.at(o["lon"], o["lat"])
+        o["zone"], o["zone_type"] = (z if z else [None, None])
+        o["zone_ok"] = bool(z) and z[1] in STOREFRONT_ZONES
+        n_off += not o["zone_ok"]
+    doc.setdefault("_meta", {})["zoning"] = (
+        f"City of Niagara Falls zoning by-laws (government data): {n_off} of {len(doc.get('opportunities', []))} spots are "
+        "outside a commercial zone (zone_ok false): they would need a rezoning or minor variance, unless a site-specific "
+        "provision allows the use or the spot's point falls on the neighbouring lot.")
+    return doc
+
+
+if __name__ == "__main__":
+    # annotate the current opportunity scan in place: python3 -m nfprep.lots
+    path = ROOT / "docs" / "opportunities.json"
+    d = annotate_opportunities(json.loads(path.read_text()))
+    path.write_text(json.dumps(d, indent=1))
+    print(d["_meta"]["zoning"])
