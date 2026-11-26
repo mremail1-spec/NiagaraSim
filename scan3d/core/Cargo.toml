@@ -1,0 +1,21 @@
+[package]
+name = "scan3d"
+version = "0.1.0"
+edition = "2021"
+description = "Browser photogrammetry: camera frames in, coloured point cloud and mesh out"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+nalgebra = { version = "0.33", default-features = false, features = ["std"] }
+wasm-bindgen = "=0.2.100"
+js-sys = "=0.3.77"
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+
+[profile.test]
+opt-level = 3
