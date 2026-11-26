@@ -231,12 +231,15 @@ def route_phase(max_requests: int = DAILY_CAP, edges_csv: Path = ROOT / "build" 
     return doc
 
 
-def speeds_for(edges: list[dict]) -> list[float | None]:
-    """TomTom free-flow km/h for each road piece (dicts with polyline points), or None."""
+def speeds_for(edges: list[dict], with_source: bool = False) -> list:
+    """TomTom free-flow km/h for each road piece (dicts with polyline points), or None. With with_source, each
+    result is (km/h, "flow" or "route"): flow = TomTom's measured free-flow speed on the street; route = from
+    TomTom's routing time end to end, which includes turns and stops, so it reads lower on short local pieces."""
     if not OUT.exists():
-        return [None] * len(edges)
+        return [(None, None) if with_source else None] * len(edges)
     doc = json.loads(OUT.read_text())
     segs = [(s["line"], s["kmh"]) for s in doc["segments"] if s["kmh"]]
+    srcs = [s.get("src", "flow") for s in doc["segments"] if s["kmh"]]
     # index segments by a coarse grid for speed
     grid = {}
     for i, (line, _) in enumerate(segs):
@@ -246,7 +249,7 @@ def speeds_for(edges: list[dict]) -> list[float | None]:
     for e in edges:
         pts = e["pts"]
         if len(pts) < 2:
-            out.append(None)
+            out.append((None, None) if with_source else None)
             continue
         k = len(pts) // 2
         mid = pts[k]
@@ -255,8 +258,13 @@ def speeds_for(edges: list[dict]) -> list[float | None]:
         for dla in (-0.01, 0, 0.01):
             for dlo in (-0.01, 0, 0.01):
                 cand |= grid.get((round(mid[0] + dla, 2), round(mid[1] + dlo, 2)), set())
-        hit = [segs[i][1] for i in cand if _on_line(mid, ang, segs[i][0])]
-        out.append(float(np.median(hit)) if hit else None)
+        idx = [i for i in cand if _on_line(mid, ang, segs[i][0])]
+        hit = [segs[i][1] for i in idx]
+        v = float(np.median(hit)) if hit else None
+        if with_source:
+            out.append((v, ("flow" if any(srcs[i] == "flow" for i in idx) else "route") if hit else None))
+        else:
+            out.append(v)
     return out
 
 

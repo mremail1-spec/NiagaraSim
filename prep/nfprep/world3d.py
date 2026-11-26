@@ -148,6 +148,25 @@ def parcels_for(blds):
     return out
 
 
+def road_speeds(way_geo):
+    """(posted limit km/h, TomTom clear-road km/h, City lanes, TomTom source "flow" or "route") per OSM way,
+    cached in build/world_road_speeds_v2.json by way id (the matching takes minutes)."""
+    from nfprep.speed_limits import limits_for
+    from nfprep.street_speeds import speeds_for
+    cache_path = ROOT / "build" / "world_road_speeds_v2.json"
+    cache = json.loads(cache_path.read_text()) if cache_path.exists() else {}
+    todo = [(wid, pts, hw) for wid, pts, hw, _ in way_geo if str(wid) not in cache]
+    if todo:
+        edges = [{"pts": pts, "class": hw} for _, pts, hw in todo]
+        real = speeds_for(edges, with_source=True)
+        lim = limits_for(edges)
+        for (wid, _, _), (v, src), (L, lanes) in zip(todo, real, lim):
+            cache[str(wid)] = [L, round(v) if v else None, lanes, src]
+        cache_path.parent.mkdir(parents=True, exist_ok=True)
+        cache_path.write_text(json.dumps(cache))
+    return [cache[str(wid)] for wid, *_ in way_geo]
+
+
 def main():
     city_path = ROOT / "web/city.json"
     city = json.loads(city_path.read_text())
@@ -250,7 +269,7 @@ def main():
                         best, bd = i, d
         return best
 
-    roads = []
+    roads, way_geo = [], []
     for e in json.loads((DATA / "sources/osm_roads_overpass.json").read_text())["elements"]:
         t = e.get("tags", {})
         hw = t.get("highway")
@@ -264,11 +283,24 @@ def main():
         width = max(5.0, lanes * 3.5 + (1.0 if hw in ("residential", "unclassified") else 0.0))
         mid = pts[len(pts) // 2]
         n = nearest_node(*mid)
+        way_geo.append((e.get("id"), [(p["lat"], p["lon"]) for p in e["geometry"]], hw, "lanes" in t))
         roads.append({"c": ROAD_CLASS[hw], "w": round(width, 1), "n": t.get("name") or t.get("ref") or "",
                       "o": 1 if t.get("oneway") in ("yes", "1") or hw.startswith("motorway") else 0,
                       "br": 1 if t.get("bridge") not in (None, "no") else 0,
                       "v": round(nodes["passing"][n]) if n is not None and nodes.get("passing") else 0,
                       "p": delta(pts)})
+
+    # each road's legal limit (City, government data) and real clear-road speed (TomTom, measured), and the City's
+    # lane count where OpenStreetMap has none (road width)
+    for r, (lim, real, lanes, src), (_, _, hw, has_lanes) in zip(roads, road_speeds(way_geo), way_geo):
+        if lim:
+            r["lim"] = lim
+        if real:
+            r["rs"] = real
+            if src == "route":
+                r["rsr"] = 1                       # from TomTom route times: block to block, with turns and stops
+        if lanes and not has_lanes and not hw.endswith("_link"):
+            r["w"] = round(max(5.0, lanes * 3.5 + (1.0 if hw in ("residential", "unclassified") else 0.0)), 1)
 
     # --- sidewalks (City), with the model's walkers per day
     walks = []

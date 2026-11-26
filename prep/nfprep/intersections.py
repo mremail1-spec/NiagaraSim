@@ -32,10 +32,33 @@ SNAP_M = 40
 MINOR = {"residential", "service", "unclassified", "tertiary", "living_street", "tertiary_link"}
 
 
-def controls(lat: np.ndarray, lon: np.ndarray, junction: np.ndarray) -> tuple[set, set, set]:
+# Where the controls come from: "osm" (OpenStreetMap), or "city+osm": the City of Niagara Falls Traffic Engineering
+# intersections (data/city_open_data/world/intersections.geojson; government data: every City and Regional
+# intersection inside the city with its control) plus OpenStreetMap's signals, since the City's file lists only the
+# lights it runs itself, not the Region's.
+SOURCE = "osm"
+CITY_CONTROLS = Path(__file__).resolve().parents[2] / "data" / "city_open_data" / "world" / "intersections.geojson"
+CITY_KIND = {"Traffic Light": "signal", "All -way stop": "all", "Stop Sign": "stop"}
+
+
+def _city_elements():
+    out = []
+    for f in json.loads(CITY_CONTROLS.read_text())["features"]:
+        k = CITY_KIND.get(f["properties"].get("ControlType"))
+        if k and f["geometry"]:
+            lon_, lat_ = f["geometry"]["coordinates"][:2]
+            tags = {"highway": "traffic_signals"} if k == "signal" else {"highway": "stop", **({"stop": "all"} if k == "all" else {})}
+            out.append({"lat": lat_, "lon": lon_, "tags": tags})
+    return out
+
+
+def controls(lat: np.ndarray, lon: np.ndarray, junction: np.ndarray, source: str | None = None) -> tuple[set, set, set]:
     """Controls tied to real intersections only (3 or more streets meet): signals mapped on each
     approach a few metres back fold into one intersection, so a crossing is delayed once."""
+    source = source or SOURCE
     els = json.loads((DATA_DIR / "sources" / "osm_traffic_controls.json").read_text())["elements"]
+    if source == "city+osm":
+        els = [e for e in els if e["tags"].get("highway") == "traffic_signals"] + _city_elements()
     sig, allway, stop = set(), set(), set()
     for e in els:
         d = np.hypot((lat - e["lat"]) * 111_320, (lon - e["lon"]) * 111_320 * np.cos(np.radians(e["lat"])))

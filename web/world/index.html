@@ -610,7 +610,7 @@ async function ingestTile(doc) {
     if (roadById.has(r.id)) continue;
     const ri = roads.length, pts = undelta(r.p), c = cum(pts);
     roadById.set(r.id, ri);
-    roads.push({ pts, cum: c, len: c[c.length - 1], w: r.w, c: r.c, n: r.n, o: r.o, br: r.br, v: r.v, h0: H(...pts[0]), h1: H(...pts[pts.length - 1]) });
+    roads.push({ pts, cum: c, len: c[c.length - 1], w: r.w, c: r.c, n: r.n, o: r.o, br: r.br, v: r.v, lim: r.lim, rs: r.rs, rsr: r.rsr, h0: H(...pts[0]), h1: H(...pts[pts.length - 1]) });
     for (let s2 = 0; s2 < pts.length - 1; s2++) {
       const mx = (pts[s2][0] + pts[s2 + 1][0]) / 2, mz = (pts[s2][1] + pts[s2 + 1][1]) / 2;
       const [kx, kz] = chunkOf(mx, mz); list(key(kx, kz)).r.push([ri, s2]);
@@ -1610,7 +1610,17 @@ function nearestRoad(x, z, maxD = 60) {
 // ---------------------------------------------------------------- traffic and crowds, in the model's numbers
 const cars = [], peds = [];
 const MAX_CARS = 140, MAX_PEDS = 160, SPAWN_R = 380, KEEP_R = 480;
-const CLASS_SPEED = [27, 14, 15, 13, 10];   // m/s by road class
+const CLASS_SPEED = [27, 14, 15, 13, 10];   // m/s by road class, where the street has no limit or measured speed
+// how fast drivers go against the legal limit on clear roads, by road class (TomTom flow speeds over City limits,
+// data/street_speed_vs_limit.json): highways a little over, arterials at it, collectors and local streets below
+const OVER_LIMIT = [1.10, 1.10, 0.98, 0.88, 0.84];
+// a car's cruising speed on a road (m/s): TomTom's measured clear-road speed, else the legal limit as drivers
+// treat it on roads of that kind (TomTom route times include stops, so they do not set a cruising speed)
+function cruise(r) {
+  if (r.rs && !r.rsr) return r.rs / 3.6;
+  if (r.lim) return r.lim * OVER_LIMIT[r.c] / 3.6;
+  return CLASS_SPEED[r.c];
+}
 function along(line, s) {
   const c = line.cum; let i = 0, lo = 0, hi = c.length - 1;
   while (hi - lo > 1) { const m = (lo + hi) >> 1; if (c[m] <= s) lo = m; else hi = m; } i = lo;
@@ -1652,7 +1662,7 @@ function spawnCar() {
   const s = Math.random() * r.len;
   const [x, z] = along(r, s); if (Math.hypot(x - player.x, z - player.z) < 40) return;
   const mesh = carMesh(CAR_COLORS[Math.floor(Math.random() * CAR_COLORS.length)]); scene.add(mesh);
-  cars.push({ ri, dir, s, v: CLASS_SPEED[r.c] * (0.75 + Math.random() * 0.3), mesh, lane: r.o ? 0 : Math.min(r.w / 4, 2.6) });
+  cars.push({ ri, dir, s, v: cruise(r) * (0.88 + Math.random() * 0.2), mesh, lane: r.o ? 0 : Math.min(r.w / 4, 2.6) });
 }
 function spawnPed() {
   const wi = pick(nearby.walks, nearby.ww); if (wi == null) return;
@@ -1840,8 +1850,10 @@ function updateHUD() {
   const r = nearestRoad(player.x, player.z, 80);
   $("street").textContent = r && roads[r.ri].n ? roads[r.ri].n : "Niagara Falls";
   const [lat, lon] = xzToLL(player.x, player.z);
-  const veh = r ? roads[r.ri].v : 0;
-  $("whereSub").textContent = `${lat.toFixed(5)}, ${lon.toFixed(5)} · ${veh ? `${veh.toLocaleString()} vehicles a day here (model)` : "side street"} · ${cars.length} cars, ${peds.length} people near you`;
+  const veh = r ? roads[r.ri].v : 0, rd = r ? roads[r.ri] : null;
+  // the legal limit (City) next to how fast people really drive here on a clear road (TomTom)
+  const speed = !rd || !(rd.lim || rd.rs) ? "" : ` · ${rd.lim ? `limit ${rd.lim} km/h` : ""}${rd.lim && rd.rs ? ", " : ""}${rd.rs ? (rd.rsr ? `${rd.rs} km/h block to block (TomTom)` : `drivers do ${rd.rs} km/h on a clear road (TomTom)`) : ""}`;
+  $("whereSub").textContent = `${lat.toFixed(5)}, ${lon.toFixed(5)} · ${veh ? `${veh.toLocaleString()} vehicles a day here (model)` : "side street"}${speed} · ${cars.length} cars, ${peds.length} people near you`;
   const w = player.car ? null : nearestWall(player.x, player.z, 12);
   focus = w ? { b: B[w.bi], k: w.k } : null;
   const ck = focus ? focus.b.id + ":" + focus.k : "";
