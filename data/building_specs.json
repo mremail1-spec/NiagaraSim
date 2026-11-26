@@ -1,0 +1,30 @@
+{
+ "_meta": {
+  "what": "3D models of real buildings, written from the owner's photos. The game builds each one: walls up to eave_m, a roof, and the windows, doors, signs and awnings on each wall.",
+  "units": "metres. facades are keyed by wall number (shown in the game's building card); x runs along the wall from its left end as seen from outside, y up from the ground.",
+  "roof_types": "flat, hip, gable, mansard (a sloped band of band_m around a flat top)",
+  "wall_materials": "block, brick, siding, stucco, stone",
+  "items": "window {x,y,w,h,grid:[cols,rows],frame}, door {x,w,h,color,glass,sidelights,sidelight_w}, sign {x,y,w,h,text,bg,fg,out_m}, awning {x,y,w,depth,color}",
+  "status": "draft = estimated from one photo, to check against the owner's own photos; checked = matched to the owner's photos"
+ },
+ "buildings": [
+  {
+   "building": "07fb9d0e1b",
+   "name": "Chengdu Noodles, 7940 Lundy's Ln",
+   "status": "draft",
+   "from": "one photo shared in chat on 2026-11-26 (front only). The front is taken as wall 0, the 7.6 m wall facing Lundy's Lane: to confirm on site.",
+   "eave_m": 2.7,
+   "roof": {"type": "mansard", "band_m": 0.9, "pitch_deg": 62, "color": "#4f565c", "overhang_m": 0.2},
+   "walls": {"material": "block", "color": "#a39684"},
+   "trim": "#f4f4f2",
+   "facades": {
+    "0": [
+     {"type": "window", "x": 0.8, "y": 0.85, "w": 1.6, "h": 1.55, "grid": [3, 4], "frame": "#2a2c2e"},
+     {"type": "door", "x": 3.55, "w": 0.95, "h": 2.1, "color": "#3b2a2c", "glass": true, "sidelights": true, "sidelight_w": 0.42},
+     {"type": "window", "x": 5.6, "y": 0.85, "w": 1.7, "h": 1.55, "grid": [3, 4], "frame": "#2a2c2e"},
+     {"type": "sign", "x": 0.6, "y": 2.85, "w": 6.6, "h": 1.0, "text": "Chengdu Noodles 成都面", "bg": "#c8202a", "fg": "#ffffff", "out_m": 0.35}
+    ]
+   }
+  }
+ ]
+}

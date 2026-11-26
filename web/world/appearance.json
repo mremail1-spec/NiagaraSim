@@ -3,5 +3,75 @@
   "what": "Wall photos and models for the 3D city (built by prep/nfprep/facades.py)",
   "credits": []
  },
- "buildings": {}
+ "buildings": {
+  "07fb9d0e1b": {
+   "walls": {},
+   "spec": {
+    "name": "Chengdu Noodles, 7940 Lundy's Ln",
+    "status": "draft",
+    "eave_m": 2.7,
+    "roof": {
+     "type": "mansard",
+     "band_m": 0.9,
+     "pitch_deg": 62,
+     "color": "#4f565c",
+     "overhang_m": 0.2
+    },
+    "walls": {
+     "material": "block",
+     "color": "#a39684"
+    },
+    "trim": "#f4f4f2",
+    "facades": {
+     "0": [
+      {
+       "type": "window",
+       "x": 0.8,
+       "y": 0.85,
+       "w": 1.6,
+       "h": 1.55,
+       "grid": [
+        3,
+        4
+       ],
+       "frame": "#2a2c2e"
+      },
+      {
+       "type": "door",
+       "x": 3.55,
+       "w": 0.95,
+       "h": 2.1,
+       "color": "#3b2a2c",
+       "glass": true,
+       "sidelights": true,
+       "sidelight_w": 0.42
+      },
+      {
+       "type": "window",
+       "x": 5.6,
+       "y": 0.85,
+       "w": 1.7,
+       "h": 1.55,
+       "grid": [
+        3,
+        4
+       ],
+       "frame": "#2a2c2e"
+      },
+      {
+       "type": "sign",
+       "x": 0.6,
+       "y": 2.85,
+       "w": 6.6,
+       "h": 1.0,
+       "text": "Chengdu Noodles \u6210\u90fd\u9762",
+       "bg": "#c8202a",
+       "fg": "#ffffff",
+       "out_m": 0.35
+      }
+     ]
+    }
+   }
+  }
+ }
 }

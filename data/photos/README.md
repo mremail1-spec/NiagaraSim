@@ -1,6 +1,19 @@
 # Photos for the 3D city
 
-Your own photos turn the drawn walls of the 3D city (`web/world`) into the real buildings. Each photo covers one wall.
+Your own photos are the reference for 3D models of the real buildings. Claude reads them and writes each building's
+spec in `data/building_specs.json` (storeys, eave height, roof shape, wall material and colour, every window, door,
+sign and awning in metres), and the game builds the model from it. The photos themselves are not shown in the game.
+
+## Sending photos from the game
+1. Walk up to the building. Press **P** (or **Send photos for the 3D model** on its card).
+2. Take or choose photos: the whole building from across the street, each side if you can, and close-ups of the
+   door, windows and sign. Add a note if something is not obvious (two storeys at the back, the door faces the lot).
+3. **Send photos**. Each is shrunk and re-encoded in your browser first, which drops its GPS location and camera details,
+   and is filed under that building and the wall you were facing.
+4. Ask Claude to "build the models from my photos". Photos sent in the chat work too: say which building they show.
+
+## Older option: a photo straightened onto a wall
+`data/building_photos.json` and the steps below still work for pasting a straightened photo onto one wall.
 
 ## Adding a photo in the game (easiest)
 1. Open the game, walk up to the wall and face it. The card shows the building id and the wall number.

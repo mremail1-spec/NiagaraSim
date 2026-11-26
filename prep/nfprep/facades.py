@@ -1,6 +1,7 @@
 """Bake wall photos and building models into the 3D city.
 
-Reads data/building_photos.json (photos in data/photos/) and data/building_models.json (models in data/models/),
+Reads data/building_specs.json (3D models described from the owner's photos), data/building_photos.json
+(photos in data/photos/) and data/building_models.json (models in data/models/),
 straightens each photo onto its wall with a perspective transform, and writes web/world/tex/*.jpg,
 web/world/models/*.glb and web/world/appearance.json, which the game loads.
 
@@ -117,9 +118,14 @@ def main():
         shutil.copy(DATA / "models" / m["file"], model_dir / m["file"])
         out.setdefault(m["building"], {"walls": {}})["model"] = {"src": f"models/{m['file']}", "scale": m.get("scale", 1),
                                                                  "rotate_deg": m.get("rotate_deg", 0), "offset": m.get("offset_m", [0, 0, 0])}
+    for sp in json.loads((DATA / "building_specs.json").read_text())["buildings"]:
+        if sp["building"] not in buildings:
+            skipped.append(f"spec {sp.get('name')}: building {sp['building']} not found")
+            continue
+        out.setdefault(sp["building"], {"walls": {}})["spec"] = {k: v for k, v in sp.items() if k not in ("building", "from")}
     doc = {"_meta": {"what": "Wall photos and models for the 3D city (built by prep/nfprep/facades.py)", "credits": credits}, "buildings": out}
     (WORLD / "appearance.json").write_text(json.dumps(doc, indent=1))
-    print(f"appearance.json: {sum(len(v['walls']) for v in out.values())} walls, {sum('model' in v for v in out.values())} models")
+    print(f"appearance.json: {sum('spec' in v for v in out.values())} buildings from specs, {sum(len(v['walls']) for v in out.values())} photo walls, {sum('model' in v for v in out.values())} models")
     for s in skipped:
         print("skipped:", s)
 

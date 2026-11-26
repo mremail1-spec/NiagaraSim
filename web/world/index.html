@@ -65,7 +65,9 @@ button.primary { background: var(--sign); border-color: #fff; color: #fff; }
 #photo header { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
 #photo header b { font-family: var(--display); font-size: 22px; margin-right: auto; }
 #photo .stage { position: relative; min-height: 0; display: grid; place-items: center; background: #0a110f; border-radius: 6px; overflow: hidden; }
-#photo canvas { max-width: 100%; max-height: 100%; touch-action: none; }
+.thumbs { display: flex; flex-wrap: wrap; gap: 8px; padding: 10px; align-content: flex-start; width: 100%; height: 100%; overflow: auto; }
+.thumbs img { height: 120px; max-width: 100%; border-radius: 4px; object-fit: cover; }
+.thumbs p { color: var(--muted); margin: auto; text-align: center; max-width: 40ch; }
 #photo footer { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; font-size: 13px; color: var(--muted); }
 #photo footer label { display: flex; gap: 6px; align-items: center; }
 #photo input[type=number] { width: 64px; font: inherit; color: var(--paper); background: var(--ink-2); border: 1px solid color-mix(in srgb, var(--paper) 22%, transparent); border-radius: 4px; padding: 6px; }
@@ -114,7 +116,7 @@ button.primary { background: var(--sign); border-color: #fff; color: #fff; }
       <dt>Space</dt><dd>Jump, or brake in a car</dd>
       <dt>E</dt><dd>Get into the nearest car, or out</dd>
       <dt>M</dt><dd>City map: click a spot to go there</dd>
-      <dt>P</dt><dd>Add your photo to the wall in front of you</dd>
+      <dt>P</dt><dd>Send photos of the building in front of you, for its 3D model</dd>
     </dl>
     <p>On a phone: the left circle walks, drag anywhere else to look.</p>
     <div class="row" style="display:flex;gap:8px;flex-wrap:wrap"><button class="primary" id="btnStart">Start walking</button></div>
@@ -127,16 +129,14 @@ button.primary { background: var(--sign); border-color: #fff; color: #fff; }
 </div>
 
 <div id="photo" hidden>
-  <header><b id="photoTitle">Photo of a wall</b>
-    <label class="btn" for="photoFile">Choose photo</label><input id="photoFile" type="file" accept="image/*" capture="environment" hidden>
+  <header><b id="photoTitle">Photos for the 3D model</b>
+    <label class="btn primary" for="photoFile">Take or choose photos</label><input id="photoFile" type="file" accept="image/*" multiple hidden>
     <button id="photoCancel">Close</button></header>
-  <div class="stage"><canvas id="photoCanvas" width="10" height="10"></canvas></div>
+  <div class="stage"><div id="photoThumbs" class="thumbs"></div></div>
   <footer>
-    <span>Drag the four yellow corners onto the wall's corners: top-left, top-right, bottom-right, bottom-left.</span>
-    <label>Bottom <input id="photoBottom" type="number" min="0" step="0.5" value="0"> m</label>
-    <label>Top <input id="photoTop" type="number" min="1" step="0.5" value="0"> m</label>
-    <button id="photoPreview">Preview on wall</button>
-    <button id="photoSave" class="primary" disabled>Save photo</button>
+    <span>Photograph the whole building from across the street, each side if you can, and close-ups of the door, windows and sign. Claude builds the 3D model from them.</span>
+    <label style="flex:1 1 260px">Note <input id="photoNote" type="text" maxlength="300" placeholder="e.g. two storeys, the sign is red, door faces the lot" style="flex:1;min-width:0;font:inherit;color:var(--paper);background:var(--ink-2);border:1px solid color-mix(in srgb, var(--paper) 22%, transparent);border-radius:4px;padding:6px"></label>
+    <button id="photoSave" class="primary" disabled>Send photos</button>
     <span class="msg" id="photoMsg"></span>
   </footer>
 </div>
@@ -242,6 +242,7 @@ grassTex.repeat.set(1, 1);
 const M = {
   walls: Object.fromEntries(Object.entries(wallTex).map(([k, t]) => [k, new THREE.MeshLambertMaterial({ map: t, vertexColors: true })])),
   roof: new THREE.MeshLambertMaterial({ color: "#8a8780", vertexColors: true }),
+  roofPitched: new THREE.MeshLambertMaterial({ vertexColors: true, side: THREE.DoubleSide }),
   road: new THREE.MeshLambertMaterial({ map: roadTex, side: THREE.DoubleSide, polygonOffset: true, polygonOffsetFactor: -2, polygonOffsetUnits: -2 }),
   roadOne: new THREE.MeshLambertMaterial({ map: roadTexOne, side: THREE.DoubleSide, polygonOffset: true, polygonOffsetFactor: -2, polygonOffsetUnits: -2 }),
   joint: new THREE.MeshLambertMaterial({ color: "#4a4d50", side: THREE.DoubleSide, polygonOffset: true, polygonOffsetFactor: -1, polygonOffsetUnits: -1 }),
@@ -337,7 +338,7 @@ function buildGraph(lines, map) {
 // ---------------------------------------------------------------- appearance: photos and models
 // baked: appearance.json from the repo build (data/building_photos.json -> prep/nfprep/facades.py)
 // live: photos added in this page (db "facades" + assets), shown at once for everyone who opens it
-const appearance = { walls: new Map(), models: new Map() };   // "bid:wall" -> {src, v0, v1}
+const appearance = { walls: new Map(), models: new Map(), specs: new Map() };   // "bid:wall" -> {src, v0, v1}
 const texCache = new Map();
 function wallKey(bid, k) { return bid + ":" + k; }
 function wallPhoto(b, k) { return appearance.walls.get(wallKey(b.id, k)); }
@@ -385,17 +386,22 @@ function roofGeom(b) {
   return g;
 }
 function buildingMeshes(ids, group) {
-  const arrs = {}, roofs = [];
+  const arrs = {}, roofs = [], pitched = [];
   for (const bi of ids) {
     const b = B[bi];
     if (appearance.models.has(b.id)) { placeModel(b, group); continue; }
+    if (appearance.specs.has(b.id)) { group.add(specBuilding(b, appearance.specs.get(b.id))); continue; }
     const arr = arrs[b.style] || (arrs[b.style] = { pos: [], nrm: [], uv: [], col: [], u: 0 });
     arr.u = hash01(b.id) * 4;
+    // houses get a hip roof over their outline's rectangle: the City height is taken as the ridge
+    const hip = b.style === "house" && b.h >= 4 ? autoHip(b) : null;
+    const wallH = hip ? hip.eave : b.h;
     for (let k = 0; k < b.ring.length; k++) {
       const ph = wallPhoto(b, k);
-      pushWall(arr, b, k, b.h, !!ph);
+      pushWall(arr, b, k, wallH, !!ph);
       if (ph) group.add(photoWallMesh(b, k, ph));
     }
+    if (hip) { pitched.push(hip.geom); continue; }
     const r = roofGeom(b); if (r) roofs.push(r);
   }
   for (const [style, arr] of Object.entries(arrs)) {
@@ -403,6 +409,158 @@ function buildingMeshes(ids, group) {
     const m = new THREE.Mesh(g, M.walls[style]); m.castShadow = m.receiveShadow = true; group.add(m);
   }
   if (roofs.length) { const m = new THREE.Mesh(mergeGeometries(roofs), M.roof); m.castShadow = m.receiveShadow = true; group.add(m); }
+  if (pitched.length) { const m = new THREE.Mesh(mergeGeometries(pitched), M.roofPitched); m.castShadow = m.receiveShadow = true; group.add(m); }
+}
+
+// ---------------------------------------------------------------- 3D models from building specs
+// A spec (data/building_specs.json, written from the owner's photos) describes the real building: eave height,
+// roof shape, wall material and colour, and each window, door, sign and awning in metres along a wall
+// (x from the wall's left end as seen from outside, y up from the ground).
+function obb(ring) {
+  let best = null;
+  for (let k = 0; k < ring.length; k++) {
+    const [ax, az] = ring[k], [bx, bz] = ring[(k + 1) % ring.length], L = Math.hypot(bx - ax, bz - az); if (L < 0.5) continue;
+    const ux = (bx - ax) / L, uz = (bz - az) / L, vx = -uz, vz = ux;
+    let s0 = 1e9, s1 = -1e9, t0 = 1e9, t1 = -1e9;
+    for (const [x, z] of ring) { const s = x * ux + z * uz, t = x * vx + z * vz; s0 = Math.min(s0, s); s1 = Math.max(s1, s); t0 = Math.min(t0, t); t1 = Math.max(t1, t); }
+    const area = (s1 - s0) * (t1 - t0);
+    if (!best || area < best.area) best = { area, ux, uz, vx, vz, hl: (s1 - s0) / 2, hw: (t1 - t0) / 2, cx: ux * (s0 + s1) / 2 + vx * (t0 + t1) / 2, cz: uz * (s0 + s1) / 2 + vz * (t0 + t1) / 2 };
+  }
+  if (best && best.hl < best.hw) best = { ...best, ux: best.vx, uz: best.vz, hl: best.hw, hw: best.hl };   // u along the long side
+  if (best) { best.vx = -best.uz; best.vz = best.ux; }
+  return best;
+}
+// roof surfaces over the footprint's rectangle; returns triangles for the roof and for gable-end walls
+function roofShape(o, eave, roof) {
+  const type = roof.type || "hip", ov = roof.overhang_m ?? 0.35, p = (roof.pitch_deg ?? 30) * Math.PI / 180;
+  const hl = o.hl + ov, hw = o.hw + ov;
+  const C = (su, sv, y) => [o.cx + o.ux * su + o.vx * sv, y, o.cz + o.uz * su + o.vz * sv];
+  const R = [], G = [];
+  const quad = (a, b, c, d, out = R) => out.push(a, b, c, a, c, d);
+  if (type === "mansard") {
+    const band = roof.band_m ?? 1.0, inset = band / Math.tan(p), top = eave + band;
+    const lo = [C(-hl, -hw, eave), C(hl, -hw, eave), C(hl, hw, eave), C(-hl, hw, eave)];
+    const hi = [C(-hl + inset, -hw + inset, top), C(hl - inset, -hw + inset, top), C(hl - inset, hw - inset, top), C(-hl + inset, hw - inset, top)];
+    for (let i = 0; i < 4; i++) quad(lo[i], lo[(i + 1) % 4], hi[(i + 1) % 4], hi[i]);
+    quad(hi[0], hi[1], hi[2], hi[3]);
+    return { R, G, top };
+  }
+  const rise = Math.min(roof.max_rise_m ?? 1e9, hw * Math.tan(p)), ry = eave + rise;
+  const c00 = C(-hl, -hw, eave), c10 = C(hl, -hw, eave), c11 = C(hl, hw, eave), c01 = C(-hl, hw, eave);
+  if (type === "gable") {
+    const r0 = C(-hl, 0, ry), r1 = C(hl, 0, ry);
+    quad(c00, c10, r1, r0); quad(c11, c01, r0, r1);
+    const g0 = C(-o.hl, -o.hw, eave), g1 = C(-o.hl, o.hw, eave), g2 = C(o.hl, -o.hw, eave), g3 = C(o.hl, o.hw, eave);
+    G.push(g0, g1, C(-o.hl, 0, ry), g2, g3, C(o.hl, 0, ry));
+    return { R, G, top: ry };
+  }
+  const d = Math.max(0, hl - hw), r0 = C(-d, 0, ry), r1 = C(d, 0, ry);
+  quad(c00, c10, r1, r0); quad(c11, c01, r0, r1);
+  R.push(c10, c11, r1, c01, c00, r0);
+  return { R, G, top: ry };
+}
+function trisGeom(pts, rgb) {
+  const g = new THREE.BufferGeometry();
+  g.setAttribute("position", new THREE.Float32BufferAttribute(pts.flat(), 3));
+  if (rgb) { const c = []; for (let i = 0; i < pts.length; i++) c.push(rgb.r, rgb.g, rgb.b); g.setAttribute("color", new THREE.Float32BufferAttribute(c, 3)); }
+  g.computeVertexNormals();
+  return g;
+}
+const ROOF_TINTS = ["#5b5e63", "#4a4038", "#6b5a4a", "#3f464d", "#6e6f6b", "#5a4a42"];
+function autoHip(b) {
+  const o = obb(b.ring); if (!o) return null;
+  if (b.area / (4 * o.hl * o.hw) < 0.82 || o.hw > 9) return null;        // only near-rectangular, house-sized outlines
+  const rise = Math.min(b.h * 0.4, o.hw * Math.tan(28 * Math.PI / 180)), eave = Math.max(2.6, b.h - rise);
+  const sh = ROOF_TINTS[Math.floor(hash01(b.id + "roof") * ROOF_TINTS.length)];
+  const { R } = roofShape(o, eave, { type: hash01(b.id + "g") < 0.35 ? "gable" : "hip", pitch_deg: 28, overhang_m: 0.4, max_rise_m: rise });
+  return { eave, geom: trisGeom(R, new THREE.Color(sh)) };
+}
+// drawn wall materials, tinted by the spec's colour; size = metres one tile covers
+const MAT_TEX = {
+  block: [0.8, canvasTex(128, 128, (g, w, h) => { g.fillStyle = "#fff"; g.fillRect(0, 0, w, h); g.strokeStyle = "rgba(0,0,0,.22)"; g.lineWidth = 2; for (let r = 0; r < 4; r++) { const y = r * 32; g.beginPath(); g.moveTo(0, y); g.lineTo(w, y); g.stroke(); for (let x = (r % 2) * 32; x < w + 64; x += 64) { g.beginPath(); g.moveTo(x, y); g.lineTo(x, y + 32); g.stroke(); } } })],
+  brick: [0.6, canvasTex(128, 128, (g, w, h) => { g.fillStyle = "#fff"; g.fillRect(0, 0, w, h); for (let r = 0; r < 8; r++) for (let i = -1; i < 4; i++) { const x = i * 43 + (r % 2) * 21; g.fillStyle = `rgba(0,0,0,${0.02 + ((r * 7 + i * 3) % 5) * 0.02})`; g.fillRect(x + 1, r * 16 + 1, 41, 14); } g.fillStyle = "rgba(255,255,255,.5)"; for (let r = 0; r < 8; r++) g.fillRect(0, r * 16, w, 1.5); })],
+  siding: [1.0, canvasTex(128, 128, (g, w, h) => { g.fillStyle = "#fff"; g.fillRect(0, 0, w, h); for (let y = 0; y < h; y += 25.6) { g.fillStyle = "rgba(0,0,0,.16)"; g.fillRect(0, y + 22, w, 3.6); } })],
+  stucco: [2.0, canvasTex(128, 128, (g, w, h) => { g.fillStyle = "#fff"; g.fillRect(0, 0, w, h); for (let i = 0; i < 2500; i++) { g.fillStyle = `rgba(0,0,0,${Math.random() * 0.06})`; g.fillRect(Math.random() * w, Math.random() * h, 2, 2); } })],
+  stone: [1.2, canvasTex(128, 128, (g, w, h) => { g.fillStyle = "#fff"; g.fillRect(0, 0, w, h); for (let i = 0; i < 40; i++) { g.fillStyle = `rgba(0,0,0,${0.04 + Math.random() * 0.1})`; g.fillRect(Math.random() * w, Math.random() * h, 18 + Math.random() * 24, 10 + Math.random() * 14); } })],
+};
+function wallMaterial(spec) {
+  const [size, tex] = MAT_TEX[spec.walls?.material] || MAT_TEX.stucco;
+  return [size, new THREE.MeshLambertMaterial({ map: tex, color: spec.walls?.color || "#cfc6b8" })];
+}
+function textTex(text, bg, fg, w, h) {
+  const H = 128, Wd = Math.max(128, Math.min(2048, Math.round(H * w / h)));
+  return canvasTex(Wd, H, (g) => {
+    g.fillStyle = bg; g.fillRect(0, 0, Wd, H);
+    g.fillStyle = fg; g.textAlign = "center"; g.textBaseline = "middle";
+    let size = H * 0.62; g.font = `600 ${size}px Barlow, Arial, sans-serif`;
+    while (g.measureText(text).width > Wd * 0.92 && size > 10) { size -= 2; g.font = `600 ${size}px Barlow, Arial, sans-serif`; }
+    g.fillText(text, Wd / 2, H / 2 + 2);
+  }, false);
+}
+function specBuilding(b, spec) {
+  const group = new THREE.Group();
+  const eave = spec.eave_m ?? b.h, [tile, wmat] = wallMaterial(spec);
+  const trim = new THREE.MeshLambertMaterial({ color: spec.trim || "#f2f2ee" });
+  const glass = new THREE.MeshPhongMaterial({ color: "#2b3a42", specular: "#9fb8c8", shininess: 90 });
+  // walls
+  const pos = [], uv = [];
+  let u = 0;
+  for (let k = 0; k < b.ring.length; k++) {
+    const [ax, az] = b.ring[k], [bx, bz] = b.ring[(k + 1) % b.ring.length], L = Math.hypot(bx - ax, bz - az);
+    pos.push(ax, 0, az, bx, 0, bz, bx, eave, bz, ax, 0, az, bx, eave, bz, ax, eave, az);
+    const u1 = u + L / tile, v = eave / tile;
+    uv.push(u, 0, u1, 0, u1, v, u, 0, u1, v, u, v); u = u1;
+  }
+  const wg = new THREE.BufferGeometry(); wg.setAttribute("position", new THREE.Float32BufferAttribute(pos, 3)); wg.setAttribute("uv", new THREE.Float32BufferAttribute(uv, 2)); wg.computeVertexNormals();
+  const wm = new THREE.Mesh(wg, wmat); wm.castShadow = wm.receiveShadow = true; group.add(wm);
+  // roof
+  const roof = spec.roof || { type: "flat" }, rcol = new THREE.Color(roof.color || "#5b5e63");
+  if (roof.type && roof.type !== "flat") {
+    const o = obb(b.ring); const { R, G } = roofShape(o, eave, roof);
+    const rm = new THREE.Mesh(trisGeom(R, rcol), M.roofPitched); rm.castShadow = rm.receiveShadow = true; group.add(rm);
+    if (G.length) { const gm = new THREE.Mesh(trisGeom(G), new THREE.MeshLambertMaterial({ color: spec.walls?.color || "#cfc6b8", side: THREE.DoubleSide })); gm.castShadow = true; group.add(gm); }
+    if (roof.type === "mansard") { const top = roofGeom({ ...b, h: eave + (roof.band_m ?? 1) - 0.02, id: b.id }); if (top) group.add(new THREE.Mesh(top, M.roof)); }
+  } else { const r = roofGeom({ ...b, h: eave }); if (r) { const m = new THREE.Mesh(r, M.roof); m.castShadow = true; group.add(m); } }
+  // fascia at the eave
+  for (let k = 0; k < b.ring.length; k++) onWall(group, b, k, 0, eave - 0.18, null, 0.18, 0.06, trim, 0.02, true);
+  // windows, doors, signs, awnings
+  for (const [k, items] of Object.entries(spec.facades || {})) for (const it of items) {
+    const kk = +k; if (!b.ring[kk]) continue;
+    if (it.type === "window") {
+      const fr = it.frame ? new THREE.MeshLambertMaterial({ color: it.frame }) : trim;
+      onWall(group, b, kk, it.x, it.y, it.w, it.h, 0.08, fr, 0.03);
+      onWall(group, b, kk, it.x + 0.07, it.y + 0.07, it.w - 0.14, it.h - 0.14, 0.06, glass, 0.06);
+      const [cols, rows] = it.grid || [1, 1];
+      for (let c = 1; c < cols; c++) onWall(group, b, kk, it.x + it.w * c / cols - 0.025, it.y, 0.05, it.h, 0.05, fr, 0.09);
+      for (let r = 1; r < rows; r++) onWall(group, b, kk, it.x, it.y + it.h * r / rows - 0.025, it.w, 0.05, 0.05, fr, 0.09);
+    } else if (it.type === "door") {
+      const side = it.sidelights ? (it.sidelight_w ?? 0.35) : 0, frameW = it.w + 2 * side + 0.16;
+      onWall(group, b, kk, it.x - side - 0.08, 0, frameW, it.h + 0.08, 0.08, trim, 0.03);
+      const dm = new THREE.MeshLambertMaterial({ color: it.color || "#3b2a2c" });
+      onWall(group, b, kk, it.x, 0, it.w, it.h, 0.07, dm, 0.06);
+      if (it.glass) onWall(group, b, kk, it.x + it.w * 0.2, it.h * 0.5, it.w * 0.6, it.h * 0.4, 0.04, glass, 0.1);
+      if (side) for (const sx of [it.x - side, it.x + it.w]) { onWall(group, b, kk, sx, 0, side, it.h, 0.07, dm, 0.06); onWall(group, b, kk, sx + 0.08, it.h * 0.15, side - 0.16, it.h * 0.75, 0.04, glass, 0.1); }
+    } else if (it.type === "sign") {
+      const sm = new THREE.MeshBasicMaterial({ map: textTex(it.text || "", it.bg || "#c8202a", it.fg || "#ffffff", it.w, it.h) });
+      onWall(group, b, kk, it.x, it.y, it.w, it.h, 0.12, [trim, trim, trim, trim, sm, trim], it.out_m ?? 0.3);
+    } else if (it.type === "awning") {
+      const m = onWall(group, b, kk, it.x, it.y, it.w, 0.06, it.depth || 1.2, new THREE.MeshLambertMaterial({ color: it.color || "#7a1f24" }), (it.depth || 1.2) / 2);
+      m.rotateX(-0.25);
+    }
+  }
+  return group;
+}
+// a box on wall k of building b: x along the wall from its left end (seen from outside), y up; out = offset from the wall
+function onWall(group, b, k, x, y, w, h, depth, mat, out, full) {
+  const [ax, az] = b.ring[k], [bx, bz] = b.ring[(k + 1) % b.ring.length], L = Math.hypot(bx - ax, bz - az);
+  const ux = (bx - ax) / L, uz = (bz - az) / L, nx = -uz, nz = ux;
+  if (full) { x = 0; w = L; }
+  const m = new THREE.Mesh(new THREE.BoxGeometry(w, h, depth), mat);
+  const cx = x + w / 2;
+  m.position.set(ax + ux * cx + nx * (out + depth / 2 - 0.02), y + h / 2, az + uz * cx + nz * (out + depth / 2 - 0.02));
+  m.rotation.y = Math.atan2(-uz, ux);
+  m.castShadow = true; group.add(m);
+  return m;
 }
 function photoWallMesh(b, k, ph) {
   const [ax, az] = b.ring[k], [bx, bz] = b.ring[(k + 1) % b.ring.length];
@@ -900,8 +1058,8 @@ function updateHUD() {
   card.innerHTML = `<h2>${esc(title)}</h2>
     <div class="meta">${b.h.toFixed(1)} m tall (${hsrc}) · ${Math.round(b.area).toLocaleString()} m² footprint</div>
     ${items.length ? `<ul>${items.slice(0, 8).map((x) => `<li><div class="n">${esc(x.n)}</div><div class="k">${esc(KINDS_LABEL[x.k] || x.k)} · ${esc(x.a || "")}<br>${x.s ? `Model sales ${fmtMoney(x.s)} a year · ${Math.round(x.t * 100)}% from tourists` : "No sales in the model"}${x.o != null ? ` · open ${x.o}–${x.c}` : ""}</div></li>`).join("")}</ul>${items.length > 8 ? `<div class="meta" style="margin-top:6px">and ${items.length - 8} more</div>` : ""}` : `<div class="meta" style="margin-top:6px">No business listed here.</div>`}
-    <div class="row"><span class="id">Building ${esc(b.id)} · wall ${focus.k} faces ${faces}, ${wl.toFixed(1)} m</span></div>
-    <div class="row"><button id="btnPhoto">${wallPhoto(b, focus.k) ? "Replace photo of this wall" : "Add photo of this wall"}</button><button id="btnCopy">Copy building id</button></div>`;
+    <div class="row"><span class="id">Building ${esc(b.id)} · wall ${focus.k} faces ${faces}, ${wl.toFixed(1)} m${appearance.specs.has(b.id) ? " · modelled from photos" : ""}</span></div>
+    <div class="row"><button id="btnPhoto">Send photos for the 3D model${refsByBuilding.get(b.id) ? ` (${refsByBuilding.get(b.id)} sent)` : ""}</button><button id="btnCopy">Copy building id</button></div>`;
   $("btnPhoto").onclick = openPhoto;
   $("btnCopy").onclick = () => { navigator.clipboard?.writeText(b.id).then(() => flash("Copied " + b.id), () => flash(b.id)); };
 }
@@ -998,116 +1156,68 @@ function teleport(x, z) {
 $("btnHelp").onclick = () => { $("help").hidden = !$("help").hidden; };
 $("btnStart").onclick = () => { $("help").hidden = true; view.focus(); if (!isTouch) view.requestPointerLock?.()?.catch?.(() => {}); };
 
-// ---------------------------------------------------------------- photo mode
-// You stand in front of a wall, choose a photo, drag four corners onto the wall's corners, preview it in place,
-// and save. The photo is re-encoded in the browser first (that drops its GPS and camera metadata).
+// ---------------------------------------------------------------- photos for the 3D model
+// Stand at a building and send it your photos: each is shrunk to 2048 px and re-encoded in the browser (dropping
+// its GPS location and camera details), stored with the page, and filed under the building and the wall you face.
+// Claude reads them and writes the building's spec (data/building_specs.json), which the game turns into a model.
 let assetsApi = null, dbApi = null;
-const ph = { img: null, corners: null, drag: -1, target: null, scale: 1, texCanvas: null };
+const ph = { target: null, files: [] };
+const refsByBuilding = new Map();
 function openPhoto() {
-  if (!focus) { flash("Walk up to a building wall first."); return; }
+  if (!focus) { flash("Walk up to a building first."); return; }
   document.exitPointerLock?.();
-  ph.target = { ...focus };
-  const b = focus.b, [ax, az] = b.ring[focus.k], [bx, bz] = b.ring[(focus.k + 1) % b.ring.length];
-  $("photoTitle").textContent = `Wall ${focus.k} of ${b.tn || (b.biz[0] != null ? W.biz[b.biz[0]].n : "building " + b.id)} (${Math.hypot(bx - ax, bz - az).toFixed(1)} m wide)`;
-  $("photoTop").value = b.h.toFixed(1); $("photoBottom").value = "0";
-  $("photoMsg").textContent = assetsApi ? "Saved photos show on this wall for everyone who opens the game." : "You can preview here. Saving needs edit access to this page.";
+  ph.target = { ...focus }; ph.files = [];
+  const b = focus.b;
+  $("photoTitle").textContent = `Photos for the 3D model of ${b.tn || (b.biz[0] != null ? W.biz[b.biz[0]].n : "building " + b.id)}`;
+  $("photoThumbs").innerHTML = "<p>Your photos show here before you send them.</p>";
+  $("photoMsg").textContent = assetsApi ? `${refsByBuilding.get(b.id) || 0} photos already sent for this building.` : "Sending photos needs edit access to this page. You can also send them to Claude in the chat.";
   $("photoSave").disabled = true; $("photo").hidden = false;
-  drawPhoto();
 }
 $("photoCancel").onclick = () => { $("photo").hidden = true; };
 $("photoFile").onchange = async (e) => {
-  const f = e.target.files[0]; if (!f) return;
-  const bmp = await createImageBitmap(f, { imageOrientation: "from-image" }).catch(() => null);
-  if (!bmp) { $("photoMsg").textContent = "That file could not be opened as an image. Try a JPEG or PNG."; return; }
-  // keep at most 2048 px on the long side
-  const k = Math.min(1, 2048 / Math.max(bmp.width, bmp.height));
-  const c = document.createElement("canvas"); c.width = Math.round(bmp.width * k); c.height = Math.round(bmp.height * k);
-  c.getContext("2d").drawImage(bmp, 0, 0, c.width, c.height);
-  ph.img = c; ph.corners = [[.15, .15], [.85, .15], [.85, .85], [.15, .85]].map(([u, v]) => [u * c.width, v * c.height]);
-  $("photoSave").disabled = !assetsApi; drawPhoto();
-};
-function drawPhoto() {
-  const cv = $("photoCanvas"), stage = cv.parentElement.getBoundingClientRect();
-  if (!ph.img) { cv.width = 600; cv.height = 300; const g = cv.getContext("2d"); g.fillStyle = "#0a110f"; g.fillRect(0, 0, 600, 300); g.fillStyle = "#9fb3ab"; g.font = "18px Barlow, sans-serif"; g.textAlign = "center"; g.fillText("Choose a photo of this wall", 300, 150); return; }
-  const s = Math.min(stage.width / ph.img.width, stage.height / ph.img.height, 1); ph.scale = s;
-  cv.width = Math.round(ph.img.width * s); cv.height = Math.round(ph.img.height * s);
-  const g = cv.getContext("2d"); g.drawImage(ph.img, 0, 0, cv.width, cv.height);
-  g.strokeStyle = "#f2c230"; g.lineWidth = 2; g.beginPath(); ph.corners.forEach(([x, y], i) => i ? g.lineTo(x * s, y * s) : g.moveTo(x * s, y * s)); g.closePath(); g.stroke();
-  ph.corners.forEach(([x, y], i) => { g.fillStyle = "#f2c230"; g.beginPath(); g.arc(x * s, y * s, 9, 0, Math.PI * 2); g.fill(); g.fillStyle = "#0f1a17"; g.font = "bold 11px Barlow, sans-serif"; g.textAlign = "center"; g.textBaseline = "middle"; g.fillText(["TL", "TR", "BR", "BL"][i], x * s, y * s); });
-}
-const pc = $("photoCanvas");
-pc.addEventListener("pointerdown", (e) => { if (!ph.img) return; const r = pc.getBoundingClientRect(); const x = (e.clientX - r.left) / ph.scale, y = (e.clientY - r.top) / ph.scale; let best = -1, bd = 40 / ph.scale; ph.corners.forEach(([cx, cy], i) => { const d = Math.hypot(cx - x, cy - y); if (d < bd) { bd = d; best = i; } }); ph.drag = best; if (best >= 0) pc.setPointerCapture(e.pointerId); });
-pc.addEventListener("pointermove", (e) => { if (ph.drag < 0) return; const r = pc.getBoundingClientRect(); ph.corners[ph.drag] = [Math.max(0, Math.min(ph.img.width, (e.clientX - r.left) / ph.scale)), Math.max(0, Math.min(ph.img.height, (e.clientY - r.top) / ph.scale))]; drawPhoto(); });
-pc.addEventListener("pointerup", () => { ph.drag = -1; });
-// straighten the marked quad onto a rectangle the wall's shape (square-to-quad homography)
-function homography(q) {
-  const [[x0, y0], [x1, y1], [x2, y2], [x3, y3]] = q;
-  const dx1 = x1 - x2, dx2 = x3 - x2, dx3 = x0 - x1 + x2 - x3, dy1 = y1 - y2, dy2 = y3 - y2, dy3 = y0 - y1 + y2 - y3;
-  let g = 0, h = 0;
-  if (Math.abs(dx3) > 1e-9 || Math.abs(dy3) > 1e-9) { const den = dx1 * dy2 - dx2 * dy1; g = (dx3 * dy2 - dx2 * dy3) / den; h = (dx1 * dy3 - dx3 * dy1) / den; }
-  const a = x1 - x0 + g * x1, b = x3 - x0 + h * x3, c = x0, d = y1 - y0 + g * y1, e = y3 - y0 + h * y3, f = y0;
-  return (u, v) => { const w = g * u + h * v + 1; return [(a * u + b * v + c) / w, (d * u + e * v + f) / w]; };
-}
-function rectify(img, corners, wallW, wallH) {
-  const ppm = Math.min(64, 1024 / Math.max(wallW, wallH));
-  const W2 = Math.max(16, Math.round(wallW * ppm)), H2 = Math.max(16, Math.round(wallH * ppm));
-  const src = img.getContext("2d").getImageData(0, 0, img.width, img.height).data;
-  const out = document.createElement("canvas"); out.width = W2; out.height = H2;
-  const og = out.getContext("2d"), od = og.createImageData(W2, H2), H = homography(corners);
-  for (let y = 0; y < H2; y++) for (let x = 0; x < W2; x++) {
-    const [sx, sy] = H((x + .5) / W2, (y + .5) / H2); const ix = Math.max(0, Math.min(img.width - 1, sx | 0)), iy = Math.max(0, Math.min(img.height - 1, sy | 0));
-    const si = (iy * img.width + ix) * 4, di = (y * W2 + x) * 4; od.data[di] = src[si]; od.data[di + 1] = src[si + 1]; od.data[di + 2] = src[si + 2]; od.data[di + 3] = 255;
+  const thumbs = $("photoThumbs"); thumbs.textContent = "";
+  for (const f of e.target.files) {
+    const bmp = await createImageBitmap(f, { imageOrientation: "from-image" }).catch(() => null);
+    if (!bmp) continue;
+    const k = Math.min(1, 2048 / Math.max(bmp.width, bmp.height));
+    const c = document.createElement("canvas"); c.width = Math.round(bmp.width * k); c.height = Math.round(bmp.height * k);
+    c.getContext("2d").drawImage(bmp, 0, 0, c.width, c.height);
+    const blob = await new Promise((res) => c.toBlob(res, "image/jpeg", 0.88));
+    ph.files.push({ blob, w: c.width, h: c.height });
+    const img = document.createElement("img"); img.alt = "Photo to send"; img.src = URL.createObjectURL(blob); thumbs.appendChild(img);
   }
-  og.putImageData(od, 0, 0); return out;
-}
-function wallSpan() { const b = ph.target.b; const v0 = Math.max(0, +$("photoBottom").value || 0), v1 = Math.min(b.h, +$("photoTop").value || b.h); return [v0, Math.max(v0 + 0.5, v1)]; }
-$("photoPreview").onclick = () => {
-  if (!ph.img) { $("photoMsg").textContent = "Choose a photo first."; return; }
-  const { b, k } = ph.target, [ax, az] = b.ring[k], [bx, bz] = b.ring[(k + 1) % b.ring.length], [v0, v1] = wallSpan();
-  const rect = rectify(ph.img, ph.corners, Math.hypot(bx - ax, bz - az), v1 - v0);
-  const tex = new THREE.CanvasTexture(rect); tex.colorSpace = THREE.SRGBColorSpace;
-  appearance.walls.set(wallKey(b.id, k), { texture: tex, v0, v1, preview: true });
-  rebuildChunkOf(b); $("photo").hidden = true; flash("Preview on the wall. Press P to adjust or save.");
+  $("photoMsg").textContent = ph.files.length ? `${ph.files.length} photo${ph.files.length > 1 ? "s" : ""} ready to send.` : "Those files could not be opened as images. Try JPEG or PNG.";
+  $("photoSave").disabled = !assetsApi || !ph.files.length;
 };
 $("photoSave").onclick = async () => {
-  if (!assetsApi || !dbApi || !ph.img) return;
-  const { b, k } = ph.target, [v0, v1] = wallSpan(), [ax, az] = b.ring[k], [bx, bz] = b.ring[(k + 1) % b.ring.length];
-  $("photoSave").disabled = true; $("photoMsg").textContent = "Saving…";
+  if (!assetsApi || !dbApi || !ph.files.length) return;
+  const { b, k } = ph.target, [ax, az] = b.ring[k], [bx, bz] = b.ring[(k + 1) % b.ring.length];
+  const [mlat, mlon] = xzToLL((ax + bx) / 2, (az + bz) / 2), [plat, plon] = xzToLL(player.x, player.z);
+  $("photoSave").disabled = true; let sent = 0;
   try {
-    const blob = await new Promise((res) => ph.img.toBlob(res, "image/jpeg", 0.88));
-    const up = await assetsApi.upload(blob, { type: "image/jpeg" });
-    const [mlat, mlon] = xzToLL((ax + bx) / 2, (az + bz) / 2);
-    await dbApi.collection("facades").doc(`${b.id}_w${k}`).set({
-      building: b.id, wall: k, wall_mid: [+mlat.toFixed(6), +mlon.toFixed(6)], wall_len_m: +Math.hypot(bx - ax, bz - az).toFixed(2),
-      bottom_m: v0, top_m: v1, photo: up.id, photo_w: ph.img.width, photo_h: ph.img.height,
-      corners: ph.corners.map(([x, y]) => [+(x / ph.img.width).toFixed(4), +(y / ph.img.height).toFixed(4)]),
-      source: "owner", saved: new Date().toISOString(),
-    });
-    $("photoMsg").textContent = "Saved. It shows on this wall for everyone, and the next build bakes it into the city.";
-    applyLive({ building: b.id, wall: k, bottom_m: v0, top_m: v1, photo: up.id, corners: ph.corners.map(([x, y]) => [x / ph.img.width, y / ph.img.height]) }, ph.img);
-  } catch (err) { $("photoMsg").textContent = `Not saved (${err?.code || "error"}). ${err?.code === "quota_or_state" ? "The page's photo storage is full." : "Try again in a moment."}`; $("photoSave").disabled = false; }
-};
-async function applyLive(f, imgCanvas) {
-  const b = B.find((x) => x.id === f.building); if (!b || !b.ring[f.wall]) return;
-  let img = imgCanvas;
-  if (!img) {
-    const el = new Image(); el.crossOrigin = "anonymous"; el.src = "/_blob/" + f.photo;
-    try { await el.decode(); } catch { return; }
-    img = document.createElement("canvas"); img.width = el.naturalWidth; img.height = el.naturalHeight; img.getContext("2d").drawImage(el, 0, 0);
+    for (const f of ph.files) {
+      $("photoMsg").textContent = `Sending ${sent + 1} of ${ph.files.length}…`;
+      const up = await assetsApi.upload(f.blob, { type: "image/jpeg" });
+      await dbApi.collection("refs").add({
+        building: b.id, wall: k, wall_mid: [+mlat.toFixed(6), +mlon.toFixed(6)], wall_faces: compass(-(bz - az), bx - ax),
+        stood_at: [+plat.toFixed(6), +plon.toFixed(6)], photo: up.id, photo_w: f.w, photo_h: f.h,
+        note: $("photoNote").value.slice(0, 300), source: "owner", saved: new Date().toISOString(),
+      });
+      sent++;
+    }
+    $("photoMsg").textContent = `Sent ${sent} photo${sent > 1 ? "s" : ""}. Ask Claude to build the models from your photos.`;
+    ph.files = []; $("photoNote").value = "";
+  } catch (err) {
+    $("photoMsg").textContent = `Sent ${sent} of ${ph.files.length}. The rest did not go through (${err?.code || "error"}). ${err?.code === "quota_or_state" ? "The page's photo storage is full." : "Try again in a moment."}`;
+    ph.files = ph.files.slice(sent); $("photoSave").disabled = false;
   }
-  const [ax, az] = b.ring[f.wall], [bx, bz] = b.ring[(f.wall + 1) % b.ring.length];
-  const v0 = f.bottom_m || 0, v1 = Math.min(b.h, f.top_m || b.h);
-  const rect = rectify(img, f.corners.map(([u, v]) => [u * img.width, v * img.height]), Math.hypot(bx - ax, bz - az), v1 - v0);
-  const tex = new THREE.CanvasTexture(rect); tex.colorSpace = THREE.SRGBColorSpace;
-  appearance.walls.set(wallKey(b.id, f.wall), { texture: tex, v0, v1 });
-  rebuildChunkOf(b); lastCardKey = "";
-}
+};
 async function connectLive() {
   if (!window.claude?.use) return;
   const [db, assets] = await Promise.all([window.claude.use("db").catch(() => null), window.claude.use("assets").catch(() => null)]);
   dbApi = db; assetsApi = assets;
   if (!db) return;
-  db.collection("facades").onSnapshot((snap) => { for (const ch of snap.docChanges()) if (ch.type !== "removed") applyLive(ch.doc.data()); }, () => {});
+  db.collection("refs").onSnapshot((snap) => { refsByBuilding.clear(); for (const d of snap.docs) { const b = d.data().building; refsByBuilding.set(b, (refsByBuilding.get(b) || 0) + 1); } lastCardKey = ""; }, () => {});
 }
 
 // ---------------------------------------------------------------- boot
@@ -1120,7 +1230,7 @@ async function boot() {
   if (!res.ok) throw new Error("world.json " + res.status);
   bar.style.width = "40%";
   W = await res.json(); bar.style.width = "70%";
-  try { const a = await fetch("appearance.json"); if (a.ok) { const A = await a.json(); for (const [bid, v] of Object.entries(A.buildings || {})) { for (const [k, w] of Object.entries(v.walls || {})) appearance.walls.set(wallKey(bid, +k), { src: w.tex, v0: w.bottom_m, v1: w.top_m }); if (v.model) appearance.models.set(bid, v.model); } } } catch {}
+  try { const a = await fetch("appearance.json"); if (a.ok) { const A = await a.json(); for (const [bid, v] of Object.entries(A.buildings || {})) { for (const [k, w] of Object.entries(v.walls || {})) appearance.walls.set(wallKey(bid, +k), { src: w.tex, v0: w.bottom_m, v1: w.top_m }); if (v.model) appearance.models.set(bid, v.model); if (v.spec) appearance.specs.set(bid, v.spec); } } } catch {}
   index(); bar.style.width = "85%";
   buildGlobal();
   const [sx, sz] = llToXZ(JUMPS[0][1], JUMPS[0][2]); teleport(sx, sz);
@@ -1130,6 +1240,7 @@ async function boot() {
   const jl = $("jumpList");
   for (const [name, lat, lon] of JUMPS) { const b = document.createElement("button"); b.textContent = name; b.onclick = () => { const [x, z] = llToXZ(lat, lon); teleport(x, z); toggleMap(); }; jl.appendChild(b); }
   connectLive();
+  window.niagaraGame = { player, cam, teleport, llToXZ };   // for scripted checks and screenshots
   let last = performance.now(), hudT = 0, spawnT = 0;
   function frame(now) {
     const dt = Math.min(0.05, (now - last) / 1000); last = now;
