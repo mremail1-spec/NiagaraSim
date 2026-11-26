@@ -30,6 +30,12 @@ fn main() {
         }
         p.add_frame(&img, w, h).unwrap();
     }
+    if let Ok(acc) = std::env::var("GPSSIM") {
+        let acc: f64 = acc.parse().unwrap();
+        let mut rng = scan3d::geometry::Rng::new(5);
+        let mut nz = || ((rng.next_u64() % 2000) as f64 / 1000.0 - 1.0) * acc;
+        p.gps = poses.iter().map(|q| { let c = q.center(); Some((V3::new(c.x + nz(), c.y, c.z + nz()), acc)) }).collect();
+    }
     let t0 = Instant::now();
     let verbose = std::env::var("V").is_ok();
     let mut rep = |_: f32, m: &str| if verbose && !m.is_empty() || m.starts_with("sfm:") || m.starts_with("dense:") || m.starts_with("mesh:") || m.starts_with("final") { println!("  {m}") };

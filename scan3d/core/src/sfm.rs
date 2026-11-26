@@ -196,7 +196,7 @@ impl<'a> Ctx<'a> {
                 obs.push(Obs { cam: img, point: pi, uv: uv(self.feats, img, f) });
             }
         }
-        let opt = BaOptions { iterations, huber_px: self.thr * 0.5, refine_intrinsics: refine, refine_k1: self.rec.registered() >= 12, fixed_cam: fixed };
+        let opt = BaOptions { iterations, huber_px: self.thr * 0.5, refine_intrinsics: refine, refine_k1: self.rec.registered() >= 12, fix_focal: false, fixed_cam: fixed, center_prior: None };
         let r = bundle_adjust(&mut self.rec.poses, &mut self.rec.intr, &mut xs, &obs, &opt);
         for (p, x) in self.rec.points.iter_mut().zip(xs) {
             p.x = x;
@@ -379,6 +379,22 @@ pub fn reconstruct_from(
     refine_intrinsics: bool,
     log: &mut dyn FnMut(f32, &str),
 ) -> Option<Reconstruction> {
+    reconstruct_gps(feats, pairs, intr0, thr_px, prefer, refine_intrinsics, None, log)
+}
+
+/// As `reconstruct_from`; with GPS, the start whose cameras fit the GPS track
+/// best is kept (forward driving is ambiguous from images alone).
+#[allow(clippy::too_many_arguments)]
+pub fn reconstruct_gps(
+    feats: &[Features],
+    pairs: &[PairMatch],
+    intr0: Intrinsics,
+    thr_px: f64,
+    prefer: Option<(usize, usize)>,
+    refine_intrinsics: bool,
+    gps: Option<(&[Option<V3>], f64)>,
+    log: &mut dyn FnMut(f32, &str),
+) -> Option<Reconstruction> {
     let cands = init_candidates(feats, pairs, intr0, thr_px, prefer);
     if cands.is_empty() {
         return None;
@@ -397,7 +413,7 @@ pub fn reconstruct_from(
     // that agrees best with all pair matches.
     let mut chosen: Vec<&(f64, usize, usize, Pose)> = Vec::new();
     for c in &cands {
-        if chosen.len() >= 3 {
+        if chosen.len() >= if gps.is_some() { 5 } else { 3 } {
             break;
         }
         if chosen.iter().all(|d| c.1.abs_diff(d.1) > 2 && c.2.abs_diff(d.2) > 2) {
@@ -408,8 +424,30 @@ pub fn reconstruct_from(
     for c in chosen {
         log(0.0, &format!("trying start {}-{} (score {:.0})", c.1, c.2, c.0.min(1e9)));
         let Some(r) = grow(feats, pairs, intr0, thr_px, refine_intrinsics, (c.1, c.2, c.3), &mut *log) else { continue };
-        let gc = global_consistency(&r, feats, pairs, 1.5 * thr_px);
+        let mut gc = global_consistency(&r, feats, pairs, 1.5 * thr_px);
         log(0.0, &format!("start {}-{}: {} cameras, {:.1}% of all matches consistent", c.1, c.2, r.registered(), 100.0 * gc));
+        if let Some((g, acc)) = gps {
+            // Score by GPS agreement after GPS-weighted refinement (which removes
+            // the drift of long forward-driving reconstructions): cameras within
+            // 3x GPS accuracy, then a small residual.
+            gc = -1.0;
+            if let Some((sc, rot, t, _, _)) = align_to_gps(&r, g, 3.0 * acc) {
+                let mut rr = r.clone();
+                apply_similarity(&mut rr, sc, &rot, &t);
+                let w = V3::new(1.0 / acc, 0.2 / acc, 1.0 / acc);
+                let pri: Vec<Option<(V3, V3)>> = g.iter().map(|x| x.map(|p| (p, w))).collect();
+                refine_with_gps(&mut rr, feats, &pri, thr_px, 15);
+                let mut d: Vec<f64> = rr.poses.iter().zip(g).filter_map(|(p, q)| {
+                    let (p, q) = (p.as_ref()?, (*q)?);
+                    Some(((p.center().x - q.x).powi(2) + (p.center().z - q.z).powi(2)).sqrt())
+                }).collect();
+                d.sort_by(|a, b| a.partial_cmp(b).unwrap());
+                let inl = d.iter().filter(|&&x| x < 3.0 * acc).count();
+                let med = d.get(d.len() / 2).copied().unwrap_or(f64::INFINITY);
+                log(0.0, &format!("  after GPS refinement: {} cameras within {:.0} m, median {:.1} m", inl, 3.0 * acc, med));
+                gc = inl as f64 - med / (10.0 * acc);
+            }
+        }
         if best.as_ref().map_or(true, |b| gc > b.0) {
             best = Some((gc, r));
         }
@@ -726,4 +764,117 @@ pub fn normalize_frame(rec: &mut Reconstruction) {
         p.r *= rw.transpose();
         p.t = t;
     }
+}
+
+/// Similarity (scale, yaw about +Y, translation) mapping reconstruction camera
+/// centres onto GPS positions, keeping the reconstruction's "up". 2-point
+/// RANSAC on the horizontal (x, z) plane; returns (s, yaw rotation, t, inliers).
+pub fn align_to_gps(rec: &Reconstruction, gps: &[Option<V3>], thr_m: f64) -> Option<(f64, M3, V3, usize, f64)> {
+    let pairs: Vec<(V3, V3)> = rec
+        .poses
+        .iter()
+        .zip(gps)
+        .filter_map(|(p, g)| Some((p.as_ref()?.center(), (*g)?)))
+        .collect();
+    if pairs.len() < 3 {
+        return None;
+    }
+    // complex-number form of a 2D similarity: w = a z + b, z = x + i*zcoord
+    let fit = |idx: &[usize]| -> Option<((f64, f64), (f64, f64))> {
+        let n = idx.len() as f64;
+        let (mut mzx, mut mzy, mut mwx, mut mwy) = (0.0, 0.0, 0.0, 0.0);
+        for &i in idx {
+            mzx += pairs[i].0.x / n; mzy += pairs[i].0.z / n;
+            mwx += pairs[i].1.x / n; mwy += pairs[i].1.z / n;
+        }
+        let (mut num_r, mut num_i, mut den) = (0.0, 0.0, 0.0);
+        for &i in idx {
+            let (zx, zy) = (pairs[i].0.x - mzx, pairs[i].0.z - mzy);
+            let (wx, wy) = (pairs[i].1.x - mwx, pairs[i].1.z - mwy);
+            // a = sum(w * conj(z)) / sum(|z|^2)
+            num_r += wx * zx + wy * zy;
+            num_i += wy * zx - wx * zy;
+            den += zx * zx + zy * zy;
+        }
+        if den < 1e-12 {
+            return None;
+        }
+        let a = (num_r / den, num_i / den);
+        let b = (mwx - (a.0 * mzx - a.1 * mzy), mwy - (a.0 * mzy + a.1 * mzx));
+        Some((a, b))
+    };
+    let resid = |a: (f64, f64), b: (f64, f64), i: usize| -> f64 {
+        let (z, w) = (&pairs[i].0, &pairs[i].1);
+        let px = a.0 * z.x - a.1 * z.z + b.0;
+        let py = a.0 * z.z + a.1 * z.x + b.1;
+        ((px - w.x).powi(2) + (py - w.z).powi(2)).sqrt()
+    };
+    let n = pairs.len();
+    let mut rng = crate::geometry::Rng::new(77);
+    let mut best: Option<Vec<usize>> = None;
+    for _ in 0..300 {
+        let s = rng.sample(n, 2);
+        let Some((a, b)) = fit(&s) else { continue };
+        let inl: Vec<usize> = (0..n).filter(|&i| resid(a, b, i) < thr_m).collect();
+        if best.as_ref().map_or(true, |bb| inl.len() > bb.len()) {
+            best = Some(inl);
+        }
+    }
+    let inl = best?;
+    if inl.len() < 3 {
+        return None;
+    }
+    let (a, b) = fit(&inl)?;
+    let scale = (a.0 * a.0 + a.1 * a.1).sqrt();
+    let th = a.1.atan2(a.0);
+    // map (x, z) -> rotate by th in the x-z plane; as a 3D rotation about +Y
+    let (c, sn) = (th.cos(), th.sin());
+    let r = M3::new(c, 0.0, -sn, 0.0, 1.0, 0.0, sn, 0.0, c);
+    let mut ys: Vec<f64> = pairs.iter().map(|(z, w)| w.y - scale * z.y).collect();
+    ys.sort_by(|x, y| x.partial_cmp(y).unwrap());
+    let t = V3::new(b.0, ys[ys.len() / 2], b.1);
+    let mut res: Vec<f64> = inl.iter().map(|&i| resid(a, b, i)).collect();
+    res.sort_by(|x, y| x.partial_cmp(y).unwrap());
+    Some((scale, r, t, inl.len(), res[res.len() / 2]))
+}
+
+/// Move a reconstruction by X' = s R X + t.
+pub fn apply_similarity(rec: &mut Reconstruction, s: f64, r: &M3, t: &V3) {
+    for p in rec.points.iter_mut() {
+        p.x = r * p.x * s + t;
+    }
+    for p in rec.poses.iter_mut().flatten() {
+        let r2 = p.r * r.transpose();
+        p.t = p.t * s - r2 * t;
+        p.r = r2;
+    }
+}
+
+/// Bundle adjustment with GPS priors on the camera centres (and radial
+/// distortion refined, focal kept). Returns (rms before, rms after) in pixels.
+pub fn refine_with_gps(rec: &mut Reconstruction, feats: &[Features], gps: &[Option<(V3, V3)>], thr_px: f64, iterations: usize) -> (f64, f64) {
+    let mut xs: Vec<V3> = rec.points.iter().map(|p| p.x).collect();
+    let mut obs = Vec::new();
+    for (pi, p) in rec.points.iter().enumerate() {
+        for &(img, f) in &p.obs {
+            obs.push(Obs { cam: img, point: pi, uv: uv(feats, img, f) });
+        }
+    }
+    let mut pri: Vec<Option<(V3, V3)>> = gps.to_vec();
+    pri.resize(rec.poses.len(), None);
+    let opt = BaOptions {
+        iterations,
+        huber_px: thr_px * 0.5,
+        refine_intrinsics: false,
+        refine_k1: false,
+        fix_focal: true,
+        fixed_cam: usize::MAX,
+        center_prior: Some(pri),
+    };
+    let r = bundle_adjust(&mut rec.poses, &mut rec.intr, &mut xs, &obs, &opt);
+    for (p, x) in rec.points.iter_mut().zip(xs) {
+        p.x = x;
+    }
+    rec.rms = r.1;
+    r
 }

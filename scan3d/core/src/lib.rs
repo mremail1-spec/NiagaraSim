@@ -69,6 +69,15 @@ impl Scanner {
         self.p.add_frame(rgba, w as usize, h as usize).map_err(|e| JsValue::from_str(&e))
     }
 
+    /// GPS for frame `i` in local metres (x east, y up, z south) with accuracy in metres.
+    pub fn set_gps(&mut self, i: u32, x: f64, y: f64, z: f64, accuracy: f64) {
+        let i = i as usize;
+        if self.p.gps.len() <= i {
+            self.p.gps.resize(i + 1, None);
+        }
+        self.p.gps[i] = Some((geometry::V3::new(x, y, z), accuracy));
+    }
+
     pub fn frame_count(&self) -> u32 {
         self.p.rgba.len() as u32
     }

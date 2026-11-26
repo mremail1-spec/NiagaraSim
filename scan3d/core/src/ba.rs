@@ -16,12 +16,30 @@ pub struct BaOptions {
     pub refine_intrinsics: bool,
     /// also refine radial distortion (needs many well-spread cameras)
     pub refine_k1: bool,
+    /// keep the focal length fixed even when refining intrinsics (k1 only)
+    pub fix_focal: bool,
     pub fixed_cam: usize,
+    /// optional camera-centre priors (GPS): per camera (position, weight per
+    /// axis in "pixels per metre"); Huber-robust like the image residuals
+    pub center_prior: Option<Vec<Option<(V3, V3)>>>,
 }
 
 #[inline]
 fn robust(e: f64, h: f64) -> f64 {
     if e < h { e * e } else { 2.0 * h * e - h * h }
+}
+
+fn prior_cost(poses: &[Option<Pose>], pri: &Option<Vec<Option<(V3, V3)>>>, h: f64) -> f64 {
+    let Some(pri) = pri else { return 0.0 };
+    poses
+        .iter()
+        .zip(pri)
+        .filter_map(|(p, g)| Some((p.as_ref()?, g.as_ref()?)))
+        .map(|(p, (g, w))| {
+            let d = p.center() - g;
+            robust(V3::new(d.x * w.x, d.y * w.y, d.z * w.z).norm(), h)
+        })
+        .sum()
 }
 
 fn total_cost(poses: &[Option<Pose>], k: &Intrinsics, pts: &[V3], obs: &[Obs], h: f64) -> f64 {
@@ -73,7 +91,7 @@ pub fn bundle_adjust(
         }
     }
     let h = opt.huber_px;
-    let mut cost = total_cost(poses, k, pts, obs, h);
+    let mut cost = total_cost(poses, k, pts, obs, h) + prior_cost(poses, &opt.center_prior, h);
     let mut lambda = 1e-4;
 
     struct PointBlock {
@@ -104,6 +122,10 @@ pub fn bundle_adjust(
                     if !opt.refine_k1 {
                         jk[(0, 1)] = 0.0;
                         jk[(1, 1)] = 0.0;
+                    }
+                    if opt.fix_focal {
+                        jk[(0, 0)] = 0.0;
+                        jk[(1, 0)] = 0.0;
                     }
                     let r = Vector2::new(q.x - o.uv[0], q.y - o.uv[1]);
                     let e = r.norm();
@@ -161,6 +183,31 @@ pub fn bundle_adjust(
                     continue;
                 };
                 blocks.push(Some(PointBlock { vinv, gp, ws }));
+            }
+            // GPS priors on camera centres: C = -R^T t, with the left rotation
+            // increment dC/dw = -R^T [t]x and dC/dt = -R^T.
+            if let Some(pri) = &opt.center_prior {
+                for (ci, g) in pri.iter().enumerate() {
+                    let (Some((gp, w)), Some(off)) = (g, cam_off.get(ci).copied().flatten()) else { continue };
+                    let pose = poses[ci].as_ref().unwrap();
+                    let rt = pose.r.transpose();
+                    let mut j = SMatrix::<f64, 3, 6>::zeros();
+                    j.fixed_view_mut::<3, 3>(0, 0).copy_from(&(-rt * crate::geometry::skew(&pose.t)));
+                    j.fixed_view_mut::<3, 3>(0, 3).copy_from(&(-rt));
+                    let wm = Matrix3::from_diagonal(w);
+                    let j = wm * j;
+                    let r = wm * (pose.center() - gp);
+                    let e = r.norm();
+                    let hw = if e < h { 1.0 } else { h / e };
+                    let jtj = j.transpose() * j * hw;
+                    let jtr = j.transpose() * r * hw;
+                    for a in 0..6 {
+                        rhs[off + a] -= jtr[a];
+                        for b in 0..6 {
+                            s[(off + a, off + b)] += jtj[(a, b)];
+                        }
+                    }
+                }
             }
             // Damping on the camera diagonal, then Schur reduction.
             for d in 0..nc {
@@ -223,7 +270,7 @@ pub fn bundle_adjust(
                     npts[pi] += b.vinv * g;
                 }
             }
-            let c1 = total_cost(&np, &nk_, &npts, obs, h);
+            let c1 = total_cost(&np, &nk_, &npts, obs, h) + prior_cost(&np, &opt.center_prior, h);
             if c1 < cost && nk_.f > 0.0 {
                 let rel = (cost - c1) / cost.max(1e-12);
                 poses.copy_from_slice(&np);

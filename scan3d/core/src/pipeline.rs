@@ -6,7 +6,7 @@ use crate::geometry::{fundamental_ransac, Intrinsics};
 use crate::image::Gray;
 use crate::mesh::{build_mesh, build_mesh_poisson, Mesh};
 use crate::mvs::{compute_depth_maps, filter_depth_maps, fuse, Cloud, DenseOptions, DepthMap};
-use crate::sfm::{reconstruct_from, PairMatch, Reconstruction};
+use crate::sfm::{align_to_gps, apply_similarity, reconstruct_from, reconstruct_gps, refine_with_gps, PairMatch, Reconstruction};
 use crate::features::Features as Feats;
 
 pub type Report<'a> = &'a mut dyn FnMut(f32, &str);
@@ -51,6 +51,8 @@ pub struct Pipeline {
     pub init_pair: Option<(usize, usize)>,
     /// field of view found by the lens search, and at how many frames
     pub fov_found: Option<(f64, usize)>,
+    /// per-frame GPS position in local metres (x east, y up, z south) and accuracy (m)
+    pub gps: Vec<Option<(crate::geometry::V3, f64)>>,
 }
 
 impl Pipeline {
@@ -262,10 +264,10 @@ impl Pipeline {
             }
         };
         let mut tried: Vec<(f64, f64, usize)> = Vec::new();
-        for fov in [40.0, 47.0, 54.0, 61.0, 68.0, 75.0, 85.0] {
+        for fov in [40.0, 50.0, 60.0, 70.0, 80.0, 90.0, 100.0, 110.0] {
             let (rms, reg) = eval(fov);
             tried.push((fov, rms, reg));
-            rep(tried.len() as f32 / 13.0, "");
+            rep(tried.len() as f32 / 14.0, "");
         }
         let pick = |t: &[(f64, f64, usize)]| -> Option<f64> {
             let max_reg = t.iter().map(|x| x.2).max().unwrap_or(0);
@@ -279,7 +281,7 @@ impl Pipeline {
         // photos do not determine the lens (e.g. pure sideways motion): give up.
         let finite: Vec<f64> = tried.iter().map(|x| x.1).filter(|v| v.is_finite()).collect();
         let (mn, mx) = finite.iter().fold((f64::MAX, f64::MIN), |a, &v| (a.0.min(v), a.1.max(v)));
-        if coarse <= 40.0 || coarse >= 85.0 || (mx - mn) / mn.max(1e-9) < 0.03 {
+        if coarse <= 40.0 || coarse >= 110.0 || (mx - mn) / mn.max(1e-9) < 0.03 {
             return None;
         }
         // golden-section refinement around the coarse minimum
@@ -297,7 +299,7 @@ impl Pipeline {
             } else {
                 lo = x1; x1 = x2; f1 = f2; x2 = lo + g * (hi - lo); f2 = eval(x2); tried.push((x2, f2.0, f2.1));
             }
-            rep(tried.len() as f32 / 13.0, "");
+            rep(tried.len() as f32 / 14.0, "");
         }
         pick(&tried)
     }
@@ -324,7 +326,53 @@ impl Pipeline {
         };
         let intr = self.intr_for(fov);
         let thr = 4.0 * self.px_scale();
-        let rec = reconstruct_from(&self.feats, &self.pairs, intr, thr, self.init_pair, false, &mut *rep);
+        let gps_pts: Vec<Option<crate::geometry::V3>> = (0..self.feats.len()).map(|i| self.gps.get(i).copied().flatten().map(|g| g.0)).collect();
+        let n_gps = gps_pts.iter().filter(|g| g.is_some()).count();
+        let acc = {
+            let mut a: Vec<f64> = self.gps.iter().flatten().map(|g| g.1).collect();
+            a.sort_by(|x, y| x.partial_cmp(y).unwrap());
+            a.get(a.len() / 2).copied().unwrap_or(5.0).max(2.0)
+        };
+        let rec = if n_gps >= 3 {
+            reconstruct_gps(&self.feats, &self.pairs, intr, thr, self.init_pair, false, Some((&gps_pts, acc)), &mut *rep)
+        } else {
+            reconstruct_from(&self.feats, &self.pairs, intr, thr, self.init_pair, false, &mut *rep)
+        };
+        // GPS: put the model in metres on the map, then refine with GPS priors.
+        let rec = rec.map(|mut r| {
+            if n_gps >= 3 {
+                if let Some((sc, rot, t, inl, med)) = align_to_gps(&r, &gps_pts, 3.0 * acc) {
+                    apply_similarity(&mut r, sc, &rot, &t);
+                    let pri: Vec<Option<(crate::geometry::V3, crate::geometry::V3)>> = self
+                        .gps
+                        .iter()
+                        .map(|g| g.map(|(p, a)| {
+                            let a = a.max(2.0);
+                            (p, crate::geometry::V3::new(1.0 / a, 0.2 / a, 1.0 / a))
+                        }))
+                        .collect();
+                    let med_after_align = {
+                        let mut v: Vec<f64> = r.poses.iter().zip(&gps_pts).filter_map(|(p, g)| { let (p, g) = (p.as_ref()?, (*g)?); Some(((p.center().x - g.x).powi(2) + (p.center().z - g.z).powi(2)).sqrt()) }).collect();
+                        v.sort_by(|a, b| a.partial_cmp(b).unwrap());
+                        v.get(v.len() / 2).copied().unwrap_or(f64::NAN)
+                    };
+                    rep(0.0, &format!("GPS debug: {} cams registered, median {:.1} m right after alignment", r.registered(), med_after_align));
+                    let (r0, r1) = refine_with_gps(&mut r, &self.feats, &pri, thr, 30);
+                    let mut res: Vec<f64> = r.poses.iter().zip(&gps_pts).filter_map(|(p, g)| {
+                        let (p, g) = (p.as_ref()?, (*g)?);
+                        Some(((p.center().x - g.x).powi(2) + (p.center().z - g.z).powi(2)).sqrt())
+                    }).collect();
+                    res.sort_by(|a, b| a.partial_cmp(b).unwrap());
+                    rep(0.0, &format!(
+                        "GPS: {} cameras aligned (median {:.1} m before refinement, {:.1} m after); scale is now metres; rms {:.2}->{:.2}px, k1 {:.3}",
+                        inl, med, res.get(res.len() / 2).copied().unwrap_or(f64::NAN), r0, r1, r.intr.k1
+                    ));
+                } else {
+                    rep(0.0, "GPS: could not align the reconstruction to the GPS track");
+                }
+            }
+            r
+        });
         let Some(mut rec) = rec else {
             return Err("could not initialise: need more overlap / texture / parallax between photos".into());
         };
