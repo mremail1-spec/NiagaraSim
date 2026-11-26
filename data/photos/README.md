@@ -8,8 +8,16 @@ sign and awning in metres), and the game builds the model from it. The photos th
 1. Walk up to the building. Press **P** (or **Send photos for the 3D model** on its card).
 2. Take or choose photos: the whole building from across the street, each side if you can, and close-ups of the
    door, windows and sign. Add a note if something is not obvious (two storeys at the back, the door faces the lot).
-3. **Send photos**. Each is shrunk and re-encoded in your browser first, which drops its GPS location and camera details,
-   and is filed under that building and the wall you were facing.
+3. **Send photos**. Before each photo is shrunk and re-encoded (which strips everything from the file), the game reads
+   where it was taken, the compass heading and the time, and stores those as numbers next to it. Each photo shows
+   "Location kept" or "No location in this photo".
+
+## Keeping the location on iPhone
+- Settings > Privacy & Security > Location Services > Camera: While Using the App, with Precise Location on.
+  In Photos, swipe up on a photo: a map means the location is in it.
+- When choosing photos in the game (or any web page), tap **Options** at the top of the photo picker and turn
+  **Location** on. From the Photos share sheet, tap **Options** and turn **Location** on (and All Photos Data).
+- Photos sent in the Claude chat arrive without their location: use the game's photo button when position matters.
 4. Ask Claude to "build the models from my photos". Photos sent in the chat work too: say which building they show.
 
 ## Older option: a photo straightened onto a wall

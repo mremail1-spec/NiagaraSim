@@ -1370,6 +1370,40 @@ function openPhoto() {
   $("photoSave").disabled = true; $("photo").hidden = false;
 }
 $("photoCancel").onclick = () => { $("photo").hidden = true; };
+// read where and when a JPEG was taken (EXIF GPS: latitude, longitude, altitude, compass heading; DateTimeOriginal)
+// before the photo is re-encoded without any metadata. Returns null fields when the phone left them out.
+function readExif(buf) {
+  const v = new DataView(buf), out = { lat: null, lon: null, alt: null, heading: null, taken: null };
+  if (v.byteLength < 4 || v.getUint16(0) !== 0xFFD8) return out;
+  let o = 2;
+  while (o + 4 < v.byteLength) {
+    const marker = v.getUint16(o), len = v.getUint16(o + 2);
+    if (marker === 0xFFE1 && v.getUint32(o + 4) === 0x45786966) {               // "Exif"
+      const t = o + 10, le = v.getUint16(t) === 0x4949;
+      const u16 = (p) => v.getUint16(p, le), u32 = (p) => v.getUint32(p, le);
+      const rat = (p) => { const d = u32(p + 4); return d ? u32(p) / d : 0; };
+      const ifd = (p) => { const n = u16(p), tags = {}; for (let i = 0; i < n; i++) { const e = p + 2 + i * 12; tags[u16(e)] = { type: u16(e + 2), count: u32(e + 4), at: e + 8 }; } return tags; };
+      const ptr = (tag) => t + u32(tag.at);
+      const ascii = (tag) => { const p = tag.count > 4 ? ptr(tag) : tag.at; let s = ""; for (let i = 0; i < tag.count - 1; i++) s += String.fromCharCode(v.getUint8(p + i)); return s; };
+      const ifd0 = ifd(t + u32(t + 4));
+      if (ifd0[0x8769]) { const ex = ifd(ptr(ifd0[0x8769])); if (ex[0x9003]) out.taken = ascii(ex[0x9003]); }
+      if (ifd0[0x8825]) {
+        const g = ifd(ptr(ifd0[0x8825]));
+        const dms = (tag) => { const p = ptr(tag); return rat(p) + rat(p + 8) / 60 + rat(p + 16) / 3600; };
+        if (g[2] && g[4]) {
+          out.lat = dms(g[2]) * (g[1] && ascii(g[1]) === "S" ? -1 : 1);
+          out.lon = dms(g[4]) * (g[3] && ascii(g[3]) === "W" ? -1 : 1);
+        }
+        if (g[6]) out.alt = rat(ptr(g[6])) * (g[5] && v.getUint8(g[5].at) === 1 ? -1 : 1);
+        if (g[17]) out.heading = rat(ptr(g[17]));
+      }
+      return out;
+    }
+    if ((marker & 0xFF00) !== 0xFF00) break;
+    o += 2 + len;
+  }
+  return out;
+}
 $("photoFile").onchange = async (e) => {
   const thumbs = $("photoThumbs"); thumbs.textContent = "";
   for (const f of e.target.files) {
@@ -1379,10 +1413,18 @@ $("photoFile").onchange = async (e) => {
     const c = document.createElement("canvas"); c.width = Math.round(bmp.width * k); c.height = Math.round(bmp.height * k);
     c.getContext("2d").drawImage(bmp, 0, 0, c.width, c.height);
     const blob = await new Promise((res) => c.toBlob(res, "image/jpeg", 0.88));
-    ph.files.push({ blob, w: c.width, h: c.height });
-    const img = document.createElement("img"); img.alt = "Photo to send"; img.src = URL.createObjectURL(blob); thumbs.appendChild(img);
+    let geo = { lat: null, lon: null, alt: null, heading: null, taken: null };
+    try { geo = readExif(await f.arrayBuffer()); } catch {}
+    ph.files.push({ blob, w: c.width, h: c.height, geo });
+    const fig = document.createElement("figure"); fig.style.margin = "0";
+    const img = document.createElement("img"); img.alt = "Photo to send"; img.src = URL.createObjectURL(blob); fig.appendChild(img);
+    const cap = document.createElement("figcaption"); cap.style.cssText = "font-size:12px;color:var(--muted);max-width:180px";
+    cap.textContent = geo.lat != null ? `Location kept${geo.heading != null ? `, facing ${Math.round(geo.heading)}°` : ""}` : "No location in this photo";
+    fig.appendChild(cap); thumbs.appendChild(fig);
   }
-  $("photoMsg").textContent = ph.files.length ? `${ph.files.length} photo${ph.files.length > 1 ? "s" : ""} ready to send.` : "Those files could not be opened as images. Try JPEG or PNG.";
+  const located = ph.files.filter((x) => x.geo.lat != null).length;
+  $("photoMsg").textContent = !ph.files.length ? "Those files could not be opened as images. Try JPEG or PNG."
+    : `${ph.files.length} photo${ph.files.length > 1 ? "s" : ""} ready to send. ${located === ph.files.length ? "All have their location." : located ? `${located} have their location.` : "None has its location: on iPhone, tap Options at the top of the photo picker and turn Location on, then choose them again."} The location is sent as numbers; the photo file itself carries no metadata.`;
   $("photoSave").disabled = !assetsApi || !ph.files.length;
 };
 $("photoSave").onclick = async () => {
@@ -1397,6 +1439,8 @@ $("photoSave").onclick = async () => {
       await dbApi.collection("refs").add({
         building: b.id, wall: k, wall_mid: [+mlat.toFixed(6), +mlon.toFixed(6)], wall_faces: compass(-(bz - az), bx - ax),
         stood_at: [+plat.toFixed(6), +plon.toFixed(6)], photo: up.id, photo_w: f.w, photo_h: f.h,
+        gps: f.geo.lat != null ? { lat: +f.geo.lat.toFixed(6), lon: +f.geo.lon.toFixed(6), alt_m: f.geo.alt != null ? +f.geo.alt.toFixed(1) : null, heading_deg: f.geo.heading != null ? +f.geo.heading.toFixed(1) : null } : null,
+        taken: f.geo.taken,
         note: $("photoNote").value.slice(0, 300), source: "owner", saved: new Date().toISOString(),
       });
       sent++;
