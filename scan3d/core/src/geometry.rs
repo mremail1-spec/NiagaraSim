@@ -695,13 +695,120 @@ pub fn count_good(pose: &Pose, n1: &[[f64; 2]], n2: &[[f64; 2]], thr: f64) -> us
         .count()
 }
 
+/// Truncated (MSAC) two-view cost of a relative pose: sum over matches of
+/// min(reprojection error², thr²) in both views; behind-camera counts as thr².
+pub fn msac_cost(pose: &Pose, n1: &[[f64; 2]], n2: &[[f64; 2]], thr: f64) -> f64 {
+    let p0 = Pose::identity();
+    let t2 = thr * thr;
+    (0..n1.len())
+        .map(|i| {
+            let Some(x) = triangulate(&[(&p0, n1[i]), (pose, n2[i])]) else { return t2 };
+            let c2 = pose.to_cam(&x);
+            if x.z <= 0.0 || c2.z <= 0.0 {
+                return t2;
+            }
+            let e = (x.x / x.z - n1[i][0]).powi(2) + (x.y / x.z - n1[i][1]).powi(2)
+                + (c2.x / c2.z - n2[i][0]).powi(2) + (c2.y / c2.z - n2[i][1]).powi(2);
+            e.min(t2)
+        })
+        .sum()
+}
+
+/// Levenberg-Marquardt refinement of a relative pose (rotation + unit
+/// translation direction) on the Sampson error of the matches it fits.
+pub fn refine_relative(pose: &Pose, n1: &[[f64; 2]], n2: &[[f64; 2]], thr: f64) -> Pose {
+    let ess = |p: &Pose| skew(&p.t) * p.r;
+    let cost = |p: &Pose| -> f64 {
+        let e = ess(p);
+        (0..n1.len()).map(|i| sampson(&e, &n1[i], &n2[i]).min(thr * thr)).sum()
+    };
+    let mut p = Pose { r: pose.r, t: pose.t.normalize() };
+    let mut c0 = cost(&p);
+    let mut lambda = 1e-3;
+    for _ in 0..30 {
+        let tn = p.t;
+        let a = if tn.x.abs() < 0.9 { V3::x() } else { V3::y() };
+        let b1 = tn.cross(&a).normalize();
+        let b2 = tn.cross(&b1);
+        let apply = |p: &Pose, d: &[f64; 5]| -> Pose {
+            Pose { r: exp_so3(&V3::new(d[0], d[1], d[2])) * p.r, t: (p.t + b1 * d[3] + b2 * d[4]).normalize() }
+        };
+        let e0 = ess(&p);
+        let inl: Vec<usize> = (0..n1.len()).filter(|&i| sampson(&e0, &n1[i], &n2[i]) < thr * thr).collect();
+        if inl.len() < 8 {
+            break;
+        }
+        let res = |q: &Pose| -> Vec<f64> {
+            let e = ess(q);
+            inl.iter()
+                .map(|&i| {
+                    let x1 = V3::new(n1[i][0], n1[i][1], 1.0);
+                    let x2 = V3::new(n2[i][0], n2[i][1], 1.0);
+                    let fx1 = e * x1;
+                    let ftx2 = e.transpose() * x2;
+                    x2.dot(&fx1) / (fx1.x * fx1.x + fx1.y * fx1.y + ftx2.x * ftx2.x + ftx2.y * ftx2.y + 1e-30).sqrt()
+                })
+                .collect()
+        };
+        let r0 = res(&p);
+        let h = 1e-7;
+        let mut jt = vec![vec![0.0; r0.len()]; 5];
+        for k in 0..5 {
+            let mut d = [0.0; 5];
+            d[k] = h;
+            let rk = res(&apply(&p, &d));
+            for i in 0..r0.len() {
+                jt[k][i] = (rk[i] - r0[i]) / h;
+            }
+        }
+        let mut hm = SMatrix::<f64, 5, 5>::zeros();
+        let mut g = SMatrix::<f64, 5, 1>::zeros();
+        for a in 0..5 {
+            for b in 0..5 {
+                hm[(a, b)] = (0..r0.len()).map(|i| jt[a][i] * jt[b][i]).sum();
+            }
+            g[a] = -(0..r0.len()).map(|i| jt[a][i] * r0[i]).sum::<f64>();
+        }
+        let mut improved = false;
+        for _ in 0..6 {
+            let mut hd = hm;
+            for d in 0..5 {
+                hd[(d, d)] = hd[(d, d)] * (1.0 + lambda) + 1e-15;
+            }
+            let Some(ch) = hd.cholesky() else {
+                lambda *= 10.0;
+                continue;
+            };
+            let dx = ch.solve(&g);
+            let np = apply(&p, &[dx[0], dx[1], dx[2], dx[3], dx[4]]);
+            let c1 = cost(&np);
+            if c1 < c0 {
+                improved = (c0 - c1) / c0.max(1e-30) > 1e-9;
+                p = np;
+                c0 = c1;
+                lambda = (lambda * 0.3).max(1e-9);
+                break;
+            }
+            lambda *= 10.0;
+        }
+        if !improved {
+            break;
+        }
+    }
+    p
+}
+
 /// Robust relative pose of camera 2 w.r.t. camera 1 from normalised matches.
-/// Considers both the essential-matrix and the homography (planar scene)
-/// models and keeps the candidate that explains the most matches.
+/// Candidates come from the essential matrix and from homography decomposition
+/// (planar scenes); each is refined, and the lowest truncated reprojection
+/// cost wins. Returns the pose and the number of matches it fits.
 pub fn relative_pose(n1: &[[f64; 2]], n2: &[[f64; 2]], thr: f64, seed: u64) -> Option<(Pose, usize)> {
     let mut cands: Vec<Pose> = Vec::new();
     if let Some((e, mask)) = fundamental_ransac(n1, n2, thr, seed) {
-        if let Some((u, vt)) = { let s = e.svd(true, true); s.u.zip(s.v_t) } {
+        if let Some((u, vt)) = {
+            let s = e.svd(true, true);
+            s.u.zip(s.v_t)
+        } {
             let e = u * M3::from_diagonal(&V3::new(1.0, 1.0, 0.0)) * vt;
             let in1: Vec<[f64; 2]> = (0..n1.len()).filter(|&i| mask[i]).map(|i| n1[i]).collect();
             let in2: Vec<[f64; 2]> = (0..n2.len()).filter(|&i| mask[i]).map(|i| n2[i]).collect();
@@ -713,15 +820,18 @@ pub fn relative_pose(n1: &[[f64; 2]], n2: &[[f64; 2]], thr: f64, seed: u64) -> O
     if let Some((h, _)) = homography_ransac(n1, n2, thr, seed ^ 0x5bd1) {
         cands.extend(decompose_homography(&h));
     }
-    let mut best: Option<(Pose, usize)> = None;
+    let mut best: Option<(Pose, f64)> = None;
     for c in cands {
-        // polish the candidate on the matches it explains
-        let good = count_good(&c, n1, n2, 2.0 * thr);
-        if best.as_ref().map_or(true, |b| good > b.1) {
-            best = Some((c, good));
+        for cand in [c, refine_relative(&c, n1, n2, 2.0 * thr)] {
+            let cost = msac_cost(&cand, n1, n2, thr);
+            if best.as_ref().map_or(true, |b| cost < b.1) {
+                best = Some((cand, cost));
+            }
         }
     }
-    best
+    let (p, _) = best?;
+    let good = count_good(&p, n1, n2, thr);
+    Some((p, good))
 }
 
 #[cfg(test)]

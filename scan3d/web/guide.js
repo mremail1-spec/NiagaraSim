@@ -27,7 +27,7 @@ export function guide(s) {
       out.detail = 'Walk sideways around the object, about one step. Keep it centred. Most of the object should still be visible in both photos.';
     } else {
       out.title = 'Keep circling to the right';
-      out.detail = 'The photos do not show enough change in angle yet, or do not overlap. Walk around the object, do not just turn the phone.';
+      out.detail = 'The photos do not show enough change in angle yet, or do not overlap. Walk around the object, do not just turn the phone. A plain object needs a patterned surface under it to connect the photos.';
     }
     return out;
   }
@@ -65,7 +65,7 @@ export function guide(s) {
   if (s.n >= 3 && unplaced(s.n - 1) && unplaced(s.n - 2)) {
     out.arrow = 'back';
     out.title = 'Those photos did not fit. Go back a little';
-    out.detail = 'The last photos did not overlap enough with the others. Return toward where the previous good photo was taken, take smaller steps, and keep the object centred.';
+    out.detail = 'The last photos did not connect to the others. Go back toward the previous good spot and take smaller steps. Plain or shiny objects give little to match: put the object on a patterned surface (a newspaper, a printed cloth) and keep some of it in every photo.';
     return out;
   }
   const lastCam = cams[cams.length - 1];

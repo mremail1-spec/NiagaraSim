@@ -1,6 +1,7 @@
 import { Viewer } from './viewer.js';
 import * as exp from './export.js';
 import { guide, ringSvg } from './guide.js';
+import { exifFov } from './exif.js';
 
 const $ = (id) => document.getElementById(id);
 const MAX_FRAMES = 120;
@@ -25,7 +26,10 @@ document.querySelectorAll('[role=tab]').forEach((b) => b.addEventListener('click
 // ---------- engine (persistent guided session) ----------
 const worker = new Worker('worker.js', { type: 'module' });
 function options() {
-  return { fov_deg: +$('optFov').value || 65, dense_size: +$('optDense').value, mesh_res: +$('optMesh').value };
+  const o = { fov_deg: +$('optFov').value || 65, dense_size: +$('optDense').value, mesh_res: +$('optMesh').value };
+  // photos with lens data in EXIF: use it and skip the lens search
+  if (state.exifFov) { o.fov_deg = state.exifFov; o.fov_known = 1; }
+  return o;
 }
 function send(cmd, extra = {}, transfer = []) {
   worker.postMessage({ cmd, seq: ++state.seq, ...extra }, transfer);
@@ -300,7 +304,7 @@ $('btnShot').onclick = () => {
 };
 $('btnClear').onclick = () => {
   state.thumbs.forEach((t) => t.remove());
-  Object.assign(state, { thumbs: [], mask: [], guide: null, complete: false, results: {}, fitted: false, lastKey: null });
+  Object.assign(state, { thumbs: [], mask: [], exifFov: null, guide: null, complete: false, results: {}, fitted: false, lastKey: null });
   send('reset', { options: options() });
   viewer.clear();
   $('ringbox').hidden = true;
@@ -315,6 +319,11 @@ $('file').onchange = async (e) => {
   e.target.value = '';
   $('intro').hidden = true;
   const imgs = files.filter((f) => !f.type.startsWith('video/'));
+  const fovs = (await Promise.all(imgs.map((f) => exifFov(f).catch(() => null)))).filter((v) => v);
+  if (fovs.length && fovs.length === imgs.length && Math.max(...fovs) - Math.min(...fovs) < 1.5) {
+    state.exifFov = fovs.sort((a, b) => a - b)[fovs.length >> 1];
+    hint(`lens from photo data: ${state.exifFov.toFixed(1)}° field of view`, 'ok');
+  }
   const vids = files.filter((f) => f.type.startsWith('video/'));
   let k = 0;
   for (const f of imgs) {
@@ -399,9 +408,16 @@ $('btnTex').onclick = () => {
   $('btnTex').textContent = `Colour: ${viewer.textured ? 'on' : 'off'}`;
   viewer.draw();
 };
-document.querySelectorAll('[data-export]').forEach((b) => (b.onclick = () => {
+document.querySelectorAll('[data-export]').forEach((b) => (b.onclick = async () => {
   const { mesh, dense } = state.results;
   const kind = b.dataset.export;
+  if (kind === 'photos') {
+    if (!state.thumbs.length) return log('no photos yet');
+    const entries = [];
+    for (const [i, img] of state.thumbs.entries()) entries.push([`photo_${String(i).padStart(3, '0')}.jpg`, await exp.imageBytes(img)]);
+    entries.push(['scan-log.txt', $('log').textContent]);
+    return exp.download('scan-photos.zip', exp.zip(entries), 'application/zip');
+  }
   if (kind === 'plydense') {
     if (!dense) return log('no dense cloud yet');
     return exp.download('scan-points.ply', exp.plyPoints(dense));

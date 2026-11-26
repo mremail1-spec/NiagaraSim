@@ -112,3 +112,36 @@ export function glb({ pos, col, nrm, idx }) {
   for (let i = 0; i < parts.length; i++) u8.set(parts[i], p0 + views[i].byteOffset);
   return out;
 }
+
+const CRC = new Uint32Array(256).map((_, n) => { let c = n; for (let k = 0; k < 8; k++) c = c & 1 ? 0xedb88320 ^ (c >>> 1) : c >>> 1; return c >>> 0; });
+function crc32(u8) { let c = 0xffffffff; for (let i = 0; i < u8.length; i++) c = CRC[(c ^ u8[i]) & 255] ^ (c >>> 8); return (c ^ 0xffffffff) >>> 0; }
+
+/** Uncompressed ZIP archive from [name, string|ArrayBuffer|Uint8Array] entries. */
+export function zip(entries) {
+  const enc = new TextEncoder(), parts = [], central = [];
+  let off = 0;
+  for (const [name, data] of entries) {
+    const d = typeof data === 'string' ? enc.encode(data) : new Uint8Array(data.buffer || data, data.byteOffset || 0, data.byteLength);
+    const nm = enc.encode(name), crc = crc32(d);
+    const h = new DataView(new ArrayBuffer(30));
+    [[0, 0x04034b50, 4], [4, 20, 2], [8, 0, 2], [10, 0, 2], [12, 0x21, 2], [14, crc, 4], [18, d.length, 4], [22, d.length, 4], [26, nm.length, 2], [28, 0, 2]]
+      .forEach(([o, v, s]) => (s === 4 ? h.setUint32(o, v, true) : h.setUint16(o, v, true)));
+    const c = new DataView(new ArrayBuffer(46));
+    [[0, 0x02014b50, 4], [4, 20, 2], [6, 20, 2], [8, 0, 2], [10, 0, 2], [12, 0, 2], [14, 0x21, 2], [16, crc, 4], [20, d.length, 4], [24, d.length, 4],
+      [28, nm.length, 2], [30, 0, 2], [32, 0, 2], [34, 0, 2], [36, 0, 2], [38, 0, 4], [42, off, 4]]
+      .forEach(([o, v, s]) => (s === 4 ? c.setUint32(o, v, true) : c.setUint16(o, v, true)));
+    parts.push(new Uint8Array(h.buffer), nm, d);
+    central.push(new Uint8Array(c.buffer), nm);
+    off += 30 + nm.length + d.length;
+  }
+  const cdSize = central.reduce((a, b) => a + b.length, 0);
+  const e = new DataView(new ArrayBuffer(22));
+  e.setUint32(0, 0x06054b50, true); e.setUint16(8, entries.length, true); e.setUint16(10, entries.length, true);
+  e.setUint32(12, cdSize, true); e.setUint32(16, off, true);
+  return new Blob([...parts, ...central, new Uint8Array(e.buffer)], { type: 'application/zip' });
+}
+
+/** Photo bytes from an <img> whose src is a data: or same-origin URL. */
+export async function imageBytes(img) {
+  return new Uint8Array(await (await fetch(img.src)).arrayBuffer());
+}

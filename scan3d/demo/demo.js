@@ -1,6 +1,7 @@
 import { Viewer } from './viewer.js';
 import * as exp from './export.js';
 import { guide, ringSvg } from './guide.js';
+import { exifFov } from './exif.js';
 
 const $ = (id) => document.getElementById(id);
 const MAX = 120, LONG = 800;
@@ -10,7 +11,9 @@ const worker = new Worker('worker.js', { type: 'module' });
 const waiting = new Map();
 
 function options() {
-  return { fov_deg: +$('optFov').value || 65, dense_size: +$('optDense').value, mesh_res: +$('optMesh').value };
+  const o = { fov_deg: +$('optFov').value || 65, dense_size: +$('optDense').value, mesh_res: +$('optMesh').value };
+  if (state.exifFov) { o.fov_deg = state.exifFov; o.fov_known = 1; }
+  return o;
 }
 function send(cmd, extra = {}, transfer = []) {
   const seq = ++state.seq;
@@ -72,7 +75,7 @@ function grab(src, sw0, sh0) {
   return wctx.getImageData(0, 0, w, h).data;
 }
 
-async function addPhoto(src, sw, sh, { thumbUrl, solve = true } = {}) {
+async function addPhoto(src, sw, sh, { thumbUrl, solve = true, ask = false } = {}) {
   if (state.thumbs.length >= MAX) { msg(`Limit of ${MAX} photos reached. Press Finish.`, true); return null; }
   const first = !state.thumbs.length;
   const data = grab(src, sw, sh);
@@ -88,7 +91,7 @@ async function addPhoto(src, sw, sh, { thumbUrl, solve = true } = {}) {
   const buf = data.buffer;
   const p = send('add', { frame: buf, w: state.w, h: state.h, solve, options: options() }, [buf]);
   if (solve) { state.busy++; showBusy(); }
-  if (first && !state.sampleRun) askTarget(img.src);
+  if (first && ask && !state.sampleRun) askTarget(img.src);
   return p;
 }
 
@@ -197,6 +200,7 @@ function resetSteps() {
 }
 function finish() {
   if (state.building) return Promise.resolve();
+  $('picker').hidden = true;
   state.building = true; updateButtons();
   resetSteps();
   log('Building the dense model from the placed photos…');
@@ -211,7 +215,7 @@ function stopSample() { state.sampleRun = 0; }
 async function reset() {
   stopSample();
   state.thumbs.forEach((t) => t.remove());
-  Object.assign(state, { thumbs: [], w: 0, h: 0, results: {}, mask: [], busy: 0, targetSet: false, fitted: false });
+  Object.assign(state, { exifFov: null, thumbs: [], w: 0, h: 0, results: {}, mask: [], busy: 0, targetSet: false, fitted: false });
   $('btnExport').disabled = true;
   $('log').textContent = '';
   resetSteps();
@@ -232,7 +236,9 @@ $('shot').onchange = async (e) => {
   e.target.value = '';
   if (!f) return;
   if (state.sampleRun) { await reset(); }
-  try { const b = await loadBitmap(f); await addPhoto(b, b.width, b.height); b.close(); }
+  const fv = await exifFov(f).catch(() => null);
+  if (fv && !state.thumbs.length) state.exifFov = fv;
+  try { const b = await loadBitmap(f); await addPhoto(b, b.width, b.height, { ask: true }); b.close(); }
   catch { msg('Could not read that photo. Try again.', true); }
 };
 $('file').onchange = async (e) => {
@@ -241,6 +247,10 @@ $('file').onchange = async (e) => {
   if (!files.length) return;
   if (state.sampleRun) { await reset(); }
   const images = files.filter((f) => !f.type.startsWith('video/'));
+  const fovs = (await Promise.all(images.map((f) => exifFov(f).catch(() => null)))).filter((v) => v);
+  if (fovs.length && fovs.length === images.length && Math.max(...fovs) - Math.min(...fovs) < 1.5) {
+    state.exifFov = fovs.sort((a, b) => a - b)[fovs.length >> 1];
+  }
   const videos = files.filter((f) => f.type.startsWith('video/'));
   let k = 0;
   for (const f of images) {
@@ -319,32 +329,7 @@ document.querySelectorAll('#modes button').forEach((b) => (b.onclick = () => set
 $('btnCams').onclick = () => { viewer.showCams = !viewer.showCams; $('btnCams').textContent = `Cameras: ${viewer.showCams ? 'on' : 'off'}`; viewer.draw(); };
 $('btnTex').onclick = () => { viewer.textured = !viewer.textured; $('btnTex').textContent = `Colour: ${viewer.textured ? 'on' : 'off'}`; viewer.draw(); };
 
-// ---------- export (zip, stored) ----------
-const CRC = new Uint32Array(256).map((_, n) => { let c = n; for (let k = 0; k < 8; k++) c = c & 1 ? 0xedb88320 ^ (c >>> 1) : c >>> 1; return c >>> 0; });
-function crc32(u8) { let c = 0xffffffff; for (let i = 0; i < u8.length; i++) c = CRC[(c ^ u8[i]) & 255] ^ (c >>> 8); return (c ^ 0xffffffff) >>> 0; }
-function zip(entries) {
-  const enc = new TextEncoder(), parts = [], central = [];
-  let off = 0;
-  for (const [name, data] of entries) {
-    const d = typeof data === 'string' ? enc.encode(data) : new Uint8Array(data);
-    const nm = enc.encode(name), crc = crc32(d);
-    const h = new DataView(new ArrayBuffer(30));
-    [[0, 0x04034b50, 4], [4, 20, 2], [8, 0, 2], [10, 0, 2], [12, 0x21, 2], [14, crc, 4], [18, d.length, 4], [22, d.length, 4], [26, nm.length, 2], [28, 0, 2]]
-      .forEach(([o, v, s]) => (s === 4 ? h.setUint32(o, v, true) : h.setUint16(o, v, true)));
-    const c = new DataView(new ArrayBuffer(46));
-    [[0, 0x02014b50, 4], [4, 20, 2], [6, 20, 2], [8, 0, 2], [10, 0, 2], [12, 0, 2], [14, 0x21, 2], [16, crc, 4], [20, d.length, 4], [24, d.length, 4],
-      [28, nm.length, 2], [30, 0, 2], [32, 0, 2], [34, 0, 2], [36, 0, 2], [38, 0, 4], [42, off, 4]]
-      .forEach(([o, v, s]) => (s === 4 ? c.setUint32(o, v, true) : c.setUint16(o, v, true)));
-    parts.push(new Uint8Array(h.buffer), nm, d);
-    central.push(new Uint8Array(c.buffer), nm);
-    off += 30 + nm.length + d.length;
-  }
-  const cdSize = central.reduce((a, b) => a + b.length, 0);
-  const e = new DataView(new ArrayBuffer(22));
-  e.setUint32(0, 0x06054b50, true); e.setUint16(8, entries.length, true); e.setUint16(10, entries.length, true);
-  e.setUint32(12, cdSize, true); e.setUint32(16, off, true);
-  return new Blob([...parts, ...central, new Uint8Array(e.buffer)], { type: 'application/zip' });
-}
+// ---------- export ----------
 let downloads = null;
 (async () => { try { downloads = await window.claude?.use?.('downloads'); } catch { downloads = null; } })();
 $('btnExport').onclick = async () => {
@@ -353,7 +338,7 @@ $('btnExport').onclick = async () => {
   const entries = [['scan.glb', exp.glb(mesh)], ['scan.obj', exp.obj(mesh)], ['scan-mesh.ply', exp.plyMesh(mesh)]];
   if (dense) entries.push(['scan-points.ply', exp.plyPoints(dense)]);
   entries.push(['README.txt', 'Scan3D export. scan.glb: mesh with vertex colours (Blender, web, AR viewers).\nscan.obj: same mesh, colours after each vertex.\nscan-mesh.ply / scan-points.ply: mesh and dense point cloud (MeshLab, CloudCompare).\nUnits are relative.\n']);
-  const blob = zip(entries);
+  const blob = exp.zip(entries);
   const em = $('exportMsg');
   if (!downloads) { em.textContent = 'Saving files is not available in this view.'; return; }
   try {
@@ -366,3 +351,18 @@ $('btnExport').onclick = async () => {
 
 resetSteps();
 reset().then(playSample);
+
+$('btnPhotos').onclick = async () => {
+  const em = $('exportMsg');
+  if (!state.thumbs.length) { em.textContent = 'No photos in this scan yet.'; return; }
+  if (!downloads) { em.textContent = 'Saving files is not available in this view.'; return; }
+  const entries = [];
+  for (const [i, img] of state.thumbs.entries()) entries.push([`photo_${String(i).padStart(3, '0')}.jpg`, await exp.imageBytes(img)]);
+  entries.push(['scan-log.txt', $('log').textContent]);
+  try {
+    await downloads.save({ filename: 'scan3d-photos.zip', data: exp.zip(entries) });
+    em.textContent = 'Saved scan3d-photos.zip.';
+  } catch (err) {
+    em.textContent = err?.code === 'declined' ? 'Download cancelled.' : `Could not save the file (${err?.code || 'error'}).`;
+  }
+};

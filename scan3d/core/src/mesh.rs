@@ -5,6 +5,8 @@ use crate::geometry::V3;
 use crate::image::sample_rgb;
 use crate::mvs::{Cloud, DepthMap};
 use crate::sfm::Reconstruction;
+use crate::geometry::M3;
+use crate::poisson;
 
 #[derive(Default, Clone)]
 pub struct Mesh {
@@ -292,19 +294,20 @@ fn colorize(
                 continue;
             }
             // visibility: must agree with this view's depth map when it has a value
+            let mut wv = 1.0;
             if let Some((_, _, d)) = dm.at(u, v) {
                 if (d as f64 - zc).abs() > tol.max(0.02 * zc) {
                     continue;
                 }
             } else {
-                continue;
+                wv = 0.25; // no depth measured there (plain surface): trust less
             }
             let view = (c - p).normalize();
             let cosang = nrm[vi].dot(&view);
             if cosang <= 0.1 {
                 continue;
             }
-            let w = cosang * cosang / (zc * zc);
+            let w = wv * cosang * cosang / (zc * zc);
             let fu = (u + 0.5) / dm.s - 0.5;
             let fv = (v + 0.5) / dm.s - 0.5;
             let col = sample_rgb(&rgba[i], fw, fh, fu as f32, fv as f32);
@@ -323,4 +326,148 @@ fn colorize(
             }
         })
         .collect()
+}
+
+/// Where the cameras look (least-squares meeting point of their optical axes)
+/// and how far around it they go (degrees of azimuth, Y is up).
+pub fn camera_focus(rec: &Reconstruction) -> Option<(V3, f64, f64)> {
+    let cams: Vec<(V3, V3)> = rec.poses.iter().flatten().map(|p| (p.center(), p.r.transpose() * V3::z())).collect();
+    if cams.len() < 3 {
+        return None;
+    }
+    let mut a = M3::zeros();
+    let mut b = V3::zeros();
+    for (c, d) in &cams {
+        let m = M3::identity() - d * d.transpose();
+        a += m;
+        b += m * c;
+    }
+    let focus = a.try_inverse()? * b;
+    // An object scan keeps the focus near the middle of nearly every photo.
+    let centred = cams
+        .iter()
+        .filter(|(c, d)| {
+            let v = focus - c;
+            v.norm() > 1e-9 && d.dot(&v.normalize()) > 25f64.to_radians().cos()
+        })
+        .count();
+    if centred * 10 < cams.len() * 8 {
+        return None;
+    }
+    let mut az: Vec<f64> = cams.iter().map(|(c, _)| (c.z - focus.z).atan2(c.x - focus.x).to_degrees()).collect();
+    az.sort_by(|x, y| x.partial_cmp(y).unwrap());
+    let mut gap = 360.0 - (az[az.len() - 1] - az[0]);
+    for w in az.windows(2) {
+        gap = f64::max(gap, w[1] - w[0]);
+    }
+    let mut dist: Vec<f64> = cams.iter().map(|(c, _)| (c - focus).norm()).collect();
+    dist.sort_by(|x, y| x.partial_cmp(y).unwrap());
+    Some((focus, 360.0 - gap, dist[dist.len() / 2]))
+}
+
+/// Mesh by Poisson reconstruction of the dense oriented points.
+/// Object scans (cameras around a point) give a closed surface around the
+/// object; scenes keep only surface near measured points.
+#[allow(clippy::too_many_arguments)]
+pub fn build_mesh_poisson(
+    maps: &[Option<DepthMap>],
+    rec: &Reconstruction,
+    cloud: &Cloud,
+    rgba: &[Vec<u8>],
+    fw: usize,
+    fh: usize,
+    res: usize,
+    progress: &mut dyn FnMut(f32),
+) -> (Mesh, String) {
+    if cloud.pos.len() < 100 {
+        return (Mesh::default(), "too few points".into());
+    }
+    let all: Vec<(V3, V3)> = cloud.pos.iter().zip(&cloud.nrm)
+        .map(|(p, n)| (V3::new(p[0] as f64, p[1] as f64, p[2] as f64), V3::new(n[0] as f64, n[1] as f64, n[2] as f64)))
+        .collect();
+    let focus = camera_focus(rec);
+    let object = matches!(focus, Some((_, cov, _)) if cov >= 150.0);
+    let sel: Vec<(V3, V3)> = match focus {
+        Some((f, _, d)) if object => all.iter().copied().filter(|(p, _)| (p - f).norm() < 0.7 * d).collect(),
+        _ => all.clone(),
+    };
+    let sel = if sel.len() >= 100 { sel } else { all };
+    let mut lo = V3::zeros();
+    let mut hi = V3::zeros();
+    for a in 0..3 {
+        let v: Vec<f32> = sel.iter().map(|(p, _)| p[a] as f32).collect();
+        let (l, h) = (percentile(v.clone(), 0.005) as f64, percentile(v, 0.995) as f64);
+        let m = (h - l) * 0.08 + 1e-6;
+        lo[a] = l - m;
+        hi[a] = h + m;
+    }
+    let pts: Vec<V3> = sel.iter().map(|x| x.0).filter(|p| (0..3).all(|a| p[a] >= lo[a] && p[a] <= hi[a])).collect();
+    let nrm: Vec<V3> = sel.iter().filter(|(p, _)| (0..3).all(|a| p[a] >= lo[a] && p[a] <= hi[a])).map(|x| x.1).collect();
+    let mut prog = |p: f32| progress(0.7 * p);
+    let pr = poisson::solve(&pts, &nrm, lo, hi - lo, res, &mut prog);
+    // Keep surface within reach of the data: generous for objects (fills
+    // texture-less patches), tight for scenes (no invented walls).
+    let reach: u16 = if object { ((res as f64 * 0.05) as u16).max(4) } else { 4 };
+    let ok = |j: usize| pr.dist[j] <= reach;
+    let (pos, idx) = poisson::surface_nets(&pr.grid, &pr.field, &ok);
+    // Trim invented surface: drop faces lying in space the cameras saw through
+    // to a farther measured surface (e.g. a lid Poisson puts over an open scene).
+    let near_data = |p: &V3| -> bool {
+        let q = (p - pr.grid.lo) / pr.grid.h;
+        let (x, y, z) = (q.x.round() as isize, q.y.round() as isize, q.z.round() as isize);
+        if x < 0 || y < 0 || z < 0 || x as usize >= pr.grid.n[0] || y as usize >= pr.grid.n[1] || z as usize >= pr.grid.n[2] {
+            return false;
+        }
+        pr.dist[pr.grid.id(x as usize, y as usize, z as usize)] <= 4
+    };
+    let tmp_n = vertex_normals(&pos, &idx);
+    let tol = 4.0 * pr.grid.h;
+    let keep_v: Vec<bool> = pos
+        .iter()
+        .zip(&tmp_n)
+        .map(|(p, _)| {
+            // In space cameras saw through (a surface was measured behind it): invented.
+            near_data(p) || free_space_votes(p, maps, rec, tol) < 2
+        })
+        .collect();
+    let idx: Vec<u32> = idx.chunks(3).filter(|t| t.iter().any(|&v| keep_v[v as usize])).flatten().copied().collect();
+    progress(0.8);
+    let (pos, idx) = keep_large_components(pos, idx, if object { 0.1 } else { 0.01 });
+    let pos = smooth(pos, &idx, 2);
+    let nrm = vertex_normals(&pos, &idx);
+    let col = colorize(&pos, &nrm, maps, rec, rgba, fw, fh, 3.0 * pr.grid.h);
+    progress(1.0);
+    let mode = if object {
+        let (f, cov, _) = focus.unwrap();
+        format!("object mode (cameras cover {:.0}° around [{:.2}, {:.2}, {:.2}])", cov, f.x, f.y, f.z)
+    } else {
+        "scene mode".to_string()
+    };
+    (
+        Mesh {
+            pos: pos.iter().map(|p| [p.x as f32, p.y as f32, p.z as f32]).collect(),
+            col,
+            nrm: nrm.iter().map(|n| [n.x as f32, n.y as f32, n.z as f32]).collect(),
+            idx,
+        },
+        mode,
+    )
+}
+
+/// Number of views whose measured depth lies clearly behind this point, i.e.
+/// the camera saw through the point to a farther surface.
+fn free_space_votes(p: &V3, maps: &[Option<DepthMap>], rec: &Reconstruction, tol: f64) -> usize {
+    let k = rec.intr;
+    let mut votes = 0;
+    for (i, dm) in maps.iter().enumerate() {
+        let Some(dm) = dm else { continue };
+        let pose = rec.poses[i].unwrap();
+        let Some((u, v, zc)) = dm.project(&k, &pose, p) else { continue };
+        if let Some((_, _, d)) = dm.at(u, v) {
+            if d as f64 > zc + tol.max(0.03 * zc) {
+                votes += 1;
+            }
+        }
+    }
+    votes
 }

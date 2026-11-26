@@ -15,7 +15,8 @@ async function guided(m) {
   const logcb = (p, msg) => { if (msg) post({ type: 'log', msg }); };
   try {
     if (m.cmd === 'reset') { g?.free(); g = new Scanner(); opts(g, m.options); return; }
-    if (!g) { g = new Scanner(); opts(g, m.options); }
+    if (!g) g = new Scanner();
+    if (m.options) opts(g, m.options);
     if (m.cmd === 'add') g.add_frame(new Uint8Array(m.frame), m.w, m.h);
     if (m.cmd === 'remove') g.remove_frame(m.i);
     if (m.cmd === 'target') g.set_target(m.u, m.v);

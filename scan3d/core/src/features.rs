@@ -168,9 +168,14 @@ pub fn detect_and_describe(img: &Gray, max_features: usize) -> Features {
         }
         let scale = img.w as f32 / level_img.w as f32;
         let budget = ((max_features as f32) * weights[l] / wsum).ceil() as usize;
-        let mut corners = fast_corners(&level_img, 0.035);
-        if corners.len() < budget * 2 {
-            corners = fast_corners(&level_img, 0.015);
+        // Adaptive threshold: low-contrast surfaces (tables, walls, matte plastic)
+        // need a sensitive detector; Harris ranking + bucketing keep the best.
+        let mut corners = Vec::new();
+        for thr in [0.04, 0.02, 0.01, 0.005] {
+            corners = fast_corners(&level_img, thr);
+            if corners.len() >= budget * 3 {
+                break;
+            }
         }
         // Harris score + 3x3 non-maximum suppression.
         let mut score_map = vec![0.0f32; level_img.w * level_img.h];
@@ -208,14 +213,21 @@ pub fn detect_and_describe(img: &Gray, max_features: usize) -> Features {
         kept.sort_by(|a, b| b.2.partial_cmp(&a.2).unwrap());
         let mut counts = vec![0usize; gw * gh];
         let mut bucketed = Vec::new();
+        let mut rest = Vec::new();
         for k in kept {
             let c = (k.1 / cell) * gw + k.0 / cell;
             if counts[c] < per_cell {
                 counts[c] += 1;
                 bucketed.push(k);
+            } else {
+                rest.push(k);
             }
         }
+        // Spread first; then fill the remaining budget with the strongest leftovers
+        // (texture-less regions otherwise leave the budget unused).
         bucketed.truncate(budget);
+        let room = budget - bucketed.len();
+        bucketed.extend(rest.into_iter().take(room));
         let smooth = level_img.blur(2.0);
         for (x, y, s) in bucketed {
             let a = orientation(&level_img, x, y);

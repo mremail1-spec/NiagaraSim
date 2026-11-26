@@ -9,10 +9,13 @@ pub mod geometry;
 pub mod image;
 pub mod mesh;
 pub mod mvs;
+pub mod poisson;
 pub mod pipeline;
 pub mod sfm;
 #[cfg(not(target_arch = "wasm32"))]
 pub mod synth;
+#[cfg(not(target_arch = "wasm32"))]
+pub mod scenes;
 
 use pipeline::Pipeline;
 use wasm_bindgen::prelude::*;
@@ -48,6 +51,8 @@ impl Scanner {
             "max_features" => o.max_features = v as usize,
             "match_window" => o.match_window = v as usize,
             "fov_deg" => o.fov_deg = v,
+            "fov_known" => o.fov_known = v != 0.0,
+            "mesh_tsdf" => o.mesh_tsdf = v != 0.0,
             "dense_size" => o.dense.size = v as usize,
             "dense_depths" => o.dense.depths = v as usize,
             "dense_sources" => o.dense.sources = v as usize,

@@ -26,6 +26,8 @@ pub struct Reconstruction {
     pub intr: Intrinsics,
     pub points: Vec<Point3D>,
     pub init_pair: Option<(usize, usize)>,
+    /// final RMS reprojection error in pixels
+    pub rms: f64,
 }
 
 impl Reconstruction {
@@ -41,6 +43,7 @@ struct Ctx<'a> {
     track_point: Vec<i32>,
     rec: Reconstruction,
     thr: f64,
+    refine_k: bool,
 }
 
 fn find(p: &mut [usize], mut x: usize) -> usize {
@@ -129,7 +132,8 @@ impl<'a> Ctx<'a> {
             tracks,
             feat_track,
             track_point: vec![-1; nt],
-            rec: Reconstruction { poses: vec![None; feats.len()], intr, points: Vec::new(), init_pair: None },
+            rec: Reconstruction { poses: vec![None; feats.len()], intr, points: Vec::new(), init_pair: None, rms: f64::NAN },
+            refine_k: false,
             thr,
         }
     }
@@ -184,7 +188,7 @@ impl<'a> Ctx<'a> {
     }
 
     fn bundle(&mut self, iterations: usize, fixed: usize) -> (f64, f64) {
-        let refine = self.rec.registered() >= 4;
+        let refine = self.refine_k && self.rec.registered() >= 4;
         let mut xs: Vec<V3> = self.rec.points.iter().map(|p| p.x).collect();
         let mut obs = Vec::new();
         for (pi, p) in self.rec.points.iter().enumerate() {
@@ -192,7 +196,7 @@ impl<'a> Ctx<'a> {
                 obs.push(Obs { cam: img, point: pi, uv: uv(self.feats, img, f) });
             }
         }
-        let opt = BaOptions { iterations, huber_px: self.thr * 0.5, refine_intrinsics: refine, fixed_cam: fixed };
+        let opt = BaOptions { iterations, huber_px: self.thr * 0.5, refine_intrinsics: refine, refine_k1: self.rec.registered() >= 12, fixed_cam: fixed };
         let r = bundle_adjust(&mut self.rec.poses, &mut self.rec.intr, &mut xs, &obs, &opt);
         for (p, x) in self.rec.points.iter_mut().zip(xs) {
             p.x = x;
@@ -211,6 +215,32 @@ impl<'a> Ctx<'a> {
             if p.obs.len() >= 2 && triangulation_angle(&centers, &p.x) >= min_angle {
                 kept.push(p);
             }
+        }
+        // Cameras left with too few consistent observations were placed wrongly:
+        // un-place them (they may be registered again later).
+        let mut per_cam = vec![0usize; self.rec.poses.len()];
+        for p in &kept {
+            for &(img, _) in &p.obs {
+                per_cam[img] += 1;
+            }
+        }
+        let drop: Vec<bool> = (0..self.rec.poses.len())
+            .map(|i| self.rec.poses[i].is_some() && per_cam[i] < 12 && Some(i) != self.rec.init_pair.map(|p| p.0) && Some(i) != self.rec.init_pair.map(|p| p.1))
+            .collect();
+        if drop.iter().any(|&d| d) {
+            for (i, d) in drop.iter().enumerate() {
+                if *d {
+                    self.rec.poses[i] = None;
+                }
+            }
+            let mut again = Vec::with_capacity(kept.len());
+            for mut p in kept {
+                p.obs.retain(|o| !drop[o.0]);
+                if p.obs.len() >= 2 {
+                    again.push(p);
+                }
+            }
+            kept = again;
         }
         self.track_point.iter_mut().for_each(|v| *v = -1);
         for (i, p) in kept.iter().enumerate() {
@@ -263,17 +293,31 @@ impl<'a> Ctx<'a> {
                 ids.push((f, pi));
             }
         }
-        if scales.len() < 3 {
-            return Err(format!("{} shared 3D points, need 3 for scale", scales.len()));
-        }
-        let mut sorted = scales.clone();
-        sorted.sort_by(|a, b| a.partial_cmp(b).unwrap());
-        let sc = sorted[sorted.len() / 2];
+        // Scale: from shared 3D points when there are enough; otherwise assume a
+        // typical step length (the median distance between consecutive placed
+        // cameras). Later loop closure and bundle adjustment correct it.
+        let assumed = scales.len() < 3;
+        let sc = if !assumed {
+            let mut sorted = scales.clone();
+            sorted.sort_by(|a, b| a.partial_cmp(b).unwrap());
+            sorted[sorted.len() / 2]
+        } else {
+            if good2 < 40 {
+                return Err(format!("{} shared 3D points and a weak pair ({} inliers)", scales.len(), good2));
+            }
+            let centers: Vec<(usize, V3)> = self.rec.poses.iter().enumerate().filter_map(|(i, p)| p.map(|p| (i, p.center()))).collect();
+            let mut steps: Vec<f64> = centers.windows(2).map(|w| (w[1].1 - w[0].1).norm() / (w[1].0 - w[0].0) as f64).collect();
+            if steps.is_empty() {
+                return Err("no step length to assume".into());
+            }
+            steps.sort_by(|a, b| a.partial_cmp(b).unwrap());
+            steps[steps.len() / 2] * (img as f64 - r as f64).abs().max(1.0)
+        };
         let pose = Pose { r: rel.r * pr.r, t: rel.r * pr.t + rel.t * sc };
         self.rec.poses[img] = Some(pose);
         let good: Vec<(usize, usize)> =
             ids.into_iter().filter(|&(f, pi)| self.reproj_err(img, f, &self.rec.points[pi].x) < self.thr * 1.5).collect();
-        if good.len() < 3 || (good.len() as f64) < 0.5 * scales.len() as f64 {
+        if !assumed && (good.len() < 3 || (good.len() as f64) < 0.5 * scales.len() as f64) {
             self.rec.poses[img] = None;
             return Err(format!("scale inconsistent ({} of {} points agree)", good.len(), scales.len()));
         }
@@ -300,7 +344,7 @@ impl<'a> Ctx<'a> {
             return Err(format!("{} correspondences, PnP failed", xs.len()));
         };
         let n_in = mask.iter().filter(|&&m| m).count();
-        if n_in < 12 || (n_in as f64) < 0.25 * xs.len() as f64 {
+        if n_in < 12 || ((n_in as f64) < 0.25 * xs.len() as f64 && n_in < 30) {
             return Err(format!("{} correspondences, {} PnP inliers", xs.len(), n_in));
         }
         self.rec.poses[img] = Some(pose);
@@ -321,7 +365,7 @@ pub fn reconstruct(
     thr_px: f64,
     log: &mut dyn FnMut(f32, &str),
 ) -> Option<Reconstruction> {
-    reconstruct_from(feats, pairs, intr0, thr_px, None, log)
+    reconstruct_from(feats, pairs, intr0, thr_px, None, true, log)
 }
 
 /// Like `reconstruct`, but tries `prefer` as the starting pair first (keeps
@@ -332,12 +376,56 @@ pub fn reconstruct_from(
     intr0: Intrinsics,
     thr_px: f64,
     prefer: Option<(usize, usize)>,
+    refine_intrinsics: bool,
     log: &mut dyn FnMut(f32, &str),
 ) -> Option<Reconstruction> {
-    let min_angle = 1.5f64.to_radians();
-    let mut ctx = Ctx::new(feats, pairs, intr0, thr_px);
-    log(0.0, &format!("{} feature tracks", ctx.tracks.len()));
+    let cands = init_candidates(feats, pairs, intr0, thr_px, prefer);
+    if cands.is_empty() {
+        return None;
+    }
+    // Fast path: the previous starting pair is still sound.
+    if let Some(pp) = prefer {
+        if cands[0].0 == f64::MAX && (cands[0].1, cands[0].2) == pp {
+            let c = &cands[0];
+            if let Some(r) = grow(feats, pairs, intr0, thr_px, refine_intrinsics, (c.1, c.2, c.3), log) {
+                return Some(r);
+            }
+        }
+    }
+    // Two-view starts can be ambiguous (forward motion, near-planar views), so
+    // grow from a few well-separated candidates and keep the reconstruction
+    // that agrees best with all pair matches.
+    let mut chosen: Vec<&(f64, usize, usize, Pose)> = Vec::new();
+    for c in &cands {
+        if chosen.len() >= 3 {
+            break;
+        }
+        if chosen.iter().all(|d| c.1.abs_diff(d.1) > 2 && c.2.abs_diff(d.2) > 2) {
+            chosen.push(c);
+        }
+    }
+    let mut best: Option<(f64, Reconstruction)> = None;
+    for c in chosen {
+        log(0.0, &format!("trying start {}-{} (score {:.0})", c.1, c.2, c.0.min(1e9)));
+        let Some(r) = grow(feats, pairs, intr0, thr_px, refine_intrinsics, (c.1, c.2, c.3), &mut *log) else { continue };
+        let gc = global_consistency(&r, feats, pairs, 1.5 * thr_px);
+        log(0.0, &format!("start {}-{}: {} cameras, {:.1}% of all matches consistent", c.1, c.2, r.registered(), 100.0 * gc));
+        if best.as_ref().map_or(true, |b| gc > b.0) {
+            best = Some((gc, r));
+        }
+    }
+    best.map(|b| b.1)
+}
 
+/// Score candidate starting pairs (best first).
+fn init_candidates(
+    feats: &[Features],
+    pairs: &[PairMatch],
+    intr0: Intrinsics,
+    thr_px: f64,
+    prefer: Option<(usize, usize)>,
+) -> Vec<(f64, usize, usize, Pose)> {
+    let min_angle = 1.5f64.to_radians();
     // --- Two-view initialisation ---
     // Candidate starting pairs: many matches, but skip near-duplicate views
     // (tiny image motion means no parallax to triangulate from).
@@ -352,7 +440,7 @@ pub fn reconstruct_from(
     };
     let mut cands: Vec<&PairMatch> = pairs.iter().filter(|p| p.matches.len() >= 40 && moved(p)).collect();
     cands.sort_by(|a, b| b.matches.len().cmp(&a.matches.len()));
-    cands.truncate(40);
+    cands.truncate(150);
     if let Some((pi, pj)) = prefer {
         if let Some(pos) = cands.iter().position(|p| p.i == pi && p.j == pj) {
             let c = cands.remove(pos);
@@ -360,13 +448,17 @@ pub fn reconstruct_from(
         }
     }
     let preferred = prefer;
-    let mut best: Option<(f64, usize, usize, Pose)> = None;
+    let mut out: Vec<(f64, usize, usize, Pose)> = Vec::new();
     for pm in cands {
         let n1: Vec<[f64; 2]> =
             pm.matches.iter().map(|&(a, _)| { let u = uv(feats, pm.i, a as usize); intr0.normalize(u[0], u[1]) }).collect();
         let n2: Vec<[f64; 2]> =
             pm.matches.iter().map(|&(_, b)| { let u = uv(feats, pm.j, b as usize); intr0.normalize(u[0], u[1]) }).collect();
-        let Some((pose, _)) = relative_pose(&n1, &n2, thr_px / intr0.f, 99 + pm.i as u64 * 31 + pm.j as u64) else { continue };
+        let Some((pose, fit)) = relative_pose(&n1, &n2, thr_px / intr0.f, 99 + pm.i as u64 * 31 + pm.j as u64) else { continue };
+        // Parallax check (as in ORB-SLAM): if a homography (rotation and/or one plane)
+        // explains nearly every match, the pair cannot pin down translation reliably.
+        let h_in = homography_ransac(&n1, &n2, thr_px / intr0.f, 7 + pm.i as u64).map_or(0, |h| h.1);
+        let parallax = (1.0 - h_in as f64 / fit.max(1) as f64).clamp(0.0, 1.0);
         let (in1, in2) = (n1, n2);
         let p0 = Pose::identity();
         let c = [p0.center(), pose.center()];
@@ -392,17 +484,59 @@ pub fn reconstruct_from(
         angles.sort_by(|a, b| a.partial_cmp(b).unwrap());
         let med = angles[angles.len() / 2].to_degrees();
         let good = angles.iter().filter(|&&a| a > min_angle).count() as f64;
-        let mut score = good * (med / 5.0).min(1.0);
+        let mut score = good * (med / 12.0).min(1.0) * (0.05 + parallax);
         if preferred == Some((pm.i, pm.j)) && med >= 2.0 && good >= 40.0 {
             score = f64::MAX; // previous starting pair is still sound: keep it
         }
-        if best.as_ref().map_or(true, |b| score > b.0) {
-            best = Some((score, pm.i, pm.j, pose));
+        out.push((score, pm.i, pm.j, pose));
+    }
+    out.sort_by(|a, b| b.0.partial_cmp(&a.0).unwrap());
+    out
+}
+
+/// Fraction of all verified pair matches that agree with the reconstruction's
+/// camera poses (epipolar check). A wrong start can look fine locally but fails
+/// for distant pairs, so this compares whole reconstructions.
+pub fn global_consistency(rec: &Reconstruction, feats: &[Features], pairs: &[PairMatch], thr_px: f64) -> f64 {
+    let k = rec.intr;
+    let thr = (thr_px / k.f).powi(2);
+    let (mut good, mut total) = (0usize, 0usize);
+    for pm in pairs {
+        total += pm.matches.len();
+        let (Some(a), Some(b)) = (rec.poses.get(pm.i).copied().flatten(), rec.poses.get(pm.j).copied().flatten()) else { continue };
+        let r = b.r * a.r.transpose();
+        let t = b.t - r * a.t;
+        if t.norm() < 1e-12 {
+            continue;
+        }
+        let e = skew(&t.normalize()) * r;
+        for &(fa, fb) in &pm.matches {
+            let (ua, ub) = (uv(feats, pm.i, fa as usize), uv(feats, pm.j, fb as usize));
+            if sampson(&e, &k.normalize(ua[0], ua[1]), &k.normalize(ub[0], ub[1])) < thr {
+                good += 1;
+            }
         }
     }
-    let (score, a, b, pose) = best?;
+    if total == 0 { 0.0 } else { good as f64 / total as f64 }
+}
+
+/// Grow a reconstruction from a given starting pair.
+#[allow(clippy::too_many_arguments)]
+fn grow(
+    feats: &[Features],
+    pairs: &[PairMatch],
+    intr0: Intrinsics,
+    thr_px: f64,
+    refine_intrinsics: bool,
+    init: (usize, usize, Pose),
+    log: &mut dyn FnMut(f32, &str),
+) -> Option<Reconstruction> {
+    let min_angle = 1.5f64.to_radians();
+    let mut ctx = Ctx::new(feats, pairs, intr0, thr_px);
+    ctx.refine_k = refine_intrinsics;
+    let (a, b, pose) = init;
     let init_pair = (a, b);
-    log(0.0, &format!("initial pair {}-{} (score {:.0})", a, b, score.min(1e9)));
+    ctx.rec.init_pair = Some(init_pair);
     ctx.rec.poses[a] = Some(Pose::identity());
     ctx.rec.poses[b] = Some(pose);
     let n = ctx.triangulate_all(min_angle);
@@ -419,7 +553,7 @@ pub fn reconstruct_from(
     let mut last_ba = ctx.rec.registered();
     let mut tried_rel: Vec<bool> = vec![false; n_img];
     loop {
-        let mut counts: Vec<(usize, usize)> = (0..n_img)
+        let counts: Vec<(usize, usize)> = (0..n_img)
             .filter(|&i| ctx.rec.poses[i].is_none())
             .map(|i| {
                 let c = ctx.feat_track[i]
@@ -429,10 +563,7 @@ pub fn reconstruct_from(
                 (i, c)
             })
             .collect();
-        if std::env::var("SCAN3D_DEBUG").is_ok() {
-            log(0.0, &format!("candidates {:?}", counts));
-        }
-        let weak: Vec<usize> = counts.iter().filter(|&&(i, c)| c >= 3 && !tried_rel[i]).map(|x| x.0).collect();
+        let weak: Vec<usize> = counts.iter().filter(|&&(i, _)| !tried_rel[i]).map(|x| x.0).collect();
         let mut counts: Vec<(usize, usize)> = counts
             .into_iter()
             .filter(|&(i, c)| c >= 12 && (failed[i] == 0 || c as f64 > failed[i] as f64 * 1.3))
@@ -548,6 +679,7 @@ pub fn reconstruct_from(
     ctx.filter(min_angle);
     ctx.triangulate_all(min_angle);
     let (_, r2) = ctx.bundle(15, a);
+    ctx.rec.rms = r2;
     ctx.filter(min_angle);
     log(0.0, &format!(
         "final BA: rms {:.2} -> {:.2} -> {:.2}px, focal {:.1}px, k1 {:.3}, {} cameras, {} points",

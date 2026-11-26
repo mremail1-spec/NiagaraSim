@@ -14,6 +14,8 @@ pub struct BaOptions {
     pub iterations: usize,
     pub huber_px: f64,
     pub refine_intrinsics: bool,
+    /// also refine radial distortion (needs many well-spread cameras)
+    pub refine_k1: bool,
     pub fixed_cam: usize,
 }
 
@@ -98,7 +100,11 @@ pub fn bundle_adjust(
                 for &oi in list {
                     let o = &obs[oi];
                     let pose = poses[o.cam].as_ref().unwrap();
-                    let Some((q, jc, jk, jp)) = project_jac(pose, k, &pts[pi]) else { continue };
+                    let Some((q, jc, mut jk, jp)) = project_jac(pose, k, &pts[pi]) else { continue };
+                    if !opt.refine_k1 {
+                        jk[(0, 1)] = 0.0;
+                        jk[(1, 1)] = 0.0;
+                    }
                     let r = Vector2::new(q.x - o.uv[0], q.y - o.uv[1]);
                     let e = r.norm();
                     let w = if e < h { 1.0 } else { h / e };

@@ -29,9 +29,22 @@ over HTTPS (any static host, or a local HTTPS tunnel).
 3. **Export** as `.glb` (web, AR, Blender), `.obj` or `.ply` with vertex colours, or the dense
    point cloud as `.ply`.
 
-Good subjects have matte texture: stone, wood, fabric, plants, food, rooms. Shiny, transparent
-or plain single-colour surfaces are hard for any photogrammetry system. Model units are
-relative, because one moving camera cannot measure absolute scale.
+Model units are relative, because one moving camera cannot measure absolute scale.
+
+### Capture tips
+
+- **Objects:** walk around the object in small steps (about 15–20°), then do a second lap from
+  higher up. Plain or shiny objects (a single-colour cup, glazed ceramics) give little to
+  match. Put them on a patterned surface such as a newspaper or a printed cloth, and keep some of
+  it in every photo.
+- **Buildings and streets:** point the camera sideways at the facades and walk along them.
+  Filming straight ahead while walking forward is ambiguous for photo-only reconstruction (turning
+  and side-stepping look alike) and drifts. When you turn around for the other side of the street,
+  take a few photos looking along the street so the two sides connect.
+- **Photos from a phone's camera app** carry the lens in their EXIF data, which the app reads.
+  For the live camera and EXIF-less photos the lens is estimated from the photos. That fails for
+  purely sideways motion past flat walls, where it falls back to the setting.
+- If a scan fails, **Save scan photos (.zip)** packs the photos and the processing log.
 
 ## Pipeline (`core/src`)
 
@@ -39,10 +52,10 @@ relative, because one moving camera cannot measure absolute scale.
 |---|---|---|
 | Features | `features.rs` | Multi-scale FAST-9 corners, Harris ranking, grid bucketing, oriented BRIEF 256-bit descriptors |
 | Matching | `features.rs`, `pipeline.rs` | Mutual nearest neighbours with ratio test; neighbouring frames plus a long-range skeleton for loop closure; fundamental-matrix RANSAC |
-| Poses | `sfm.rs`, `geometry.rs` | Track building (union-find), two-view start from the essential matrix, incremental PnP-RANSAC registration, multi-view triangulation |
+| Poses | `sfm.rs`, `geometry.rs` | Consistent track building. The two-view start comes from the essential matrix or homography decomposition, scored by truncated reprojection cost and refined. Several starts are grown and the one most consistent with all pair matches is kept. Registration uses P3P-RANSAC, with a two-view fallback. The lens is held fixed and found by a field-of-view search when it isn't in EXIF |
 | Refinement | `ba.rs` | Levenberg–Marquardt bundle adjustment with Schur complement and Huber loss. Self-calibrates focal length and radial distortion |
 | Dense | `mvs.rs` | Per-view plane-sweep stereo (ZNCC, inverse-depth sampling, sub-sample refinement), cross-view geometric consistency filter, fused coloured cloud with normals |
-| Mesh | `mesh.rs` | TSDF fusion of depth maps with free-space carving, Surface Nets extraction, small-component removal, smoothing, visibility-weighted vertex colours |
+| Mesh | `poisson.rs`, `mesh.rs` | Poisson surface reconstruction of the dense oriented points (coarse-to-fine conjugate gradients, Surface Nets). Object mode (cameras surround one point) closes gaps such as plain surfaces, and scene mode keeps surface near data. Surface lying in space the cameras saw through is trimmed. Vertex colours are visibility-weighted. TSDF fusion is still available (`mesh_tsdf`). |
 
 `lib.rs` exposes a `Scanner` class to JavaScript via `wasm-bindgen`. The front end is
 dependency-free JavaScript: `app.js` (capture and import), `worker.js`, `viewer.js` (WebGL2)
@@ -51,6 +64,9 @@ and `export.js`.
 ## Testing
 
 `core/src/synth.rs` ray-traces a textured scene with known geometry and known cameras.
+`core/src/scenes.rs` adds harder scenes with sensor noise and specular highlights: a glossy,
+nearly plain cup (`cargo run --release --example scene -- cup`), a street walked forward
+(`street`) and facades filmed sideways (`facades`).
 
 ```bash
 cd core

@@ -4,9 +4,10 @@ use crate::features::{detect_and_describe, match_descriptors, Features};
 use crate::geometry::{fundamental_ransac, Intrinsics};
 
 use crate::image::Gray;
-use crate::mesh::{build_mesh, Mesh};
+use crate::mesh::{build_mesh, build_mesh_poisson, Mesh};
 use crate::mvs::{compute_depth_maps, filter_depth_maps, fuse, Cloud, DenseOptions, DepthMap};
 use crate::sfm::{reconstruct_from, PairMatch, Reconstruction};
+use crate::features::Features as Feats;
 
 pub type Report<'a> = &'a mut dyn FnMut(f32, &str);
 
@@ -17,11 +18,15 @@ pub struct Options {
     pub dense: DenseOptions,
     pub mesh_res: usize,
     pub voxel: f64,
+    /// field of view is known (photo EXIF or user setting): skip the lens search
+    pub fov_known: bool,
+    /// mesh with depth-map fusion (TSDF) instead of Poisson reconstruction
+    pub mesh_tsdf: bool,
 }
 
 impl Default for Options {
     fn default() -> Self {
-        Options { max_features: 1500, match_window: 6, fov_deg: 65.0, dense: DenseOptions::default(), mesh_res: 200, voxel: 0.008 }
+        Options { max_features: 1500, match_window: 6, fov_deg: 65.0, dense: DenseOptions::default(), mesh_res: 200, voxel: 0.008, fov_known: false, mesh_tsdf: false }
     }
 }
 
@@ -44,6 +49,8 @@ pub struct Pipeline {
     pub target_uv: Option<(f64, f64)>,
     /// starting pair of the last successful solve (reused while capturing)
     pub init_pair: Option<(usize, usize)>,
+    /// field of view found by the lens search, and at how many frames
+    pub fov_found: Option<(f64, usize)>,
 }
 
 impl Pipeline {
@@ -89,9 +96,11 @@ impl Pipeline {
         let mut v = Vec::new();
         for i in 0..n {
             for j in i + 1..n {
-                let near = j - i <= self.opts.match_window;
+                // Orbit scans end where they started, so also match around the wrap.
+                let near = j - i <= self.opts.match_window || n - (j - i) <= self.opts.match_window;
                 // sparse skeleton of long-range pairs for loop closure / unordered input
-                let skel = n <= 24 || (i % 3 == 0 && j % 3 == 0);
+                // Small scans: match everything (long-range pairs bridge weak stretches).
+                let skel = n <= 50 || (i % 3 == 0 && j % 3 == 0);
                 if near || skel {
                     v.push((i, j));
                 }
@@ -101,16 +110,24 @@ impl Pipeline {
     }
 
     fn match_pair(&self, i: usize, j: usize) -> Option<PairMatch> {
-        let thr = 3.0 * self.px_scale();
-        let m = match_descriptors(&self.feats[i].desc, &self.feats[j].desc, 0.8, 80);
-        if m.len() < 30 {
+        let thr = 2.0 * self.px_scale();
+        let (fa, fb) = (&self.feats[i], &self.feats[j]);
+        let m = match_descriptors(&fa.desc, &fb.desc, 0.8, 80);
+        if m.len() < 20 {
             return None;
         }
-        let p1: Vec<[f64; 2]> = m.iter().map(|&(a, _)| { let q = self.feats[i].kps[a as usize]; [q.x as f64, q.y as f64] }).collect();
-        let p2: Vec<[f64; 2]> = m.iter().map(|&(_, b)| { let q = self.feats[j].kps[b as usize]; [q.x as f64, q.y as f64] }).collect();
+        let pts = |m: &[(u32, u32)]| -> (Vec<[f64; 2]>, Vec<[f64; 2]>) {
+            m.iter().map(|&(a, b)| { let (p, q) = (fa.kps[a as usize], fb.kps[b as usize]); ([p.x as f64, p.y as f64], [q.x as f64, q.y as f64]) }).unzip()
+        };
+        let (p1, p2) = pts(&m);
         let (_, mask) = fundamental_ransac(&p1, &p2, thr, (i * 7919 + j) as u64)?;
-        let inl: Vec<(u32, u32)> = m.iter().zip(mask).filter(|(_, ok)| *ok).map(|(x, _)| *x).collect();
-        (inl.len() >= 30).then_some(PairMatch { i, j, matches: inl })
+        if mask.iter().filter(|&&b| b).count() < 15 {
+            return None;
+        }
+        // A guided second pass (re-matching along epipolar lines) was evaluated and
+        // dropped: on soft texture it mostly added near-miss matches.
+        let inl: Vec<(u32, u32)> = m.iter().zip(&mask).filter(|(_, ok)| **ok).map(|(x, _)| *x).collect();
+        (inl.len() >= 20).then_some(PairMatch { i, j, matches: inl })
     }
 
     /// Batch matching of all frames (ordered capture: neighbours + skeleton).
@@ -213,11 +230,101 @@ impl Pipeline {
         Some(crate::geometry::V3::zeros())
     }
 
-    pub fn sfm(&mut self, rep: Report) -> Result<usize, String> {
-        let f = self.focal_guess();
-        let intr = Intrinsics { f, cx: self.w as f64 / 2.0 - 0.5, cy: self.h as f64 / 2.0 - 0.5, k1: 0.0 };
+    fn intr_for(&self, fov_deg: f64) -> Intrinsics {
+        let f = 0.5 * self.w.max(self.h) as f64 / (fov_deg.to_radians() * 0.5).tan();
+        Intrinsics { f, cx: self.w as f64 / 2.0 - 0.5, cy: self.h as f64 / 2.0 - 0.5, k1: 0.0 }
+    }
+
+    /// Lens search: reconstruct a block of frames with the lens held fixed at
+    /// several fields of view and keep the one with the lowest reprojection
+    /// error. Letting bundle adjustment free the focal length is unreliable
+    /// (it drifts on forward motion), so the lens stays fixed afterwards.
+    fn search_fov(&self, rep: Report) -> Option<f64> {
+        let n = self.feats.len();
+        let len = n.min(40);
+        // the block of consecutive photos with the most verified pairs inside it
+        let a = (0..=n - len)
+            .max_by_key(|&a| self.pairs.iter().filter(|p| p.i >= a && p.j < a + len).map(|p| p.matches.len()).sum::<usize>())
+            .unwrap_or(0);
+        let b = a + len;
+        let feats: Vec<Feats> = self.feats[a..b].to_vec();
+        let pairs: Vec<PairMatch> = self
+            .pairs
+            .iter()
+            .filter(|p| p.i >= a && p.j < b)
+            .map(|p| PairMatch { i: p.i - a, j: p.j - a, matches: p.matches.clone() })
+            .collect();
         let thr = 4.0 * self.px_scale();
-        let rec = reconstruct_from(&self.feats, &self.pairs, intr, thr, self.init_pair, &mut *rep);
+        let eval = |fov: f64| -> (f64, usize) {
+            match reconstruct_from(&feats, &pairs, self.intr_for(fov), thr, None, false, &mut |_, _| {}) {
+                Some(r) => (r.rms, r.registered()),
+                None => (f64::INFINITY, 0),
+            }
+        };
+        let mut tried: Vec<(f64, f64, usize)> = Vec::new();
+        for fov in [40.0, 47.0, 54.0, 61.0, 68.0, 75.0, 85.0] {
+            let (rms, reg) = eval(fov);
+            tried.push((fov, rms, reg));
+            rep(tried.len() as f32 / 13.0, "");
+        }
+        let pick = |t: &[(f64, f64, usize)]| -> Option<f64> {
+            let max_reg = t.iter().map(|x| x.2).max().unwrap_or(0);
+            t.iter()
+                .filter(|x| x.2 >= 3 && x.2 as f64 >= 0.8 * max_reg as f64 && x.1.is_finite())
+                .min_by(|x, y| x.1.partial_cmp(&y.1).unwrap())
+                .map(|x| x.0)
+        };
+        let coarse = pick(&tried)?;
+        // A flat error curve, or a best value at the edge of the range, means the
+        // photos do not determine the lens (e.g. pure sideways motion): give up.
+        let finite: Vec<f64> = tried.iter().map(|x| x.1).filter(|v| v.is_finite()).collect();
+        let (mn, mx) = finite.iter().fold((f64::MAX, f64::MIN), |a, &v| (a.0.min(v), a.1.max(v)));
+        if coarse <= 40.0 || coarse >= 85.0 || (mx - mn) / mn.max(1e-9) < 0.03 {
+            return None;
+        }
+        // golden-section refinement around the coarse minimum
+        let (mut lo, mut hi) = (coarse - 7.0, coarse + 7.0);
+        let g = 0.618_033_988_75;
+        let mut x1 = hi - g * (hi - lo);
+        let mut x2 = lo + g * (hi - lo);
+        let mut f1 = eval(x1);
+        let mut f2 = eval(x2);
+        tried.push((x1, f1.0, f1.1));
+        tried.push((x2, f2.0, f2.1));
+        for _ in 0..4 {
+            if f1.0 < f2.0 {
+                hi = x2; x2 = x1; f2 = f1; x1 = hi - g * (hi - lo); f1 = eval(x1); tried.push((x1, f1.0, f1.1));
+            } else {
+                lo = x1; x1 = x2; f1 = f2; x2 = lo + g * (hi - lo); f2 = eval(x2); tried.push((x2, f2.0, f2.1));
+            }
+            rep(tried.len() as f32 / 13.0, "");
+        }
+        pick(&tried)
+    }
+
+    pub fn sfm(&mut self, rep: Report) -> Result<usize, String> {
+        let n_frames = self.feats.len();
+        let fov = if self.opts.fov_known {
+            self.opts.fov_deg
+        } else {
+            let stale = match self.fov_found { None => n_frames >= 10, Some((_, at)) => at < 25 && n_frames >= 25 };
+            if stale {
+                match self.search_fov(&mut *rep) {
+                    Some(f) => {
+                        self.fov_found = Some((f, n_frames));
+                        rep(0.0, &format!("lens: estimated field of view {:.1}° (from {} photos)", f, n_frames.min(40)));
+                    }
+                    None => {
+                        self.fov_found = Some((self.opts.fov_deg, n_frames));
+                        rep(0.0, &format!("lens: could not be determined from these photos; using {:.0}°", self.opts.fov_deg));
+                    }
+                }
+            }
+            self.fov_found.map_or(self.opts.fov_deg, |x| x.0)
+        };
+        let intr = self.intr_for(fov);
+        let thr = 4.0 * self.px_scale();
+        let rec = reconstruct_from(&self.feats, &self.pairs, intr, thr, self.init_pair, false, &mut *rep);
         let Some(mut rec) = rec else {
             return Err("could not initialise: need more overlap / texture / parallax between photos".into());
         };
@@ -253,9 +360,13 @@ impl Pipeline {
         let rec = self.rec.as_ref().ok_or("run sfm first")?;
         let cloud = self.cloud.as_ref().ok_or("run dense first")?;
         let mut prog = |p: f32| rep(p, "");
-        let mesh = build_mesh(&self.maps, rec, cloud, &self.rgba, self.w, self.h, self.opts.mesh_res, &mut prog);
+        let (mesh, mode) = if self.opts.mesh_tsdf {
+            (build_mesh(&self.maps, rec, cloud, &self.rgba, self.w, self.h, self.opts.mesh_res, &mut prog), "TSDF".to_string())
+        } else {
+            build_mesh_poisson(&self.maps, rec, cloud, &self.rgba, self.w, self.h, self.opts.mesh_res, &mut prog)
+        };
         let n = mesh.idx.len() / 3;
-        rep(1.0, &format!("mesh: {} vertices, {} triangles", mesh.pos.len(), n));
+        rep(1.0, &format!("mesh: {} vertices, {} triangles, {}", mesh.pos.len(), n, mode));
         self.mesh = Some(mesh);
         Ok(n)
     }
