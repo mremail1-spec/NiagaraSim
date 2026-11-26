@@ -897,7 +897,7 @@ function specBuilding(b, spec) {
       const d = it.depth ?? it.w, col = new THREE.MeshStandardMaterial({ color: it.color || "#b9ab95" });
       const m = onWall(group, b, kk, it.x, 0, it.w, it.h, d, col, it.out_m ?? -d / 2); m.receiveShadow = true;
       const roofH = it.roof_h ?? it.w * 0.6, cone = new THREE.Mesh(new THREE.ConeGeometry(Math.SQRT1_2, 1, 4).rotateY(Math.PI / 4), new THREE.MeshStandardMaterial({ color: it.roof_color || "#1f2226" }));
-      cone.scale.set(it.w * 1.08, roofH, d * 1.08); cone.position.copy(m.position); cone.position.y = it.h + roofH / 2; cone.rotation.y = m.rotation.y; cone.castShadow = true; group.add(cone);
+      if (roofH > 0) { cone.scale.set(it.w * 1.08, roofH, d * 1.08); cone.position.copy(m.position); cone.position.y = it.h + roofH / 2; cone.rotation.y = m.rotation.y; cone.castShadow = true; group.add(cone); }
       if (it.logo) onWall(group, b, kk, it.x + it.w * 0.2, it.h * 0.62, it.w * 0.6, it.w * 0.6, 0.02, new THREE.MeshBasicMaterial({ map: textTex(it.logo, it.logo_bg || "#1f2226", it.logo_fg || "#f2c230", it.w * 0.6, it.w * 0.6) }), (it.out_m ?? -d / 2) + d);
     } else if (it.type === "canopy") {
       // a sloped metal roof run along the shopfronts: from the wall at height y, out by depth, dropping by drop

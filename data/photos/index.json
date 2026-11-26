@@ -2,7 +2,8 @@
  "_meta": {
   "what": "The owner's own photos of Niagara Falls, used to model buildings and streets in the 3D city (data/building_specs.json). Re-encoded at 1600 px with no metadata.",
   "source": "project owner",
-  "taken": "2026-11"
+  "taken": "2026-11",
+  "upload_names": "upload_NNN: photos sent in chat without their file names, numbered in the order they arrived on 2026-11-26"
  },
  "photos": [
   {
@@ -176,6 +177,658 @@
    "buildings": [
     "5f317ac1ff"
    ]
+  },
+  {
+   "file": "2026-11/IMG_1826b.jpg",
+   "light": "day",
+   "shows": "Table Rock lawn: American Falls, Rainbow Bridge, Table Rock Centre roof, crane",
+   "buildings": []
+  },
+  {
+   "file": "2026-11/IMG_1825b.jpg",
+   "light": "day",
+   "shows": "Table Rock Centre: stone tower, steep standing-seam copper roof, nutcracker figures",
+   "buildings": []
+  },
+  {
+   "file": "2026-11/IMG_1822b.jpg",
+   "light": "day",
+   "shows": "From Table Rock terrace: Niagara Parkway, LOVE sign, Skylon, Sheraton, Rainbow Bridge",
+   "buildings": []
+  },
+  {
+   "file": "2026-11/IMG_1815.jpg",
+   "light": "day",
+   "shows": "Horseshoe Falls brink and upper rapids, power station upstream",
+   "buildings": []
+  },
+  {
+   "file": "2026-11/IMG_1814.jpg",
+   "light": "day",
+   "shows": "Horseshoe Falls brink",
+   "buildings": []
+  },
+  {
+   "file": "2026-11/IMG_1812.jpg",
+   "light": "day",
+   "shows": "Horseshoe Falls curtain and mist",
+   "buildings": []
+  },
+  {
+   "file": "2026-11/IMG_1808.jpg",
+   "light": "day",
+   "shows": "Horseshoe Falls from the railing: wrought-iron rail, Toronto Power station",
+   "buildings": []
+  },
+  {
+   "file": "2026-11/IMG_1807.jpg",
+   "light": "day",
+   "shows": "Horseshoe Falls from the rock wall",
+   "buildings": []
+  },
+  {
+   "file": "2026-11/IMG_1806.jpg",
+   "light": "day",
+   "shows": "Horseshoe basin, Hornblower boat",
+   "buildings": []
+  },
+  {
+   "file": "2026-11/IMG_1805.jpg",
+   "light": "day",
+   "shows": "Hornblower boat in the basin below the Horseshoe",
+   "buildings": []
+  },
+  {
+   "file": "2026-11/IMG_1804.jpg",
+   "light": "day",
+   "shows": "Stone posts and wrought-iron railing at the brink, paver walk",
+   "buildings": []
+  },
+  {
+   "file": "2026-11/IMG_1803.jpg",
+   "light": "day",
+   "shows": "Promenade toward Table Rock Centre, construction hoarding",
+   "buildings": []
+  },
+  {
+   "file": "2026-11/IMG_1802.jpg",
+   "light": "day",
+   "shows": "Nikola Tesla statue on the generator",
+   "buildings": []
+  },
+  {
+   "file": "2026-11/IMG_1801.jpg",
+   "light": "day",
+   "shows": "Tesla statue by the Niagara Parkway below the escarpment",
+   "buildings": []
+  },
+  {
+   "file": "2026-11/IMG_1800.jpg",
+   "light": "day",
+   "shows": "Wet promenade along the rim toward Table Rock, Marriott towers",
+   "buildings": []
+  },
+  {
+   "file": "2026-11/IMG_1799.jpg",
+   "light": "day",
+   "shows": "Promenade, Queen Victoria Park buildings, casino tower",
+   "buildings": []
+  },
+  {
+   "file": "2026-11/upload_016.jpg",
+   "light": "dusk",
+   "shows": "Sunset over the Fallsview skyline and Skylon Tower from the gorge rim, Canadian flag",
+   "buildings": []
+  },
+  {
+   "file": "2026-11/upload_017.jpg",
+   "light": "day",
+   "shows": "Rainforest Cafe sign with animal figures, Clifton Hill / Falls Ave",
+   "buildings": []
+  },
+  {
+   "file": "2026-11/upload_018.jpg",
+   "light": "day",
+   "shows": "Skylon Tower, PLAY letters and Queen Victoria Park lawn from the Parkway wall",
+   "buildings": []
+  },
+  {
+   "file": "2026-11/upload_020.jpg",
+   "light": "night",
+   "shows": "Car wash with a white block building and iron fence on a commercial strip",
+   "buildings": []
+  },
+  {
+   "file": "2026-11/upload_021.jpg",
+   "light": "day",
+   "shows": "Queen Victoria Park: arched-roof pavilion, Sheraton and Marriott towers behind, wet walk",
+   "buildings": []
+  },
+  {
+   "file": "2026-11/upload_022.jpg",
+   "light": "day",
+   "shows": "American and Bridal Veil Falls from the Parkway lookout, stone wall, parking bays",
+   "buildings": []
+  },
+  {
+   "file": "2026-11/upload_023.jpg",
+   "light": "night",
+   "shows": "Sidewalk with red paver band, black lamp post and a blank white wall",
+   "buildings": []
+  },
+  {
+   "file": "2026-11/upload_024.jpg",
+   "light": "day",
+   "shows": "American Falls and Rainbow Bridge from a stone-walled lookout lot",
+   "buildings": []
+  },
+  {
+   "file": "2026-11/upload_025.jpg",
+   "light": "day",
+   "shows": "Falls Ave sidewalk, red lamp posts with banners, theatre marquee at left",
+   "buildings": []
+  },
+  {
+   "file": "2026-11/upload_026.jpg",
+   "light": "day",
+   "shows": "Bare trees in Queen Victoria Park, Skylon behind",
+   "buildings": []
+  },
+  {
+   "file": "2026-11/upload_027.jpg",
+   "light": "day",
+   "shows": "Paver plaza with black lamps and young trees, Fallsview hotels, Niagara Parkway area",
+   "buildings": []
+  },
+  {
+   "file": "2026-11/upload_028.jpg",
+   "light": "day",
+   "shows": "Hotel tower with blue glass base behind a planter wall with holiday garland",
+   "buildings": []
+  },
+  {
+   "file": "2026-11/upload_029.jpg",
+   "light": "day",
+   "shows": "Large parking lot with yellow lines, Canadian flag, light poles",
+   "buildings": []
+  },
+  {
+   "file": "2026-11/upload_030.jpg",
+   "light": "day",
+   "shows": "Clifton Hill: paver sidewalk, Haunted Castle, Wendy's",
+   "buildings": []
+  },
+  {
+   "file": "2026-11/upload_031.jpg",
+   "light": "night",
+   "shows": "Niagara Falls History Museum, 5810 Ferry St: stone house with red ivy and modern glass wing",
+   "buildings": [
+    "faed1ef24a"
+   ]
+  },
+  {
+   "file": "2026-11/upload_032.jpg",
+   "light": "day",
+   "shows": "Red-railed pedestrian bridge over a parking area, artificial turf, black fence",
+   "buildings": []
+  },
+  {
+   "file": "2026-11/upload_033.jpg",
+   "light": "day",
+   "shows": "Park road with arrow, black lamp post, trees",
+   "buildings": []
+  },
+  {
+   "file": "2026-11/upload_034.jpg",
+   "light": "day",
+   "shows": "Red-railed pedestrian bridge and its stair tower, paver walk",
+   "buildings": []
+  },
+  {
+   "file": "2026-11/upload_035.jpg",
+   "light": "day",
+   "shows": "Clifton Hill plaza: Kelsey's, Speedway sign, rides, red-railed bridge",
+   "buildings": [
+    "4f5cb8578b"
+   ]
+  },
+  {
+   "file": "2026-11/upload_036.jpg",
+   "light": "day",
+   "shows": "Kelsey's: white brick, dark tile base, black balcony railing, red KELSEYS letters",
+   "buildings": [
+    "4f5cb8578b"
+   ]
+  },
+  {
+   "file": "2026-11/upload_037.jpg",
+   "light": "day",
+   "shows": "American Falls from the wrought-iron railing on the rock wall",
+   "buildings": []
+  },
+  {
+   "file": "2026-11/upload_038.jpg",
+   "light": "day",
+   "shows": "Lawn and promenade facing the American Falls",
+   "buildings": []
+  },
+  {
+   "file": "2026-11/upload_039.jpg",
+   "light": "day",
+   "shows": "Rainbow Bridge and the gorge with a rainbow over the rapids",
+   "buildings": []
+  },
+  {
+   "file": "2026-11/upload_040.jpg",
+   "light": "day",
+   "shows": "Horseshoe Falls mist from the Parkway path, marigold beds",
+   "buildings": []
+  },
+  {
+   "file": "2026-11/upload_041.jpg",
+   "light": "day",
+   "shows": "Queen Victoria Place: long glass-arcade building with grey roof, Skylon behind, stone wall",
+   "buildings": []
+  },
+  {
+   "file": "2026-11/upload_042.jpg",
+   "light": "day",
+   "shows": "Horseshoe Falls from the stone-post railing",
+   "buildings": []
+  },
+  {
+   "file": "2026-11/upload_043.jpg",
+   "light": "day",
+   "shows": "Steel truss footbridge over a street, stone retaining wall, lamps",
+   "buildings": []
+  },
+  {
+   "file": "2026-11/upload_044.jpg",
+   "light": "day",
+   "shows": "Queen Victoria Place from the Parkway wall, Skylon, red classic car",
+   "buildings": []
+  },
+  {
+   "file": "2026-11/upload_045.jpg",
+   "light": "day",
+   "shows": "Falls from the gardens path along the rim",
+   "buildings": []
+  },
+  {
+   "file": "2026-11/upload_046.jpg",
+   "light": "day",
+   "shows": "Park lawn with geese and autumn trees",
+   "buildings": []
+  },
+  {
+   "file": "2026-11/upload_047.jpg",
+   "light": "night",
+   "shows": "Arterial road at night, sidewalk, signals",
+   "buildings": []
+  },
+  {
+   "file": "2026-11/upload_048.jpg",
+   "light": "day",
+   "shows": "Fallsview Casino Resort: hotel tower and glass dome entrance",
+   "buildings": []
+  },
+  {
+   "file": "2026-11/upload_049.jpg",
+   "light": "night",
+   "shows": "Intersection at night with signals and traffic",
+   "buildings": []
+  },
+  {
+   "file": "2026-11/upload_050.jpg",
+   "light": "day",
+   "shows": "Bridge sidewalk over the QEW",
+   "buildings": []
+  },
+  {
+   "file": "2026-11/upload_051.jpg",
+   "light": "night",
+   "shows": "Empty intersection at night",
+   "buildings": []
+  },
+  {
+   "file": "2026-11/upload_052.jpg",
+   "light": "day",
+   "shows": "Paver walk with steel picket fence and stone posts along the escarpment rim",
+   "buildings": []
+  },
+  {
+   "file": "2026-11/upload_053.jpg",
+   "light": "day",
+   "shows": "Steel picket fence, stone posts, bench, young trees",
+   "buildings": []
+  },
+  {
+   "file": "2026-11/upload_054.jpg",
+   "light": "day",
+   "shows": "Horseshoe Falls and Table Rock from the escarpment overlook, steel fence",
+   "buildings": []
+  },
+  {
+   "file": "2026-11/upload_055.jpg",
+   "light": "day",
+   "shows": "Two-storey dark office building with a blue-white sign pylon",
+   "buildings": []
+  },
+  {
+   "file": "2026-11/upload_056.jpg",
+   "light": "day",
+   "shows": "Steel picket fence, stone posts and plantings along the rim walk",
+   "buildings": []
+  },
+  {
+   "file": "2026-11/upload_057.jpg",
+   "light": "day",
+   "shows": "Long low building with a colourful mural, parking lot",
+   "buildings": []
+  },
+  {
+   "file": "2026-11/upload_058.jpg",
+   "light": "day",
+   "shows": "Two-storey dark office building with a sign pylon, Fallsview towers behind",
+   "buildings": []
+  },
+  {
+   "file": "2026-11/upload_059.jpg",
+   "light": "day",
+   "shows": "Horseshoe Falls from the escarpment overlook fence",
+   "buildings": []
+  },
+  {
+   "file": "2026-11/upload_060.jpg",
+   "light": "day",
+   "shows": "Residential street, low brown house, hydro tower",
+   "buildings": []
+  },
+  {
+   "file": "2026-11/upload_061.jpg",
+   "light": "day",
+   "shows": "Ukrainian church with wooden domes and crosses",
+   "buildings": []
+  },
+  {
+   "file": "2026-11/upload_062.jpg",
+   "light": "night",
+   "shows": "Skylon Tower lit, seen past spruce trees",
+   "buildings": []
+  },
+  {
+   "file": "2026-11/upload_063.jpg",
+   "light": "day",
+   "shows": "QEW from an overpass, concrete barrier",
+   "buildings": []
+  },
+  {
+   "file": "2026-11/upload_064.jpg",
+   "light": "day",
+   "shows": "QEW lanes from an overpass, high-mast light",
+   "buildings": []
+  },
+  {
+   "file": "2026-11/upload_065.jpg",
+   "light": "day",
+   "shows": "Suburban arterial with bungalows",
+   "buildings": []
+  },
+  {
+   "file": "2026-11/upload_066.jpg",
+   "light": "day",
+   "shows": "QEW traffic from an overpass, high-mast lights",
+   "buildings": []
+  },
+  {
+   "file": "2026-11/upload_067.jpg",
+   "light": "night",
+   "shows": "A&W with red and orange sign, orange umbrellas",
+   "buildings": []
+  },
+  {
+   "file": "2026-11/upload_068.jpg",
+   "light": "day",
+   "shows": "Two-storey motel, beige stucco, brown balcony, blue band",
+   "buildings": []
+  },
+  {
+   "file": "2026-11/upload_069.jpg",
+   "light": "night",
+   "shows": "Skyway sign by a lot, commercial strip",
+   "buildings": []
+  },
+  {
+   "file": "2026-11/upload_070.jpg",
+   "light": "night",
+   "shows": "Plaza at night under trees",
+   "buildings": []
+  },
+  {
+   "file": "2026-11/upload_071.jpg",
+   "light": "day",
+   "shows": "Motel walkway: beige stucco, brown posts and railing, blue fascia",
+   "buildings": []
+  },
+  {
+   "file": "2026-11/upload_072.jpg",
+   "light": "day",
+   "shows": "Motel stair and lot, strip plaza behind",
+   "buildings": []
+  },
+  {
+   "file": "2026-11/upload_073.jpg",
+   "light": "day",
+   "shows": "Residential street with bungalows",
+   "buildings": []
+  },
+  {
+   "file": "2026-11/upload_074.jpg",
+   "light": "day",
+   "shows": "Residential street, garage",
+   "buildings": []
+  },
+  {
+   "file": "2026-11/upload_075.jpg",
+   "light": "day",
+   "shows": "Motel units: tan doors, beige stucco, brown railing with blue band",
+   "buildings": []
+  },
+  {
+   "file": "2026-11/upload_076.jpg",
+   "light": "day",
+   "shows": "Niagara Falls Transit stop sign, residential street",
+   "buildings": []
+  },
+  {
+   "file": "2026-11/upload_077.jpg",
+   "light": "night",
+   "shows": "Portage Bakery: plaza with red awning band",
+   "buildings": []
+  },
+  {
+   "file": "2026-11/upload_078.jpg",
+   "light": "day",
+   "shows": "Two-storey red brick commercial building, brown fascia",
+   "buildings": []
+  },
+  {
+   "file": "2026-11/upload_079.jpg",
+   "light": "night",
+   "shows": "Skyway sign along the commercial strip",
+   "buildings": []
+  },
+  {
+   "file": "2026-11/upload_080.jpg",
+   "light": "dusk",
+   "shows": "Strip at dusk, motel sign",
+   "buildings": []
+  },
+  {
+   "file": "2026-11/upload_081.jpg",
+   "light": "day",
+   "shows": "Highway from a bridge railing, Walmart-area plaza",
+   "buildings": []
+  },
+  {
+   "file": "2026-11/upload_082.jpg",
+   "light": "day",
+   "shows": "Bridge sidewalk with steel rail over the hydro canal",
+   "buildings": []
+  },
+  {
+   "file": "2026-11/upload_083.jpg",
+   "light": "day",
+   "shows": "Divided road from a bridge, plaza beyond",
+   "buildings": []
+  },
+  {
+   "file": "2026-11/upload_084.jpg",
+   "light": "day",
+   "shows": "Kalar Rd at Lundy's Ln: Esso station and pylon",
+   "buildings": [
+    "4d828515b5"
+   ]
+  },
+  {
+   "file": "2026-11/upload_085.jpg",
+   "light": "day",
+   "shows": "Westlane Secondary School entrance: dark frame, window band, metal sign",
+   "buildings": [
+    "6be732fa38"
+   ]
+  },
+  {
+   "file": "2026-11/upload_086.jpg",
+   "light": "day",
+   "shows": "Sidewalk with a solar streetlight, wood fence",
+   "buildings": []
+  },
+  {
+   "file": "2026-11/upload_087.jpg",
+   "light": "day",
+   "shows": "Walmart: blue and grey front, yellow-striped crosswalk",
+   "buildings": [
+    "981b0da65f"
+   ]
+  },
+  {
+   "file": "2026-11/upload_088.jpg",
+   "light": "day",
+   "shows": "Tim Hortons pylon: Always Fresh, Drive Thru, Lundy's Ln",
+   "buildings": [
+    "3c730c44e7"
+   ]
+  },
+  {
+   "file": "2026-11/upload_089.jpg",
+   "light": "day",
+   "shows": "Arterial road with trees and hydro poles",
+   "buildings": []
+  },
+  {
+   "file": "2026-11/upload_090.jpg",
+   "light": "day",
+   "shows": "Westlane Secondary School front from the lot",
+   "buildings": [
+    "6be732fa38"
+   ]
+  },
+  {
+   "file": "2026-11/upload_091.jpg",
+   "light": "day",
+   "shows": "Hydro canal from the Lundy's Ln bridge",
+   "buildings": []
+  },
+  {
+   "file": "2026-11/upload_092.jpg",
+   "light": "dusk",
+   "shows": "Lundy's Ln sidewalk toward the Tim Hortons pylon",
+   "buildings": [
+    "3c730c44e7"
+   ]
+  },
+  {
+   "file": "2026-11/upload_093.jpg",
+   "light": "day",
+   "shows": "Walmart lot, yellow stripes",
+   "buildings": [
+    "981b0da65f"
+   ]
+  },
+  {
+   "file": "2026-11/upload_095.jpg",
+   "light": "day",
+   "shows": "Divided road with red median, plaza lot",
+   "buildings": []
+  },
+  {
+   "file": "2026-11/upload_096.jpg",
+   "light": "day",
+   "shows": "Intersection, new plaza beyond",
+   "buildings": []
+  },
+  {
+   "file": "2026-11/upload_098.jpg",
+   "light": "day",
+   "shows": "Metro plaza across the road",
+   "buildings": []
+  },
+  {
+   "file": "2026-11/upload_099.jpg",
+   "light": "day",
+   "shows": "Signal gantry and red-striped median",
+   "buildings": []
+  },
+  {
+   "file": "2026-11/upload_100.jpg",
+   "light": "day",
+   "shows": "Harvey's and Bell plaza across Montrose",
+   "buildings": [
+    "6e35ae6a7a"
+   ]
+  },
+  {
+   "file": "2026-11/upload_102.jpg",
+   "light": "day",
+   "shows": "Railway crossing signals and gantry",
+   "buildings": []
+  },
+  {
+   "file": "2026-11/upload_104.jpg",
+   "light": "day",
+   "shows": "Harvey's plaza, Montrose Rd",
+   "buildings": [
+    "6e35ae6a7a"
+   ]
+  },
+  {
+   "file": "2026-11/upload_105.jpg",
+   "light": "day",
+   "shows": "Metro plaza across the road, red median",
+   "buildings": []
+  },
+  {
+   "file": "2026-11/upload_106.jpg",
+   "light": "day",
+   "shows": "MacBain Centre pylon and farmers market tents",
+   "buildings": [
+    "361d957eef"
+   ]
+  },
+  {
+   "file": "2026-11/upload_107.jpg",
+   "light": "day",
+   "shows": "MacBain farmers market tents by the path",
+   "buildings": [
+    "361d957eef"
+   ]
+  },
+  {
+   "file": "2026-11/upload_109.jpg",
+   "light": "day",
+   "shows": "Plaza strip: Alterations & Dry Cleaning, shop signs",
+   "buildings": []
   }
  ]
 }
