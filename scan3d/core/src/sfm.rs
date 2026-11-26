@@ -44,6 +44,10 @@ struct Ctx<'a> {
     rec: Reconstruction,
     thr: f64,
     refine_k: bool,
+    /// GPS per image (local metres) and accuracy; once enough placed cameras
+    /// have GPS the model is moved onto it and every BA includes GPS priors.
+    gps: Option<(Vec<Option<V3>>, f64)>,
+    gps_on: bool,
 }
 
 fn find(p: &mut [usize], mut x: usize) -> usize {
@@ -134,6 +138,8 @@ impl<'a> Ctx<'a> {
             track_point: vec![-1; nt],
             rec: Reconstruction { poses: vec![None; feats.len()], intr, points: Vec::new(), init_pair: None, rms: f64::NAN },
             refine_k: false,
+            gps: None,
+            gps_on: false,
             thr,
         }
     }
@@ -196,7 +202,35 @@ impl<'a> Ctx<'a> {
                 obs.push(Obs { cam: img, point: pi, uv: uv(self.feats, img, f) });
             }
         }
-        let opt = BaOptions { iterations, huber_px: self.thr * 0.5, refine_intrinsics: refine, refine_k1: self.rec.registered() >= 12, fix_focal: false, fixed_cam: fixed, center_prior: None };
+        // GPS: switch on as soon as 4 placed cameras have a position.
+        let mut fixed = fixed;
+        let mut prior = None;
+        if let Some((g, acc)) = &self.gps {
+            if !self.gps_on {
+                let n = self.rec.poses.iter().zip(g).filter(|(p, q)| p.is_some() && q.is_some()).count();
+                if n >= 4 {
+                    normalize_frame(&mut self.rec); // level it (Y up) before the yaw-only fit
+                    if let Some((sc, rot, t, _, _)) = align_to_gps(&self.rec, g, 3.0 * acc) {
+                        apply_similarity(&mut self.rec, sc, &rot, &t);
+                        self.gps_on = true;
+                    }
+                }
+            }
+            if self.gps_on {
+                let w = V3::new(1.0 / acc, 0.2 / acc, 1.0 / acc);
+                prior = Some(g.iter().map(|x| x.map(|p| (p, w))).collect::<Vec<_>>());
+                fixed = usize::MAX;
+            }
+        }
+        let opt = BaOptions {
+            iterations,
+            huber_px: self.thr * 0.5,
+            refine_intrinsics: refine && prior.is_none(),
+            refine_k1: self.rec.registered() >= 12,
+            fix_focal: false,
+            fixed_cam: fixed,
+            center_prior: prior,
+        };
         let r = bundle_adjust(&mut self.rec.poses, &mut self.rec.intr, &mut xs, &obs, &opt);
         for (p, x) in self.rec.points.iter_mut().zip(xs) {
             p.x = x;
@@ -403,7 +437,7 @@ pub fn reconstruct_gps(
     if let Some(pp) = prefer {
         if cands[0].0 == f64::MAX && (cands[0].1, cands[0].2) == pp {
             let c = &cands[0];
-            if let Some(r) = grow(feats, pairs, intr0, thr_px, refine_intrinsics, (c.1, c.2, c.3), log) {
+            if let Some(r) = grow(feats, pairs, intr0, thr_px, refine_intrinsics, (c.1, c.2, c.3), gps, log) {
                 return Some(r);
             }
         }
@@ -423,7 +457,7 @@ pub fn reconstruct_gps(
     let mut best: Option<(f64, Reconstruction)> = None;
     for c in chosen {
         log(0.0, &format!("trying start {}-{} (score {:.0})", c.1, c.2, c.0.min(1e9)));
-        let Some(r) = grow(feats, pairs, intr0, thr_px, refine_intrinsics, (c.1, c.2, c.3), &mut *log) else { continue };
+        let Some(r) = grow(feats, pairs, intr0, thr_px, refine_intrinsics, (c.1, c.2, c.3), gps, &mut *log) else { continue };
         let mut gc = global_consistency(&r, feats, pairs, 1.5 * thr_px);
         log(0.0, &format!("start {}-{}: {} cameras, {:.1}% of all matches consistent", c.1, c.2, r.registered(), 100.0 * gc));
         if let Some((g, acc)) = gps {
@@ -567,11 +601,13 @@ fn grow(
     thr_px: f64,
     refine_intrinsics: bool,
     init: (usize, usize, Pose),
+    gps: Option<(&[Option<V3>], f64)>,
     log: &mut dyn FnMut(f32, &str),
 ) -> Option<Reconstruction> {
     let min_angle = 1.5f64.to_radians();
     let mut ctx = Ctx::new(feats, pairs, intr0, thr_px);
     ctx.refine_k = refine_intrinsics;
+    ctx.gps = gps.map(|(g, a)| (g.to_vec(), a));
     let (a, b, pose) = init;
     let init_pair = (a, b);
     ctx.rec.init_pair = Some(init_pair);
@@ -723,9 +759,12 @@ fn grow(
         "final BA: rms {:.2} -> {:.2} -> {:.2}px, focal {:.1}px, k1 {:.3}, {} cameras, {} points",
         r0, r1, r2, ctx.rec.intr.f, ctx.rec.intr.k1, ctx.rec.registered(), ctx.rec.points.len()
     ));
+    let ctx_gps_on = ctx.gps_on;
     let mut rec = ctx.rec;
     rec.init_pair = Some(init_pair);
-    normalize_frame(&mut rec);
+    if !ctx_gps_on {
+        normalize_frame(&mut rec);
+    }
     Some(rec)
 }
 
