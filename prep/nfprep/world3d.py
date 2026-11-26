@@ -286,6 +286,74 @@ def main():
         sp = str(p.get("TreeSpecies") or "").lower()
         trees += [x, y, round(max(3, h)), 1 if any(c in sp for c in CONIFER) else 0]
 
+    # --- parking lots (estimated): in front of each plaza or store, paved from the shopfronts to the road.
+    # The City's parking layer has only its own 28 lots; this fills the private lots the owner's photos show.
+    lots = []
+    # stores face the main road they sit on (arterials and collectors), so pave toward the nearest one
+    main_segs = defaultdict(list)
+    for r in roads:
+        if r["c"] > 3:
+            continue
+        pts, x, y = [], 0, 0
+        for i in range(0, len(r["p"]), 2):
+            x += r["p"][i]; y += r["p"][i + 1]; pts.append((x / 10, y / 10))
+        for pa, pb in zip(pts, pts[1:]):
+            main_segs[(int(pa[0] // 100), int(pa[1] // 100))].append((pa, pb))
+
+    def nearest_main_road(x, y, max_d=250.0):
+        best, bd = None, max_d
+        for gx in range(int(x // 100) - 3, int(x // 100) + 4):
+            for gy in range(int(y // 100) - 3, int(y // 100) + 4):
+                for (ax, ay), (bx, by) in main_segs.get((gx, gy), []):
+                    ex, ey = bx - ax, by - ay
+                    L2 = ex * ex + ey * ey
+                    t = 0.0 if L2 < 1e-9 else max(0.0, min(1.0, ((x - ax) * ex + (y - ay) * ey) / L2))
+                    qx, qy = ax + ex * t, ay + ey * t
+                    d = math.hypot(qx - x, qy - y)
+                    if d < bd:
+                        best, bd = (qx, qy), d
+        return best
+
+    for bl in blds:
+        if not bl["biz"] or bl["a"] < 500 or bl["hsrc"] == "published-slab":
+            continue
+        ring = [(x / 10, y / 10) for x, y in bl["ring"]]
+        best = None
+        for i in range(len(ring)):
+            (ax, ay), (bx, by) = ring[i], ring[(i + 1) % len(ring)]
+            L = math.hypot(bx - ax, by - ay)
+            if L < 1:
+                continue
+            ux, uy = (bx - ax) / L, (by - ay) / L
+            s = [p[0] * ux + p[1] * uy for p in ring]; t = [p[0] * -uy + p[1] * ux for p in ring]
+            area = (max(s) - min(s)) * (max(t) - min(t))
+            if best is None or area < best[0]:
+                best = (area, ux, uy, min(s), max(s), min(t), max(t))
+        _, ux, uy, s0, s1, t0, t1 = best
+        vx, vy = -uy, ux
+        cx, cy = ux * (s0 + s1) / 2 + vx * (t0 + t1) / 2, uy * (s0 + s1) / 2 + vy * (t0 + t1) / 2
+        hit = nearest_main_road(cx, cy)
+        if hit is None:
+            n = nearest_node(round(cx * 10), round(cy * 10))
+            if n is None:
+                continue
+            hit = (nxy[n][0] / 10, nxy[n][1] / 10)
+        rx, ry = hit
+        dx, dy = rx - cx, ry - cy
+        # the side of the rectangle facing the road
+        sides = [(ux, uy, (s1 - s0) / 2, (t1 - t0) / 2), (-ux, -uy, (s1 - s0) / 2, (t1 - t0) / 2), (vx, vy, (t1 - t0) / 2, (s1 - s0) / 2), (-vx, -vy, (t1 - t0) / 2, (s1 - s0) / 2)]
+        fx, fy, half_d, half_w = max(sides, key=lambda q: q[0] * dx + q[1] * dy)
+        dist = dx * fx + dy * fy - half_d - 8.0             # stop short of the road and its sidewalk
+        depth = max(10.0, min(110.0, dist))
+        if dist < 6:
+            continue
+        px, py = -fy, fx
+        w = half_w + 6.0
+        base_x, base_y = cx + fx * (half_d + 1.0), cy + fy * (half_d + 1.0)
+        quad = [(base_x - px * w, base_y - py * w), (base_x + px * w, base_y + py * w),
+                (base_x + px * w + fx * depth, base_y + py * w + fy * depth), (base_x - px * w + fx * depth, base_y - py * w + fy * depth)]
+        lots.append({"r": delta([(round(x * 10), round(y * 10)) for x, y in quad]), "a": round(math.atan2(fy, fx), 3)})
+
     # --- businesses the game can show
     biz = []
     for k in range(nb):
@@ -306,6 +374,7 @@ def main():
                 "City of Niagara Falls open data (government): building footprints 2018, sidewalks, rivers, creeks, parks, tree inventory",
                 "OpenStreetMap contributors (ODbL): roads",
                 "The simulation: businesses, yearly sales, tourist share, vehicles and walkers per day",
+                "Estimated: parking lots in front of stores and plazas, from the outline and the nearest road",
             ],
             "heights": f"City 2018 heights; {raised} towers set to their published heights (Wikipedia list of tallest "
                        f"buildings, citing The Skyscraper Center), marked hs='published', or added as a {SLAB_M[0]:.0f} x {SLAB_M[1]:.0f} m slab "
@@ -314,7 +383,7 @@ def main():
         "buildings": [{"id": bl["id"], "h": round(bl["h"], 1), "r": delta(bl["ring"]),
                        **({"b": [pos[k] for k in bl["biz"] if k in pos]} if bl["biz"] else {}),
                        **({"hs": bl["hsrc"]} if bl["hsrc"] != "city" else {}), **({"tn": bl["tname"]} if bl.get("tname") else {})} for bl in blds],
-        "roads": roads, "walks": walks, "water": water, "parks": parks, "creeks": creeks, "trees": trees, "biz": biz,
+        "roads": roads, "walks": walks, "lots": lots, "water": water, "parks": parks, "creeks": creeks, "trees": trees, "biz": biz,
         "landmarks": [{"kind": "tower", "name": t["name"], "x": xy(t["lat"], t["lon"]), "h": t["height_m"],
                        "style": "carillon" if t["name"] == "Rainbow Tower" else "pod"}
                       for t in towers if t["name"] in TOWER_LANDMARKS],
@@ -323,7 +392,7 @@ def main():
     (OUT / "world.json").write_text(json.dumps(world, separators=(",", ":")))
     size = (OUT / "world.json").stat().st_size
     print(f"world.json {size / 1e6:.1f} MB: {len(blds)} buildings ({raised} towers at published height), {len(roads)} roads, "
-          f"{len(walks)} sidewalks, {len(water)} water/land, {len(parks)} parks, {len(trees) // 4} trees, "
+          f"{len(walks)} sidewalks, {len(lots)} parking lots (estimated), {len(water)} water/land, {len(parks)} parks, {len(trees) // 4} trees, "
           f"{len(biz)} businesses ({len(unplaced)} without a building)")
 
 

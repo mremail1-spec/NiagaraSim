@@ -72,6 +72,1044 @@
      ]
     }
    }
+  },
+  "360946697c": {
+   "walls": {},
+   "spec": {
+    "name": "Town & Country Plaza strip and Shoppers Drug Mart, 3643 Portage Rd",
+    "status": "draft",
+    "eave_m": 4.2,
+    "fascia": false,
+    "roof": {
+     "type": "flat"
+    },
+    "walls": {
+     "material": "stucco",
+     "color": "#d9cfbf"
+    },
+    "trim": "#f4f4f2",
+    "facades": {
+     "20": [
+      {
+       "type": "storefront",
+       "x": 0.4,
+       "w": 56.3,
+       "y": 0.15,
+       "top": 2.9,
+       "bay": 2.0,
+       "frame": "#2a2c2e"
+      },
+      {
+       "type": "canopy",
+       "x": 0,
+       "w": 57.1,
+       "y": 4.3,
+       "depth": 2.6,
+       "drop": 1.2,
+       "color": "#4f9a86",
+       "fascia": "#f4f4f2"
+      },
+      {
+       "type": "box",
+       "x": -0.1,
+       "w": 0.7,
+       "y": 0,
+       "h": 4.8,
+       "depth": 0.7,
+       "out_m": 2.0,
+       "color": "#f4f4f2"
+      },
+      {
+       "type": "box",
+       "x": 16.4,
+       "w": 0.7,
+       "y": 0,
+       "h": 4.8,
+       "depth": 0.7,
+       "out_m": 2.0,
+       "color": "#f4f4f2"
+      },
+      {
+       "type": "box",
+       "x": 30.4,
+       "w": 0.7,
+       "y": 0,
+       "h": 4.8,
+       "depth": 0.7,
+       "out_m": 2.0,
+       "color": "#f4f4f2"
+      },
+      {
+       "type": "box",
+       "x": 49.6,
+       "w": 0.7,
+       "y": 0,
+       "h": 4.8,
+       "depth": 0.7,
+       "out_m": 2.0,
+       "color": "#f4f4f2"
+      },
+      {
+       "type": "box",
+       "x": 56.5,
+       "w": 0.7,
+       "y": 0,
+       "h": 4.8,
+       "depth": 0.7,
+       "out_m": 2.0,
+       "color": "#f4f4f2"
+      },
+      {
+       "type": "pediment",
+       "x": 31.2,
+       "w": 7.0,
+       "y": 4.3,
+       "h": 2.2,
+       "out_m": 2.6,
+       "color": "#f4f4f2",
+       "roof_color": "#5a5f63"
+      },
+      {
+       "type": "sign",
+       "x": 1.5,
+       "y": 2.45,
+       "w": 10,
+       "h": 0.5,
+       "text": "FIT 4 LESS  OPEN 24/7",
+       "bg": "#1f2226",
+       "fg": "#f2c230",
+       "out_m": 2.55
+      },
+      {
+       "type": "sign",
+       "x": 18.0,
+       "y": 2.45,
+       "w": 10,
+       "h": 0.5,
+       "text": "RAY JAMES APPLIANCE",
+       "bg": "#ffffff",
+       "fg": "#1f2226",
+       "out_m": 2.55
+      },
+      {
+       "type": "sign",
+       "x": 31.6,
+       "y": 2.45,
+       "w": 4.4,
+       "h": 0.5,
+       "text": "POPEYE'S",
+       "bg": "#1f2226",
+       "fg": "#ffffff",
+       "out_m": 2.55
+      },
+      {
+       "type": "sign",
+       "x": 36.2,
+       "y": 2.45,
+       "w": 2.6,
+       "h": 0.5,
+       "text": "MELT",
+       "bg": "#1f2226",
+       "fg": "#f28a1e",
+       "out_m": 2.55
+      },
+      {
+       "type": "sign",
+       "x": 39.2,
+       "y": 2.45,
+       "w": 7.4,
+       "h": 0.5,
+       "text": "GLOBAL PET FOODS",
+       "bg": "#9b1b24",
+       "fg": "#ffffff",
+       "out_m": 2.55
+      },
+      {
+       "type": "sign",
+       "x": 50.6,
+       "y": 2.45,
+       "w": 5.8,
+       "h": 0.5,
+       "text": "ENDLESS WOK",
+       "bg": "#1f2226",
+       "fg": "#ffffff",
+       "out_m": 2.55
+      }
+     ],
+     "17": [
+      {
+       "type": "box",
+       "x": 1.0,
+       "w": 18.6,
+       "y": 0,
+       "h": 8.0,
+       "depth": 0.6,
+       "color": "#d8cdb9"
+      },
+      {
+       "type": "box",
+       "x": 3.2,
+       "w": 14.2,
+       "y": 4.4,
+       "h": 3.3,
+       "depth": 0.9,
+       "color": "#d2232a",
+       "text": "SHOPPERS DRUG MART",
+       "fg": "#ffffff",
+       "text_y": 0.25,
+       "text_h": 0.5
+      },
+      {
+       "type": "box",
+       "x": 2.8,
+       "w": 15.0,
+       "y": 7.7,
+       "h": 0.45,
+       "depth": 1.1,
+       "color": "#efe8d8"
+      },
+      {
+       "type": "storefront",
+       "x": 3.0,
+       "w": 14.6,
+       "y": 0.15,
+       "top": 2.9,
+       "bay": 1.8,
+       "frame": "#3a3d40",
+       "out_m": 0.6
+      },
+      {
+       "type": "box",
+       "x": 5.6,
+       "w": 6.6,
+       "y": 2.95,
+       "h": 0.55,
+       "depth": 2.6,
+       "out_m": 0.6,
+       "color": "#d2232a",
+       "text": "Visit us at shoppersdrugmart.ca",
+       "fg": "#ffffff"
+      },
+      {
+       "type": "box",
+       "x": 5.8,
+       "w": 0.45,
+       "y": 0,
+       "h": 2.95,
+       "depth": 0.45,
+       "out_m": 2.6,
+       "color": "#d2232a"
+      },
+      {
+       "type": "box",
+       "x": 11.6,
+       "w": 0.45,
+       "y": 0,
+       "h": 2.95,
+       "depth": 0.45,
+       "out_m": 2.6,
+       "color": "#d2232a"
+      }
+     ]
+    },
+    "site": [
+     {
+      "type": "pylon",
+      "lat": 43.119763,
+      "lon": -79.099653,
+      "facing_deg": 0,
+      "w": 2.6,
+      "h": 9.5,
+      "frame": "#8a2b2b",
+      "top": "gable",
+      "top_color": "#2f6e52",
+      "title": "Town & Country",
+      "panels": [
+       {
+        "text": "Fit 4 Less  OPEN 24/7",
+        "bg": "#1f2226",
+        "fg": "#f2c230"
+       },
+       {
+        "text": "eyewellness",
+        "bg": "#ffffff",
+        "fg": "#1aa3a3"
+       },
+       {
+        "text": "Capri",
+        "bg": "#ffffff",
+        "fg": "#b3262d"
+       },
+       {
+        "text": "TD",
+        "bg": "#2fb83c",
+        "fg": "#ffffff"
+       },
+       {
+        "text": "Endless Wok",
+        "bg": "#1f2226",
+        "fg": "#ffffff"
+       },
+       {
+        "text": "Walk-in Clinic",
+        "bg": "#ffffff",
+        "fg": "#1f3b8c"
+       },
+       {
+        "text": "Stamford Centre Public Library",
+        "bg": "#ffffff",
+        "fg": "#1f2226"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "c1b4f86c29": {
+   "walls": {},
+   "spec": {
+    "name": "Town & Country Plaza: TD, Pizza Pizza and the north strip, 3643 Portage Rd",
+    "status": "draft",
+    "eave_m": 4.4,
+    "fascia": false,
+    "roof": {
+     "type": "flat"
+    },
+    "walls": {
+     "material": "brick",
+     "color": "#8a6a58"
+    },
+    "trim": "#f4f4f2",
+    "facades": {
+     "1": [
+      {
+       "type": "storefront",
+       "x": 1.0,
+       "w": 25.7,
+       "y": 0.15,
+       "top": 2.8,
+       "bay": 3.0,
+       "frame": "#2a2c2e"
+      },
+      {
+       "type": "box",
+       "x": 0,
+       "w": 27.7,
+       "y": 2.95,
+       "h": 0.85,
+       "depth": 0.35,
+       "out_m": 0.9,
+       "color": "#2fb83c",
+       "text": "TD                TD                TD",
+       "fg": "#ffffff",
+       "text_y": 0.15,
+       "text_h": 0.7
+      },
+      {
+       "type": "canopy",
+       "x": -0.5,
+       "w": 28.7,
+       "y": 5.8,
+       "depth": 1.4,
+       "drop": 2.0,
+       "back": 5,
+       "color": "#b59f7f",
+       "fascia": "#b59f7f"
+      }
+     ],
+     "5": [
+      {
+       "type": "storefront",
+       "x": 0.5,
+       "w": 7.5,
+       "y": 0.15,
+       "top": 2.7,
+       "bay": 1.8,
+       "frame": "#2a2c2e"
+      },
+      {
+       "type": "sign",
+       "x": 0.4,
+       "y": 2.85,
+       "w": 7.7,
+       "h": 0.75,
+       "text": "pizza pizza 687-11-11",
+       "bg": "#f26522",
+       "fg": "#ffffff",
+       "out_m": 0.6
+      },
+      {
+       "type": "canopy",
+       "x": 0,
+       "w": 8.5,
+       "y": 5.2,
+       "depth": 1.0,
+       "drop": 1.5,
+       "back": 3,
+       "color": "#b59f7f",
+       "fascia": "#b59f7f"
+      }
+     ],
+     "10": [
+      {
+       "type": "storefront",
+       "x": 0.4,
+       "w": 33.0,
+       "y": 0.15,
+       "top": 2.9,
+       "bay": 2.0,
+       "frame": "#2a2c2e"
+      },
+      {
+       "type": "canopy",
+       "x": 0,
+       "w": 33.8,
+       "y": 4.3,
+       "depth": 2.6,
+       "drop": 1.2,
+       "color": "#4f9a86",
+       "fascia": "#f4f4f2"
+      },
+      {
+       "type": "box",
+       "x": -0.1,
+       "w": 0.7,
+       "y": 0,
+       "h": 4.8,
+       "depth": 0.7,
+       "out_m": 2.0,
+       "color": "#f4f4f2"
+      },
+      {
+       "type": "box",
+       "x": 15.6,
+       "w": 0.7,
+       "y": 0,
+       "h": 4.8,
+       "depth": 0.7,
+       "out_m": 2.0,
+       "color": "#f4f4f2"
+      },
+      {
+       "type": "box",
+       "x": 33.2,
+       "w": 0.7,
+       "y": 0,
+       "h": 4.8,
+       "depth": 0.7,
+       "out_m": 2.0,
+       "color": "#f4f4f2"
+      },
+      {
+       "type": "pediment",
+       "x": 16.5,
+       "w": 8.0,
+       "y": 4.3,
+       "h": 2.6,
+       "out_m": 2.6,
+       "color": "#f4f4f2",
+       "roof_color": "#5a5f63",
+       "text": "eyewellness",
+       "text_bg": "#ffffff",
+       "fg": "#1aa3a3"
+      },
+      {
+       "type": "pediment",
+       "x": 25.4,
+       "w": 8.0,
+       "y": 4.3,
+       "h": 2.6,
+       "out_m": 2.6,
+       "color": "#f4f4f2",
+       "roof_color": "#5a5f63",
+       "text": "PUBLIC LIBRARY",
+       "text_bg": "#ffffff",
+       "fg": "#1f2226"
+      },
+      {
+       "type": "sign",
+       "x": 0.8,
+       "y": 2.45,
+       "w": 3.6,
+       "h": 0.5,
+       "text": "CAPRI",
+       "bg": "#ffffff",
+       "fg": "#b3262d",
+       "out_m": 2.55
+      },
+      {
+       "type": "sign",
+       "x": 4.8,
+       "y": 2.45,
+       "w": 5.4,
+       "h": 0.5,
+       "text": "Special Homemaker",
+       "bg": "#c8202a",
+       "fg": "#ffffff",
+       "out_m": 2.55
+      },
+      {
+       "type": "sign",
+       "x": 10.6,
+       "y": 2.45,
+       "w": 4.6,
+       "h": 0.5,
+       "text": "DANNY'S SUSHI",
+       "bg": "#ffffff",
+       "fg": "#1f2226",
+       "out_m": 2.55
+      },
+      {
+       "type": "sign",
+       "x": 17.2,
+       "y": 2.45,
+       "w": 6.4,
+       "h": 0.5,
+       "text": "Pinball Game Cafe",
+       "bg": "#e8622a",
+       "fg": "#ffffff",
+       "out_m": 2.55
+      },
+      {
+       "type": "sign",
+       "x": 26.0,
+       "y": 2.45,
+       "w": 6.8,
+       "h": 0.5,
+       "text": "Stamford Centre Public Library",
+       "bg": "#ffffff",
+       "fg": "#1f2226",
+       "out_m": 2.55
+      }
+     ]
+    }
+   }
+  },
+  "8888b95f2e": {
+   "walls": {},
+   "spec": {
+    "name": "Sobeys, 3714 Portage Rd",
+    "status": "draft",
+    "eave_m": 5.2,
+    "fascia": false,
+    "roof": {
+     "type": "gable",
+     "pitch_deg": 14,
+     "max_rise_m": 2.5,
+     "overhang_m": 0.6,
+     "color": "#a3abad"
+    },
+    "walls": {
+     "material": "siding",
+     "color": "#3e4548"
+    },
+    "trim": "#f2f2ee",
+    "facades": {
+     "0": [
+      {
+       "type": "window",
+       "x": 0.6,
+       "y": 3.5,
+       "w": 17.2,
+       "h": 1.3,
+       "grid": [
+        12,
+        2
+       ],
+       "frame": "#f2f2ee"
+      },
+      {
+       "type": "canopy",
+       "x": 0.5,
+       "w": 17.4,
+       "y": 2.9,
+       "depth": 1.0,
+       "drop": 0.4,
+       "color": "#3aa856",
+       "fascia": "#3aa856"
+      }
+     ],
+     "2": [
+      {
+       "type": "box",
+       "x": 0.4,
+       "w": 11.2,
+       "y": 0,
+       "h": 8.6,
+       "depth": 1.2,
+       "out_m": -0.3,
+       "color": "#2f6b4c",
+       "text": "Sobeys",
+       "fg": "#8ee07a",
+       "text_y": 0.62,
+       "text_h": 0.22
+      },
+      {
+       "type": "storefront",
+       "x": 2.0,
+       "w": 8.0,
+       "y": 0.15,
+       "top": 2.8,
+       "bay": 2.0,
+       "frame": "#1d3d2c",
+       "out_m": 0.9
+      }
+     ],
+     "4": [
+      {
+       "type": "window",
+       "x": 0.6,
+       "y": 3.5,
+       "w": 11.2,
+       "h": 1.3,
+       "grid": [
+        8,
+        2
+       ],
+       "frame": "#f2f2ee"
+      },
+      {
+       "type": "canopy",
+       "x": 0.5,
+       "w": 11.4,
+       "y": 2.9,
+       "depth": 1.0,
+       "drop": 0.4,
+       "color": "#3aa856",
+       "fascia": "#3aa856"
+      }
+     ],
+     "6": [
+      {
+       "type": "window",
+       "x": 0.5,
+       "y": 3.5,
+       "w": 5.5,
+       "h": 1.3,
+       "grid": [
+        4,
+        2
+       ],
+       "frame": "#f2f2ee"
+      }
+     ]
+    }
+   }
+  },
+  "7a3e1bacaf": {
+   "walls": {},
+   "spec": {
+    "name": "LCBO plaza, 3714 Portage Rd",
+    "status": "draft",
+    "eave_m": 7.2,
+    "fascia": false,
+    "roof": {
+     "type": "flat"
+    },
+    "walls": {
+     "material": "stucco",
+     "color": "#d5c09a"
+    },
+    "trim": "#efe6d3",
+    "facades": {
+     "4": [
+      {
+       "type": "storefront",
+       "x": 2,
+       "w": 27,
+       "y": 0.15,
+       "top": 3.0,
+       "bay": 2.2,
+       "frame": "#2c4a3a"
+      },
+      {
+       "type": "canopy",
+       "x": 2,
+       "w": 27,
+       "y": 3.5,
+       "depth": 1.3,
+       "drop": 0.7,
+       "color": "#2d5a45",
+       "fascia": "#2d5a45"
+      },
+      {
+       "type": "box",
+       "x": 0,
+       "w": 31.2,
+       "y": 6.5,
+       "h": 0.7,
+       "depth": 0.5,
+       "color": "#efe6d3"
+      },
+      {
+       "type": "sign",
+       "x": 11,
+       "y": 4.3,
+       "w": 7,
+       "h": 1.4,
+       "text": "LCBO",
+       "bg": "#d5c09a",
+       "fg": "#2b2b2b",
+       "out_m": 0.05
+      },
+      {
+       "type": "sign",
+       "x": 2.5,
+       "y": 4.4,
+       "w": 6,
+       "h": 0.7,
+       "text": "Value Buds",
+       "bg": "#d5c09a",
+       "fg": "#2b2b2b",
+       "out_m": 0.05
+      }
+     ],
+     "6": [
+      {
+       "type": "storefront",
+       "x": 1,
+       "w": 59,
+       "y": 0.15,
+       "top": 3.0,
+       "bay": 2.2,
+       "frame": "#2c4a3a"
+      },
+      {
+       "type": "canopy",
+       "x": 1,
+       "w": 59,
+       "y": 3.5,
+       "depth": 1.3,
+       "drop": 0.7,
+       "color": "#2d5a45",
+       "fascia": "#2d5a45"
+      },
+      {
+       "type": "box",
+       "x": 0,
+       "w": 60.9,
+       "y": 6.5,
+       "h": 0.7,
+       "depth": 0.5,
+       "color": "#efe6d3"
+      },
+      {
+       "type": "sign",
+       "x": 10.5,
+       "y": 4.3,
+       "w": 6.4,
+       "h": 0.9,
+       "text": "Pet Valu",
+       "bg": "#d5c09a",
+       "fg": "#2b2b2b",
+       "out_m": 0.05
+      },
+      {
+       "type": "sign",
+       "x": 25.8,
+       "y": 4.3,
+       "w": 8,
+       "h": 0.9,
+       "text": "Bulk Barn",
+       "bg": "#d5c09a",
+       "fg": "#2b2b2b",
+       "out_m": 0.05
+      },
+      {
+       "type": "sign",
+       "x": 39.5,
+       "y": 4.3,
+       "w": 7.4,
+       "h": 0.9,
+       "text": "Worldwide Travel",
+       "bg": "#d5c09a",
+       "fg": "#2b2b2b",
+       "out_m": 0.05
+      },
+      {
+       "type": "sign",
+       "x": 47.4,
+       "y": 4.3,
+       "w": 5.8,
+       "h": 0.9,
+       "text": "Pizza",
+       "bg": "#d5c09a",
+       "fg": "#2b2b2b",
+       "out_m": 0.05
+      },
+      {
+       "type": "sign",
+       "x": 54.0,
+       "y": 4.3,
+       "w": 6,
+       "h": 0.9,
+       "text": "Tropical Nails",
+       "bg": "#d5c09a",
+       "fg": "#2b2b2b",
+       "out_m": 0.05
+      }
+     ]
+    }
+   }
+  },
+  "a07e76bbe5": {
+   "walls": {},
+   "spec": {
+    "name": "Drummond Heights Plaza, 5846 Drummond Rd at Lundy's Ln",
+    "status": "draft",
+    "eave_m": 4.2,
+    "fascia": false,
+    "roof": {
+     "type": "flat"
+    },
+    "walls": {
+     "material": "block",
+     "color": "#bcae98"
+    },
+    "trim": "#22252a",
+    "facades": {
+     "2": [
+      {
+       "type": "storefront",
+       "x": 1.5,
+       "w": 39,
+       "y": 0.15,
+       "top": 2.9,
+       "bay": 2.2,
+       "frame": "#1f2226"
+      },
+      {
+       "type": "box",
+       "x": 0,
+       "w": 42.4,
+       "y": 3.1,
+       "h": 1.7,
+       "depth": 0.6,
+       "color": "#22252a"
+      },
+      {
+       "type": "sign",
+       "x": 24,
+       "y": 3.5,
+       "w": 5,
+       "h": 0.7,
+       "text": "crumbl cookies",
+       "bg": "#22252a",
+       "fg": "#ffffff",
+       "out_m": 0.62
+      },
+      {
+       "type": "sign",
+       "x": 31,
+       "y": 3.5,
+       "w": 6.5,
+       "h": 0.7,
+       "text": "Little Caesars",
+       "bg": "#f26522",
+       "fg": "#ffffff",
+       "out_m": 0.62
+      },
+      {
+       "type": "sign",
+       "x": 3,
+       "y": 3.5,
+       "w": 5,
+       "h": 0.7,
+       "text": "SUBWAY",
+       "bg": "#0b8a3a",
+       "fg": "#f2c230",
+       "out_m": 0.62
+      }
+     ],
+     "4": [
+      {
+       "type": "storefront",
+       "x": 0.5,
+       "w": 17.5,
+       "y": 0.15,
+       "top": 2.9,
+       "bay": 2.2,
+       "frame": "#1f2226"
+      },
+      {
+       "type": "box",
+       "x": 0,
+       "w": 18.8,
+       "y": 3.1,
+       "h": 1.7,
+       "depth": 0.6,
+       "color": "#22252a"
+      },
+      {
+       "type": "sign",
+       "x": 5,
+       "y": 3.5,
+       "w": 7.5,
+       "h": 0.75,
+       "text": "CHURCH'S TEXAS CHICKEN",
+       "bg": "#e9e1d0",
+       "fg": "#1f2226",
+       "out_m": 0.62
+      },
+      {
+       "type": "sign",
+       "x": 7,
+       "y": 2.45,
+       "w": 6,
+       "h": 0.55,
+       "text": "BOLD TEXAS FLAVOR",
+       "bg": "#c8202a",
+       "fg": "#ffffff",
+       "out_m": 0.08
+      },
+      {
+       "type": "tower",
+       "x": 18.8,
+       "w": 4.4,
+       "h": 5.2,
+       "depth": 4.4,
+       "roof_h": 2.3,
+       "roof_color": "#1f2226",
+       "color": "#c9b79c",
+       "logo": "CHURCH'S",
+       "logo_bg": "#1f2226",
+       "logo_fg": "#f2c230"
+      }
+     ]
+    },
+    "site": [
+     {
+      "type": "pylon",
+      "lat": 43.08959,
+      "lon": -79.0976,
+      "facing_deg": 0,
+      "w": 2.4,
+      "h": 7.6,
+      "frame": "#1f2226",
+      "title": "Drummond Heights Plaza",
+      "title_bg": "#1f2226",
+      "title_fg": "#ffffff",
+      "panels": [
+       {
+        "text": "CHURCH'S TEXAS CHICKEN",
+        "bg": "#1f2226",
+        "fg": "#ffffff"
+       },
+       {
+        "text": "SUBWAY",
+        "bg": "#0b8a3a",
+        "fg": "#f2c230"
+       },
+       {
+        "text": "CASH 4 YOU",
+        "bg": "#f2c230",
+        "fg": "#c8202a"
+       },
+       {
+        "text": "PASSION NAILS",
+        "bg": "#ffffff",
+        "fg": "#1f3b8c"
+       },
+       {
+        "text": "Little Caesars",
+        "bg": "#f26522",
+        "fg": "#ffffff"
+       },
+       {
+        "text": "GAMING GATORS",
+        "bg": "#ffffff",
+        "fg": "#2f8a3a"
+       },
+       {
+        "text": "crumbl cookies",
+        "bg": "#1f2226",
+        "fg": "#ffffff"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "c4b62409f8": {
+   "walls": {},
+   "spec": {
+    "name": "Stag Shop, 6443 Lundy's Ln at Highland Ave",
+    "status": "draft",
+    "eave_m": 4.4,
+    "fascia": false,
+    "roof": {
+     "type": "flat"
+    },
+    "walls": {
+     "material": "block",
+     "color": "#c2ad8e"
+    },
+    "trim": "#f4f4f2",
+    "facades": {
+     "2": [
+      {
+       "type": "storefront",
+       "x": 1,
+       "w": 11.5,
+       "y": 0.15,
+       "top": 2.8,
+       "bay": 1.9,
+       "frame": "#2a2c2e"
+      },
+      {
+       "type": "sign",
+       "x": 2.5,
+       "y": 3.0,
+       "w": 8,
+       "h": 0.95,
+       "text": "STAG SHOP",
+       "bg": "#1f2226",
+       "fg": "#ff4f8b",
+       "out_m": 0.05
+      },
+      {
+       "type": "box",
+       "x": 0,
+       "w": 13.5,
+       "y": 4.25,
+       "h": 0.12,
+       "depth": 0.08,
+       "color": "#4a5bff"
+      }
+     ],
+     "1": [
+      {
+       "type": "storefront",
+       "x": 1,
+       "w": 12.5,
+       "y": 0.15,
+       "top": 2.8,
+       "bay": 1.9,
+       "frame": "#2a2c2e"
+      },
+      {
+       "type": "sign",
+       "x": 3,
+       "y": 3.0,
+       "w": 8,
+       "h": 0.95,
+       "text": "STAG SHOP",
+       "bg": "#1f2226",
+       "fg": "#ff4f8b",
+       "out_m": 0.05
+      },
+      {
+       "type": "box",
+       "x": 0,
+       "w": 14.8,
+       "y": 4.25,
+       "h": 0.12,
+       "depth": 0.08,
+       "color": "#4a5bff"
+      }
+     ]
+    }
+   }
   }
  }
 }

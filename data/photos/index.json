@@ -1,0 +1,129 @@
+{
+ "_meta": {
+  "what": "The owner's own photos of Niagara Falls, used to model buildings and streets in the 3D city (data/building_specs.json). Re-encoded at 1600 px with no metadata.",
+  "source": "project owner",
+  "taken": "2026-11"
+ },
+ "photos": [
+  {
+   "file": "2026-11/IMG_2294.jpg",
+   "light": "night",
+   "shows": "Lundy's Ln at Highland Ave, looking along Lundy's Lane: Stag Shop, Lundy's Lane banners, signals",
+   "buildings": [
+    "c4b62409f8"
+   ]
+  },
+  {
+   "file": "2026-11/IMG_2293.jpg",
+   "light": "night",
+   "shows": "Lundy's Ln at Highland Ave: Stag Shop and the intersection",
+   "buildings": [
+    "c4b62409f8"
+   ]
+  },
+  {
+   "file": "2026-11/IMG_2245.jpg",
+   "light": "day",
+   "shows": "Town & Country Plaza strip, green metal canopies: Fit 4 Less, Ray James Appliance, Popeye's, Melt, Global Pet Foods, Endless Wok; apartment towers behind",
+   "buildings": [
+    "360946697c"
+   ]
+  },
+  {
+   "file": "2026-11/IMG_2244.jpg",
+   "light": "day",
+   "shows": "Shoppers Drug Mart, Town & Country Plaza",
+   "buildings": [
+    "360946697c"
+   ]
+  },
+  {
+   "file": "2026-11/IMG_2243.jpg",
+   "light": "day",
+   "shows": "Sobeys and the LCBO plaza across Portage Rd",
+   "buildings": [
+    "8888b95f2e",
+    "7a3e1bacaf"
+   ]
+  },
+  {
+   "file": "2026-11/IMG_2242.jpg",
+   "light": "day",
+   "shows": "Houses and Sobeys across Portage Rd",
+   "buildings": [
+    "8888b95f2e"
+   ]
+  },
+  {
+   "file": "2026-11/IMG_2241.jpg",
+   "light": "day",
+   "shows": "Town & Country pylon sign and the Portage Rd intersection at Keith St",
+   "buildings": []
+  },
+  {
+   "file": "2026-11/IMG_2240.jpg",
+   "light": "day",
+   "shows": "TD and Pizza Pizza, Town & Country pylon",
+   "buildings": [
+    "c1b4f86c29"
+   ]
+  },
+  {
+   "file": "2026-11/IMG_2239.jpg",
+   "light": "day",
+   "shows": "TD bank pavilion with hip metal roof and green band, Pizza Pizza",
+   "buildings": [
+    "c1b4f86c29"
+   ]
+  },
+  {
+   "file": "2026-11/IMG_2238.jpg",
+   "light": "day",
+   "shows": "Town & Country strip from Ray James to the Stamford Centre Public Library, TD at right",
+   "buildings": [
+    "360946697c",
+    "c1b4f86c29"
+   ]
+  },
+  {
+   "file": "2026-11/IMG_2237.jpg",
+   "light": "day",
+   "shows": "Shoppers Drug Mart and the strip, Town & Country Plaza",
+   "buildings": [
+    "360946697c"
+   ]
+  },
+  {
+   "file": "2026-11/IMG_2235.jpg",
+   "light": "day",
+   "shows": "A pickup on a bridge over the hydro canal",
+   "buildings": []
+  },
+  {
+   "file": "2026-11/IMG_2234.jpg",
+   "light": "day",
+   "shows": "The hydro canal from the bridge",
+   "buildings": []
+  },
+  {
+   "file": "2026-11/IMG_2233.jpg",
+   "light": "day",
+   "shows": "Sidewalk and bridge railing over the hydro canal",
+   "buildings": []
+  },
+  {
+   "file": "2026-11/IMG_2232.jpg",
+   "light": "day",
+   "shows": "Drummond Heights Plaza: Crumbl, Church's Texas Chicken, corner tower, pylon",
+   "buildings": [
+    "a07e76bbe5"
+   ]
+  },
+  {
+   "file": "2026-11/IMG_1832.jpg",
+   "light": "dusk",
+   "shows": "A brick convenience store with a brown hip roof (location not given)",
+   "buildings": []
+  }
+ ]
+}
