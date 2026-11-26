@@ -1,0 +1,126 @@
+<title>Scan3D Demo</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+  /* Layout: one-screen tool. Viewer fills the left, a control rail sits right; stacks on phones. Deliberately dark (a 3D viewport). */
+  :root {
+    --bg: #0f1115; --panel: #171a21; --raised: #222733; --line: #2b303c; --text: #e9ebf0; --muted: #9aa3b4;
+    --accent: #f6b93b; --accent-ink: #1c1504; --ok: #4fd18b; --warn: #ff8f63; --viewer-bg: #14161b;
+    --ui: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --head: "Space Grotesk", "Inter", system-ui, sans-serif;
+    --mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    color-scheme: dark;
+  }
+  html, body { height: 100%; }
+  [hidden] { display: none !important; }
+  aside, aside section, .app { min-width: 0; }
+  .strip { max-width: 100%; }
+  body { background: var(--bg); color: var(--text); font: 14px/1.45 var(--ui); display: flex; flex-direction: column; }
+  header { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; padding-block: 12px;
+    padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+    border-bottom: 1px solid var(--line); }
+  header h1 { font: 600 18px/1.2 var(--head); margin: 0; letter-spacing: .01em; }
+  header p { margin: 0; color: var(--muted); }
+  .app { flex: 1; min-height: 0; display: flex; }
+  .viewer-wrap { position: relative; flex: 1; min-width: 0; display: flex; }
+  #view { flex: 1; width: 100%; height: 100%; display: block; touch-action: none; background: var(--viewer-bg); }
+  .viewer-hint { position: absolute; left: max(12px, env(safe-area-inset-left, 0px)); bottom: 10px; right: 12px; color: var(--muted); font-size: 12px; pointer-events: none; }
+  .overlay { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; text-align: center; color: var(--muted); padding: 24px; pointer-events: none; }
+  .overlay strong { display: block; color: var(--text); font: 600 16px var(--head); margin-bottom: 4px; }
+  aside { width: 340px; flex: none; border-left: 1px solid var(--line); background: var(--panel); overflow-y: auto;
+    padding-block: 14px; padding-left: 16px; padding-right: max(16px, env(safe-area-inset-right, 0px)); display: flex; flex-direction: column; gap: 18px; }
+  aside section { display: flex; flex-direction: column; gap: 8px; }
+  h2 { font: 600 11px/1 var(--ui); text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin: 0; }
+  button, select, input[type=number] { font: inherit; color: var(--text); background: var(--raised); border: 1px solid var(--line); border-radius: 8px; padding: 8px 12px; }
+  button { cursor: pointer; }
+  button:disabled { opacity: .45; cursor: default; }
+  button:focus-visible, select:focus-visible, input:focus-visible, label.upload:focus-within { outline: 2px solid var(--accent); outline-offset: 2px; }
+  button.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); font-weight: 600; }
+  .row { display: flex; gap: 6px; flex-wrap: wrap; }
+  .row > * { flex: 1; }
+  .seg button[aria-pressed=true] { background: var(--text); color: var(--bg); }
+  .strip { display: flex; gap: 4px; overflow-x: auto; padding-bottom: 4px; min-height: 44px; }
+  .strip img { height: 40px; border-radius: 3px; flex: none; }
+  .meta { color: var(--muted); font-size: 13px; }
+  label.upload { display: flex; align-items: center; justify-content: center; text-align: center; background: var(--raised); border: 1px dashed var(--line); border-radius: 8px; padding: 10px; cursor: pointer; }
+  label.upload input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+  .steps { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 7px; }
+  .steps li { display: grid; grid-template-columns: 1fr auto; gap: 3px 8px; font-size: 13px; }
+  .steps li span { color: var(--muted); font-variant-numeric: tabular-nums; }
+  .bar { grid-column: 1 / -1; height: 4px; background: var(--line); border-radius: 2px; overflow: hidden; }
+  .bar i { display: block; height: 100%; width: 0; background: var(--accent); transition: width .15s; }
+  .steps li.done .bar i { background: var(--ok); width: 100%; }
+  #log { font: 11.5px/1.5 var(--mono); color: var(--muted); white-space: pre-wrap; max-height: 150px; overflow-y: auto; background: var(--bg); border-radius: 6px; padding: 8px; margin: 0; }
+  label.field { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+  label.field select, label.field input { width: 130px; padding: 6px 8px; }
+  .msg { font-size: 13px; color: var(--muted); min-height: 1em; }
+  .msg.warn { color: var(--warn); }
+  @media (prefers-reduced-motion: reduce) { .bar i { transition: none; } }
+  @media (max-width: 760px) {
+    .app { flex-direction: column; }
+    .viewer-wrap { flex: 0 0 52%; }
+    aside { width: 100%; flex: 1; border-left: 0; border-top: 1px solid var(--line); padding-left: max(16px, env(safe-area-inset-left, 0px)); }
+    .viewer-hint { display: none; }
+  }
+</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Space+Grotesk:wght@600&display=swap">
+
+<header>
+  <h1>Scan3D</h1>
+  <p>Photos in, 3D mesh out. Rust compiled to WebAssembly, running in this page.</p>
+</header>
+<div class="app">
+  <div class="viewer-wrap">
+    <canvas id="view" aria-label="3D view of the reconstruction"></canvas>
+    <div class="overlay" id="overlay"><div><strong>Loading the sample scan…</strong>40 photos taken around a small tabletop scene</div></div>
+    <div class="viewer-hint">drag: orbit · right-drag or shift: pan · wheel or pinch: zoom · double-click: refit</div>
+  </div>
+  <aside>
+    <section>
+      <h2>Photos</h2>
+      <div class="strip" id="strip" aria-label="Input photos"></div>
+      <div class="meta" id="frameInfo">No photos yet</div>
+      <div class="row">
+        <label class="upload" for="file">Use your own photos or a video
+          <input type="file" id="file" accept="image/*,video/*" multiple>
+        </label>
+      </div>
+      <div class="row">
+        <button id="btnSample">Load sample</button>
+        <button class="primary" id="btnBuild" disabled>Build 3D model</button>
+      </div>
+      <div class="msg" id="msg">Tip: walk around the object, 30–80 overlapping photos, matte textured surfaces.</div>
+    </section>
+    <section>
+      <h2>Progress</h2>
+      <ul class="steps" id="steps"></ul>
+      <pre id="log"></pre>
+    </section>
+    <section>
+      <h2>View</h2>
+      <div class="row seg" id="modes">
+        <button data-mode="sparse">Sparse</button>
+        <button data-mode="dense">Dense</button>
+        <button data-mode="mesh" aria-pressed="true">Mesh</button>
+      </div>
+      <div class="row">
+        <button id="btnCams">Cameras: on</button>
+        <button id="btnTex">Colour: on</button>
+      </div>
+    </section>
+    <section>
+      <h2>Export</h2>
+      <button id="btnExport" disabled>Download model (.zip: GLB, OBJ, PLY)</button>
+      <div class="msg" id="exportMsg">Units are relative. Scale with one known measurement in your 3D tool.</div>
+    </section>
+    <section>
+      <h2>Settings</h2>
+      <label class="field">Lens field of view (°)<input type="number" id="optFov" value="65" min="30" max="120" step="1"></label>
+      <label class="field">Depth-map size
+        <select id="optDense"><option value="256">256 px</option><option value="320" selected>320 px</option><option value="448">448 px</option></select></label>
+      <label class="field">Mesh resolution
+        <select id="optMesh"><option value="128">128</option><option value="200" selected>200</option><option value="280">280</option></select></label>
+      <div class="meta">Field of view is a starting guess; the solver refines it. Uploaded photos are resized to 800 px on the long side.</div>
+    </section>
+  </aside>
+</div>
+<script type="module" src="demo.js"></script>

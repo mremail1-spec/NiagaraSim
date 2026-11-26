@@ -43,6 +43,18 @@ fn main() {
         }
         return;
     }
+    if args.len() >= 4 && args[1] == "--ppm" {
+        // Still frames of the orbit, for a demo sample set.
+        let n: usize = args[3].parse().unwrap();
+        std::fs::create_dir_all(&args[2]).unwrap();
+        for (i, pose) in orbit(n, 3.2).iter().enumerate() {
+            let img = render(pose, &k, w, h);
+            let mut out = format!("P6\n{w} {h}\n255\n").into_bytes();
+            for px in img.chunks(4) { out.extend_from_slice(&px[..3]); }
+            std::fs::write(format!("{}/frame_{:02}.ppm", args[2], i), out).unwrap();
+        }
+        return;
+    }
     let n: usize = args.get(1).and_then(|s| s.parse().ok()).unwrap_or(30);
     let poses = orbit(n, 3.2);
     let t0 = Instant::now();
