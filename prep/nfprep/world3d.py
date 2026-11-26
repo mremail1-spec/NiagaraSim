@@ -109,6 +109,45 @@ def in_core(lat, lon, core_rings):
     return any(point_in(r, x, y) for r in core_rings)
 
 
+def parcels_for(blds):
+    """Each building's property parcel (City of Niagara Falls open data, government): the lot its middle stands on.
+    Returns (address, lot area m², parcel id) per building, or None."""
+    path = DATA / "city_open_data/world/parcels.geojson"
+    if not path.exists():
+        return [None] * len(blds)
+    lots, grid = [], defaultdict(list)
+    for f in json.loads(path.read_text())["features"]:
+        g, pr = f["geometry"], f["properties"]
+        if not g:
+            continue
+        polys = [g["coordinates"]] if g["type"] == "Polygon" else g["coordinates"]
+        for poly in polys:
+            ring = [xy(la, lo) for lo, la in poly[0]]
+            k = len(lots)
+            lots.append((ring, pr))
+            xs, ys = [q[0] for q in ring], [q[1] for q in ring]
+            for cx in range(min(xs) // 500, max(xs) // 500 + 1):
+                for cy in range(min(ys) // 500, max(ys) // 500 + 1):
+                    grid[(cx, cy)].append(k)
+    out = []
+    for bl in blds:
+        ring = bl["ring"]
+        mx, my = sum(q[0] for q in ring) / len(ring), sum(q[1] for q in ring) / len(ring)
+        probes = [(mx, my)] + [(mx + (x - mx) * 0.7, my + (y - my) * 0.7) for x, y in ring]
+        votes = defaultdict(int)
+        for n, (x, y) in enumerate(probes):
+            for k in grid.get((int(x) // 500, int(y) // 500), []):
+                if point_in(lots[k][0], x, y):
+                    votes[k] += 3 if n == 0 else 1
+        if not votes:
+            out.append(None)
+            continue
+        pr = lots[max(votes, key=votes.get)][1]
+        addr = (pr.get("ADDRESS") or "").strip()
+        out.append((addr, pr.get("AREA_SQM"), pr.get("pID")))
+    return out
+
+
 def main():
     city_path = ROOT / "web/city.json"
     city = json.loads(city_path.read_text())
@@ -365,13 +404,19 @@ def main():
                     "o": b["open"][k], "c": b["close"][k], "x": xy(b["lat"][k], b["lon"][k])})
     pos = {r["i"]: j for j, r in enumerate(biz)}
 
+    # property parcels: the address and lot size of the lot each building stands on
+    from nfprep.businesses import nice_case
+    for bl, pc in zip(blds, parcels_for(blds)):
+        if pc:
+            bl["parcel"] = {"a": nice_case(pc[0]), "m2": round(pc[1] or 0), "p": pc[2]}
+    on_lot = sum(1 for bl in blds if bl.get("parcel"))
     world = {
         "_meta": {
             "what": "Niagara Falls in 3D for the walk-around game: decimetres east/north of the origin, each line or ring "
                     "delta-encoded (first point absolute).",
             "origin": {"lat": LAT0, "lon": LON0},
             "sources": [
-                "City of Niagara Falls open data (government): building footprints 2018, sidewalks, rivers, creeks, parks, tree inventory",
+                "City of Niagara Falls open data (government): building footprints 2018, sidewalks, rivers, creeks, parks, tree inventory, property parcels (pa address, pm lot m², pp parcel id)",
                 "OpenStreetMap contributors (ODbL): roads",
                 "The simulation: businesses, yearly sales, tourist share, vehicles and walkers per day",
                 "Estimated: parking lots in front of stores and plazas, from the outline and the nearest road",
@@ -382,18 +427,26 @@ def main():
         },
         "buildings": [{"id": bl["id"], "h": round(bl["h"], 1), "r": delta(bl["ring"]),
                        **({"b": [pos[k] for k in bl["biz"] if k in pos]} if bl["biz"] else {}),
-                       **({"hs": bl["hsrc"]} if bl["hsrc"] != "city" else {}), **({"tn": bl["tname"]} if bl.get("tname") else {})} for bl in blds],
+                       **({"hs": bl["hsrc"]} if bl["hsrc"] != "city" else {}), **({"tn": bl["tname"]} if bl.get("tname") else {}),
+                       **({"pa": bl["parcel"]["a"], "pm": bl["parcel"]["m2"], "pp": bl["parcel"]["p"]} if bl.get("parcel") else {})} for bl in blds],
         "roads": roads, "walks": walks, "lots": lots, "water": water, "parks": parks, "creeks": creeks, "trees": trees, "biz": biz,
         "landmarks": [{"kind": "tower", "name": t["name"], "x": xy(t["lat"], t["lon"]), "h": t["height_m"],
                        "style": "carillon" if t["name"] == "Rainbow Tower" else "pod"}
                       for t in towers if t["name"] in TOWER_LANDMARKS],
     }
     OUT.mkdir(parents=True, exist_ok=True)
+    old = OUT / "world.json"                     # keep the ground from nfprep.terrain, which is slow to rebuild
+    if old.exists():
+        prev = json.loads(old.read_text())
+        if "terrain" in prev:
+            world["terrain"] = prev["terrain"]
+            world["_meta"]["sources"] += [n for n in prev["_meta"]["sources"] if n not in world["_meta"]["sources"]
+                                          and not n.startswith("City of Niagara Falls open data")]
     (OUT / "world.json").write_text(json.dumps(world, separators=(",", ":")))
     size = (OUT / "world.json").stat().st_size
     print(f"world.json {size / 1e6:.1f} MB: {len(blds)} buildings ({raised} towers at published height), {len(roads)} roads, "
           f"{len(walks)} sidewalks, {len(lots)} parking lots (estimated), {len(water)} water/land, {len(parks)} parks, {len(trees) // 4} trees, "
-          f"{len(biz)} businesses ({len(unplaced)} without a building)")
+          f"{len(biz)} businesses ({len(unplaced)} without a building); {on_lot} buildings on a property parcel")
 
 
 if __name__ == "__main__":

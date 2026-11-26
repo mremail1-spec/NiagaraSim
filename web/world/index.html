@@ -522,7 +522,7 @@ function addBuilding(b, bizOffset, sky) {
   let a = 0, cx = 0, cz = 0;
   for (let i = 0; i < ring.length; i++) { const [x1, z1] = ring[i], [x2, z2] = ring[(i + 1) % ring.length]; const cr = x1 * z2 - x2 * z1; a += cr; cx += (x1 + x2) * cr; cz += (z1 + z2) * cr; }
   a /= 2; if (Math.abs(a) < 1e-6) { cx = ring[0][0]; cz = ring[0][1]; } else { cx /= 6 * a; cz /= 6 * a; }
-  const o = { i: bi, id: b.id, h: b.h, ring, biz: (b.b || []).map((i) => i + bizOffset), hs: b.hs, tn: b.tn, cx, cz, area: Math.abs(a) };
+  const o = { i: bi, id: b.id, h: b.h, ring, biz: (b.b || []).map((i) => i + bizOffset), hs: b.hs, tn: b.tn, pa: b.pa, pm: b.pm, cx, cz, area: Math.abs(a) };
   o.style = styleOf(o);
   const r = hash01(b.id + "mat");
   o.wallSet = o.style === "house" ? (r < 0.45 ? "siding" : r < 0.8 ? "brick" : "stucco") : o.style === "shop" ? (r < 0.55 ? "brick" : "block") : (r < 0.5 ? "brick" : "stucco");
@@ -1757,10 +1757,11 @@ function updateHUD() {
   const b = focus.b, [ax, az] = b.ring[focus.k], [bx, bz] = b.ring[(focus.k + 1) % b.ring.length];
   const wl = Math.hypot(bx - ax, bz - az), faces = compass(-(bz - az), bx - ax);
   const items = b.biz.map((i) => BIZ[i]).sort((a, c) => c.s - a.s);
-  const title = b.tn || (items[0] ? items[0].n : "Building");
+  const title = b.tn || (items[0] ? items[0].n : (b.pa && /^\d/.test(b.pa) ? b.pa : "Building"));
   const hsrc = b.hs === "published" ? "published height" : b.hs === "published-slab" ? "published height, approximate outline" : b.hs === "min" ? "City survey too low, shown at one storey" : "City 2018 survey";
   card.innerHTML = `<h2>${esc(title)}</h2>
     <div class="meta">${b.h.toFixed(1)} m tall (${hsrc}) · ${Math.round(b.area).toLocaleString()} m² footprint</div>
+    ${b.pa ? `<div class="meta">Lot: ${esc(b.pa)}${b.pm ? ` · ${b.pm.toLocaleString()} m²` : ""} (City property parcels)</div>` : ""}
     ${items.length ? `<ul>${items.slice(0, 8).map((x) => `<li><div class="n">${esc(x.n)}</div><div class="k">${esc(KINDS_LABEL[x.k] || x.k)} · ${esc(x.a || "")}<br>${x.s ? `Model sales ${fmtMoney(x.s)} a year · ${Math.round(x.t * 100)}% from tourists` : "No sales in the model"}${x.o != null ? ` · open ${x.o}–${x.c}` : ""}</div></li>`).join("")}</ul>${items.length > 8 ? `<div class="meta" style="margin-top:6px">and ${items.length - 8} more</div>` : ""}` : `<div class="meta" style="margin-top:6px">No business listed here.</div>`}
     <div class="row"><span class="id">Building ${esc(b.id)} · wall ${focus.k} faces ${faces}, ${wl.toFixed(1)} m${appearance.specs.has(b.id) ? " · modelled from photos" : ""}</span></div>
     <div class="row"><button id="btnPhoto">Send photos for the 3D model${refsByBuilding.get(b.id) ? ` (${refsByBuilding.get(b.id)} sent)` : ""}</button><button id="btnCopy">Copy building id</button></div>`;

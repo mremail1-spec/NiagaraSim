@@ -12,5 +12,6 @@ Downloaded 17 November 2026 from the city's open data hub (https://open.niagaraf
 | world/parks.geojson | 109 community parks and trail lands | Parks in the 3D city |
 | world/trees.geojson | 31,094 inventoried trees with species and height range | Trees in the 3D city |
 | world/parking_lots.geojson | 28 parking lots | Kept for the 3D city |
+| world/parcels.geojson | 35,172 property parcels with outline, address, lot area and perimeter (Niagara Falls Property Parcels, downloaded 2026-11-26; the owner's CSV export of the same layer matched all 34,916 of its rows) | Each building's address and lot size in the 3D city (government data) |
 
 The `world/` layers were downloaded 26 November 2026 with `data/scripts/fetch_city_world_layers.py`.

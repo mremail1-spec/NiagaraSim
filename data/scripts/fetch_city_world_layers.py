@@ -1,5 +1,5 @@
 """Download the City of Niagara Falls open-data layers the 3D city uses (rivers, creeks, parks, trees,
-parking lots) as GeoJSON into data/city_open_data/world/. Terms of Use of the City of Niagara Falls.
+parking lots, property parcels) as GeoJSON into data/city_open_data/world/. Terms of Use of the City of Niagara Falls.
 
 Run: python3 data/scripts/fetch_city_world_layers.py
 """
@@ -13,6 +13,7 @@ LAYERS = {
     "parks": "Niagara_Falls_Community_Parks_and_Trail_Lands_WGS_1984",
     "trees": "Niagara_Falls_Trees_Inventory_WGS_1984",
     "parking_lots": "Niagara_Falls_Parking_Lots_WGS_1984",
+    "parcels": "Niagara_Falls_Property_Parcels_WGS_1984",
 }
 OUT = Path(__file__).resolve().parents[1] / "city_open_data" / "world"
 
