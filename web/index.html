@@ -116,8 +116,10 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
 #outlook, #layer { max-width: 29vw; text-overflow: ellipsis; font: inherit; font-size: 13px; height: 44px; border-radius: 22px; border: 1px solid var(--panel-edge);
            background: var(--ground); color: var(--ink); padding: 0 10px; }
 #buildBtn { height: 44px; padding: 0 14px; border-radius: 22px; border: 1px solid var(--accent); color: var(--accent); background: none; cursor: pointer; }
-#closeSheet { position: absolute; top: 8px; right: max(12px, env(safe-area-inset-right, 0px)); background: none; border: 0;
-              font-size: 22px; width: 40px; height: 40px; cursor: pointer; color: var(--ink-soft); }
+/* stays on top of the storefront photo and pinned while the card scrolls */
+#closeSheet { position: sticky; top: 0; justify-self: end; margin-bottom: -40px; z-index: 3; border: 0; border-radius: 50%;
+              background: color-mix(in srgb, var(--panel) 85%, transparent); box-shadow: 0 1px 4px rgba(0,0,0,.35);
+              font-size: 22px; width: 40px; height: 40px; cursor: pointer; color: var(--ink); line-height: 1; }
 
 #controls { border-top: 1px solid var(--panel-edge); display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
             padding-bottom: calc(8px + env(safe-area-inset-bottom, 0px)); }
