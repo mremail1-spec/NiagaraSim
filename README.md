@@ -439,3 +439,18 @@ content is refreshed (`python3 -m nfprep.storefronts reviews --refresh`) rather 
 
 Run from prep/: `python3 -m nfprep.storefronts photos`, `match`, `reviews`, `export` (writes web/storefronts.json
 and web/storefronts/*.jpg, which the game loads on the first tap).
+
+Other open street-photo sources, checked 27 November 2026 for the pilot stretch and the city:
+
+- **Panoramax** (federated, CC BY-SA 4.0, no key): no pictures on the pilot stretch, but more than 1,000 elsewhere in
+  the city, from drives in June 2024 and October 2025 (phone cameras, flat photos, with lens data, so the crop
+  towards a business can be computed rather than guessed). The first source to add when expanding beyond the pilot.
+- **Wikimedia Commons** (geosearch, mostly CC BY-SA): two photos on the pilot stretch, both of the motel at 7701
+  Lundy's Ln when it was a Knights Inn (2013, CC BY-SA 3.0, Christophe95). Around the city, mostly landmarks, hotels
+  and history, with some businesses (Denny's, Motel Cadillac 2025). The API rate-limits automated requests
+  (HTTP 429): space the calls out.
+- **OpenStreetMap photo tags** (image, wikimedia_commons, mapillary, panoramax): not checked yet; Overpass was not
+  reachable from the build machine.
+- **Mapillary** (CC BY-SA 4.0): needs a free access token; the owner is looking into it.
+- **The owner's own photos** (data/photos/): the best source where they exist; used first (storefront_photo_overrides.json
+  "owner_photo").
