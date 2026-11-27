@@ -15,8 +15,11 @@ cd web && python3 -m http.server 8000
 # open http://localhost:8000
 ```
 
-Browsers only allow camera access on **https** or **localhost**. To use a phone, serve `web/`
-over HTTPS (any static host, or a local HTTPS tunnel).
+Browsers only allow camera access on **https** or **localhost**. The live app is hosted at
+**https://scan3d.scan3d-app.workers.dev** (a Cloudflare Worker): open it in Safari on the iPhone.
+Processing stays on the phone; nothing is uploaded. To redeploy after a change:
+`./build.sh && python3 deploy/make_worker.py && cd deploy/build && npx wrangler@3.99.0 deploy`
+(needs a Cloudflare API token with Workers edit rights).
 
 1. **Capture**: press *Start camera* and tap the object on screen. Arrows over the live video
    tell you which way to walk. They come from the engine re-solving every camera position in
