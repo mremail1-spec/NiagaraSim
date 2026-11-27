@@ -1,0 +1,309 @@
+{
+ "way/815600855": {
+  "id": "ChIJJZ1auI1E04kRIOU3zzD8uVU",
+  "google_name": "A-1 INN",
+  "address": "7895 Lundy's Ln",
+  "status": "OPERATIONAL",
+  "chosen": "by eye",
+  "why": "same address, Google's name A-1 INN",
+  "checked": "2026-11-27"
+ },
+ "way/815600807": {
+  "id": "ChIJucMRIPNE04kR_gDRMDRWlFU",
+  "google_name": "Howard Johnson by Wyndham Niagara Falls",
+  "address": "8100 Lundy's Ln",
+  "status": "OPERATIONAL",
+  "chosen": "by eye",
+  "why": "same address, rebranded by Wyndham",
+  "checked": "2026-11-27"
+ },
+ "node/4462911838": {
+  "id": null,
+  "candidates": [
+   "Mobil"
+  ],
+  "checked": "2026-11-27",
+  "chosen": "by eye",
+  "why": "no Google place by that name at 8209 Lundy's Ln: not linked"
+ },
+ "node/5361707563": {
+  "id": null,
+  "candidates": [
+   "Big Bee Convenience & Mobil Gas Station"
+  ],
+  "checked": "2026-11-27",
+  "chosen": "by eye",
+  "why": "the station at 8209 Lundy's Ln is a Mobil now (Big Bee Convenience & Mobil Gas Station): not linked"
+ },
+ "node/4355020611": {
+  "id": "ChIJl0yTCvpE04kRjOAGRZ71QYY",
+  "google_name": "Laurie's Kitchen",
+  "address": "7737 Lundy's Ln",
+  "status": "CLOSED_PERMANENTLY",
+  "chosen": "by eye",
+  "why": "same address; Google lists it as Laurie's Kitchen, permanently closed",
+  "checked": "2026-11-27"
+ },
+ "node/7324366150": {
+  "id": null,
+  "candidates": [
+   "PHO HƯƠNG NGỌC"
+  ],
+  "checked": "2026-11-27",
+  "chosen": "by eye",
+  "why": "Google has only PHO HƯƠNG NGỌC at 8279 Lundy's Ln (a different name): not linked"
+ },
+ "Orchard Grove Pharmacy|8123 Lundy's Ln": {
+  "id": "ChIJm35CKY1E04kRx-dP8jUikOI",
+  "google_name": "PharmaChoice - Orchard Grove Pharmacy",
+  "address": "8123 Lundy's Ln, Niagara Falls, ON L2H 1H3, Canada",
+  "status": "OPERATIONAL",
+  "distance_m": 21,
+  "checked": "2026-11-27"
+ },
+ "Mo'cha Bubble Tea|8201-8209 Lundy's Ln": {
+  "id": "ChIJk2Xok4ZF04kRq-zRxaWJL_A",
+  "google_name": "Mo'Cha Bubble Tea - Niagara Falls",
+  "address": "8209 Lundy's Ln, Niagara Falls, ON L2H 1H3, Canada",
+  "status": "OPERATIONAL",
+  "distance_m": 7,
+  "checked": "2026-11-27"
+ },
+ "Avondale Store #67|8214 Lundy's Ln": {
+  "id": "ChIJQwkcKY1E04kRNj-CWZgaCEY",
+  "google_name": "Avondale Food Stores",
+  "address": "8214 Lundy's Ln",
+  "status": "OPERATIONAL",
+  "chosen": "by eye",
+  "why": "same address and chain",
+  "checked": "2026-11-27"
+ },
+ "Big Bee Convenience & Food Mart|8201-8209 Lundy's Ln": {
+  "id": "ChIJh1tnKY1E04kR9u83mysBuiU",
+  "google_name": "Big Bee Convenience & Mobil Gas Station",
+  "address": "8209 Lundy's Ln",
+  "status": "CLOSED_TEMPORARILY",
+  "chosen": "by eye",
+  "why": "same address; the store at the Mobil station",
+  "checked": "2026-11-27"
+ },
+ "Good Natured Health|8279 Lundy's Ln": {
+  "id": "ChIJ22eytfNE04kRnqHJ_dk7aIE",
+  "google_name": "Good Natured Health",
+  "address": "8279 Lundy's Ln, Niagara Falls, ON L2H 1H5, Canada",
+  "status": "OPERATIONAL",
+  "distance_m": 20,
+  "checked": "2026-11-27"
+ },
+ "Balkan Deli Inc.|8214 Lundy's Ln": {
+  "id": "ChIJQwkcKY1E04kRqBUuEYA6pPU",
+  "google_name": "Balkan Deli",
+  "address": "8214 Lundy's Ln, Niagara Falls, ON L2H 0L4, Canada",
+  "status": "OPERATIONAL",
+  "distance_m": 11,
+  "checked": "2026-11-27"
+ },
+ "Pho Huong Ngoc - Unit A13-a14|8279 Lundy's Ln": {
+  "id": "ChIJ22eytfNE04kRLpJFtYcX5sU",
+  "google_name": "PHO HƯƠNG NGỌC",
+  "address": "8279 Lundy's Ln",
+  "status": "OPERATIONAL",
+  "chosen": "by eye",
+  "why": "same name with Vietnamese accents",
+  "checked": "2026-11-27"
+ },
+ "Adda Kitchen|7800 Lundy's Ln": {
+  "id": "ChIJRwXFTk9F04kRs5xRAmQrhuI",
+  "google_name": "ADDA KITCHEN",
+  "address": "7800 Lundy's Ln, Niagara Falls, ON L2H 1H1, Canada",
+  "status": "OPERATIONAL",
+  "distance_m": 25,
+  "checked": "2026-11-27"
+ },
+ "Naan - The Indian Kitchen|8123 Lundy's Ln": {
+  "id": "ChIJGS1468hF04kRisnPQK7lqz8",
+  "google_name": "Naan The Indian Kitchen",
+  "address": "8123 Lundy's Ln Unit 1, Niagara Falls, ON L2H 1H3, Canada",
+  "status": "OPERATIONAL",
+  "distance_m": 21,
+  "checked": "2026-11-27"
+ },
+ "Player's Bar & Grill|8201-8209 Lundy's Ln": {
+  "id": "ChIJfWWAZNxF04kRWoe-Lo-P0I4",
+  "google_name": "Player's Bar&Grill",
+  "address": "8201 B Lundy's Ln, Niagara Falls, ON L2H 1H3, Canada",
+  "status": "OPERATIONAL",
+  "distance_m": 3,
+  "checked": "2026-11-27"
+ },
+ "Purplemint Kitchen Inc.|8100 Lundy's Ln": {
+  "id": "ChIJh1GxvUxF04kRhsa3wBKNiEA",
+  "google_name": "Purplemint Kitchen",
+  "address": "8100 Lundy's Ln, Niagara Falls, ON L2H 0L4, Canada",
+  "status": "OPERATIONAL",
+  "distance_m": 3,
+  "checked": "2026-11-27"
+ },
+ "World Street Kitchen & Bar|7720 Lundy's Ln": {
+  "id": "ChIJq6raVUJE04kRcxVBwel-XRI",
+  "google_name": "World Street Kitchen and Bar",
+  "address": "7720 Lundy's Ln, Niagara Falls, ON L2H 1H1, Canada",
+  "status": "OPERATIONAL",
+  "distance_m": 12,
+  "checked": "2026-11-27"
+ },
+ "Chip N Charlies Bar & Eatery|8189 Lundy's Ln": {
+  "id": "ChIJf-oHAPNE04kRRpoTujlhBpw",
+  "google_name": "Chip n Charlie's Eatery & Bar",
+  "address": "8189 Lundy's Ln, Niagara Falls, ON L2H 1H3, Canada",
+  "status": "OPERATIONAL",
+  "distance_m": 22,
+  "checked": "2026-11-27"
+ },
+ "Mai Thai Cuisine|8123 Lundy's Ln": {
+  "id": "ChIJe0Cf1_JE04kRjUrdefQ4rUQ",
+  "google_name": "Mai Thai Cuisine",
+  "address": "8123 Lundy's Ln, Niagara Falls, ON L2H 1H3, Canada",
+  "status": "OPERATIONAL",
+  "distance_m": 45,
+  "checked": "2026-11-27"
+ },
+ "Amritsari Restaurant|7925 Lundy's Ln": {
+  "id": "ChIJk2joc6tF04kRoQ2f3CVEGm8",
+  "google_name": "Amritsari Restaurant ( Tiffin Service )",
+  "address": "7925 Lundy's Ln, Niagara Falls, ON L2H 1H3, Canada",
+  "status": "CLOSED_TEMPORARILY",
+  "distance_m": 10,
+  "checked": "2026-11-27"
+ },
+ "Brick Mountain Hobbies Inc.|8040 Lundy's Ln": {
+  "id": "ChIJabdYXTVF04kR-Q2jFdsd_eA",
+  "google_name": "Brick Mountain Hobbies",
+  "address": "8040 Lundy's Ln Unit 4, Niagara Falls, ON L2H 1H1, Canada",
+  "status": "OPERATIONAL",
+  "distance_m": 16,
+  "checked": "2026-11-27"
+ },
+ "Little Caesars Pizza|8123 Lundy's Ln": {
+  "id": "ChIJTUDw2vJE04kRREpDOD6VpIk",
+  "google_name": "Little Caesars Pizza",
+  "address": "8123 Lundy's Ln, Niagara Falls, ON L2H 1H1, Canada",
+  "status": "OPERATIONAL",
+  "distance_m": 0,
+  "checked": "2026-11-27"
+ },
+ "City South Pizza|7939 Lundy's Ln": {
+  "id": "ChIJ4zRgL5BF04kR08Mg-fXxXGM",
+  "google_name": "City South Pizza",
+  "address": "7939 Lundy's Ln, Niagara Falls, ON L2H 1H1, Canada",
+  "status": "OPERATIONAL",
+  "distance_m": 0,
+  "checked": "2026-11-27"
+ },
+ "Lakeport Fish & Chips|8214 Lundy's Ln": {
+  "id": "ChIJQwkcKY1E04kRjGYEPl3ZNFg",
+  "google_name": "Lakeport Fish & Chips",
+  "address": "8214 Lundy's Ln, Niagara Falls, ON L2H 0L4, Canada",
+  "status": "OPERATIONAL",
+  "distance_m": 0,
+  "checked": "2026-11-27"
+ },
+ "Epic Pita Niagara|7805 Lundy's Ln": {
+  "id": "ChIJ-QAB6o1E04kR1VW74yaWYds",
+  "google_name": "Epic Pita Niagara",
+  "address": "7805 Lundy's Ln, Niagara Falls, ON L2H 1H3, Canada",
+  "status": "OPERATIONAL",
+  "distance_m": 0,
+  "checked": "2026-11-27"
+ },
+ "Shawarma & Grill Box|7558 Lundy's Ln": {
+  "id": "ChIJDT5LFAVF04kR-91-DPLKWeE",
+  "google_name": "Shawarma & Grill Box",
+  "address": "7558 Lundy's Ln, Niagara Falls, ON L2H 1G8, Canada",
+  "status": "OPERATIONAL",
+  "distance_m": 0,
+  "checked": "2026-11-27"
+ },
+ "La Farina Bakery|8040 Lundy's Ln": {
+  "id": "ChIJf-oHAPNE04kRoBAN3h4DpE0",
+  "google_name": "La Farina Bakery",
+  "address": "8040 Lundy's Ln, Niagara Falls, ON L2H 0L4, Canada",
+  "status": "OPERATIONAL",
+  "distance_m": 0,
+  "checked": "2026-11-27"
+ },
+ "Basant Ice cream|7939 Lundy's Ln": {
+  "id": "ChIJS3M8lAxF04kRuZ1h-JUaNv8",
+  "google_name": "Basant Ice cream",
+  "address": "7939 Lundy's Ln, Niagara Falls, ON L2H 1H1, Canada",
+  "status": "OPERATIONAL",
+  "distance_m": 0,
+  "checked": "2026-11-27"
+ },
+ "Chengdu Noodles|7940 Lundy's Ln": {
+  "id": "ChIJF2xvXgBF04kRLdBWWHYKUcA",
+  "google_name": "Chengdu Noodles",
+  "address": "7940 Lundy's Ln, Niagara Falls, ON L2H 1H3, Canada",
+  "status": "OPERATIONAL",
+  "distance_m": 0,
+  "checked": "2026-11-27"
+ },
+ "Buffet 5 continent|8100 Lundy's Ln": {
+  "id": "ChIJj7jTZgBF04kRJ-QKJgLbCIA",
+  "google_name": "Buffet 5 continent",
+  "address": "8100 Lundy's Ln, Niagara Falls, ON L2H 0L4, Canada",
+  "status": "OPERATIONAL",
+  "distance_m": 0,
+  "checked": "2026-11-27"
+ },
+ "Scoops Restaurant Breakfast and Lunch|8123 Lundy's Ln": {
+  "id": "ChIJ80Dw2vJE04kRAJd_1AXQPww",
+  "google_name": "Scoops Restaurant Breakfast and Lunch",
+  "address": "8123 Lundy's Ln, Niagara Falls, ON L2H 1H3, Canada",
+  "status": "OPERATIONAL",
+  "distance_m": 0,
+  "checked": "2026-11-27"
+ },
+ "Adda Sports Bar|7800 Lundy's Ln": {
+  "id": "ChIJvXy27sRD04kRmjS2o3fjMW0",
+  "google_name": "Adda Sports Bar",
+  "address": "7800 Lundy's Ln, Niagara Falls, ON L2H 1H1, Canada",
+  "status": "OPERATIONAL",
+  "distance_m": 0,
+  "checked": "2026-11-27"
+ },
+ "Food store|7924 Spring Blossom Dr": {
+  "id": "ChIJ9wMWZgBF04kR2F9AAJTzTxw",
+  "google_name": "Food store",
+  "address": "7924 Spring Blossom Dr, Niagara Falls, ON L2H 3M2, Canada",
+  "status": "OPERATIONAL",
+  "distance_m": 0,
+  "checked": "2026-11-27"
+ },
+ "BOMBAY MART|7572 Lundy's Ln": {
+  "id": "ChIJU3K_XLFF04kRg2DZLdKLvi8",
+  "google_name": "BOMBAY MART",
+  "address": "7572 Lundy's Ln, Niagara Falls, ON L2H 1G8, Canada",
+  "status": "OPERATIONAL",
+  "distance_m": 0,
+  "checked": "2026-11-27"
+ },
+ "Amore Eyewear|8123 Lundy's Lane": {
+  "id": "ChIJUc_V1fJE04kRGu1PAhrlZBM",
+  "google_name": "Amore Eyewear",
+  "address": "8123 Lundy's Ln, Niagara Falls, ON L2H 1H1, Canada",
+  "status": "OPERATIONAL",
+  "distance_m": 14,
+  "checked": "2026-11-27"
+ },
+ "Lush and Lavished Hair Studio|8040 Lundy's Lane": {
+  "id": null,
+  "candidates": [
+   "Lush & Lavished Hair Studio",
+   "Lydz Hair Studio"
+  ],
+  "checked": "2026-11-27",
+  "chosen": "by eye",
+  "why": "Google lists Lush & Lavished Hair Studio in Thorold now (moved): not linked"
+ }
+}

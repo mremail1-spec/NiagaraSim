@@ -67,6 +67,20 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
 #sheet dt { font-size: 11px; color: var(--ink-soft); text-transform: uppercase; letter-spacing: 0.06em; }
 #sheet dd { margin: 2px 0 0; font-family: var(--font-display); font-size: 17px; font-variant-numeric: tabular-nums; }
 #sheet.street dl { display: none; }
+#sheet { max-height: 72vh; max-height: 72dvh; overflow-y: auto; overscroll-behavior: contain; }
+#bPhoto { margin: 0 0 2px; display: grid; gap: 3px; }
+#bPhoto img { width: 100%; height: auto; max-height: 34vh; object-fit: cover; border-radius: 8px; background: var(--panel-edge); display: block; }
+#bPhoto figcaption, #sheet .credit { font-size: 10.5px; color: var(--ink-soft); line-height: 1.35; }
+#bGoogle { display: grid; gap: 4px; padding: 8px 0 2px; border-top: 1px solid var(--panel-edge); }
+#bGoogle[hidden], #bPhoto[hidden], #bReviews[hidden] { display: none; }
+#bStars { font-size: 13px; color: var(--ink); }
+#bStars b { font-family: var(--font-display); font-size: 15px; }
+#bStars .closed { color: #c0392b; font-weight: 600; }
+#bReviews summary { cursor: pointer; font-size: 12.5px; color: var(--ink); padding: 4px 0; min-height: 28px; display: flex; align-items: center; }
+#bReviewList { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+#bReviewList li { font-size: 12px; color: var(--ink); background: color-mix(in srgb, var(--panel-edge) 35%, transparent); border-radius: 6px; padding: 6px 8px; }
+#bReviewList .who { color: var(--ink-soft); font-size: 11px; display: flex; gap: 6px; flex-wrap: wrap; }
+#bReviewList .txt { margin-top: 3px; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; overflow-wrap: anywhere; }
 #sheet p { margin: 0; font-size: 12px; color: var(--ink-soft); }
 #person { position: absolute; left: 0; right: 0; bottom: 0; background: var(--panel); border-top: 1px solid var(--panel-edge);
          border-radius: 14px 14px 0 0; padding-block: 12px 14px; max-height: 58%; overflow-y: auto; display: grid; gap: 8px;
@@ -154,9 +168,15 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
   </div>
   <section id="sheet" hidden aria-live="polite">
     <button id="closeSheet" aria-label="Close">&times;</button>
+    <figure id="bPhoto" hidden><img id="bPhotoImg" alt="" loading="lazy" decoding="async"><figcaption id="bPhotoCredit"></figcaption></figure>
     <div class="kind"><i id="bDot"></i><span id="bKind"></span></div>
     <h2 id="bName"></h2>
     <div id="bAddr"></div>
+    <div id="bGoogle" hidden>
+      <div class="stars" id="bStars"></div>
+      <details id="bReviews" hidden><summary>Reviews</summary><ol id="bReviewList"></ol></details>
+      <p class="credit" id="bGoogleCredit">Ratings and reviews: Google</p>
+    </div>
     <dl>
       <div><dt>Revenue so far</dt><dd id="bRev">$0</dd></div>
       <div><dt>From tourists</dt><dd id="bTour">0%</dd></div>
@@ -270,7 +290,7 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
 
   const wx = (lon) => (lon - lon0) * kx;
   const wy = (lat) => (lat0 - lat) * KM;
-  if (location.search.includes("debug")) window.nfDebug = { get view() { return view; }, wx, wy };   // for automated page tests
+  if (location.search.includes("debug")) window.nfDebug = { get view() { return view; }, wx, wy, get bizX() { return bizX; }, get bizY() { return bizY; }, get city() { return city; } };   // for automated page tests
   const money = (v) => v >= 1e9 ? "$" + (v / 1e9).toFixed(2) + "B" : v >= 1e6 ? "$" + (v / 1e6).toFixed(1) + "M"
     : v >= 1e3 ? "$" + Math.round(v / 1e3) + "k" : "$" + Math.round(v);
 
@@ -801,6 +821,7 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
     $("bDot").style.background = css("--road-highway");
     $("bAddr").textContent = st.name ? `${(km / (st.cls === 2 ? 2 : 1)).toFixed(1)} km of road in the city` : "This piece of road has no name on the map";
     $("sheet").classList.add("street");
+    $("bPhoto").hidden = true; $("bGoogle").hidden = true; realFor = -1;   // the business extras belong to businesses only
     const cars = flowOf(st, "cars"), feet = flowOf(st, "feet");
     const thr = city.nodes.through_traffic && st.node >= 0 ? city.nodes.through_traffic[st.node] || 0 : 0;
     $("bNote").textContent = (city.nodes.passing ? `About ${Math.round(cars).toLocaleString()} vehicles a day on this stretch in the model`
@@ -825,8 +846,53 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
     if (selected >= 0) fillSheet();
   }
 
+  // Real-world extras for a business (web/storefronts.json, built by prep/nfprep/storefronts.py): a KartaView street
+  // photo of the storefront and its Google rating and reviews. Real data, kept apart from the model's estimates.
+  let storefrontsP = null, realFor = -1;
+  function storefronts() {
+    if (!storefrontsP) storefrontsP = fetch("storefronts.json").then((r) => r.ok ? r.json() : { places: {} }).catch(() => ({ places: {} }));
+    return storefrontsP;
+  }
+  const esc = (t) => String(t ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
+  const starText = (r) => "\u2605".repeat(Math.round(r)) + "\u2606".repeat(5 - Math.round(r));
+  async function fillReal(i) {
+    if (realFor === i) return;
+    realFor = i;
+    const b = city.businesses;
+    $("bPhoto").hidden = true; $("bGoogle").hidden = true; $("bReviews").hidden = true; $("bReviews").open = false;
+    if ((b.standin && b.standin[i]) || i >= baseCount || !b.name[i]) return;
+    const sf = await storefronts();
+    if (selected !== i) return;                                 // another business was tapped meanwhile
+    const key = (b.osm_id && b.osm_id[i]) || `${b.name[i]}|${(b.address && b.address[i]) || ""}`;
+    const e = sf.places && sf.places[key];
+    if (!e) return;
+    if (e.photo) {
+      const img = $("bPhotoImg");
+      img.alt = `Street photo of ${b.name[i]}`;
+      img.src = e.photo.file;
+      img.onerror = () => { $("bPhoto").hidden = true; };
+      $("bPhotoCredit").textContent = `${sf._meta.photo_credit} \u00b7 photo ${e.photo.kartaview_photo}${e.photo.date ? ", " + e.photo.date : ""}`;
+      $("bPhoto").hidden = false;
+    }
+    const g = e.google;
+    if (g && (g.rating || g.status === "CLOSED_PERMANENTLY")) {
+      const closed = g.status === "CLOSED_PERMANENTLY" ? ' <span class="closed">Google lists it as permanently closed</span>'
+        : g.status === "CLOSED_TEMPORARILY" ? ' <span class="closed">Google lists it as temporarily closed</span>' : "";
+      $("bStars").innerHTML = (g.rating ? `<span aria-hidden="true">\u2605</span> <b>${g.rating.toFixed(1)}</b> (${(g.count || 0).toLocaleString()} Google review${g.count === 1 ? "" : "s"})` : "") + closed;
+      const rv = (g.reviews || []).filter((r) => r.text);
+      if (rv.length) {
+        $("bReviewList").innerHTML = rv.map((r) => `<li><div class="who"><span>${esc(r.author || "A Google user")}</span><span aria-label="${r.rating} out of 5 stars">${starText(r.rating || 0)}</span><span>${esc(r.when || "")}</span></div><div class="txt">${esc(r.text)}</div></li>`).join("");
+        $("bReviews").querySelector("summary").textContent = `Reviews (${rv.length} recent)`;
+        $("bReviews").hidden = false;
+      }
+      $("bGoogleCredit").textContent = sf._meta.reviews_credit + (g.checked ? ` \u00b7 checked ${g.checked}` : "");
+      $("bGoogle").hidden = false;
+    }
+  }
+
   function fillSheet() {
     const b = city.businesses, i = selected;
+    fillReal(i);
     const rev = new Float64Array(wasm.memory.buffer, wasm.nf_revenue_ptr(), bizX.length)[i];
     const tour = new Float64Array(wasm.memory.buffer, wasm.nf_tourist_revenue_ptr(), bizX.length)[i];
     const days = wasm.nf_day() + wasm.nf_hour() / 24;

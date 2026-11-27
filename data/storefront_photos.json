@@ -1,0 +1,462 @@
+{
+ "way/815600855": {
+  "file": "storefronts/e0c2f1e579c1.jpg",
+  "kartaview_photo": "190957967",
+  "sequence": "1119027",
+  "date": "2018-01-19",
+  "distance_m": 48,
+  "off_axis_deg": 59.3,
+  "chosen": "by eye",
+  "crop": [
+   0.6,
+   0.52,
+   1.0,
+   0.84
+  ]
+ },
+ "way/815600854": {
+  "none": "checked by eye: the only photo shows an unsigned building 80 m away; it may be a neighbour",
+  "chosen": "by eye"
+ },
+ "node/4037714799": {
+  "none": "checked by eye: the photo chosen for it shows the Westlodge next door; no other photo shows it",
+  "chosen": "by eye"
+ },
+ "way/401330377": {
+  "file": "storefronts/3dc2999202e6.jpg",
+  "kartaview_photo": "92871079",
+  "sequence": "522405",
+  "date": "2017-08-08",
+  "distance_m": 92,
+  "off_axis_deg": 18.8,
+  "chosen": "by eye",
+  "crop": [
+   0.0,
+   0.45,
+   0.45,
+   0.8
+  ]
+ },
+ "way/401330378": {
+  "none": "checked by eye: the KartaView photos here are forward-facing road views; none shows this business clearly",
+  "chosen": "by eye"
+ },
+ "way/401330379": {
+  "none": "checked by eye: the KartaView photos here are forward-facing road views; none shows this business clearly",
+  "chosen": "by eye"
+ },
+ "way/179379812": {
+  "none": "checked by eye: the KartaView photos here are forward-facing road views; none shows this business clearly",
+  "chosen": "by eye"
+ },
+ "node/4037714800": {
+  "none": "checked by eye: the KartaView photos here are forward-facing road views; none shows this business clearly",
+  "chosen": "by eye"
+ },
+ "way/815600807": {
+  "none": "checked by eye: the KartaView photos here are forward-facing road views; none shows this business clearly",
+  "chosen": "by eye"
+ },
+ "way/401330397": {
+  "none": "checked by eye: the KartaView photos here are forward-facing road views; none shows this business clearly",
+  "chosen": "by eye"
+ },
+ "way/401330398": {
+  "none": "checked by eye: the KartaView photos here are forward-facing road views; none shows this business clearly",
+  "chosen": "by eye"
+ },
+ "way/401229540": {
+  "none": "checked by eye: the KartaView photos here are forward-facing road views; none shows this business clearly",
+  "chosen": "by eye"
+ },
+ "way/815601225": {
+  "none": "checked by eye: the KartaView photos here are forward-facing road views; none shows this business clearly",
+  "chosen": "by eye"
+ },
+ "way/815600806": {
+  "none": "checked by eye: the KartaView photos here are forward-facing road views; none shows this business clearly",
+  "chosen": "by eye"
+ },
+ "node/4037715980": {
+  "file": "storefronts/f65df79aa81e.jpg",
+  "kartaview_photo": "92871393",
+  "sequence": "522405",
+  "date": "2017-08-08",
+  "distance_m": 75,
+  "off_axis_deg": -128.8,
+  "chosen": "by eye",
+  "crop": [
+   0.05,
+   0.45,
+   0.5,
+   0.75
+  ]
+ },
+ "node/7617193593": {
+  "none": "checked by eye: the KartaView photos here are forward-facing road views; none shows this business clearly",
+  "chosen": "by eye"
+ },
+ "way/900495193": {
+  "none": "checked by eye: the KartaView photos here are forward-facing road views; none shows this business clearly",
+  "chosen": "by eye"
+ },
+ "way/180904886": {
+  "none": "checked by eye: the KartaView photos here are forward-facing road views; none shows this business clearly",
+  "chosen": "by eye"
+ },
+ "node/4036094329": {
+  "none": "checked by eye: the KartaView photos here are forward-facing road views; none shows this business clearly",
+  "chosen": "by eye"
+ },
+ "node/7324366151": {
+  "none": "checked by eye: the KartaView photos here are forward-facing road views; none shows this business clearly",
+  "chosen": "by eye"
+ },
+ "node/4037715979": {
+  "none": "checked by eye: the KartaView photos here are forward-facing road views; none shows this business clearly",
+  "chosen": "by eye"
+ },
+ "node/4462911838": {
+  "none": "checked by eye: the KartaView photos here are forward-facing road views; none shows this business clearly",
+  "chosen": "by eye"
+ },
+ "way/784095687": {
+  "none": "checked by eye: the KartaView photos here are forward-facing road views; none shows this business clearly",
+  "chosen": "by eye"
+ },
+ "node/5361707562": {
+  "file": "storefronts/a999993e18b1.jpg",
+  "kartaview_photo": "92871147",
+  "sequence": "522405",
+  "date": "2017-08-08",
+  "distance_m": 36,
+  "off_axis_deg": -10.9,
+  "chosen": "by eye",
+  "crop": [
+   0.0,
+   0.42,
+   0.45,
+   0.75
+  ]
+ },
+ "node/5361707563": {
+  "none": "checked by eye: the KartaView photos here are forward-facing road views; none shows this business clearly",
+  "chosen": "by eye"
+ },
+ "node/7617193595": {
+  "none": "checked by eye: the KartaView photos here are forward-facing road views; none shows this business clearly",
+  "chosen": "by eye"
+ },
+ "node/12477219701": {
+  "none": "checked by eye: the KartaView photos here are forward-facing road views; none shows this business clearly",
+  "chosen": "by eye"
+ },
+ "node/4274825892": {
+  "none": "checked by eye: the KartaView photos here are forward-facing road views; none shows this business clearly",
+  "chosen": "by eye"
+ },
+ "node/4274820643": {
+  "file": "storefronts/3dfeda673cdd.jpg",
+  "kartaview_photo": "140128239",
+  "sequence": "935997",
+  "date": "2017-10-09",
+  "distance_m": 47,
+  "off_axis_deg": 18.2,
+  "chosen": "by eye",
+  "crop": [
+   0.55,
+   0.5,
+   1.0,
+   0.8
+  ]
+ },
+ "node/7324366152": {
+  "none": "checked by eye: the KartaView photos here are forward-facing road views; none shows this business clearly",
+  "chosen": "by eye"
+ },
+ "node/4036690486": {
+  "none": "checked by eye: the KartaView photos here are forward-facing road views; none shows this business clearly",
+  "chosen": "by eye"
+ },
+ "node/4355020611": {
+  "none": "checked by eye: the KartaView photos here are forward-facing road views; none shows this business clearly",
+  "chosen": "by eye"
+ },
+ "way/401330396": {
+  "none": "checked by eye: the KartaView photos here are forward-facing road views; none shows this business clearly",
+  "chosen": "by eye"
+ },
+ "node/4274844578": {
+  "none": "checked by eye: the KartaView photos here are forward-facing road views; none shows this business clearly",
+  "chosen": "by eye"
+ },
+ "node/7324366150": {
+  "none": "checked by eye: the KartaView photos here are forward-facing road views; none shows this business clearly",
+  "chosen": "by eye"
+ },
+ "node/7617193594": {
+  "file": "storefronts/78025db98d62.jpg",
+  "kartaview_photo": "190957957",
+  "sequence": "1119027",
+  "date": "2018-01-19",
+  "distance_m": 82,
+  "off_axis_deg": 29.2,
+  "chosen": "by eye",
+  "crop": [
+   0.6,
+   0.5,
+   1.0,
+   0.82
+  ]
+ },
+ "node/7324366153": {
+  "none": "checked by eye: the KartaView photos here are forward-facing road views; none shows this business clearly",
+  "chosen": "by eye"
+ },
+ "Beauty By Meenu|8003 Lundy's Ln": {
+  "none": "checked by eye: the KartaView photos here are forward-facing road views; none shows this business clearly",
+  "chosen": "by eye"
+ },
+ "Valvoline Express Care|8214 Lundy's Ln": {
+  "file": "storefronts/509d8e3c7dbb.jpg",
+  "kartaview_photo": "92871147",
+  "sequence": "522405",
+  "date": "2017-08-08",
+  "distance_m": 73,
+  "off_axis_deg": -12.5,
+  "chosen": "by eye",
+  "crop": [
+   0.0,
+   0.42,
+   0.45,
+   0.75
+  ]
+ },
+ "Sam's Hair & Beauty Salon|8201-8209 Lundy's Ln": {
+  "none": "checked by eye: the KartaView photos here are forward-facing road views; none shows this business clearly",
+  "chosen": "by eye"
+ },
+ "Shenail Hair Lounge|8043 Lundy's Ln": {
+  "none": "checked by eye: the KartaView photos here are forward-facing road views; none shows this business clearly",
+  "chosen": "by eye"
+ },
+ "4 Seasons Nails (aphrodite Old)|8123 Lundy's Ln": {
+  "none": "checked by eye: the KartaView photos here are forward-facing road views; none shows this business clearly",
+  "chosen": "by eye"
+ },
+ "Orchard Grove Pharmacy|8123 Lundy's Ln": {
+  "none": "checked by eye: the KartaView photos here are forward-facing road views; none shows this business clearly",
+  "chosen": "by eye"
+ },
+ "Mo'cha Bubble Tea|8201-8209 Lundy's Ln": {
+  "none": "checked by eye: the KartaView photos here are forward-facing road views; none shows this business clearly",
+  "chosen": "by eye"
+ },
+ "Avondale Store #67|8214 Lundy's Ln": {
+  "file": "storefronts/41677a56b137.jpg",
+  "kartaview_photo": "92871147",
+  "sequence": "522405",
+  "date": "2017-08-08",
+  "distance_m": 73,
+  "off_axis_deg": -12.5,
+  "chosen": "by eye",
+  "crop": [
+   0.0,
+   0.42,
+   0.45,
+   0.75
+  ]
+ },
+ "Big Bee Convenience & Food Mart|8201-8209 Lundy's Ln": {
+  "none": "checked by eye: the KartaView photos here are forward-facing road views; none shows this business clearly",
+  "chosen": "by eye"
+ },
+ "Good Natured Health|8279 Lundy's Ln": {
+  "none": "checked by eye: the KartaView photos here are forward-facing road views; none shows this business clearly",
+  "chosen": "by eye"
+ },
+ "Balkan Deli Inc.|8214 Lundy's Ln": {
+  "file": "storefronts/0f4b0c17ae62.jpg",
+  "kartaview_photo": "92871147",
+  "sequence": "522405",
+  "date": "2017-08-08",
+  "distance_m": 73,
+  "off_axis_deg": -12.5,
+  "chosen": "by eye",
+  "crop": [
+   0.0,
+   0.42,
+   0.45,
+   0.75
+  ]
+ },
+ "Pho Huong Ngoc - Unit A13-a14|8279 Lundy's Ln": {
+  "none": "checked by eye: the KartaView photos here are forward-facing road views; none shows this business clearly",
+  "chosen": "by eye"
+ },
+ "Adda Kitchen|7800 Lundy's Ln": {
+  "none": "checked by eye: the KartaView photos here are forward-facing road views; none shows this business clearly",
+  "chosen": "by eye"
+ },
+ "Naan - The Indian Kitchen|8123 Lundy's Ln": {
+  "none": "checked by eye: the KartaView photos here are forward-facing road views; none shows this business clearly",
+  "chosen": "by eye"
+ },
+ "Player's Bar & Grill|8201-8209 Lundy's Ln": {
+  "none": "checked by eye: the KartaView photos here are forward-facing road views; none shows this business clearly",
+  "chosen": "by eye"
+ },
+ "Purplemint Kitchen Inc.|8100 Lundy's Ln": {
+  "none": "checked by eye: the KartaView photos here are forward-facing road views; none shows this business clearly",
+  "chosen": "by eye"
+ },
+ "World Street Kitchen & Bar|7720 Lundy's Ln": {
+  "none": "checked by eye: the KartaView photos here are forward-facing road views; none shows this business clearly",
+  "chosen": "by eye"
+ },
+ "Chip N Charlies Bar & Eatery|8189 Lundy's Ln": {
+  "none": "checked by eye: the KartaView photos here are forward-facing road views; none shows this business clearly",
+  "chosen": "by eye"
+ },
+ "Mai Thai Cuisine|8123 Lundy's Ln": {
+  "none": "checked by eye: the KartaView photos here are forward-facing road views; none shows this business clearly",
+  "chosen": "by eye"
+ },
+ "Amritsari Restaurant|7925 Lundy's Ln": {
+  "none": "checked by eye: the KartaView photos here are forward-facing road views; none shows this business clearly",
+  "chosen": "by eye"
+ },
+ "Brick Mountain Hobbies Inc.|8040 Lundy's Ln": {
+  "none": "checked by eye: the only photo shows the 8040 plaza sign a few pixels wide, in a dark windscreen shot",
+  "chosen": "by eye"
+ },
+ "Little Caesars Pizza|8123 Lundy's Ln": {
+  "none": "checked by eye: the KartaView photos here are forward-facing road views; none shows this business clearly",
+  "chosen": "by eye"
+ },
+ "City South Pizza|7939 Lundy's Ln": {
+  "none": "checked by eye: the photo's yellow restaurant building stands beside the A-1 INN sign (about 7900-7925), not clearly 7939",
+  "chosen": "by eye"
+ },
+ "Lakeport Fish & Chips|8214 Lundy's Ln": {
+  "file": "storefronts/400413915f92.jpg",
+  "kartaview_photo": "92871147",
+  "sequence": "522405",
+  "date": "2017-08-08",
+  "distance_m": 83,
+  "off_axis_deg": -2.1,
+  "chosen": "by eye",
+  "crop": [
+   0.0,
+   0.42,
+   0.45,
+   0.75
+  ]
+ },
+ "Epic Pita Niagara|7805 Lundy's Ln": {
+  "file": "storefronts/4f163b0443ee.jpg",
+  "kartaview_photo": "190957957",
+  "sequence": "1119027",
+  "date": "2018-01-19",
+  "distance_m": 75,
+  "off_axis_deg": 51.5,
+  "chosen": "by eye",
+  "crop": [
+   0.6,
+   0.5,
+   1.0,
+   0.82
+  ]
+ },
+ "Shawarma & Grill Box|7558 Lundy's Ln": {
+  "none": "checked by eye: the KartaView photos here are forward-facing road views; none shows this business clearly",
+  "chosen": "by eye"
+ },
+ "La Farina Bakery|8040 Lundy's Ln": {
+  "none": "checked by eye: the only photo shows the 8040 plaza sign a few pixels wide, in a dark windscreen shot",
+  "chosen": "by eye"
+ },
+ "Basant Ice cream|7939 Lundy's Ln": {
+  "none": "checked by eye: the photo's yellow restaurant building stands beside the A-1 INN sign (about 7900-7925), not clearly 7939",
+  "chosen": "by eye"
+ },
+ "Chengdu Noodles|7940 Lundy's Ln": {
+  "none": "checked by eye: the KartaView photos here are forward-facing road views; none shows this business clearly",
+  "chosen": "by eye"
+ },
+ "Buffet 5 continent|8100 Lundy's Ln": {
+  "none": "checked by eye: the KartaView photos here are forward-facing road views; none shows this business clearly",
+  "chosen": "by eye"
+ },
+ "Scoops Restaurant Breakfast and Lunch|8123 Lundy's Ln": {
+  "none": "checked by eye: the KartaView photos here are forward-facing road views; none shows this business clearly",
+  "chosen": "by eye"
+ },
+ "Adda Sports Bar|7800 Lundy's Ln": {
+  "none": "checked by eye: the KartaView photos here are forward-facing road views; none shows this business clearly",
+  "chosen": "by eye"
+ },
+ "Food store|7924 Spring Blossom Dr": {
+  "none": "checked by eye: the KartaView photos here are forward-facing road views; none shows this business clearly",
+  "chosen": "by eye"
+ },
+ "BOMBAY MART|7572 Lundy's Ln": {
+  "none": "checked by eye: the KartaView photos here are forward-facing road views; none shows this business clearly",
+  "chosen": "by eye"
+ },
+ "Grottolas Salon Spa|7805 Lundy's Lane": {
+  "none": "checked by eye: the KartaView photos here are forward-facing road views; none shows this business clearly",
+  "chosen": "by eye"
+ },
+ "Kalar Dental|8279 Lundy's Lane": {
+  "none": "checked by eye: the KartaView photos here are forward-facing road views; none shows this business clearly",
+  "chosen": "by eye"
+ },
+ "Amys Nails|8279 Lundy's Lane": {
+  "none": "checked by eye: the KartaView photos here are forward-facing road views; none shows this business clearly",
+  "chosen": "by eye"
+ },
+ "Lundy's Lane Dental Office|8123 Lundy's Lane": {
+  "none": "checked by eye: the KartaView photos here are forward-facing road views; none shows this business clearly",
+  "chosen": "by eye"
+ },
+ "FORM by Joh|5765 Montrose Road": {
+  "none": "checked by eye: the KartaView photos here are forward-facing road views; none shows this business clearly",
+  "chosen": "by eye"
+ },
+ "The Little Wedding Chapel on the Lane|7701 Lundy's Lane": {
+  "none": "checked by eye: the KartaView photos here are forward-facing road views; none shows this business clearly",
+  "chosen": "by eye"
+ },
+ "Tan-Arama|8214 Lundy's Lane": {
+  "none": "checked by eye: the KartaView photos here are forward-facing road views; none shows this business clearly",
+  "chosen": "by eye"
+ },
+ "Dulux Paints|7637 Lundy's Lane": {
+  "file": "storefronts/a8d3916243f5.jpg",
+  "kartaview_photo": "140128239",
+  "sequence": "935997",
+  "date": "2017-10-09",
+  "distance_m": 59,
+  "off_axis_deg": 21.4,
+  "chosen": "by eye",
+  "crop": [
+   0.55,
+   0.5,
+   1.0,
+   0.8
+  ]
+ },
+ "Amore Eyewear|8123 Lundy's Lane": {
+  "none": "checked by eye: the KartaView photos here are forward-facing road views; none shows this business clearly",
+  "chosen": "by eye"
+ },
+ "Lush and Lavished Hair Studio|8040 Lundy's Lane": {
+  "none": "checked by eye: the KartaView photos here are forward-facing road views; none shows this business clearly",
+  "chosen": "by eye"
+ },
+ "Cannaverse|8189 Lundy's Lane": {
+  "none": "checked by eye: the KartaView photos here are forward-facing road views; none shows this business clearly",
+  "chosen": "by eye"
+ }
+}

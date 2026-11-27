@@ -416,3 +416,26 @@ Niagara Parks annual reports list vehicles parked per lot (`data/niagara_parks_p
 - TomTom's typical slowdown against 3 am: x1.07 at 8 am, x1.14 at 5 pm on a weekday, x1.18 on a summer Saturday at 5 pm. July and November come back the same, so TomTom's typical speeds do not vary by season.
 - Fitted per trip: arterials 1.3x slower than the model, about 5 s per traffic light, 19 s per stop sign.
 - Putting those into routing lowers the count fit (regional roads 0.724 to 0.64; with the old 25 s lights, 0.53): real drivers keep to main roads more than shortest-time routing predicts. Routing stays as built.
+
+## Storefront photos and Google reviews on the business card (27 November 2026)
+
+Pilot: the 82 named businesses on Lundy's Lane between Montrose Rd and Kalar Rd. Tapping one in the map game
+(web/index.html) shows, above the model's numbers:
+
+- a street photo of the storefront from **KartaView** (CC BY-SA 4.0; the card credits "KartaView contributors" with
+  the photo id and date). Chosen per business from the drives that pass it (business within 30 degrees of the
+  camera heading, 12-100 m away, preferably 20-45 m at an angle and outside the snow months), cropped towards it,
+  then checked by eye; data/storefront_photo_overrides.json holds the choices made by eye.
+- its **Google** rating, review count and up to five recent reviews, with each author's name and "Google" as the
+  source. Place Details (New), the Enterprise + Atmosphere kind, 1,000 free a month, counted in
+  build/google_places_usage.json and stopped at 900. Businesses without a match in data/google_places.json are
+  matched by a Text Search on name and address (same street number, same name, within 150 m); doubtful cases were
+  decided by eye (data/storefront_google_matches.json says why). Elsewhere in the city the card shows the rating
+  and count already stored in data/google_places.json, at no extra cost.
+
+These are real data; the revenue figures under them stay the model's estimates. Third-party data for personal
+use: the repository stays private, nothing here feeds a map, directory or navigation service, and Google's
+content is refreshed (`python3 -m nfprep.storefronts reviews --refresh`) rather than kept for long.
+
+Run from prep/: `python3 -m nfprep.storefronts photos`, `match`, `reviews`, `export` (writes web/storefronts.json
+and web/storefronts/*.jpg, which the game loads on the first tap).
