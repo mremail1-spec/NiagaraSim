@@ -1,9 +1,160 @@
 {
  "_meta": {
   "what": "Wall photos and models for the 3D city (built by prep/nfprep/facades.py)",
-  "credits": []
+  "credits": [
+   {
+    "building": "6e35ae6a7a",
+    "wall": 3,
+    "credit": "Street photos: Mapillary contributors, CC BY-SA 4.0 (images 995039769337742, 1298168308720216, 785505170842336)",
+    "image_id": "995039769337742,1298168308720216,785505170842336",
+    "licence": "CC BY-SA 4.0"
+   },
+   {
+    "building": "5e67c5d588",
+    "wall": 5,
+    "credit": "Street photos: Mapillary contributors, CC BY-SA 4.0 (images 791826179935802)",
+    "image_id": "791826179935802",
+    "licence": "CC BY-SA 4.0"
+   }
+  ]
  },
  "buildings": {
+  "6e35ae6a7a": {
+   "walls": {
+    "3": {
+     "tex": "tex/6e35ae6a7a_w3.jpg",
+     "bottom_m": 0.0,
+     "top_m": 5.0
+    }
+   },
+   "spec": {
+    "name": "Plaza at 7885 McLeod Rd: Harvey's, Bell, Heartland animal hospital, medical imaging, FirstOntario",
+    "status": "draft",
+    "eave_m": 5.0,
+    "fascia": false,
+    "roof": {
+     "type": "flat"
+    },
+    "walls": {
+     "material": "brick",
+     "color": "#b79a78"
+    },
+    "trim": "#4a3a30",
+    "facades": {
+     "9": [
+      {
+       "type": "storefront",
+       "x": 1,
+       "w": 48.5,
+       "y": 0.15,
+       "top": 2.9,
+       "bay": 2.4,
+       "frame": "#2a2522"
+      },
+      {
+       "type": "box",
+       "x": 0,
+       "w": 50.5,
+       "y": 3.2,
+       "h": 1.6,
+       "depth": 0.5,
+       "color": "#5a4538"
+      },
+      {
+       "type": "tower",
+       "x": 9.5,
+       "w": 3.0,
+       "h": 7.0,
+       "depth": 1.2,
+       "roof_h": 0,
+       "color": "#4a3a30"
+      },
+      {
+       "type": "tower",
+       "x": 25,
+       "w": 3.0,
+       "h": 7.0,
+       "depth": 1.2,
+       "roof_h": 0,
+       "color": "#4a3a30"
+      },
+      {
+       "type": "tower",
+       "x": 37.5,
+       "w": 3.0,
+       "h": 7.0,
+       "depth": 1.2,
+       "roof_h": 0,
+       "color": "#4a3a30"
+      },
+      {
+       "type": "sign",
+       "x": 3,
+       "y": 3.5,
+       "w": 5.5,
+       "h": 1.0,
+       "text": "HARVEY'S",
+       "bg": "#c8202a",
+       "fg": "#ffffff",
+       "out_m": 0.6
+      },
+      {
+       "type": "sign",
+       "x": 13.5,
+       "y": 3.6,
+       "w": 3.0,
+       "h": 0.8,
+       "text": "Bell",
+       "bg": "#0063a8",
+       "fg": "#ffffff",
+       "out_m": 0.6
+      },
+      {
+       "type": "sign",
+       "x": 18,
+       "y": 3.6,
+       "w": 6.5,
+       "h": 0.7,
+       "text": "HEARTLAND ANIMAL HOSPITAL",
+       "bg": "#5a4538",
+       "fg": "#ffffff",
+       "out_m": 0.6
+      },
+      {
+       "type": "sign",
+       "x": 28.5,
+       "y": 3.6,
+       "w": 8.5,
+       "h": 0.7,
+       "text": "GREATER NIAGARA MEDICAL IMAGING",
+       "bg": "#5a4538",
+       "fg": "#ffffff",
+       "out_m": 0.6
+      },
+      {
+       "type": "sign",
+       "x": 41,
+       "y": 3.6,
+       "w": 8.5,
+       "h": 0.8,
+       "text": "FirstOntario",
+       "bg": "#5a4538",
+       "fg": "#ffffff",
+       "out_m": 0.6
+      }
+     ]
+    }
+   }
+  },
+  "5e67c5d588": {
+   "walls": {
+    "5": {
+     "tex": "tex/5e67c5d588_w5.jpg",
+     "bottom_m": 0.0,
+     "top_m": 5.5
+    }
+   }
+  },
   "07fb9d0e1b": {
    "walls": {},
    "spec": {
@@ -1705,127 +1856,6 @@
        "bg": "#1f5fae",
        "fg": "#ffffff",
        "out_m": 0.5
-      }
-     ]
-    }
-   }
-  },
-  "6e35ae6a7a": {
-   "walls": {},
-   "spec": {
-    "name": "Plaza at 7885 McLeod Rd: Harvey's, Bell, Heartland animal hospital, medical imaging, FirstOntario",
-    "status": "draft",
-    "eave_m": 5.0,
-    "fascia": false,
-    "roof": {
-     "type": "flat"
-    },
-    "walls": {
-     "material": "brick",
-     "color": "#b79a78"
-    },
-    "trim": "#4a3a30",
-    "facades": {
-     "9": [
-      {
-       "type": "storefront",
-       "x": 1,
-       "w": 48.5,
-       "y": 0.15,
-       "top": 2.9,
-       "bay": 2.4,
-       "frame": "#2a2522"
-      },
-      {
-       "type": "box",
-       "x": 0,
-       "w": 50.5,
-       "y": 3.2,
-       "h": 1.6,
-       "depth": 0.5,
-       "color": "#5a4538"
-      },
-      {
-       "type": "tower",
-       "x": 9.5,
-       "w": 3.0,
-       "h": 7.0,
-       "depth": 1.2,
-       "roof_h": 0,
-       "color": "#4a3a30"
-      },
-      {
-       "type": "tower",
-       "x": 25,
-       "w": 3.0,
-       "h": 7.0,
-       "depth": 1.2,
-       "roof_h": 0,
-       "color": "#4a3a30"
-      },
-      {
-       "type": "tower",
-       "x": 37.5,
-       "w": 3.0,
-       "h": 7.0,
-       "depth": 1.2,
-       "roof_h": 0,
-       "color": "#4a3a30"
-      },
-      {
-       "type": "sign",
-       "x": 3,
-       "y": 3.5,
-       "w": 5.5,
-       "h": 1.0,
-       "text": "HARVEY'S",
-       "bg": "#c8202a",
-       "fg": "#ffffff",
-       "out_m": 0.6
-      },
-      {
-       "type": "sign",
-       "x": 13.5,
-       "y": 3.6,
-       "w": 3.0,
-       "h": 0.8,
-       "text": "Bell",
-       "bg": "#0063a8",
-       "fg": "#ffffff",
-       "out_m": 0.6
-      },
-      {
-       "type": "sign",
-       "x": 18,
-       "y": 3.6,
-       "w": 6.5,
-       "h": 0.7,
-       "text": "HEARTLAND ANIMAL HOSPITAL",
-       "bg": "#5a4538",
-       "fg": "#ffffff",
-       "out_m": 0.6
-      },
-      {
-       "type": "sign",
-       "x": 28.5,
-       "y": 3.6,
-       "w": 8.5,
-       "h": 0.7,
-       "text": "GREATER NIAGARA MEDICAL IMAGING",
-       "bg": "#5a4538",
-       "fg": "#ffffff",
-       "out_m": 0.6
-      },
-      {
-       "type": "sign",
-       "x": 41,
-       "y": 3.6,
-       "w": 8.5,
-       "h": 0.8,
-       "text": "FirstOntario",
-       "bg": "#5a4538",
-       "fg": "#ffffff",
-       "out_m": 0.6
       }
      ]
     }

@@ -1,0 +1,219 @@
+{
+ "_meta": {
+  "what": "Building heights from Mapillary's 3D reconstructions (structure from motion; Mapillary, CC BY-SA 4.0).",
+  "source": "Mapillary structure-from-motion point clouds (CC BY-SA 4.0)",
+  "city_2018_m": "City of Niagara Falls building footprints 2018 height (government data)"
+ },
+ "buildings": {
+  "1a011f8549": {
+   "height_m": 5.0,
+   "clouds": 2,
+   "spread_m": 1.2,
+   "roof_points": 119,
+   "city_2018_m": 4.9
+  },
+  "1d39042f9a": {
+   "height_m": 4.5,
+   "clouds": 4,
+   "spread_m": 1.2,
+   "roof_points": 635,
+   "city_2018_m": 5.9
+  },
+  "adc92c4118": {
+   "height_m": 22.6,
+   "clouds": 2,
+   "spread_m": 6.5,
+   "roof_points": 89,
+   "city_2018_m": 3.5
+  },
+  "f200b96ef7": {
+   "height_m": 4.5,
+   "clouds": 4,
+   "spread_m": 2.4,
+   "roof_points": 295,
+   "city_2018_m": 3.5
+  },
+  "9f969498d6": {
+   "height_m": 12.9,
+   "clouds": 2,
+   "spread_m": 1.5,
+   "roof_points": 64,
+   "city_2018_m": 4.1
+  },
+  "93887473e5": {
+   "height_m": 11.1,
+   "clouds": 1,
+   "spread_m": 0.0,
+   "roof_points": 65,
+   "city_2018_m": 4.3
+  },
+  "361d957eef": {
+   "height_m": 9.8,
+   "clouds": 9,
+   "spread_m": 83.2,
+   "roof_points": 683,
+   "city_2018_m": 9.8
+  },
+  "6c14533840": {
+   "height_m": 5.3,
+   "clouds": 1,
+   "spread_m": 0.0,
+   "roof_points": 73,
+   "city_2018_m": 3.5
+  },
+  "fb92c7d495": {
+   "height_m": 43.7,
+   "clouds": 7,
+   "spread_m": 7.1,
+   "roof_points": 939,
+   "city_2018_m": 3.5
+  },
+  "455428b4fe": {
+   "height_m": 8.4,
+   "clouds": 8,
+   "spread_m": 4.8,
+   "roof_points": 1057,
+   "city_2018_m": 4.8
+  },
+  "4a30a1b9a7": {
+   "height_m": 3.8,
+   "clouds": 7,
+   "spread_m": 2.3,
+   "roof_points": 962,
+   "city_2018_m": 7.6
+  },
+  "a0855607c9": {
+   "height_m": 60.3,
+   "clouds": 3,
+   "spread_m": 83.2,
+   "roof_points": 119,
+   "city_2018_m": 5.9
+  },
+  "febc0494b4": {
+   "height_m": 27.6,
+   "clouds": 1,
+   "spread_m": 0.0,
+   "roof_points": 30,
+   "city_2018_m": 4.9
+  },
+  "b0a5627d73": {
+   "height_m": 11.6,
+   "clouds": 1,
+   "spread_m": 0.0,
+   "roof_points": 36,
+   "city_2018_m": 6.5
+  },
+  "54813b79cd": {
+   "height_m": 4.1,
+   "clouds": 1,
+   "spread_m": 0.0,
+   "roof_points": 37,
+   "city_2018_m": 6.6
+  },
+  "aa583da9ce": {
+   "height_m": 6.0,
+   "clouds": 2,
+   "spread_m": 0.2,
+   "roof_points": 232,
+   "city_2018_m": 6.2
+  },
+  "8dde2a0db0": {
+   "height_m": 7.7,
+   "clouds": 2,
+   "spread_m": 0.3,
+   "roof_points": 72,
+   "city_2018_m": 6.5
+  },
+  "d364222aa3": {
+   "height_m": 9.0,
+   "clouds": 7,
+   "spread_m": 13.4,
+   "roof_points": 418,
+   "city_2018_m": 9.3
+  },
+  "f025222e74": {
+   "height_m": 12.7,
+   "clouds": 23,
+   "spread_m": 45.1,
+   "roof_points": 1882,
+   "city_2018_m": 9.2
+  },
+  "9c6d80e93f": {
+   "height_m": 4.3,
+   "clouds": 1,
+   "spread_m": 0.0,
+   "roof_points": 56,
+   "city_2018_m": 5.8
+  },
+  "bf288d6ccf": {
+   "height_m": 17.7,
+   "clouds": 2,
+   "spread_m": 0.4,
+   "roof_points": 1064,
+   "city_2018_m": 18.3
+  },
+  "7f36055252": {
+   "height_m": 9.3,
+   "clouds": 5,
+   "spread_m": 102.4,
+   "roof_points": 453,
+   "city_2018_m": 8.2
+  },
+  "1f253e9455": {
+   "height_m": 17.5,
+   "clouds": 1,
+   "spread_m": 0.0,
+   "roof_points": 54,
+   "city_2018_m": 6.7
+  },
+  "981b0da65f": {
+   "height_m": 6.9,
+   "clouds": 14,
+   "spread_m": 8.5,
+   "roof_points": 1365,
+   "city_2018_m": 6.1
+  },
+  "488e3ecd7c": {
+   "height_m": 7.3,
+   "clouds": 3,
+   "spread_m": 0.1,
+   "roof_points": 138,
+   "city_2018_m": 6.9
+  },
+  "caf50aceba": {
+   "height_m": 5.6,
+   "clouds": 1,
+   "spread_m": 0.0,
+   "roof_points": 47,
+   "city_2018_m": 5.9
+  },
+  "6e35ae6a7a": {
+   "height_m": 7.6,
+   "clouds": 3,
+   "spread_m": 14.9,
+   "roof_points": 398,
+   "city_2018_m": 5.6
+  },
+  "634ea123b3": {
+   "height_m": 6.6,
+   "clouds": 2,
+   "spread_m": 0.5,
+   "roof_points": 373,
+   "city_2018_m": 5.4
+  },
+  "5e67c5d588": {
+   "height_m": 4.9,
+   "clouds": 4,
+   "spread_m": 4.9,
+   "roof_points": 196,
+   "city_2018_m": 5.5
+  },
+  "b9d1845548": {
+   "height_m": 9.1,
+   "clouds": 2,
+   "spread_m": 0.0,
+   "roof_points": 417,
+   "city_2018_m": 8.3
+  }
+ }
+}

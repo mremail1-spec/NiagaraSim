@@ -708,6 +708,8 @@ const appearance = { walls: new Map(), models: new Map(), specs: new Map(), plac
 const texCache = new Map();
 function wallKey(bid, k) { return bid + ":" + k; }
 function wallPhoto(b, k) { return appearance.walls.get(wallKey(b.id, k)); }
+// the credit for a wall photo that needs one (Mapillary, CC BY-SA 4.0), by wall
+appearance.credits = new Map();
 
 // ---------------------------------------------------------------- chunk building
 const chunks = new Map();   // key -> {group, built}
@@ -757,7 +759,12 @@ function buildingMeshes(ids, group) {
   for (const bi of ids) {
     const b = typeof bi === "number" ? B[bi] : bi;
     if (appearance.models.has(b.id)) { placeModel(b, group); continue; }
-    if (appearance.specs.has(b.id)) { const sg = specBuilding(b, appearance.specs.get(b.id)); sg.position.y = b.base; group.add(sg); continue; }
+    if (appearance.specs.has(b.id)) {
+      const sg = specBuilding(b, appearance.specs.get(b.id)); sg.position.y = b.base; group.add(sg);
+      // a real photo of a wall (the owner's or Mapillary's) goes over the modelled wall
+      for (let k = 0; k < b.ring.length; k++) { const ph = wallPhoto(b, k); if (ph) { const pm = photoWallMesh(b, k, ph); pm.position.y = b.base; group.add(pm); } }
+      continue;
+    }
     const wkey = b.style === "tower" ? "tower" : b.style + ":" + b.wallSet;
     const arr = arrs[wkey] || (arrs[wkey] = { pos: [], nrm: [], uv: [], col: [], u: 0 });
     arr.u = hash01(b.id) * 4;
@@ -1872,6 +1879,7 @@ function updateHUD() {
     ${lotFacts(PARCELS.get(String(b.pp)))}
     ${items.length ? `<ul>${items.slice(0, 8).map((x) => `<li><div class="n">${esc(x.n)}</div><div class="k">${esc(KINDS_LABEL[x.k] || x.k)} · ${esc(x.a || "")}<br>${x.s ? `Model sales ${fmtMoney(x.s)} a year · ${Math.round(x.t * 100)}% from tourists` : "No sales in the model"}${x.o != null ? ` · open ${x.o}–${x.c}` : ""}</div></li>`).join("")}</ul>${items.length > 8 ? `<div class="meta" style="margin-top:6px">and ${items.length - 8} more</div>` : ""}` : `<div class="meta" style="margin-top:6px">No business listed here.</div>`}
     <div class="row"><span class="id">Building ${esc(b.id)} · wall ${focus.k} faces ${faces}, ${wl.toFixed(1)} m${appearance.specs.has(b.id) ? " · modelled from photos" : ""}</span></div>
+    ${appearance.credits.get(wallKey(b.id, focus.k)) ? `<div class="meta">This wall: ${esc(appearance.credits.get(wallKey(b.id, focus.k)))}</div>` : ""}
     <div class="row"><button id="btnPhoto">Send photos for the 3D model${refsByBuilding.get(b.id) ? ` (${refsByBuilding.get(b.id)} sent)` : ""}</button><button id="btnCopy">Copy building id</button></div>`;
   $("btnPhoto").onclick = openPhoto;
   $("btnCopy").onclick = () => { navigator.clipboard?.writeText(b.id).then(() => flash("Copied " + b.id), () => flash(b.id)); };
@@ -2126,7 +2134,7 @@ async function boot() {
   TOWERS = IDX.skyline.map((b) => addBuilding(b, 0, true));
   bar.style.width = "45%";
   bar.style.width = "70%";
-  try { const a = await getFile("appearance.json", 3); if (a.ok) { const A = await a.json(); for (const [bid, v] of Object.entries(A.buildings || {})) { for (const [k, w] of Object.entries(v.walls || {})) appearance.walls.set(wallKey(bid, +k), { src: w.tex, v0: w.bottom_m, v1: w.top_m }); if (v.model) appearance.models.set(bid, v.model); if (v.spec) appearance.specs.set(bid, v.spec); } appearance.places = A.places || []; } } catch {}
+  try { const a = await getFile("appearance.json", 3); if (a.ok) { const A = await a.json(); for (const [bid, v] of Object.entries(A.buildings || {})) { for (const [k, w] of Object.entries(v.walls || {})) appearance.walls.set(wallKey(bid, +k), { src: w.tex, v0: w.bottom_m, v1: w.top_m }); if (v.model) appearance.models.set(bid, v.model); if (v.spec) appearance.specs.set(bid, v.spec); } appearance.places = A.places || []; for (const c of (A._meta && A._meta.credits) || []) appearance.credits.set(wallKey(c.building, +c.wall), c.credit); } } catch {}
   buildGlobal();
   const [sx, sz] = llToXZ(JUMPS[0][1], JUMPS[0][2]);
   player.x = sx; player.z = sz;

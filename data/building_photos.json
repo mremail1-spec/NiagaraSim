@@ -7,5 +7,66 @@
    "mapillary": "Mapillary street photos, CC BY-SA 4.0: needs credit and the image id"
   }
  },
- "photos": []
+ "photos": [
+  {
+   "file": "mapillary/6e35ae6a7a_w3.jpg",
+   "source": "mapillary",
+   "building": "6e35ae6a7a",
+   "wall": 3,
+   "corners": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     0,
+     1
+    ]
+   ],
+   "bottom_m": 0,
+   "top_m": 5.0,
+   "image_id": "995039769337742,1298168308720216,785505170842336",
+   "date": "2025-07-25",
+   "credit": "Street photos: Mapillary contributors, CC BY-SA 4.0 (images 995039769337742, 1298168308720216, 785505170842336)",
+   "status": "checked by eye: the plaza's Montrose Rd wall with the HARVEY'S and Bell signs and the brown pillars; seams where three photos meet"
+  },
+  {
+   "file": "mapillary/5e67c5d588_w5.jpg",
+   "source": "mapillary",
+   "building": "5e67c5d588",
+   "wall": 5,
+   "corners": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     0,
+     1
+    ]
+   ],
+   "bottom_m": 0,
+   "top_m": 5.5,
+   "image_id": "791826179935802",
+   "date": "2025-07-25",
+   "credit": "Street photos: Mapillary contributors, CC BY-SA 4.0 (images 791826179935802)",
+   "status": "checked by eye: the plaza wall with its brick pillars and windows; a hedge along the bottom"
+  }
+ ]
 }
