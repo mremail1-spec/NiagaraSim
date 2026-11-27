@@ -454,3 +454,24 @@ Other open street-photo sources, checked 27 November 2026 for the pilot stretch 
 - **Mapillary** (CC BY-SA 4.0): needs a free access token; the owner is looking into it.
 - **The owner's own photos** (data/photos/): the best source where they exist; used first (storefront_photo_overrides.json
   "owner_photo").
+
+## Mapillary in the 3D city (27 November 2026)
+
+Mapillary street photos and their derived data (Mapillary contributors, CC BY-SA 4.0), with the owner's access
+token held by the environment's network proxy:
+
+- **Detected objects** (map features, city-wide, 40,777): the 3D city adds what the City's data lacks: 4,199
+  utility poles, 932 trash cans, 284 benches, 233 junction boxes and 2,139 typed traffic signs (regulatory, warning,
+  information, chevrons). Repeated detections of one object are merged (poles within 12 m, others 3 m); objects
+  detected in the roadway are moved to the curb; signs face the traffic that has them on its right.
+  prep/nfprep/street_furniture.py, from build/mapillary/features_city.json.
+- **Building heights** from Mapillary's point clouds (prep/nfprep/mapillary_3d.py, data/mapillary_building_heights.json):
+  at the McLeod and Montrose plazas, 22 buildings agree with the City's 2018 heights to +0.9 m (median). The clouds
+  are too sparse for roof shapes.
+- **Real facades** from 360-degree photos (prep/nfprep/mapillary_facades.py): each photo's computed pose straightens
+  it onto a wall. Only walls facing a road with nothing in between come out usable: 2 at the McLeod plazas (the
+  Harvey's plaza's Montrose Rd wall and the Sunset Grill plaza), checked by eye; the building card credits the
+  photos. Lundy's Lane motels stand behind parking or side-on to the road, so the drives do not see their fronts.
+
+Fixed along the way: nfprep.facades cleared all of web/world/tex/, which deleted the game's surface textures
+(tex/pbr); it now removes only the wall photos it made.

@@ -10,6 +10,8 @@ Everything is placed in the game's frame (decimetres east and north of the world
   road not named first by the City); an all-way stop gets one on every approach.
 - signals: [x, y, half width dm, [approach angles]] for the City's traffic lights.
 - hydrants: [x, y]
+- From Mapillary's detected objects (CC BY-SA 4.0), what the City lacks: poles, cans, benches, boxes, msigns
+  (see mapillary_objects).
 Outdoor public art goes to the index (few, seen from anywhere): {name, type (plaque, monument, cairn, sculpture), lat, lon, h};
 the City's indoor pieces (paintings, prints, photographs) are left out.
 """
@@ -170,4 +172,100 @@ def build(world, xy):
         art.append({"name": name, "type": OUTDOOR_ART[sub],
                     "material": (p.get("Material") or "").strip(), "lat": round(lat, 6), "lon": round(lon, 6),
                     "h": round(min(8.0, max(0.8, h)), 2) if h else None})
-    return {"lights": lights, "signs": signs, "signals": signals, "hydrants": hydrants}, art
+    furn = {"lights": lights, "signs": signs, "signals": signals, "hydrants": hydrants}
+    furn.update(mapillary_objects(R, xy, lights))
+    return furn, art
+
+
+# Mapillary's detected objects (map features, Mapillary contributors, CC BY-SA 4.0): only what the City's data
+# lacks. Street lights, hydrants, traffic lights and stop signs come from the City.
+MLY_FILE = ROOT / "build" / "mapillary" / "features_city.json"
+MLY_SIGN = {"regulatory": 0, "warning": 1, "information": 2, "complementary": 3}
+
+
+def mapillary_objects(R: "_Roads", xy, lights) -> dict:
+    """utility poles [x, y], trash cans [x, y], benches and junction boxes [x, y, facing deg], traffic signs
+    [x, y, facing deg, kind 0 regulatory / 1 warning / 2 information / 3 chevron]. Each is pushed off the roadway
+    onto the curb when its detected position falls in the road; benches, boxes and signs face the nearest road,
+    signs the traffic coming on their side."""
+    if not MLY_FILE.exists():
+        return {}
+    feats = json.loads(MLY_FILE.read_text())
+    wood = [(x, y) for x, y, _h, _a, mat in lights if mat == 1]
+    grid = defaultdict(list)
+    for x, y in wood:
+        grid[(int(x // 100), int(y // 100))].append((x, y))
+
+    def near_wood(x, y):
+        return any(math.hypot(x - a, y - b) < 30 for gx in (-1, 0, 1) for gy in (-1, 0, 1)
+                   for a, b in grid.get((int(x // 100) + gx, int(y // 100) + gy), []))
+
+    out = {"poles": [], "cans": [], "benches": [], "boxes": [], "msigns": []}
+    for f in feats:
+        v = f.get("object_value", "")
+        lon, lat = f["geometry"]["coordinates"]
+        x, y = xy(lat, lon)
+        hit = R.near(x, y, 250)
+        ang = 0
+        if hit:
+            d, ri, si, t, px, py = hit[0]
+            r, pts = R.roads[ri]
+            half = r["w"] * 5 + 10                       # half width + 1 m, in decimetres
+            if d < half:                                 # detected in the roadway: onto the curb
+                ox, oy = (x - px, y - py) if d > 1 else (0.0, 10.0)
+                L = math.hypot(ox, oy) or 1
+                x, y = round(px + ox / L * half), round(py + oy / L * half)
+            # facing the road (game frame: x east, z south; angle from +z)
+            ang = round(math.degrees(math.atan2(px - x, -(py - y))))
+            if v.startswith(tuple(MLY_SIGN)):            # a sign faces the traffic that has it on its right
+                (ax, ay), (bx, by) = pts[si], pts[si + 1]
+                ux, uz = (bx - ax), -(by - ay)
+                L = math.hypot(ux, uz) or 1
+                ux, uz = ux / L, uz / L
+                sx, sz = (x - px), -(y - py)
+                h = (ux, uz) if (-uz * sx + ux * sz) > 0 else (-ux, -uz)    # heading with the sign on its right
+                ang = round(math.degrees(math.atan2(-h[0], -h[1])))           # face the oncoming driver
+        if v in ("object--support--utility-pole", "object--support--pole"):
+            if not near_wood(x, y):
+                out["poles"].append([x, y])
+        elif v == "object--trash-can":
+            out["cans"].append([x, y])
+        elif v == "object--bench":
+            out["benches"].append([x, y, ang])
+        elif v == "object--junction-box":
+            out["boxes"].append([x, y, ang])
+        elif v.startswith(tuple(MLY_SIGN)) and not v.startswith("regulatory--stop"):
+            out["msigns"].append([x, y, ang, MLY_SIGN[v.split("--")[0]]])
+    # one object is often detected several times a few metres apart: merge (poles within 12 m, the rest 3 m)
+    for kind, r in (("poles", 120), ("cans", 30), ("benches", 30), ("boxes", 30), ("msigns", 30)):
+        out[kind] = _merge(out[kind], r)
+    return out
+
+
+def _merge(items: list, r_dm: float) -> list:
+    """Greedy clustering: each item joins the first kept item within r_dm (same kind for signs), which moves to the
+    cluster's mean position."""
+    kept, grid = [], defaultdict(list)
+    for it in items:
+        gx, gy = int(it[0] // r_dm), int(it[1] // r_dm)
+        hit = None
+        for dx in (-1, 0, 1):
+            for dy in (-1, 0, 1):
+                for j in grid.get((gx + dx, gy + dy), []):
+                    k = kept[j]
+                    if math.hypot(k[0][0] - it[0], k[0][1] - it[1]) < r_dm and (len(it) < 4 or k[0][3] == it[3]):
+                        hit = j
+                        break
+                if hit is not None:
+                    break
+            if hit is not None:
+                break
+        if hit is None:
+            grid[(gx, gy)].append(len(kept))
+            kept.append([list(it), 1])
+        else:
+            k = kept[hit]
+            n = k[1]
+            k[0][0] = round((k[0][0] * n + it[0]) / (n + 1)); k[0][1] = round((k[0][1] * n + it[1]) / (n + 1))
+            k[1] = n + 1
+    return [k[0] for k in kept]

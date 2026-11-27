@@ -81,7 +81,10 @@ def main():
     photos = json.loads((DATA / "building_photos.json").read_text())["photos"]
     models = json.loads((DATA / "building_models.json").read_text())["models"]
     tex_dir, model_dir = WORLD / "tex", WORLD / "models"
-    shutil.rmtree(tex_dir, ignore_errors=True); shutil.rmtree(model_dir, ignore_errors=True)
+    # clear only the wall photos this script made (tex/<building>_w<k>.jpg); tex/pbr holds the game's surface textures
+    for old in tex_dir.glob("*_w*.jpg"):
+        old.unlink()
+    shutil.rmtree(model_dir, ignore_errors=True)
     out, credits, skipped = {}, [], []
     for e in photos:
         src = e.get("source", "")

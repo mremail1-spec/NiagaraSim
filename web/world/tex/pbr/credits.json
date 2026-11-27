@@ -1,0 +1,66 @@
+{
+ "source": "Poly Haven (polyhaven.com)",
+ "licence": "CC0 1.0",
+ "textures": {
+  "brick": {
+   "asset": "red_brick_03",
+   "url": "https://polyhaven.com/a/red_brick_03",
+   "licence": "CC0"
+  },
+  "stucco": {
+   "asset": "white_stucco",
+   "url": "https://polyhaven.com/a/white_stucco",
+   "licence": "CC0"
+  },
+  "block": {
+   "asset": "concrete_block_wall",
+   "url": "https://polyhaven.com/a/concrete_block_wall",
+   "licence": "CC0"
+  },
+  "siding": {
+   "asset": "weathered_plank_siding",
+   "url": "https://polyhaven.com/a/weathered_plank_siding",
+   "licence": "CC0"
+  },
+  "asphalt": {
+   "asset": "asphalt_02",
+   "url": "https://polyhaven.com/a/asphalt_02",
+   "licence": "CC0"
+  },
+  "sidewalk": {
+   "asset": "concrete_pavement",
+   "url": "https://polyhaven.com/a/concrete_pavement",
+   "licence": "CC0"
+  },
+  "grass": {
+   "asset": "leafy_grass",
+   "url": "https://polyhaven.com/a/leafy_grass",
+   "licence": "CC0"
+  },
+  "rock": {
+   "asset": "cliff_side",
+   "url": "https://polyhaven.com/a/cliff_side",
+   "licence": "CC0"
+  },
+  "shingles": {
+   "asset": "grey_roof_01",
+   "url": "https://polyhaven.com/a/grey_roof_01",
+   "licence": "CC0"
+  },
+  "metal": {
+   "asset": "box_profile_metal_sheet",
+   "url": "https://polyhaven.com/a/box_profile_metal_sheet",
+   "licence": "CC0"
+  },
+  "stone": {
+   "asset": "old_stone_wall",
+   "url": "https://polyhaven.com/a/old_stone_wall",
+   "licence": "CC0"
+  },
+  "gravelroof": {
+   "asset": "gravel_concrete",
+   "url": "https://polyhaven.com/a/gravel_concrete",
+   "licence": "CC0"
+  }
+ }
+}

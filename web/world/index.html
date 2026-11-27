@@ -113,7 +113,7 @@ button.primary { background: var(--sign); border-color: #fff; color: #fff; }
 <div class="hud" id="help" hidden>
   <div class="plate">
     <h1><span>Walk Niagara Falls</span></h1>
-    <p>The City's 42,000 building outlines, real streets, sidewalks, the river and 31,000 inventoried trees. Cars and people appear in the numbers the simulation predicts for each street. Walk up to a building to see its businesses and their model sales.</p>
+    <p>The City's 42,000 building outlines, real streets, sidewalks, the river and 31,000 inventoried trees, with the City's street lights, signs and hydrants, and the poles, benches, trash cans and traffic signs Mapillary's street photos found (Mapillary contributors, CC BY-SA 4.0). Cars and people appear in the numbers the simulation predicts for each street. Walk up to a building to see its businesses and their model sales.</p>
     <dl>
       <dt>W A S D</dt><dd>Walk (arrow keys work too)</dd>
       <dt>Mouse</dt><dd>Click the view, then move the mouse to look. Wheel zooms</dd>
@@ -587,7 +587,7 @@ async function ingestTile(doc) {
   for (const [k, v] of Object.entries(doc.parcels || {})) PARCELS.set(k, v);
   for (const [kind, items] of Object.entries(doc.furn || {})) for (const it of items) {
     const [x, z] = P(it[0], it[1]), k = key(...chunkOf(x, z));
-    let f = FURN.get(k); if (!f) FURN.set(k, f = { lights: [], signs: [], hydrants: [] });
+    let f = FURN.get(k); if (!f) FURN.set(k, f = { lights: [], signs: [], hydrants: [], poles: [], cans: [], benches: [], boxes: [], msigns: [] });
     if (kind === "signals") {
       // a City traffic light, unless the roads already gave one here
       if (![...sigByKey.values()].some((q) => Math.hypot(q.x - x, q.z - z) < 25)) sigByKey.set("city:" + it[0] + "," + it[1], { x, z, w: it[2] / 5, dirs: it[3].map((d) => d * Math.PI / 180), city: true });
@@ -1168,6 +1168,56 @@ const hydrantGeo = mergeGeometries([
   new THREE.SphereGeometry(0.15, 10, 6, 0, Math.PI * 2, 0, Math.PI / 2).translate(0, 0.62, 0),
   new THREE.CylinderGeometry(0.06, 0.06, 0.42, 8).rotateZ(Math.PI / 2).translate(0, 0.42, 0),
 ]);
+// Mapillary's detected objects (CC BY-SA 4.0): wooden hydro poles with a crossarm, trash cans, benches,
+// junction boxes and traffic signs by kind (regulatory white, warning yellow diamond, information green, chevron)
+const poleGeo = mergeGeometries([
+  new THREE.CylinderGeometry(0.13, 0.17, 11, 7).translate(0, 5.5, 0),
+  new THREE.BoxGeometry(2.0, 0.1, 0.1).translate(0, 10.3, 0),
+]);
+const canGeo = new THREE.CylinderGeometry(0.28, 0.25, 0.95, 10).translate(0, 0.475, 0);
+const benchGeo = mergeGeometries([
+  new THREE.BoxGeometry(1.8, 0.06, 0.42).translate(0, 0.45, 0),
+  new THREE.BoxGeometry(1.8, 0.42, 0.05).translate(0, 0.78, -0.2),
+  new THREE.BoxGeometry(0.06, 0.45, 0.4).translate(-0.8, 0.22, 0), new THREE.BoxGeometry(0.06, 0.45, 0.4).translate(0.8, 0.22, 0),
+]);
+const boxGeo = new THREE.BoxGeometry(0.9, 1.3, 0.45).translate(0, 0.65, 0);
+const msignFaceGeo = [
+  new THREE.BoxGeometry(0.6, 0.75, 0.03).translate(0, 2.3, 0.04),                                 // regulatory
+  new THREE.BoxGeometry(0.6, 0.6, 0.03).rotateZ(Math.PI / 4).translate(0, 2.3, 0.04),            // warning
+  new THREE.BoxGeometry(1.1, 0.6, 0.03).translate(0, 2.4, 0.04),                                  // information
+  new THREE.BoxGeometry(0.45, 0.6, 0.03).translate(0, 1.6, 0.04),                                 // chevron
+];
+let MLY_MATS = null;
+function mlyMats() {
+  if (MLY_MATS) return MLY_MATS;
+  const face = (draw) => new THREE.MeshStandardMaterial({ map: canvasTex(64, 64, draw, false), roughness: 0.6 });
+  const back = new THREE.MeshStandardMaterial({ color: "#9aa0a4", metalness: 0.5, roughness: 0.5 });
+  const reg = face((g, w, h) => { g.fillStyle = "#f4f4f2"; g.fillRect(0, 0, w, h); g.strokeStyle = "#1f2226"; g.lineWidth = 4; g.strokeRect(4, 4, w - 8, h - 8); g.fillStyle = "#1f2226"; g.fillRect(16, 26, w - 32, 6); g.fillRect(16, 36, w - 32, 6); });
+  const warn = face((g, w, h) => { g.fillStyle = "#f2c230"; g.fillRect(0, 0, w, h); g.strokeStyle = "#1f2226"; g.lineWidth = 4; g.strokeRect(4, 4, w - 8, h - 8); g.fillStyle = "#1f2226"; g.fillRect(28, 16, 8, 32); });
+  const info = face((g, w, h) => { g.fillStyle = "#1f6b3a"; g.fillRect(0, 0, w, h); g.strokeStyle = "#f4f4f2"; g.lineWidth = 3; g.strokeRect(4, 4, w - 8, h - 8); g.fillStyle = "#f4f4f2"; g.fillRect(12, 22, w - 24, 5); g.fillRect(12, 34, w - 34, 5); });
+  const chev = face((g, w, h) => { g.fillStyle = "#f2c230"; g.fillRect(0, 0, w, h); g.fillStyle = "#1f2226"; g.beginPath(); g.moveTo(20, 12); g.lineTo(42, 32); g.lineTo(20, 52); g.lineTo(28, 52); g.lineTo(50, 32); g.lineTo(28, 12); g.fill(); });
+  const six = (f) => [back, back, back, back, f, back];
+  MLY_MATS = { pole: new THREE.MeshStandardMaterial({ color: "#6b4f36", roughness: 0.9 }), can: new THREE.MeshStandardMaterial({ color: "#2f4a3a", roughness: 0.7 }),
+    bench: new THREE.MeshStandardMaterial({ color: "#5a4a3a", roughness: 0.8 }), box: new THREE.MeshStandardMaterial({ color: "#8d9399", roughness: 0.6 }),
+    faces: [six(reg), six(warn), six(info), six(chev)], post: back };
+  return MLY_MATS;
+}
+function mapillaryObjects(F, group) {
+  const S = mlyMats(), mtx = new THREE.Matrix4(), q = new THREE.Quaternion(), up = new THREE.Vector3(0, 1, 0), one = new THREE.Vector3(1, 1, 1);
+  const place = (geo, mat, list, shadow = true) => {
+    if (!list.length) return;
+    const im = new THREE.InstancedMesh(geo, mat, list.length);
+    list.forEach(([x, z, a = 0], i) => { q.setFromAxisAngle(up, a * Math.PI / 180); im.setMatrixAt(i, mtx.compose(new THREE.Vector3(x, H(x, z), z), q, one)); });
+    im.castShadow = shadow; im.receiveShadow = true; group.add(im);
+  };
+  place(poleGeo, S.pole, F.poles || []);
+  place(canGeo, S.can, F.cans || []);
+  place(benchGeo, S.bench, F.benches || []);
+  place(boxGeo, S.box, F.boxes || []);
+  const ms = F.msigns || [];
+  place(signPostGeo, S.post, ms, false);
+  for (let t = 0; t < 4; t++) place(msignFaceGeo[t], S.faces[t], ms.filter((m) => m[3] === t));
+}
 let SIGN_MATS = null;
 function signMats() {
   if (SIGN_MATS) return SIGN_MATS;
@@ -1304,7 +1354,7 @@ function buildChunk(k, kx, kz) {
       lights.forEach(([x, z, rot, y], i) => { q.setFromAxisAngle(up, rot); im.setMatrixAt(i, mtx.compose(new THREE.Vector3(x, y, z), q, one)); });
       im.castShadow = true; group.add(im);
     }
-    if (F) cityFurniture(F, group);
+    if (F) { cityFurniture(F, group); mapillaryObjects(F, group); }
     if (barriers.length) { const m = new THREE.Mesh(mergeGeometries(barriers), M.concrete); m.castShadow = m.receiveShadow = true; group.add(m); }
     // traffic signals: two masts at opposite corners, arms reaching over the intersection
     for (const sg of [...sigByKey.values()].filter((q) => Math.floor(q.x / CHUNK) === kx && Math.floor(q.z / CHUNK) === kz)) {
@@ -1350,7 +1400,7 @@ function buildChunk(k, kx, kz) {
   scene.add(group);
   chunks.set(k, { group, kx, kz });
 }
-function disposeGroup(g) { g.traverse((o) => { if (o.geometry && ![trunkGeo, crownGeo, coneGeo, lightGeo, mastGeo, armGeo, headGeo, signPostGeo, ...signFaceGeo, tabGeo, hydrantGeo].includes(o.geometry)) o.geometry.dispose(); if (o.material && o.material.map && o.material.map.isCanvasTexture === undefined && ![...Object.values(M.walls)].includes(o.material)) { /* photo materials are cached by texture */ } }); }
+function disposeGroup(g) { g.traverse((o) => { if (o.geometry && ![trunkGeo, crownGeo, coneGeo, lightGeo, mastGeo, armGeo, headGeo, signPostGeo, ...signFaceGeo, tabGeo, hydrantGeo, poleGeo, canGeo, benchGeo, boxGeo, ...msignFaceGeo].includes(o.geometry)) o.geometry.dispose(); if (o.material && o.material.map && o.material.map.isCanvasTexture === undefined && ![...Object.values(M.walls)].includes(o.material)) { /* photo materials are cached by texture */ } }); }
 function updateChunks(px, pz, budget = 2) {
   streamAround(px, pz);
   const [cx, cz] = chunkOf(px, pz), R = Math.ceil(LOAD_R / CHUNK);
