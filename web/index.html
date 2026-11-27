@@ -873,7 +873,8 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
       img.alt = `Street photo of ${b.name[i]}`;
       img.src = e.photo.file;
       img.onerror = () => { $("bPhoto").hidden = true; };
-      $("bPhotoCredit").textContent = `${sf._meta.photo_credit} \u00b7 photo ${e.photo.kartaview_photo}${e.photo.date ? ", " + e.photo.date : ""}`;
+      $("bPhotoCredit").textContent = e.photo.credit ? `${e.photo.credit}${e.photo.date ? ", " + e.photo.date : ""}`
+        : `${sf._meta.photo_credit} \u00b7 photo ${e.photo.kartaview_photo}${e.photo.date ? ", " + e.photo.date : ""}`;
       $("bPhoto").hidden = false;
     }
     const g = e.google;

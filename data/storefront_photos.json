@@ -101,8 +101,17 @@
   "chosen": "by eye"
  },
  "way/180904886": {
-  "none": "checked by eye: the KartaView photos here are forward-facing road views; none shows this business clearly",
-  "chosen": "by eye"
+  "file": "storefronts/57dc8367070c.jpg",
+  "owner_photo": "2026-11/upload_088.jpg",
+  "date": "2026-11",
+  "credit": "Photo: project owner",
+  "chosen": "by eye",
+  "crop": [
+   0.0,
+   0.1,
+   1.0,
+   0.65
+  ]
  },
  "node/4036094329": {
   "none": "checked by eye: the KartaView photos here are forward-facing road views; none shows this business clearly",
@@ -126,17 +135,15 @@
  },
  "node/5361707562": {
   "file": "storefronts/a999993e18b1.jpg",
-  "kartaview_photo": "92871147",
-  "sequence": "522405",
-  "date": "2017-08-08",
-  "distance_m": 36,
-  "off_axis_deg": -10.9,
+  "owner_photo": "2026-11/upload_084.jpg",
+  "date": "2026-11",
+  "credit": "Photo: project owner",
   "chosen": "by eye",
   "crop": [
-   0.0,
-   0.42,
-   0.45,
-   0.75
+   0.1,
+   0.06,
+   1.0,
+   0.45
   ]
  },
  "node/5361707563": {
@@ -219,17 +226,15 @@
  },
  "Valvoline Express Care|8214 Lundy's Ln": {
   "file": "storefronts/509d8e3c7dbb.jpg",
-  "kartaview_photo": "92871147",
-  "sequence": "522405",
-  "date": "2017-08-08",
-  "distance_m": 73,
-  "off_axis_deg": -12.5,
+  "owner_photo": "2026-11/upload_084.jpg",
+  "date": "2026-11",
+  "credit": "Photo: project owner",
   "chosen": "by eye",
   "crop": [
-   0.0,
-   0.42,
-   0.45,
-   0.75
+   0.1,
+   0.06,
+   1.0,
+   0.45
   ]
  },
  "Sam's Hair & Beauty Salon|8201-8209 Lundy's Ln": {
@@ -254,17 +259,15 @@
  },
  "Avondale Store #67|8214 Lundy's Ln": {
   "file": "storefronts/41677a56b137.jpg",
-  "kartaview_photo": "92871147",
-  "sequence": "522405",
-  "date": "2017-08-08",
-  "distance_m": 73,
-  "off_axis_deg": -12.5,
+  "owner_photo": "2026-11/upload_084.jpg",
+  "date": "2026-11",
+  "credit": "Photo: project owner",
   "chosen": "by eye",
   "crop": [
-   0.0,
-   0.42,
-   0.45,
-   0.75
+   0.1,
+   0.06,
+   1.0,
+   0.45
   ]
  },
  "Big Bee Convenience & Food Mart|8201-8209 Lundy's Ln": {
@@ -277,17 +280,15 @@
  },
  "Balkan Deli Inc.|8214 Lundy's Ln": {
   "file": "storefronts/0f4b0c17ae62.jpg",
-  "kartaview_photo": "92871147",
-  "sequence": "522405",
-  "date": "2017-08-08",
-  "distance_m": 73,
-  "off_axis_deg": -12.5,
+  "owner_photo": "2026-11/upload_084.jpg",
+  "date": "2026-11",
+  "credit": "Photo: project owner",
   "chosen": "by eye",
   "crop": [
-   0.0,
-   0.42,
-   0.45,
-   0.75
+   0.1,
+   0.06,
+   1.0,
+   0.45
   ]
  },
  "Pho Huong Ngoc - Unit A13-a14|8279 Lundy's Ln": {
@@ -340,17 +341,15 @@
  },
  "Lakeport Fish & Chips|8214 Lundy's Ln": {
   "file": "storefronts/400413915f92.jpg",
-  "kartaview_photo": "92871147",
-  "sequence": "522405",
-  "date": "2017-08-08",
-  "distance_m": 83,
-  "off_axis_deg": -2.1,
+  "owner_photo": "2026-11/upload_084.jpg",
+  "date": "2026-11",
+  "credit": "Photo: project owner",
   "chosen": "by eye",
   "crop": [
-   0.0,
-   0.42,
-   0.45,
-   0.75
+   0.1,
+   0.06,
+   1.0,
+   0.45
   ]
  },
  "Epic Pita Niagara|7805 Lundy's Ln": {

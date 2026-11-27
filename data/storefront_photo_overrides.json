@@ -95,7 +95,15 @@
   "checked": "2026-11-27"
  },
  "way/180904886": {
-  "none": "checked by eye: the KartaView photos here are forward-facing road views; none shows this business clearly",
+  "owner_photo": "2026-11/upload_088.jpg",
+  "date": "2026-11",
+  "crop": [
+   0.0,
+   0.1,
+   1.0,
+   0.65
+  ],
+  "shows": "the Tim Hortons sign on Lundy's Ln and the plaza behind",
   "checked": "2026-11-27"
  },
  "node/4036094329": {
@@ -119,16 +127,16 @@
   "checked": "2026-11-27"
  },
  "node/5361707562": {
-  "photo": "92871147",
-  "sequence": "522405",
-  "shows": "the Esso station and price sign at 8214",
-  "checked": "2026-11-27",
+  "owner_photo": "2026-11/upload_084.jpg",
+  "date": "2026-11",
   "crop": [
-   0.0,
-   0.42,
-   0.45,
-   0.75
-  ]
+   0.1,
+   0.06,
+   1.0,
+   0.45
+  ],
+  "checked": "2026-11-27",
+  "shows": "the Esso station and its sign at Kalar Rd"
  },
  "node/5361707563": {
   "none": "checked by eye: the KartaView photos here are forward-facing road views; none shows this business clearly",
@@ -203,16 +211,16 @@
   "checked": "2026-11-27"
  },
  "Valvoline Express Care|8214 Lundy's Ln": {
-  "photo": "92871147",
-  "sequence": "522405",
-  "shows": "the Esso station and price sign at 8214 (plaza, not the shop)",
-  "checked": "2026-11-27",
+  "owner_photo": "2026-11/upload_084.jpg",
+  "date": "2026-11",
   "crop": [
-   0.0,
-   0.42,
-   0.45,
-   0.75
-  ]
+   0.1,
+   0.06,
+   1.0,
+   0.45
+  ],
+  "checked": "2026-11-27",
+  "shows": "the Esso site at 8214 and its sign (plaza, not the shop)"
  },
  "Sam's Hair & Beauty Salon|8201-8209 Lundy's Ln": {
   "none": "checked by eye: the KartaView photos here are forward-facing road views; none shows this business clearly",
@@ -235,16 +243,16 @@
   "checked": "2026-11-27"
  },
  "Avondale Store #67|8214 Lundy's Ln": {
-  "photo": "92871147",
-  "sequence": "522405",
-  "shows": "the Esso station and price sign at 8214",
-  "checked": "2026-11-27",
+  "owner_photo": "2026-11/upload_084.jpg",
+  "date": "2026-11",
   "crop": [
-   0.0,
-   0.42,
-   0.45,
-   0.75
-  ]
+   0.1,
+   0.06,
+   1.0,
+   0.45
+  ],
+  "checked": "2026-11-27",
+  "shows": "the Esso station and its sign at Kalar Rd"
  },
  "Big Bee Convenience & Food Mart|8201-8209 Lundy's Ln": {
   "none": "checked by eye: the KartaView photos here are forward-facing road views; none shows this business clearly",
@@ -255,16 +263,16 @@
   "checked": "2026-11-27"
  },
  "Balkan Deli Inc.|8214 Lundy's Ln": {
-  "photo": "92871147",
-  "sequence": "522405",
-  "shows": "the Esso station and price sign at 8214 (plaza, not the shop)",
-  "checked": "2026-11-27",
+  "owner_photo": "2026-11/upload_084.jpg",
+  "date": "2026-11",
   "crop": [
-   0.0,
-   0.42,
-   0.45,
-   0.75
-  ]
+   0.1,
+   0.06,
+   1.0,
+   0.45
+  ],
+  "checked": "2026-11-27",
+  "shows": "the Esso site at 8214 and its sign (plaza, not the shop)"
  },
  "Pho Huong Ngoc - Unit A13-a14|8279 Lundy's Ln": {
   "none": "checked by eye: the KartaView photos here are forward-facing road views; none shows this business clearly",
@@ -315,16 +323,16 @@
   "checked": "2026-11-27"
  },
  "Lakeport Fish & Chips|8214 Lundy's Ln": {
-  "photo": "92871147",
-  "sequence": "522405",
-  "shows": "the Esso station and price sign at 8214 (plaza, not the shop)",
-  "checked": "2026-11-27",
+  "owner_photo": "2026-11/upload_084.jpg",
+  "date": "2026-11",
   "crop": [
-   0.0,
-   0.42,
-   0.45,
-   0.75
-  ]
+   0.1,
+   0.06,
+   1.0,
+   0.45
+  ],
+  "checked": "2026-11-27",
+  "shows": "the Esso site at 8214 and its sign (plaza, not the shop)"
  },
  "Epic Pita Niagara|7805 Lundy's Ln": {
   "photo": "190957957",

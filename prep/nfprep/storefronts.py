@@ -11,7 +11,8 @@ heading (in frame whatever the lens) and 12-100 m away; preferred: 20-45 m, seen
 off centre), outside the snow months (Dec-Mar), good GPS. The photo is cropped towards the business, assuming
 an 80 degree field of view (60 for portrait photos), and shrunk to 800 px wide. Photos are checked by eye:
 data/storefront_photo_overrides.json names the photo to use for a business ({"photo": id, "sequence": id,
-"crop": [x0, y0, x1, y1] as fractions of the photo, set by eye}) or none ({"none": reason}).
+"crop": [x0, y0, x1, y1] as fractions of the photo, set by eye}) or none ({"none": reason}). The owner's own photos (data/photos/, the project's own) come first where they show
+the business: {"owner_photo": "2026-11/upload_084.jpg", "date": "2026-11", "crop": [...]}, credited "Photo: project owner".
 
 Google: Place Details (New) with rating, review count and up to five reviews, for businesses matched to a
 Google place (data/google_places.json by OSM id or name and address, else the `match` step's Text Search here,
@@ -227,6 +228,16 @@ def photos(redo: bool = False) -> None:
         if o and "none" in o:
             done[k] = {"none": o["none"], "chosen": "by eye"}
             continue
+        if o and "owner_photo" in o:
+            if done.get(k, {}).get("owner_photo") == o["owner_photo"] and done[k].get("crop") == o.get("crop"):
+                continue
+            src = ROOT / "data" / "photos" / o["owner_photo"]
+            fn = hashlib.sha1(k.encode()).hexdigest()[:12] + ".jpg"
+            (IMG_DIR / fn).write_bytes(crop(src.read_bytes(), 0.0, False, o.get("crop") or [0, 0, 1, 1]))
+            done[k] = {"file": f"storefronts/{fn}", "owner_photo": o["owner_photo"], "date": o.get("date", ""),
+                       "credit": "Photo: project owner", "chosen": "by eye", **({"crop": o["crop"]} if o.get("crop") else {})}
+            print(f"[{n + 1}/{len(bs)}] {b['name']}: the owner's photo {o['owner_photo']}")
+            continue
         if o and "photo" in o:
             if done.get(k, {}).get("kartaview_photo") == str(o["photo"]) and done[k].get("crop") == o.get("crop"):
                 continue
@@ -389,7 +400,7 @@ def export() -> None:
     for k in set(ph) | set(rv) | set(stored):
         e = {}
         if ph.get(k) and "file" in ph[k]:
-            e["photo"] = {x: ph[k][x] for x in ("file", "kartaview_photo", "date")}
+            e["photo"] = {x: ph[k][x] for x in ("file", "kartaview_photo", "date", "credit") if ph[k].get(x)}
         if rv.get(k):
             e["google"] = {x: rv[k][x] for x in ("rating", "count", "status", "checked", "reviews")}
         elif stored.get(k) and stored[k].get("rating"):
