@@ -274,17 +274,22 @@ def google_index(area: bool = True) -> dict:
     by_name = {}
     for v in g.values():
         if v.get("match"):
+            v["match"]["_checked"] = v.get("checked")
             by_name[(_norm(v.get("name")), _norm(v.get("address")))] = v["match"]
     extra = json.loads(MATCHES_OUT.read_text()) if MATCHES_OUT.exists() else {}
     out = {}
     for b in city_businesses(area):
         k = business_key(b)
-        m = (g.get(b["osm_id"]) or {}).get("match") if b["osm_id"] else None
+        e = g.get(b["osm_id"]) if b["osm_id"] else None
+        m = (e or {}).get("match")
+        if m:
+            m["_checked"] = e.get("checked")
         m = m or by_name.get((_norm(b["name"]), _norm(b["address"])))
         if not m and (extra.get(k) or {}).get("id"):
             m = extra[k]
         if m:
-            out[k] = {"id": m["id"], "rating": m.get("rating"), "count": m.get("userRatingCount"), "status": m.get("businessStatus")}
+            out[k] = {"id": m["id"], "rating": m.get("rating"), "count": m.get("userRatingCount"), "status": m.get("businessStatus"),
+                      "checked": m.get("_checked") or m.get("checked")}
     return out
 
 
@@ -388,7 +393,7 @@ def export() -> None:
         if rv.get(k):
             e["google"] = {x: rv[k][x] for x in ("rating", "count", "status", "checked", "reviews")}
         elif stored.get(k) and stored[k].get("rating"):
-            e["google"] = {"rating": stored[k]["rating"], "count": stored[k]["count"], "status": stored[k]["status"]}
+            e["google"] = {x: stored[k][x] for x in ("rating", "count", "status", "checked") if stored[k].get(x)}
         if e:
             out["places"][k] = e
     WEB_OUT.write_text(json.dumps(out, ensure_ascii=False, separators=(",", ":")))

@@ -885,7 +885,7 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
         $("bReviews").querySelector("summary").textContent = `Reviews (${rv.length} recent)`;
         $("bReviews").hidden = false;
       }
-      $("bGoogleCredit").textContent = sf._meta.reviews_credit + (g.checked ? ` \u00b7 checked ${g.checked}` : "");
+      $("bGoogleCredit").textContent = (rv.length ? sf._meta.reviews_credit : "Rating: Google") + (g.checked ? ` \u00b7 checked ${g.checked}` : "");
       $("bGoogle").hidden = false;
     }
   }
