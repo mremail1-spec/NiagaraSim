@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Scan3D</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><path d='M16 3 28 10v12L16 29 4 22V10z' fill='%23f6b93b'/></svg>">
+<style>
+  :root {
+    --bg: #0f1115; --panel: #181b22; --line: #2a2f3a; --text: #e8eaef; --muted: #9aa3b2;
+    --accent: #f6b93b; --accent-ink: #1a1405; --ok: #4cd18a; --warn: #ff8a5b; --viewer-bg: #15171c;
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; background: var(--bg); color: var(--text);
+    font: 15px/1.4 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  header { display: flex; align-items: center; gap: 12px; padding: 10px 16px; border-bottom: 1px solid var(--line); }
+  header h1 { font-size: 17px; margin: 0; letter-spacing: .02em; }
+  header .tabs { margin-left: auto; display: flex; gap: 4px; }
+  button, select, input[type=number] { font: inherit; color: var(--text); background: #232835; border: 1px solid var(--line);
+    border-radius: 8px; padding: 8px 12px; }
+  button { cursor: pointer; }
+  button:disabled { opacity: .45; cursor: default; }
+  button.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); font-weight: 600; }
+  .tabs button[aria-selected=true] { background: var(--text); color: var(--bg); }
+  main { height: calc(100% - 53px); }
+  section { display: none; height: 100%; }
+  section.active { display: flex; }
+  #capture { flex-direction: column; }
+  .stage { position: relative; flex: 1; min-height: 0; background: #000; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+  .stage video { max-width: 100%; max-height: 100%; }
+  .hud { position: absolute; left: 12px; right: 12px; top: 12px; display: flex; gap: 8px; flex-wrap: wrap; pointer-events: none; }
+  .pill { background: rgba(0,0,0,.6); border-radius: 999px; padding: 4px 10px; font-size: 13px; }
+  .pill.ok { color: var(--ok); } .pill.warn { color: var(--warn); }
+  .cue { position: absolute; left: 50%; bottom: 16px; transform: translateX(-50%); width: min(560px, calc(100% - 32px));
+    display: flex; gap: 12px; align-items: center; background: rgba(10,12,16,.78); border-radius: 14px; padding: 12px 14px; pointer-events: none; }
+  .cue svg { flex: none; color: var(--accent); }
+  .cue.busy svg { opacity: .6; }
+  .cue-text { display: flex; flex-direction: column; gap: 3px; min-width: 0; flex: 1; }
+  .cue-text strong { font-size: 17px; line-height: 1.25; }
+  .cue-text span { color: var(--muted); font-size: 13px; }
+  .meter { height: 5px; background: rgba(255,255,255,.15); border-radius: 3px; overflow: hidden; margin-top: 4px; }
+  .meter i { display: block; height: 100%; width: 0; background: var(--accent); transition: width .1s; }
+  .meter i.ready { background: var(--ok); }
+  .ringbox { position: absolute; right: 12px; top: 48px; background: rgba(10,12,16,.7); border-radius: 12px; padding: 6px; pointer-events: none; }
+  .ringbox .seg { fill: rgba(255,255,255,.18); }
+  .ringbox .seg.on { fill: var(--ok); }
+  .ringbox .seg.hi.on { fill: var(--accent); }
+  .ringbox .cam { fill: var(--text); }
+  .ringbox .cam.last { fill: var(--accent); }
+  .ringbox .obj { fill: var(--muted); }
+  .tapdot { position: absolute; width: 26px; height: 26px; margin: -13px 0 0 -13px; border: 3px solid var(--accent); border-radius: 50%; }
+  .tapmark { position: absolute; inset: 0; pointer-events: none; }
+  .stage video { cursor: crosshair; }
+  @media (prefers-reduced-motion: reduce) { .meter i { transition: none; } }
+  .empty { color: var(--muted); text-align: center; padding: 24px; max-width: 440px; }
+  .empty h2 { color: var(--text); font-size: 18px; }
+  .controls { display: flex; gap: 8px; padding: 10px 16px; flex-wrap: wrap; align-items: center; border-top: 1px solid var(--line); background: var(--panel); }
+  .controls .grow { flex: 1; }
+  .shutter { width: 64px; height: 64px; border-radius: 50%; border: 4px solid var(--text); background: transparent; padding: 0; }
+  .shutter::after { content: ""; display: block; margin: 4px; height: 48px; border-radius: 50%; background: var(--text); }
+  .shutter.auto::after { background: var(--accent); }
+  .strip { display: flex; gap: 4px; overflow-x: auto; padding: 8px 16px; min-height: 64px; background: var(--panel); }
+  .strip img { height: 48px; border-radius: 4px; cursor: pointer; flex: none; }
+  .strip img.bad { outline: 2px solid var(--warn); outline-offset: -2px; opacity: .7; }
+  #model { flex-direction: row; }
+  #view { flex: 1; min-width: 0; width: 100%; height: 100%; display: block; touch-action: none; background: var(--viewer-bg); }
+  aside { width: 320px; flex: none; border-left: 1px solid var(--line); background: var(--panel); padding: 14px 16px; overflow-y: auto; }
+  aside h3 { font-size: 13px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin: 18px 0 8px; }
+  aside h3:first-child { margin-top: 0; }
+  .row { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 6px; }
+  .row button { flex: 1; }
+  .seg button[aria-pressed=true] { background: var(--text); color: var(--bg); }
+  .steps { list-style: none; margin: 0; padding: 0; }
+  .steps li { margin-bottom: 8px; font-size: 14px; }
+  .bar { height: 4px; background: #2a2f3a; border-radius: 2px; overflow: hidden; margin-top: 3px; }
+  .bar i { display: block; height: 100%; width: 0; background: var(--accent); transition: width .15s; }
+  .steps li.done .bar i { background: var(--ok); }
+  #log { font: 12px/1.45 ui-monospace, Menlo, monospace; color: var(--muted); white-space: pre-wrap; max-height: 180px; overflow-y: auto;
+    background: #12141a; border-radius: 6px; padding: 8px; margin: 0; }
+  label.field { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 8px; font-size: 14px; }
+  label.field select, label.field input { width: 140px; padding: 6px 8px; }
+  .viewer-wrap { position: relative; flex: 1; min-width: 0; display: flex; }
+  .viewer-hint { position: absolute; left: 12px; bottom: 10px; color: var(--muted); font-size: 12px; pointer-events: none; }
+  .note { color: var(--muted); font-size: 13px; }
+  @media (max-width: 760px) {
+    #model { flex-direction: column; }
+    .viewer-wrap { flex: 1 1 55%; min-height: 0; }
+    aside { width: 100%; flex: 1 1 45%; border-left: 0; border-top: 1px solid var(--line); }
+    header h1 span { display: none; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>Scan3D <span style="color:var(--muted);font-weight:400">· photogrammetry in your browser</span></h1>
+  <div class="tabs" role="tablist">
+    <button role="tab" data-tab="capture" aria-selected="true">Capture</button>
+    <button role="tab" data-tab="model" aria-selected="false">Model</button>
+  </div>
+</header>
+<main>
+  <section id="capture" class="active">
+    <div class="stage">
+      <video id="video" playsinline muted hidden></video>
+      <div class="empty" id="intro">
+        <h2>Scan an object or a space</h2>
+        <p>Start the camera, then tap the object on screen. Arrows over the video tell you which way to walk; frames are captured automatically when you have moved enough and the image is sharp. It tells you when every side has been covered.</p>
+        <p>Or import photos or a video you already have.</p>
+      </div>
+      <div class="cue" id="cue" hidden aria-live="polite">
+        <svg id="arrow" viewBox="0 0 48 48" width="56" height="56" aria-hidden="true"></svg>
+        <div class="cue-text"><strong id="gTitle"></strong><span id="gDetail"></span>
+          <div class="meter" title="Movement since the last photo"><i id="meter"></i></div>
+        </div>
+      </div>
+      <div class="ringbox" id="ringbox" hidden></div>
+      <div class="tapmark" id="tapmark" hidden><div class="tapdot" id="tapdot"></div></div>
+      <div class="hud" id="hud" hidden>
+        <span class="pill" id="hudCount">0 frames</span>
+        <span class="pill" id="hudSharp">sharpness –</span>
+        <span class="pill" id="hudHint">move slowly around the object</span>
+      </div>
+    </div>
+    <div class="strip" id="strip" aria-label="Captured frames (tap one to remove it)"></div>
+    <div class="controls">
+      <button class="primary" id="btnCam">Start camera</button>
+      <button id="btnAuto" disabled aria-pressed="true">Auto-capture: on</button>
+      <button class="shutter auto" id="btnShot" disabled aria-label="Capture frame"></button>
+      <label class="field" style="margin:0">Import
+        <input type="file" id="file" accept="image/*,video/*" multiple style="width:auto">
+      </label>
+      <select id="optRes" aria-label="Frame size" title="Frame size used for new frames">
+        <option value="640">640 px · fast</option><option value="800" selected>800 px</option><option value="1024">1024 px · detailed</option>
+      </select>
+      <span class="grow"></span>
+      <button id="btnClear">Clear</button>
+      <button class="primary" id="btnProcess" disabled>Build 3D model</button>
+    </div>
+  </section>
+  <section id="model">
+    <div class="viewer-wrap">
+      <canvas id="view"></canvas>
+      <div class="viewer-hint">drag: orbit · right-drag / shift / two fingers: pan · wheel / pinch: zoom · double-click: refit</div>
+    </div>
+    <aside>
+      <h3>Progress</h3>
+      <ul class="steps" id="steps"></ul>
+      <pre id="log"></pre>
+      <h3>View</h3>
+      <div class="row seg" id="modes">
+        <button data-mode="sparse">Sparse</button>
+        <button data-mode="dense">Dense</button>
+        <button data-mode="mesh" aria-pressed="true">Mesh</button>
+      </div>
+      <div class="row">
+        <button id="btnCams" aria-pressed="true">Cameras: on</button>
+        <button id="btnTex">Colour: on</button>
+      </div>
+      <h3>Export</h3>
+      <div class="row">
+        <button data-export="glb">Mesh .glb</button>
+        <button data-export="obj">Mesh .obj</button>
+      </div>
+      <div class="row">
+        <button data-export="plymesh">Mesh .ply</button>
+        <button data-export="plydense">Points .ply</button>
+      </div>
+      <div class="row">
+        <button data-export="photos">Save scan photos (.zip)</button>
+      </div>
+      <p class="note">Units are relative: a single moving camera cannot know absolute scale. Scale the model in your 3D tool using a known measurement.</p>
+      <h3>Settings</h3>
+      <label class="field">Lens field of view°
+        <input type="number" id="optFov" value="65" min="30" max="120" step="1">
+      </label>
+      <label class="field">Depth-map size
+        <select id="optDense"><option value="256">256 px</option><option value="320" selected>320 px</option><option value="448">448 px</option></select>
+      </label>
+      <label class="field">Mesh resolution
+        <select id="optMesh"><option value="128">128</option><option value="200" selected>200</option><option value="280">280</option></select>
+      </label>
+      <p class="note">The field of view is only a starting guess; it is refined during reconstruction.</p>
+    </aside>
+  </section>
+</main>
+<script type="module" src="app.js"></script>
+</body>
+</html>
